@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DetectedIssue(domainresource.DomainResource):
@@ -27,7 +27,7 @@ class DetectedIssue(domainresource.DomainResource):
 
     __resource_type__ = "DetectedIssue"
 
-    author: fhirtypes.ReferenceType = Field(
+    author: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="author",
         title="The provider or device that identified the issue",
@@ -49,7 +49,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Type of detected issue, e.g. drug-drug, duplicate therapy, etc",
@@ -59,7 +59,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -71,7 +71,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    detail: fhirtypes.MarkdownType = Field(
+    detail: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="detail",
         title="Description and context",
@@ -80,11 +80,11 @@ class DetectedIssue(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_detail", title="Extension field for ``detail``."
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter detected issue is part of",
@@ -96,7 +96,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    evidence: typing.List[fhirtypes.DetectedIssueEvidenceType] = Field(
+    evidence: typing.List[fhirtypes.DetectedIssueEvidenceType] = Field(  # type: ignore
         None,
         alias="evidence",
         title="Supporting evidence",
@@ -110,7 +110,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    identifiedDateTime: fhirtypes.DateTimeType = Field(
+    identifiedDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="identifiedDateTime",
         title="When identified",
@@ -122,13 +122,13 @@ class DetectedIssue(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    identifiedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    identifiedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_identifiedDateTime",
         title="Extension field for ``identifiedDateTime``.",
     )
 
-    identifiedPeriod: fhirtypes.PeriodType = Field(
+    identifiedPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="identifiedPeriod",
         title="When identified",
@@ -141,7 +141,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique id for the detected issue",
@@ -151,7 +151,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    implicated: typing.List[fhirtypes.ReferenceType] = Field(
+    implicated: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="implicated",
         title="Problem resource",
@@ -166,7 +166,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] = Field(
+    mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] = Field(  # type: ignore
         None,
         alias="mitigation",
         title="Step taken to address",
@@ -181,7 +181,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    reference: fhirtypes.UriType = Field(
+    reference: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="reference",
         title="Authority for issue",
@@ -193,11 +193,11 @@ class DetectedIssue(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reference", title="Extension field for ``reference``."
     )
 
-    severity: fhirtypes.CodeType = Field(
+    severity: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="severity",
         title="high | moderate | low",
@@ -212,11 +212,11 @@ class DetectedIssue(domainresource.DomainResource):
             "enum_values": ["high", "moderate", "low"],
         },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_severity", title="Extension field for ``severity``."
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="preliminary | final | entered-in-error | mitigated",
@@ -229,11 +229,11 @@ class DetectedIssue(domainresource.DomainResource):
             "enum_values": ["preliminary", "final", "entered-in-error", "mitigated"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Associated subject",
@@ -320,9 +320,6 @@ class DetectedIssue(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class DetectedIssueEvidence(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -335,7 +332,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
 
     __resource_type__ = "DetectedIssueEvidence"
 
-    code: typing.List[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="code",
         title="Manifestation",
@@ -345,7 +342,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
         },
     )
 
-    detail: typing.List[fhirtypes.ReferenceType] = Field(
+    detail: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="detail",
         title="Supporting information",
@@ -383,7 +380,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
 
     __resource_type__ = "DetectedIssueMitigation"
 
-    action: fhirtypes.CodeableConceptType = Field(
+    action: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="action",
         title="What mitigation?",
@@ -396,7 +393,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         },
     )
 
-    author: fhirtypes.ReferenceType = Field(
+    author: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="author",
         title="Who is committing?",
@@ -411,7 +408,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date committed",
@@ -420,11 +417,11 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Additional notes about the mitigation",

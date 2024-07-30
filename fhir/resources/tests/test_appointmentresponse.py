@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import appointmentresponse
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_appointmentresponse_1(inst):
@@ -18,13 +18,15 @@ def impl_appointmentresponse_1(inst):
     assert inst.comment == "can't we try for this time, can't do mornings"
     assert (
         inst.end
-        == ExternalValidatorModel(valueInstant="2013-12-25T13:30:00Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-12-25T13:30:00Z"}
+        ).valueInstant
     )
     assert inst.id == "exampleresp"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/sampleappointmentresponse-identifier"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/sampleappointmentresponse-identifier"}
         ).valueUri
     )
     assert inst.identifier[0].value == "response123"
@@ -32,21 +34,23 @@ def impl_appointmentresponse_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participantStatus == "tentative"
     assert inst.participantType[0].coding[0].code == "ATND"
     assert (
         inst.participantType[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert (
         inst.start
-        == ExternalValidatorModel(valueInstant="2013-12-25T13:15:00Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-12-25T13:15:00Z"}
+        ).valueInstant
     )
     assert inst.text.div == (
         '<div xmlns="http://www.w3.org/1999/xhtml">Accept Brian MRI'
@@ -87,8 +91,8 @@ def impl_appointmentresponse_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participantStatus == "accepted"
@@ -129,8 +133,8 @@ def impl_appointmentresponse_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participantStatus == "accepted"

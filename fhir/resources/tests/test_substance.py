@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import substance
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_substance_1(inst):
@@ -15,8 +15,8 @@ def impl_substance_1(inst):
     assert inst.category[0].coding[0].display == "Chemical"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/substance-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/substance-category"}
         ).valueUri
     )
     assert inst.code.concept.coding[0].code == "333346007"
@@ -25,17 +25,22 @@ def impl_substance_1(inst):
     )
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.description == "Solution for silver nitrate stain"
     assert (
-        inst.expiry == ExternalValidatorModel(valueDateTime="2018-01-01").valueDateTime
+        inst.expiry
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-01-01"}
+        ).valueDateTime
     )
     assert inst.id == "f204"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://acme.org/identifiers/substances/lot"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/identifiers/substances/lot"}
         ).valueUri
     )
     assert inst.identifier[0].value == "AB94687"
@@ -44,14 +49,16 @@ def impl_substance_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.quantity.code == "mL"
     assert (
         inst.quantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.quantity.unit == "mL"
     assert float(inst.quantity.value) == float(100)
@@ -84,8 +91,8 @@ def impl_substance_2(inst):
     assert inst.category[0].coding[0].display == "Drug or Medicament"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/substance-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/substance-category"}
         ).valueUri
     )
     assert inst.code.concept.coding[0].code == "392259005"
@@ -94,7 +101,9 @@ def impl_substance_2(inst):
     )
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.contained[0].id == "ingr1"
     assert inst.contained[1].id == "ingr2"
@@ -103,14 +112,18 @@ def impl_substance_2(inst):
     assert inst.ingredient[0].quantity.denominator.code == "mg"
     assert (
         inst.ingredient[0].quantity.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredient[0].quantity.denominator.unit == "mg"
     assert float(inst.ingredient[0].quantity.denominator.value) == float(1000)
     assert inst.ingredient[0].quantity.numerator.code == "mg"
     assert (
         inst.ingredient[0].quantity.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredient[0].quantity.numerator.unit == "mg"
     assert float(inst.ingredient[0].quantity.numerator.value) == float(875)
@@ -118,14 +131,18 @@ def impl_substance_2(inst):
     assert inst.ingredient[1].quantity.denominator.code == "mg"
     assert (
         inst.ingredient[1].quantity.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredient[1].quantity.denominator.unit == "mg"
     assert float(inst.ingredient[1].quantity.denominator.value) == float(1000)
     assert inst.ingredient[1].quantity.numerator.code == "mg"
     assert (
         inst.ingredient[1].quantity.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredient[1].quantity.numerator.unit == "mg"
     assert float(inst.ingredient[1].quantity.numerator.value) == float(125)
@@ -135,8 +152,8 @@ def impl_substance_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "generated"
@@ -168,21 +185,23 @@ def impl_substance_3(inst):
     assert inst.category[0].coding[0].display == "Chemical"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/substance-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/substance-category"}
         ).valueUri
     )
     assert inst.code.concept.coding[0].code == "88480006"
     assert inst.code.concept.coding[0].display == "Potassium"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.id == "f203"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://acme.org/identifiers/substances"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/identifiers/substances"}
         ).valueUri
     )
     assert inst.identifier[0].value == "1234"
@@ -191,8 +210,8 @@ def impl_substance_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "generated"
@@ -223,7 +242,9 @@ def impl_substance_4(inst):
     assert inst.code.concept.coding[0].display == "House dust allergen"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.id == "f201"
     assert inst.instance is False
@@ -231,8 +252,8 @@ def impl_substance_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "generated"
@@ -261,16 +282,16 @@ def impl_substance_5(inst):
     assert inst.category[0].coding[0].display == "Allergen"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/substance-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/substance-category"}
         ).valueUri
     )
     assert inst.code.concept.text == "apitoxin (Honey Bee Venom)"
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://acme.org/identifiers/substances"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/identifiers/substances"}
         ).valueUri
     )
     assert inst.identifier[0].value == "1463"
@@ -279,8 +300,8 @@ def impl_substance_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "active"
@@ -310,7 +331,9 @@ def impl_substance_6(inst):
     assert inst.code.concept.coding[0].display == "Staphylococcus Aureus"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.id == "f202"
     assert inst.instance is False
@@ -318,8 +341,8 @@ def impl_substance_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "generated"

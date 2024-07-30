@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, element, fhirtypes
 
@@ -25,21 +23,22 @@ class ElementDefinition(backboneelement.BackboneElement):
     extension.
     """
 
-    resource_type = Field("ElementDefinition", const=True)
+    __resource_type__ = "ElementDefinition"
 
-    alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    alias: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="alias",
         title="Other names",
         description="Identifies additional names by which this element might also be known.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    alias__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_alias", title="Extension field for ``alias``.")
+    alias__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_alias", title="Extension field for ``alias``."
+    )
 
-    base: fhirtypes.ElementDefinitionBaseType = Field(
+    base: fhirtypes.ElementDefinitionBaseType = Field(  # type: ignore
         None,
         alias="base",
         title="Base definition information for tools",
@@ -53,11 +52,12 @@ class ElementDefinition(backboneelement.BackboneElement):
             " may be different to the base definition. On the original definition "
             "of the element, it will be same."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    binding: fhirtypes.ElementDefinitionBindingType = Field(
+    binding: fhirtypes.ElementDefinitionBindingType = Field(  # type: ignore
         None,
         alias="binding",
         title="ValueSet details if this is coded",
@@ -65,11 +65,12 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Binds to a value set if this element is coded (code, Coding, "
             "CodeableConcept, Quantity), or the data types (string, uri)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    code: typing.List[fhirtypes.CodingType] = Field(
+    code: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="code",
         title="Corresponding codes in terminologies",
@@ -77,11 +78,12 @@ class ElementDefinition(backboneelement.BackboneElement):
             "A code that has the same meaning as the element in a particular "
             "terminology."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    comment: fhirtypes.Markdown = Field(
+    comment: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="comment",
         title="Comments about the use of this element",
@@ -91,14 +93,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "proper use, etc. (Note: The text you are reading is specified in "
             "ElementDefinition.comment)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    condition: typing.List[typing.Optional[fhirtypes.Id]] = Field(
+    condition: typing.List[typing.Optional[fhirtypes.IdType]] = Field(  # type: ignore
         None,
         alias="condition",
         title="Reference to invariant about presence",
@@ -106,14 +109,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "A reference to an invariant that may make additional statements about "
             "the cardinality or value in the instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    condition__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_condition", title="Extension field for ``condition``.")
+    condition__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_condition", title="Extension field for ``condition``."
+    )
 
-    constraint: typing.List[fhirtypes.ElementDefinitionConstraintType] = Field(
+    constraint: typing.List[fhirtypes.ElementDefinitionConstraintType] = Field(  # type: ignore
         None,
         alias="constraint",
         title="Condition that must evaluate to true",
@@ -121,11 +125,12 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Formal constraints such as co-occurrence and other constraints that "
             "can be computationally evaluated within the context of the instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    contentReference: fhirtypes.Uri = Field(
+    contentReference: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="contentReference",
         title="Reference to definition of content for the element",
@@ -136,16 +141,17 @@ class ElementDefinition(backboneelement.BackboneElement):
             "ElementDefinition for the element, including definitions, cardinality "
             "constraints, bindings, invariants etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    contentReference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    contentReference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_contentReference",
         title="Extension field for ``contentReference``.",
     )
 
-    defaultValueAddress: fhirtypes.AddressType = Field(
+    defaultValueAddress: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="defaultValueAddress",
         title="Specified value if missing from instance",
@@ -153,14 +159,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueAge: fhirtypes.AgeType = Field(
+    defaultValueAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="defaultValueAge",
         title="Specified value if missing from instance",
@@ -168,14 +175,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueAnnotation: fhirtypes.AnnotationType = Field(
+    defaultValueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
         None,
         alias="defaultValueAnnotation",
         title="Specified value if missing from instance",
@@ -183,14 +191,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueAttachment: fhirtypes.AttachmentType = Field(
+    defaultValueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="defaultValueAttachment",
         title="Specified value if missing from instance",
@@ -198,14 +207,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueBase64Binary: fhirtypes.Base64Binary = Field(
+    defaultValueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
         None,
         alias="defaultValueBase64Binary",
         title="Specified value if missing from instance",
@@ -213,19 +223,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueBase64Binary",
         title="Extension field for ``defaultValueBase64Binary``.",
     )
 
-    defaultValueBoolean: bool = Field(
+    defaultValueBoolean: bool = Field(  # type: ignore
         None,
         alias="defaultValueBoolean",
         title="Specified value if missing from instance",
@@ -233,19 +244,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueBoolean",
         title="Extension field for ``defaultValueBoolean``.",
     )
 
-    defaultValueCanonical: fhirtypes.Canonical = Field(
+    defaultValueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="defaultValueCanonical",
         title="Specified value if missing from instance",
@@ -253,19 +265,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueCanonical",
         title="Extension field for ``defaultValueCanonical``.",
     )
 
-    defaultValueCode: fhirtypes.Code = Field(
+    defaultValueCode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="defaultValueCode",
         title="Specified value if missing from instance",
@@ -273,19 +286,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueCode",
         title="Extension field for ``defaultValueCode``.",
     )
 
-    defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="defaultValueCodeableConcept",
         title="Specified value if missing from instance",
@@ -293,14 +307,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueCodeableReference: fhirtypes.CodeableReferenceType = Field(
+    defaultValueCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="defaultValueCodeableReference",
         title="Specified value if missing from instance",
@@ -308,14 +323,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueCoding: fhirtypes.CodingType = Field(
+    defaultValueCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="defaultValueCoding",
         title="Specified value if missing from instance",
@@ -323,14 +339,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueContactDetail: fhirtypes.ContactDetailType = Field(
+    defaultValueContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
         None,
         alias="defaultValueContactDetail",
         title="Specified value if missing from instance",
@@ -338,14 +355,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueContactPoint: fhirtypes.ContactPointType = Field(
+    defaultValueContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
         None,
         alias="defaultValueContactPoint",
         title="Specified value if missing from instance",
@@ -353,14 +371,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueContributor: fhirtypes.ContributorType = Field(
+    defaultValueContributor: fhirtypes.ContributorType = Field(  # type: ignore
         None,
         alias="defaultValueContributor",
         title="Specified value if missing from instance",
@@ -368,14 +387,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueCount: fhirtypes.CountType = Field(
+    defaultValueCount: fhirtypes.CountType = Field(  # type: ignore
         None,
         alias="defaultValueCount",
         title="Specified value if missing from instance",
@@ -383,14 +403,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueDataRequirement: fhirtypes.DataRequirementType = Field(
+    defaultValueDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
         None,
         alias="defaultValueDataRequirement",
         title="Specified value if missing from instance",
@@ -398,14 +419,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueDate: fhirtypes.Date = Field(
+    defaultValueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="defaultValueDate",
         title="Specified value if missing from instance",
@@ -413,19 +435,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueDate",
         title="Extension field for ``defaultValueDate``.",
     )
 
-    defaultValueDateTime: fhirtypes.DateTime = Field(
+    defaultValueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="defaultValueDateTime",
         title="Specified value if missing from instance",
@@ -433,19 +456,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueDateTime",
         title="Extension field for ``defaultValueDateTime``.",
     )
 
-    defaultValueDecimal: fhirtypes.Decimal = Field(
+    defaultValueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="defaultValueDecimal",
         title="Specified value if missing from instance",
@@ -453,19 +477,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueDecimal",
         title="Extension field for ``defaultValueDecimal``.",
     )
 
-    defaultValueDistance: fhirtypes.DistanceType = Field(
+    defaultValueDistance: fhirtypes.DistanceType = Field(  # type: ignore
         None,
         alias="defaultValueDistance",
         title="Specified value if missing from instance",
@@ -473,14 +498,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueDosage: fhirtypes.DosageType = Field(
+    defaultValueDosage: fhirtypes.DosageType = Field(  # type: ignore
         None,
         alias="defaultValueDosage",
         title="Specified value if missing from instance",
@@ -488,14 +514,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueDuration: fhirtypes.DurationType = Field(
+    defaultValueDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="defaultValueDuration",
         title="Specified value if missing from instance",
@@ -503,14 +530,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueExpression: fhirtypes.ExpressionType = Field(
+    defaultValueExpression: fhirtypes.ExpressionType = Field(  # type: ignore
         None,
         alias="defaultValueExpression",
         title="Specified value if missing from instance",
@@ -518,14 +546,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueHumanName: fhirtypes.HumanNameType = Field(
+    defaultValueHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
         None,
         alias="defaultValueHumanName",
         title="Specified value if missing from instance",
@@ -533,14 +562,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueId: fhirtypes.Id = Field(
+    defaultValueId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="defaultValueId",
         title="Specified value if missing from instance",
@@ -548,17 +578,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_defaultValueId", title="Extension field for ``defaultValueId``."
     )
 
-    defaultValueIdentifier: fhirtypes.IdentifierType = Field(
+    defaultValueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="defaultValueIdentifier",
         title="Specified value if missing from instance",
@@ -566,14 +597,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueInstant: fhirtypes.Instant = Field(
+    defaultValueInstant: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="defaultValueInstant",
         title="Specified value if missing from instance",
@@ -581,19 +613,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueInstant",
         title="Extension field for ``defaultValueInstant``.",
     )
 
-    defaultValueInteger: fhirtypes.Integer = Field(
+    defaultValueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="defaultValueInteger",
         title="Specified value if missing from instance",
@@ -601,19 +634,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueInteger",
         title="Extension field for ``defaultValueInteger``.",
     )
 
-    defaultValueMarkdown: fhirtypes.Markdown = Field(
+    defaultValueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="defaultValueMarkdown",
         title="Specified value if missing from instance",
@@ -621,19 +655,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueMarkdown",
         title="Extension field for ``defaultValueMarkdown``.",
     )
 
-    defaultValueMoney: fhirtypes.MoneyType = Field(
+    defaultValueMoney: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="defaultValueMoney",
         title="Specified value if missing from instance",
@@ -641,14 +676,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueOid: fhirtypes.Oid = Field(
+    defaultValueOid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="defaultValueOid",
         title="Specified value if missing from instance",
@@ -656,17 +692,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_defaultValueOid", title="Extension field for ``defaultValueOid``."
     )
 
-    defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
+    defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
         None,
         alias="defaultValueParameterDefinition",
         title="Specified value if missing from instance",
@@ -674,14 +711,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValuePeriod: fhirtypes.PeriodType = Field(
+    defaultValuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="defaultValuePeriod",
         title="Specified value if missing from instance",
@@ -689,14 +727,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValuePositiveInt: fhirtypes.PositiveInt = Field(
+    defaultValuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="defaultValuePositiveInt",
         title="Specified value if missing from instance",
@@ -704,19 +743,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValuePositiveInt",
         title="Extension field for ``defaultValuePositiveInt``.",
     )
 
-    defaultValueQuantity: fhirtypes.QuantityType = Field(
+    defaultValueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="defaultValueQuantity",
         title="Specified value if missing from instance",
@@ -724,14 +764,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueRange: fhirtypes.RangeType = Field(
+    defaultValueRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="defaultValueRange",
         title="Specified value if missing from instance",
@@ -739,14 +780,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueRatio: fhirtypes.RatioType = Field(
+    defaultValueRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="defaultValueRatio",
         title="Specified value if missing from instance",
@@ -754,14 +796,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueRatioRange: fhirtypes.RatioRangeType = Field(
+    defaultValueRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
         None,
         alias="defaultValueRatioRange",
         title="Specified value if missing from instance",
@@ -769,14 +812,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueReference: fhirtypes.ReferenceType = Field(
+    defaultValueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="defaultValueReference",
         title="Specified value if missing from instance",
@@ -784,14 +828,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
+    defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
         None,
         alias="defaultValueRelatedArtifact",
         title="Specified value if missing from instance",
@@ -799,14 +844,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueSampledData: fhirtypes.SampledDataType = Field(
+    defaultValueSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
         None,
         alias="defaultValueSampledData",
         title="Specified value if missing from instance",
@@ -814,14 +860,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueSignature: fhirtypes.SignatureType = Field(
+    defaultValueSignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="defaultValueSignature",
         title="Specified value if missing from instance",
@@ -829,14 +876,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueString: fhirtypes.String = Field(
+    defaultValueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="defaultValueString",
         title="Specified value if missing from instance",
@@ -844,19 +892,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueString",
         title="Extension field for ``defaultValueString``.",
     )
 
-    defaultValueTime: fhirtypes.Time = Field(
+    defaultValueTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="defaultValueTime",
         title="Specified value if missing from instance",
@@ -864,19 +913,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueTime",
         title="Extension field for ``defaultValueTime``.",
     )
 
-    defaultValueTiming: fhirtypes.TimingType = Field(
+    defaultValueTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="defaultValueTiming",
         title="Specified value if missing from instance",
@@ -884,14 +934,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
+    defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
         None,
         alias="defaultValueTriggerDefinition",
         title="Specified value if missing from instance",
@@ -899,14 +950,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueUnsignedInt: fhirtypes.UnsignedInt = Field(
+    defaultValueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="defaultValueUnsignedInt",
         title="Specified value if missing from instance",
@@ -914,19 +966,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueUnsignedInt",
         title="Extension field for ``defaultValueUnsignedInt``.",
     )
 
-    defaultValueUri: fhirtypes.Uri = Field(
+    defaultValueUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="defaultValueUri",
         title="Specified value if missing from instance",
@@ -934,17 +987,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_defaultValueUri", title="Extension field for ``defaultValueUri``."
     )
 
-    defaultValueUrl: fhirtypes.Url = Field(
+    defaultValueUrl: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="defaultValueUrl",
         title="Specified value if missing from instance",
@@ -952,17 +1006,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_defaultValueUrl", title="Extension field for ``defaultValueUrl``."
     )
 
-    defaultValueUsageContext: fhirtypes.UsageContextType = Field(
+    defaultValueUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
         None,
         alias="defaultValueUsageContext",
         title="Specified value if missing from instance",
@@ -970,14 +1025,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueUuid: fhirtypes.Uuid = Field(
+    defaultValueUuid: fhirtypes.UuidType = Field(  # type: ignore
         None,
         alias="defaultValueUuid",
         title="Specified value if missing from instance",
@@ -985,19 +1041,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueUuid",
         title="Extension field for ``defaultValueUuid``.",
     )
 
-    definition: fhirtypes.Markdown = Field(
+    definition: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="definition",
         title="Full formal definition as narrative text",
@@ -1009,14 +1066,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "particular context of use of the resource. (Note: The text you are "
             "reading is specified in ElementDefinition.definition)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    example: typing.List[fhirtypes.ElementDefinitionExampleType] = Field(
+    example: typing.List[fhirtypes.ElementDefinitionExampleType] = Field(  # type: ignore
         None,
         alias="example",
         title="Example value (as defined for type)",
@@ -1024,11 +1082,12 @@ class ElementDefinition(backboneelement.BackboneElement):
             "A sample value for this element demonstrating the type of information "
             "that would typically be found in the element."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    fixedAddress: fhirtypes.AddressType = Field(
+    fixedAddress: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="fixedAddress",
         title="Value must be exactly this",
@@ -1038,14 +1097,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedAge: fhirtypes.AgeType = Field(
+    fixedAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="fixedAge",
         title="Value must be exactly this",
@@ -1055,14 +1115,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedAnnotation: fhirtypes.AnnotationType = Field(
+    fixedAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
         None,
         alias="fixedAnnotation",
         title="Value must be exactly this",
@@ -1072,14 +1133,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedAttachment: fhirtypes.AttachmentType = Field(
+    fixedAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="fixedAttachment",
         title="Value must be exactly this",
@@ -1089,14 +1151,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedBase64Binary: fhirtypes.Base64Binary = Field(
+    fixedBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
         None,
         alias="fixedBase64Binary",
         title="Value must be exactly this",
@@ -1106,19 +1169,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_fixedBase64Binary",
         title="Extension field for ``fixedBase64Binary``.",
     )
 
-    fixedBoolean: bool = Field(
+    fixedBoolean: bool = Field(  # type: ignore
         None,
         alias="fixedBoolean",
         title="Value must be exactly this",
@@ -1128,17 +1192,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedBoolean", title="Extension field for ``fixedBoolean``."
     )
 
-    fixedCanonical: fhirtypes.Canonical = Field(
+    fixedCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="fixedCanonical",
         title="Value must be exactly this",
@@ -1148,17 +1213,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedCanonical", title="Extension field for ``fixedCanonical``."
     )
 
-    fixedCode: fhirtypes.Code = Field(
+    fixedCode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="fixedCode",
         title="Value must be exactly this",
@@ -1168,17 +1234,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedCode", title="Extension field for ``fixedCode``."
     )
 
-    fixedCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    fixedCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="fixedCodeableConcept",
         title="Value must be exactly this",
@@ -1188,14 +1255,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedCodeableReference: fhirtypes.CodeableReferenceType = Field(
+    fixedCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="fixedCodeableReference",
         title="Value must be exactly this",
@@ -1205,14 +1273,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedCoding: fhirtypes.CodingType = Field(
+    fixedCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="fixedCoding",
         title="Value must be exactly this",
@@ -1222,14 +1291,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedContactDetail: fhirtypes.ContactDetailType = Field(
+    fixedContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
         None,
         alias="fixedContactDetail",
         title="Value must be exactly this",
@@ -1239,14 +1309,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedContactPoint: fhirtypes.ContactPointType = Field(
+    fixedContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
         None,
         alias="fixedContactPoint",
         title="Value must be exactly this",
@@ -1256,14 +1327,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedContributor: fhirtypes.ContributorType = Field(
+    fixedContributor: fhirtypes.ContributorType = Field(  # type: ignore
         None,
         alias="fixedContributor",
         title="Value must be exactly this",
@@ -1273,14 +1345,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedCount: fhirtypes.CountType = Field(
+    fixedCount: fhirtypes.CountType = Field(  # type: ignore
         None,
         alias="fixedCount",
         title="Value must be exactly this",
@@ -1290,14 +1363,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedDataRequirement: fhirtypes.DataRequirementType = Field(
+    fixedDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
         None,
         alias="fixedDataRequirement",
         title="Value must be exactly this",
@@ -1307,14 +1381,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedDate: fhirtypes.Date = Field(
+    fixedDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="fixedDate",
         title="Value must be exactly this",
@@ -1324,17 +1399,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedDate", title="Extension field for ``fixedDate``."
     )
 
-    fixedDateTime: fhirtypes.DateTime = Field(
+    fixedDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="fixedDateTime",
         title="Value must be exactly this",
@@ -1344,17 +1420,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedDateTime", title="Extension field for ``fixedDateTime``."
     )
 
-    fixedDecimal: fhirtypes.Decimal = Field(
+    fixedDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="fixedDecimal",
         title="Value must be exactly this",
@@ -1364,17 +1441,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedDecimal", title="Extension field for ``fixedDecimal``."
     )
 
-    fixedDistance: fhirtypes.DistanceType = Field(
+    fixedDistance: fhirtypes.DistanceType = Field(  # type: ignore
         None,
         alias="fixedDistance",
         title="Value must be exactly this",
@@ -1384,14 +1462,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedDosage: fhirtypes.DosageType = Field(
+    fixedDosage: fhirtypes.DosageType = Field(  # type: ignore
         None,
         alias="fixedDosage",
         title="Value must be exactly this",
@@ -1401,14 +1480,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedDuration: fhirtypes.DurationType = Field(
+    fixedDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="fixedDuration",
         title="Value must be exactly this",
@@ -1418,14 +1498,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedExpression: fhirtypes.ExpressionType = Field(
+    fixedExpression: fhirtypes.ExpressionType = Field(  # type: ignore
         None,
         alias="fixedExpression",
         title="Value must be exactly this",
@@ -1435,14 +1516,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedHumanName: fhirtypes.HumanNameType = Field(
+    fixedHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
         None,
         alias="fixedHumanName",
         title="Value must be exactly this",
@@ -1452,14 +1534,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedId: fhirtypes.Id = Field(
+    fixedId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="fixedId",
         title="Value must be exactly this",
@@ -1469,17 +1552,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedId", title="Extension field for ``fixedId``."
     )
 
-    fixedIdentifier: fhirtypes.IdentifierType = Field(
+    fixedIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="fixedIdentifier",
         title="Value must be exactly this",
@@ -1489,14 +1573,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedInstant: fhirtypes.Instant = Field(
+    fixedInstant: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="fixedInstant",
         title="Value must be exactly this",
@@ -1506,17 +1591,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedInstant", title="Extension field for ``fixedInstant``."
     )
 
-    fixedInteger: fhirtypes.Integer = Field(
+    fixedInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="fixedInteger",
         title="Value must be exactly this",
@@ -1526,17 +1612,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedInteger", title="Extension field for ``fixedInteger``."
     )
 
-    fixedMarkdown: fhirtypes.Markdown = Field(
+    fixedMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="fixedMarkdown",
         title="Value must be exactly this",
@@ -1546,17 +1633,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedMarkdown", title="Extension field for ``fixedMarkdown``."
     )
 
-    fixedMoney: fhirtypes.MoneyType = Field(
+    fixedMoney: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="fixedMoney",
         title="Value must be exactly this",
@@ -1566,14 +1654,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedOid: fhirtypes.Oid = Field(
+    fixedOid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="fixedOid",
         title="Value must be exactly this",
@@ -1583,17 +1672,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedOid", title="Extension field for ``fixedOid``."
     )
 
-    fixedParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
+    fixedParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
         None,
         alias="fixedParameterDefinition",
         title="Value must be exactly this",
@@ -1603,14 +1693,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedPeriod: fhirtypes.PeriodType = Field(
+    fixedPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="fixedPeriod",
         title="Value must be exactly this",
@@ -1620,14 +1711,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedPositiveInt: fhirtypes.PositiveInt = Field(
+    fixedPositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="fixedPositiveInt",
         title="Value must be exactly this",
@@ -1637,19 +1729,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_fixedPositiveInt",
         title="Extension field for ``fixedPositiveInt``.",
     )
 
-    fixedQuantity: fhirtypes.QuantityType = Field(
+    fixedQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="fixedQuantity",
         title="Value must be exactly this",
@@ -1659,14 +1752,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedRange: fhirtypes.RangeType = Field(
+    fixedRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="fixedRange",
         title="Value must be exactly this",
@@ -1676,14 +1770,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedRatio: fhirtypes.RatioType = Field(
+    fixedRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="fixedRatio",
         title="Value must be exactly this",
@@ -1693,14 +1788,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedRatioRange: fhirtypes.RatioRangeType = Field(
+    fixedRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
         None,
         alias="fixedRatioRange",
         title="Value must be exactly this",
@@ -1710,14 +1806,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedReference: fhirtypes.ReferenceType = Field(
+    fixedReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="fixedReference",
         title="Value must be exactly this",
@@ -1727,14 +1824,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
+    fixedRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
         None,
         alias="fixedRelatedArtifact",
         title="Value must be exactly this",
@@ -1744,14 +1842,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedSampledData: fhirtypes.SampledDataType = Field(
+    fixedSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
         None,
         alias="fixedSampledData",
         title="Value must be exactly this",
@@ -1761,14 +1860,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedSignature: fhirtypes.SignatureType = Field(
+    fixedSignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="fixedSignature",
         title="Value must be exactly this",
@@ -1778,14 +1878,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedString: fhirtypes.String = Field(
+    fixedString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="fixedString",
         title="Value must be exactly this",
@@ -1795,17 +1896,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedString", title="Extension field for ``fixedString``."
     )
 
-    fixedTime: fhirtypes.Time = Field(
+    fixedTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="fixedTime",
         title="Value must be exactly this",
@@ -1815,17 +1917,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedTime", title="Extension field for ``fixedTime``."
     )
 
-    fixedTiming: fhirtypes.TimingType = Field(
+    fixedTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="fixedTiming",
         title="Value must be exactly this",
@@ -1835,14 +1938,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
+    fixedTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
         None,
         alias="fixedTriggerDefinition",
         title="Value must be exactly this",
@@ -1852,14 +1956,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedUnsignedInt: fhirtypes.UnsignedInt = Field(
+    fixedUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="fixedUnsignedInt",
         title="Value must be exactly this",
@@ -1869,19 +1974,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_fixedUnsignedInt",
         title="Extension field for ``fixedUnsignedInt``.",
     )
 
-    fixedUri: fhirtypes.Uri = Field(
+    fixedUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="fixedUri",
         title="Value must be exactly this",
@@ -1891,17 +1997,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedUri", title="Extension field for ``fixedUri``."
     )
 
-    fixedUrl: fhirtypes.Url = Field(
+    fixedUrl: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="fixedUrl",
         title="Value must be exactly this",
@@ -1911,17 +2018,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedUrl", title="Extension field for ``fixedUrl``."
     )
 
-    fixedUsageContext: fhirtypes.UsageContextType = Field(
+    fixedUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
         None,
         alias="fixedUsageContext",
         title="Value must be exactly this",
@@ -1931,14 +2039,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
 
-    fixedUuid: fhirtypes.Uuid = Field(
+    fixedUuid: fhirtypes.UuidType = Field(  # type: ignore
         None,
         alias="fixedUuid",
         title="Value must be exactly this",
@@ -1948,17 +2057,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e fixed[x]
-        one_of_many="fixed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e fixed[x]
+            "one_of_many": "fixed",
+            "one_of_many_required": False,
+        },
     )
-    fixedUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fixedUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fixedUuid", title="Extension field for ``fixedUuid``."
     )
 
-    isModifier: bool = Field(
+    isModifier: bool = Field(  # type: ignore
         None,
         alias="isModifier",
         title="If this modifies the meaning of other elements",
@@ -1971,14 +2081,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "process it, and/or a pre-determination has been made that it is not "
             "relevant to their particular system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    isModifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    isModifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_isModifier", title="Extension field for ``isModifier``."
     )
 
-    isModifierReason: fhirtypes.String = Field(
+    isModifierReason: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="isModifierReason",
         title="Reason that this element is marked as a modifier",
@@ -1986,16 +2097,17 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Explains how that element affects the interpretation of the resource "
             "or element that contains it."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    isModifierReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    isModifierReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_isModifierReason",
         title="Extension field for ``isModifierReason``.",
     )
 
-    isSummary: bool = Field(
+    isSummary: bool = Field(  # type: ignore
         None,
         alias="isSummary",
         title="Include when _summary = true?",
@@ -2003,14 +2115,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Whether the element should be included if a client requests a search "
             "with the parameter _summary=true."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    isSummary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    isSummary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_isSummary", title="Extension field for ``isSummary``."
     )
 
-    label: fhirtypes.String = Field(
+    label: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="label",
         title="Name for element to display with or prompt for element",
@@ -2019,14 +2132,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "element indicating its meaning or to use to prompt for the element in "
             "a user display or form."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_label", title="Extension field for ``label``."
     )
 
-    mapping: typing.List[fhirtypes.ElementDefinitionMappingType] = Field(
+    mapping: typing.List[fhirtypes.ElementDefinitionMappingType] = Field(  # type: ignore
         None,
         alias="mapping",
         title="Map element to another set of definitions",
@@ -2034,11 +2148,12 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Identifies a concept from an external specification that roughly "
             "corresponds to this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    max: fhirtypes.String = Field(
+    max: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="max",
         title="Maximum Cardinality (a number or *)",
@@ -2046,14 +2161,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The maximum number of times this element is permitted to appear in the"
             " instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    maxLength: fhirtypes.Integer = Field(
+    maxLength: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="maxLength",
         title="Max length for strings",
@@ -2062,14 +2178,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "present in conformant instances and which is expected to be supported "
             "by conformant consumers that support the element."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_maxLength", title="Extension field for ``maxLength``."
     )
 
-    maxValueDate: fhirtypes.Date = Field(
+    maxValueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="maxValueDate",
         title="Maximum Allowed Value (for some types)",
@@ -2078,17 +2195,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
-    maxValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_maxValueDate", title="Extension field for ``maxValueDate``."
     )
 
-    maxValueDateTime: fhirtypes.DateTime = Field(
+    maxValueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="maxValueDateTime",
         title="Maximum Allowed Value (for some types)",
@@ -2097,19 +2215,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
-    maxValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_maxValueDateTime",
         title="Extension field for ``maxValueDateTime``.",
     )
 
-    maxValueDecimal: fhirtypes.Decimal = Field(
+    maxValueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="maxValueDecimal",
         title="Maximum Allowed Value (for some types)",
@@ -2118,17 +2237,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
-    maxValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_maxValueDecimal", title="Extension field for ``maxValueDecimal``."
     )
 
-    maxValueInstant: fhirtypes.Instant = Field(
+    maxValueInstant: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="maxValueInstant",
         title="Maximum Allowed Value (for some types)",
@@ -2137,17 +2257,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
-    maxValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_maxValueInstant", title="Extension field for ``maxValueInstant``."
     )
 
-    maxValueInteger: fhirtypes.Integer = Field(
+    maxValueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="maxValueInteger",
         title="Maximum Allowed Value (for some types)",
@@ -2156,17 +2277,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
-    maxValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_maxValueInteger", title="Extension field for ``maxValueInteger``."
     )
 
-    maxValuePositiveInt: fhirtypes.PositiveInt = Field(
+    maxValuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="maxValuePositiveInt",
         title="Maximum Allowed Value (for some types)",
@@ -2175,19 +2297,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
-    maxValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_maxValuePositiveInt",
         title="Extension field for ``maxValuePositiveInt``.",
     )
 
-    maxValueQuantity: fhirtypes.QuantityType = Field(
+    maxValueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="maxValueQuantity",
         title="Maximum Allowed Value (for some types)",
@@ -2196,14 +2319,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
 
-    maxValueTime: fhirtypes.Time = Field(
+    maxValueTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="maxValueTime",
         title="Maximum Allowed Value (for some types)",
@@ -2212,17 +2336,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
-    maxValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_maxValueTime", title="Extension field for ``maxValueTime``."
     )
 
-    maxValueUnsignedInt: fhirtypes.UnsignedInt = Field(
+    maxValueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="maxValueUnsignedInt",
         title="Maximum Allowed Value (for some types)",
@@ -2231,19 +2356,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e maxValue[x]
-        one_of_many="maxValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e maxValue[x]
+            "one_of_many": "maxValue",
+            "one_of_many_required": False,
+        },
     )
-    maxValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_maxValueUnsignedInt",
         title="Extension field for ``maxValueUnsignedInt``.",
     )
 
-    meaningWhenMissing: fhirtypes.Markdown = Field(
+    meaningWhenMissing: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="meaningWhenMissing",
         title="Implicit meaning when this element is missing",
@@ -2251,28 +2377,30 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The Implicit meaning that is to be understood when this element is "
             "missing (e.g. 'when this element is missing, the period is ongoing')."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    meaningWhenMissing__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    meaningWhenMissing__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_meaningWhenMissing",
         title="Extension field for ``meaningWhenMissing``.",
     )
 
-    min: fhirtypes.UnsignedInt = Field(
+    min: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="min",
         title="Minimum Cardinality",
         description="The minimum number of times this element SHALL appear in the instance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    minValueDate: fhirtypes.Date = Field(
+    minValueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="minValueDate",
         title="Minimum Allowed Value (for some types)",
@@ -2281,17 +2409,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
-    minValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_minValueDate", title="Extension field for ``minValueDate``."
     )
 
-    minValueDateTime: fhirtypes.DateTime = Field(
+    minValueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="minValueDateTime",
         title="Minimum Allowed Value (for some types)",
@@ -2300,19 +2429,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
-    minValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_minValueDateTime",
         title="Extension field for ``minValueDateTime``.",
     )
 
-    minValueDecimal: fhirtypes.Decimal = Field(
+    minValueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="minValueDecimal",
         title="Minimum Allowed Value (for some types)",
@@ -2321,17 +2451,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
-    minValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_minValueDecimal", title="Extension field for ``minValueDecimal``."
     )
 
-    minValueInstant: fhirtypes.Instant = Field(
+    minValueInstant: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="minValueInstant",
         title="Minimum Allowed Value (for some types)",
@@ -2340,17 +2471,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
-    minValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_minValueInstant", title="Extension field for ``minValueInstant``."
     )
 
-    minValueInteger: fhirtypes.Integer = Field(
+    minValueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="minValueInteger",
         title="Minimum Allowed Value (for some types)",
@@ -2359,17 +2491,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
-    minValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_minValueInteger", title="Extension field for ``minValueInteger``."
     )
 
-    minValuePositiveInt: fhirtypes.PositiveInt = Field(
+    minValuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="minValuePositiveInt",
         title="Minimum Allowed Value (for some types)",
@@ -2378,19 +2511,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
-    minValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_minValuePositiveInt",
         title="Extension field for ``minValuePositiveInt``.",
     )
 
-    minValueQuantity: fhirtypes.QuantityType = Field(
+    minValueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="minValueQuantity",
         title="Minimum Allowed Value (for some types)",
@@ -2399,14 +2533,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
 
-    minValueTime: fhirtypes.Time = Field(
+    minValueTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="minValueTime",
         title="Minimum Allowed Value (for some types)",
@@ -2415,17 +2550,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
-    minValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_minValueTime", title="Extension field for ``minValueTime``."
     )
 
-    minValueUnsignedInt: fhirtypes.UnsignedInt = Field(
+    minValueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="minValueUnsignedInt",
         title="Minimum Allowed Value (for some types)",
@@ -2434,19 +2570,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minValue[x]
-        one_of_many="minValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minValue[x]
+            "one_of_many": "minValue",
+            "one_of_many_required": False,
+        },
     )
-    minValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_minValueUnsignedInt",
         title="Extension field for ``minValueUnsignedInt``.",
     )
 
-    mustSupport: bool = Field(
+    mustSupport: bool = Field(  # type: ignore
         None,
         alias="mustSupport",
         title="If the element must be supported",
@@ -2457,14 +2594,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "populate or use the data element in any way is at the discretion of "
             "the implementation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    mustSupport__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    mustSupport__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_mustSupport", title="Extension field for ``mustSupport``."
     )
 
-    orderMeaning: fhirtypes.String = Field(
+    orderMeaning: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="orderMeaning",
         title="What the order of the elements means",
@@ -2473,14 +2611,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "meaning and describes what that meaning is.  If absent, it means that "
             "the order of the element has no meaning."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    orderMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    orderMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_orderMeaning", title="Extension field for ``orderMeaning``."
     )
 
-    path: fhirtypes.String = Field(
+    path: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="path",
         title="Path of the element in the hierarchy of elements",
@@ -2489,15 +2628,16 @@ class ElementDefinition(backboneelement.BackboneElement):
             "list of ancestor elements, beginning with the name of the resource or "
             "extension."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_path", title="Extension field for ``path``."
     )
 
-    patternAddress: fhirtypes.AddressType = Field(
+    patternAddress: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="patternAddress",
         title="Value must have at least these property values",
@@ -2517,14 +2657,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternAge: fhirtypes.AgeType = Field(
+    patternAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="patternAge",
         title="Value must have at least these property values",
@@ -2544,14 +2685,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternAnnotation: fhirtypes.AnnotationType = Field(
+    patternAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
         None,
         alias="patternAnnotation",
         title="Value must have at least these property values",
@@ -2571,14 +2713,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternAttachment: fhirtypes.AttachmentType = Field(
+    patternAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="patternAttachment",
         title="Value must have at least these property values",
@@ -2598,14 +2741,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternBase64Binary: fhirtypes.Base64Binary = Field(
+    patternBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
         None,
         alias="patternBase64Binary",
         title="Value must have at least these property values",
@@ -2625,19 +2769,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_patternBase64Binary",
         title="Extension field for ``patternBase64Binary``.",
     )
 
-    patternBoolean: bool = Field(
+    patternBoolean: bool = Field(  # type: ignore
         None,
         alias="patternBoolean",
         title="Value must have at least these property values",
@@ -2657,17 +2802,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternBoolean", title="Extension field for ``patternBoolean``."
     )
 
-    patternCanonical: fhirtypes.Canonical = Field(
+    patternCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="patternCanonical",
         title="Value must have at least these property values",
@@ -2687,19 +2833,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_patternCanonical",
         title="Extension field for ``patternCanonical``.",
     )
 
-    patternCode: fhirtypes.Code = Field(
+    patternCode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="patternCode",
         title="Value must have at least these property values",
@@ -2719,17 +2866,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternCode", title="Extension field for ``patternCode``."
     )
 
-    patternCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    patternCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="patternCodeableConcept",
         title="Value must have at least these property values",
@@ -2749,14 +2897,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternCodeableReference: fhirtypes.CodeableReferenceType = Field(
+    patternCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="patternCodeableReference",
         title="Value must have at least these property values",
@@ -2776,14 +2925,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternCoding: fhirtypes.CodingType = Field(
+    patternCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="patternCoding",
         title="Value must have at least these property values",
@@ -2803,14 +2953,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternContactDetail: fhirtypes.ContactDetailType = Field(
+    patternContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
         None,
         alias="patternContactDetail",
         title="Value must have at least these property values",
@@ -2830,14 +2981,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternContactPoint: fhirtypes.ContactPointType = Field(
+    patternContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
         None,
         alias="patternContactPoint",
         title="Value must have at least these property values",
@@ -2857,14 +3009,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternContributor: fhirtypes.ContributorType = Field(
+    patternContributor: fhirtypes.ContributorType = Field(  # type: ignore
         None,
         alias="patternContributor",
         title="Value must have at least these property values",
@@ -2884,14 +3037,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternCount: fhirtypes.CountType = Field(
+    patternCount: fhirtypes.CountType = Field(  # type: ignore
         None,
         alias="patternCount",
         title="Value must have at least these property values",
@@ -2911,14 +3065,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternDataRequirement: fhirtypes.DataRequirementType = Field(
+    patternDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
         None,
         alias="patternDataRequirement",
         title="Value must have at least these property values",
@@ -2938,14 +3093,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternDate: fhirtypes.Date = Field(
+    patternDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="patternDate",
         title="Value must have at least these property values",
@@ -2965,17 +3121,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternDate", title="Extension field for ``patternDate``."
     )
 
-    patternDateTime: fhirtypes.DateTime = Field(
+    patternDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="patternDateTime",
         title="Value must have at least these property values",
@@ -2995,17 +3152,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternDateTime", title="Extension field for ``patternDateTime``."
     )
 
-    patternDecimal: fhirtypes.Decimal = Field(
+    patternDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="patternDecimal",
         title="Value must have at least these property values",
@@ -3025,17 +3183,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternDecimal", title="Extension field for ``patternDecimal``."
     )
 
-    patternDistance: fhirtypes.DistanceType = Field(
+    patternDistance: fhirtypes.DistanceType = Field(  # type: ignore
         None,
         alias="patternDistance",
         title="Value must have at least these property values",
@@ -3055,14 +3214,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternDosage: fhirtypes.DosageType = Field(
+    patternDosage: fhirtypes.DosageType = Field(  # type: ignore
         None,
         alias="patternDosage",
         title="Value must have at least these property values",
@@ -3082,14 +3242,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternDuration: fhirtypes.DurationType = Field(
+    patternDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="patternDuration",
         title="Value must have at least these property values",
@@ -3109,14 +3270,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternExpression: fhirtypes.ExpressionType = Field(
+    patternExpression: fhirtypes.ExpressionType = Field(  # type: ignore
         None,
         alias="patternExpression",
         title="Value must have at least these property values",
@@ -3136,14 +3298,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternHumanName: fhirtypes.HumanNameType = Field(
+    patternHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
         None,
         alias="patternHumanName",
         title="Value must have at least these property values",
@@ -3163,14 +3326,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternId: fhirtypes.Id = Field(
+    patternId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="patternId",
         title="Value must have at least these property values",
@@ -3190,17 +3354,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternId", title="Extension field for ``patternId``."
     )
 
-    patternIdentifier: fhirtypes.IdentifierType = Field(
+    patternIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="patternIdentifier",
         title="Value must have at least these property values",
@@ -3220,14 +3385,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternInstant: fhirtypes.Instant = Field(
+    patternInstant: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="patternInstant",
         title="Value must have at least these property values",
@@ -3247,17 +3413,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternInstant", title="Extension field for ``patternInstant``."
     )
 
-    patternInteger: fhirtypes.Integer = Field(
+    patternInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="patternInteger",
         title="Value must have at least these property values",
@@ -3277,17 +3444,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternInteger", title="Extension field for ``patternInteger``."
     )
 
-    patternMarkdown: fhirtypes.Markdown = Field(
+    patternMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="patternMarkdown",
         title="Value must have at least these property values",
@@ -3307,17 +3475,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternMarkdown", title="Extension field for ``patternMarkdown``."
     )
 
-    patternMoney: fhirtypes.MoneyType = Field(
+    patternMoney: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="patternMoney",
         title="Value must have at least these property values",
@@ -3337,14 +3506,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternOid: fhirtypes.Oid = Field(
+    patternOid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="patternOid",
         title="Value must have at least these property values",
@@ -3364,17 +3534,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternOid", title="Extension field for ``patternOid``."
     )
 
-    patternParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
+    patternParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
         None,
         alias="patternParameterDefinition",
         title="Value must have at least these property values",
@@ -3394,14 +3565,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternPeriod: fhirtypes.PeriodType = Field(
+    patternPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="patternPeriod",
         title="Value must have at least these property values",
@@ -3421,14 +3593,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternPositiveInt: fhirtypes.PositiveInt = Field(
+    patternPositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="patternPositiveInt",
         title="Value must have at least these property values",
@@ -3448,19 +3621,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_patternPositiveInt",
         title="Extension field for ``patternPositiveInt``.",
     )
 
-    patternQuantity: fhirtypes.QuantityType = Field(
+    patternQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="patternQuantity",
         title="Value must have at least these property values",
@@ -3480,14 +3654,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternRange: fhirtypes.RangeType = Field(
+    patternRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="patternRange",
         title="Value must have at least these property values",
@@ -3507,14 +3682,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternRatio: fhirtypes.RatioType = Field(
+    patternRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="patternRatio",
         title="Value must have at least these property values",
@@ -3534,14 +3710,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternRatioRange: fhirtypes.RatioRangeType = Field(
+    patternRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
         None,
         alias="patternRatioRange",
         title="Value must have at least these property values",
@@ -3561,14 +3738,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternReference: fhirtypes.ReferenceType = Field(
+    patternReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="patternReference",
         title="Value must have at least these property values",
@@ -3588,14 +3766,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
+    patternRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
         None,
         alias="patternRelatedArtifact",
         title="Value must have at least these property values",
@@ -3615,14 +3794,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternSampledData: fhirtypes.SampledDataType = Field(
+    patternSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
         None,
         alias="patternSampledData",
         title="Value must have at least these property values",
@@ -3642,14 +3822,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternSignature: fhirtypes.SignatureType = Field(
+    patternSignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="patternSignature",
         title="Value must have at least these property values",
@@ -3669,14 +3850,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternString: fhirtypes.String = Field(
+    patternString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="patternString",
         title="Value must have at least these property values",
@@ -3696,17 +3878,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternString", title="Extension field for ``patternString``."
     )
 
-    patternTime: fhirtypes.Time = Field(
+    patternTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="patternTime",
         title="Value must have at least these property values",
@@ -3726,17 +3909,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternTime", title="Extension field for ``patternTime``."
     )
 
-    patternTiming: fhirtypes.TimingType = Field(
+    patternTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="patternTiming",
         title="Value must have at least these property values",
@@ -3756,14 +3940,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
+    patternTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
         None,
         alias="patternTriggerDefinition",
         title="Value must have at least these property values",
@@ -3783,14 +3968,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternUnsignedInt: fhirtypes.UnsignedInt = Field(
+    patternUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="patternUnsignedInt",
         title="Value must have at least these property values",
@@ -3810,19 +3996,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_patternUnsignedInt",
         title="Extension field for ``patternUnsignedInt``.",
     )
 
-    patternUri: fhirtypes.Uri = Field(
+    patternUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="patternUri",
         title="Value must have at least these property values",
@@ -3842,17 +4029,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternUri", title="Extension field for ``patternUri``."
     )
 
-    patternUrl: fhirtypes.Url = Field(
+    patternUrl: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="patternUrl",
         title="Value must have at least these property values",
@@ -3872,17 +4060,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternUrl", title="Extension field for ``patternUrl``."
     )
 
-    patternUsageContext: fhirtypes.UsageContextType = Field(
+    patternUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
         None,
         alias="patternUsageContext",
         title="Value must have at least these property values",
@@ -3902,14 +4091,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
 
-    patternUuid: fhirtypes.Uuid = Field(
+    patternUuid: fhirtypes.UuidType = Field(  # type: ignore
         None,
         alias="patternUuid",
         title="Value must have at least these property values",
@@ -3929,17 +4119,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e pattern[x]
-        one_of_many="pattern",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e pattern[x]
+            "one_of_many": "pattern",
+            "one_of_many_required": False,
+        },
     )
-    patternUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patternUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_patternUuid", title="Extension field for ``patternUuid``."
     )
 
-    representation: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    representation: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="representation",
         title="xmlAttr | xmlText | typeAttr | cdaText | xhtml",
@@ -3947,19 +4138,18 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Codes that define how this element is represented in instances, when "
             "the deviation varies from the normal case."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["xmlAttr", "xmlText", "typeAttr", "cdaText", "xhtml"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["xmlAttr", "xmlText", "typeAttr", "cdaText", "xhtml"],
+        },
     )
-    representation__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    representation__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_representation", title="Extension field for ``representation``."
     )
 
-    requirements: fhirtypes.Markdown = Field(
+    requirements: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="requirements",
         title="Why this resource has been created",
@@ -3969,14 +4159,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "source materials or specifications that drove the structure of this "
             "element."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_requirements", title="Extension field for ``requirements``."
     )
 
-    short: fhirtypes.String = Field(
+    short: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="short",
         title="Concise definition for space-constrained presentation",
@@ -3984,14 +4175,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             "A concise description of what this element means (e.g. for use in "
             "autogenerated summaries)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    short__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    short__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_short", title="Extension field for ``short``."
     )
 
-    sliceIsConstraining: bool = Field(
+    sliceIsConstraining: bool = Field(  # type: ignore
         None,
         alias="sliceIsConstraining",
         title=(
@@ -4005,16 +4197,17 @@ class ElementDefinition(backboneelement.BackboneElement):
             " the slice might or might not be overriding a slice in an inherited "
             "profile, depending on the sliceName."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sliceIsConstraining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sliceIsConstraining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_sliceIsConstraining",
         title="Extension field for ``sliceIsConstraining``.",
     )
 
-    sliceName: fhirtypes.String = Field(
+    sliceName: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="sliceName",
         title="Name for this particular element (in a set of slices)",
@@ -4024,14 +4217,15 @@ class ElementDefinition(backboneelement.BackboneElement):
             " referring to a specific set of constraints applied to this element, "
             "used to provide a name to different slices of the same element."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sliceName", title="Extension field for ``sliceName``."
     )
 
-    slicing: fhirtypes.ElementDefinitionSlicingType = Field(
+    slicing: fhirtypes.ElementDefinitionSlicingType = Field(  # type: ignore
         None,
         alias="slicing",
         title="This element is sliced - slices follow",
@@ -4045,11 +4239,12 @@ class ElementDefinition(backboneelement.BackboneElement):
             "that have the same path, until a shorter path occurs (the shorter path"
             " terminates the set)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: typing.List[fhirtypes.ElementDefinitionTypeType] = Field(
+    type: typing.List[fhirtypes.ElementDefinitionTypeType] = Field(  # type: ignore
         None,
         alias="type",
         title="Data type and Profile for this element",
@@ -4057,8 +4252,9 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The data type or resource that the value of this element is permitted "
             "to be."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -4273,10 +4469,7 @@ class ElementDefinition(backboneelement.BackboneElement):
             "mapping",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1926(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -4285,57 +4478,9 @@ class ElementDefinition(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("path", "path__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1926(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -4531,26 +4676,7 @@ class ElementDefinition(backboneelement.BackboneElement):
                 "patternUuid",
             ],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ElementDefinitionBase(element.Element):
@@ -4569,35 +4695,37 @@ class ElementDefinitionBase(element.Element):
     same.
     """
 
-    resource_type = Field("ElementDefinitionBase", const=True)
+    __resource_type__ = "ElementDefinitionBase"
 
-    max: fhirtypes.String = Field(
+    max: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="max",
         title="Max cardinality of the base element",
         description="Maximum cardinality of the base element identified by the path.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.UnsignedInt = Field(
+    min: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="min",
         title="Min cardinality of the base element",
         description="Minimum cardinality of the base element identified by the path.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    path: fhirtypes.String = Field(
+    path: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="path",
         title="Path that identifies the base element",
@@ -4608,11 +4736,12 @@ class ElementDefinitionBase(element.Element):
             " a [StructureDefinition](structuredefinition.html#) without a "
             "StructureDefinition.base."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_path", title="Extension field for ``path``."
     )
 
@@ -4624,10 +4753,7 @@ class ElementDefinitionBase(element.Element):
         """
         return ["id", "extension", "path", "min", "max"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2296(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -4640,52 +4766,7 @@ class ElementDefinitionBase(element.Element):
             ("min", "min__ext"),
             ("path", "path__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ElementDefinitionBinding(element.Element):
@@ -4698,21 +4779,22 @@ class ElementDefinitionBinding(element.Element):
     CodeableConcept, Quantity), or the data types (string, uri).
     """
 
-    resource_type = Field("ElementDefinitionBinding", const=True)
+    __resource_type__ = "ElementDefinitionBinding"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Human explanation of the value set",
         description="Describes the intended use of this particular set of codes.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    strength: fhirtypes.Code = Field(
+    strength: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="strength",
         title="required | extensible | preferred | example",
@@ -4721,18 +4803,19 @@ class ElementDefinitionBinding(element.Element):
             "binding - that is, the degree to which the provided value set must be "
             "adhered to in the instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["required", "extensible", "preferred", "example"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["required", "extensible", "preferred", "example"],
+        },
     )
-    strength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    strength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_strength", title="Extension field for ``strength``."
     )
 
-    valueSet: fhirtypes.Canonical = Field(
+    valueSet: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="valueSet",
         title="Source of value set",
@@ -4740,12 +4823,13 @@ class ElementDefinitionBinding(element.Element):
             "Refers to the value set that identifies the set of codes the binding "
             "refers to."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
-    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
@@ -4757,10 +4841,7 @@ class ElementDefinitionBinding(element.Element):
         """
         return ["id", "extension", "strength", "description", "valueSet"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2618(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -4769,52 +4850,7 @@ class ElementDefinitionBinding(element.Element):
         the primitive value is not present.
         """
         required_fields = [("strength", "strength__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ElementDefinitionConstraint(element.Element):
@@ -4827,9 +4863,9 @@ class ElementDefinitionConstraint(element.Element):
     computationally evaluated within the context of the instance.
     """
 
-    resource_type = Field("ElementDefinitionConstraint", const=True)
+    __resource_type__ = "ElementDefinitionConstraint"
 
-    expression: fhirtypes.String = Field(
+    expression: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="expression",
         title="FHIRPath expression of constraint",
@@ -4837,14 +4873,15 @@ class ElementDefinitionConstraint(element.Element):
             "A [FHIRPath](fhirpath.html) expression of constraint that can be "
             "executed to see if this constraint is met."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    human: fhirtypes.String = Field(
+    human: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="human",
         title="Human description of constraint",
@@ -4852,15 +4889,16 @@ class ElementDefinitionConstraint(element.Element):
             "Text that can be used to describe the constraint in messages "
             "identifying that the constraint has been violated."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    human__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    human__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_human", title="Extension field for ``human``."
     )
 
-    key: fhirtypes.Id = Field(
+    key: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="key",
         title="Target of 'condition' reference above",
@@ -4869,27 +4907,29 @@ class ElementDefinitionConstraint(element.Element):
             "impacted by the constraint.  Will not be referenced for constraints "
             "that do not affect cardinality."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_key", title="Extension field for ``key``."
     )
 
-    requirements: fhirtypes.String = Field(
+    requirements: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="requirements",
         title="Why this constraint is necessary or appropriate",
         description="Description of why this constraint is necessary or appropriate.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_requirements", title="Extension field for ``requirements``."
     )
 
-    severity: fhirtypes.Code = Field(
+    severity: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="severity",
         title="error | warning",
@@ -4897,18 +4937,19 @@ class ElementDefinitionConstraint(element.Element):
             "Identifies the impact constraint violation has on the conformance of "
             "the instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["error", "warning"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["error", "warning"],
+        },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_severity", title="Extension field for ``severity``."
     )
 
-    source: fhirtypes.Canonical = Field(
+    source: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="source",
         title="Reference to original source of constraint",
@@ -4916,16 +4957,17 @@ class ElementDefinitionConstraint(element.Element):
             "A reference to the original source of the constraint, for traceability"
             " purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition"],
+        },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    xpath: fhirtypes.String = Field(
+    xpath: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="xpath",
         title="XPath expression of constraint",
@@ -4933,10 +4975,11 @@ class ElementDefinitionConstraint(element.Element):
             "An XPath expression of constraint that can be executed to see if this "
             "constraint is met."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    xpath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    xpath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_xpath", title="Extension field for ``xpath``."
     )
 
@@ -4958,10 +5001,7 @@ class ElementDefinitionConstraint(element.Element):
             "source",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2993(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -4974,52 +5014,7 @@ class ElementDefinitionConstraint(element.Element):
             ("key", "key__ext"),
             ("severity", "severity__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ElementDefinitionExample(element.Element):
@@ -5032,22 +5027,23 @@ class ElementDefinitionExample(element.Element):
     would typically be found in the element.
     """
 
-    resource_type = Field("ElementDefinitionExample", const=True)
+    __resource_type__ = "ElementDefinitionExample"
 
-    label: fhirtypes.String = Field(
+    label: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="label",
         title="Describes the purpose of this example",
         description="Describes the purpose of this example amoung the set of examples.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_label", title="Extension field for ``label``."
     )
 
-    valueAddress: fhirtypes.AddressType = Field(
+    valueAddress: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="valueAddress",
         title="Value of Example (one of allowed types)",
@@ -5055,14 +5051,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueAge: fhirtypes.AgeType = Field(
+    valueAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="valueAge",
         title="Value of Example (one of allowed types)",
@@ -5070,14 +5067,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueAnnotation: fhirtypes.AnnotationType = Field(
+    valueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
         None,
         alias="valueAnnotation",
         title="Value of Example (one of allowed types)",
@@ -5085,14 +5083,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="Value of Example (one of allowed types)",
@@ -5100,14 +5099,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueBase64Binary: fhirtypes.Base64Binary = Field(
+    valueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
         None,
         alias="valueBase64Binary",
         title="Value of Example (one of allowed types)",
@@ -5115,19 +5115,20 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_valueBase64Binary",
         title="Extension field for ``valueBase64Binary``.",
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Value of Example (one of allowed types)",
@@ -5135,17 +5136,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCanonical: fhirtypes.Canonical = Field(
+    valueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="valueCanonical",
         title="Value of Example (one of allowed types)",
@@ -5153,17 +5155,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueCanonical", title="Extension field for ``valueCanonical``."
     )
 
-    valueCode: fhirtypes.Code = Field(
+    valueCode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="valueCode",
         title="Value of Example (one of allowed types)",
@@ -5171,17 +5174,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Value of Example (one of allowed types)",
@@ -5189,14 +5193,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueCodeableReference: fhirtypes.CodeableReferenceType = Field(
+    valueCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="valueCodeableReference",
         title="Value of Example (one of allowed types)",
@@ -5204,14 +5209,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueCoding: fhirtypes.CodingType = Field(
+    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Value of Example (one of allowed types)",
@@ -5219,14 +5225,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueContactDetail: fhirtypes.ContactDetailType = Field(
+    valueContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
         None,
         alias="valueContactDetail",
         title="Value of Example (one of allowed types)",
@@ -5234,14 +5241,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueContactPoint: fhirtypes.ContactPointType = Field(
+    valueContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
         None,
         alias="valueContactPoint",
         title="Value of Example (one of allowed types)",
@@ -5249,14 +5257,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueContributor: fhirtypes.ContributorType = Field(
+    valueContributor: fhirtypes.ContributorType = Field(  # type: ignore
         None,
         alias="valueContributor",
         title="Value of Example (one of allowed types)",
@@ -5264,14 +5273,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueCount: fhirtypes.CountType = Field(
+    valueCount: fhirtypes.CountType = Field(  # type: ignore
         None,
         alias="valueCount",
         title="Value of Example (one of allowed types)",
@@ -5279,14 +5289,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueDataRequirement: fhirtypes.DataRequirementType = Field(
+    valueDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
         None,
         alias="valueDataRequirement",
         title="Value of Example (one of allowed types)",
@@ -5294,14 +5305,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueDate: fhirtypes.Date = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="Value of Example (one of allowed types)",
@@ -5309,17 +5321,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueDateTime: fhirtypes.DateTime = Field(
+    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="Value of Example (one of allowed types)",
@@ -5327,17 +5340,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueDecimal: fhirtypes.Decimal = Field(
+    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="Value of Example (one of allowed types)",
@@ -5345,17 +5359,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueDistance: fhirtypes.DistanceType = Field(
+    valueDistance: fhirtypes.DistanceType = Field(  # type: ignore
         None,
         alias="valueDistance",
         title="Value of Example (one of allowed types)",
@@ -5363,14 +5378,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueDosage: fhirtypes.DosageType = Field(
+    valueDosage: fhirtypes.DosageType = Field(  # type: ignore
         None,
         alias="valueDosage",
         title="Value of Example (one of allowed types)",
@@ -5378,14 +5394,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueDuration: fhirtypes.DurationType = Field(
+    valueDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="valueDuration",
         title="Value of Example (one of allowed types)",
@@ -5393,14 +5410,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueExpression: fhirtypes.ExpressionType = Field(
+    valueExpression: fhirtypes.ExpressionType = Field(  # type: ignore
         None,
         alias="valueExpression",
         title="Value of Example (one of allowed types)",
@@ -5408,14 +5426,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueHumanName: fhirtypes.HumanNameType = Field(
+    valueHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
         None,
         alias="valueHumanName",
         title="Value of Example (one of allowed types)",
@@ -5423,14 +5442,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueId: fhirtypes.Id = Field(
+    valueId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="valueId",
         title="Value of Example (one of allowed types)",
@@ -5438,17 +5458,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
-    valueIdentifier: fhirtypes.IdentifierType = Field(
+    valueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="valueIdentifier",
         title="Value of Example (one of allowed types)",
@@ -5456,14 +5477,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueInstant: fhirtypes.Instant = Field(
+    valueInstant: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="valueInstant",
         title="Value of Example (one of allowed types)",
@@ -5471,17 +5493,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInstant", title="Extension field for ``valueInstant``."
     )
 
-    valueInteger: fhirtypes.Integer = Field(
+    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Value of Example (one of allowed types)",
@@ -5489,17 +5512,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueMarkdown: fhirtypes.Markdown = Field(
+    valueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="valueMarkdown",
         title="Value of Example (one of allowed types)",
@@ -5507,17 +5531,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
-    valueMoney: fhirtypes.MoneyType = Field(
+    valueMoney: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="valueMoney",
         title="Value of Example (one of allowed types)",
@@ -5525,14 +5550,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueOid: fhirtypes.Oid = Field(
+    valueOid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="valueOid",
         title="Value of Example (one of allowed types)",
@@ -5540,17 +5566,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueOid", title="Extension field for ``valueOid``."
     )
 
-    valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
+    valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
         None,
         alias="valueParameterDefinition",
         title="Value of Example (one of allowed types)",
@@ -5558,14 +5585,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valuePeriod: fhirtypes.PeriodType = Field(
+    valuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="valuePeriod",
         title="Value of Example (one of allowed types)",
@@ -5573,14 +5601,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valuePositiveInt: fhirtypes.PositiveInt = Field(
+    valuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="valuePositiveInt",
         title="Value of Example (one of allowed types)",
@@ -5588,19 +5617,20 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_valuePositiveInt",
         title="Extension field for ``valuePositiveInt``.",
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Value of Example (one of allowed types)",
@@ -5608,14 +5638,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueRange: fhirtypes.RangeType = Field(
+    valueRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Value of Example (one of allowed types)",
@@ -5623,14 +5654,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueRatio: fhirtypes.RatioType = Field(
+    valueRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="valueRatio",
         title="Value of Example (one of allowed types)",
@@ -5638,14 +5670,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueRatioRange: fhirtypes.RatioRangeType = Field(
+    valueRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
         None,
         alias="valueRatioRange",
         title="Value of Example (one of allowed types)",
@@ -5653,14 +5686,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(
+    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Value of Example (one of allowed types)",
@@ -5668,14 +5702,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
+    valueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
         None,
         alias="valueRelatedArtifact",
         title="Value of Example (one of allowed types)",
@@ -5683,14 +5718,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueSampledData: fhirtypes.SampledDataType = Field(
+    valueSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
         None,
         alias="valueSampledData",
         title="Value of Example (one of allowed types)",
@@ -5698,14 +5734,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueSignature: fhirtypes.SignatureType = Field(
+    valueSignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="valueSignature",
         title="Value of Example (one of allowed types)",
@@ -5713,14 +5750,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueString: fhirtypes.String = Field(
+    valueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="valueString",
         title="Value of Example (one of allowed types)",
@@ -5728,17 +5766,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
-    valueTime: fhirtypes.Time = Field(
+    valueTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="valueTime",
         title="Value of Example (one of allowed types)",
@@ -5746,17 +5785,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
-    valueTiming: fhirtypes.TimingType = Field(
+    valueTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="valueTiming",
         title="Value of Example (one of allowed types)",
@@ -5764,14 +5804,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
+    valueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
         None,
         alias="valueTriggerDefinition",
         title="Value of Example (one of allowed types)",
@@ -5779,14 +5820,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueUnsignedInt: fhirtypes.UnsignedInt = Field(
+    valueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="valueUnsignedInt",
         title="Value of Example (one of allowed types)",
@@ -5794,19 +5836,20 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_valueUnsignedInt",
         title="Extension field for ``valueUnsignedInt``.",
     )
 
-    valueUri: fhirtypes.Uri = Field(
+    valueUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="valueUri",
         title="Value of Example (one of allowed types)",
@@ -5814,17 +5857,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
-    valueUrl: fhirtypes.Url = Field(
+    valueUrl: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="valueUrl",
         title="Value of Example (one of allowed types)",
@@ -5832,17 +5876,18 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueUrl", title="Extension field for ``valueUrl``."
     )
 
-    valueUsageContext: fhirtypes.UsageContextType = Field(
+    valueUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
         None,
         alias="valueUsageContext",
         title="Value of Example (one of allowed types)",
@@ -5850,14 +5895,15 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueUuid: fhirtypes.Uuid = Field(
+    valueUuid: fhirtypes.UuidType = Field(  # type: ignore
         None,
         alias="valueUuid",
         title="Value of Example (one of allowed types)",
@@ -5865,13 +5911,14 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 
@@ -5938,10 +5985,7 @@ class ElementDefinitionExample(element.Element):
             "valueDosage",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2633(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -5950,57 +5994,9 @@ class ElementDefinitionExample(element.Element):
         the primitive value is not present.
         """
         required_fields = [("label", "label__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2633(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -6068,26 +6064,7 @@ class ElementDefinitionExample(element.Element):
                 "valueUuid",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ElementDefinitionMapping(element.Element):
@@ -6100,46 +6077,49 @@ class ElementDefinitionMapping(element.Element):
     corresponds to this element.
     """
 
-    resource_type = Field("ElementDefinitionMapping", const=True)
+    __resource_type__ = "ElementDefinitionMapping"
 
-    comment: fhirtypes.String = Field(
+    comment: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="comment",
         title="Comments about the mapping or its use",
         description="Comments that provide information about the mapping or its use.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    identity: fhirtypes.Id = Field(
+    identity: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="identity",
         title="Reference to mapping declaration",
         description="An internal reference to the definition of a mapping.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    identity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    identity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_identity", title="Extension field for ``identity``."
     )
 
-    language: fhirtypes.Code = Field(
+    language: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="language",
         title="Computable language of mapping",
         description="Identifies the computable language in which mapping.map is expressed.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    map: fhirtypes.String = Field(
+    map: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="map",
         title="Details of the mapping",
@@ -6147,11 +6127,12 @@ class ElementDefinitionMapping(element.Element):
             "Expresses what part of the target specification corresponds to this "
             "element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    map__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    map__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_map", title="Extension field for ``map``."
     )
 
@@ -6163,10 +6144,7 @@ class ElementDefinitionMapping(element.Element):
         """
         return ["id", "extension", "identity", "language", "map", "comment"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2635(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -6175,52 +6153,7 @@ class ElementDefinitionMapping(element.Element):
         the primitive value is not present.
         """
         required_fields = [("identity", "identity__ext"), ("map", "map__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ElementDefinitionSlicing(element.Element):
@@ -6238,9 +6171,9 @@ class ElementDefinitionSlicing(element.Element):
     occurs (the shorter path terminates the set).
     """
 
-    resource_type = Field("ElementDefinitionSlicing", const=True)
+    __resource_type__ = "ElementDefinitionSlicing"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Text description of how slicing works (or not)",
@@ -6250,16 +6183,15 @@ class ElementDefinitionSlicing(element.Element):
             "whatever information is possible about how the slices can be "
             "differentiated."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    discriminator: typing.List[
-        fhirtypes.ElementDefinitionSlicingDiscriminatorType
-    ] = Field(
+    discriminator: typing.List[fhirtypes.ElementDefinitionSlicingDiscriminatorType] = Field(  # type: ignore
         None,
         alias="discriminator",
         title="Element values that are used to distinguish the slices",
@@ -6270,11 +6202,12 @@ class ElementDefinitionSlicing(element.Element):
             "completely distinguish which slice the element in the resource matches"
             " based on the allowed values for those elements in each of the slices."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    ordered: bool = Field(
+    ordered: bool = Field(  # type: ignore
         None,
         alias="ordered",
         title="If elements must be in same order as slices",
@@ -6282,14 +6215,15 @@ class ElementDefinitionSlicing(element.Element):
             "If the matching elements have to occur in the same order as defined in"
             " the profile."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    ordered__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    ordered__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_ordered", title="Extension field for ``ordered``."
     )
 
-    rules: fhirtypes.Code = Field(
+    rules: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="rules",
         title="closed | open | openAtEnd",
@@ -6298,14 +6232,15 @@ class ElementDefinitionSlicing(element.Element):
             "ordered, profile authors can also say that additional slices are only "
             "allowed at the end."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["closed", "open", "openAtEnd"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["closed", "open", "openAtEnd"],
+        },
     )
-    rules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    rules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_rules", title="Extension field for ``rules``."
     )
 
@@ -6317,10 +6252,7 @@ class ElementDefinitionSlicing(element.Element):
         """
         return ["id", "extension", "discriminator", "description", "ordered", "rules"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2632(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -6329,52 +6261,7 @@ class ElementDefinitionSlicing(element.Element):
         the primitive value is not present.
         """
         required_fields = [("rules", "rules__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ElementDefinitionSlicingDiscriminator(element.Element):
@@ -6390,9 +6277,9 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
     allowed values for those elements in each of the slices.
     """
 
-    resource_type = Field("ElementDefinitionSlicingDiscriminator", const=True)
+    __resource_type__ = "ElementDefinitionSlicingDiscriminator"
 
-    path: fhirtypes.String = Field(
+    path: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="path",
         title="Path to element value",
@@ -6401,27 +6288,29 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
             "FHIRPath](fhirpath.html#simple), that is used to identify the element "
             "on which discrimination is based."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_path", title="Extension field for ``path``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="value | exists | pattern | type | profile",
         description="How the element value is interpreted when discrimination is evaluated.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["value", "exists", "pattern", "type", "profile"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["value", "exists", "pattern", "type", "profile"],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -6433,10 +6322,7 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
         """
         return ["id", "extension", "type", "path"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_4011(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -6445,52 +6331,7 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
         the primitive value is not present.
         """
         required_fields = [("path", "path__ext"), ("type", "type__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ElementDefinitionType(element.Element):
@@ -6503,9 +6344,9 @@ class ElementDefinitionType(element.Element):
     be.
     """
 
-    resource_type = Field("ElementDefinitionType", const=True)
+    __resource_type__ = "ElementDefinitionType"
 
-    aggregation: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    aggregation: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="aggregation",
         title="contained | referenced | bundled - how aggregated",
@@ -6514,17 +6355,18 @@ class ElementDefinitionType(element.Element):
             " can be aggregated - is it a contained resource, or a reference, and "
             "if the context is a bundle, is it included in the bundle."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["contained", "referenced", "bundled"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["contained", "referenced", "bundled"],
+        },
     )
-    aggregation__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_aggregation", title="Extension field for ``aggregation``.")
+    aggregation__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_aggregation", title="Extension field for ``aggregation``."
+    )
 
-    code: fhirtypes.Uri = Field(
+    code: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="code",
         title="Data type or Resource (reference to definition)",
@@ -6535,15 +6377,16 @@ class ElementDefinitionType(element.Element):
             "to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are "
             "only allowed in logical models."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    profile: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    profile: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="profile",
         title="Profiles (StructureDefinition or IG) - one must apply",
@@ -6556,16 +6399,17 @@ class ElementDefinitionType(element.Element):
             " URL. When an implementation guide is specified, the type SHALL "
             "conform to at least one profile defined in the implementation guide."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition", "ImplementationGuide"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition", "ImplementationGuide"],
+        },
     )
-    profile__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_profile", title="Extension field for ``profile``.")
+    profile__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_profile", title="Extension field for ``profile``."
+    )
 
-    targetProfile: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    targetProfile: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="targetProfile",
         title=(
@@ -6583,18 +6427,17 @@ class ElementDefinitionType(element.Element):
             " resource SHALL conform to at least one profile defined in the "
             "implementation guide."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition", "ImplementationGuide"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition", "ImplementationGuide"],
+        },
     )
-    targetProfile__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    targetProfile__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_targetProfile", title="Extension field for ``targetProfile``."
     )
 
-    versioning: fhirtypes.Code = Field(
+    versioning: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="versioning",
         title="either | independent | specific",
@@ -6602,13 +6445,14 @@ class ElementDefinitionType(element.Element):
             "Whether this reference needs to be version specific or version "
             "independent, or whether either can be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["either", "independent", "specific"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["either", "independent", "specific"],
+        },
     )
-    versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_versioning", title="Extension field for ``versioning``."
     )
 
@@ -6628,10 +6472,7 @@ class ElementDefinitionType(element.Element):
             "versioning",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2335(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -6640,49 +6481,4 @@ class ElementDefinitionType(element.Element):
         the primitive value is not present.
         """
         required_fields = [("code", "code__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

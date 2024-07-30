@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SupplyDelivery(domainresource.DomainResource):
@@ -24,7 +24,7 @@ class SupplyDelivery(domainresource.DomainResource):
 
     __resource_type__ = "SupplyDelivery"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Fulfills plan, proposal or order",
@@ -39,7 +39,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    destination: fhirtypes.ReferenceType = Field(
+    destination: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="destination",
         title="Where the delivery was sent",
@@ -54,7 +54,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External identifier",
@@ -67,7 +67,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType = Field(
+    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="When event occurred",
@@ -79,13 +79,13 @@ class SupplyDelivery(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType = Field(
+    occurrencePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="occurrencePeriod",
         title="When event occurred",
@@ -98,7 +98,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    occurrenceTiming: fhirtypes.TimingType = Field(
+    occurrenceTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="occurrenceTiming",
         title="When event occurred",
@@ -111,7 +111,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced event",
@@ -123,7 +123,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="patient",
         title="Patient for whom the item is supplied",
@@ -138,7 +138,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    receiver: typing.List[fhirtypes.ReferenceType] = Field(
+    receiver: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="receiver",
         title="Who received the delivery",
@@ -154,7 +154,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="in-progress | completed | abandoned | entered-in-error",
@@ -171,11 +171,11 @@ class SupplyDelivery(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    suppliedItem: typing.List[fhirtypes.SupplyDeliverySuppliedItemType] = Field(
+    suppliedItem: typing.List[fhirtypes.SupplyDeliverySuppliedItemType] = Field(  # type: ignore
         None,
         alias="suppliedItem",
         title="The item that is delivered or supplied",
@@ -185,7 +185,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    supplier: fhirtypes.ReferenceType = Field(
+    supplier: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="supplier",
         title="The item supplier",
@@ -201,7 +201,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Category of supply event",
@@ -263,9 +263,6 @@ class SupplyDelivery(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -277,7 +274,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
 
     __resource_type__ = "SupplyDeliverySuppliedItem"
 
-    itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    itemCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="itemCodeableConcept",
         title="Medication, Substance, Device or Biologically Derived Product supplied",
@@ -295,7 +292,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         },
     )
 
-    itemReference: fhirtypes.ReferenceType = Field(
+    itemReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="itemReference",
         title="Medication, Substance, Device or Biologically Derived Product supplied",
@@ -322,7 +319,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="Amount supplied",

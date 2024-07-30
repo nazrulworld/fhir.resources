@@ -23,7 +23,7 @@ class Ratio(datatype.DataType):
 
     __resource_type__ = "Ratio"
 
-    denominator: fhirtypes.QuantityType = Field(
+    denominator: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="denominator",
         title="Denominator value",
@@ -33,7 +33,7 @@ class Ratio(datatype.DataType):
         },
     )
 
-    numerator: fhirtypes.QuantityType = Field(
+    numerator: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="numerator",
         title="Numerator value",

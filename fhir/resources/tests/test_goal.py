@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import goal
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_goal_1(inst):
@@ -15,8 +15,8 @@ def impl_goal_1(inst):
     assert inst.category[0].coding[0].code == "dietary"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/goal-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/goal-category"}
         ).valueUri
     )
     assert inst.continuous is True
@@ -28,8 +28,8 @@ def impl_goal_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome[0].reference.display == "Body Weight Measured"
@@ -38,15 +38,21 @@ def impl_goal_1(inst):
     assert inst.priority.coding[0].display == "High Priority"
     assert (
         inst.priority.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/goal-priority"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/goal-priority"}
         ).valueUri
     )
     assert inst.priority.text == "high"
     assert inst.source.display == "Peter James Chalmers"
     assert inst.source.reference == "Patient/example"
-    assert inst.startDate == ExternalValidatorModel(valueDate="2015-04-05").valueDate
-    assert inst.statusDate == ExternalValidatorModel(valueDate="2016-02-14").valueDate
+    assert (
+        inst.startDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2015-04-05"}).valueDate
+    )
+    assert (
+        inst.statusDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2016-02-14"}).valueDate
+    )
     assert (
         inst.statusReason == "Patient wants to defer weight loss until after honeymoon."
     )
@@ -55,26 +61,32 @@ def impl_goal_1(inst):
     assert inst.target[0].detailRange.high.code == "[lb_av]"
     assert (
         inst.target[0].detailRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.target[0].detailRange.high.unit == "lbs"
     assert float(inst.target[0].detailRange.high.value) == float(180)
     assert inst.target[0].detailRange.low.code == "[lb_av]"
     assert (
         inst.target[0].detailRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.target[0].detailRange.low.unit == "lbs"
     assert float(inst.target[0].detailRange.low.value) == float(160)
     assert (
         inst.target[0].dueDate
-        == ExternalValidatorModel(valueDate="2016-04-05").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2016-04-05"}).valueDate
     )
     assert inst.target[0].measure.coding[0].code == "3141-9"
     assert inst.target[0].measure.coding[0].display == "Weight Measured"
     assert (
         inst.target[0].measure.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.text.status == "additional"
 
@@ -102,8 +114,8 @@ def impl_goal_2(inst):
     assert inst.achievementStatus.coding[0].display == "Achieved"
     assert (
         inst.achievementStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/goal-achievement"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/goal-achievement"}
         ).valueUri
     )
     assert inst.achievementStatus.text == "Achieved"
@@ -115,18 +127,23 @@ def impl_goal_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome[0].concept.coding[0].code == "8517006"
     assert inst.outcome[0].concept.coding[0].display == "Ex-smoker (finding)"
     assert (
         inst.outcome[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.outcome[0].concept.text == "Former smoker"
-    assert inst.startDate == ExternalValidatorModel(valueDate="2015-04-05").valueDate
+    assert (
+        inst.startDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2015-04-05"}).valueDate
+    )
     assert inst.subject.display == "Peter James Chalmers"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.status == "additional"

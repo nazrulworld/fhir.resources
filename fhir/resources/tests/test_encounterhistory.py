@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import encounterhistory
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_encounterhistory_1(inst):
@@ -15,16 +15,16 @@ def impl_encounterhistory_1(inst):
     assert inst.class_fhir.coding[0].display == "inpatient encounter"
     assert (
         inst.class_fhir.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.encounter.reference == "Encounter/example"
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.amc.nl/zorgportal/identifiers/visits"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.amc.nl/zorgportal/identifiers/visits"}
         ).valueUri
     )
     assert inst.identifier[0].use == "official"
@@ -33,8 +33,8 @@ def impl_encounterhistory_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "in-progress"

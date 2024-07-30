@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import researchdefinition
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_researchdefinition_1(inst):
@@ -17,7 +15,10 @@ def impl_researchdefinition_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.population.reference == "ResearchElementDefinition/example"
     assert inst.status == "draft"
@@ -32,15 +33,15 @@ def test_researchdefinition_1(base_settings):
     Test File: researchdefinition-example.json
     """
     filename = base_settings["unittest_data_dir"] / "researchdefinition-example.json"
-    inst = researchdefinition.ResearchDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = researchdefinition.ResearchDefinition.model_validate_json(
+        filename.read_bytes()
     )
-    assert "ResearchDefinition" == inst.resource_type
+    assert "ResearchDefinition" == inst.get_resource_type()
 
     impl_researchdefinition_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ResearchDefinition" == data["resourceType"]
 
     inst2 = researchdefinition.ResearchDefinition(**data)

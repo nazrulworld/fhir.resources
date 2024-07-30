@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import conceptmap
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_conceptmap_1(inst):
@@ -17,8 +17,8 @@ def impl_conceptmap_1(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -44,8 +44,8 @@ def impl_conceptmap_1(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "PublicationStatusCanonicalMap"
@@ -59,8 +59,8 @@ def impl_conceptmap_1(inst):
     assert inst.title == 'Canonical Mapping for "PublicationStatus"'
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/sc-publication-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/sc-publication-status"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -93,8 +93,8 @@ def impl_conceptmap_2(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
@@ -127,8 +127,8 @@ def impl_conceptmap_2(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "v3.AddressUse"
@@ -142,8 +142,8 @@ def impl_conceptmap_2(inst):
     assert inst.title == "v3 map for AddressUse"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/cm-address-use-v3"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/cm-address-use-v3"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -193,8 +193,8 @@ def impl_conceptmap_3(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "FinancialResourceStatusCodesCanonicalMap"
@@ -206,8 +206,8 @@ def impl_conceptmap_3(inst):
     assert inst.title == 'Canonical Mapping for "Financial Resource Status Codes"'
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/sc-fm-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/sc-fm-status"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -252,8 +252,8 @@ def impl_conceptmap_4(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "FormularyItemStatusCodesCanonicalMap"
@@ -267,8 +267,8 @@ def impl_conceptmap_4(inst):
     assert inst.title == 'Canonical Mapping for "FormularyItem Status Codes"'
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/sc-formularyitem-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/sc-formularyitem-status"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -297,8 +297,8 @@ def test_conceptmap_4(base_settings):
 def impl_conceptmap_5(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2020-12-24T21:13:15+00:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-12-24T21:13:15+00:00"}
         ).valueDateTime
     )
     assert inst.description == "v3 map for CompositionStatus"
@@ -326,15 +326,17 @@ def impl_conceptmap_5(inst):
     assert inst.id == "cm-composition-status-v3"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.14.9"
     assert inst.jurisdiction[0].coding[0].code == "001"
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
@@ -348,8 +350,8 @@ def impl_conceptmap_5(inst):
     assert inst.title == "v3 map for CompositionStatus"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/cm-composition-status-v3"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/cm-composition-status-v3"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -380,8 +382,8 @@ def impl_conceptmap_6(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2020-12-28T16:55:11+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-12-28T16:55:11+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -406,8 +408,8 @@ def impl_conceptmap_6(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "FlagStatusCanonicalMap"
@@ -419,8 +421,8 @@ def impl_conceptmap_6(inst):
     assert inst.title == 'Canonical Mapping for "Flag Status"'
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/sc-flag-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/sc-flag-status"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -451,8 +453,8 @@ def impl_conceptmap_7(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2020-12-28T16:55:11+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-12-28T16:55:11+11:00"}
         ).valueDateTime
     )
     assert (
@@ -475,8 +477,8 @@ def impl_conceptmap_7(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "FHIRDeviceStatusCanonicalMap"
@@ -488,8 +490,8 @@ def impl_conceptmap_7(inst):
     assert inst.title == 'Canonical Mapping for "FHIR Device Status"'
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/sc-device-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/sc-device-status"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -520,8 +522,8 @@ def impl_conceptmap_8(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
@@ -566,8 +568,8 @@ def impl_conceptmap_8(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "v2.ContactPointUse"
@@ -579,8 +581,8 @@ def impl_conceptmap_8(inst):
     assert inst.title == "v2 map for ContactPointUse"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/cm-contact-point-use-v2"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/cm-contact-point-use-v2"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -630,8 +632,8 @@ def impl_conceptmap_9(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "AllergyIntoleranceClinicalStatusCodesCanonicalMap"
@@ -648,8 +650,10 @@ def impl_conceptmap_9(inst):
     )
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/sc-allergyintolerance-clinical"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/ConceptMap/sc-allergyintolerance-clinical"
+            }
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -697,8 +701,8 @@ def impl_conceptmap_10(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "MedicationStatusCodesCanonicalMap"
@@ -710,8 +714,8 @@ def impl_conceptmap_10(inst):
     assert inst.title == 'Canonical Mapping for "Medication Status Codes"'
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConceptMap/sc-medication-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConceptMap/sc-medication-status"}
         ).valueUri
     )
     assert inst.version == "5.0.0"

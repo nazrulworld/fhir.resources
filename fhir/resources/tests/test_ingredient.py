@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import ingredient
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_ingredient_1(inst):
@@ -17,23 +17,23 @@ def impl_ingredient_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.role.coding[0].code == "ActiveBase"
     assert (
         inst.role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/ingredientRole"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/ingredientRole"}
         ).valueUri
     )
     assert inst.status == "active"
     assert inst.substance.code.concept.coding[0].code == "Wizzohaler"
     assert (
         inst.substance.code.concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/substance"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/substance"}
         ).valueUri
     )
     assert inst.substance.strength[0].measurementPoint == "2cm"
@@ -43,7 +43,9 @@ def impl_ingredient_1(inst):
     )
     assert (
         inst.substance.strength[0].presentationRatio.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.substance.strength[0].presentationRatio.denominator.unit
@@ -55,7 +57,9 @@ def impl_ingredient_1(inst):
     assert inst.substance.strength[0].presentationRatio.numerator.code == "ug"
     assert (
         inst.substance.strength[0].presentationRatio.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.substance.strength[0].presentationRatio.numerator.unit == "mcg"
     assert float(inst.substance.strength[0].presentationRatio.numerator.value) == float(
@@ -68,7 +72,9 @@ def impl_ingredient_1(inst):
     )
     assert (
         inst.substance.strength[1].presentationRatio.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.substance.strength[1].presentationRatio.denominator.unit
@@ -80,7 +86,9 @@ def impl_ingredient_1(inst):
     assert inst.substance.strength[1].presentationRatio.numerator.code == "ug"
     assert (
         inst.substance.strength[1].presentationRatio.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.substance.strength[1].presentationRatio.numerator.unit == "mcg"
     assert float(inst.substance.strength[1].presentationRatio.numerator.value) == float(
@@ -116,29 +124,31 @@ def impl_ingredient_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.role.coding[0].code == "ActiveBase"
     assert (
         inst.role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/ingredientRole"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/ingredientRole"}
         ).valueUri
     )
     assert inst.status == "active"
     assert inst.substance.code.concept.coding[0].code == "EQUIXABAN"
     assert (
         inst.substance.code.concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/substance"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/substance"}
         ).valueUri
     )
     assert inst.substance.strength[0].concentrationRatio.denominator.code == "mg"
     assert (
         inst.substance.strength[0].concentrationRatio.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.substance.strength[0].concentrationRatio.denominator.unit == "mg"
     assert float(
@@ -147,7 +157,9 @@ def impl_ingredient_2(inst):
     assert inst.substance.strength[0].concentrationRatio.numerator.code == "mg"
     assert (
         inst.substance.strength[0].concentrationRatio.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.substance.strength[0].concentrationRatio.numerator.unit == "mg"
     assert float(
@@ -156,7 +168,9 @@ def impl_ingredient_2(inst):
     assert inst.substance.strength[0].presentationRatio.denominator.code == "{tablet}"
     assert (
         inst.substance.strength[0].presentationRatio.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.substance.strength[0].presentationRatio.denominator.unit == "tablet"
     assert float(
@@ -165,7 +179,9 @@ def impl_ingredient_2(inst):
     assert inst.substance.strength[0].presentationRatio.numerator.code == "mg"
     assert (
         inst.substance.strength[0].presentationRatio.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.substance.strength[0].presentationRatio.numerator.unit == "mg"
     assert float(inst.substance.strength[0].presentationRatio.numerator.value) == float(
@@ -177,7 +193,9 @@ def impl_ingredient_2(inst):
     )
     assert (
         inst.substance.strength[0].referenceStrength[0].strengthRatio.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.substance.strength[0].referenceStrength[0].strengthRatio.denominator.unit
@@ -192,7 +210,9 @@ def impl_ingredient_2(inst):
     )
     assert (
         inst.substance.strength[0].referenceStrength[0].strengthRatio.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.substance.strength[0].referenceStrength[0].strengthRatio.numerator.unit
@@ -210,8 +230,8 @@ def impl_ingredient_2(inst):
         .referenceStrength[0]
         .substance.concept.coding[0]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/substance"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/substance"}
         ).valueUri
     )
     assert inst.text.status == "generated"

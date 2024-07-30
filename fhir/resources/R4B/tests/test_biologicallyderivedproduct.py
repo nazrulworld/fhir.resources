@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import biologicallyderivedproduct
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_biologicallyderivedproduct_1(inst):
@@ -17,7 +15,10 @@ def impl_biologicallyderivedproduct_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.text.div == (
         '<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering ' "here]</div>"
@@ -32,15 +33,15 @@ def test_biologicallyderivedproduct_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "biologicallyderivedproduct-example.json"
     )
-    inst = biologicallyderivedproduct.BiologicallyDerivedProduct.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = biologicallyderivedproduct.BiologicallyDerivedProduct.model_validate_json(
+        filename.read_bytes()
     )
-    assert "BiologicallyDerivedProduct" == inst.resource_type
+    assert "BiologicallyDerivedProduct" == inst.get_resource_type()
 
     impl_biologicallyderivedproduct_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "BiologicallyDerivedProduct" == data["resourceType"]
 
     inst2 = biologicallyderivedproduct.BiologicallyDerivedProduct(**data)

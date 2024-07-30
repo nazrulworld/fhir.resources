@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,9 +24,9 @@ class ImplementationGuide(domainresource.DomainResource):
     logical whole and to publish a computable definition of all the parts.
     """
 
-    resource_type = Field("ImplementationGuide", const=True)
+    __resource_type__ = "ImplementationGuide"
 
-    binary: typing.List[fhirtypes.Uri] = Field(
+    binary: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="binary",
         title="Image, css, script, etc.",
@@ -36,14 +34,15 @@ class ImplementationGuide(domainresource.DomainResource):
             "A binary file that is included in the  implementation guide when it is"
             " published."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    binary__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_binary", title="Extension field for ``binary``.")
+    binary__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_binary", title="Extension field for ``binary``."
+    )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -51,11 +50,12 @@ class ImplementationGuide(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -64,14 +64,15 @@ class ImplementationGuide(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the implementation guide."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date this was last changed",
@@ -82,14 +83,15 @@ class ImplementationGuide(domainresource.DomainResource):
             " should change when the substantive content of the implementation "
             "guide changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    dependency: typing.List[fhirtypes.ImplementationGuideDependencyType] = Field(
+    dependency: typing.List[fhirtypes.ImplementationGuideDependencyType] = Field(  # type: ignore
         None,
         alias="dependency",
         title="Another Implementation guide this depends on",
@@ -98,11 +100,12 @@ class ImplementationGuide(domainresource.DomainResource):
             "Typically, an implementation guide uses value sets, profiles "
             "etc.defined in other implementation guides."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the implementation guide",
@@ -110,14 +113,15 @@ class ImplementationGuide(domainresource.DomainResource):
             "A free text natural language description of the implementation guide "
             "from a consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -126,14 +130,15 @@ class ImplementationGuide(domainresource.DomainResource):
             " for testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    fhirVersion: fhirtypes.Id = Field(
+    fhirVersion: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="fhirVersion",
         title="FHIR Version this Implementation Guide targets",
@@ -143,14 +148,15 @@ class ImplementationGuide(domainresource.DomainResource):
             "specification, without the revision number, e.g. "
             "[publication].[major].[minor], which is 3.0.2 for this version."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
     )
 
-    global_fhir: typing.List[fhirtypes.ImplementationGuideGlobalType] = Field(
+    global_fhir: typing.List[fhirtypes.ImplementationGuideGlobalType] = Field(  # type: ignore
         None,
         alias="global",
         title="Profiles that apply globally",
@@ -158,11 +164,12 @@ class ImplementationGuide(domainresource.DomainResource):
             "A set of profiles that all resources covered by this implementation "
             "guide must conform to."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for implementation guide (if applicable)",
@@ -170,11 +177,12 @@ class ImplementationGuide(domainresource.DomainResource):
             "A legal or geographic region in which the implementation guide is "
             "intended to be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this implementation guide (computer friendly)",
@@ -183,15 +191,16 @@ class ImplementationGuide(domainresource.DomainResource):
             "name should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    package: typing.List[fhirtypes.ImplementationGuidePackageType] = Field(
+    package: typing.List[fhirtypes.ImplementationGuidePackageType] = Field(  # type: ignore
         None,
         alias="package",
         title="Group of resources as used in .page.package",
@@ -199,11 +208,12 @@ class ImplementationGuide(domainresource.DomainResource):
             "A logical group of resources. Logical groups can be used when building"
             " pages."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    page: fhirtypes.ImplementationGuidePageType = Field(
+    page: fhirtypes.ImplementationGuidePageType = Field(  # type: ignore
         None,
         alias="page",
         title="Page/Section in the Guide",
@@ -211,11 +221,12 @@ class ImplementationGuide(domainresource.DomainResource):
             "A page / section in the implementation guide. The root page is the "
             "implementation guide home page."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -223,14 +234,15 @@ class ImplementationGuide(domainresource.DomainResource):
             "The name of the individual or organization that published the "
             "implementation guide."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -238,18 +250,19 @@ class ImplementationGuide(domainresource.DomainResource):
             "The status of this implementation guide. Enables tracking the life-"
             "cycle of the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title="Logical URI to reference this implementation guide (globally unique)",
@@ -262,15 +275,16 @@ class ImplementationGuide(domainresource.DomainResource):
             "implementation guide. For more information see [Technical and Business"
             " Versions](resource.html#versions)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="Context the content is intended to support",
@@ -279,11 +293,12 @@ class ImplementationGuide(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate implementation guide instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the implementation guide",
@@ -296,10 +311,11 @@ class ImplementationGuide(domainresource.DomainResource):
             "version is not available. There is also no expectation that versions "
             "can be placed in a lexicographical sequence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -338,10 +354,7 @@ class ImplementationGuide(domainresource.DomainResource):
             "page",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2146(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -354,52 +367,7 @@ class ImplementationGuide(domainresource.DomainResource):
             ("status", "status__ext"),
             ("url", "url__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ImplementationGuideDependency(backboneelement.BackboneElement):
@@ -413,34 +381,36 @@ class ImplementationGuideDependency(backboneelement.BackboneElement):
     other implementation guides.
     """
 
-    resource_type = Field("ImplementationGuideDependency", const=True)
+    __resource_type__ = "ImplementationGuideDependency"
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="reference | inclusion",
         description="How the dependency is represented when the guide is published.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["reference", "inclusion"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["reference", "inclusion"],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    uri: fhirtypes.Uri = Field(
+    uri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="uri",
         title="Where to find dependency",
         description="Where the dependency is located.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uri", title="Extension field for ``uri``."
     )
 
@@ -452,10 +422,7 @@ class ImplementationGuideDependency(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "type", "uri"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3189(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -464,52 +431,7 @@ class ImplementationGuideDependency(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext"), ("uri", "uri__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ImplementationGuideGlobal(backboneelement.BackboneElement):
@@ -522,29 +444,31 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
     must conform to.
     """
 
-    resource_type = Field("ImplementationGuideGlobal", const=True)
+    __resource_type__ = "ImplementationGuideGlobal"
 
-    profile: fhirtypes.ReferenceType = Field(
+    profile: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="profile",
         title="Profile that all resources must conform to",
         description="A reference to the profile that all instances must conform to.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition"],
+        },
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="Type this profiles applies to",
         description="The type of resource that all instances must conform to.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -556,10 +480,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "type", "profile"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2746(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -568,52 +489,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ImplementationGuidePackage(backboneelement.BackboneElement):
@@ -626,34 +502,36 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
     pages.
     """
 
-    resource_type = Field("ImplementationGuidePackage", const=True)
+    __resource_type__ = "ImplementationGuidePackage"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Human readable text describing the package",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name used .page.package",
         description="The name for the group, as used in page.package.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    resource: typing.List[fhirtypes.ImplementationGuidePackageResourceType] = Field(
+    resource: typing.List[fhirtypes.ImplementationGuidePackageResourceType] = Field(  # type: ignore
         ...,
         alias="resource",
         title="Resource in the implementation guide",
@@ -663,8 +541,9 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
             "etc.) are obvious candidates for inclusion, but any kind of resource "
             "can be included as an example resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -682,10 +561,7 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
             "resource",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2830(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -694,52 +570,7 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("name", "name__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ImplementationGuidePackageResource(backboneelement.BackboneElement):
@@ -754,9 +585,9 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
     example resource.
     """
 
-    resource_type = Field("ImplementationGuidePackageResource", const=True)
+    __resource_type__ = "ImplementationGuidePackageResource"
 
-    acronym: fhirtypes.String = Field(
+    acronym: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="acronym",
         title="Short code to identify the resource",
@@ -764,14 +595,15 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "A short code that may be used to identify the resource throughout the "
             "implementation guide."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    acronym__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    acronym__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_acronym", title="Extension field for ``acronym``."
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Reason why included in guide",
@@ -779,14 +611,15 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "A description of the reason that a resource has been included in the "
             "implementation guide."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    example: bool = Field(
+    example: bool = Field(  # type: ignore
         None,
         alias="example",
         title="If not an example, has its normal meaning",
@@ -796,15 +629,16 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "conforms to the rules and/or help implementers understand the intent "
             "of the guide."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    example__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    example__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_example", title="Extension field for ``example``."
     )
 
-    exampleFor: fhirtypes.ReferenceType = Field(
+    exampleFor: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="exampleFor",
         title="Resource this is an example of (if applicable)",
@@ -813,13 +647,14 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "used for resources that are included as examples of "
             "StructureDefinitions."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition"],
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Human Name for the resource",
@@ -828,39 +663,42 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "name, but the name may be extracted from the resource (e.g. "
             "ValueSet.name)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    sourceReference: fhirtypes.ReferenceType = Field(
+    sourceReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="sourceReference",
         title="Location of the resource",
         description="Where this resource is found.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e source[x]
-        one_of_many="source",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e source[x]
+            "one_of_many": "source",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    sourceUri: fhirtypes.Uri = Field(
+    sourceUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="sourceUri",
         title="Location of the resource",
         description="Where this resource is found.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e source[x]
-        one_of_many="source",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e source[x]
+            "one_of_many": "source",
+            "one_of_many_required": True,
+        },
     )
-    sourceUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sourceUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sourceUri", title="Extension field for ``sourceUri``."
     )
 
@@ -883,10 +721,7 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "exampleFor",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3670(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -895,57 +730,9 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("example", "example__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3670(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -959,26 +746,7 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"source": ["sourceReference", "sourceUri"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ImplementationGuidePage(backboneelement.BackboneElement):
@@ -991,21 +759,22 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
     implementation guide home page.
     """
 
-    resource_type = Field("ImplementationGuidePage", const=True)
+    __resource_type__ = "ImplementationGuidePage"
 
-    format: fhirtypes.Code = Field(
+    format: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="format",
         title="Format of the page (e.g. html, markdown, etc.)",
         description="The format of the page.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    format__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    format__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_format", title="Extension field for ``format``."
     )
 
-    kind: fhirtypes.Code = Field(
+    kind: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="kind",
         title=(
@@ -1017,27 +786,28 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
             "example), and other kinds are of interest so that tools can navigate "
             "the user to the page of interest."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "page",
-            "example",
-            "list",
-            "include",
-            "directory",
-            "dictionary",
-            "toc",
-            "resource",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "page",
+                "example",
+                "list",
+                "include",
+                "directory",
+                "dictionary",
+                "toc",
+                "resource",
+            ],
+        },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    package: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    package: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="package",
         title="Name of package to include",
@@ -1045,36 +815,39 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
             "For constructed pages, a list of packages to include in the page (or "
             "else empty for everything)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    package__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_package", title="Extension field for ``package``.")
+    package__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_package", title="Extension field for ``package``."
+    )
 
-    page: typing.List[fhirtypes.ImplementationGuidePageType] = Field(
+    page: typing.List[fhirtypes.ImplementationGuidePageType] = Field(  # type: ignore
         None,
         alias="page",
         title="Nested Pages / Sections",
         description="Nested Pages/Sections under this page.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    source: fhirtypes.Uri = Field(
+    source: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="source",
         title="Where to find that page",
         description="The source address for the page.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Short title shown for navigational assistance",
@@ -1082,25 +855,27 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
             "A short title used to represent this page in navigational structures "
             "such as table of contents, bread crumbs, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    type: typing.List[fhirtypes.Code] = Field(
+    type: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of resource to include in the list",
         description="For constructed pages, what kind of resources to include in the list.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    type__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_type", title="Extension field for ``type``.")
+    type__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_type", title="Extension field for ``type``."
+    )
 
     @classmethod
     def elements_sequence(cls):
@@ -1121,10 +896,7 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
             "page",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2527(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1137,49 +909,4 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
             ("source", "source__ext"),
             ("title", "title__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

@@ -25,7 +25,7 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
         json_schema_extra={"element_property": False},
     )
 
-    extension: typing.List[fhirtypes.ExtensionType] = Field(
+    extension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
         None,
         alias="extension",
         title="List of `Extension` items (represented as `dict` in JSON)",
@@ -39,7 +39,6 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """Conditional Required Validation"""
-        errors = list()
         extension = values.get("extension", None)
         fhir_comments = values.get("fhir_comments", None)
 

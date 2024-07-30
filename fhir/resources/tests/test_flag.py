@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import flag
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_flag_1(inst):
@@ -17,8 +17,8 @@ def impl_flag_1(inst):
     assert inst.category[0].coding[0].display == "Safety"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/flag-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/flag-category"}
         ).valueUri
     )
     assert inst.category[0].text == "Safety"
@@ -26,7 +26,9 @@ def impl_flag_1(inst):
     assert inst.code.coding[0].display == "Big dog"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/local").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/local"}
+        ).valueUri
     )
     assert inst.code.text == (
         "Patient has a big dog at his home. Always always wear a suit"
@@ -38,17 +40,21 @@ def impl_flag_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2016-12-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-12-01"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2015-01-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-17"}
+        ).valueDateTime
     )
     assert inst.status == "inactive"
     assert inst.subject.display == "Peter Patient"
@@ -83,13 +89,17 @@ def impl_flag_2(inst):
     assert inst.category[0].coding[0].display == "Infection Control Level"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/local").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/local"}
+        ).valueUri
     )
     assert inst.code.coding[0].code == "l3"
     assert inst.code.coding[0].display == "Follow Level 3 Protocol"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/local/if1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/local/if1"}
+        ).valueUri
     )
     assert inst.encounter.reference == "Encounter/example"
     assert inst.id == "example-encounter"
@@ -97,8 +107,8 @@ def impl_flag_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "active"

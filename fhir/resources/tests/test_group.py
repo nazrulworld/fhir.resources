@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import group
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_group_1(inst):
@@ -21,8 +21,8 @@ def impl_group_1(inst):
     assert inst.id == "101"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://someveterinarianclinic.org/fhir/NamingSystem/herds"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://someveterinarianclinic.org/fhir/NamingSystem/herds"}
         ).valueUri
     )
     assert inst.identifier[0].value == "12345"
@@ -31,8 +31,8 @@ def impl_group_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "John's herd"
@@ -64,31 +64,39 @@ def impl_group_2(inst):
     assert inst.member[0].entity.reference == "Patient/pat1"
     assert (
         inst.member[0].period.start
-        == ExternalValidatorModel(valueDateTime="2014-10-08").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-10-08"}
+        ).valueDateTime
     )
     assert inst.member[1].entity.reference == "Patient/pat2"
     assert inst.member[1].inactive is True
     assert (
         inst.member[1].period.start
-        == ExternalValidatorModel(valueDateTime="2015-04-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-04-02"}
+        ).valueDateTime
     )
     assert inst.member[2].entity.reference == "Patient/pat3"
     assert (
         inst.member[2].period.start
-        == ExternalValidatorModel(valueDateTime="2015-08-06").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-06"}
+        ).valueDateTime
     )
     assert inst.member[3].entity.reference == "Patient/pat4"
     assert (
         inst.member[3].period.start
-        == ExternalValidatorModel(valueDateTime="2015-08-06").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-06"}
+        ).valueDateTime
     )
     assert inst.membership == "enumerated"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "additional"
@@ -117,7 +125,9 @@ def impl_group_3(inst):
     assert inst.characteristic[0].code.coding[0].code == "attributed-to"
     assert (
         inst.characteristic[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.characteristic[0].code.text == "Patients primarily attributed to"
     assert inst.characteristic[0].exclude is False
@@ -128,8 +138,8 @@ def impl_group_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "additional"
@@ -163,19 +173,23 @@ def impl_group_4(inst):
     assert inst.code.coding[0].display == "Genus Sus (organism)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.coding[1].code == "POR"
     assert inst.code.coding[1].display == "porcine"
     assert (
         inst.code.coding[1].system
-        == ExternalValidatorModel(valueUri="https://www.aphis.usda.gov").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.aphis.usda.gov"}
+        ).valueUri
     )
     assert inst.code.text == "Porcine"
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/StructureDefinition/owner"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/StructureDefinition/owner"}
         ).valueUri
     )
     assert inst.extension[0].valueReference.display == "Peter Chalmers"
@@ -183,7 +197,9 @@ def impl_group_4(inst):
     assert inst.id == "herd1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="https://vetmed.iastate.edu/vdl").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://vetmed.iastate.edu/vdl"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "20171120-1234"
     assert inst.membership == "enumerated"
@@ -191,8 +207,8 @@ def impl_group_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Breeding herd"
@@ -226,20 +242,22 @@ def impl_group_5(inst):
     assert inst.identifier[0].assigner.display == "Child Hospital"
     assert (
         inst.identifier[0].period.start
-        == ExternalValidatorModel(valueDateTime="2021-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01"}
+        ).valueDateTime
     )
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/groups"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/groups"}
         ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "MR"
     assert inst.identifier[0].type.coding[0].display == "Medical record number"
     assert (
         inst.identifier[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
         ).valueUri
     )
     assert inst.identifier[0].use == "temp"
@@ -249,24 +267,24 @@ def impl_group_5(inst):
     assert inst.member[0].inactive is False
     assert (
         inst.member[0].period.start
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.member[1].entity.reference == "RelatedPerson/relatedPersonDenovoMother"
     assert inst.member[1].inactive is False
     assert (
         inst.member[1].period.start
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.member[2].entity.reference == "RelatedPerson/relatedPersonDenovoFather"
     assert inst.member[2].inactive is False
     assert (
         inst.member[2].period.start
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.membership == "enumerated"
@@ -274,8 +292,8 @@ def impl_group_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Denovo Mutation Example Group"

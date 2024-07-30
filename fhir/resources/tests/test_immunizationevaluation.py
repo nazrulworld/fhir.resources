@@ -7,25 +7,34 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import immunizationevaluation
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_immunizationevaluation_1(inst):
     assert inst.authority.reference == "Organization/hl7"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2013-01-10").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-10"}
+        ).valueDateTime
+    )
     assert inst.doseNumber == "1"
     assert inst.doseStatus.coding[0].code == "valid"
     assert inst.doseStatus.coding[0].display == "Valid"
     assert (
         inst.doseStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+            }
         ).valueUri
     )
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"
     assert inst.immunizationEvent.reference == "Immunization/example"
@@ -33,8 +42,8 @@ def impl_immunizationevaluation_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
@@ -44,7 +53,9 @@ def impl_immunizationevaluation_1(inst):
     assert inst.targetDisease.coding[0].code == "1857005"
     assert (
         inst.targetDisease.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -73,27 +84,38 @@ def test_immunizationevaluation_1(base_settings):
 
 def impl_immunizationevaluation_2(inst):
     assert inst.authority.reference == "Organization/hl7"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2013-01-10").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-10"}
+        ).valueDateTime
+    )
     assert inst.doseStatus.coding[0].code == "notvalid"
     assert inst.doseStatus.coding[0].display == "Not Valid"
     assert (
         inst.doseStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+            }
         ).valueUri
     )
     assert inst.doseStatusReason[0].coding[0].code == "outsideschedule"
     assert inst.doseStatusReason[0].coding[0].display == "Outside Schedule"
     assert (
         inst.doseStatusReason[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
+            }
         ).valueUri
     )
     assert inst.id == "notValid"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"
     assert inst.immunizationEvent.reference == "Immunization/example"
@@ -101,8 +123,8 @@ def impl_immunizationevaluation_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
@@ -111,7 +133,9 @@ def impl_immunizationevaluation_2(inst):
     assert inst.targetDisease.coding[0].code == "1857005"
     assert (
         inst.targetDisease.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.status == "generated"
 

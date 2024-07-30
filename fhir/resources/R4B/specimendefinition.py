@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -24,57 +22,62 @@ class SpecimenDefinition(domainresource.DomainResource):
     A kind of specimen with associated set of requirements.
     """
 
-    resource_type = Field("SpecimenDefinition", const=True)
+    __resource_type__ = "SpecimenDefinition"
 
-    collection: typing.List[fhirtypes.CodeableConceptType] = Field(
+    collection: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="collection",
         title="Specimen collection procedure",
         description="The action to be performed for collecting the specimen.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier of a kind of specimen",
         description="A business identifier associated with the kind of specimen.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patientPreparation: typing.List[fhirtypes.CodeableConceptType] = Field(
+    patientPreparation: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="patientPreparation",
         title="Patient preparation for collection",
         description="Preparation of the patient for specimen collection.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    timeAspect: fhirtypes.String = Field(
+    timeAspect: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="timeAspect",
         title="Time aspect for collection",
         description="Time aspect of specimen collection (duration or offset).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    timeAspect__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    timeAspect__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_timeAspect", title="Extension field for ``timeAspect``."
     )
 
-    typeCollected: fhirtypes.CodeableConceptType = Field(
+    typeCollected: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="typeCollected",
         title="Kind of material to collect",
         description="The kind of material to be collected.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    typeTested: typing.List[fhirtypes.SpecimenDefinitionTypeTestedType] = Field(
+    typeTested: typing.List[fhirtypes.SpecimenDefinitionTypeTestedType] = Field(  # type: ignore
         None,
         alias="typeTested",
         title="Specimen in container intended for testing by lab",
@@ -82,8 +85,9 @@ class SpecimenDefinition(domainresource.DomainResource):
             "Specimen conditioned in a container as expected by the testing "
             "laboratory."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -119,18 +123,19 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
     Specimen conditioned in a container as expected by the testing laboratory.
     """
 
-    resource_type = Field("SpecimenDefinitionTypeTested", const=True)
+    __resource_type__ = "SpecimenDefinitionTypeTested"
 
-    container: fhirtypes.SpecimenDefinitionTypeTestedContainerType = Field(
+    container: fhirtypes.SpecimenDefinitionTypeTestedContainerType = Field(  # type: ignore
         None,
         alias="container",
         title="The specimen's container",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    handling: typing.List[fhirtypes.SpecimenDefinitionTypeTestedHandlingType] = Field(
+    handling: typing.List[fhirtypes.SpecimenDefinitionTypeTestedHandlingType] = Field(  # type: ignore
         None,
         alias="handling",
         title="Specimen handling before testing",
@@ -138,39 +143,42 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "Set of instructions for preservation/transport of the specimen at a "
             "defined temperature interval, prior the testing process."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    isDerived: bool = Field(
+    isDerived: bool = Field(  # type: ignore
         None,
         alias="isDerived",
         title="Primary or secondary specimen",
         description="Primary of secondary specimen.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    isDerived__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    isDerived__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_isDerived", title="Extension field for ``isDerived``."
     )
 
-    preference: fhirtypes.Code = Field(
+    preference: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="preference",
         title="preferred | alternate",
         description="The preference for this type of conditioned specimen.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["preferred", "alternate"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["preferred", "alternate"],
+        },
     )
-    preference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preference", title="Extension field for ``preference``."
     )
 
-    rejectionCriterion: typing.List[fhirtypes.CodeableConceptType] = Field(
+    rejectionCriterion: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="rejectionCriterion",
         title="Rejection criterion",
@@ -178,11 +186,12 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "Criterion for rejection of the specimen in its container by the "
             "laboratory."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    requirement: fhirtypes.String = Field(
+    requirement: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="requirement",
         title="Specimen requirements",
@@ -190,14 +199,15 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "Requirements for delivery and special handling of this kind of "
             "conditioned specimen."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_requirement", title="Extension field for ``requirement``."
     )
 
-    retentionTime: fhirtypes.DurationType = Field(
+    retentionTime: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="retentionTime",
         title="Specimen retention time",
@@ -205,17 +215,19 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "The usual time that a specimen of this kind is retained after the "
             "ordered tests are completed, for the purpose of additional testing."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type of intended specimen",
         description="The kind of specimen conditioned for testing expected by lab.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -238,10 +250,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "handling",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3071(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -250,52 +259,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("preference", "preference__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
@@ -306,11 +270,9 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
     The specimen's container.
     """
 
-    resource_type = Field("SpecimenDefinitionTypeTestedContainer", const=True)
+    __resource_type__ = "SpecimenDefinitionTypeTestedContainer"
 
-    additive: typing.List[
-        fhirtypes.SpecimenDefinitionTypeTestedContainerAdditiveType
-    ] = Field(
+    additive: typing.List[fhirtypes.SpecimenDefinitionTypeTestedContainerAdditiveType] = Field(  # type: ignore
         None,
         alias="additive",
         title="Additive associated with container",
@@ -318,79 +280,86 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
             "Substance introduced in the kind of container to preserve, maintain or"
             " enhance the specimen. Examples: Formalin, Citrate, EDTA."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    cap: fhirtypes.CodeableConceptType = Field(
+    cap: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="cap",
         title="Color of container cap",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    capacity: fhirtypes.QuantityType = Field(
+    capacity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="capacity",
         title="Container capacity",
         description="The capacity (volume or other measure) of this kind of container.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Container description",
         description="The textual description of the kind of container.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    material: fhirtypes.CodeableConceptType = Field(
+    material: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="material",
         title="Container material",
         description="The type of material of the container.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    minimumVolumeQuantity: fhirtypes.QuantityType = Field(
+    minimumVolumeQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="minimumVolumeQuantity",
         title="Minimum volume",
         description="The minimum volume to be conditioned in the container.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minimumVolume[x]
-        one_of_many="minimumVolume",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minimumVolume[x]
+            "one_of_many": "minimumVolume",
+            "one_of_many_required": False,
+        },
     )
 
-    minimumVolumeString: fhirtypes.String = Field(
+    minimumVolumeString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="minimumVolumeString",
         title="Minimum volume",
         description="The minimum volume to be conditioned in the container.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e minimumVolume[x]
-        one_of_many="minimumVolume",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e minimumVolume[x]
+            "one_of_many": "minimumVolume",
+            "one_of_many_required": False,
+        },
     )
-    minimumVolumeString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minimumVolumeString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_minimumVolumeString",
         title="Extension field for ``minimumVolumeString``.",
     )
 
-    preparation: fhirtypes.String = Field(
+    preparation: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="preparation",
         title="Specimen container preparation",
@@ -398,20 +367,22 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
             "Special processing that should be applied to the container for this "
             "kind of specimen."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    preparation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preparation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preparation", title="Extension field for ``preparation``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of container associated with the kind of specimen",
         description="The type of container used to contain this kind of specimen.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -435,10 +406,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
             "preparation",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4016(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -454,26 +422,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         one_of_many_fields = {
             "minimumVolume": ["minimumVolumeQuantity", "minimumVolumeString"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElement):
@@ -486,9 +435,9 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
     enhance the specimen. Examples: Formalin, Citrate, EDTA.
     """
 
-    resource_type = Field("SpecimenDefinitionTypeTestedContainerAdditive", const=True)
+    __resource_type__ = "SpecimenDefinitionTypeTestedContainerAdditive"
 
-    additiveCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    additiveCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="additiveCodeableConcept",
         title="Additive associated with container",
@@ -496,14 +445,15 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
             "Substance introduced in the kind of container to preserve, maintain or"
             " enhance the specimen. Examples: Formalin, Citrate, EDTA."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e additive[x]
-        one_of_many="additive",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e additive[x]
+            "one_of_many": "additive",
+            "one_of_many_required": True,
+        },
     )
 
-    additiveReference: fhirtypes.ReferenceType = Field(
+    additiveReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="additiveReference",
         title="Additive associated with container",
@@ -511,13 +461,14 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
             "Substance introduced in the kind of container to preserve, maintain or"
             " enhance the specimen. Examples: Formalin, Citrate, EDTA."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e additive[x]
-        one_of_many="additive",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Substance"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e additive[x]
+            "one_of_many": "additive",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Substance"],
+        },
     )
 
     @classmethod
@@ -534,10 +485,7 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
             "additiveReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4813(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -553,26 +501,7 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         one_of_many_fields = {
             "additive": ["additiveCodeableConcept", "additiveReference"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
@@ -585,9 +514,9 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
     temperature interval, prior the testing process.
     """
 
-    resource_type = Field("SpecimenDefinitionTypeTestedHandling", const=True)
+    __resource_type__ = "SpecimenDefinitionTypeTestedHandling"
 
-    instruction: fhirtypes.String = Field(
+    instruction: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="instruction",
         title="Preservation instruction",
@@ -595,14 +524,15 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
             "Additional textual instructions for the preservation or transport of "
             "the specimen. For instance, 'Protect from light exposure'."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_instruction", title="Extension field for ``instruction``."
     )
 
-    maxDuration: fhirtypes.DurationType = Field(
+    maxDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="maxDuration",
         title="Maximum preservation time",
@@ -610,11 +540,12 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
             "The maximum time interval of preservation of the specimen with these "
             "conditions."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    temperatureQualifier: fhirtypes.CodeableConceptType = Field(
+    temperatureQualifier: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="temperatureQualifier",
         title="Temperature qualifier",
@@ -623,17 +554,19 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
             "occurrence of handling. Conditions that are not related to temperature"
             " may be handled in the instruction element."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    temperatureRange: fhirtypes.RangeType = Field(
+    temperatureRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="temperatureRange",
         title="Temperature range",
         description="The temperature interval for this set of handling instructions.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

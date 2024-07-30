@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import familymemberhistory
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_familymemberhistory_1(inst):
@@ -15,7 +15,9 @@ def impl_familymemberhistory_1(inst):
     assert inst.condition[0].code.coding[0].display == "Myocardial Infarction"
     assert (
         inst.condition[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.condition[0].code.text == "Heart Attack"
     assert inst.condition[0].contributedToDeath is True
@@ -25,25 +27,32 @@ def impl_familymemberhistory_1(inst):
     assert inst.condition[0].onsetAge.code == "a"
     assert (
         inst.condition[0].onsetAge.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.condition[0].onsetAge.unit == "yr"
     assert float(inst.condition[0].onsetAge.value) == float(74)
-    assert inst.date == ExternalValidatorModel(valueDateTime="2011-03-18").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2011-03-18"}
+        ).valueDateTime
+    )
     assert inst.id == "father"
     assert inst.identifier[0].value == "12345"
     assert (
         inst.instantiatesUri[0]
-        == ExternalValidatorModel(
-            valueUri="http://example.org/family-member-history-questionnaire"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/family-member-history-questionnaire"}
         ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/f201"
@@ -51,8 +60,10 @@ def impl_familymemberhistory_1(inst):
     assert inst.participant[0].function.coding[0].display == "Verifier"
     assert (
         inst.participant[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.patient.display == "Peter Patient"
@@ -61,16 +72,16 @@ def impl_familymemberhistory_1(inst):
     assert inst.relationship.coding[0].display == "father"
     assert (
         inst.relationship.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"}
         ).valueUri
     )
     assert inst.sex.coding[0].code == "male"
     assert inst.sex.coding[0].display == "Male"
     assert (
         inst.sex.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/administrative-gender"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/administrative-gender"}
         ).valueUri
     )
     assert inst.status == "completed"
@@ -109,7 +120,9 @@ def impl_familymemberhistory_2(inst):
     )
     assert (
         inst.condition[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.condition[0].code.text == "No history of malignant tumor of breast"
     assert inst.id == "negation"
@@ -117,8 +130,8 @@ def impl_familymemberhistory_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.display == "Peter Patient"
@@ -127,8 +140,8 @@ def impl_familymemberhistory_2(inst):
     assert inst.relationship.coding[0].display == "mother"
     assert (
         inst.relationship.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"}
         ).valueUri
     )
     assert inst.status == "completed"
@@ -166,13 +179,17 @@ def impl_familymemberhistory_3(inst):
     assert inst.condition[0].code.coding[0].display == "Embolic Stroke"
     assert (
         inst.condition[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.condition[0].code.text == "Stroke"
     assert inst.condition[0].onsetAge.code == "a"
     assert (
         inst.condition[0].onsetAge.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.condition[0].onsetAge.unit == "yr"
     assert float(inst.condition[0].onsetAge.value) == float(56)
@@ -181,8 +198,8 @@ def impl_familymemberhistory_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.display == "Peter Patient"
@@ -191,8 +208,8 @@ def impl_familymemberhistory_3(inst):
     assert inst.relationship.coding[0].display == "mother"
     assert (
         inst.relationship.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"}
         ).valueUri
     )
     assert inst.status == "completed"

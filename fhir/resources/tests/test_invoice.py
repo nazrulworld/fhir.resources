@@ -7,27 +7,29 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import invoice
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_invoice_1(inst):
     assert inst.account.reference == "Account/example"
     assert (
         inst.creation
-        == ExternalValidatorModel(
-            valueDateTime="2017-01-25T08:00:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-25T08:00:00+01:00"}
         ).valueDateTime
     )
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://myHospital.org/Invoices").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://myHospital.org/Invoices"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "654321"
     assert (
         inst.issuer.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://myhospital/NamingSystem/departments"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://myhospital/NamingSystem/departments"}
         ).valueUri
     )
     assert inst.issuer.identifier.value == "CARD_INTERMEDIATE_CARE"
@@ -35,8 +37,8 @@ def impl_invoice_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/example"
@@ -44,9 +46,14 @@ def impl_invoice_1(inst):
     assert inst.participant[0].role.coding[0].display == "Cardiologist"
     assert (
         inst.participant[0].role.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
-    assert inst.periodDate == ExternalValidatorModel(valueDate="2017-01-25").valueDate
+    assert (
+        inst.periodDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2017-01-25"}).valueDate
+    )
     assert inst.status == "issued"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.div == (

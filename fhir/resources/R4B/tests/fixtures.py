@@ -1,3 +1,4 @@
+import decimal
 import hashlib
 import io
 import os
@@ -5,18 +6,32 @@ import pathlib
 import shutil
 import sys
 import tempfile
+import typing
 import zipfile
 from os.path import dirname
 
 import pytest  # type: ignore
+from fhir_core.types import (
+    Base64BinaryType,
+    DateTimeType,
+    DateType,
+    InstantType,
+    TimeType,
+    UriType,
+    UrlType,
+)
+from pydantic import BaseModel, Field
 
+from tests import patch_r4b_test
+
+patch_r4b_test.apply()
 EXAMPLE_RESOURCES_URL = (
     "https://github.com/nazrulworld/hl7-archives/raw/"
-    "0.3.2/FHIR/R4B/"
+    "0.4.0/FHIR/R4B/"
     "4.3.0-examples-json.zip"
 )
 ROOT_PATH = dirname(dirname(dirname(dirname(dirname(os.path.abspath(__file__))))))
-CACHE_PATH = os.path.join(ROOT_PATH, ".cache")
+CACHE_PATH = os.path.join(ROOT_PATH, ".cache", "R4B")
 
 
 def download_and_store(url, path):
@@ -51,9 +66,6 @@ def expand(self, local):
 
 @pytest.fixture(scope="session")
 def base_settings():
-    from fhir.resources.core.patch import patch_r4b_test
-
-    patch_r4b_test.apply()
     if not os.path.exists(CACHE_PATH):
         os.makedirs(CACHE_PATH)
 
@@ -87,3 +99,28 @@ def base_settings():
 
     os.environ.pop("FHIR_UNITTEST_DATADIR")
     shutil.rmtree(temp_data_dir)
+
+
+def bytes_validator(v: typing.Any) -> typing.Union[bytes]:
+    if isinstance(v, bytes):
+        return v
+    elif isinstance(v, bytearray):
+        return bytes(v)
+    elif isinstance(v, str):
+        return v.encode()
+    elif isinstance(v, (float, int, decimal.Decimal)):
+        return str(v).encode()
+    else:
+        raise ValueError
+
+
+class ExternalValidatorModel(BaseModel):
+    """This model is used to validate datetime objects against in the tests"""
+
+    valueDate: DateType = Field(None, title="Date")
+    valueTime: TimeType = Field(None, title="Time")
+    valueDateTime: DateTimeType = Field(None, title="DateTime")
+    valueInstant: InstantType = Field(None, title="Instant")
+    valueUri: UriType = Field(None, title="Uri")
+    valueUrl: UrlType = Field(None, title="Url")
+    valueBase64Binary: Base64BinaryType = Field(None, title="Base64Binary")

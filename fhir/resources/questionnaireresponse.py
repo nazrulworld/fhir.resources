@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class QuestionnaireResponse(domainresource.DomainResource):
@@ -26,7 +26,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
 
     __resource_type__ = "QuestionnaireResponse"
 
-    author: fhirtypes.ReferenceType = Field(
+    author: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="author",
         title="The individual or device that received and recorded the answers",
@@ -48,7 +48,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
         },
     )
 
-    authored: fhirtypes.DateTimeType = Field(
+    authored: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="authored",
         title="Date the answers were gathered",
@@ -60,11 +60,11 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    authored__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    authored__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_authored", title="Extension field for ``authored``."
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Request fulfilled by this QuestionnaireResponse",
@@ -81,7 +81,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter the questionnaire response is part of",
@@ -96,7 +96,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this set of answers",
@@ -110,7 +110,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
         },
     )
 
-    item: typing.List[fhirtypes.QuestionnaireResponseItemType] = Field(
+    item: typing.List[fhirtypes.QuestionnaireResponseItemType] = Field(  # type: ignore
         None,
         alias="item",
         title="Groups and questions",
@@ -123,7 +123,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced event",
@@ -139,7 +139,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
         },
     )
 
-    questionnaire: fhirtypes.CanonicalType = Field(
+    questionnaire: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="questionnaire",
         title="Canonical URL of Questionnaire being answered",
@@ -154,11 +154,11 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "enum_reference_types": ["Questionnaire"],
         },
     )
-    questionnaire__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    questionnaire__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_questionnaire", title="Extension field for ``questionnaire``."
     )
 
-    source: fhirtypes.ReferenceType = Field(
+    source: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="source",
         title="The individual or device that answered the questions",
@@ -179,7 +179,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="in-progress | completed | amended | entered-in-error | stopped",
@@ -198,11 +198,11 @@ class QuestionnaireResponse(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="The subject of the questions",
@@ -261,9 +261,6 @@ class QuestionnaireResponse(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class QuestionnaireResponseItem(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -276,7 +273,7 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
 
     __resource_type__ = "QuestionnaireResponseItem"
 
-    answer: typing.List[fhirtypes.QuestionnaireResponseItemAnswerType] = Field(
+    answer: typing.List[fhirtypes.QuestionnaireResponseItemAnswerType] = Field(  # type: ignore
         None,
         alias="answer",
         title="The response(s) to the question",
@@ -286,7 +283,7 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
         },
     )
 
-    definition: fhirtypes.UriType = Field(
+    definition: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="definition",
         title="ElementDefinition - details for the item",
@@ -298,11 +295,11 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    item: typing.List[fhirtypes.QuestionnaireResponseItemType] = Field(
+    item: typing.List[fhirtypes.QuestionnaireResponseItemType] = Field(  # type: ignore
         None,
         alias="item",
         title="Child items of group item",
@@ -312,7 +309,7 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
         },
     )
 
-    linkId: fhirtypes.StringType = Field(
+    linkId: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="linkId",
         title="Pointer to specific item from Questionnaire",
@@ -325,11 +322,11 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    text: fhirtypes.StringType = Field(
+    text: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="text",
         title="Name for group or question text",
@@ -341,7 +338,7 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
@@ -385,7 +382,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
 
     __resource_type__ = "QuestionnaireResponseItemAnswer"
 
-    item: typing.List[fhirtypes.QuestionnaireResponseItemType] = Field(
+    item: typing.List[fhirtypes.QuestionnaireResponseItemType] = Field(  # type: ignore
         None,
         alias="item",
         title="Child items of question",
@@ -395,7 +392,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="Single-valued answer to the question",
@@ -411,7 +408,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Single-valued answer to the question",
@@ -426,11 +423,11 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCoding: fhirtypes.CodingType = Field(
+    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Single-valued answer to the question",
@@ -446,7 +443,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         },
     )
 
-    valueDate: fhirtypes.DateType = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="Single-valued answer to the question",
@@ -461,11 +458,11 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueDateTime: fhirtypes.DateTimeType = Field(
+    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="Single-valued answer to the question",
@@ -480,11 +477,11 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueDecimal: fhirtypes.DecimalType = Field(
+    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="Single-valued answer to the question",
@@ -499,11 +496,11 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(
+    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Single-valued answer to the question",
@@ -518,11 +515,11 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Single-valued answer to the question",
@@ -538,7 +535,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(
+    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Single-valued answer to the question",
@@ -556,7 +553,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         },
     )
 
-    valueString: fhirtypes.StringType = Field(
+    valueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="valueString",
         title="Single-valued answer to the question",
@@ -571,11 +568,11 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
-    valueTime: fhirtypes.TimeType = Field(
+    valueTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="valueTime",
         title="Single-valued answer to the question",
@@ -590,11 +587,11 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
-    valueUri: fhirtypes.UriType = Field(
+    valueUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="valueUri",
         title="Single-valued answer to the question",
@@ -609,7 +606,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 

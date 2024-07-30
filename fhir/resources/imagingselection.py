@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingSelection(domainresource.DomainResource):
@@ -28,7 +28,7 @@ class ImagingSelection(domainresource.DomainResource):
 
     __resource_type__ = "ImagingSelection"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Associated request",
@@ -49,7 +49,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    bodySite: fhirtypes.CodeableReferenceType = Field(
+    bodySite: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Body part examined",
@@ -65,7 +65,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Classifies the imaging selection",
@@ -75,7 +75,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Imaging Selection purpose text or code",
@@ -85,7 +85,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    derivedFrom: typing.List[fhirtypes.ReferenceType] = Field(
+    derivedFrom: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="derivedFrom",
         title="The imaging study from which the imaging selection is derived",
@@ -97,7 +97,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -116,7 +116,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    focus: typing.List[fhirtypes.ReferenceType] = Field(
+    focus: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="focus",
         title="Related resource that is the focus for the imaging selection",
@@ -139,7 +139,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    frameOfReferenceUid: fhirtypes.IdType = Field(
+    frameOfReferenceUid: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="frameOfReferenceUid",
         title="The Frame of Reference UID for the selected images",
@@ -152,13 +152,13 @@ class ImagingSelection(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    frameOfReferenceUid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    frameOfReferenceUid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_frameOfReferenceUid",
         title="Extension field for ``frameOfReferenceUid``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for Imaging Selection",
@@ -168,7 +168,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    instance: typing.List[fhirtypes.ImagingSelectionInstanceType] = Field(
+    instance: typing.List[fhirtypes.ImagingSelectionInstanceType] = Field(  # type: ignore
         None,
         alias="instance",
         title="The selected instances",
@@ -181,7 +181,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    issued: fhirtypes.InstantType = Field(
+    issued: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="issued",
         title="Date / Time when this imaging selection was created",
@@ -190,11 +190,11 @@ class ImagingSelection(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    performer: typing.List[fhirtypes.ImagingSelectionPerformerType] = Field(
+    performer: typing.List[fhirtypes.ImagingSelectionPerformerType] = Field(  # type: ignore
         None,
         alias="performer",
         title="Selector of the instances (human or machine)",
@@ -204,7 +204,7 @@ class ImagingSelection(domainresource.DomainResource):
         },
     )
 
-    seriesNumber: fhirtypes.UnsignedIntType = Field(
+    seriesNumber: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="seriesNumber",
         title="DICOM Series Number",
@@ -216,11 +216,11 @@ class ImagingSelection(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    seriesNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    seriesNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_seriesNumber", title="Extension field for ``seriesNumber``."
     )
 
-    seriesUid: fhirtypes.IdType = Field(
+    seriesUid: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="seriesUid",
         title="DICOM Series Instance UID",
@@ -232,11 +232,11 @@ class ImagingSelection(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    seriesUid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    seriesUid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_seriesUid", title="Extension field for ``seriesUid``."
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="available | entered-in-error | unknown",
@@ -253,11 +253,11 @@ class ImagingSelection(domainresource.DomainResource):
             "enum_values": ["available", "entered-in-error", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    studyUid: fhirtypes.IdType = Field(
+    studyUid: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="studyUid",
         title="DICOM Study Instance UID",
@@ -269,11 +269,11 @@ class ImagingSelection(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    studyUid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    studyUid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_studyUid", title="Extension field for ``studyUid``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Subject of the selected instances",
@@ -346,9 +346,6 @@ class ImagingSelection(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class ImagingSelectionInstance(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -360,9 +357,7 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingSelectionInstance"
 
-    imageRegion2D: typing.List[
-        fhirtypes.ImagingSelectionInstanceImageRegion2DType
-    ] = Field(
+    imageRegion2D: typing.List[fhirtypes.ImagingSelectionInstanceImageRegion2DType] = Field(  # type: ignore
         None,
         alias="imageRegion2D",
         title="A specific 2D region in a DICOM image / frame",
@@ -378,9 +373,7 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
         },
     )
 
-    imageRegion3D: typing.List[
-        fhirtypes.ImagingSelectionInstanceImageRegion3DType
-    ] = Field(
+    imageRegion3D: typing.List[fhirtypes.ImagingSelectionInstanceImageRegion3DType] = Field(  # type: ignore
         None,
         alias="imageRegion3D",
         title="A specific 3D region in a DICOM frame of reference",
@@ -393,7 +386,7 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
         },
     )
 
-    number: fhirtypes.UnsignedIntType = Field(
+    number: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="number",
         title="DICOM Instance Number",
@@ -402,11 +395,11 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_number", title="Extension field for ``number``."
     )
 
-    sopClass: fhirtypes.CodingType = Field(
+    sopClass: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="sopClass",
         title="DICOM SOP Class UID",
@@ -416,7 +409,7 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
         },
     )
 
-    subset: typing.List[typing.Optional[fhirtypes.StringType]] = Field(
+    subset: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="subset",
         title="The selected subset of the SOP Instance",
@@ -434,11 +427,11 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subset__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_subset", title="Extension field for ``subset``.")
+    subset__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_subset", title="Extension field for ``subset``."
+    )
 
-    uid: fhirtypes.IdType = Field(
+    uid: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="uid",
         title="DICOM SOP Instance UID",
@@ -448,7 +441,7 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
@@ -496,7 +489,7 @@ class ImagingSelectionInstanceImageRegion2D(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingSelectionInstanceImageRegion2D"
 
-    coordinate: typing.List[typing.Optional[fhirtypes.DecimalType]] = Field(
+    coordinate: typing.List[typing.Optional[fhirtypes.DecimalType]] = Field(  # type: ignore
         None,
         alias="coordinate",
         title="Specifies the coordinates that define the image region",
@@ -514,11 +507,11 @@ class ImagingSelectionInstanceImageRegion2D(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    coordinate__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_coordinate", title="Extension field for ``coordinate``.")
+    coordinate__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_coordinate", title="Extension field for ``coordinate``."
+    )
 
-    regionType: fhirtypes.CodeType = Field(
+    regionType: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="regionType",
         title="point | polyline | interpolated | circle | ellipse",
@@ -531,7 +524,7 @@ class ImagingSelectionInstanceImageRegion2D(backboneelement.BackboneElement):
             "enum_values": ["point", "polyline", "interpolated", "circle", "ellipse"],
         },
     )
-    regionType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    regionType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_regionType", title="Extension field for ``regionType``."
     )
 
@@ -570,7 +563,7 @@ class ImagingSelectionInstanceImageRegion3D(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingSelectionInstanceImageRegion3D"
 
-    coordinate: typing.List[typing.Optional[fhirtypes.DecimalType]] = Field(
+    coordinate: typing.List[typing.Optional[fhirtypes.DecimalType]] = Field(  # type: ignore
         None,
         alias="coordinate",
         title="Specifies the coordinates that define the image region",
@@ -585,11 +578,11 @@ class ImagingSelectionInstanceImageRegion3D(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    coordinate__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_coordinate", title="Extension field for ``coordinate``.")
+    coordinate__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_coordinate", title="Extension field for ``coordinate``."
+    )
 
-    regionType: fhirtypes.CodeType = Field(
+    regionType: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="regionType",
         title="point | multipoint | polyline | polygon | ellipse | ellipsoid",
@@ -609,7 +602,7 @@ class ImagingSelectionInstanceImageRegion3D(backboneelement.BackboneElement):
             ],
         },
     )
-    regionType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    regionType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_regionType", title="Extension field for ``regionType``."
     )
 
@@ -647,7 +640,7 @@ class ImagingSelectionPerformer(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingSelectionPerformer"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="actor",
         title="Author (human or machine)",
@@ -668,7 +661,7 @@ class ImagingSelectionPerformer(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType = Field(
+    function: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="function",
         title="Type of performer",

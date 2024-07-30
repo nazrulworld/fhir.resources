@@ -6,17 +6,20 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import capabilitystatement
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_capabilitystatement_1(inst):
     assert inst.contact[0].name == "System Administrator"
     assert inst.contact[0].telecom[0].system == "email"
     assert inst.contact[0].telecom[0].value == "wile@acme.org"
-    assert inst.date == fhirtypes.DateTime.validate("2012-01-04")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-01-04"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Sample capability statement showing new MessageDefinition " "structure"
     )
@@ -26,17 +29,29 @@ def impl_capabilitystatement_1(inst):
     assert inst.format[1] == "json"
     assert inst.id == "messagedefinition"
     assert inst.implementation.description == "Acme Message endpoint"
-    assert inst.implementation.url == "http://acem.com/fhir/message-drop"
+    assert (
+        inst.implementation.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://acem.com/fhir/message-drop"}
+        ).valueUrl
+    )
     assert inst.kind == "instance"
     assert (
         inst.messaging[0].documentation
         == "ADT A08 equivalent for external system notifications"
     )
-    assert inst.messaging[0].endpoint[0].address == "mllp:10.1.1.10:9234"
+    assert (
+        inst.messaging[0].endpoint[0].address
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "mllp:10.1.1.10:9234"}
+        ).valueUrl
+    )
     assert inst.messaging[0].endpoint[0].protocol.code == "mllp"
     assert (
         inst.messaging[0].endpoint[0].protocol.system
-        == "http://terminology.hl7.org/CodeSystem/message-transport"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/message-transport"}
+        ).valueUri
     )
     assert inst.messaging[0].reliableCache == 30
     assert (
@@ -47,7 +62,10 @@ def impl_capabilitystatement_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.publisher == "ACME Corporation"
     assert inst.software.name == "EHR"
@@ -62,15 +80,15 @@ def test_capabilitystatement_1(base_settings):
         base_settings["unittest_data_dir"]
         / "capabilitystatement-messagedefinition.json"
     )
-    inst = capabilitystatement.CapabilityStatement.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = capabilitystatement.CapabilityStatement.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CapabilityStatement" == inst.resource_type
+    assert "CapabilityStatement" == inst.get_resource_type()
 
     impl_capabilitystatement_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CapabilityStatement" == data["resourceType"]
 
     inst2 = capabilitystatement.CapabilityStatement(**data)
@@ -82,7 +100,12 @@ def impl_capabilitystatement_2(inst):
     assert inst.contact[0].telecom[0].system == "email"
     assert inst.contact[0].telecom[0].value == "wile@acme.org"
     assert inst.copyright == "Copyright © Acme Healthcare and GoodCorp EHR Systems"
-    assert inst.date == fhirtypes.DateTime.validate("2012-01-04")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-01-04"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "This is the FHIR capability statement for the main EHR at "
         "ACME for the private interface - it does not describe the "
@@ -94,8 +117,8 @@ def impl_capabilitystatement_2(inst):
     )
     assert inst.document[0].mode == "consumer"
     assert inst.document[0].profile == (
-        "http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-838b"
-        "6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796"
+        "http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-"
+        "838b6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796"
     )
     assert inst.experimental is True
     assert inst.fhirVersion == "4.3.0"
@@ -103,22 +126,39 @@ def impl_capabilitystatement_2(inst):
     assert inst.format[1] == "json"
     assert inst.id == "example"
     assert inst.implementation.description == "main EHR at ACME"
-    assert inst.implementation.url == "http://10.2.3.4/fhir"
+    assert (
+        inst.implementation.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://10.2.3.4/fhir"}
+        ).valueUrl
+    )
     assert inst.implementationGuide[0] == "http://hl7.org/fhir/us/lab"
     assert inst.instantiates[0] == "http://ihe.org/fhir/CapabilityStatement/pixm-client"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
-    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert (
+        inst.jurisdiction[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
+    )
     assert inst.kind == "instance"
     assert (
         inst.messaging[0].documentation
         == "ADT A08 equivalent for external system notifications"
     )
-    assert inst.messaging[0].endpoint[0].address == "mllp:10.1.1.10:9234"
+    assert (
+        inst.messaging[0].endpoint[0].address
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "mllp:10.1.1.10:9234"}
+        ).valueUrl
+    )
     assert inst.messaging[0].endpoint[0].protocol.code == "mllp"
     assert (
         inst.messaging[0].endpoint[0].protocol.system
-        == "http://terminology.hl7.org/CodeSystem/message-transport"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/message-transport"}
+        ).valueUri
     )
     assert inst.messaging[0].reliableCache == 30
     assert (
@@ -161,8 +201,8 @@ def impl_capabilitystatement_2(inst):
     assert inst.rest[0].resource[0].interaction[4].code == "create"
     assert inst.rest[0].resource[0].interaction[5].code == "history-type"
     assert inst.rest[0].resource[0].profile == (
-        "http://registry.fhir.org/r4/StructureDefinition/7896271d-57f"
-        "6-4231-89dc-dcc91eab2416"
+        "http://registry.fhir.org/r4/StructureDefinition/7896271d-"
+        "57f6-4231-89dc-dcc91eab2416"
     )
     assert inst.rest[0].resource[0].readHistory is True
     assert inst.rest[0].resource[0].searchInclude[0] == "Organization"
@@ -183,8 +223,8 @@ def impl_capabilitystatement_2(inst):
     assert inst.rest[0].resource[0].searchParam[1].type == "reference"
     assert inst.rest[0].resource[0].searchRevInclude[0] == "Person"
     assert inst.rest[0].resource[0].supportedProfile[0] == (
-        "http://registry.fhir.org/r4/StructureDefinition/00ab9e7a-06c"
-        "7-4f77-9234-4154ca1e3347"
+        "http://registry.fhir.org/r4/StructureDefinition/00ab9e7a-"
+        "06c7-4f77-9234-4154ca1e3347"
     )
     assert inst.rest[0].resource[0].type == "Patient"
     assert inst.rest[0].resource[0].updateCreate is False
@@ -192,25 +232,44 @@ def impl_capabilitystatement_2(inst):
     assert inst.rest[0].security.cors is True
     assert inst.rest[0].security.description == "See Smart on FHIR documentation"
     assert inst.rest[0].security.service[0].coding[0].code == "SMART-on-FHIR"
-    assert inst.rest[0].security.service[0].coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/restful-security-" "service"
+    assert (
+        inst.rest[0].security.service[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/restful-security-service"
+            }
+        ).valueUri
     )
     assert inst.software.name == "EHR"
-    assert inst.software.releaseDate == fhirtypes.DateTime.validate("2012-01-04")
+    assert (
+        inst.software.releaseDate
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-01-04"}
+        ).valueDateTime
+    )
     assert inst.software.version == "0.00.020.2134"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "ACME EHR capability statement"
-    assert inst.url == "urn:uuid:68d043b5-9ecf-4559-a57a-396e0d452311"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:uuid:68d043b5-9ecf-4559-a57a-396e0d452311"}
+        ).valueUri
+    )
     assert inst.useContext[0].code.code == "focus"
     assert (
         inst.useContext[0].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "positive"
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variant-state"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/variant-state"}
+        ).valueUri
     )
     assert inst.version == "20130510"
 
@@ -220,15 +279,15 @@ def test_capabilitystatement_2(base_settings):
     Test File: capabilitystatement-example.json
     """
     filename = base_settings["unittest_data_dir"] / "capabilitystatement-example.json"
-    inst = capabilitystatement.CapabilityStatement.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = capabilitystatement.CapabilityStatement.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CapabilityStatement" == inst.resource_type
+    assert "CapabilityStatement" == inst.get_resource_type()
 
     impl_capabilitystatement_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CapabilityStatement" == data["resourceType"]
 
     inst2 = capabilitystatement.CapabilityStatement(**data)
@@ -239,7 +298,12 @@ def impl_capabilitystatement_3(inst):
     assert inst.contact[0].name == "FHIR Project"
     assert inst.contact[0].telecom[0].system == "other"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2016-09-16")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-09-16"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Basic conformance statement for a Measure Processor Service."
         " A server can support more functionality    than defined "
@@ -297,13 +361,23 @@ def impl_capabilitystatement_3(inst):
     assert inst.rest[0].resource[0].type == "Measure"
     assert inst.rest[0].security.cors is True
     assert inst.rest[0].security.service[0].coding[0].code == "Certificates"
-    assert inst.rest[0].security.service[0].coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/restful-security-" "service"
+    assert (
+        inst.rest[0].security.service[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/restful-security-service"
+            }
+        ).valueUri
     )
     assert inst.software.name == "ACME Measure Processor Service"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert inst.url == "http://hl7.org/fhir/measure-processor"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/measure-processor"}
+        ).valueUri
+    )
 
 
 def test_capabilitystatement_3(base_settings):
@@ -314,15 +388,15 @@ def test_capabilitystatement_3(base_settings):
         base_settings["unittest_data_dir"]
         / "capabilitystatement-measure-processor.json"
     )
-    inst = capabilitystatement.CapabilityStatement.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = capabilitystatement.CapabilityStatement.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CapabilityStatement" == inst.resource_type
+    assert "CapabilityStatement" == inst.get_resource_type()
 
     impl_capabilitystatement_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CapabilityStatement" == data["resourceType"]
 
     inst2 = capabilitystatement.CapabilityStatement(**data)
@@ -333,18 +407,32 @@ def impl_capabilitystatement_4(inst):
     assert inst.contact[0].name == "FHIR Project"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2015-07-05")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-07-05"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Basic capability statement for a Terminology Server. A "
         "server can support more fucntionality than defined here, but"
         " this is the minimum amount"
     )
     assert inst.experimental is True
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-"
-        "supported-system"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-supported-system"
+            }
+        ).valueUri
     )
-    assert inst.extension[0].valueUri == "http://loinc.org"
+    assert (
+        inst.extension[0].valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
+    )
     assert inst.fhirVersion == "4.3.0"
     assert inst.format[0] == "json"
     assert inst.format[1] == "xml"
@@ -358,8 +446,13 @@ def impl_capabilitystatement_4(inst):
         inst.rest[0].operation[0].definition
         == "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"
     )
-    assert inst.rest[0].operation[0].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].operation[0].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].operation[0].extension[0].valueCode == "SHALL"
     assert inst.rest[0].operation[0].name == "expand"
@@ -367,16 +460,26 @@ def impl_capabilitystatement_4(inst):
         inst.rest[0].operation[1].definition
         == "http://hl7.org/fhir/OperationDefinition/CodeSystem-lookup"
     )
-    assert inst.rest[0].operation[1].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].operation[1].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].operation[1].extension[0].valueCode == "SHALL"
     assert inst.rest[0].operation[1].name == "lookup"
     assert inst.rest[0].operation[2].definition == (
         "http://hl7.org/fhir/OperationDefinition/ValueSet-validate-" "code"
     )
-    assert inst.rest[0].operation[2].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].operation[2].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].operation[2].extension[0].valueCode == "SHALL"
     assert inst.rest[0].operation[2].name == "validate-code"
@@ -384,8 +487,13 @@ def impl_capabilitystatement_4(inst):
         inst.rest[0].operation[3].definition
         == "http://hl7.org/fhir/OperationDefinition/ConceptMap-translate"
     )
-    assert inst.rest[0].operation[3].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].operation[3].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].operation[3].extension[0].valueCode == "SHALL"
     assert inst.rest[0].operation[3].name == "translate"
@@ -393,8 +501,13 @@ def impl_capabilitystatement_4(inst):
         inst.rest[0].operation[4].definition
         == "http://hl7.org/fhir/OperationDefinition/ConceptMap-closure"
     )
-    assert inst.rest[0].operation[4].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].operation[4].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].operation[4].extension[0].valueCode == "SHOULD"
     assert inst.rest[0].operation[4].name == "closure"
@@ -402,8 +515,13 @@ def impl_capabilitystatement_4(inst):
     assert inst.rest[0].resource[0].interaction[0].documentation == (
         "Read allows clients to get the logical definitions of the " "value sets"
     )
-    assert inst.rest[0].resource[0].interaction[0].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].resource[0].interaction[0].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].resource[0].interaction[0].extension[0].valueCode == "SHALL"
     assert inst.rest[0].resource[0].interaction[1].code == "search-type"
@@ -411,8 +529,13 @@ def impl_capabilitystatement_4(inst):
         inst.rest[0].resource[0].interaction[1].documentation
         == "Search allows clients to find value sets on the server"
     )
-    assert inst.rest[0].resource[0].interaction[1].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].resource[0].interaction[1].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].resource[0].interaction[1].extension[0].valueCode == "SHALL"
     assert (
@@ -460,8 +583,13 @@ def impl_capabilitystatement_4(inst):
     assert inst.rest[0].resource[1].interaction[0].documentation == (
         "Read allows clients to get the logical definitions of the " "concept maps"
     )
-    assert inst.rest[0].resource[1].interaction[0].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].resource[1].interaction[0].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].resource[1].interaction[0].extension[0].valueCode == "SHALL"
     assert inst.rest[0].resource[1].interaction[1].code == "search-type"
@@ -469,8 +597,13 @@ def impl_capabilitystatement_4(inst):
         inst.rest[0].resource[1].interaction[1].documentation
         == "Search allows clients to find concept maps on the server"
     )
-    assert inst.rest[0].resource[1].interaction[1].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/capabilitystatement-" "expectation"
+    assert (
+        inst.rest[0].resource[1].interaction[1].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+            }
+        ).valueUri
     )
     assert inst.rest[0].resource[1].interaction[1].extension[0].valueCode == "SHALL"
     assert (
@@ -522,12 +655,22 @@ def impl_capabilitystatement_4(inst):
     assert inst.rest[0].resource[1].type == "ConceptMap"
     assert inst.rest[0].security.cors is True
     assert inst.rest[0].security.service[0].coding[0].code == "Certificates"
-    assert inst.rest[0].security.service[0].coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/restful-security-" "service"
+    assert (
+        inst.rest[0].security.service[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/restful-security-service"
+            }
+        ).valueUri
     )
     assert inst.software.name == "ACME Terminology Server"
     assert inst.status == "draft"
-    assert inst.url == "http://hl7.org/fhir/terminology-server"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/terminology-server"}
+        ).valueUri
+    )
 
 
 def test_capabilitystatement_4(base_settings):
@@ -538,15 +681,15 @@ def test_capabilitystatement_4(base_settings):
         base_settings["unittest_data_dir"]
         / "capabilitystatement-terminology-server.json"
     )
-    inst = capabilitystatement.CapabilityStatement.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = capabilitystatement.CapabilityStatement.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CapabilityStatement" == inst.resource_type
+    assert "CapabilityStatement" == inst.get_resource_type()
 
     impl_capabilitystatement_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CapabilityStatement" == data["resourceType"]
 
     inst2 = capabilitystatement.CapabilityStatement(**data)
@@ -556,7 +699,12 @@ def test_capabilitystatement_4(base_settings):
 def impl_capabilitystatement_5(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2022-05-28T12:47:40+10:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-05-28T12:47:40+10:00"}
+        ).valueDateTime
+    )
     assert inst.experimental is True
     assert inst.fhirVersion == "4.3.0"
     assert inst.format[0] == "xml"
@@ -575,14 +723,24 @@ def impl_capabilitystatement_5(inst):
     )
     assert inst.rest[0].security.service[0].coding[0].code == "SMART-on-FHIR"
     assert inst.rest[0].security.service[0].coding[0].display == "SMART-on-FHIR"
-    assert inst.rest[0].security.service[0].coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/restful-security-" "service"
+    assert (
+        inst.rest[0].security.service[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/restful-security-service"
+            }
+        ).valueUri
     )
     assert inst.rest[0].security.service[0].text == "See http://docs.smarthealthit.org/"
     assert inst.software.name == "Insert your software name here..."
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
-    assert inst.url == "http://hl7.org/fhir/CapabilityStatement/base2"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CapabilityStatement/base2"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -591,15 +749,15 @@ def test_capabilitystatement_5(base_settings):
     Test File: capabilitystatement-base2.json
     """
     filename = base_settings["unittest_data_dir"] / "capabilitystatement-base2.json"
-    inst = capabilitystatement.CapabilityStatement.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = capabilitystatement.CapabilityStatement.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CapabilityStatement" == inst.resource_type
+    assert "CapabilityStatement" == inst.get_resource_type()
 
     impl_capabilitystatement_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CapabilityStatement" == data["resourceType"]
 
     inst2 = capabilitystatement.CapabilityStatement(**data)
@@ -609,7 +767,12 @@ def test_capabilitystatement_5(base_settings):
 def impl_capabilitystatement_6(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2013-06-18")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-06-18"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Prototype Capability Statement for September 2013 " "Connectathon"
     )
@@ -622,7 +785,10 @@ def impl_capabilitystatement_6(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.name == "PHR Template"
     assert inst.publisher == "FHIR Project"
@@ -685,15 +851,15 @@ def test_capabilitystatement_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "capabilitystatement-phr-example.json"
     )
-    inst = capabilitystatement.CapabilityStatement.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = capabilitystatement.CapabilityStatement.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CapabilityStatement" == inst.resource_type
+    assert "CapabilityStatement" == inst.get_resource_type()
 
     impl_capabilitystatement_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CapabilityStatement" == data["resourceType"]
 
     inst2 = capabilitystatement.CapabilityStatement(**data)
@@ -704,7 +870,12 @@ def impl_capabilitystatement_7(inst):
     assert inst.contact[0].name == "FHIR Project"
     assert inst.contact[0].telecom[0].system == "other"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2017-02-25")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-02-25"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Basic conformance statement for a Knowledge Repository "
         "Service. A server can support more functionality    than "
@@ -1071,13 +1242,23 @@ def impl_capabilitystatement_7(inst):
     assert inst.rest[0].resource[4].type == "Questionnaire"
     assert inst.rest[0].security.cors is True
     assert inst.rest[0].security.service[0].coding[0].code == "Certificates"
-    assert inst.rest[0].security.service[0].coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/restful-security-" "service"
+    assert (
+        inst.rest[0].security.service[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/restful-security-service"
+            }
+        ).valueUri
     )
     assert inst.software.name == "ACME Knowledge Repository Service"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert inst.url == "http://hl7.org/fhir/knowledge-repository"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/knowledge-repository"}
+        ).valueUri
+    )
 
 
 def test_capabilitystatement_7(base_settings):
@@ -1088,15 +1269,15 @@ def test_capabilitystatement_7(base_settings):
         base_settings["unittest_data_dir"]
         / "capabilitystatement-knowledge-repository.json"
     )
-    inst = capabilitystatement.CapabilityStatement.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = capabilitystatement.CapabilityStatement.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CapabilityStatement" == inst.resource_type
+    assert "CapabilityStatement" == inst.get_resource_type()
 
     impl_capabilitystatement_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CapabilityStatement" == data["resourceType"]
 
     inst2 = capabilitystatement.CapabilityStatement(**data)
@@ -1106,7 +1287,12 @@ def test_capabilitystatement_7(base_settings):
 def impl_capabilitystatement_8(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2022-05-28T12:47:40+10:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-05-28T12:47:40+10:00"}
+        ).valueDateTime
+    )
     assert inst.experimental is True
     assert inst.fhirVersion == "4.3.0"
     assert inst.format[0] == "xml"
@@ -2536,14 +2722,24 @@ def impl_capabilitystatement_8(inst):
     )
     assert inst.rest[0].security.service[0].coding[0].code == "SMART-on-FHIR"
     assert inst.rest[0].security.service[0].coding[0].display == "SMART-on-FHIR"
-    assert inst.rest[0].security.service[0].coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/restful-security-" "service"
+    assert (
+        inst.rest[0].security.service[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/restful-security-service"
+            }
+        ).valueUri
     )
     assert inst.rest[0].security.service[0].text == "See http://docs.smarthealthit.org/"
     assert inst.software.name == "Insert your software name here..."
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
-    assert inst.url == "http://hl7.org/fhir/CapabilityStatement/base"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CapabilityStatement/base"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -2552,15 +2748,15 @@ def test_capabilitystatement_8(base_settings):
     Test File: capabilitystatement-base.json
     """
     filename = base_settings["unittest_data_dir"] / "capabilitystatement-base.json"
-    inst = capabilitystatement.CapabilityStatement.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = capabilitystatement.CapabilityStatement.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CapabilityStatement" == inst.resource_type
+    assert "CapabilityStatement" == inst.get_resource_type()
 
     impl_capabilitystatement_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CapabilityStatement" == data["resourceType"]
 
     inst2 = capabilitystatement.CapabilityStatement(**data)

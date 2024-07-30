@@ -7,14 +7,14 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import task
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_task_1(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.basedOn[0].display == "General Wellness Careplan"
@@ -22,8 +22,8 @@ def impl_task_1(inst):
     assert inst.code.coding[0].code == "fulfill"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CodeSystem/task-code"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CodeSystem/task-code"}
         ).valueUri
     )
     assert inst.description == (
@@ -34,14 +34,14 @@ def impl_task_1(inst):
     assert inst.encounter.reference == "Encounter/example"
     assert (
         inst.executionPeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T18:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T18:45:05+10:00"}
         ).valueDateTime
     )
     assert (
         inst.executionPeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.focus.display == "Lipid Panel Request"
@@ -50,8 +50,8 @@ def impl_task_1(inst):
     assert inst.for_fhir.reference == "Patient/example"
     assert (
         inst.groupIdentifier.system
-        == ExternalValidatorModel(
-            valueUri="http:/goodhealth.org/accession/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/goodhealth.org/accession/identifiers"}
         ).valueUri
     )
     assert inst.groupIdentifier.use == "official"
@@ -59,23 +59,25 @@ def impl_task_1(inst):
     assert inst.id == "example6"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http:/goodhealth.org/identifiers").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/goodhealth.org/identifiers"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "20170201-001"
     assert inst.intent == "order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T18:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T18:45:05+10:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.output[0].type.text == "DiagnosticReport generated"
@@ -95,8 +97,8 @@ def impl_task_1(inst):
     assert inst.requester.reference == "Practitioner/example"
     assert (
         inst.restriction.period.end
-        == ExternalValidatorModel(
-            valueDateTime="2016-11-02T09:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-11-02T09:45:05+10:00"}
         ).valueDateTime
     )
     assert inst.restriction.repetitions == 1
@@ -125,66 +127,72 @@ def test_task_1(base_settings):
 def impl_task_2(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-12T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-12T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.code.coding[0].code == "poll"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskcode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskcode"}
         ).valueUri
     )
     assert inst.id == "fm-example2"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http:/happyvalley.com/task").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/happyvalley.com/task"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "20181012-005"
     assert inst.input[0].type.coding[0].code == "include"
     assert (
         inst.input[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskinputtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskinputtype"}
         ).valueUri
     )
     assert inst.input[0].valueCode == "ClaimResponse"
     assert inst.input[1].type.coding[0].code == "period"
     assert (
         inst.input[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskinputtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskinputtype"}
         ).valueUri
     )
     assert (
         inst.input[1].valuePeriod.end
-        == ExternalValidatorModel(valueDateTime="2018-10-12").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-12"}
+        ).valueDateTime
     )
     assert (
         inst.input[1].valuePeriod.start
-        == ExternalValidatorModel(valueDateTime="2018-10-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-01"}
+        ).valueDateTime
     )
     assert inst.intent == "order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-12T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-12T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.owner.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://nationalinsurers.com/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nationalinsurers.com/identifiers"}
         ).valueUri
     )
     assert inst.owner.identifier.value == "12345"
@@ -216,8 +224,8 @@ def test_task_2(base_settings):
 def impl_task_3(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.basedOn[0].display == "General Wellness Careplan"
@@ -225,8 +233,8 @@ def impl_task_3(inst):
     assert inst.code.coding[0].code == "fulfill"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CodeSystem/task-code"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CodeSystem/task-code"}
         ).valueUri
     )
     assert inst.code.text == "Lipid Panel"
@@ -239,8 +247,8 @@ def impl_task_3(inst):
     assert inst.encounter.reference == "Encounter/example"
     assert (
         inst.executionPeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.focus.display == "Lipid Panel Request"
@@ -249,8 +257,8 @@ def impl_task_3(inst):
     assert inst.for_fhir.reference == "Patient/example"
     assert (
         inst.groupIdentifier.system
-        == ExternalValidatorModel(
-            valueUri="http:/goodhealth.org/accession/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/goodhealth.org/accession/identifiers"}
         ).valueUri
     )
     assert inst.groupIdentifier.use == "official"
@@ -258,23 +266,25 @@ def impl_task_3(inst):
     assert inst.id == "example1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http:/goodhealth.org/identifiers").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/goodhealth.org/identifiers"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "20170201-001"
     assert inst.intent == "order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T09:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T09:45:05+10:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.owner.display == "Clinical Laboratory @ Acme Hospital"
@@ -294,15 +304,17 @@ def impl_task_3(inst):
     )
     assert (
         inst.requestedPerformer[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.requestedPerformer[0].concept.text == "Performer"
     assert inst.requester.display == "Dr Adam Careful"
     assert inst.requester.reference == "Practitioner/example"
     assert (
         inst.restriction.period.end
-        == ExternalValidatorModel(
-            valueDateTime="2016-11-02T09:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-11-02T09:45:05+10:00"}
         ).valueDateTime
     )
     assert inst.restriction.repetitions == 1
@@ -331,86 +343,90 @@ def test_task_3(base_settings):
 def impl_task_4(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-04T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-04T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.code.coding[0].code == "reprocess"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskcode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskcode"}
         ).valueUri
     )
     assert (
         inst.focus.identifier.system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.focus.identifier.value == "1501"
     assert inst.id == "fm-example4"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http:/happyvalley.com/task").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/happyvalley.com/task"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "20181012-006"
     assert inst.input[0].type.coding[0].code == "origresponse"
     assert (
         inst.input[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskinputtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskinputtype"}
         ).valueUri
     )
     assert (
         inst.input[0].valueReference.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://nationalinsurers.com/claimresponse"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nationalinsurers.com/claimresponse"}
         ).valueUri
     )
     assert inst.input[0].valueReference.identifier.value == "CR201810040001234"
     assert inst.input[1].type.coding[0].code == "reference"
     assert (
         inst.input[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskinputtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskinputtype"}
         ).valueUri
     )
     assert inst.input[1].valueString == "BR12345"
     assert inst.input[2].type.coding[0].code == "item"
     assert (
         inst.input[2].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskinputtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskinputtype"}
         ).valueUri
     )
     assert inst.input[2].valuePositiveInt == 2
     assert inst.input[3].type.coding[0].code == "item"
     assert (
         inst.input[3].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskinputtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskinputtype"}
         ).valueUri
     )
     assert inst.input[3].valuePositiveInt == 3
     assert inst.intent == "order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-04T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-04T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.owner.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://nationalinsurers.com/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nationalinsurers.com/identifiers"}
         ).valueUri
     )
     assert inst.owner.identifier.value == "12345"
@@ -442,8 +458,8 @@ def test_task_4(base_settings):
 def impl_task_5(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2016-03-10T22:39:32-04:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-03-10T22:39:32-04:00"}
         ).valueDateTime
     )
     assert inst.code.text == "Refill Request"
@@ -453,16 +469,16 @@ def impl_task_5(inst):
     assert inst.intent == "order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2016-03-10T22:39:32-04:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-03-10T22:39:32-04:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.owner.reference == "Practitioner/example"
@@ -492,33 +508,37 @@ def test_task_5(base_settings):
 def impl_task_6(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-04T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-04T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.code.coding[0].code == "status"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskcode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskcode"}
         ).valueUri
     )
     assert (
         inst.focus.identifier.system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.focus.identifier.value == "1500"
     assert inst.id == "fm-example6"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http:/happyvalley.com/task").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/happyvalley.com/task"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "20181012-001"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(
-            valueUri="http://nationalinsurers.com/identifiers/12345"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nationalinsurers.com/identifiers/12345"}
         ).valueUri
     )
     assert inst.identifier[1].use == "official"
@@ -526,30 +546,30 @@ def impl_task_6(inst):
     assert inst.intent == "order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-04T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-04T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.output[0].type.coding[0].code == "status"
     assert (
         inst.output[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/financial-taskoutputtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/financial-taskoutputtype"}
         ).valueUri
     )
     assert inst.output[0].valueCode == "complete"
     assert (
         inst.owner.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://nationalinsurers.com/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nationalinsurers.com/identifiers"}
         ).valueUri
     )
     assert inst.owner.identifier.value == "12345"
@@ -590,8 +610,8 @@ def impl_task_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "ready"
@@ -619,24 +639,24 @@ def test_task_7(base_settings):
 def impl_task_8(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T08:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T08:45:05+10:00"}
         ).valueDateTime
     )
     assert inst.businessStatus.text == "waiting for patient"
     assert inst.code.coding[0].code == "fulfill"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CodeSystem/task-code"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CodeSystem/task-code"}
         ).valueUri
     )
     assert inst.encounter.display == "Example In-Patient Encounter"
     assert inst.encounter.reference == "Encounter/example"
     assert (
         inst.executionPeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T08:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T08:45:05+10:00"}
         ).valueDateTime
     )
     assert inst.focus.display == "BloodDraw ServiceRequest"
@@ -644,8 +664,8 @@ def impl_task_8(inst):
     assert inst.for_fhir.reference == "Patient/example"
     assert (
         inst.groupIdentifier.system
-        == ExternalValidatorModel(
-            valueUri="http:/goodhealth.org/accession/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/goodhealth.org/accession/identifiers"}
         ).valueUri
     )
     assert inst.groupIdentifier.use == "official"
@@ -653,23 +673,25 @@ def impl_task_8(inst):
     assert inst.id == "example2"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http:/goodhealth.org/identifiers").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/goodhealth.org/identifiers"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "20170201-002"
     assert inst.intent == "filler-order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2016-10-31T09:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-31T09:45:05+10:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.owner.display == "Clinical Laboratory @ Acme Hospital"
@@ -684,7 +706,9 @@ def impl_task_8(inst):
     )
     assert (
         inst.requestedPerformer[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.requestedPerformer[0].concept.text == "Performer"
     assert inst.requester.display == "Clinical Laboratory @ Acme Hospital"
@@ -693,8 +717,8 @@ def impl_task_8(inst):
     )
     assert (
         inst.restriction.period.end
-        == ExternalValidatorModel(
-            valueDateTime="2016-11-01T09:45:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-11-01T09:45:05+10:00"}
         ).valueDateTime
     )
     assert inst.restriction.repetitions == 1
@@ -723,62 +747,66 @@ def test_task_8(base_settings):
 def impl_task_9(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-04T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-04T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.code.coding[0].code == "release"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskcode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskcode"}
         ).valueUri
     )
     assert (
         inst.focus.identifier.system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.focus.identifier.value == "1501"
     assert inst.id == "fm-example3"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http:/happyvalley.com/task").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/happyvalley.com/task"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "20181012-001"
     assert inst.input[0].type.coding[0].code == "origresponse"
     assert (
         inst.input[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/financial-taskinputtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/financial-taskinputtype"}
         ).valueUri
     )
     assert (
         inst.input[0].valueReference.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://nationalinsurers.com/claimresponse"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nationalinsurers.com/claimresponse"}
         ).valueUri
     )
     assert inst.input[0].valueReference.identifier.value == "CR201810040001234"
     assert inst.intent == "order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-04T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-04T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.owner.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://nationalinsurers.com/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nationalinsurers.com/identifiers"}
         ).valueUri
     )
     assert inst.owner.identifier.value == "12345"
@@ -810,48 +838,52 @@ def test_task_9(base_settings):
 def impl_task_10(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-04T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-04T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.code.coding[0].code == "cancel"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/financialtaskcode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/financialtaskcode"}
         ).valueUri
     )
     assert (
         inst.focus.identifier.system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.focus.identifier.value == "1500"
     assert inst.id == "fm-example1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http:/happyvalley.com/task").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http:/happyvalley.com/task"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "20181012-001"
     assert inst.intent == "order"
     assert (
         inst.lastModified
-        == ExternalValidatorModel(
-            valueDateTime="2018-10-04T08:25:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-10-04T08:25:05+10:00"}
         ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.owner.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://nationalinsurers.com/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nationalinsurers.com/identifiers"}
         ).valueUri
     )
     assert inst.owner.identifier.value == "12345"

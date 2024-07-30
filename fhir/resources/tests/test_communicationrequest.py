@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import communicationrequest
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_communicationrequest_1(inst):
@@ -18,8 +18,8 @@ def impl_communicationrequest_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "active"
@@ -54,15 +54,17 @@ def test_communicationrequest_1(base_settings):
 def impl_communicationrequest_2(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2016-06-10T11:01:10-08:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-06-10T11:01:10-08:00"}
         ).valueDateTime
     )
     assert inst.basedOn[0].display == "EligibilityRequest"
     assert inst.category[0].coding[0].code == "SolicitedAttachmentRequest"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://acme.org/messagetypes").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/messagetypes"}
+        ).valueUri
     )
     assert inst.contained[0].id == "provider"
     assert inst.contained[1].id == "payor"
@@ -72,8 +74,8 @@ def impl_communicationrequest_2(inst):
     assert inst.id == "fm-solicit"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.jurisdiction.com/insurer/123456"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.jurisdiction.com/insurer/123456"}
         ).valueUri
     )
     assert inst.identifier[0].value == "ABC123"
@@ -83,8 +85,8 @@ def impl_communicationrequest_2(inst):
     assert inst.medium[0].coding[0].display == "written"
     assert (
         inst.medium[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"}
         ).valueUri
     )
     assert inst.medium[0].text == "written"
@@ -92,14 +94,14 @@ def impl_communicationrequest_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2016-06-10T11:01:10-08:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-06-10T11:01:10-08:00"}
         ).valueDateTime
     )
     assert inst.payload[0].contentCodeableConcept.text == (

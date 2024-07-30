@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -28,9 +26,9 @@ class Signature(element.Element):
     ceremony Different signature approaches have different utilities.
     """
 
-    resource_type = Field("Signature", const=True)
+    __resource_type__ = "Signature"
 
-    data: fhirtypes.Base64Binary = Field(
+    data: fhirtypes.Base64BinaryType = Field(  # type: ignore
         None,
         alias="data",
         title="The actual signature content (XML DigSig. JWS, picture, etc.)",
@@ -38,14 +36,15 @@ class Signature(element.Element):
             "The base64 encoding of the Signature content. When signature is not "
             "recorded electronically this element would be empty."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_data", title="Extension field for ``data``."
     )
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(
+    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="The party represented",
@@ -53,20 +52,21 @@ class Signature(element.Element):
             "A reference to an application-usable description of the identity that "
             "is represented by the signature."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-            "Patient",
-            "Device",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+                "Patient",
+                "Device",
+                "Organization",
+            ],
+        },
     )
 
-    sigFormat: fhirtypes.Code = Field(
+    sigFormat: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="sigFormat",
         title="The technical format of the signature",
@@ -76,14 +76,15 @@ class Signature(element.Element):
             "application/jose for JWS, and image/* for a graphical image of a "
             "signature, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sigFormat", title="Extension field for ``sigFormat``."
     )
 
-    targetFormat: fhirtypes.Code = Field(
+    targetFormat: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="targetFormat",
         title="The technical format of the signed resources",
@@ -91,14 +92,15 @@ class Signature(element.Element):
             "A mime type that indicates the technical format of the target "
             "resources signed by the signature."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_targetFormat", title="Extension field for ``targetFormat``."
     )
 
-    type: typing.List[fhirtypes.CodingType] = Field(
+    type: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         ...,
         alias="type",
         title="Indication of the reason the entity signed the object(s)",
@@ -108,24 +110,26 @@ class Signature(element.Element):
             "can be used when determining accountability for various actions "
             "concerning the document."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    when: fhirtypes.Instant = Field(
+    when: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="when",
         title="When the signature was created",
         description="When the digital signature was signed.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    when__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    when__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_when", title="Extension field for ``when``."
     )
 
-    who: fhirtypes.ReferenceType = Field(
+    who: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="who",
         title="Who signed",
@@ -133,17 +137,18 @@ class Signature(element.Element):
             "A reference to an application-usable description of the identity that "
             "signed  (e.g. the signature used their private key)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-            "Patient",
-            "Device",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+                "Patient",
+                "Device",
+                "Organization",
+            ],
+        },
     )
 
     @classmethod
@@ -164,10 +169,7 @@ class Signature(element.Element):
             "data",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1130(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -176,49 +178,4 @@ class Signature(element.Element):
         the primitive value is not present.
         """
         required_fields = [("when", "when__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

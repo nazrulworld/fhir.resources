@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import guidanceresponse
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_guidanceresponse_1(inst):
@@ -18,7 +18,9 @@ def impl_guidanceresponse_1(inst):
     )
     assert (
         inst.dataRequirement[0].codeFilter[0].code[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.dataRequirement[0].codeFilter[0].path == "code"
     assert inst.dataRequirement[0].mustSupport[0] == "value"
@@ -27,32 +29,38 @@ def impl_guidanceresponse_1(inst):
     assert inst.id == "additional-data-example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "guidanceResponse2"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.moduleUri
-        == ExternalValidatorModel(
-            valueUri="http://someguidelineprovider.org/diabetes-guidelines.html"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://someguidelineprovider.org/diabetes-guidelines.html"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2017-03-10T16:02:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-10T16:02:00Z"}
+        ).valueDateTime
     )
     assert inst.performer.reference == "Device/software"
     assert inst.reason[0].concept.text == "Diabetes Guideline"
     assert (
         inst.requestIdentifier.system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.requestIdentifier.value == "guidanceRequest2"
     assert inst.status == "data-required"
@@ -87,33 +95,41 @@ def impl_guidanceresponse_2(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "guidanceResponse1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.moduleUri
-        == ExternalValidatorModel(
-            valueUri="http://someguidelineprovider.org/radiology-appropriateness-guidelines.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://someguidelineprovider.org/radiology-appropriateness-guidelines.html"
+            }
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2017-03-10T16:02:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-10T16:02:00Z"}
+        ).valueDateTime
     )
     assert inst.outputParameters.reference == "#outputParameters1"
     assert inst.performer.reference == "Device/software"
     assert inst.reason[0].concept.text == "Guideline Appropriate Ordering Assessment"
     assert (
         inst.requestIdentifier.system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.requestIdentifier.value == "guidanceRequest1"
     assert inst.status == "success"

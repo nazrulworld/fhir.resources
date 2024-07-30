@@ -7,14 +7,16 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import devicemetric
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_devicemetric_1(inst):
     assert inst.calibration[0].state == "calibrated"
     assert (
         inst.calibration[0].time
-        == ExternalValidatorModel(valueInstant="2016-12-28T09:03:04-05:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2016-12-28T09:03:04-05:00"}
+        ).valueInstant
     )
     assert inst.calibration[0].type == "two-point"
     assert inst.category == "measurement"
@@ -23,15 +25,17 @@ def impl_devicemetric_1(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodcare.org/devicemetric/id"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodcare.org/devicemetric/id"}
         ).valueUri
     )
     assert inst.identifier[0].value == "345675"
     assert inst.measurementFrequency.code == "Hz"
     assert (
         inst.measurementFrequency.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.measurementFrequency.unit == "Hertz"
     assert float(inst.measurementFrequency.value) == float(1)
@@ -39,8 +43,8 @@ def impl_devicemetric_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.operationalStatus == "on"
@@ -49,13 +53,17 @@ def impl_devicemetric_1(inst):
     assert inst.type.coding[0].display == "MDC_PULS_OXIM_SAT_O2"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:11073:10101").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:11073:10101"}
+        ).valueUri
     )
     assert inst.unit.coding[0].code == "262688"
     assert inst.unit.coding[0].display == "MDC_DIM_PERCENT"
     assert (
         inst.unit.coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:11073:10101").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:11073:10101"}
+        ).valueUri
     )
 
 

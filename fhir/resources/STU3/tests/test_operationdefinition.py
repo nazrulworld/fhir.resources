@@ -6,81 +6,73 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import operationdefinition
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_operationdefinition_1(inst):
-    assert inst.code == "data-requirements"
+    assert inst.code == "everything"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.description == (
-        "The data-requirements operation aggregates and returns the "
-        "parameters and data requirements for the measure and all its"
-        " dependencies as a single module definition"
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
     )
-    assert inst.id == "Measure-data-requirements"
+    assert inst.id == "Patient-everything"
     assert inst.instance is True
     assert inst.kind == "operation"
-    assert inst.name == "Data Requirements"
+    assert inst.name == "Fetch Patient Record"
     assert inst.parameter[0].max == "1"
-    assert inst.parameter[0].min == 1
-    assert inst.parameter[0].name == "periodStart"
+    assert inst.parameter[0].min == 0
+    assert inst.parameter[0].name == "start"
     assert inst.parameter[0].type == "date"
     assert inst.parameter[0].use == "in"
-    assert inst.parameter[1].documentation == (
-        "The end of the measurement period. The period will end at "
-        "the end of the period implied by the supplied timestamp. "
-        "E.g. a value of 2014 would set the period end to be "
-        "2014-12-31T23:59:59 inclusive"
-    )
     assert inst.parameter[1].max == "1"
-    assert inst.parameter[1].min == 1
-    assert inst.parameter[1].name == "periodEnd"
+    assert inst.parameter[1].min == 0
+    assert inst.parameter[1].name == "end"
     assert inst.parameter[1].type == "date"
     assert inst.parameter[1].use == "in"
-    assert inst.parameter[2].documentation == (
-        "The result of the requirements gathering is a module-"
-        "definition Library that describes the aggregate parameters, "
-        "data requirements, and dependencies of the measure"
-    )
+    assert inst.parameter[2].documentation == 'The bundle type is "searchset"'
     assert inst.parameter[2].max == "1"
     assert inst.parameter[2].min == 1
     assert inst.parameter[2].name == "return"
-    assert inst.parameter[2].type == "Library"
+    assert inst.parameter[2].type == "Bundle"
     assert inst.parameter[2].use == "out"
     assert inst.publisher == "HL7 (FHIR Project)"
-    assert inst.resource[0] == "Measure"
+    assert inst.resource[0] == "Patient"
     assert inst.status == "draft"
     assert inst.system is False
     assert inst.text.status == "generated"
-    assert inst.type is False
-    assert inst.url == (
-        "http://hl7.org/fhir/OperationDefinition/Measure-data-" "requirements"
+    assert inst.type is True
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/Patient-everything"}
+        ).valueUri
     )
 
 
 def test_operationdefinition_1(base_settings):
     """No. 1 tests collection for OperationDefinition.
-    Test File: operation-measure-data-requirements.json
+    Test File: operationdefinition-operation-patient-everything(Patient-everything).json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "operation-measure-data-requirements.json"
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-patient-everything(Patient-everything).json"
     )
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
     )
-    assert "OperationDefinition" == inst.resource_type
+    assert "OperationDefinition" == inst.get_resource_type()
 
     impl_operationdefinition_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationDefinition" == data["resourceType"]
 
     inst2 = operationdefinition.OperationDefinition(**data)
@@ -88,128 +80,75 @@ def test_operationdefinition_1(base_settings):
 
 
 def impl_operationdefinition_2(inst):
-    assert inst.code == "translate"
+    assert inst.code == "find"
+    assert inst.comment == (
+        "Note that servers may support searching by a functional "
+        "list, and not support this operation that allows clients to "
+        "find the list directly"
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.id == "ConceptMap-translate"
-    assert inst.instance is True
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
+    )
+    assert inst.id == "List-find"
+    assert inst.instance is False
     assert inst.kind == "operation"
-    assert inst.name == "Concept Translation"
+    assert inst.name == "Find a functional list"
     assert inst.parameter[0].documentation == (
-        "The code that is to be translated. If a code is provided, a "
-        "system must be provided"
+        "The id of a patient resource located on the server on which "
+        "this operation is executed"
     )
     assert inst.parameter[0].max == "1"
-    assert inst.parameter[0].min == 0
-    assert inst.parameter[0].name == "code"
-    assert inst.parameter[0].type == "code"
+    assert inst.parameter[0].min == 1
+    assert inst.parameter[0].name == "patient"
+    assert inst.parameter[0].type == "id"
     assert inst.parameter[0].use == "in"
     assert (
         inst.parameter[1].documentation
-        == "The system for the code that is to be translated"
+        == "The code for the functional list that is being found"
     )
     assert inst.parameter[1].max == "1"
-    assert inst.parameter[1].min == 0
-    assert inst.parameter[1].name == "system"
-    assert inst.parameter[1].type == "uri"
+    assert inst.parameter[1].min == 1
+    assert inst.parameter[1].name == "name"
+    assert inst.parameter[1].type == "code"
     assert inst.parameter[1].use == "in"
-    assert inst.parameter[2].documentation == (
-        "The version of the system, if one was provided in the source" " data"
-    )
-    assert inst.parameter[2].max == "1"
-    assert inst.parameter[2].min == 0
-    assert inst.parameter[2].name == "version"
-    assert inst.parameter[2].type == "string"
-    assert inst.parameter[2].use == "in"
-    assert inst.parameter[3].max == "1"
-    assert inst.parameter[3].min == 0
-    assert inst.parameter[3].name == "source"
-    assert inst.parameter[3].type == "uri"
-    assert inst.parameter[3].use == "in"
-    assert inst.parameter[4].documentation == "A coding to translate"
-    assert inst.parameter[4].max == "1"
-    assert inst.parameter[4].min == 0
-    assert inst.parameter[4].name == "coding"
-    assert inst.parameter[4].type == "Coding"
-    assert inst.parameter[4].use == "in"
-    assert inst.parameter[5].documentation == (
-        "A full codeableConcept to validate. The server can translate"
-        " any of the coding values (e.g. existing translations) as it"
-        " chooses"
-    )
-    assert inst.parameter[5].max == "1"
-    assert inst.parameter[5].min == 0
-    assert inst.parameter[5].name == "codeableConcept"
-    assert inst.parameter[5].type == "CodeableConcept"
-    assert inst.parameter[5].use == "in"
-    assert inst.parameter[6].max == "1"
-    assert inst.parameter[6].min == 0
-    assert inst.parameter[6].name == "target"
-    assert inst.parameter[6].type == "uri"
-    assert inst.parameter[6].use == "in"
-    assert inst.parameter[7].max == "1"
-    assert inst.parameter[7].min == 0
-    assert inst.parameter[7].name == "targetsystem"
-    assert inst.parameter[7].type == "uri"
-    assert inst.parameter[7].use == "in"
-    assert (
-        inst.parameter[8].documentation
-        == "Another element that may help produce the correct mapping"
-    )
-    assert inst.parameter[8].max == "*"
-    assert inst.parameter[8].min == 0
-    assert inst.parameter[8].name == "dependency"
-    assert inst.parameter[8].part[0].documentation == "The element for this dependency"
-    assert inst.parameter[8].part[0].max == "1"
-    assert inst.parameter[8].part[0].min == 0
-    assert inst.parameter[8].part[0].name == "element"
-    assert inst.parameter[8].part[0].type == "uri"
-    assert inst.parameter[8].part[0].use == "in"
-    assert inst.parameter[8].part[1].documentation == "The value for this dependency"
-    assert inst.parameter[8].part[1].max == "1"
-    assert inst.parameter[8].part[1].min == 0
-    assert inst.parameter[8].part[1].name == "concept"
-    assert inst.parameter[8].part[1].type == "CodeableConcept"
-    assert inst.parameter[8].part[1].use == "in"
-    assert inst.parameter[8].use == "in"
-    assert inst.parameter[9].documentation == (
-        "if this is true, then the operation should return all the "
-        "codes that might be mapped to this code. This parameter "
-        "reverses the meaning of the source and target parameters"
-    )
-    assert inst.parameter[9].max == "1"
-    assert inst.parameter[9].min == 0
-    assert inst.parameter[9].name == "reverse"
-    assert inst.parameter[9].type == "boolean"
-    assert inst.parameter[9].use == "in"
     assert inst.publisher == "HL7 (FHIR Project)"
-    assert inst.resource[0] == "ConceptMap"
+    assert inst.resource[0] == "List"
     assert inst.status == "draft"
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is True
-    assert inst.url == "http://hl7.org/fhir/OperationDefinition/ConceptMap-translate"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/List-find"}
+        ).valueUri
+    )
 
 
 def test_operationdefinition_2(base_settings):
     """No. 2 tests collection for OperationDefinition.
-    Test File: operation-conceptmap-translate.json
+    Test File: operationdefinition-operation-list-find(List-find).json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "operation-conceptmap-translate.json"
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-list-find(List-find).json"
     )
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
     )
-    assert "OperationDefinition" == inst.resource_type
+    assert "OperationDefinition" == inst.get_resource_type()
 
     impl_operationdefinition_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationDefinition" == data["resourceType"]
 
     inst2 = operationdefinition.OperationDefinition(**data)
@@ -217,12 +156,389 @@ def test_operationdefinition_2(base_settings):
 
 
 def impl_operationdefinition_3(inst):
+    assert inst.code == "questionnaire"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
+    )
+    assert inst.id == "StructureDefinition-questionnaire"
+    assert inst.instance is True
+    assert inst.kind == "operation"
+    assert inst.name == "Build Questionnaire"
+    assert inst.parameter[0].documentation == (
+        "A logical profile identifier (i.e. "
+        "'StructureDefinition.identifier''). The server must know the"
+        " profile or be able to retrieve it from other known "
+        "repositories."
+    )
+    assert inst.parameter[0].max == "1"
+    assert inst.parameter[0].min == 0
+    assert inst.parameter[0].name == "identifier"
+    assert inst.parameter[0].type == "uri"
+    assert inst.parameter[0].use == "in"
+    assert inst.parameter[1].documentation == (
+        "The [StructureDefinition](structuredefinition.html) is "
+        "provided directly as part of the request. Servers may choose"
+        " not to accept profiles in this fashion"
+    )
+    assert inst.parameter[1].max == "1"
+    assert inst.parameter[1].min == 0
+    assert inst.parameter[1].name == "profile"
+    assert inst.parameter[1].searchType == "token"
+    assert inst.parameter[1].type == "string"
+    assert inst.parameter[1].use == "in"
+    assert inst.parameter[2].documentation == (
+        "The profile's official URL (i.e. 'StructureDefinition.url')."
+        " The server must know the profile or be able to retrieve it "
+        "from other known repositories."
+    )
+    assert inst.parameter[2].max == "1"
+    assert inst.parameter[2].min == 0
+    assert inst.parameter[2].name == "url"
+    assert inst.parameter[2].type == "uri"
+    assert inst.parameter[2].use == "in"
+    assert inst.parameter[3].documentation == (
+        "If true, the questionnaire will only include those elements "
+        "marked as \"mustSupport='true'\" in the StructureDefinition."
+    )
+    assert inst.parameter[3].max == "1"
+    assert inst.parameter[3].min == 0
+    assert inst.parameter[3].name == "supportedOnly"
+    assert inst.parameter[3].type == "boolean"
+    assert inst.parameter[3].use == "in"
+    assert inst.parameter[4].documentation == (
+        "The questionnaire form generated based on the " "StructureDefinition."
+    )
+    assert inst.parameter[4].max == "1"
+    assert inst.parameter[4].min == 1
+    assert inst.parameter[4].name == "return"
+    assert inst.parameter[4].type == "Questionnaire"
+    assert inst.parameter[4].use == "out"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.resource[0] == "StructureDefinition"
+    assert inst.status == "draft"
+    assert inst.system is False
+    assert inst.text.status == "generated"
+    assert inst.type is True
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/StructureDefinition-questionnaire"
+            }
+        ).valueUri
+    )
+
+
+def test_operationdefinition_3(base_settings):
+    """No. 3 tests collection for OperationDefinition.
+    Test File: operationdefinition-operation-structuredefinition-questionnaire(StructureDefinition-questionnaire).json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-structuredefinition-questionnaire(StructureDefinition-questionnaire).json"
+    )
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
+    )
+    assert "OperationDefinition" == inst.get_resource_type()
+
+    impl_operationdefinition_3(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.model_dump()
+    assert "OperationDefinition" == data["resourceType"]
+
+    inst2 = operationdefinition.OperationDefinition(**data)
+    impl_operationdefinition_3(inst2)
+
+
+def impl_operationdefinition_4(inst):
+    assert inst.code == "populatelink"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
+    )
+    assert inst.id == "Questionnaire-populatelink"
+    assert inst.instance is True
+    assert inst.kind == "operation"
+    assert inst.name == "Generate a link to a Questionnaire completion webpage"
+    assert inst.parameter[0].documentation == (
+        "A logical questionnaire identifier (i.e. "
+        "''Questionnaire.identifier''). The server must know the "
+        "questionnaire or be able to retrieve it from other known "
+        "repositories."
+    )
+    assert inst.parameter[0].max == "1"
+    assert inst.parameter[0].min == 0
+    assert inst.parameter[0].name == "identifier"
+    assert inst.parameter[0].type == "uri"
+    assert inst.parameter[0].use == "in"
+    assert inst.parameter[1].documentation == (
+        "The [Questionnaire](questionnaire.html) is provided directly"
+        " as part of the request. Servers may choose not to accept "
+        "questionnaires in this fashion"
+    )
+    assert inst.parameter[1].max == "1"
+    assert inst.parameter[1].min == 0
+    assert inst.parameter[1].name == "questionnaire"
+    assert inst.parameter[1].type == "Questionnaire"
+    assert inst.parameter[1].use == "in"
+    assert inst.parameter[2].max == "1"
+    assert inst.parameter[2].min == 0
+    assert inst.parameter[2].name == "questionnaireRef"
+    assert (
+        inst.parameter[2].profile.reference
+        == "http://hl7.org/fhir/StructureDefinition/Questionnaire"
+    )
+    assert inst.parameter[2].type == "Reference"
+    assert inst.parameter[2].use == "in"
+    assert inst.parameter[3].max == "*"
+    assert inst.parameter[3].min == 0
+    assert inst.parameter[3].name == "content"
+    assert inst.parameter[3].type == "Reference"
+    assert inst.parameter[3].use == "in"
+    assert inst.parameter[4].documentation == (
+        "If specified and set to 'true' (and the server is capable), "
+        "the server should use what resources and other knowledge it "
+        "has about the referenced subject when pre-populating answers"
+        " to questions."
+    )
+    assert inst.parameter[4].max == "1"
+    assert inst.parameter[4].min == 0
+    assert inst.parameter[4].name == "local"
+    assert inst.parameter[4].type == "boolean"
+    assert inst.parameter[4].use == "in"
+    assert inst.parameter[5].documentation == (
+        "The URL for the web form  that supports capturing the "
+        "information defined by questionnaire, possibly partially (or"
+        " fully)-populated with a set of answers for the specified "
+        "Questionnaire"
+    )
+    assert inst.parameter[5].max == "1"
+    assert inst.parameter[5].min == 1
+    assert inst.parameter[5].name == "link"
+    assert inst.parameter[5].type == "uri"
+    assert inst.parameter[5].use == "out"
+    assert inst.parameter[6].max == "1"
+    assert inst.parameter[6].min == 0
+    assert inst.parameter[6].name == "issues"
+    assert inst.parameter[6].type == "OperationOutcome"
+    assert inst.parameter[6].use == "out"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.resource[0] == "Questionnaire"
+    assert inst.status == "draft"
+    assert inst.system is False
+    assert inst.text.status == "generated"
+    assert inst.type is True
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/Questionnaire-populatelink"
+            }
+        ).valueUri
+    )
+
+
+def test_operationdefinition_4(base_settings):
+    """No. 4 tests collection for OperationDefinition.
+    Test File: operationdefinition-operation-questionnaire-populatelink(Questionnaire-populatelink).json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-questionnaire-populatelink(Questionnaire-populatelink).json"
+    )
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
+    )
+    assert "OperationDefinition" == inst.get_resource_type()
+
+    impl_operationdefinition_4(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.model_dump()
+    assert "OperationDefinition" == data["resourceType"]
+
+    inst2 = operationdefinition.OperationDefinition(**data)
+    impl_operationdefinition_4(inst2)
+
+
+def impl_operationdefinition_5(inst):
+    assert inst.code == "apply"
+    assert inst.contact[0].telecom[0].system == "url"
+    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
+    assert inst.contact[0].telecom[1].system == "email"
+    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
+    )
+    assert inst.description == (
+        "The apply operation realizes a definition in a specific " "context"
+    )
+    assert inst.id == "ActivityDefinition-apply"
+    assert inst.instance is True
+    assert inst.kind == "operation"
+    assert inst.name == "Apply"
+    assert (
+        inst.parameter[0].documentation
+        == "The patient that is the target of the activity to be applied"
+    )
+    assert inst.parameter[0].max == "1"
+    assert inst.parameter[0].min == 1
+    assert inst.parameter[0].name == "patient"
+    assert (
+        inst.parameter[0].profile.reference
+        == "http://hl7.org/fhir/StructureDefinition/Patient"
+    )
+    assert inst.parameter[0].type == "Reference"
+    assert inst.parameter[0].use == "in"
+    assert inst.parameter[1].documentation == "The encounter in context, if any"
+    assert inst.parameter[1].max == "1"
+    assert inst.parameter[1].min == 0
+    assert inst.parameter[1].name == "encounter"
+    assert (
+        inst.parameter[1].profile.reference
+        == "http://hl7.org/fhir/StructureDefinition/Encounter"
+    )
+    assert inst.parameter[1].type == "Reference"
+    assert inst.parameter[1].use == "in"
+    assert inst.parameter[2].documentation == "The practitioner in context"
+    assert inst.parameter[2].max == "1"
+    assert inst.parameter[2].min == 0
+    assert inst.parameter[2].name == "practitioner"
+    assert (
+        inst.parameter[2].profile.reference
+        == "http://hl7.org/fhir/StructureDefinition/Practitioner"
+    )
+    assert inst.parameter[2].type == "Reference"
+    assert inst.parameter[2].use == "in"
+    assert inst.parameter[3].documentation == "The organization in context"
+    assert inst.parameter[3].max == "1"
+    assert inst.parameter[3].min == 0
+    assert inst.parameter[3].name == "organization"
+    assert (
+        inst.parameter[3].profile.reference
+        == "http://hl7.org/fhir/StructureDefinition/Organization"
+    )
+    assert inst.parameter[3].type == "Reference"
+    assert inst.parameter[3].use == "in"
+    assert inst.parameter[4].documentation == (
+        "The type of user initiating the request, e.g. patient, "
+        "healthcare provider, or specific type of healthcare provider"
+        " (physician, nurse, etc.)"
+    )
+    assert inst.parameter[4].max == "1"
+    assert inst.parameter[4].min == 0
+    assert inst.parameter[4].name == "userType"
+    assert inst.parameter[4].type == "CodeableConcept"
+    assert inst.parameter[4].use == "in"
+    assert (
+        inst.parameter[5].documentation
+        == "Preferred language of the person using the system"
+    )
+    assert inst.parameter[5].max == "1"
+    assert inst.parameter[5].min == 0
+    assert inst.parameter[5].name == "userLanguage"
+    assert inst.parameter[5].type == "CodeableConcept"
+    assert inst.parameter[5].use == "in"
+    assert inst.parameter[6].max == "1"
+    assert inst.parameter[6].min == 0
+    assert inst.parameter[6].name == "userTaskContext"
+    assert inst.parameter[6].type == "CodeableConcept"
+    assert inst.parameter[6].use == "in"
+    assert inst.parameter[7].documentation == (
+        "The current setting of the request (inpatient, outpatient, " "etc)"
+    )
+    assert inst.parameter[7].max == "1"
+    assert inst.parameter[7].min == 0
+    assert inst.parameter[7].name == "setting"
+    assert inst.parameter[7].type == "CodeableConcept"
+    assert inst.parameter[7].use == "in"
+    assert (
+        inst.parameter[8].documentation
+        == "Additional detail about the setting of the request, if any"
+    )
+    assert inst.parameter[8].max == "1"
+    assert inst.parameter[8].min == 0
+    assert inst.parameter[8].name == "settingContext"
+    assert inst.parameter[8].type == "CodeableConcept"
+    assert inst.parameter[8].use == "in"
+    assert (
+        inst.parameter[9].documentation
+        == "The resource that is the result of applying the definition"
+    )
+    assert inst.parameter[9].max == "1"
+    assert inst.parameter[9].min == 1
+    assert inst.parameter[9].name == "return"
+    assert inst.parameter[9].type == "Any"
+    assert inst.parameter[9].use == "out"
+    assert inst.publisher == "HL7 (FHIR Project)"
+    assert inst.resource[0] == "ActivityDefinition"
+    assert inst.status == "draft"
+    assert inst.system is False
+    assert inst.text.status == "generated"
+    assert inst.type is False
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/ActivityDefinition-apply"
+            }
+        ).valueUri
+    )
+
+
+def test_operationdefinition_5(base_settings):
+    """No. 5 tests collection for OperationDefinition.
+    Test File: operationdefinition-operation-activitydefinition-apply(ActivityDefinition-apply).json
+    """
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-activitydefinition-apply(ActivityDefinition-apply).json"
+    )
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
+    )
+    assert "OperationDefinition" == inst.get_resource_type()
+
+    impl_operationdefinition_5(inst)
+
+    # testing reverse by generating data from itself and create again.
+    data = inst.model_dump()
+    assert "OperationDefinition" == data["resourceType"]
+
+    inst2 = operationdefinition.OperationDefinition(**data)
+    impl_operationdefinition_5(inst2)
+
+
+def impl_operationdefinition_6(inst):
     assert inst.code == "expand"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
+    )
     assert inst.id == "ValueSet-expand"
     assert inst.instance is True
     assert inst.kind == "operation"
@@ -308,149 +624,59 @@ def impl_operationdefinition_3(inst):
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is True
-    assert inst.url == "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"
-
-
-def test_operationdefinition_3(base_settings):
-    """No. 3 tests collection for OperationDefinition.
-    Test File: operation-valueset-expand.json
-    """
-    filename = base_settings["unittest_data_dir"] / "operation-valueset-expand.json"
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "OperationDefinition" == inst.resource_type
-
-    impl_operationdefinition_3(inst)
-
-    # testing reverse by generating data from itself and create again.
-    data = inst.dict()
-    assert "OperationDefinition" == data["resourceType"]
-
-    inst2 = operationdefinition.OperationDefinition(**data)
-    impl_operationdefinition_3(inst2)
-
-
-def impl_operationdefinition_4(inst):
-    assert inst.code == "populate"
-    assert inst.contact[0].telecom[0].system == "url"
-    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.contact[0].telecom[1].system == "email"
-    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.id == "Questionnaire-populate"
-    assert inst.instance is True
-    assert inst.kind == "operation"
-    assert inst.name == "Populate Questionnaire"
-    assert inst.parameter[0].documentation == (
-        "A logical questionnaire identifier (i.e. "
-        "''Questionnaire.identifier''). The server must know the "
-        "questionnaire or be able to retrieve it from other known "
-        "repositories."
-    )
-    assert inst.parameter[0].max == "1"
-    assert inst.parameter[0].min == 0
-    assert inst.parameter[0].name == "identifier"
-    assert inst.parameter[0].type == "uri"
-    assert inst.parameter[0].use == "in"
-    assert inst.parameter[1].documentation == (
-        "The [Questionnaire](questionnaire.html) is provided directly"
-        " as part of the request. Servers may choose not to accept "
-        "questionnaires in this fashion"
-    )
-    assert inst.parameter[1].max == "1"
-    assert inst.parameter[1].min == 0
-    assert inst.parameter[1].name == "questionnaire"
-    assert inst.parameter[1].type == "Questionnaire"
-    assert inst.parameter[1].use == "in"
-    assert inst.parameter[2].max == "1"
-    assert inst.parameter[2].min == 0
-    assert inst.parameter[2].name == "questionnaireRef"
     assert (
-        inst.parameter[2].profile.reference
-        == "http://hl7.org/fhir/StructureDefinition/Questionnaire"
-    )
-    assert inst.parameter[2].type == "Reference"
-    assert inst.parameter[2].use == "in"
-    assert inst.parameter[3].max == "1"
-    assert inst.parameter[3].min == 1
-    assert inst.parameter[3].name == "subject"
-    assert inst.parameter[3].type == "Reference"
-    assert inst.parameter[3].use == "in"
-    assert inst.parameter[4].max == "*"
-    assert inst.parameter[4].min == 0
-    assert inst.parameter[4].name == "content"
-    assert inst.parameter[4].type == "Reference"
-    assert inst.parameter[4].use == "in"
-    assert inst.parameter[5].documentation == (
-        "If specified and set to 'true' (and the server is capable), "
-        "the server should use what resources and other knowledge it "
-        "has about the referenced subject when pre-populating answers"
-        " to questions."
-    )
-    assert inst.parameter[5].max == "1"
-    assert inst.parameter[5].min == 0
-    assert inst.parameter[5].name == "local"
-    assert inst.parameter[5].type == "boolean"
-    assert inst.parameter[5].use == "in"
-    assert inst.parameter[6].documentation == (
-        "The partially (or fully)-populated set of answers for the "
-        "specified Questionnaire"
-    )
-    assert inst.parameter[6].max == "1"
-    assert inst.parameter[6].min == 1
-    assert inst.parameter[6].name == "questionnaire"
-    assert inst.parameter[6].type == "QuestionnaireResponse"
-    assert inst.parameter[6].use == "out"
-    assert inst.parameter[7].max == "1"
-    assert inst.parameter[7].min == 0
-    assert inst.parameter[7].name == "issues"
-    assert inst.parameter[7].type == "OperationOutcome"
-    assert inst.parameter[7].use == "out"
-    assert inst.publisher == "HL7 (FHIR Project)"
-    assert inst.resource[0] == "Questionnaire"
-    assert inst.status == "draft"
-    assert inst.system is False
-    assert inst.text.status == "generated"
-    assert inst.type is True
-    assert inst.url == (
-        "http://hl7.org/fhir/OperationDefinition/Questionnaire-" "populate"
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"}
+        ).valueUri
     )
 
 
-def test_operationdefinition_4(base_settings):
-    """No. 4 tests collection for OperationDefinition.
-    Test File: operation-questionnaire-populate.json
+def test_operationdefinition_6(base_settings):
+    """No. 6 tests collection for OperationDefinition.
+    Test File: operationdefinition-operation-valueset-expand(ValueSet-expand).json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "operation-questionnaire-populate.json"
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-valueset-expand(ValueSet-expand).json"
     )
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
     )
-    assert "OperationDefinition" == inst.resource_type
+    assert "OperationDefinition" == inst.get_resource_type()
 
-    impl_operationdefinition_4(inst)
+    impl_operationdefinition_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationDefinition" == data["resourceType"]
 
     inst2 = operationdefinition.OperationDefinition(**data)
-    impl_operationdefinition_4(inst2)
+    impl_operationdefinition_6(inst2)
 
 
-def impl_operationdefinition_5(inst):
-    assert inst.code == "meta-add"
+def impl_operationdefinition_7(inst):
+    assert inst.code == "meta-delete"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.id == "Resource-meta-add"
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
+    )
+    assert inst.description == (
+        "This operation takes a meta, and deletes the profiles, tags,"
+        " and security labels found in it from the nominated "
+        "resource.   This operation can also be used on historical "
+        "entries"
+    )
+    assert inst.id == "Resource-meta-delete"
     assert inst.instance is True
     assert inst.kind == "operation"
-    assert inst.name == "Add profiles, tags, and security labels to a resource"
+    assert inst.name == "Delete profiles, tags, and security labels for a resource"
     assert inst.parameter[0].max == "1"
     assert inst.parameter[0].min == 1
     assert inst.parameter[0].name == "meta"
@@ -468,209 +694,31 @@ def impl_operationdefinition_5(inst):
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is False
-    assert inst.url == "http://hl7.org/fhir/OperationDefinition/Resource-meta-add"
-
-
-def test_operationdefinition_5(base_settings):
-    """No. 5 tests collection for OperationDefinition.
-    Test File: operation-resource-meta-add.json
-    """
-    filename = base_settings["unittest_data_dir"] / "operation-resource-meta-add.json"
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "OperationDefinition" == inst.resource_type
-
-    impl_operationdefinition_5(inst)
-
-    # testing reverse by generating data from itself and create again.
-    data = inst.dict()
-    assert "OperationDefinition" == data["resourceType"]
-
-    inst2 = operationdefinition.OperationDefinition(**data)
-    impl_operationdefinition_5(inst2)
-
-
-def impl_operationdefinition_6(inst):
-    assert inst.code == "everything"
-    assert inst.contact[0].telecom[0].system == "url"
-    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.contact[0].telecom[1].system == "email"
-    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.id == "Encounter-everything"
-    assert inst.instance is True
-    assert inst.kind == "operation"
-    assert inst.name == "Fetch Encounter Record"
-    assert inst.parameter[0].documentation == 'The bundle type is "searchset"'
-    assert inst.parameter[0].max == "1"
-    assert inst.parameter[0].min == 1
-    assert inst.parameter[0].name == "return"
-    assert inst.parameter[0].type == "Bundle"
-    assert inst.parameter[0].use == "out"
-    assert inst.publisher == "HL7 (FHIR Project)"
-    assert inst.resource[0] == "Encounter"
-    assert inst.status == "draft"
-    assert inst.system is False
-    assert inst.text.status == "generated"
-    assert inst.type is False
-    assert inst.url == "http://hl7.org/fhir/OperationDefinition/Encounter-everything"
-
-
-def test_operationdefinition_6(base_settings):
-    """No. 6 tests collection for OperationDefinition.
-    Test File: operation-encounter-everything.json
-    """
-    filename = (
-        base_settings["unittest_data_dir"] / "operation-encounter-everything.json"
-    )
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "OperationDefinition" == inst.resource_type
-
-    impl_operationdefinition_6(inst)
-
-    # testing reverse by generating data from itself and create again.
-    data = inst.dict()
-    assert "OperationDefinition" == data["resourceType"]
-
-    inst2 = operationdefinition.OperationDefinition(**data)
-    impl_operationdefinition_6(inst2)
-
-
-def impl_operationdefinition_7(inst):
-    assert inst.code == "evaluate"
-    assert inst.contact[0].telecom[0].system == "url"
-    assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.contact[0].telecom[1].system == "email"
-    assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.description == (
-        "The evaluate operation requests clinical decision support "
-        "guidance based on a specific decision support module"
-    )
-    assert inst.id == "ServiceDefinition-evaluate"
-    assert inst.instance is True
-    assert inst.kind == "operation"
-    assert inst.name == "Evaluate"
     assert (
-        inst.parameter[0].documentation
-        == "An optional client-provided identifier to track the request."
-    )
-    assert inst.parameter[0].max == "1"
-    assert inst.parameter[0].min == 0
-    assert inst.parameter[0].name == "requestId"
-    assert inst.parameter[0].type == "id"
-    assert inst.parameter[0].use == "in"
-    assert inst.parameter[1].max == "1"
-    assert inst.parameter[1].min == 0
-    assert inst.parameter[1].name == "evaluateAtDateTime"
-    assert inst.parameter[1].type == "dateTime"
-    assert inst.parameter[1].use == "in"
-    assert inst.parameter[2].documentation == (
-        "The input parameters for a request, if any. These parameters"
-        " are defined by the module that is the target of the "
-        "evaluation, and typically supply patient-independent "
-        "information to the module."
-    )
-    assert inst.parameter[2].max == "1"
-    assert inst.parameter[2].min == 0
-    assert inst.parameter[2].name == "inputParameters"
-    assert inst.parameter[2].type == "Parameters"
-    assert inst.parameter[2].use == "in"
-    assert inst.parameter[3].documentation == (
-        "The input data for the request. These data are defined by "
-        "the data requirements of the module and typically provide "
-        "patient-dependent information."
-    )
-    assert inst.parameter[3].max == "*"
-    assert inst.parameter[3].min == 0
-    assert inst.parameter[3].name == "inputData"
-    assert inst.parameter[3].type == "Any"
-    assert inst.parameter[3].use == "in"
-    assert inst.parameter[4].documentation == "The patient in context, if any."
-    assert inst.parameter[4].max == "1"
-    assert inst.parameter[4].min == 0
-    assert inst.parameter[4].name == "patient"
-    assert (
-        inst.parameter[4].profile.reference
-        == "http://hl7.org/fhir/StructureDefinition/Patient"
-    )
-    assert inst.parameter[4].type == "Reference"
-    assert inst.parameter[4].use == "in"
-    assert inst.parameter[5].documentation == "The encounter in context, if any."
-    assert inst.parameter[5].max == "1"
-    assert inst.parameter[5].min == 0
-    assert inst.parameter[5].name == "encounter"
-    assert (
-        inst.parameter[5].profile.reference
-        == "http://hl7.org/fhir/StructureDefinition/Encounter"
-    )
-    assert inst.parameter[5].type == "Reference"
-    assert inst.parameter[5].use == "in"
-    assert inst.parameter[6].documentation == "The organization initiating the request."
-    assert inst.parameter[6].max == "1"
-    assert inst.parameter[6].min == 0
-    assert inst.parameter[6].name == "initiatingOrganization"
-    assert (
-        inst.parameter[6].profile.reference
-        == "http://hl7.org/fhir/StructureDefinition/Organization"
-    )
-    assert inst.parameter[6].type == "Reference"
-    assert inst.parameter[6].use == "in"
-    assert inst.parameter[7].documentation == "The person initiating the request."
-    assert inst.parameter[7].max == "1"
-    assert inst.parameter[7].min == 0
-    assert inst.parameter[7].name == "initiatingPerson"
-    assert inst.parameter[7].type == "Reference"
-    assert inst.parameter[7].use == "in"
-    assert inst.parameter[8].documentation == (
-        "The type of user initiating the request, e.g. patient, "
-        "healthcare provider, or specific type of healthcare provider"
-        " (physician, nurse, etc.)."
-    )
-    assert inst.parameter[8].max == "1"
-    assert inst.parameter[8].min == 0
-    assert inst.parameter[8].name == "userType"
-    assert inst.parameter[8].type == "CodeableConcept"
-    assert inst.parameter[8].use == "in"
-    assert (
-        inst.parameter[9].documentation
-        == "Preferred language of the person using the system."
-    )
-    assert inst.parameter[9].max == "1"
-    assert inst.parameter[9].min == 0
-    assert inst.parameter[9].name == "userLanguage"
-    assert inst.parameter[9].type == "CodeableConcept"
-    assert inst.parameter[9].use == "in"
-    assert inst.publisher == "HL7 (FHIR Project)"
-    assert inst.resource[0] == "ServiceDefinition"
-    assert inst.status == "draft"
-    assert inst.system is False
-    assert inst.text.status == "generated"
-    assert inst.type is False
-    assert inst.url == (
-        "http://hl7.org/fhir/OperationDefinition/ServiceDefinition-" "evaluate"
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/Resource-meta-delete"}
+        ).valueUri
     )
 
 
 def test_operationdefinition_7(base_settings):
     """No. 7 tests collection for OperationDefinition.
-    Test File: operation-servicedefinition-evaluate.json
+    Test File: operationdefinition-operation-resource-meta-delete(Resource-meta-delete).json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "operation-servicedefinition-evaluate.json"
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-resource-meta-delete(Resource-meta-delete).json"
     )
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
     )
-    assert "OperationDefinition" == inst.resource_type
+    assert "OperationDefinition" == inst.get_resource_type()
 
     impl_operationdefinition_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationDefinition" == data["resourceType"]
 
     inst2 = operationdefinition.OperationDefinition(**data)
@@ -678,45 +726,71 @@ def test_operationdefinition_7(base_settings):
 
 
 def impl_operationdefinition_8(inst):
-    assert inst.code == "meta"
+    assert inst.code == "data-requirements"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.id == "Resource-meta"
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
+    )
+    assert inst.description == (
+        "The data-requirements operation aggregates and returns the "
+        "parameters and data requirements for the activity definition"
+        " and all its dependencies as a single module definition "
+        "library"
+    )
+    assert inst.id == "ActivityDefinition-data-requirements"
     assert inst.instance is True
     assert inst.kind == "operation"
-    assert inst.name == "Access a list of profiles, tags, and security labels"
-    assert inst.parameter[0].documentation == "The meta returned by the operation"
+    assert inst.name == "Data Requirements"
+    assert inst.parameter[0].documentation == (
+        "The result of the requirements gathering represented as a "
+        "module-definition Library that describes the aggregate "
+        "parameters, data requirements, and dependencies of the "
+        "activity definition"
+    )
     assert inst.parameter[0].max == "1"
     assert inst.parameter[0].min == 1
     assert inst.parameter[0].name == "return"
-    assert inst.parameter[0].type == "Meta"
+    assert inst.parameter[0].type == "Library"
     assert inst.parameter[0].use == "out"
     assert inst.publisher == "HL7 (FHIR Project)"
-    assert inst.resource[0] == "Resource"
+    assert inst.resource[0] == "ActivityDefinition"
     assert inst.status == "draft"
-    assert inst.system is True
+    assert inst.system is False
     assert inst.text.status == "generated"
-    assert inst.type is True
-    assert inst.url == "http://hl7.org/fhir/OperationDefinition/Resource-meta"
+    assert inst.type is False
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/ActivityDefinition-data-requirements"
+            }
+        ).valueUri
+    )
 
 
 def test_operationdefinition_8(base_settings):
     """No. 8 tests collection for OperationDefinition.
-    Test File: operation-resource-meta.json
+    Test File: operationdefinition-operation-activitydefinition-data-requirements(ActivityDefinition-data-requirements).json
     """
-    filename = base_settings["unittest_data_dir"] / "operation-resource-meta.json"
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-activitydefinition-data-requirements(ActivityDefinition-data-requirements).json"
     )
-    assert "OperationDefinition" == inst.resource_type
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
+    )
+    assert "OperationDefinition" == inst.get_resource_type()
 
     impl_operationdefinition_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationDefinition" == data["resourceType"]
 
     inst2 = operationdefinition.OperationDefinition(**data)
@@ -724,64 +798,81 @@ def test_operationdefinition_8(base_settings):
 
 
 def impl_operationdefinition_9(inst):
-    assert inst.code == "data-requirements"
+    assert inst.code == "closure"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.description == (
-        "The data-requirements operation aggregates and returns the "
-        "parameters and data requirements for the service module and "
-        "all its dependencies as a single module definition library."
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
     )
-    assert inst.id == "ServiceDefinition-data-requirements"
-    assert inst.instance is True
+    assert inst.id == "ConceptMap-closure"
+    assert inst.instance is False
     assert inst.kind == "operation"
-    assert inst.name == "Data Requirements"
-    assert inst.parameter[0].max == "1"
-    assert inst.parameter[0].min == 0
-    assert inst.parameter[0].name == "evaluateAtDateTime"
-    assert inst.parameter[0].type == "dateTime"
-    assert inst.parameter[0].use == "in"
-    assert inst.parameter[1].documentation == (
-        "The result of the requirements gathering is a module-"
-        "definition Library that describes the aggregate parameters, "
-        "data requirements, and dependencies of the service."
+    assert inst.name == "Closure Table Maintenance"
+    assert inst.parameter[0].documentation == (
+        "The name that defines the particular context for the "
+        "subsumption based closure table"
     )
-    assert inst.parameter[1].max == "1"
-    assert inst.parameter[1].min == 1
-    assert inst.parameter[1].name == "return"
-    assert inst.parameter[1].type == "Library"
-    assert inst.parameter[1].use == "out"
+    assert inst.parameter[0].max == "1"
+    assert inst.parameter[0].min == 1
+    assert inst.parameter[0].name == "name"
+    assert inst.parameter[0].type == "string"
+    assert inst.parameter[0].use == "in"
+    assert inst.parameter[1].documentation == "Concepts to add to the closure table"
+    assert inst.parameter[1].max == "*"
+    assert inst.parameter[1].min == 0
+    assert inst.parameter[1].name == "concept"
+    assert inst.parameter[1].type == "Coding"
+    assert inst.parameter[1].use == "in"
+    assert inst.parameter[2].documentation == (
+        "A request to resynchronise - request to send all new entries"
+        " since the nominated version was sent by the server"
+    )
+    assert inst.parameter[2].max == "1"
+    assert inst.parameter[2].min == 0
+    assert inst.parameter[2].name == "version"
+    assert inst.parameter[2].type == "id"
+    assert inst.parameter[2].use == "in"
+    assert inst.parameter[3].max == "1"
+    assert inst.parameter[3].min == 1
+    assert inst.parameter[3].name == "return"
+    assert inst.parameter[3].type == "ConceptMap"
+    assert inst.parameter[3].use == "out"
     assert inst.publisher == "HL7 (FHIR Project)"
-    assert inst.resource[0] == "ServiceDefinition"
+    assert inst.resource[0] == "ConceptMap"
     assert inst.status == "draft"
-    assert inst.system is False
+    assert inst.system is True
     assert inst.text.status == "generated"
     assert inst.type is False
-    assert inst.url == (
-        "http://hl7.org/fhir/OperationDefinition/ServiceDefinition-" "data-requirements"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/ConceptMap-closure"}
+        ).valueUri
     )
 
 
 def test_operationdefinition_9(base_settings):
     """No. 9 tests collection for OperationDefinition.
-    Test File: operation-servicedefinition-data-requirements.json
+    Test File: operationdefinition-operation-conceptmap-closure(ConceptMap-closure).json
     """
     filename = (
         base_settings["unittest_data_dir"]
-        / "operation-servicedefinition-data-requirements.json"
+        / "operationdefinition-operation-conceptmap-closure(ConceptMap-closure).json"
     )
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
     )
-    assert "OperationDefinition" == inst.resource_type
+    assert "OperationDefinition" == inst.get_resource_type()
 
     impl_operationdefinition_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationDefinition" == data["resourceType"]
 
     inst2 = operationdefinition.OperationDefinition(**data)
@@ -789,132 +880,104 @@ def test_operationdefinition_9(base_settings):
 
 
 def impl_operationdefinition_10(inst):
-    assert inst.code == "evaluate-measure"
+    assert inst.code == "conforms"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2017-04-19T07:44:43+10:00")
-    assert inst.description == (
-        "The evaluate-measure operation is used to invoke an eMeasure"
-        " and obtain the results"
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-10-24T11:53:00+11:00"}
+        ).valueDateTime
     )
-    assert inst.id == "Measure-evaluate-measure"
-    assert inst.instance is True
+    assert inst.id == "CapabilityStatement-conforms"
+    assert inst.instance is False
     assert inst.kind == "operation"
-    assert inst.name == "Evaluate Measure"
+    assert inst.name == "Test if a server implements a client's required operations"
+    assert inst.parameter[0].documentation == (
+        "The canonical URL for the left-hand system's capability " "statement"
+    )
     assert inst.parameter[0].max == "1"
-    assert inst.parameter[0].min == 1
-    assert inst.parameter[0].name == "periodStart"
-    assert inst.parameter[0].type == "date"
+    assert inst.parameter[0].min == 0
+    assert inst.parameter[0].name == "left"
+    assert inst.parameter[0].type == "uri"
     assert inst.parameter[0].use == "in"
     assert inst.parameter[1].documentation == (
-        "The end of the measurement period. The period will end at "
-        "the end of the period implied by the supplied timestamp. "
-        "E.g. a value of 2014 would set the period end to be "
-        "2014-12-31T23:59:59 inclusive"
+        "The canonical URL for the right-hand system's capability " "statement"
     )
     assert inst.parameter[1].max == "1"
-    assert inst.parameter[1].min == 1
-    assert inst.parameter[1].name == "periodEnd"
-    assert inst.parameter[1].type == "date"
+    assert inst.parameter[1].min == 0
+    assert inst.parameter[1].name == "right"
+    assert inst.parameter[1].type == "uri"
     assert inst.parameter[1].use == "in"
     assert inst.parameter[2].documentation == (
-        "The measure to evaluate. This parameter is only required "
-        "when the operation is invoked on the resource type, it is "
-        "not used when invoking the operation on a Measure instance"
+        "What kind of comparison to perform - server to server, or "
+        "client to server (use the codes 'server/server' or "
+        "'client/server')"
     )
     assert inst.parameter[2].max == "1"
     assert inst.parameter[2].min == 0
-    assert inst.parameter[2].name == "measure"
-    assert (
-        inst.parameter[2].profile.reference
-        == "http://hl7.org/fhir/StructureDefinition/Measure"
-    )
-    assert inst.parameter[2].type == "Reference"
+    assert inst.parameter[2].name == "mode"
+    assert inst.parameter[2].type == "code"
     assert inst.parameter[2].use == "in"
-    assert inst.parameter[3].documentation == (
-        "The type of measure report, patient, patient-list, or "
-        "population. If not specified, a default value of patient "
-        "will be used if the patient parameter is supplied, "
-        "otherwise, population will be used"
-    )
+    assert inst.parameter[3].documentation == "Outcome of the CapabilityStatement test"
     assert inst.parameter[3].max == "1"
-    assert inst.parameter[3].min == 0
-    assert inst.parameter[3].name == "reportType"
-    assert inst.parameter[3].type == "code"
-    assert inst.parameter[3].use == "in"
+    assert inst.parameter[3].min == 1
+    assert inst.parameter[3].name == "issues"
+    assert inst.parameter[3].type == "OperationOutcome"
+    assert inst.parameter[3].use == "out"
     assert inst.parameter[4].documentation == (
-        "Patient to evaluate against. If not specified, the measure "
-        "will be evaluated for all patients that meet the "
-        "requirements of the measure. If specified, only the "
-        "referenced patient will be evaluated"
+        "The intersection of the functionality described by the "
+        "CapabilityStatement resources"
     )
     assert inst.parameter[4].max == "1"
     assert inst.parameter[4].min == 0
-    assert inst.parameter[4].name == "patient"
-    assert (
-        inst.parameter[4].profile.reference
-        == "http://hl7.org/fhir/StructureDefinition/Patient"
-    )
-    assert inst.parameter[4].type == "Reference"
-    assert inst.parameter[4].use == "in"
+    assert inst.parameter[4].name == "union"
+    assert inst.parameter[4].type == "CapabilityStatement"
+    assert inst.parameter[4].use == "out"
     assert inst.parameter[5].documentation == (
-        "Practitioner to evaluate. If specified, the measure will be "
-        "evaluated only for patients whose primary practitioner is "
-        "the identified practitioner"
+        "The union of the functionality described by the "
+        "CapabilityStatement resources"
     )
     assert inst.parameter[5].max == "1"
     assert inst.parameter[5].min == 0
-    assert inst.parameter[5].name == "practitioner"
-    assert (
-        inst.parameter[5].profile.reference
-        == "http://hl7.org/fhir/StructureDefinition/Practitioner"
-    )
-    assert inst.parameter[5].type == "Reference"
-    assert inst.parameter[5].use == "in"
-    assert inst.parameter[6].max == "1"
-    assert inst.parameter[6].min == 0
-    assert inst.parameter[6].name == "lastReceivedOn"
-    assert inst.parameter[6].type == "dateTime"
-    assert inst.parameter[6].use == "in"
-    assert inst.parameter[7].documentation == (
-        "The results of the measure calculation. See the "
-        "MeasureReport resource for a complete description of the "
-        "output of this operation"
-    )
-    assert inst.parameter[7].max == "1"
-    assert inst.parameter[7].min == 1
-    assert inst.parameter[7].name == "return"
-    assert inst.parameter[7].type == "MeasureReport"
-    assert inst.parameter[7].use == "out"
+    assert inst.parameter[5].name == "intersection"
+    assert inst.parameter[5].type == "CapabilityStatement"
+    assert inst.parameter[5].use == "out"
     assert inst.publisher == "HL7 (FHIR Project)"
-    assert inst.resource[0] == "Measure"
+    assert inst.resource[0] == "CapabilityStatement"
     assert inst.status == "draft"
     assert inst.system is False
     assert inst.text.status == "generated"
     assert inst.type is True
-    assert inst.url == (
-        "http://hl7.org/fhir/OperationDefinition/Measure-evaluate-" "measure"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/CapabilityStatement-conforms"
+            }
+        ).valueUri
     )
 
 
 def test_operationdefinition_10(base_settings):
     """No. 10 tests collection for OperationDefinition.
-    Test File: operation-measure-evaluate-measure.json
+    Test File: operationdefinition-operation-capabilitystatement-conforms(CapabilityStatement-conforms).json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "operation-measure-evaluate-measure.json"
+        base_settings["unittest_data_dir"]
+        / "operationdefinition-operation-capabilitystatement-conforms(CapabilityStatement-conforms).json"
     )
-    inst = operationdefinition.OperationDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationdefinition.OperationDefinition.model_validate_json(
+        filename.read_bytes()
     )
-    assert "OperationDefinition" == inst.resource_type
+    assert "OperationDefinition" == inst.get_resource_type()
 
     impl_operationdefinition_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationDefinition" == data["resourceType"]
 
     inst2 = operationdefinition.OperationDefinition(**data)

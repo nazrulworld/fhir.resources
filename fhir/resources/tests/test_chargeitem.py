@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import chargeitem
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_chargeitem_1(inst):
@@ -18,50 +18,54 @@ def impl_chargeitem_1(inst):
     )
     assert (
         inst.definitionUri[0]
-        == ExternalValidatorModel(
-            valueUri="http://www.kbv.de/tools/ebm/html/01520_2904360860826220813632.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://www.kbv.de/tools/ebm/html/01520_2904360860826220813632.html"
+            }
         ).valueUri
     )
     assert inst.encounter.reference == "Encounter/example"
     assert (
         inst.enteredDate
-        == ExternalValidatorModel(
-            valueDateTime="2017-01-25T23:55:04+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-25T23:55:04+01:00"}
         ).valueDateTime
     )
     assert inst.enterer.reference == "Practitioner/example"
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://myHospital.org/ChargeItems").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://myHospital.org/ChargeItems"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "654321"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].authorReference.reference == "Practitioner/example"
     assert inst.note[0].text == "The code is only applicable for periods longer than 4h"
     assert (
         inst.note[0].time
-        == ExternalValidatorModel(
-            valueDateTime="2017-01-25T23:55:04+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-25T23:55:04+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurrencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2017-01-25T12:35:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-25T12:35:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurrencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2017-01-25T08:00:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-25T08:00:00+01:00"}
         ).valueDateTime
     )
     assert inst.overrideReason.text == (
@@ -72,19 +76,23 @@ def impl_chargeitem_1(inst):
     assert inst.performer[0].function.coding[0].display == "Cardiologist"
     assert (
         inst.performer[0].function.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.performer[1].actor.reference == "Practitioner/example"
     assert inst.performer[1].function.coding[0].code == "224542009"
     assert inst.performer[1].function.coding[0].display == "Coronary Care Nurse"
     assert (
         inst.performer[1].function.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.performingOrganization.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://myhospital/NamingSystem/departments"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://myhospital/NamingSystem/departments"}
         ).valueUri
     )
     assert inst.performingOrganization.identifier.value == "CARD_INTERMEDIATE_CARE"
@@ -93,12 +101,14 @@ def impl_chargeitem_1(inst):
     assert inst.reason[0].coding[0].display == "Cardiovascular disease, unspecified"
     assert (
         inst.reason[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/icd-10").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/icd-10"}
+        ).valueUri
     )
     assert (
         inst.requestingOrganization.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://myhospital/NamingSystem/departments"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://myhospital/NamingSystem/departments"}
         ).valueUri
     )
     assert inst.requestingOrganization.identifier.value == "CARD_U1"

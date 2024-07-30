@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import coverage
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_coverage_1(inst):
@@ -16,8 +16,8 @@ def impl_coverage_1(inst):
     assert inst.class_fhir[0].type.coding[0].code == "group"
     assert (
         inst.class_fhir[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[0].value.value == "WESTAIR"
@@ -28,8 +28,8 @@ def impl_coverage_1(inst):
     assert inst.class_fhir[1].type.coding[0].code == "plan"
     assert (
         inst.class_fhir[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[1].value.value == "BG4352"
@@ -37,32 +37,38 @@ def impl_coverage_1(inst):
     assert inst.class_fhir[2].type.coding[0].code == "subplan"
     assert (
         inst.class_fhir[2].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[2].value.value == "D15C9"
     assert inst.contract[0].reference == "Contract/INS-101"
     assert (
         inst.costToBeneficiary[0].exception[0].period.end
-        == ExternalValidatorModel(valueDateTime="2018-12-31").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-12-31"}
+        ).valueDateTime
     )
     assert (
         inst.costToBeneficiary[0].exception[0].period.start
-        == ExternalValidatorModel(valueDateTime="2018-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-01-01"}
+        ).valueDateTime
     )
     assert inst.costToBeneficiary[0].exception[0].type.coding[0].code == "retired"
     assert (
         inst.costToBeneficiary[0].exception[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-coverage-financial-exception"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/ex-coverage-financial-exception"
+            }
         ).valueUri
     )
     assert inst.costToBeneficiary[0].type.coding[0].code == "gpvisit"
     assert (
         inst.costToBeneficiary[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-copay-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-copay-type"}
         ).valueUri
     )
     assert inst.costToBeneficiary[0].valueMoney.currency == "USD"
@@ -71,7 +77,9 @@ def impl_coverage_1(inst):
     assert inst.id == "7546D"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://xyz.com/codes/identifier").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://xyz.com/codes/identifier"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "AB98761"
     assert inst.insurer.reference == "Organization/2"
@@ -80,19 +88,23 @@ def impl_coverage_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.network == "5"
     assert inst.order == 2
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2012-03-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-03-17"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2011-03-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2011-03-17"}
+        ).valueDateTime
     )
     assert inst.relationship.coding[0].code == "self"
     assert inst.status == "active"
@@ -107,8 +119,8 @@ def impl_coverage_1(inst):
     assert inst.type.coding[0].display == "extended healthcare"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
 
@@ -136,8 +148,8 @@ def impl_coverage_2(inst):
     assert inst.id == "SP1234"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hospitalx.com/selfpayagreement"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hospitalx.com/selfpayagreement"}
         ).valueUri
     )
     assert inst.identifier[0].value == "SP12345678"
@@ -146,14 +158,16 @@ def impl_coverage_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.paymentBy[0].party.reference == "Patient/5"
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2012-03-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-03-17"}
+        ).valueDateTime
     )
     assert inst.relationship.coding[0].code == "self"
     assert inst.status == "active"
@@ -167,8 +181,8 @@ def impl_coverage_2(inst):
     assert inst.type.coding[0].display == "PAY"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-selfpay"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-selfpay"}
         ).valueUri
     )
 
@@ -196,14 +210,16 @@ def impl_coverage_3(inst):
     assert inst.id == "7547E"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ehic.com/insurer/123456789/member"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ehic.com/insurer/123456789/member"}
         ).valueUri
     )
     assert inst.identifier[0].value == "A123456780"
     assert (
         inst.insurer.identifier.system
-        == ExternalValidatorModel(valueUri="http://ehic.com/insurer").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ehic.com/insurer"}
+        ).valueUri
     )
     assert inst.insurer.identifier.value == "123456789"
     assert inst.kind == "insurance"
@@ -211,13 +227,15 @@ def impl_coverage_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2012-03-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-03-17"}
+        ).valueDateTime
     )
     assert inst.relationship.coding[0].code == "self"
     assert inst.status == "active"
@@ -231,8 +249,8 @@ def impl_coverage_3(inst):
     assert inst.type.coding[0].display == "extended healthcare"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
 
@@ -261,8 +279,8 @@ def impl_coverage_4(inst):
     assert inst.class_fhir[0].type.coding[0].code == "group"
     assert (
         inst.class_fhir[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[0].value.value == "CB135"
@@ -270,8 +288,8 @@ def impl_coverage_4(inst):
     assert inst.class_fhir[1].type.coding[0].code == "subgroup"
     assert (
         inst.class_fhir[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[1].value.value == "123"
@@ -282,8 +300,8 @@ def impl_coverage_4(inst):
     assert inst.class_fhir[2].type.coding[0].code == "plan"
     assert (
         inst.class_fhir[2].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[2].value.value == "B37FC"
@@ -291,8 +309,8 @@ def impl_coverage_4(inst):
     assert inst.class_fhir[3].type.coding[0].code == "subplan"
     assert (
         inst.class_fhir[3].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[3].value.value == "P7"
@@ -300,8 +318,8 @@ def impl_coverage_4(inst):
     assert inst.class_fhir[4].type.coding[0].code == "class"
     assert (
         inst.class_fhir[4].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[4].value.value == "SILVER"
@@ -309,40 +327,40 @@ def impl_coverage_4(inst):
     assert inst.class_fhir[5].type.coding[0].code == "subclass"
     assert (
         inst.class_fhir[5].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[5].value.value == "Tier2"
     assert inst.class_fhir[6].type.coding[0].code == "sequence"
     assert (
         inst.class_fhir[6].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[6].value.value == "9"
     assert inst.class_fhir[7].type.coding[0].code == "rxid"
     assert (
         inst.class_fhir[7].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[7].value.value == "MDF12345"
     assert inst.class_fhir[8].type.coding[0].code == "rxbin"
     assert (
         inst.class_fhir[8].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[8].value.value == "987654"
     assert inst.class_fhir[9].type.coding[0].code == "rxgroup"
     assert (
         inst.class_fhir[9].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/coverage-class"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/coverage-class"}
         ).valueUri
     )
     assert inst.class_fhir[9].value.value == "M35PT"
@@ -350,8 +368,8 @@ def impl_coverage_4(inst):
     assert inst.id == "9876B1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://benefitsinc.com/certificate"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://benefitsinc.com/certificate"}
         ).valueUri
     )
     assert inst.identifier[0].value == "12345"
@@ -361,17 +379,21 @@ def impl_coverage_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2012-05-23").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-05-23"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2011-05-23").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2011-05-23"}
+        ).valueDateTime
     )
     assert (
         inst.policyHolder.reference == "http://benefitsinc.com/FHIR/Organization/CBI35"
@@ -388,8 +410,8 @@ def impl_coverage_4(inst):
     assert inst.type.coding[0].display == "extended healthcare"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
 

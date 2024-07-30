@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import nutritionorder
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_nutritionorder_1(inst):
@@ -15,7 +15,9 @@ def impl_nutritionorder_1(inst):
     assert inst.allergyIntolerance[0].reference == "AllergyIntolerance/example"
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
@@ -23,21 +25,23 @@ def impl_nutritionorder_1(inst):
     assert inst.excludeFoodModifier[0].coding[0].display == "Cashew Nut"
     assert (
         inst.excludeFoodModifier[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.excludeFoodModifier[0].coding[0].version == "20140730"
     assert inst.foodPreferenceModifier[0].coding[0].code == "kosher"
     assert (
         inst.foodPreferenceModifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diet"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diet"}
         ).valueUri
     )
     assert inst.id == "diabeticsupplement"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/nutrition-requests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/nutrition-requests"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -46,8 +50,8 @@ def impl_nutritionorder_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.orderer.display == "Dr Adam Careful"
@@ -60,7 +64,9 @@ def impl_nutritionorder_1(inst):
     assert float(inst.supplement[0].quantity.value) == float(1)
     assert (
         inst.supplement[0].schedule.timing[0].repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2015-02-10T15:00:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-02-10T15:00:00Z"}
+        ).valueDateTime
     )
     assert inst.supplement[0].schedule.timing[0].repeat.frequency == 1
     assert float(inst.supplement[0].schedule.timing[0].repeat.period) == float(24)
@@ -75,14 +81,16 @@ def impl_nutritionorder_1(inst):
     )
     assert (
         inst.supplement[0].type.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.supplement[0].type.concept.coding[1].code == "1010"
     assert inst.supplement[0].type.concept.coding[1].display == "Adult diabetic formula"
     assert (
         inst.supplement[0].type.concept.coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/supplement-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/supplement-type-codes"}
         ).valueUri
     )
     assert inst.supplement[0].type.concept.text == "Adult diabetic formula"
@@ -115,7 +123,9 @@ def impl_nutritionorder_2(inst):
     assert inst.allergyIntolerance[0].reference == "AllergyIntolerance/example"
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
@@ -124,15 +134,17 @@ def impl_nutritionorder_2(inst):
     assert inst.enteralFormula.additive[0].type.concept.coding[0].display == "Lipid"
     assert (
         inst.enteralFormula.additive[0].type.concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/entformula-additive"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/entformula-additive"}
         ).valueUri
     )
     assert inst.enteralFormula.administrationInstruction == "240 mls every 4hrs"
     assert inst.enteralFormula.administration[0].quantity.code == "mL"
     assert (
         inst.enteralFormula.administration[0].quantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.administration[0].quantity.unit == "milliliters"
     assert float(inst.enteralFormula.administration[0].quantity.value) == float(240)
@@ -140,7 +152,9 @@ def impl_nutritionorder_2(inst):
         inst.enteralFormula.administration[0]
         .schedule.timing[0]
         .repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-09-17T16:00:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17T16:00:00Z"}
+        ).valueDateTime
     )
     assert (
         inst.enteralFormula.administration[0].schedule.timing[0].repeat.frequency == 1
@@ -162,19 +176,25 @@ def impl_nutritionorder_2(inst):
     )
     assert (
         inst.enteralFormula.baseFormulaType.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.enteralFormula.caloricDensity.code == "cal/mL"
     assert (
         inst.enteralFormula.caloricDensity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.caloricDensity.unit == "calories per milliliter"
     assert float(inst.enteralFormula.caloricDensity.value) == float(1.5)
     assert inst.enteralFormula.maxVolumeToDeliver.code == "mL/d"
     assert (
         inst.enteralFormula.maxVolumeToDeliver.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.maxVolumeToDeliver.unit == "milliliter/day"
     assert float(inst.enteralFormula.maxVolumeToDeliver.value) == float(1440)
@@ -185,29 +205,33 @@ def impl_nutritionorder_2(inst):
     )
     assert (
         inst.enteralFormula.routeOfAdministration.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+            }
         ).valueUri
     )
     assert inst.excludeFoodModifier[0].coding[0].code == "227493005"
     assert inst.excludeFoodModifier[0].coding[0].display == "Cashew Nut"
     assert (
         inst.excludeFoodModifier[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.excludeFoodModifier[0].coding[0].version == "20140730"
     assert inst.foodPreferenceModifier[0].coding[0].code == "dairy-free"
     assert (
         inst.foodPreferenceModifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diet"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diet"}
         ).valueUri
     )
     assert inst.id == "enteralbolus"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.acme.org/nutritionorders"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.acme.org/nutritionorders"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -216,8 +240,8 @@ def impl_nutritionorder_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.orderer.display == "Dr Adam Careful"
@@ -253,7 +277,9 @@ def impl_nutritionorder_3(inst):
     assert inst.allergyIntolerance[0].reference == "AllergyIntolerance/example"
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
@@ -261,21 +287,23 @@ def impl_nutritionorder_3(inst):
     assert inst.excludeFoodModifier[0].coding[0].display == "Cashew Nut"
     assert (
         inst.excludeFoodModifier[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.excludeFoodModifier[0].coding[0].version == "20140730"
     assert inst.foodPreferenceModifier[0].coding[0].code == "dairy-free"
     assert (
         inst.foodPreferenceModifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diet"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diet"}
         ).valueUri
     )
     assert inst.id == "fiberrestricteddiet"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/nutrition-requests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/nutrition-requests"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -284,14 +312,16 @@ def impl_nutritionorder_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.oralDiet.nutrient[0].amount.code == "g"
     assert (
         inst.oralDiet.nutrient[0].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.oralDiet.nutrient[0].amount.unit == "grams"
     assert float(inst.oralDiet.nutrient[0].amount.value) == float(50)
@@ -299,11 +329,15 @@ def impl_nutritionorder_3(inst):
     assert inst.oralDiet.nutrient[0].modifier.coding[0].display == "Fat"
     assert (
         inst.oralDiet.nutrient[0].modifier.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.oralDiet.schedule.timing[0].repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2015-02-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-02-10"}
+        ).valueDateTime
     )
     assert inst.oralDiet.schedule.timing[0].repeat.frequency == 3
     assert float(inst.oralDiet.schedule.timing[0].repeat.period) == float(1)
@@ -312,14 +346,16 @@ def impl_nutritionorder_3(inst):
     assert inst.oralDiet.type[0].coding[0].display == "Restricted fiber diet"
     assert (
         inst.oralDiet.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[0].coding[1].code == "1000"
     assert inst.oralDiet.type[0].coding[1].display == "Fiber restricted"
     assert (
         inst.oralDiet.type[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/diet-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/diet-type-codes"}
         ).valueUri
     )
     assert inst.oralDiet.type[0].text == "Fiber restricted diet"
@@ -327,14 +363,16 @@ def impl_nutritionorder_3(inst):
     assert inst.oralDiet.type[1].coding[0].display == "Low fat diet"
     assert (
         inst.oralDiet.type[1].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[1].coding[1].code == "1100"
     assert inst.oralDiet.type[1].coding[1].display == "Low Fat"
     assert (
         inst.oralDiet.type[1].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/diet-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/diet-type-codes"}
         ).valueUri
     )
     assert inst.oralDiet.type[1].text == "Low fat diet"
@@ -370,13 +408,15 @@ def test_nutritionorder_3(base_settings):
 def impl_nutritionorder_4(inst):
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.id == "texturemodified"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/nutrition-requests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/nutrition-requests"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -385,13 +425,15 @@ def impl_nutritionorder_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.oralDiet.schedule.timing[0].repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2015-02-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-02-10"}
+        ).valueDateTime
     )
     assert inst.oralDiet.schedule.timing[0].repeat.frequency == 3
     assert float(inst.oralDiet.schedule.timing[0].repeat.period) == float(1)
@@ -400,28 +442,34 @@ def impl_nutritionorder_4(inst):
     assert inst.oralDiet.texture[0].foodType.coding[0].display == "Meat"
     assert (
         inst.oralDiet.texture[0].foodType.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.texture[0].foodType.text == "Regular, Chopped Meat"
     assert inst.oralDiet.texture[0].modifier.coding[0].code == "228049004"
     assert inst.oralDiet.texture[0].modifier.coding[0].display == "Chopped food"
     assert (
         inst.oralDiet.texture[0].modifier.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.texture[0].modifier.text == "Regular, Chopped Meat"
     assert inst.oralDiet.type[0].coding[0].code == "435801000124108"
     assert inst.oralDiet.type[0].coding[0].display == "Texture modified diet"
     assert (
         inst.oralDiet.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[0].coding[1].code == "1010"
     assert inst.oralDiet.type[0].coding[1].display == "Texture modified diet"
     assert (
         inst.oralDiet.type[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/diet-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/diet-type-codes"}
         ).valueUri
     )
     assert inst.oralDiet.type[0].text == "Texture modified diet"
@@ -457,13 +505,15 @@ def test_nutritionorder_4(base_settings):
 def impl_nutritionorder_5(inst):
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.id == "pureeddiet-simple"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/nutrition-requests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/nutrition-requests"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -472,8 +522,8 @@ def impl_nutritionorder_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.oralDiet.fluidConsistencyType[0].coding[0].code == "439021000124105"
@@ -483,12 +533,16 @@ def impl_nutritionorder_5(inst):
     )
     assert (
         inst.oralDiet.fluidConsistencyType[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.fluidConsistencyType[0].text == "Nectar thick liquids"
     assert (
         inst.oralDiet.schedule.timing[0].repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2015-02-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-02-10"}
+        ).valueDateTime
     )
     assert inst.oralDiet.schedule.timing[0].repeat.frequency == 3
     assert float(inst.oralDiet.schedule.timing[0].repeat.period) == float(1)
@@ -497,21 +551,25 @@ def impl_nutritionorder_5(inst):
     assert inst.oralDiet.texture[0].modifier.coding[0].display == "Liquidized food"
     assert (
         inst.oralDiet.texture[0].modifier.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.texture[0].modifier.text == "Pureed"
     assert inst.oralDiet.type[0].coding[0].code == "226211001"
     assert inst.oralDiet.type[0].coding[0].display == "Pureed diet"
     assert (
         inst.oralDiet.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[0].coding[1].code == "1010"
     assert inst.oralDiet.type[0].coding[1].display == "Pureed diet"
     assert (
         inst.oralDiet.type[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/diet-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/diet-type-codes"}
         ).valueUri
     )
     assert inst.oralDiet.type[0].text == "Pureed diet"
@@ -530,7 +588,9 @@ def impl_nutritionorder_5(inst):
     )
     assert (
         inst.supplement[0].type.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.supplement[0].type.concept.coding[1].code == "1040"
     assert (
@@ -538,8 +598,8 @@ def impl_nutritionorder_5(inst):
     )
     assert (
         inst.supplement[0].type.concept.coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/supplement-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/supplement-type-codes"}
         ).valueUri
     )
     assert inst.supplement[0].type.concept.text == "Adult high energy pudding"
@@ -570,7 +630,9 @@ def test_nutritionorder_5(base_settings):
 def impl_nutritionorder_6(inst):
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
@@ -583,8 +645,8 @@ def impl_nutritionorder_6(inst):
     )
     assert (
         inst.enteralFormula.additive[0].type.concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/entformula-additive"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/entformula-additive"}
         ).valueUri
     )
     assert inst.enteralFormula.administrationInstruction == (
@@ -594,7 +656,9 @@ def impl_nutritionorder_6(inst):
     assert inst.enteralFormula.administration[0].quantity.code == "[foz_us]"
     assert (
         inst.enteralFormula.administration[0].quantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.administration[0].quantity.unit == "ounces"
     assert float(inst.enteralFormula.administration[0].quantity.value) == float(4)
@@ -602,7 +666,9 @@ def impl_nutritionorder_6(inst):
         inst.enteralFormula.administration[0]
         .schedule.timing[0]
         .repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert (
         inst.enteralFormula.administration[0].schedule.timing[0].repeat.frequency == 1
@@ -622,19 +688,25 @@ def impl_nutritionorder_6(inst):
     )
     assert (
         inst.enteralFormula.baseFormulaType.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.enteralFormula.caloricDensity.code == "cal/[foz_us]"
     assert (
         inst.enteralFormula.caloricDensity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.caloricDensity.unit == "calories per ounce"
     assert float(inst.enteralFormula.caloricDensity.value) == float(20)
     assert inst.enteralFormula.maxVolumeToDeliver.code == "[foz_us]"
     assert (
         inst.enteralFormula.maxVolumeToDeliver.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.maxVolumeToDeliver.unit == "ounces"
     assert float(inst.enteralFormula.maxVolumeToDeliver.value) == float(32)
@@ -644,16 +716,18 @@ def impl_nutritionorder_6(inst):
     )
     assert (
         inst.enteralFormula.routeOfAdministration.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+            }
         ).valueUri
     )
     assert inst.enteralFormula.routeOfAdministration.coding[0].userSelected is True
     assert inst.id == "infantenteral"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.acme.org/nutritionorders"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.acme.org/nutritionorders"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -662,8 +736,8 @@ def impl_nutritionorder_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.orderer.display == "Dr Adam Careful"
@@ -697,7 +771,9 @@ def test_nutritionorder_6(base_settings):
 def impl_nutritionorder_7(inst):
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
@@ -708,7 +784,9 @@ def impl_nutritionorder_7(inst):
     assert inst.enteralFormula.administration[0].rateQuantity.code == "mL/h"
     assert (
         inst.enteralFormula.administration[0].rateQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.administration[0].rateQuantity.unit == "ml/hr"
     assert float(inst.enteralFormula.administration[0].rateQuantity.value) == float(60)
@@ -716,12 +794,16 @@ def impl_nutritionorder_7(inst):
         inst.enteralFormula.administration[0]
         .schedule.timing[0]
         .repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-09-17T07:00:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17T07:00:00Z"}
+        ).valueDateTime
     )
     assert inst.enteralFormula.administration[1].rateQuantity.code == "mL/h"
     assert (
         inst.enteralFormula.administration[1].rateQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.administration[1].rateQuantity.unit == "ml/hr"
     assert float(inst.enteralFormula.administration[1].rateQuantity.value) == float(80)
@@ -729,12 +811,16 @@ def impl_nutritionorder_7(inst):
         inst.enteralFormula.administration[1]
         .schedule.timing[0]
         .repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-09-17T11:00:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17T11:00:00Z"}
+        ).valueDateTime
     )
     assert inst.enteralFormula.administration[2].rateQuantity.code == "mL/h"
     assert (
         inst.enteralFormula.administration[2].rateQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.administration[2].rateQuantity.unit == "ml/hr"
     assert float(inst.enteralFormula.administration[2].rateQuantity.value) == float(100)
@@ -742,7 +828,9 @@ def impl_nutritionorder_7(inst):
         inst.enteralFormula.administration[2]
         .schedule.timing[0]
         .repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-09-17T15:00:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17T15:00:00Z"}
+        ).valueDateTime
     )
     assert inst.enteralFormula.baseFormulaProductName == "Acme Diabetes Formula"
     assert (
@@ -754,19 +842,25 @@ def impl_nutritionorder_7(inst):
     )
     assert (
         inst.enteralFormula.baseFormulaType.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.enteralFormula.caloricDensity.code == "cal/mL"
     assert (
         inst.enteralFormula.caloricDensity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.caloricDensity.unit == "calories per milliliter"
     assert float(inst.enteralFormula.caloricDensity.value) == float(1)
     assert inst.enteralFormula.maxVolumeToDeliver.code == "mL/d"
     assert (
         inst.enteralFormula.maxVolumeToDeliver.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.enteralFormula.maxVolumeToDeliver.unit == "milliliter/day"
     assert float(inst.enteralFormula.maxVolumeToDeliver.value) == float(880)
@@ -777,15 +871,17 @@ def impl_nutritionorder_7(inst):
     )
     assert (
         inst.enteralFormula.routeOfAdministration.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
+            }
         ).valueUri
     )
     assert inst.id == "enteralcontinuous"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.acme.org/nutritionorders"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.acme.org/nutritionorders"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -794,8 +890,8 @@ def impl_nutritionorder_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.orderer.display == "Dr Adam Careful"
@@ -832,7 +928,9 @@ def impl_nutritionorder_8(inst):
     assert inst.allergyIntolerance[0].reference == "AllergyIntolerance/example"
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
@@ -840,21 +938,23 @@ def impl_nutritionorder_8(inst):
     assert inst.excludeFoodModifier[0].coding[0].display == "Cashew Nut"
     assert (
         inst.excludeFoodModifier[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.excludeFoodModifier[0].coding[0].version == "20140730"
     assert inst.foodPreferenceModifier[0].coding[0].code == "dairy-free"
     assert (
         inst.foodPreferenceModifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diet"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diet"}
         ).valueUri
     )
     assert inst.id == "cardiacdiet"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/nutrition-requests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/nutrition-requests"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -863,8 +963,8 @@ def impl_nutritionorder_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -874,7 +974,9 @@ def impl_nutritionorder_8(inst):
     assert inst.oralDiet.nutrient[0].amount.code == "g"
     assert (
         inst.oralDiet.nutrient[0].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.oralDiet.nutrient[0].amount.unit == "grams"
     assert float(inst.oralDiet.nutrient[0].amount.value) == float(2)
@@ -882,12 +984,16 @@ def impl_nutritionorder_8(inst):
     assert inst.oralDiet.nutrient[0].modifier.coding[0].display == "Sodium"
     assert (
         inst.oralDiet.nutrient[0].modifier.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.nutrient[1].amount.code == "mL"
     assert (
         inst.oralDiet.nutrient[1].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.oralDiet.nutrient[1].amount.unit == "milliliter"
     assert float(inst.oralDiet.nutrient[1].amount.value) == float(1500)
@@ -895,20 +1001,24 @@ def impl_nutritionorder_8(inst):
     assert inst.oralDiet.nutrient[1].modifier.coding[0].display == "Fluid"
     assert (
         inst.oralDiet.nutrient[1].modifier.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[0].coding[0].code == "386619000"
     assert inst.oralDiet.type[0].coding[0].display == "Low sodium diet"
     assert (
         inst.oralDiet.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[0].coding[1].code == "1040"
     assert inst.oralDiet.type[0].coding[1].display == "Low Sodium Diet"
     assert (
         inst.oralDiet.type[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/diet-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/diet-type-codes"}
         ).valueUri
     )
     assert inst.oralDiet.type[0].text == "Low sodium diet"
@@ -916,14 +1026,16 @@ def impl_nutritionorder_8(inst):
     assert inst.oralDiet.type[1].coding[0].display == "Fluid restricted diet"
     assert (
         inst.oralDiet.type[1].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[1].coding[1].code == "1040"
     assert inst.oralDiet.type[1].coding[1].display == "Fluid restricted diet"
     assert (
         inst.oralDiet.type[1].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/diet-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/diet-type-codes"}
         ).valueUri
     )
     assert inst.oralDiet.type[1].text == "Fluid restricted diet"
@@ -960,7 +1072,9 @@ def impl_nutritionorder_9(inst):
     assert inst.allergyIntolerance[0].reference == "AllergyIntolerance/example"
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
@@ -968,21 +1082,23 @@ def impl_nutritionorder_9(inst):
     assert inst.excludeFoodModifier[0].coding[0].display == "Cashew Nut"
     assert (
         inst.excludeFoodModifier[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.excludeFoodModifier[0].coding[0].version == "20140730"
     assert inst.foodPreferenceModifier[0].coding[0].code == "dairy-free"
     assert (
         inst.foodPreferenceModifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diet"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diet"}
         ).valueUri
     )
     assert inst.id == "pureeddiet"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/nutrition-requests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/nutrition-requests"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -991,8 +1107,8 @@ def impl_nutritionorder_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.oralDiet.fluidConsistencyType[0].coding[0].code == "439021000124105"
@@ -1002,12 +1118,16 @@ def impl_nutritionorder_9(inst):
     )
     assert (
         inst.oralDiet.fluidConsistencyType[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.fluidConsistencyType[0].text == "Nectar thick liquids"
     assert (
         inst.oralDiet.schedule.timing[0].repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2015-02-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-02-10"}
+        ).valueDateTime
     )
     assert inst.oralDiet.schedule.timing[0].repeat.frequency == 3
     assert float(inst.oralDiet.schedule.timing[0].repeat.period) == float(1)
@@ -1016,21 +1136,25 @@ def impl_nutritionorder_9(inst):
     assert inst.oralDiet.texture[0].modifier.coding[0].display == "Liquidized food"
     assert (
         inst.oralDiet.texture[0].modifier.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.texture[0].modifier.text == "Pureed"
     assert inst.oralDiet.type[0].coding[0].code == "226211001"
     assert inst.oralDiet.type[0].coding[0].display == "Pureed diet"
     assert (
         inst.oralDiet.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[0].coding[1].code == "1010"
     assert inst.oralDiet.type[0].coding[1].display == "Pureed diet"
     assert (
         inst.oralDiet.type[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/diet-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/diet-type-codes"}
         ).valueUri
     )
     assert inst.oralDiet.type[0].text == "Pureed diet"
@@ -1067,7 +1191,9 @@ def impl_nutritionorder_10(inst):
     assert inst.allergyIntolerance[0].reference == "AllergyIntolerance/example"
     assert (
         inst.dateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-17"}
+        ).valueDateTime
     )
     assert inst.encounter.display == "Inpatient"
     assert inst.encounter.reference == "Encounter/example"
@@ -1075,21 +1201,23 @@ def impl_nutritionorder_10(inst):
     assert inst.excludeFoodModifier[0].coding[0].display == "Cashew Nut"
     assert (
         inst.excludeFoodModifier[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.excludeFoodModifier[0].coding[0].version == "20140730"
     assert inst.foodPreferenceModifier[0].coding[0].code == "dairy-free"
     assert (
         inst.foodPreferenceModifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diet"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diet"}
         ).valueUri
     )
     assert inst.id == "diabeticdiet"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/nutrition-requests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/nutrition-requests"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -1098,14 +1226,16 @@ def impl_nutritionorder_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.oralDiet.nutrient[0].amount.code == "g"
     assert (
         inst.oralDiet.nutrient[0].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.oralDiet.nutrient[0].amount.unit == "grams"
     assert float(inst.oralDiet.nutrient[0].amount.value) == float(75)
@@ -1113,11 +1243,15 @@ def impl_nutritionorder_10(inst):
     assert inst.oralDiet.nutrient[0].modifier.coding[0].display == "Carbohydrate"
     assert (
         inst.oralDiet.nutrient[0].modifier.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.oralDiet.schedule.timing[0].repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2015-02-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-02-10"}
+        ).valueDateTime
     )
     assert inst.oralDiet.schedule.timing[0].repeat.frequency == 3
     assert float(inst.oralDiet.schedule.timing[0].repeat.period) == float(1)
@@ -1126,14 +1260,16 @@ def impl_nutritionorder_10(inst):
     assert inst.oralDiet.type[0].coding[0].display == "Diabetic diet"
     assert (
         inst.oralDiet.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.oralDiet.type[0].coding[1].code == "1030"
     assert inst.oralDiet.type[0].coding[1].display == "DD - Diabetic diet"
     assert (
         inst.oralDiet.type[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealthhospital.org/diet-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealthhospital.org/diet-type-codes"}
         ).valueUri
     )
     assert inst.oralDiet.type[0].text == "DD - Diabetic diet"

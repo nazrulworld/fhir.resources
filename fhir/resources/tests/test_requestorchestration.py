@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import requestorchestration
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_requestorchestration_1(inst):
@@ -20,7 +20,7 @@ def impl_requestorchestration_1(inst):
         .extension[0]
         .extension[0]
         .url
-        == ExternalValidatorModel(valueUri="day").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "day"}).valueUri
     )
     assert (
         inst.action[0]
@@ -42,7 +42,7 @@ def impl_requestorchestration_1(inst):
         .extension[0]
         .extension[1]
         .url
-        == ExternalValidatorModel(valueUri="day").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "day"}).valueUri
     )
     assert (
         inst.action[0]
@@ -57,8 +57,8 @@ def impl_requestorchestration_1(inst):
     )
     assert (
         inst.action[0].action[0].action[0].action[0].action[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle"}
         ).valueUri
     )
     assert inst.action[0].action[0].action[0].action[0].action[0].id == "action-1"
@@ -79,7 +79,7 @@ def impl_requestorchestration_1(inst):
         .extension[0]
         .extension[0]
         .url
-        == ExternalValidatorModel(valueUri="day").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "day"}).valueUri
     )
     assert (
         inst.action[0]
@@ -94,8 +94,8 @@ def impl_requestorchestration_1(inst):
     )
     assert (
         inst.action[0].action[0].action[0].action[0].action[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle"}
         ).valueUri
     )
     assert inst.action[0].action[0].action[0].action[0].action[1].id == "action-2"
@@ -141,7 +141,9 @@ def impl_requestorchestration_1(inst):
     assert inst.author.reference == "Practitioner/1"
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(valueDateTime="2017-03-06T17:31:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-06T17:31:00Z"}
+        ).valueDateTime
     )
     assert inst.contained[0].id == "1111"
     assert inst.contained[1].id == "2222"
@@ -156,8 +158,8 @@ def impl_requestorchestration_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.priority == "routine"
@@ -222,21 +224,25 @@ def impl_requestorchestration_2(inst):
     )
     assert (
         inst.action[0].timingDateTime
-        == ExternalValidatorModel(valueDateTime="2017-03-06T19:00:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-06T19:00:00Z"}
+        ).valueDateTime
     )
     assert inst.action[0].title == "Administer Medications"
     assert inst.author.reference == "Practitioner/1"
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(valueDateTime="2017-03-06T17:31:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-06T17:31:00Z"}
+        ).valueDateTime
     )
     assert inst.contained[0].id == "medicationrequest-1"
     assert inst.contained[1].id == "medicationrequest-2"
     assert inst.encounter.reference == "Encounter/example"
     assert (
         inst.groupIdentifier.system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/treatment-group"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/treatment-group"}
         ).valueUri
     )
     assert inst.groupIdentifier.value == "00001"
@@ -247,8 +253,8 @@ def impl_requestorchestration_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == "Additional notes about the request group"

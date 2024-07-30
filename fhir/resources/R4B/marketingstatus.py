@@ -6,7 +6,7 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, fhirtypes
 
@@ -21,9 +21,9 @@ class MarketingStatus(backboneelement.BackboneElement):
     available.
     """
 
-    resource_type = Field("MarketingStatus", const=True)
+    __resource_type__ = "MarketingStatus"
 
-    country: fhirtypes.CodeableConceptType = Field(
+    country: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="country",
         title=(
@@ -32,11 +32,12 @@ class MarketingStatus(backboneelement.BackboneElement):
             "alpha-2 code elements"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    dateRange: fhirtypes.PeriodType = Field(
+    dateRange: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="dateRange",
         title=(
@@ -49,11 +50,12 @@ class MarketingStatus(backboneelement.BackboneElement):
             "chain"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: fhirtypes.CodeableConceptType = Field(
+    jurisdiction: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title=(
@@ -64,11 +66,12 @@ class MarketingStatus(backboneelement.BackboneElement):
             "identifier shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    restoreDate: fhirtypes.DateTime = Field(
+    restoreDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="restoreDate",
         title=(
@@ -81,14 +84,15 @@ class MarketingStatus(backboneelement.BackboneElement):
             "chain"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_restoreDate", title="Extension field for ``restoreDate``."
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="status",
         title=(
@@ -97,8 +101,9 @@ class MarketingStatus(backboneelement.BackboneElement):
             "examples"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

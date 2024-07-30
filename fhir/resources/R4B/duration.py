@@ -6,8 +6,6 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
-
 from . import quantity
 
 
@@ -19,7 +17,7 @@ class Duration(quantity.Quantity):
     A length of time.
     """
 
-    resource_type = Field("Duration", const=True)
+    __resource_type__ = "Duration"
 
     @classmethod
     def elements_sequence(cls):

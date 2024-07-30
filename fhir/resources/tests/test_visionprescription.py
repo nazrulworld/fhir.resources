@@ -7,23 +7,28 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import visionprescription
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_visionprescription_1(inst):
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-06-15").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-06-15"}
+        ).valueDateTime
     )
     assert (
         inst.dateWritten
-        == ExternalValidatorModel(valueDateTime="2014-06-15").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-06-15"}
+        ).valueDateTime
     )
     assert inst.encounter.reference == "Encounter/f001"
     assert inst.id == "33124"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.happysight.com/prescription"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.happysight.com/prescription"}
         ).valueUri
     )
     assert inst.identifier[0].value == "15014"
@@ -37,7 +42,9 @@ def impl_visionprescription_1(inst):
     assert inst.lensSpecification[0].duration.code == "mo"
     assert (
         inst.lensSpecification[0].duration.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.lensSpecification[0].duration.unit == "mo"
     assert float(inst.lensSpecification[0].duration.value) == float(1)
@@ -50,8 +57,10 @@ def impl_visionprescription_1(inst):
     assert inst.lensSpecification[0].product.coding[0].code == "contact"
     assert (
         inst.lensSpecification[0].product.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+            }
         ).valueUri
     )
     assert float(inst.lensSpecification[1].add) == float(1.75)
@@ -64,7 +73,9 @@ def impl_visionprescription_1(inst):
     assert inst.lensSpecification[1].duration.code == "mo"
     assert (
         inst.lensSpecification[1].duration.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.lensSpecification[1].duration.unit == "month"
     assert float(inst.lensSpecification[1].duration.value) == float(1)
@@ -77,16 +88,18 @@ def impl_visionprescription_1(inst):
     assert inst.lensSpecification[1].product.coding[0].code == "contact"
     assert (
         inst.lensSpecification[1].product.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+            }
         ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
@@ -121,17 +134,22 @@ def test_visionprescription_1(base_settings):
 
 def impl_visionprescription_2(inst):
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-06-15").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-06-15"}
+        ).valueDateTime
     )
     assert (
         inst.dateWritten
-        == ExternalValidatorModel(valueDateTime="2014-06-15").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-06-15"}
+        ).valueDateTime
     )
     assert inst.id == "33123"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.happysight.com/prescription"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.happysight.com/prescription"}
         ).valueUri
     )
     assert inst.identifier[0].value == "15013"
@@ -142,8 +160,10 @@ def impl_visionprescription_2(inst):
     assert inst.lensSpecification[0].product.coding[0].code == "lens"
     assert (
         inst.lensSpecification[0].product.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+            }
         ).valueUri
     )
     assert float(inst.lensSpecification[0].sphere) == float(-2.0)
@@ -156,8 +176,10 @@ def impl_visionprescription_2(inst):
     assert inst.lensSpecification[1].product.coding[0].code == "lens"
     assert (
         inst.lensSpecification[1].product.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+            }
         ).valueUri
     )
     assert float(inst.lensSpecification[1].sphere) == float(-1.0)
@@ -165,8 +187,8 @@ def impl_visionprescription_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"

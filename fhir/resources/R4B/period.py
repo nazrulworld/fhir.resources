@@ -6,7 +6,7 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -20,9 +20,9 @@ class Period(element.Element):
     A time period defined by a start and end date and optionally time.
     """
 
-    resource_type = Field("Period", const=True)
+    __resource_type__ = "Period"
 
-    end: fhirtypes.DateTime = Field(
+    end: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="end",
         title="End time with inclusive boundary, if not ongoing",
@@ -32,22 +32,24 @@ class Period(element.Element):
             "start may be in the past, and the end date in the future, which means "
             "that period is expected/planned to end at that time."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_end", title="Extension field for ``end``."
     )
 
-    start: fhirtypes.DateTime = Field(
+    start: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="start",
         title="Starting time with inclusive boundary",
         description="The start of the period. The boundary is inclusive.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_start", title="Extension field for ``start``."
     )
 

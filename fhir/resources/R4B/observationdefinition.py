@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -23,9 +23,9 @@ class ObservationDefinition(domainresource.DomainResource):
     measurement produced or consumed by an orderable health care service.
     """
 
-    resource_type = Field("ObservationDefinition", const=True)
+    __resource_type__ = "ObservationDefinition"
 
-    abnormalCodedValueSet: fhirtypes.ReferenceType = Field(
+    abnormalCodedValueSet: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="abnormalCodedValueSet",
         title=(
@@ -36,22 +36,24 @@ class ObservationDefinition(domainresource.DomainResource):
             "The set of abnormal coded results for the observation conforming to "
             "this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Category of observation",
         description="A code that classifies the general type of observation.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Type of observation (code / type)",
@@ -59,11 +61,12 @@ class ObservationDefinition(domainresource.DomainResource):
             "Describes what will be observed. Sometimes this is called the "
             'observation "name".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    criticalCodedValueSet: fhirtypes.ReferenceType = Field(
+    criticalCodedValueSet: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="criticalCodedValueSet",
         title=(
@@ -74,31 +77,34 @@ class ObservationDefinition(domainresource.DomainResource):
             "The set of critical coded results for the observation conforming to "
             "this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this ObservationDefinition instance",
         description="A unique identifier assigned to this ObservationDefinition artifact.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    method: fhirtypes.CodeableConceptType = Field(
+    method: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="method",
         title="Method used to produce the observation",
         description="The method or technique used to perform the observation.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    multipleResultsAllowed: bool = Field(
+    multipleResultsAllowed: bool = Field(  # type: ignore
         None,
         alias="multipleResultsAllowed",
         title="Multiple results allowed",
@@ -106,16 +112,17 @@ class ObservationDefinition(domainresource.DomainResource):
             "Multiple results allowed for observations conforming to this "
             "ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_multipleResultsAllowed",
         title="Extension field for ``multipleResultsAllowed``.",
     )
 
-    normalCodedValueSet: fhirtypes.ReferenceType = Field(
+    normalCodedValueSet: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="normalCodedValueSet",
         title=(
@@ -126,13 +133,14 @@ class ObservationDefinition(domainresource.DomainResource):
             "The set of normal coded results for the observations conforming to "
             "this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
 
-    permittedDataType: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    permittedDataType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="permittedDataType",
         title=(
@@ -143,33 +151,32 @@ class ObservationDefinition(domainresource.DomainResource):
             "The data types allowed for the value element of the instance "
             "observations conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "Quantity",
-            "CodeableConcept",
-            "string",
-            "boolean",
-            "integer",
-            "Range",
-            "Ratio",
-            "SampledData",
-            "time",
-            "dateTime",
-            "Period",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "Quantity",
+                "CodeableConcept",
+                "string",
+                "boolean",
+                "integer",
+                "Range",
+                "Ratio",
+                "SampledData",
+                "time",
+                "dateTime",
+                "Period",
+            ],
+        },
     )
-    permittedDataType__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    permittedDataType__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None,
         alias="_permittedDataType",
         title="Extension field for ``permittedDataType``.",
     )
 
-    preferredReportName: fhirtypes.String = Field(
+    preferredReportName: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="preferredReportName",
         title="Preferred report name",
@@ -177,18 +184,17 @@ class ObservationDefinition(domainresource.DomainResource):
             "The preferred name to be used when reporting the results of "
             "observations conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_preferredReportName",
         title="Extension field for ``preferredReportName``.",
     )
 
-    qualifiedInterval: typing.List[
-        fhirtypes.ObservationDefinitionQualifiedIntervalType
-    ] = Field(
+    qualifiedInterval: typing.List[fhirtypes.ObservationDefinitionQualifiedIntervalType] = Field(  # type: ignore
         None,
         alias="qualifiedInterval",
         title="Qualified range for continuous and ordinal observation results",
@@ -197,20 +203,22 @@ class ObservationDefinition(domainresource.DomainResource):
             "ordinal or continuous observations conforming to this "
             "ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    quantitativeDetails: fhirtypes.ObservationDefinitionQuantitativeDetailsType = Field(
+    quantitativeDetails: fhirtypes.ObservationDefinitionQuantitativeDetailsType = Field(  # type: ignore
         None,
         alias="quantitativeDetails",
         title="Characteristics of quantitative results",
         description="Characteristics for quantitative results of this observation.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    validCodedValueSet: fhirtypes.ReferenceType = Field(
+    validCodedValueSet: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="validCodedValueSet",
         title=(
@@ -221,10 +229,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "The set of valid coded results for the observations  conforming to "
             "this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
 
     @classmethod
@@ -268,9 +277,9 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     continuous observations conforming to this ObservationDefinition.
     """
 
-    resource_type = Field("ObservationDefinitionQualifiedInterval", const=True)
+    __resource_type__ = "ObservationDefinitionQualifiedInterval"
 
-    age: fhirtypes.RangeType = Field(
+    age: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="age",
         title="Applicable age range, if relevant",
@@ -278,11 +287,12 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "The age at which this reference range is applicable. This is a "
             "neonatal age (e.g. number of weeks at term) if the meaning says so."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    appliesTo: typing.List[fhirtypes.CodeableConceptType] = Field(
+    appliesTo: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="appliesTo",
         title="Targetted population of the range",
@@ -290,11 +300,12 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "Codes to indicate the target population this reference range applies "
             "to."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    category: fhirtypes.Code = Field(
+    category: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="category",
         title="reference | critical | absolute",
@@ -302,29 +313,31 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "The category of interval of values for continuous or ordinal "
             "observations conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["reference", "critical", "absolute"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["reference", "critical", "absolute"],
+        },
     )
-    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_category", title="Extension field for ``category``."
     )
 
-    condition: fhirtypes.String = Field(
+    condition: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="condition",
         title="Condition associated with the reference range",
         description="Text based condition for which the reference range is valid.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_condition", title="Extension field for ``condition``."
     )
 
-    context: fhirtypes.CodeableConceptType = Field(
+    context: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="context",
         title="Range context qualifier",
@@ -332,26 +345,28 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "Codes to indicate the health context the range applies to. For "
             "example, the normal or therapeutic range."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    gender: fhirtypes.Code = Field(
+    gender: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
         description="Sex of the population the range applies to.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["male", "female", "other", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["male", "female", "other", "unknown"],
+        },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    gestationalAge: fhirtypes.RangeType = Field(
+    gestationalAge: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="gestationalAge",
         title="Applicable gestational age range, if relevant",
@@ -359,11 +374,12 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "The gestational age to which this reference range is applicable, in "
             "the context of pregnancy."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    range: fhirtypes.RangeType = Field(
+    range: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="range",
         title="The interval itself, for continuous or ordinal observations",
@@ -371,8 +387,9 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "The low and high values determining the interval. There may be only "
             "one of the two."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -405,9 +422,9 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
     Characteristics for quantitative results of this observation.
     """
 
-    resource_type = Field("ObservationDefinitionQuantitativeDetails", const=True)
+    __resource_type__ = "ObservationDefinitionQuantitativeDetails"
 
-    conversionFactor: fhirtypes.Decimal = Field(
+    conversionFactor: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="conversionFactor",
         title="SI to Customary unit conversion factor",
@@ -415,16 +432,17 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "Factor for converting value expressed with SI unit to value expressed "
             "with customary unit."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    conversionFactor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    conversionFactor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_conversionFactor",
         title="Extension field for ``conversionFactor``.",
     )
 
-    customaryUnit: fhirtypes.CodeableConceptType = Field(
+    customaryUnit: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="customaryUnit",
         title="Customary unit for quantitative results",
@@ -432,11 +450,12 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "Customary unit used to report quantitative results of observations "
             "conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    decimalPrecision: fhirtypes.Integer = Field(
+    decimalPrecision: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="decimalPrecision",
         title="Decimal precision of observation quantitative results",
@@ -444,16 +463,17 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "Number of digits after decimal separator when the results of such "
             "observations are of type Quantity."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    decimalPrecision__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    decimalPrecision__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_decimalPrecision",
         title="Extension field for ``decimalPrecision``.",
     )
 
-    unit: fhirtypes.CodeableConceptType = Field(
+    unit: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="unit",
         title="SI unit for quantitative results",
@@ -461,8 +481,9 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "SI unit used to report quantitative results of observations conforming"
             " to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

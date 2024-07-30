@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import backboneelement, element, fhirtypes
 
@@ -23,9 +23,9 @@ class Dosage(backboneelement.BackboneElement):
     patient.
     """
 
-    resource_type = Field("Dosage", const=True)
+    __resource_type__ = "Dosage"
 
-    additionalInstruction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    additionalInstruction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="additionalInstruction",
         title=(
@@ -39,11 +39,12 @@ class Dosage(backboneelement.BackboneElement):
             'drowsiness" or "avoid exposure of skin to direct sunlight or '
             'sunlamps").'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    asNeededBoolean: bool = Field(
+    asNeededBoolean: bool = Field(  # type: ignore
         None,
         alias="asNeededBoolean",
         title='Take "as needed" (for x)',
@@ -52,17 +53,18 @@ class Dosage(backboneelement.BackboneElement):
             "specific dosing schedule (Boolean option), or it indicates the "
             "precondition for taking the Medication (CodeableConcept)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e asNeeded[x]
-        one_of_many="asNeeded",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e asNeeded[x]
+            "one_of_many": "asNeeded",
+            "one_of_many_required": False,
+        },
     )
-    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
     )
 
-    asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="asNeededCodeableConcept",
         title='Take "as needed" (for x)',
@@ -71,82 +73,90 @@ class Dosage(backboneelement.BackboneElement):
             "specific dosing schedule (Boolean option), or it indicates the "
             "precondition for taking the Medication (CodeableConcept)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e asNeeded[x]
-        one_of_many="asNeeded",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e asNeeded[x]
+            "one_of_many": "asNeeded",
+            "one_of_many_required": False,
+        },
     )
 
-    doseAndRate: typing.List[fhirtypes.DosageDoseAndRateType] = Field(
+    doseAndRate: typing.List[fhirtypes.DosageDoseAndRateType] = Field(  # type: ignore
         None,
         alias="doseAndRate",
         title="Amount of medication administered",
         description="The amount of medication administered.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    maxDosePerAdministration: fhirtypes.QuantityType = Field(
+    maxDosePerAdministration: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="maxDosePerAdministration",
         title="Upper limit on medication per administration",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    maxDosePerLifetime: fhirtypes.QuantityType = Field(
+    maxDosePerLifetime: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="maxDosePerLifetime",
         title="Upper limit on medication per lifetime of the patient",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    maxDosePerPeriod: fhirtypes.RatioType = Field(
+    maxDosePerPeriod: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="maxDosePerPeriod",
         title="Upper limit on medication per unit of time",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    method: fhirtypes.CodeableConceptType = Field(
+    method: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="method",
         title="Technique for administering medication",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patientInstruction: fhirtypes.String = Field(
+    patientInstruction: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="patientInstruction",
         title="Patient or consumer oriented instructions",
         description="Instructions in terms that are understood by the patient or consumer.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_patientInstruction",
         title="Extension field for ``patientInstruction``.",
     )
 
-    route: fhirtypes.CodeableConceptType = Field(
+    route: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="route",
         title="How drug should enter body",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.Integer = Field(
+    sequence: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="sequence",
         title="The order of the dosage instructions",
@@ -154,41 +164,45 @@ class Dosage(backboneelement.BackboneElement):
             "Indicates the order in which the dosage instructions should be applied"
             " or interpreted."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    site: fhirtypes.CodeableConceptType = Field(
+    site: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="site",
         title="Body site to administer to",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    text: fhirtypes.String = Field(
+    text: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="text",
         title="Free text dosage instructions e.g. SIG",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    timing: fhirtypes.TimingType = Field(
+    timing: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="timing",
         title="When medication should be administered",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -217,10 +231,7 @@ class Dosage(backboneelement.BackboneElement):
             "maxDosePerLifetime",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_764(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -236,26 +247,7 @@ class Dosage(backboneelement.BackboneElement):
         one_of_many_fields = {
             "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class DosageDoseAndRate(element.Element):
@@ -267,77 +259,83 @@ class DosageDoseAndRate(element.Element):
     The amount of medication administered.
     """
 
-    resource_type = Field("DosageDoseAndRate", const=True)
+    __resource_type__ = "DosageDoseAndRate"
 
-    doseQuantity: fhirtypes.QuantityType = Field(
+    doseQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="doseQuantity",
         title="Amount of medication per dose",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e dose[x]
-        one_of_many="dose",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e dose[x]
+            "one_of_many": "dose",
+            "one_of_many_required": False,
+        },
     )
 
-    doseRange: fhirtypes.RangeType = Field(
+    doseRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="doseRange",
         title="Amount of medication per dose",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e dose[x]
-        one_of_many="dose",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e dose[x]
+            "one_of_many": "dose",
+            "one_of_many_required": False,
+        },
     )
 
-    rateQuantity: fhirtypes.QuantityType = Field(
+    rateQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="rateQuantity",
         title="Amount of medication per unit of time",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e rate[x]
-        one_of_many="rate",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e rate[x]
+            "one_of_many": "rate",
+            "one_of_many_required": False,
+        },
     )
 
-    rateRange: fhirtypes.RangeType = Field(
+    rateRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="rateRange",
         title="Amount of medication per unit of time",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e rate[x]
-        one_of_many="rate",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e rate[x]
+            "one_of_many": "rate",
+            "one_of_many_required": False,
+        },
     )
 
-    rateRatio: fhirtypes.RatioType = Field(
+    rateRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="rateRatio",
         title="Amount of medication per unit of time",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e rate[x]
-        one_of_many="rate",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e rate[x]
+            "one_of_many": "rate",
+            "one_of_many_required": False,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="The kind of dose or rate specified",
         description=(
             "The kind of dose or rate specified, for example, ordered or " "calculated."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -357,10 +355,7 @@ class DosageDoseAndRate(element.Element):
             "rateQuantity",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1830(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -377,23 +372,4 @@ class DosageDoseAndRate(element.Element):
             "dose": ["doseQuantity", "doseRange"],
             "rate": ["rateQuantity", "rateRange", "rateRatio"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

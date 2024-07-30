@@ -24,7 +24,7 @@ class DomainResource(resource.Resource):
 
     __resource_type__ = "DomainResource"
 
-    contained: typing.List[fhirtypes.ResourceType] = Field(
+    contained: typing.List[fhirtypes.ResourceType] = Field(  # type: ignore
         None,
         alias="contained",
         title="Contained, inline Resources",
@@ -40,7 +40,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    extension: typing.List[fhirtypes.ExtensionType] = Field(
+    extension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
         None,
         alias="extension",
         title="Additional content defined by implementations",
@@ -57,7 +57,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(
+    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
         None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored",
@@ -81,7 +81,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    text: fhirtypes.NarrativeType = Field(
+    text: fhirtypes.NarrativeType = Field(  # type: ignore
         None,
         alias="text",
         title="Text summary of the resource, for human interpretation",

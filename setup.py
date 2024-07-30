@@ -21,8 +21,6 @@ requirements = ["fhir-core"]
 
 setup_requirements = ["pytest-runner"]
 
-orjson_requirements = ["orjson>=3.4.3"]
-
 yaml_requirements = ["PyYAML>=5.4.1"]
 
 xml_requirements = ["lxml"]
@@ -63,19 +61,19 @@ setup(
     author_email="email2nazrul@gmail.com",
     # Get more from https://pypi.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "Intended Audience :: Healthcare Industry",
@@ -107,7 +105,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     extras_require={
-        "orjson": orjson_requirements,
         "yaml": yaml_requirements,
         "xml": xml_requirements,
         "test": (
@@ -120,9 +117,9 @@ setup(
         "all": (yaml_requirements + xml_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="7.1.1.dev0",
+    version="8.0.0b1.dev0",
     zip_safe=False,
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     project_urls={
         "CI: Travis": "https://travis-ci.org/github/nazrulworld/fhir.resources",
         "Coverage: codecov": "https://codecov.io/gh/nazrulworld/fhir.resources",

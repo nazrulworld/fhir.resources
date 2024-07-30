@@ -7,29 +7,33 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import questionnaire
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_questionnaire_1(inst):
     assert inst.contained[0].id == "vs2"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-Person1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.item[0].item[0].linkId == "Person-display"
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -42,8 +46,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].linkId == "Person-flyover"
@@ -54,22 +58,28 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[1].type == "display"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[1].valueString == "string"
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -82,8 +92,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "Person.id-flyover"
@@ -99,15 +109,19 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -120,8 +134,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[3].item[0].linkId == "Person.meta-flyover"
@@ -139,22 +153,28 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -167,8 +187,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[4].item[0].linkId == "Person.implicitRules-flyover"
@@ -187,22 +207,28 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[1].valueString == "code"
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -215,8 +241,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "Person.language-flyover"
@@ -233,15 +259,19 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -254,8 +284,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[6].item[0].linkId == "Person.text-flyover"
@@ -270,8 +300,10 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -284,8 +316,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[7].item[0].linkId == "Person.contained-flyover"
@@ -297,8 +329,10 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -311,8 +345,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[8].item[0].linkId == "Person.extension-flyover"
@@ -324,8 +358,10 @@ def impl_questionnaire_1(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -338,8 +374,8 @@ def impl_questionnaire_1(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[9].item[0].linkId == "Person.modifierExtension-flyover"
@@ -358,8 +394,8 @@ def impl_questionnaire_1(inst):
     assert inst.status == "draft"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-Person1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Questionnaire/qgen-Person1"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -394,20 +430,24 @@ def impl_questionnaire_2(inst):
     assert inst.contained[7].id == "vs9"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-RequestOrchestration1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.item[0].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -420,8 +460,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[0].linkId == "RequestOrchestration-flyover"
@@ -433,22 +473,28 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[1].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
     assert (
         inst.item[0].item[1].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -461,8 +507,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].item[0].linkId == "RequestOrchestration.id-flyover"
@@ -478,15 +524,19 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[1].type == "group"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -499,8 +549,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "RequestOrchestration.meta-flyover"
@@ -518,22 +568,28 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -546,8 +602,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -572,22 +628,28 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -600,8 +662,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -620,15 +682,19 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -641,8 +707,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "RequestOrchestration.text-flyover"
@@ -657,8 +723,10 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -671,8 +739,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -686,8 +754,10 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -700,8 +770,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -715,8 +785,10 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -729,8 +801,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -745,15 +817,19 @@ def impl_questionnaire_2(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[0].valueString == "Identifier"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -766,8 +842,8 @@ def impl_questionnaire_2(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -814,8 +890,8 @@ def impl_questionnaire_2(inst):
     assert inst.status == "draft"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-RequestOrchestration1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Questionnaire/qgen-RequestOrchestration1"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -844,15 +920,17 @@ def test_questionnaire_2(base_settings):
 def impl_questionnaire_3(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-OperationOutcome1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.item[0].item[0].linkId == "OperationOutcome-display"
     assert inst.item[0].item[0].text == (
@@ -862,8 +940,10 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -876,8 +956,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].linkId == "OperationOutcome-flyover"
@@ -888,22 +968,28 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[1].type == "display"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[1].valueString == "string"
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -916,8 +1002,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "OperationOutcome.id-flyover"
@@ -933,15 +1019,19 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -954,8 +1044,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[3].item[0].linkId == "OperationOutcome.meta-flyover"
@@ -973,22 +1063,28 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1001,8 +1097,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -1023,22 +1119,28 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[1].valueString == "code"
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1051,8 +1153,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "OperationOutcome.language-flyover"
@@ -1069,15 +1171,19 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1090,8 +1196,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[6].item[0].linkId == "OperationOutcome.text-flyover"
@@ -1106,8 +1212,10 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1120,8 +1228,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[7].item[0].linkId == "OperationOutcome.contained-flyover"
@@ -1133,8 +1241,10 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1147,8 +1257,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[8].item[0].linkId == "OperationOutcome.extension-flyover"
@@ -1160,8 +1270,10 @@ def impl_questionnaire_3(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1174,8 +1286,8 @@ def impl_questionnaire_3(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -1197,8 +1309,8 @@ def impl_questionnaire_3(inst):
     assert inst.status == "active"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-OperationOutcome1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Questionnaire/qgen-OperationOutcome1"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -1229,20 +1341,24 @@ def impl_questionnaire_4(inst):
     assert inst.contained[1].id == "vs3"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-EventDefinition1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.item[0].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1255,8 +1371,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[0].linkId == "EventDefinition-flyover"
@@ -1267,22 +1383,28 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[1].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
     assert (
         inst.item[0].item[1].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1295,8 +1417,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].item[0].linkId == "EventDefinition.id-flyover"
@@ -1312,15 +1434,19 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[1].type == "group"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1333,8 +1459,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "EventDefinition.meta-flyover"
@@ -1352,22 +1478,28 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1380,8 +1512,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -1402,22 +1534,28 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1430,8 +1568,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[4].item[0].linkId == "EventDefinition.language-flyover"
@@ -1448,15 +1586,19 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1469,8 +1611,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "EventDefinition.text-flyover"
@@ -1485,8 +1627,10 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1499,8 +1643,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[6].item[0].linkId == "EventDefinition.contained-flyover"
@@ -1512,8 +1656,10 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1526,8 +1672,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[7].item[0].linkId == "EventDefinition.extension-flyover"
@@ -1539,8 +1685,10 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1553,8 +1701,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -1569,22 +1717,28 @@ def impl_questionnaire_4(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[9].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1597,8 +1751,8 @@ def impl_questionnaire_4(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[9].item[0].linkId == "EventDefinition.url-flyover"
@@ -1626,8 +1780,8 @@ def impl_questionnaire_4(inst):
     assert inst.status == "draft"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-EventDefinition1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Questionnaire/qgen-EventDefinition1"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -1659,20 +1813,24 @@ def impl_questionnaire_5(inst):
     assert inst.contained[4].id == "vs6"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-ActivityDefinition1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.item[0].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1685,8 +1843,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[0].linkId == "ActivityDefinition-flyover"
@@ -1698,22 +1856,28 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[1].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
     assert (
         inst.item[0].item[1].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1726,8 +1890,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].item[0].linkId == "ActivityDefinition.id-flyover"
@@ -1743,15 +1907,19 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[1].type == "group"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1764,8 +1932,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "ActivityDefinition.meta-flyover"
@@ -1783,22 +1951,28 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1811,8 +1985,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -1836,22 +2010,28 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1864,8 +2044,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[4].item[0].linkId == "ActivityDefinition.language-flyover"
@@ -1882,15 +2062,19 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1903,8 +2087,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "ActivityDefinition.text-flyover"
@@ -1919,8 +2103,10 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1933,8 +2119,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[6].item[0].linkId == "ActivityDefinition.contained-flyover"
@@ -1946,8 +2132,10 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1960,8 +2148,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[7].item[0].linkId == "ActivityDefinition.extension-flyover"
@@ -1973,8 +2161,10 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -1987,8 +2177,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -2003,22 +2193,28 @@ def impl_questionnaire_5(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[9].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2031,8 +2227,8 @@ def impl_questionnaire_5(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[9].item[0].linkId == "ActivityDefinition.url-flyover"
@@ -2063,8 +2259,8 @@ def impl_questionnaire_5(inst):
     assert inst.status == "draft"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-ActivityDefinition1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Questionnaire/qgen-ActivityDefinition1"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -2093,34 +2289,42 @@ def test_questionnaire_5(base_settings):
 def impl_questionnaire_6(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2020-12-28T16:55:11+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-12-28T16:55:11+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-cdshooksguidanceresponse1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].extension[0].valueInteger == 1
     assert (
         inst.item[0].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].extension[1].valueInteger == 1
     assert (
         inst.item[0].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2133,8 +2337,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[0].linkId == "GuidanceResponse-flyover"
@@ -2147,22 +2351,28 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[1].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
     assert (
         inst.item[0].item[1].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2175,8 +2385,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].item[0].linkId == "GuidanceResponse.id-flyover"
@@ -2192,15 +2402,19 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[1].type == "group"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2213,8 +2427,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "GuidanceResponse.meta-flyover"
@@ -2232,22 +2446,28 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2260,8 +2480,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -2282,22 +2502,28 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2310,8 +2536,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[4].item[0].linkId == "GuidanceResponse.language-flyover"
@@ -2328,15 +2554,19 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2349,8 +2579,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "GuidanceResponse.text-flyover"
@@ -2365,8 +2595,10 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2379,8 +2611,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[6].item[0].linkId == "GuidanceResponse.contained-flyover"
@@ -2392,8 +2624,10 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2406,8 +2640,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[7].item[0].linkId == "GuidanceResponse.extension-flyover"
@@ -2420,8 +2654,10 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2434,8 +2670,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -2450,29 +2686,37 @@ def impl_questionnaire_6(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[9].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[1].valueInteger == 1
     assert (
         inst.item[0].item[9].extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[2].valueString == "Identifier"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2485,8 +2729,8 @@ def impl_questionnaire_6(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -2534,8 +2778,10 @@ def impl_questionnaire_6(inst):
     assert inst.status == "draft"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-cdshooksguidanceresponse1"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/Questionnaire/qgen-cdshooksguidanceresponse1"
+            }
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -2566,15 +2812,17 @@ def impl_questionnaire_7(inst):
     assert inst.contained[0].id == "vs2"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-SearchParameter1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.item[0].item[0].linkId == "SearchParameter-display"
     assert inst.item[0].item[0].text == (
@@ -2585,8 +2833,10 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2599,8 +2849,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[1].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].linkId == "SearchParameter-flyover"
@@ -2611,22 +2861,28 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[1].type == "display"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[1].valueString == "string"
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2639,8 +2895,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "SearchParameter.id-flyover"
@@ -2656,15 +2912,19 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2677,8 +2937,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[3].item[0].linkId == "SearchParameter.meta-flyover"
@@ -2696,22 +2956,28 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2724,8 +2990,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -2746,22 +3012,28 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[1].valueString == "code"
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2774,8 +3046,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "SearchParameter.language-flyover"
@@ -2792,15 +3064,19 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2813,8 +3089,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[6].item[0].linkId == "SearchParameter.text-flyover"
@@ -2829,8 +3105,10 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2843,8 +3121,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[7].item[0].linkId == "SearchParameter.contained-flyover"
@@ -2856,8 +3134,10 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2870,8 +3150,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[8].item[0].linkId == "SearchParameter.extension-flyover"
@@ -2883,8 +3163,10 @@ def impl_questionnaire_7(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2897,8 +3179,8 @@ def impl_questionnaire_7(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -2920,8 +3202,8 @@ def impl_questionnaire_7(inst):
     assert inst.status == "draft"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-SearchParameter1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Questionnaire/qgen-SearchParameter1"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -2958,20 +3240,24 @@ def impl_questionnaire_8(inst):
     assert inst.contained[9].id == "vs11"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-ExplanationOfBenefit1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.item[0].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -2984,8 +3270,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[0].linkId == "ExplanationOfBenefit-flyover"
@@ -2998,22 +3284,28 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[1].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
     assert (
         inst.item[0].item[1].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3026,8 +3318,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].item[0].linkId == "ExplanationOfBenefit.id-flyover"
@@ -3043,15 +3335,19 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[1].type == "group"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3064,8 +3360,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "ExplanationOfBenefit.meta-flyover"
@@ -3083,22 +3379,28 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3111,8 +3413,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3137,22 +3439,28 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3165,8 +3473,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3185,15 +3493,19 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3206,8 +3518,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "ExplanationOfBenefit.text-flyover"
@@ -3222,8 +3534,10 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3236,8 +3550,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3251,8 +3565,10 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3265,8 +3581,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3280,8 +3596,10 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3294,8 +3612,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3310,15 +3628,19 @@ def impl_questionnaire_8(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[0].valueString == "Identifier"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3331,8 +3653,8 @@ def impl_questionnaire_8(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3378,8 +3700,8 @@ def impl_questionnaire_8(inst):
     assert inst.status == "draft"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-ExplanationOfBenefit1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Questionnaire/qgen-ExplanationOfBenefit1"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -3408,20 +3730,24 @@ def test_questionnaire_8(base_settings):
 def impl_questionnaire_9(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-ImmunizationEvaluation1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.item[0].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3434,8 +3760,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[0].linkId == "ImmunizationEvaluation-flyover"
@@ -3447,22 +3773,28 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[1].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
     assert (
         inst.item[0].item[1].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3475,8 +3807,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].item[0].linkId == "ImmunizationEvaluation.id-flyover"
@@ -3492,15 +3824,19 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[1].type == "group"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3513,8 +3849,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "ImmunizationEvaluation.meta-flyover"
@@ -3532,22 +3868,28 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3560,8 +3902,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3586,22 +3928,28 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3614,8 +3962,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3636,15 +3984,19 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3657,8 +4009,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "ImmunizationEvaluation.text-flyover"
@@ -3673,8 +4025,10 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3687,8 +4041,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3703,8 +4057,10 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3717,8 +4073,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3733,8 +4089,10 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3747,8 +4105,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3763,15 +4121,19 @@ def impl_questionnaire_9(inst):
     assert inst.item[0].item[8].type == "group"
     assert (
         inst.item[0].item[9].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].extension[0].valueString == "Identifier"
     assert (
         inst.item[0].item[9].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3784,8 +4146,8 @@ def impl_questionnaire_9(inst):
     )
     assert (
         inst.item[0].item[9].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -3834,8 +4196,10 @@ def impl_questionnaire_9(inst):
     assert inst.status == "draft"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-ImmunizationEvaluation1"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/Questionnaire/qgen-ImmunizationEvaluation1"
+            }
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -3864,20 +4228,24 @@ def test_questionnaire_9(base_settings):
 def impl_questionnaire_10(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert inst.id == "qgen-document-bundle1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.item[0].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3890,8 +4258,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[0].linkId == "Bundle-flyover"
@@ -3899,22 +4267,28 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[0].type == "display"
     assert (
         inst.item[0].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[1].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[1].extension[1].valueString == "string"
     assert (
         inst.item[0].item[1].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3927,8 +4301,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[1].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[1].item[0].linkId == "Bundle.id-flyover"
@@ -3944,15 +4318,19 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[1].type == "group"
     assert (
         inst.item[0].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -3965,8 +4343,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[2].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[2].item[0].linkId == "Bundle.meta-flyover"
@@ -3984,22 +4362,28 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[2].type == "group"
     assert (
         inst.item[0].item[3].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[3].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[3].extension[1].valueString == "uri"
     assert (
         inst.item[0].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4012,8 +4396,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[3].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[3].item[0].linkId == "Bundle.implicitRules-flyover"
@@ -4032,22 +4416,28 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[3].type == "group"
     assert (
         inst.item[0].item[4].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[4].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[4].extension[1].valueString == "code"
     assert (
         inst.item[0].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4060,8 +4450,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[4].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[4].item[0].linkId == "Bundle.language-flyover"
@@ -4078,29 +4468,37 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[4].type == "group"
     assert (
         inst.item[0].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[5].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[1].valueInteger == 1
     assert (
         inst.item[0].item[5].extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[5].extension[2].valueString == "Identifier"
     assert (
         inst.item[0].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4113,8 +4511,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[5].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[5].item[0].linkId == "Bundle.identifier-flyover"
@@ -4141,29 +4539,37 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[5].type == "group"
     assert (
         inst.item[0].item[6].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[6].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[6].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[6].extension[1].valueInteger == 1
     assert (
         inst.item[0].item[6].extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[6].extension[2].valueString == "code"
     assert (
         inst.item[0].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4176,8 +4582,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[6].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[6].item[0].linkId == "Bundle.type-flyover"
@@ -4194,29 +4600,37 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[6].type == "group"
     assert (
         inst.item[0].item[7].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[7].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[7].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[7].extension[1].valueInteger == 1
     assert (
         inst.item[0].item[7].extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[7].extension[2].valueString == "instant"
     assert (
         inst.item[0].item[7].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4229,8 +4643,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[7].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[7].item[0].linkId == "Bundle.timestamp-flyover"
@@ -4246,22 +4660,28 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[7].type == "group"
     assert (
         inst.item[0].item[8].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[8].extension[0].valueInteger == 0
     assert (
         inst.item[0].item[8].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[8].extension[1].valueString == "integer"
     assert (
         inst.item[0].item[8].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4274,8 +4694,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[8].item[0].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[8].item[0].linkId == "Bundle.total-flyover"
@@ -4293,8 +4713,10 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[9].item[0].type == "display"
     assert (
         inst.item[0].item[9].item[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4307,8 +4729,8 @@ def impl_questionnaire_10(inst):
     )
     assert (
         inst.item[0].item[9].item[1].extension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[9].item[1].linkId == "Bundle.link-flyover"
@@ -4319,22 +4741,28 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[9].item[1].type == "display"
     assert (
         inst.item[0].item[9].item[2].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].item[2].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[9].item[2].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].item[2].extension[1].valueString == "string"
     assert (
         inst.item[0].item[9].item[2].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4365,8 +4793,8 @@ def impl_questionnaire_10(inst):
         .extension[0]
         .valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[9].item[2].item[0].linkId == "Bundle.link.id-flyover"
@@ -4390,8 +4818,10 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[9].item[2].type == "group"
     assert (
         inst.item[0].item[9].item[3].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4422,8 +4852,8 @@ def impl_questionnaire_10(inst):
         .extension[0]
         .valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -4440,8 +4870,10 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[9].item[3].type == "group"
     assert (
         inst.item[0].item[9].item[4].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4472,8 +4904,8 @@ def impl_questionnaire_10(inst):
         .extension[0]
         .valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert (
@@ -4491,29 +4923,37 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[9].item[4].type == "group"
     assert (
         inst.item[0].item[9].item[5].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].item[5].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[9].item[5].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].item[5].extension[1].valueInteger == 1
     assert (
         inst.item[0].item[9].item[5].extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].item[5].extension[2].valueString == "code"
     assert (
         inst.item[0].item[9].item[5].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4544,8 +4984,8 @@ def impl_questionnaire_10(inst):
         .extension[0]
         .valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[9].item[5].item[0].linkId == "Bundle.link.relation-flyover"
@@ -4562,29 +5002,37 @@ def impl_questionnaire_10(inst):
     assert inst.item[0].item[9].item[5].type == "group"
     assert (
         inst.item[0].item[9].item[6].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].item[6].extension[0].valueInteger == 1
     assert (
         inst.item[0].item[9].item[6].extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].item[6].extension[1].valueInteger == 1
     assert (
         inst.item[0].item[9].item[6].extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType"
+            }
         ).valueUri
     )
     assert inst.item[0].item[9].item[6].extension[2].valueString == "uri"
     assert (
         inst.item[0].item[9].item[6].item[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl"
+            }
         ).valueUri
     )
     assert (
@@ -4615,8 +5063,8 @@ def impl_questionnaire_10(inst):
         .extension[0]
         .valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/questionnaire-item-control"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/questionnaire-item-control"}
         ).valueUri
     )
     assert inst.item[0].item[9].item[6].item[0].linkId == "Bundle.link.url-flyover"
@@ -4647,8 +5095,8 @@ def impl_questionnaire_10(inst):
     assert inst.status == "active"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Questionnaire/qgen-document-bundle1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Questionnaire/qgen-document-bundle1"}
         ).valueUri
     )
     assert inst.version == "5.0.0"

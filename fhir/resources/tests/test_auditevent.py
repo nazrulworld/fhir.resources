@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import auditevent
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_auditevent_1(inst):
@@ -17,16 +17,20 @@ def impl_auditevent_1(inst):
     assert inst.agent[0].type.coding[0].display == "human user"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+            }
         ).valueUri
     )
     assert inst.agent[0].who.display == "Grahame Grieve"
     assert inst.agent[0].who.identifier.value == "95"
     assert (
         inst.agent[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+            }
         ).valueUri
     )
     assert inst.agent[1].extension[0].valueIdentifier.type.text == "process ID"
@@ -37,46 +41,50 @@ def impl_auditevent_1(inst):
     assert inst.agent[1].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert (
         inst.agent[1].who.identifier.system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.4.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.4.2"}
+        ).valueUri
     )
     assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
     assert inst.category[0].coding[0].code == "rest"
     assert inst.category[0].coding[0].display == "Restful Operation"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-type"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "search"
     assert inst.code.coding[0].display == "search"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
         inst.entity[0].query
-        == ExternalValidatorModel(
-            valueBase64Binary=(
-                "aHR0cDovL2ZoaXItZGV2LmhlYWx0aGludGVyc2VjdGlvbnMuY29tLmF1L29w"
-                "ZW4vRW5jb3VudGVyP3BhcnRpY2lwYW50PTEz"
-            )
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueBase64Binary": (
+                    "aHR0cDovL2ZoaXItZGV2LmhlYWx0aGludGVyc2VjdGlvbnMuY29tLmF1L29w"
+                    "ZW4vRW5jb3VudGVyP3BhcnRpY2lwYW50PTEz"
+                )
+            }
         ).valueBase64Binary
     )
     assert inst.entity[0].role.coding[0].code == "24"
     assert inst.entity[0].role.coding[0].display == "Query"
     assert (
         inst.entity[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert inst.id == "example-search"
@@ -84,29 +92,31 @@ def impl_auditevent_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2015-08-22T23:42:24Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2015-08-22T23:42:24Z"}
+        ).valueInstant
     )
     assert inst.source.observer.display == "hl7connect.healthintersections.com.au"
     assert inst.source.type[0].coding[0].code == "3"
     assert inst.source.type[0].coding[0].display == "Web Server"
     assert (
         inst.source.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/security-source-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/security-source-type"}
         ).valueUri
     )
     assert inst.text.status == "extensions"
@@ -138,16 +148,20 @@ def impl_auditevent_2(inst):
     assert inst.agent[0].type.coding[0].display == "human user"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+            }
         ).valueUri
     )
     assert inst.agent[0].who.display == "Grahame Grieve"
     assert inst.agent[0].who.identifier.value == "95"
     assert (
         inst.agent[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+            }
         ).valueUri
     )
     assert inst.agent[1].extension[0].valueIdentifier.type.text == "process ID"
@@ -158,29 +172,31 @@ def impl_auditevent_2(inst):
     assert inst.agent[1].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert (
         inst.agent[1].who.identifier.system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.4.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.4.2"}
+        ).valueUri
     )
     assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
     assert inst.category[0].coding[0].code == "110114"
     assert inst.category[0].coding[0].display == "User Authentication"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "110123"
     assert inst.code.coding[0].display == "Logout"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.id == "example-logout"
@@ -188,21 +204,23 @@ def impl_auditevent_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2013-06-20T23:46:41Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-06-20T23:46:41Z"}
+        ).valueInstant
     )
     assert inst.source.observer.display == "Cloud"
     assert (
@@ -212,8 +230,8 @@ def impl_auditevent_2(inst):
     assert inst.source.type[0].coding[0].display == "Web Server"
     assert (
         inst.source.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/security-source-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/security-source-type"}
         ).valueUri
     )
     assert inst.text.status == "extensions"
@@ -244,15 +262,19 @@ def impl_auditevent_3(inst):
     assert inst.agent[0].type.coding[0].display == "human user"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+            }
         ).valueUri
     )
     assert inst.agent[0].who.identifier.value == "95"
     assert (
         inst.agent[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+            }
         ).valueUri
     )
     assert inst.agent[1].extension[0].valueIdentifier.type.text == "process ID"
@@ -263,37 +285,39 @@ def impl_auditevent_3(inst):
     assert inst.agent[1].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert (
         inst.agent[1].who.identifier.system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.4.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.4.2"}
+        ).valueUri
     )
     assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
     assert inst.category[0].coding[0].code == "rest"
     assert inst.category[0].coding[0].display == "Restful Operation"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-type"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "vread"
     assert inst.code.coding[0].display == "vread"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.entity[0].role.coding[0].code == "1"
     assert inst.entity[0].role.coding[0].display == "Patient"
     assert (
         inst.entity[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert inst.entity[0].what.reference == "Patient/example/_history/1"
@@ -302,21 +326,23 @@ def impl_auditevent_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2013-06-20T23:42:24Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-06-20T23:42:24Z"}
+        ).valueInstant
     )
     assert (
         inst.source.observer.identifier.value == "hl7connect.healthintersections.com.au"
@@ -325,8 +351,8 @@ def impl_auditevent_3(inst):
     assert inst.source.type[0].coding[0].display == "Web Server"
     assert (
         inst.source.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/security-source-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/security-source-type"}
         ).valueUri
     )
     assert inst.text.status == "extensions"
@@ -354,8 +380,8 @@ def impl_auditevent_4(inst):
     assert inst.action == "C"
     assert (
         inst.agent[0].networkUri
-        == ExternalValidatorModel(
-            valueUri="urn:ipv6:2001:0db8:85a3:0000:0000:8a2e:0370:7334"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ipv6:2001:0db8:85a3:0000:0000:8a2e:0370:7334"}
         ).valueUri
     )
     assert inst.agent[0].requestor is False
@@ -363,22 +389,24 @@ def impl_auditevent_4(inst):
     assert inst.agent[0].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.agent[0].who.display == "myMachine.example.org"
     assert (
         inst.agent[1].networkUri
-        == ExternalValidatorModel(valueUri="http://server.example.com/fhir").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://server.example.com/fhir"}
+        ).valueUri
     )
     assert inst.agent[1].requestor is False
     assert inst.agent[1].type.coding[0].code == "110152"
     assert inst.agent[1].type.coding[0].display == "Destination Role ID"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.agent[1].who.reference == "Device/example"
@@ -387,16 +415,16 @@ def impl_auditevent_4(inst):
     assert inst.agent[2].type.coding[0].display == "Informant"
     assert (
         inst.agent[2].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.agent[2].who.display == "Betty Jones"
     assert inst.authorization[0].coding[0].code == "TREAT"
     assert (
         inst.authorization[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.basedOn[0].reference == "CarePlan/example"
@@ -404,16 +432,16 @@ def impl_auditevent_4(inst):
     assert inst.category[0].coding[0].display == "create"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "rest"
     assert inst.code.coding[0].display == "Restful Operation"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-type"}
         ).valueUri
     )
     assert inst.encounter.reference == "Encounter/home"
@@ -421,8 +449,8 @@ def impl_auditevent_4(inst):
     assert inst.entity[0].role.coding[0].display == "Domain Resource"
     assert (
         inst.entity[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert inst.entity[0].what.reference == "List/example"
@@ -431,28 +459,30 @@ def impl_auditevent_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurredDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2020-04-29T09:49:00.000Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-04-29T09:49:00.000Z"}
         ).valueDateTime
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2020-04-29T09:49:00.000Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2020-04-29T09:49:00.000Z"}
+        ).valueInstant
     )
     assert inst.severity == "informational"
     assert inst.source.observer.reference == "Device/example"
@@ -461,8 +491,8 @@ def impl_auditevent_4(inst):
     assert inst.source.type[0].coding[0].display == "Application Server"
     assert (
         inst.source.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/security-source-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/security-source-type"}
         ).valueUri
     )
     assert inst.text.status == "generated"
@@ -495,8 +525,8 @@ def impl_auditevent_5(inst):
     assert inst.agent[0].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.agent[0].who.display == "ExportToMedia.app"
@@ -505,8 +535,10 @@ def impl_auditevent_5(inst):
     assert inst.agent[1].type.coding[0].display == "human user"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+            }
         ).valueUri
     )
     assert inst.agent[1].who.display == "Grahame Grieve"
@@ -516,8 +548,8 @@ def impl_auditevent_5(inst):
     assert inst.agent[2].type.coding[0].display == "Destination Media"
     assert (
         inst.agent[2].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.agent[2].who.display == "Media title: Hello World"
@@ -525,22 +557,24 @@ def impl_auditevent_5(inst):
     assert inst.category[0].coding[0].display == "Export"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "ITI-32"
     assert inst.code.coding[0].display == "Distribute Document Set on Media"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ihe:event-type-code").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ihe:event-type-code"}
+        ).valueUri
     )
     assert inst.entity[0].role.coding[0].code == "1"
     assert inst.entity[0].role.coding[0].display == "Patient"
     assert (
         inst.entity[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert (
@@ -551,8 +585,8 @@ def impl_auditevent_5(inst):
     assert inst.entity[1].role.coding[0].display == "Job"
     assert (
         inst.entity[1].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert inst.entity[1].what.identifier.type.coding[0].code == "IHE XDS Metadata"
@@ -562,8 +596,8 @@ def impl_auditevent_5(inst):
     )
     assert (
         inst.entity[1].what.identifier.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd"}
         ).valueUri
     )
     assert (
@@ -576,21 +610,23 @@ def impl_auditevent_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2015-08-27T23:42:24Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2015-08-27T23:42:24Z"}
+        ).valueInstant
     )
     assert inst.source.observer.display == "Cloud"
     assert (
@@ -624,15 +660,19 @@ def impl_auditevent_6(inst):
     assert inst.agent[0].type.coding[0].display == "human user"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+            }
         ).valueUri
     )
     assert inst.agent[0].who.identifier.value == "95"
     assert (
         inst.agent[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+            }
         ).valueUri
     )
     assert inst.agent[1].extension[0].valueIdentifier.type.text == "process ID"
@@ -643,37 +683,39 @@ def impl_auditevent_6(inst):
     assert inst.agent[1].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert (
         inst.agent[1].who.identifier.system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.4.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.4.2"}
+        ).valueUri
     )
     assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
     assert inst.category[0].coding[0].code == "rest"
     assert inst.category[0].coding[0].display == "Restful Operation"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-type"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "create"
     assert inst.code.coding[0].display == "create"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.entity[0].role.coding[0].code == "1"
     assert inst.entity[0].role.coding[0].display == "Patient"
     assert (
         inst.entity[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert inst.entity[0].what.reference == "Patient/example/_history/1"
@@ -681,13 +723,15 @@ def impl_auditevent_6(inst):
     assert inst.entity[1].role.coding[0].display == "Job Stream"
     assert (
         inst.entity[1].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert (
         inst.entity[1].what.identifier.system
-        == ExternalValidatorModel(valueUri="http://example.com/server").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.com/server"}
+        ).valueUri
     )
     assert inst.entity[1].what.identifier.type.text == "TraceID"
     assert inst.entity[1].what.identifier.value == "6b507ee2d716780372c255df69ece653"
@@ -696,22 +740,22 @@ def impl_auditevent_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(
-            valueInstant="2019-12-04T11:59:28.646+00:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2019-12-04T11:59:28.646+00:00"}
         ).valueInstant
     )
     assert (
@@ -721,8 +765,8 @@ def impl_auditevent_6(inst):
     assert inst.source.type[0].coding[0].display == "Web Server"
     assert (
         inst.source.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/security-source-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/security-source-type"}
         ).valueUri
     )
     assert inst.text.status == "extensions"
@@ -755,16 +799,20 @@ def impl_auditevent_7(inst):
     assert inst.agent[0].type.coding[0].display == "human user"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+            }
         ).valueUri
     )
     assert inst.agent[0].who.display == "Grahame Grieve"
     assert inst.agent[0].who.identifier.value == "95"
     assert (
         inst.agent[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+            }
         ).valueUri
     )
     assert inst.agent[1].extension[0].valueIdentifier.type.text == "process ID"
@@ -775,29 +823,31 @@ def impl_auditevent_7(inst):
     assert inst.agent[1].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert (
         inst.agent[1].who.identifier.system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.4.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.4.2"}
+        ).valueUri
     )
     assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
     assert inst.category[0].coding[0].code == "110114"
     assert inst.category[0].coding[0].display == "User Authentication"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "110122"
     assert inst.code.coding[0].display == "Login"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.id == "example-login"
@@ -805,21 +855,23 @@ def impl_auditevent_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2013-06-20T23:41:23Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-06-20T23:41:23Z"}
+        ).valueInstant
     )
     assert inst.source.observer.display == "Cloud"
     assert (
@@ -829,8 +881,8 @@ def impl_auditevent_7(inst):
     assert inst.source.type[0].coding[0].display == "Web Server"
     assert (
         inst.source.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/security-source-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/security-source-type"}
         ).valueUri
     )
     assert inst.text.status == "extensions"
@@ -858,8 +910,10 @@ def impl_auditevent_8(inst):
     assert inst.action == "E"
     assert (
         inst.agent[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+            }
         ).valueUri
     )
     assert inst.agent[0].extension[0].valueIdentifier.type.text == "process ID"
@@ -870,13 +924,15 @@ def impl_auditevent_8(inst):
     assert inst.agent[0].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert (
         inst.agent[0].who.identifier.system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.4.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.4.2"}
+        ).valueUri
     )
     assert inst.agent[0].who.identifier.value == "2.16.840.1.113883.4.2"
     assert inst.agent[1].requestor is True
@@ -884,8 +940,10 @@ def impl_auditevent_8(inst):
     assert inst.agent[1].type.coding[0].display == "human user"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/extra-security-role-type"
+            }
         ).valueUri
     )
     assert inst.agent[1].who.display == "Grahame Grieve"
@@ -894,22 +952,24 @@ def impl_auditevent_8(inst):
     assert inst.category[0].coding[0].display == "Query"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "ITI-9"
     assert inst.code.coding[0].display == "PIX Query"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:1.3.6.1.4.1.19376.1.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:1.3.6.1.4.1.19376.1.2"}
+        ).valueUri
     )
     assert inst.entity[0].role.coding[0].code == "1"
     assert inst.entity[0].role.coding[0].display == "Patient"
     assert (
         inst.entity[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert (
@@ -919,16 +979,16 @@ def impl_auditevent_8(inst):
     assert inst.entity[1].detail[0].type.coding[0].code == "MSH-10"
     assert (
         inst.entity[1].detail[0].valueBase64Binary
-        == ExternalValidatorModel(
-            valueBase64Binary="MS4yLjg0MC4xMTQzNTAuMS4xMy4wLjEuNy4xLjE="
+        == ExternalValidatorModel.model_validate(
+            {"valueBase64Binary": "MS4yLjg0MC4xMTQzNTAuMS4xMy4wLjEuNy4xLjE="}
         ).valueBase64Binary
     )
     assert inst.entity[1].role.coding[0].code == "24"
     assert inst.entity[1].role.coding[0].display == "Query"
     assert (
         inst.entity[1].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert inst.id == "example-pixQuery"
@@ -936,21 +996,23 @@ def impl_auditevent_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2015-08-26T23:42:24Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2015-08-26T23:42:24Z"}
+        ).valueInstant
     )
     assert inst.source.observer.display == "hl7connect.healthintersections.com.au"
     assert inst.text.status == "extensions"
@@ -981,8 +1043,10 @@ def impl_auditevent_9(inst):
     assert inst.agent[0].who.identifier.value == "Grahame"
     assert (
         inst.agent[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/auditevent-AlternativeUserID"
+            }
         ).valueUri
     )
     assert inst.agent[1].extension[0].valueIdentifier.type.text == "process ID"
@@ -991,38 +1055,40 @@ def impl_auditevent_9(inst):
     assert inst.agent[1].requestor is False
     assert (
         inst.agent[1].who.identifier.system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.4.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.4.2"}
+        ).valueUri
     )
     assert inst.agent[1].who.identifier.value == "2.16.840.1.113883.4.2"
     assert inst.category[0].coding[0].code == "110100"
     assert inst.category[0].coding[0].display == "Application Activity"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "110120"
     assert inst.code.coding[0].display == "Application Start"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.entity[0].role.coding[0].code == "4"
     assert inst.entity[0].role.coding[0].display == "Domain Resource"
     assert (
         inst.entity[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert inst.entity[0].what.identifier.type.coding[0].code == "SNO"
     assert (
         inst.entity[0].what.identifier.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
         ).valueUri
     )
     assert inst.entity[0].what.identifier.type.text == "Dell Serial Number"
@@ -1032,29 +1098,31 @@ def impl_auditevent_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2012-10-25T22:04:27+11:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2012-10-25T22:04:27+11:00"}
+        ).valueInstant
     )
     assert inst.source.observer.display == "Grahame's Laptop"
     assert inst.source.type[0].coding[0].code == "110122"
     assert inst.source.type[0].coding[0].display == "Login"
     assert (
         inst.source.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.text.div == (
@@ -1088,8 +1156,8 @@ def impl_auditevent_10(inst):
     assert inst.agent[0].authorization[0].coding[0].code == "TREAT"
     assert (
         inst.agent[0].authorization[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.agent[0].requestor is True
@@ -1097,14 +1165,14 @@ def impl_auditevent_10(inst):
     assert inst.agent[0].type.coding[0].display == "Destination Role ID"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert (
         inst.agent[0].who.identifier.system
-        == ExternalValidatorModel(
-            valueUri="https://github.com/synthetichealth/synthea"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://github.com/synthetichealth/synthea"}
         ).valueUri
     )
     assert inst.agent[0].who.identifier.value == "Org1"
@@ -1112,16 +1180,16 @@ def impl_auditevent_10(inst):
     assert inst.code.coding[0].display == "Query"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.entity[0].role.coding[0].code == "4"
     assert inst.entity[0].role.coding[0].display == "Domain Resource"
     assert (
         inst.entity[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/object-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/object-role"}
         ).valueUri
     )
     assert inst.entity[0].what.reference == "Consent/consent-example-basic"
@@ -1130,31 +1198,33 @@ def impl_auditevent_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.outcome.code.code == "0"
     assert inst.outcome.code.display == "Success"
     assert (
         inst.outcome.code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/audit-event-outcome"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/audit-event-outcome"}
         ).valueUri
     )
     assert inst.outcome.detail[0].text == "CONSENT_PERMIT"
     assert inst.patient.reference == "Patient/example"
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2021-09-08T21:51:59.932Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2021-09-08T21:51:59.932Z"}
+        ).valueInstant
     )
     assert inst.source.observer.display == "LEAP Consent Decision Service"
     assert inst.source.type[0].coding[0].code == "4"
     assert inst.source.type[0].coding[0].display == "Application Server"
     assert (
         inst.source.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/security-source-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/security-source-type"}
         ).valueUri
     )
     assert inst.text.status == "generated"

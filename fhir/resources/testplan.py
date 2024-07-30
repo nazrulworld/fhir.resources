@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class TestPlan(domainresource.DomainResource):
@@ -24,7 +24,7 @@ class TestPlan(domainresource.DomainResource):
 
     __resource_type__ = "TestPlan"
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="The category of the Test Plan - can be acceptance, unit, performance",
@@ -37,7 +37,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -50,7 +50,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -65,11 +65,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType = Field(
+    copyrightLabel: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -83,11 +83,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
     )
 
-    date: fhirtypes.DateTimeType = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -101,11 +101,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    dependency: typing.List[fhirtypes.TestPlanDependencyType] = Field(
+    dependency: typing.List[fhirtypes.TestPlanDependencyType] = Field(  # type: ignore
         None,
         alias="dependency",
         title=(
@@ -121,7 +121,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the test plan",
@@ -133,11 +133,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    exitCriteria: fhirtypes.MarkdownType = Field(
+    exitCriteria: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="exitCriteria",
         title=(
@@ -149,11 +149,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    exitCriteria__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    exitCriteria__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_exitCriteria", title="Extension field for ``exitCriteria``."
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -166,11 +166,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier identifier for the test plan",
@@ -184,7 +184,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction where the test plan applies (if applicable)",
@@ -197,7 +197,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this test plan (computer friendly)",
@@ -210,11 +210,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.StringType = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -226,11 +226,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType = Field(
+    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this test plan is defined",
@@ -242,11 +242,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    scope: typing.List[fhirtypes.ReferenceType] = Field(
+    scope: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="scope",
         title=(
@@ -262,7 +262,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -278,11 +278,11 @@ class TestPlan(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    testCase: typing.List[fhirtypes.TestPlanTestCaseType] = Field(
+    testCase: typing.List[fhirtypes.TestPlanTestCaseType] = Field(  # type: ignore
         None,
         alias="testCase",
         title="The test cases that constitute this plan",
@@ -295,7 +295,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    testTools: fhirtypes.MarkdownType = Field(
+    testTools: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="testTools",
         title=(
@@ -307,11 +307,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    testTools__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    testTools__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_testTools", title="Extension field for ``testTools``."
     )
 
-    title: fhirtypes.StringType = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this test plan (human friendly)",
@@ -320,11 +320,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -344,11 +344,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -364,7 +364,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the test plan",
@@ -381,11 +381,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType = Field(
+    versionAlgorithmCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -401,7 +401,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType = Field(
+    versionAlgorithmString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -416,7 +416,7 @@ class TestPlan(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
@@ -493,9 +493,6 @@ class TestPlan(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class TestPlanDependency(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -509,7 +506,7 @@ class TestPlanDependency(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanDependency"
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Description of the dependency criterium",
@@ -521,11 +518,11 @@ class TestPlanDependency(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    predecessor: fhirtypes.ReferenceType = Field(
+    predecessor: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="predecessor",
         title="Link to predecessor test plans",
@@ -559,7 +556,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCase"
 
-    assertion: typing.List[fhirtypes.TestPlanTestCaseAssertionType] = Field(
+    assertion: typing.List[fhirtypes.TestPlanTestCaseAssertionType] = Field(  # type: ignore
         None,
         alias="assertion",
         title="Test assertions or expectations",
@@ -572,7 +569,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         },
     )
 
-    dependency: typing.List[fhirtypes.TestPlanTestCaseDependencyType] = Field(
+    dependency: typing.List[fhirtypes.TestPlanTestCaseDependencyType] = Field(  # type: ignore
         None,
         alias="dependency",
         title="Required criteria to execute the test case",
@@ -585,7 +582,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         },
     )
 
-    scope: typing.List[fhirtypes.ReferenceType] = Field(
+    scope: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="scope",
         title="The scope or artifact covered by the case",
@@ -598,7 +595,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.IntegerType = Field(
+    sequence: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Sequence of test case in the test plan",
@@ -610,11 +607,11 @@ class TestPlanTestCase(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    testData: typing.List[fhirtypes.TestPlanTestCaseTestDataType] = Field(
+    testData: typing.List[fhirtypes.TestPlanTestCaseTestDataType] = Field(  # type: ignore
         None,
         alias="testData",
         title="The test data used in the test case",
@@ -624,7 +621,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         },
     )
 
-    testRun: typing.List[fhirtypes.TestPlanTestCaseTestRunType] = Field(
+    testRun: typing.List[fhirtypes.TestPlanTestCaseTestRunType] = Field(  # type: ignore
         None,
         alias="testRun",
         title="The actual test to be executed",
@@ -665,7 +662,7 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseAssertion"
 
-    object: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    object: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="object",
         title="The focus or object of the assertion",
@@ -675,7 +672,7 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
         },
     )
 
-    result: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    result: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="result",
         title="The actual result assertion",
@@ -687,7 +684,7 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="type",
         title="Assertion type - for example 'informative' or 'required' ",
@@ -722,7 +719,7 @@ class TestPlanTestCaseDependency(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseDependency"
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Description of the criteria",
@@ -731,11 +728,11 @@ class TestPlanTestCaseDependency(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    predecessor: fhirtypes.ReferenceType = Field(
+    predecessor: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="predecessor",
         title="Link to predecessor test plans",
@@ -764,7 +761,7 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseTestData"
 
-    content: fhirtypes.ReferenceType = Field(
+    content: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="content",
         title="The actual test resources when they exist",
@@ -774,7 +771,7 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
         },
     )
 
-    sourceReference: fhirtypes.ReferenceType = Field(
+    sourceReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="sourceReference",
         title=(
@@ -790,7 +787,7 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
         },
     )
 
-    sourceString: fhirtypes.StringType = Field(
+    sourceString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="sourceString",
         title=(
@@ -805,11 +802,11 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sourceString", title="Extension field for ``sourceString``."
     )
 
-    type: fhirtypes.CodingType = Field(
+    type: fhirtypes.CodingType = Field(  # type: ignore
         ...,
         alias="type",
         title="The type of test data description, e.g. 'synthea'",
@@ -862,7 +859,7 @@ class TestPlanTestCaseTestRun(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseTestRun"
 
-    narrative: fhirtypes.MarkdownType = Field(
+    narrative: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="narrative",
         title="The narrative description of the tests",
@@ -871,11 +868,11 @@ class TestPlanTestCaseTestRun(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    narrative__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    narrative__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_narrative", title="Extension field for ``narrative``."
     )
 
-    script: fhirtypes.TestPlanTestCaseTestRunScriptType = Field(
+    script: fhirtypes.TestPlanTestCaseTestRunScriptType = Field(  # type: ignore
         None,
         alias="script",
         title=(
@@ -908,7 +905,7 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseTestRunScript"
 
-    language: fhirtypes.CodeableConceptType = Field(
+    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="language",
         title="The language for the test cases e.g. 'gherkin', 'testscript'",
@@ -918,7 +915,7 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
         },
     )
 
-    sourceReference: fhirtypes.ReferenceType = Field(
+    sourceReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="sourceReference",
         title=(
@@ -934,7 +931,7 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
         },
     )
 
-    sourceString: fhirtypes.StringType = Field(
+    sourceString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="sourceString",
         title=(
@@ -949,7 +946,7 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sourceString", title="Extension field for ``sourceString``."
     )
 

@@ -31,7 +31,7 @@ class Address(datatype.DataType):
 
     __resource_type__ = "Address"
 
-    city: fhirtypes.StringType = Field(
+    city: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="city",
         title="Name of city, town etc.",
@@ -43,11 +43,11 @@ class Address(datatype.DataType):
             "element_property": True,
         },
     )
-    city__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    city__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_city", title="Extension field for ``city``."
     )
 
-    country: fhirtypes.StringType = Field(
+    country: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="country",
         title="Country (e.g. may be ISO 3166 2 or 3 letter code)",
@@ -56,11 +56,11 @@ class Address(datatype.DataType):
             "element_property": True,
         },
     )
-    country__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    country__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_country", title="Extension field for ``country``."
     )
 
-    district: fhirtypes.StringType = Field(
+    district: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="district",
         title="District name (aka county)",
@@ -69,11 +69,11 @@ class Address(datatype.DataType):
             "element_property": True,
         },
     )
-    district__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    district__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_district", title="Extension field for ``district``."
     )
 
-    line: typing.List[typing.Optional[fhirtypes.StringType]] = Field(
+    line: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="line",
         title="Street name, number, direction & P.O. Box etc.",
@@ -86,11 +86,11 @@ class Address(datatype.DataType):
             "element_property": True,
         },
     )
-    line__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_line", title="Extension field for ``line``.")
+    line__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_line", title="Extension field for ``line``."
+    )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period when address was/is in use",
@@ -100,7 +100,7 @@ class Address(datatype.DataType):
         },
     )
 
-    postalCode: fhirtypes.StringType = Field(
+    postalCode: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="postalCode",
         title="Postal code for area",
@@ -109,11 +109,11 @@ class Address(datatype.DataType):
             "element_property": True,
         },
     )
-    postalCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    postalCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_postalCode", title="Extension field for ``postalCode``."
     )
 
-    state: fhirtypes.StringType = Field(
+    state: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="state",
         title="Sub-unit of country (abbreviations ok)",
@@ -126,11 +126,11 @@ class Address(datatype.DataType):
             "element_property": True,
         },
     )
-    state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_state", title="Extension field for ``state``."
     )
 
-    text: fhirtypes.StringType = Field(
+    text: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="text",
         title="Text representation of the address",
@@ -143,11 +143,11 @@ class Address(datatype.DataType):
             "element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="postal | physical | both",
@@ -163,11 +163,11 @@ class Address(datatype.DataType):
             "enum_values": ["postal", "physical", "both"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    use: fhirtypes.CodeType = Field(
+    use: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="use",
         title="home | work | temp | old | billing - purpose of this address",
@@ -179,7 +179,7 @@ class Address(datatype.DataType):
             "enum_values": ["home", "work", "temp", "old", "billing"],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_use", title="Extension field for ``use``."
     )
 

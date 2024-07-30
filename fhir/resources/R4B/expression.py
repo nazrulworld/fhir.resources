@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -26,9 +24,9 @@ class Expression(element.Element):
     expression is evaluated, and how the result of the expression is used.
     """
 
-    resource_type = Field("Expression", const=True)
+    __resource_type__ = "Expression"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the condition",
@@ -36,26 +34,28 @@ class Expression(element.Element):
             "A brief, natural language description of the condition that "
             "effectively communicates the intended semantics."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    expression: fhirtypes.String = Field(
+    expression: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="expression",
         title="Expression in specified language",
         description="An expression in the specified language that returns a value.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    language: fhirtypes.Code = Field(
+    language: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="language",
         title=(
@@ -63,25 +63,26 @@ class Expression(element.Element):
             "identifier | text/cql-expression | etc."
         ),
         description="The media type of the language for the expression.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "text/cql",
-            "text/fhirpath",
-            "application/x-fhir-query",
-            "text/cql-identifier",
-            "text/cql-expression",
-            "etc.",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "text/cql",
+                "text/fhirpath",
+                "application/x-fhir-query",
+                "text/cql-identifier",
+                "text/cql-expression",
+                "etc.",
+            ],
+        },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    name: fhirtypes.Id = Field(
+    name: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="name",
         title="Short name assigned to expression for reuse",
@@ -89,22 +90,24 @@ class Expression(element.Element):
             "A short name assigned to the expression to allow for multiple reuse of"
             " the expression in the context where it is defined."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    reference: fhirtypes.Uri = Field(
+    reference: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="reference",
         title="Where the expression is found",
         description="A URI that defines where the expression is found.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reference", title="Extension field for ``reference``."
     )
 
@@ -124,10 +127,7 @@ class Expression(element.Element):
             "reference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1251(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -136,49 +136,4 @@ class Expression(element.Element):
         the primitive value is not present.
         """
         required_fields = [("language", "language__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

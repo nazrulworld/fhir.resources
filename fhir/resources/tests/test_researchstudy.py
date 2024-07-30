@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import researchstudy
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_researchstudy_1(inst):
@@ -17,8 +17,8 @@ def impl_researchstudy_1(inst):
     assert inst.associatedParty[0].role.coding[0].display == "Sponsor"
     assert (
         inst.associatedParty[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/research-study-party-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/research-study-party-role"}
         ).valueUri
     )
     assert inst.associatedParty[1].classifier[0].text == "INDUSTRY"
@@ -27,8 +27,8 @@ def impl_researchstudy_1(inst):
     assert inst.associatedParty[1].role.coding[0].display == "Lead Sponsor"
     assert (
         inst.associatedParty[1].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/research-study-party-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/research-study-party-role"}
         ).valueUri
     )
     assert inst.associatedParty[2].classifier[0].text == "Contact"
@@ -36,14 +36,14 @@ def impl_researchstudy_1(inst):
     assert inst.associatedParty[2].party.reference == "#NCT05503693-CentralContact-0"
     assert (
         inst.associatedParty[2].party.type
-        == ExternalValidatorModel(valueUri="Practitioner").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Practitioner"}).valueUri
     )
     assert inst.associatedParty[2].role.coding[0].code == "recruitment-contact"
     assert inst.associatedParty[2].role.coding[0].display == "Recruitment Contact"
     assert (
         inst.associatedParty[2].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/research-study-party-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/research-study-party-role"}
         ).valueUri
     )
     assert inst.associatedParty[3].name == "Sam Francis, Doctor"
@@ -61,7 +61,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.comparisonGroup[0].intendedExposure[0].type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.comparisonGroup[0].intendedExposure[1].display == "Drug: AP303 150 μg"
     assert (
@@ -70,7 +72,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.comparisonGroup[0].intendedExposure[1].type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.comparisonGroup[0].intendedExposure[2].display == "Drug: AP303 300 μg"
     assert (
@@ -79,7 +83,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.comparisonGroup[0].intendedExposure[2].type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.comparisonGroup[0].intendedExposure[3].display == "Drug: AP303 600 μg"
     assert (
@@ -88,7 +94,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.comparisonGroup[0].intendedExposure[3].type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.comparisonGroup[0].linkId == "ap303"
     assert inst.comparisonGroup[0].name == "AP303"
@@ -101,7 +109,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.comparisonGroup[1].intendedExposure[0].type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.comparisonGroup[1].intendedExposure[1].display == "Drug: Placebo 150 μg"
     assert (
@@ -110,7 +120,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.comparisonGroup[1].intendedExposure[1].type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.comparisonGroup[1].intendedExposure[2].display == "Drug: Placebo 300 μg"
     assert (
@@ -119,7 +131,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.comparisonGroup[1].intendedExposure[2].type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.comparisonGroup[1].intendedExposure[3].display == "Drug: Placebo 600 μg"
     assert (
@@ -128,7 +142,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.comparisonGroup[1].intendedExposure[3].type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.comparisonGroup[1].linkId == "placebo"
     assert inst.comparisonGroup[1].name == "Placebo"
@@ -148,13 +164,17 @@ def impl_researchstudy_1(inst):
     assert inst.identifier[0].assigner.display == "Computable Publishing LLC"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="https://fevir.net").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "FEvIR Object Identifier"
     assert inst.identifier[0].value == "112103"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="https://clinicaltrials.gov").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://clinicaltrials.gov"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "official"
     assert inst.identifier[1].value == "NCT05503693"
@@ -179,7 +199,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[0].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[0].reference.identifier.type.text
@@ -191,14 +213,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[0].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[0].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[0].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[0].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[1].description == (
@@ -211,7 +237,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[1].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[1].reference.identifier.type.text
@@ -223,14 +251,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[1].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[1].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[1].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[1].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[2].description == "PK characteristics after single dose"
@@ -241,7 +273,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[2].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[2].reference.identifier.type.text
@@ -253,14 +287,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[2].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[2].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[2].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[2].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[3].description == "PK characteristics after single dose"
@@ -271,7 +309,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[3].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[3].reference.identifier.type.text
@@ -283,14 +323,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[3].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[3].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[3].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[3].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[4].description == "PK characteristics after single dose"
@@ -301,7 +345,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[4].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[4].reference.identifier.type.text
@@ -313,14 +359,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[4].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[4].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[4].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[4].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[5].description == "PK characteristics after single dose"
@@ -331,7 +381,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[5].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[5].reference.identifier.type.text
@@ -343,14 +395,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[5].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[5].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[5].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[5].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[6].description == "PK characteristics after single dose"
@@ -361,7 +417,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[6].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[6].reference.identifier.type.text
@@ -373,14 +431,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[6].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[6].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[6].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[6].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[7].description == "PK characteristics after single dose"
@@ -391,7 +453,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[7].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[7].reference.identifier.type.text
@@ -403,14 +467,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[7].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[7].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[7].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[7].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[8].description == "PK characteristics after single dose"
@@ -421,7 +489,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[8].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[8].reference.identifier.type.text
@@ -433,14 +503,18 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[8].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[8].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[8].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[8].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.outcomeMeasure[9].description == "PK characteristics after single dose"
@@ -451,7 +525,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[9].reference.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.outcomeMeasure[9].reference.identifier.type.text
@@ -463,55 +539,65 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.outcomeMeasure[9].reference.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.outcomeMeasure[9].type[0].coding[0].code == "primary"
     assert inst.outcomeMeasure[9].type[0].coding[0].display == "Primary"
     assert (
         inst.outcomeMeasure[9].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-objective-type"
+            }
         ).valueUri
     )
     assert inst.phase.coding[0].code == "phase-1"
     assert inst.phase.coding[0].display == "Phase 1"
     assert (
         inst.phase.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-phase"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/research-study-phase"}
         ).valueUri
     )
     assert inst.primaryPurposeType.coding[0].code == "treatment"
     assert inst.primaryPurposeType.coding[0].display == "Treatment"
     assert (
         inst.primaryPurposeType.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type"
+            }
         ).valueUri
     )
     assert inst.progressStatus[0].state.coding[0].code == "recruiting"
     assert inst.progressStatus[0].state.coding[0].display == "Recruiting"
     assert (
         inst.progressStatus[0].state.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/research-study-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/research-study-status"}
         ).valueUri
     )
     assert inst.progressStatus[1].actual is False
     assert (
         inst.progressStatus[1].period.end
-        == ExternalValidatorModel(valueDateTime="2023-06").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-06"}
+        ).valueDateTime
     )
     assert (
         inst.progressStatus[1].period.start
-        == ExternalValidatorModel(valueDateTime="2022-12-06").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-12-06"}
+        ).valueDateTime
     )
     assert inst.progressStatus[1].state.coding[0].code == "overall-study"
     assert inst.progressStatus[1].state.coding[0].display == "Overall Study"
     assert (
         inst.progressStatus[1].state.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/research-study-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/research-study-status"}
         ).valueUri
     )
     assert (
@@ -520,7 +606,9 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.recruitment.eligibility.identifier.system
-        == ExternalValidatorModel(valueUri="https://fevir.net/FLI").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/FLI"}
+        ).valueUri
     )
     assert (
         inst.recruitment.eligibility.identifier.type.text == "FEvIR Linking Identifier"
@@ -535,13 +623,15 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.recruitment.eligibility.type
-        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "EvidenceVariable"}
+        ).valueUri
     )
     assert inst.recruitment.targetNumber == 62
     assert (
         inst.relatedArtifact[0].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://beta.clinicaltrials.gov/api/v2/studies/NCT05503693"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "https://beta.clinicaltrials.gov/api/v2/studies/NCT05503693"}
         ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "transforms"
@@ -550,14 +640,15 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.relatedArtifact[1].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://fevir.net/resources/Project/29885"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "https://fevir.net/resources/Project/29885"}
         ).valueUrl
     )
     assert inst.relatedArtifact[1].type == "transformed-with"
     assert inst.site[0].reference == "#NCT05503693-Location-0-ResearchStudy"
     assert (
-        inst.site[0].type == ExternalValidatorModel(valueUri="ResearchStudy").valueUri
+        inst.site[0].type
+        == ExternalValidatorModel.model_validate({"valueUri": "ResearchStudy"}).valueUri
     )
     assert inst.status == "active"
     assert inst.studyDesign[0].text == "Design Masking: Quadruple"
@@ -577,8 +668,8 @@ def impl_researchstudy_1(inst):
     )
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="https://fevir.net/resources/ResearchStudy/112103"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net/resources/ResearchStudy/112103"}
         ).valueUri
     )
 

@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class NutritionIntake(domainresource.DomainResource):
@@ -33,7 +33,7 @@ class NutritionIntake(domainresource.DomainResource):
 
     __resource_type__ = "NutritionIntake"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Fulfils plan, proposal or order",
@@ -48,7 +48,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Code representing an overall type of nutrition intake",
@@ -58,7 +58,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    consumedItem: typing.List[fhirtypes.NutritionIntakeConsumedItemType] = Field(
+    consumedItem: typing.List[fhirtypes.NutritionIntakeConsumedItemType] = Field(  # type: ignore
         ...,
         alias="consumedItem",
         title="What food or fluid product or item was consumed",
@@ -68,7 +68,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    derivedFrom: typing.List[fhirtypes.ReferenceType] = Field(
+    derivedFrom: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="derivedFrom",
         title="Additional supporting information",
@@ -84,7 +84,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter associated with NutritionIntake",
@@ -96,7 +96,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External identifier",
@@ -113,7 +113,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    ingredientLabel: typing.List[fhirtypes.NutritionIntakeIngredientLabelType] = Field(
+    ingredientLabel: typing.List[fhirtypes.NutritionIntakeIngredientLabelType] = Field(  # type: ignore
         None,
         alias="ingredientLabel",
         title="Total nutrient for the whole meal, product, serving",
@@ -123,9 +123,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    instantiatesCanonical: typing.List[
-        typing.Optional[fhirtypes.CanonicalType]
-    ] = Field(
+    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -151,15 +149,13 @@ class NutritionIntake(domainresource.DomainResource):
             ],
         },
     )
-    instantiatesCanonical__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    instantiatesCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
+    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -168,13 +164,11 @@ class NutritionIntake(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    instantiatesUri__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    instantiatesUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    location: fhirtypes.ReferenceType = Field(
+    location: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="location",
         title="Where the intake occurred",
@@ -186,7 +180,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Further information about the consumption",
@@ -199,7 +193,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType = Field(
+    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="The date/time or interval when the food or fluid is/was consumed",
@@ -214,13 +208,13 @@ class NutritionIntake(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType = Field(
+    occurrencePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="occurrencePeriod",
         title="The date/time or interval when the food or fluid is/was consumed",
@@ -236,7 +230,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced event",
@@ -248,7 +242,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    performer: typing.List[fhirtypes.NutritionIntakePerformerType] = Field(
+    performer: typing.List[fhirtypes.NutritionIntakePerformerType] = Field(  # type: ignore
         None,
         alias="performer",
         title="Who was performed in the intake",
@@ -258,7 +252,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="reason",
         title="Reason for why the food or fluid is /was consumed",
@@ -278,7 +272,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    recorded: fhirtypes.DateTimeType = Field(
+    recorded: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="recorded",
         title="When the intake was recorded",
@@ -290,11 +284,11 @@ class NutritionIntake(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    reportedBoolean: bool = Field(
+    reportedBoolean: bool = Field(  # type: ignore
         None,
         alias="reportedBoolean",
         title=(
@@ -313,11 +307,11 @@ class NutritionIntake(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    reportedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reportedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reportedBoolean", title="Extension field for ``reportedBoolean``."
     )
 
-    reportedReference: fhirtypes.ReferenceType = Field(
+    reportedReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="reportedReference",
         title=(
@@ -345,7 +339,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -374,11 +368,11 @@ class NutritionIntake(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: typing.List[fhirtypes.CodeableConceptType] = Field(
+    statusReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="statusReason",
         title="Reason for current status",
@@ -388,7 +382,7 @@ class NutritionIntake(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="subject",
         title="Who is/was consuming the food or fluid",
@@ -470,9 +464,6 @@ class NutritionIntake(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -483,7 +474,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
 
     __resource_type__ = "NutritionIntakeConsumedItem"
 
-    amount: fhirtypes.QuantityType = Field(
+    amount: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="amount",
         title="Quantity of the specified food",
@@ -493,7 +484,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         },
     )
 
-    notConsumed: bool = Field(
+    notConsumed: bool = Field(  # type: ignore
         None,
         alias="notConsumed",
         title=(
@@ -511,11 +502,11 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    notConsumed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    notConsumed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_notConsumed", title="Extension field for ``notConsumed``."
     )
 
-    notConsumedReason: fhirtypes.CodeableConceptType = Field(
+    notConsumedReason: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="notConsumedReason",
         title="Reason food or fluid was not consumed",
@@ -528,7 +519,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         },
     )
 
-    nutritionProduct: fhirtypes.CodeableReferenceType = Field(
+    nutritionProduct: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         ...,
         alias="nutritionProduct",
         title="Code that identifies the food or fluid product that was consumed",
@@ -545,7 +536,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         },
     )
 
-    rate: fhirtypes.QuantityType = Field(
+    rate: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="rate",
         title="Rate at which enteral feeding was administered",
@@ -555,7 +546,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         },
     )
 
-    schedule: fhirtypes.TimingType = Field(
+    schedule: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="schedule",
         title="Scheduled frequency of consumption",
@@ -565,7 +556,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="The type of food or fluid product",
@@ -609,7 +600,7 @@ class NutritionIntakeIngredientLabel(backboneelement.BackboneElement):
 
     __resource_type__ = "NutritionIntakeIngredientLabel"
 
-    amount: fhirtypes.QuantityType = Field(
+    amount: fhirtypes.QuantityType = Field(  # type: ignore
         ...,
         alias="amount",
         title="Total amount of nutrient consumed",
@@ -619,7 +610,7 @@ class NutritionIntakeIngredientLabel(backboneelement.BackboneElement):
         },
     )
 
-    nutrient: fhirtypes.CodeableReferenceType = Field(
+    nutrient: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         ...,
         alias="nutrient",
         title="Total nutrient consumed",
@@ -654,7 +645,7 @@ class NutritionIntakePerformer(backboneelement.BackboneElement):
 
     __resource_type__ = "NutritionIntakePerformer"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="actor",
         title="Who performed the intake",
@@ -674,7 +665,7 @@ class NutritionIntakePerformer(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType = Field(
+    function: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="function",
         title="Type of performer",

@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import specimendefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_specimendefinition_1(inst):
@@ -19,7 +19,9 @@ def impl_specimendefinition_1(inst):
     assert inst.patientPreparation[1].coding[0].display == "At rest"
     assert (
         inst.patientPreparation[1].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.status == "active"
     assert inst.text.status == "generated"
@@ -29,24 +31,32 @@ def impl_specimendefinition_1(inst):
     assert inst.typeCollected.coding[0].display == "Venous blood specimen"
     assert (
         inst.typeCollected.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeTested[0].container.cap.coding[0].code == "yellow"
     assert inst.typeTested[0].container.cap.coding[0].display == "yellow cap"
     assert (
         inst.typeTested[0].container.cap.coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:6710:2017").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:6710:2017"}
+        ).valueUri
     )
     assert inst.typeTested[0].container.material.coding[0].code == "61088005"
     assert inst.typeTested[0].container.material.coding[0].display == "plastic"
     assert (
         inst.typeTested[0].container.material.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeTested[0].container.minimumVolumeQuantity.code == "mL"
     assert (
         inst.typeTested[0].container.minimumVolumeQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].container.minimumVolumeQuantity.unit == "ml"
     assert float(inst.typeTested[0].container.minimumVolumeQuantity.value) == float(2)
@@ -56,12 +66,16 @@ def impl_specimendefinition_1(inst):
     )
     assert (
         inst.typeTested[0].container.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[0].maxDuration.code == "min"
     assert (
         inst.typeTested[0].handling[0].maxDuration.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[0].maxDuration.unit == "minute"
     assert float(inst.typeTested[0].handling[0].maxDuration.value) == float(60)
@@ -72,7 +86,9 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[0].handling[0].temperatureRange.high.code == "Cel"
     assert (
         inst.typeTested[0].handling[0].temperatureRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[0].temperatureRange.high.unit == "°C"
     assert float(inst.typeTested[0].handling[0].temperatureRange.high.value) == float(
@@ -81,14 +97,18 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[0].handling[0].temperatureRange.low.code == "Cel"
     assert (
         inst.typeTested[0].handling[0].temperatureRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[0].temperatureRange.low.unit == "°C"
     assert float(inst.typeTested[0].handling[0].temperatureRange.low.value) == float(15)
     assert inst.typeTested[0].handling[1].maxDuration.code == "h"
     assert (
         inst.typeTested[0].handling[1].maxDuration.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[1].maxDuration.unit == "hour"
     assert float(inst.typeTested[0].handling[1].maxDuration.value) == float(8)
@@ -99,14 +119,18 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[0].handling[1].temperatureRange.high.code == "Cel"
     assert (
         inst.typeTested[0].handling[1].temperatureRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[1].temperatureRange.high.unit == "°C"
     assert float(inst.typeTested[0].handling[1].temperatureRange.high.value) == float(8)
     assert inst.typeTested[0].handling[1].temperatureRange.low.code == "Cel"
     assert (
         inst.typeTested[0].handling[1].temperatureRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[1].temperatureRange.low.unit == "°C"
     assert float(inst.typeTested[0].handling[1].temperatureRange.low.value) == float(2)
@@ -116,24 +140,32 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[0].type.coding[0].display == "Serum specimen"
     assert (
         inst.typeTested[0].type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeTested[1].container.cap.coding[0].code == "green"
     assert inst.typeTested[1].container.cap.coding[0].display == "green cap"
     assert (
         inst.typeTested[1].container.cap.coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:6710:2017").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:6710:2017"}
+        ).valueUri
     )
     assert inst.typeTested[1].container.material.coding[0].code == "32039001"
     assert inst.typeTested[1].container.material.coding[0].display == "glass"
     assert (
         inst.typeTested[1].container.material.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeTested[1].container.minimumVolumeQuantity.code == "mL"
     assert (
         inst.typeTested[1].container.minimumVolumeQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[1].container.minimumVolumeQuantity.unit == "ml"
     assert float(inst.typeTested[1].container.minimumVolumeQuantity.value) == float(2)
@@ -143,12 +175,16 @@ def impl_specimendefinition_1(inst):
     )
     assert (
         inst.typeTested[1].container.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeTested[1].handling[0].maxDuration.code == "min"
     assert (
         inst.typeTested[1].handling[0].maxDuration.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[1].handling[0].maxDuration.unit == "minute"
     assert float(inst.typeTested[1].handling[0].maxDuration.value) == float(60)
@@ -159,7 +195,9 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[1].handling[0].temperatureRange.high.code == "Cel"
     assert (
         inst.typeTested[1].handling[0].temperatureRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[1].handling[0].temperatureRange.high.unit == "°C"
     assert float(inst.typeTested[1].handling[0].temperatureRange.high.value) == float(
@@ -168,14 +206,18 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[1].handling[0].temperatureRange.low.code == "Cel"
     assert (
         inst.typeTested[1].handling[0].temperatureRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[1].handling[0].temperatureRange.low.unit == "°C"
     assert float(inst.typeTested[1].handling[0].temperatureRange.low.value) == float(15)
     assert inst.typeTested[1].handling[1].maxDuration.code == "h"
     assert (
         inst.typeTested[1].handling[1].maxDuration.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[1].handling[1].maxDuration.unit == "hour"
     assert float(inst.typeTested[1].handling[1].maxDuration.value) == float(8)
@@ -186,14 +228,18 @@ def impl_specimendefinition_1(inst):
     assert inst.typeTested[1].handling[1].temperatureRange.high.code == "Cel"
     assert (
         inst.typeTested[1].handling[1].temperatureRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[1].handling[1].temperatureRange.high.unit == "°C"
     assert float(inst.typeTested[1].handling[1].temperatureRange.high.value) == float(8)
     assert inst.typeTested[1].handling[1].temperatureRange.low.code == "Cel"
     assert (
         inst.typeTested[1].handling[1].temperatureRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[1].handling[1].temperatureRange.low.unit == "°C"
     assert float(inst.typeTested[1].handling[1].temperatureRange.low.value) == float(2)
@@ -205,8 +251,8 @@ def impl_specimendefinition_1(inst):
     )
     assert (
         inst.typeTested[1].rejectionCriterion[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/rejection-criteria"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/rejection-criteria"}
         ).valueUri
     )
     assert inst.typeTested[1].rejectionCriterion[1].coding[0].code == "hemolized"
@@ -216,20 +262,22 @@ def impl_specimendefinition_1(inst):
     )
     assert (
         inst.typeTested[1].rejectionCriterion[1].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/rejection-criteria"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/rejection-criteria"}
         ).valueUri
     )
     assert inst.typeTested[1].type.coding[0].code == "119361006"
     assert inst.typeTested[1].type.coding[0].display == "Plasma specimen"
     assert (
         inst.typeTested[1].type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://example.com/specdef/v1/12345"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.com/specdef/v1/12345"}
         ).valueUri
     )
 
@@ -268,22 +316,28 @@ def impl_specimendefinition_2(inst):
     assert inst.typeCollected.coding[0].code == "122555007"
     assert (
         inst.typeCollected.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeCollected.text == "Venous blood specimen (specimen)"
     assert inst.typeTested[0].container.cap.coding[0].code == "yellow"
     assert inst.typeTested[0].container.cap.coding[0].display == "yellow cap"
     assert (
         inst.typeTested[0].container.cap.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/5.1.0/CodeSystem-container-cap.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/5.1.0/CodeSystem-container-cap.html"
+            }
         ).valueUri
     )
     assert inst.typeTested[0].container.material.text == "glass"
     assert inst.typeTested[0].container.minimumVolumeQuantity.code == "mL"
     assert (
         inst.typeTested[0].container.minimumVolumeQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].container.minimumVolumeQuantity.unit == "ml"
     assert float(inst.typeTested[0].container.minimumVolumeQuantity.value) == float(2)
@@ -294,12 +348,16 @@ def impl_specimendefinition_2(inst):
     )
     assert (
         inst.typeTested[0].container.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[0].maxDuration.code == "h"
     assert (
         inst.typeTested[0].handling[0].maxDuration.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert float(inst.typeTested[0].handling[0].maxDuration.value) == float(12)
     assert inst.typeTested[0].handling[0].temperatureQualifier.coding[0].code == "room"
@@ -310,7 +368,9 @@ def impl_specimendefinition_2(inst):
     assert inst.typeTested[0].handling[0].temperatureRange.high.code == "Cel"
     assert (
         inst.typeTested[0].handling[0].temperatureRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[0].temperatureRange.high.unit == "°C"
     assert float(inst.typeTested[0].handling[0].temperatureRange.high.value) == float(
@@ -319,7 +379,9 @@ def impl_specimendefinition_2(inst):
     assert inst.typeTested[0].handling[0].temperatureRange.low.code == "Cel"
     assert (
         inst.typeTested[0].handling[0].temperatureRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.typeTested[0].handling[0].temperatureRange.low.unit == "°C"
     assert float(inst.typeTested[0].handling[0].temperatureRange.low.value) == float(15)
@@ -328,13 +390,15 @@ def impl_specimendefinition_2(inst):
     assert inst.typeTested[0].type.coding[0].code == "119364003"
     assert (
         inst.typeTested[0].type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.typeTested[0].type.text == "Serum specimen (specimen)"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://example-lab.com/specdef/123455"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example-lab.com/specdef/123455"}
         ).valueUri
     )
 

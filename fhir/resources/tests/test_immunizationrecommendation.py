@@ -7,29 +7,31 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import immunizationrecommendation
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_immunizationrecommendation_1(inst):
     assert inst.authority.reference == "Organization/hl7"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2015-02-09T11:04:15.817-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-02-09T11:04:15.817-05:00"}
         ).valueDateTime
     )
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1235"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
@@ -40,14 +42,16 @@ def impl_immunizationrecommendation_1(inst):
     )
     assert (
         inst.recommendation[0].dateCriterion[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+            }
         ).valueUri
     )
     assert (
         inst.recommendation[0].dateCriterion[0].value
-        == ExternalValidatorModel(
-            valueDateTime="2015-12-01T00:00:00-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-12-01T00:00:00-05:00"}
         ).valueDateTime
     )
     assert inst.recommendation[0].dateCriterion[1].code.coding[0].code == "recommended"
@@ -56,14 +60,16 @@ def impl_immunizationrecommendation_1(inst):
     )
     assert (
         inst.recommendation[0].dateCriterion[1].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+            }
         ).valueUri
     )
     assert (
         inst.recommendation[0].dateCriterion[1].value
-        == ExternalValidatorModel(
-            valueDateTime="2015-12-01T00:00:00-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-12-01T00:00:00-05:00"}
         ).valueDateTime
     )
     assert inst.recommendation[0].dateCriterion[2].code.coding[0].code == "overdue"
@@ -73,14 +79,16 @@ def impl_immunizationrecommendation_1(inst):
     )
     assert (
         inst.recommendation[0].dateCriterion[2].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+            }
         ).valueUri
     )
     assert (
         inst.recommendation[0].dateCriterion[2].value
-        == ExternalValidatorModel(
-            valueDateTime="2016-12-28T00:00:00-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-12-28T00:00:00-05:00"}
         ).valueDateTime
     )
     assert inst.recommendation[0].description == "First sequence in protocol"
@@ -102,7 +110,9 @@ def impl_immunizationrecommendation_1(inst):
     )
     assert (
         inst.recommendation[0].vaccineCode[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.div == (
         '<div xmlns="http://www.w3.org/1999/xhtml">Authored by ' "Joginder Madra</div>"
@@ -136,22 +146,24 @@ def impl_immunizationrecommendation_2(inst):
     assert inst.authority.reference == "Organization/hl7"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2015-02-09T11:04:15.817-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-02-09T11:04:15.817-05:00"}
         ).valueDateTime
     )
     assert inst.id == "example-target-disease"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1235"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
@@ -162,12 +174,14 @@ def impl_immunizationrecommendation_2(inst):
     )
     assert (
         inst.recommendation[0].dateCriterion[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.recommendation[0].dateCriterion[0].value
-        == ExternalValidatorModel(
-            valueDateTime="2015-12-01T00:00:00-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-12-01T00:00:00-05:00"}
         ).valueDateTime
     )
     assert inst.recommendation[0].dateCriterion[1].code.coding[0].code == "recommended"
@@ -176,14 +190,16 @@ def impl_immunizationrecommendation_2(inst):
     )
     assert (
         inst.recommendation[0].dateCriterion[1].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+            }
         ).valueUri
     )
     assert (
         inst.recommendation[0].dateCriterion[1].value
-        == ExternalValidatorModel(
-            valueDateTime="2015-12-01T00:00:00-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-12-01T00:00:00-05:00"}
         ).valueDateTime
     )
     assert inst.recommendation[0].dateCriterion[2].code.coding[0].code == "overdue"
@@ -193,14 +209,16 @@ def impl_immunizationrecommendation_2(inst):
     )
     assert (
         inst.recommendation[0].dateCriterion[2].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"
+            }
         ).valueUri
     )
     assert (
         inst.recommendation[0].dateCriterion[2].value
-        == ExternalValidatorModel(
-            valueDateTime="2016-12-28T00:00:00-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-12-28T00:00:00-05:00"}
         ).valueDateTime
     )
     assert inst.recommendation[0].description == "First sequence in protocol"
@@ -219,7 +237,9 @@ def impl_immunizationrecommendation_2(inst):
     assert inst.recommendation[0].targetDisease[0].coding[0].code == "40468003"
     assert (
         inst.recommendation[0].targetDisease[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.div == (
         '<div xmlns="http://www.w3.org/1999/xhtml">Authored by ' "Joginder Madra</div>"

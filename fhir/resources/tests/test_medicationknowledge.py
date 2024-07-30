@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import medicationknowledge
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_medicationknowledge_1(inst):
@@ -18,7 +18,9 @@ def impl_medicationknowledge_1(inst):
     )
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/ndc").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/ndc"}
+        ).valueUri
     )
     assert inst.definitional.doseForm.coding[0].code == "385268001"
     assert (
@@ -27,15 +29,17 @@ def impl_medicationknowledge_1(inst):
     )
     assert (
         inst.definitional.doseForm.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.id == "example"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0] == "Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE)"

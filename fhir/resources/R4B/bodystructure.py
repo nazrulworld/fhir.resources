@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -24,51 +24,55 @@ class BodyStructure(domainresource.DomainResource):
     use case.
     """
 
-    resource_type = Field("BodyStructure", const=True)
+    __resource_type__ = "BodyStructure"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this record is in active use",
         description="Whether this body site is in active use.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Text description",
         description="A summary, characterization or explanation of the body structure.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Bodystructure identifier",
         description="Identifier for this instance of the anatomical structure.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] = Field(
+    image: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="image",
         title="Attached images",
         description="Image or images used to identify a location.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    location: fhirtypes.CodeableConceptType = Field(
+    location: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="location",
         title="Body site",
@@ -76,11 +80,12 @@ class BodyStructure(domainresource.DomainResource):
             "The anatomical location or region of the specimen, lesion, or body "
             "structure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    locationQualifier: typing.List[fhirtypes.CodeableConceptType] = Field(
+    locationQualifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="locationQualifier",
         title="Body site modifier",
@@ -88,11 +93,12 @@ class BodyStructure(domainresource.DomainResource):
             "Qualifier to refine the anatomical location.  These include qualifiers"
             " for laterality, relative location, directionality, number, and plane."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    morphology: fhirtypes.CodeableConceptType = Field(
+    morphology: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="morphology",
         title="Kind of Structure",
@@ -101,19 +107,21 @@ class BodyStructure(domainresource.DomainResource):
             "`BodyStructure.location`.  This can define both normal and abnormal "
             "morphologies."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="patient",
         title="Who this is about",
         description="The person to which the body site belongs.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
     @classmethod

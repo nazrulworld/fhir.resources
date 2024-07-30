@@ -6,8 +6,6 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from pydantic.v1 import Field
-
 from . import quantity
 
 
@@ -19,7 +17,7 @@ class Money(quantity.Quantity):
     An amount of economic utility in some recognized currency.
     """
 
-    resource_type = Field("Money", const=True)
+    __resource_type__ = "Money"
 
     @classmethod
     def elements_sequence(cls):

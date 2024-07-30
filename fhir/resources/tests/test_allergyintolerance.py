@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import allergyintolerance
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_allergyintolerance_1(inst):
@@ -15,7 +15,9 @@ def impl_allergyintolerance_1(inst):
     assert inst.code.coding[0].display == "No Known Latex Allergy (situation)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "No Known Latex Allergy"
     assert inst.id == "nkla"
@@ -23,8 +25,8 @@ def impl_allergyintolerance_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/example"
@@ -32,15 +34,17 @@ def impl_allergyintolerance_1(inst):
     assert inst.participant[0].function.coding[0].display == "Author"
     assert (
         inst.participant[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
     assert (
         inst.recordedDate
-        == ExternalValidatorModel(
-            valueDateTime="2015-08-06T15:37:31-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-06T15:37:31-06:00"}
         ).valueDateTime
     )
     assert inst.text.status == "generated"
@@ -72,35 +76,41 @@ def impl_allergyintolerance_2(inst):
     assert inst.clinicalStatus.coding[0].display == "Active"
     assert (
         inst.clinicalStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+            }
         ).valueUri
     )
     assert inst.code.coding[0].code == "227493005"
     assert inst.code.coding[0].display == "Cashew nuts"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.criticality == "high"
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://acme.com/ids/patients/risks"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.com/ids/patients/risks"}
         ).valueUri
     )
     assert inst.identifier[0].value == "49476534"
     assert (
         inst.lastOccurrence
-        == ExternalValidatorModel(valueDateTime="2012-06").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-06"}
+        ).valueDateTime
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -108,15 +118,20 @@ def impl_allergyintolerance_2(inst):
         " reaction when challenged with cashew extract."
     )
     assert (
-        inst.onsetDateTime == ExternalValidatorModel(valueDateTime="2004").valueDateTime
+        inst.onsetDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2004"}
+        ).valueDateTime
     )
     assert inst.participant[0].actor.reference == "Practitioner/example"
     assert inst.participant[0].function.coding[0].code == "author"
     assert inst.participant[0].function.coding[0].display == "Author"
     assert (
         inst.participant[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.participant[1].actor.reference == "Patient/example"
@@ -124,8 +139,10 @@ def impl_allergyintolerance_2(inst):
     assert inst.participant[1].function.coding[0].display == "Informant"
     assert (
         inst.participant[1].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
@@ -137,7 +154,9 @@ def impl_allergyintolerance_2(inst):
     assert inst.reaction[0].exposureRoute.coding[0].display == "Subcutaneous route"
     assert (
         inst.reaction[0].exposureRoute.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reaction[0].manifestation[0].concept.coding[0].code == "39579001"
     assert (
@@ -146,11 +165,15 @@ def impl_allergyintolerance_2(inst):
     )
     assert (
         inst.reaction[0].manifestation[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.reaction[0].onset
-        == ExternalValidatorModel(valueDateTime="2012-06-12").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-06-12"}
+        ).valueDateTime
     )
     assert inst.reaction[0].severity == "severe"
     assert inst.reaction[0].substance.coding[0].code == "1160593"
@@ -160,15 +183,17 @@ def impl_allergyintolerance_2(inst):
     )
     assert (
         inst.reaction[0].substance.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.nlm.nih.gov/research/umls/rxnorm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.nlm.nih.gov/research/umls/rxnorm"}
         ).valueUri
     )
     assert inst.reaction[1].manifestation[0].concept.coding[0].code == "64305001"
     assert inst.reaction[1].manifestation[0].concept.coding[0].display == "Urticaria"
     assert (
         inst.reaction[1].manifestation[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reaction[1].note[0].text == (
         "The patient reports that the onset of urticaria was within "
@@ -176,13 +201,15 @@ def impl_allergyintolerance_2(inst):
     )
     assert (
         inst.reaction[1].onset
-        == ExternalValidatorModel(valueDateTime="2004").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2004"}
+        ).valueDateTime
     )
     assert inst.reaction[1].severity == "moderate"
     assert (
         inst.recordedDate
-        == ExternalValidatorModel(
-            valueDateTime="2014-10-09T14:58:00+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-10-09T14:58:00+11:00"}
         ).valueDateTime
     )
     assert inst.text.status == "generated"
@@ -190,16 +217,18 @@ def impl_allergyintolerance_2(inst):
     assert inst.type.coding[0].display == "Allergy"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/allergy-intolerance-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/allergy-intolerance-type"}
         ).valueUri
     )
     assert inst.verificationStatus.coding[0].code == "confirmed"
     assert inst.verificationStatus.coding[0].display == "Confirmed"
     assert (
         inst.verificationStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+            }
         ).valueUri
     )
 
@@ -229,7 +258,9 @@ def impl_allergyintolerance_3(inst):
     assert inst.code.coding[0].display == "No Known Allergy (situation)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "NKA"
     assert inst.id == "nka"
@@ -237,8 +268,8 @@ def impl_allergyintolerance_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/example"
@@ -246,15 +277,17 @@ def impl_allergyintolerance_3(inst):
     assert inst.participant[0].function.coding[0].display == "Author"
     assert (
         inst.participant[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.patient.reference == "Patient/mom"
     assert (
         inst.recordedDate
-        == ExternalValidatorModel(
-            valueDateTime="2015-08-06T15:37:31-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-06T15:37:31-06:00"}
         ).valueDateTime
     )
     assert inst.text.status == "generated"
@@ -286,16 +319,18 @@ def impl_allergyintolerance_4(inst):
     assert inst.clinicalStatus.coding[0].display == "Active"
     assert (
         inst.clinicalStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+            }
         ).valueUri
     )
     assert inst.code.coding[0].code == "7980"
     assert inst.code.coding[0].display == "Penicillin G"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.nlm.nih.gov/research/umls/rxnorm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.nlm.nih.gov/research/umls/rxnorm"}
         ).valueUri
     )
     assert inst.criticality == "high"
@@ -304,8 +339,8 @@ def impl_allergyintolerance_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/example"
@@ -313,8 +348,10 @@ def impl_allergyintolerance_4(inst):
     assert inst.participant[0].function.coding[0].display == "Author"
     assert (
         inst.participant[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
@@ -322,19 +359,25 @@ def impl_allergyintolerance_4(inst):
     assert inst.reaction[0].manifestation[0].concept.coding[0].display == "Hives"
     assert (
         inst.reaction[0].manifestation[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.recordedDate
-        == ExternalValidatorModel(valueDateTime="2010-03-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2010-03-01"}
+        ).valueDateTime
     )
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "unconfirmed"
     assert inst.verificationStatus.coding[0].display == "Unconfirmed"
     assert (
         inst.verificationStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+            }
         ).valueUri
     )
 
@@ -365,22 +408,26 @@ def impl_allergyintolerance_5(inst):
     assert inst.clinicalStatus.coding[0].display == "Active"
     assert (
         inst.clinicalStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+            }
         ).valueUri
     )
     assert inst.code.coding[0].code == "227037002"
     assert inst.code.coding[0].display == "Fish - dietary (substance)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Allergic to fresh fish. Tolerates canned fish"
     assert inst.id == "fishallergy"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://acme.com/ids/patients/risks"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.com/ids/patients/risks"}
         ).valueUri
     )
     assert inst.identifier[0].value == "49476535"
@@ -388,8 +435,8 @@ def impl_allergyintolerance_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/example"
@@ -397,15 +444,17 @@ def impl_allergyintolerance_5(inst):
     assert inst.participant[0].function.coding[0].display == "Author"
     assert (
         inst.participant[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
     assert (
         inst.recordedDate
-        == ExternalValidatorModel(
-            valueDateTime="2015-08-06T15:37:31-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-06T15:37:31-06:00"}
         ).valueDateTime
     )
     assert inst.text.status == "additional"
@@ -413,8 +462,10 @@ def impl_allergyintolerance_5(inst):
     assert inst.verificationStatus.coding[0].display == "Confirmed"
     assert (
         inst.verificationStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+            }
         ).valueUri
     )
 
@@ -446,7 +497,9 @@ def impl_allergyintolerance_6(inst):
     assert inst.code.coding[0].display == "No Known Drug Allergy (situation)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "NKDA"
     assert inst.id == "nkda"
@@ -454,8 +507,8 @@ def impl_allergyintolerance_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/example"
@@ -463,15 +516,17 @@ def impl_allergyintolerance_6(inst):
     assert inst.participant[0].function.coding[0].display == "Author"
     assert (
         inst.participant[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.patient.reference == "Patient/mom"
     assert (
         inst.recordedDate
-        == ExternalValidatorModel(
-            valueDateTime="2015-08-06T15:37:31-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-06T15:37:31-06:00"}
         ).valueDateTime
     )
     assert inst.text.status == "generated"

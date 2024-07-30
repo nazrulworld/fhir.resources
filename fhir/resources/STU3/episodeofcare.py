@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -29,22 +27,23 @@ class EpisodeOfCare(domainresource.DomainResource):
     time.
     """
 
-    resource_type = Field("EpisodeOfCare", const=True)
+    __resource_type__ = "EpisodeOfCare"
 
-    account: typing.List[fhirtypes.ReferenceType] = Field(
+    account: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="account",
         title=(
             "The set of accounts that may be used for billing for this " "EpisodeOfCare"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Account"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Account"],
+        },
     )
 
-    careManager: fhirtypes.ReferenceType = Field(
+    careManager: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="careManager",
         title="Care manager/care co-ordinator for the patient",
@@ -52,22 +51,24 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The practitioner that is the care manager/care co-ordinator for this "
             "patient."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    diagnosis: typing.List[fhirtypes.EpisodeOfCareDiagnosisType] = Field(
+    diagnosis: typing.List[fhirtypes.EpisodeOfCareDiagnosisType] = Field(  # type: ignore
         None,
         alias="diagnosis",
         title="The list of diagnosis relevant to this episode of care",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier(s) relevant for this EpisodeOfCare",
@@ -76,11 +77,12 @@ class EpisodeOfCare(domainresource.DomainResource):
             "contexts of use, such as when an external agency is tracking the "
             "Episode for funding purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    managingOrganization: fhirtypes.ReferenceType = Field(
+    managingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title="Organization that assumes care",
@@ -88,24 +90,26 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The organization that has assumed the specific responsibilities for "
             "the specified duration."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="patient",
         title="The patient who is the focus of this episode of care",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Interval during responsibility is assumed",
@@ -113,11 +117,12 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The interval during which the managing organization assumes the "
             "defined responsibility."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    referralRequest: typing.List[fhirtypes.ReferenceType] = Field(
+    referralRequest: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="referralRequest",
         title="Originating Referral Request(s)",
@@ -125,13 +130,14 @@ class EpisodeOfCare(domainresource.DomainResource):
             "Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming"
             " referrals."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ReferralRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ReferralRequest"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -139,26 +145,27 @@ class EpisodeOfCare(domainresource.DomainResource):
             "in-error"
         ),
         description="planned | waitlist | active | onhold | finished | cancelled.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "planned",
-            "waitlist",
-            "active",
-            "onhold",
-            "finished",
-            "cancelled",
-            "entered-in-error",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "planned",
+                "waitlist",
+                "active",
+                "onhold",
+                "finished",
+                "cancelled",
+                "entered-in-error",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusHistory: typing.List[fhirtypes.EpisodeOfCareStatusHistoryType] = Field(
+    statusHistory: typing.List[fhirtypes.EpisodeOfCareStatusHistoryType] = Field(  # type: ignore
         None,
         alias="statusHistory",
         title=(
@@ -169,11 +176,12 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The history of statuses that the EpisodeOfCare has been through "
             "(without requiring processing the history of the resource)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    team: typing.List[fhirtypes.ReferenceType] = Field(
+    team: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="team",
         title="Other practitioners facilitating this episode of care",
@@ -181,13 +189,14 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The list of practitioners that may be facilitating this episode of "
             "care for specific purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CareTeam"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CareTeam"],
+        },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="type",
         title="Type/class  - e.g. specialist referral, disease management",
@@ -195,8 +204,9 @@ class EpisodeOfCare(domainresource.DomainResource):
             "A classification of the type of episode of care; e.g. specialist "
             "referral, disease management, type of funded care."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -228,10 +238,7 @@ class EpisodeOfCare(domainresource.DomainResource):
             "account",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1443(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -240,52 +247,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
@@ -296,9 +258,9 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
     The list of diagnosis relevant to this episode of care.
     """
 
-    resource_type = Field("EpisodeOfCareDiagnosis", const=True)
+    __resource_type__ = "EpisodeOfCareDiagnosis"
 
-    condition: fhirtypes.ReferenceType = Field(
+    condition: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="condition",
         title="Conditions/problems/diagnoses this episode of care is for",
@@ -306,25 +268,27 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
             "A list of conditions/problems/diagnoses that this episode of care is "
             "intended to be providing care for."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Condition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Condition"],
+        },
     )
 
-    rank: fhirtypes.PositiveInt = Field(
+    rank: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="rank",
         title="Ranking of the diagnosis (for each role type)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_rank", title="Extension field for ``rank``."
     )
 
-    role: fhirtypes.CodeableConceptType = Field(
+    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="role",
         title=(
@@ -332,8 +296,9 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
             "admission, billing, discharge \u2026)"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -356,18 +321,19 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
     requiring processing the history of the resource).
     """
 
-    resource_type = Field("EpisodeOfCareStatusHistory", const=True)
+    __resource_type__ = "EpisodeOfCareStatusHistory"
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         ...,
         alias="period",
         title="Duration the EpisodeOfCare was in the specified status",
         description="The period during this EpisodeOfCare that the specific status applied.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -375,22 +341,23 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
             "in-error"
         ),
         description="planned | waitlist | active | onhold | finished | cancelled.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "planned",
-            "waitlist",
-            "active",
-            "onhold",
-            "finished",
-            "cancelled",
-            "entered-in-error",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "planned",
+                "waitlist",
+                "active",
+                "onhold",
+                "finished",
+                "cancelled",
+                "entered-in-error",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -402,10 +369,7 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "status", "period"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2861(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -414,49 +378,4 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Communication(domainresource.DomainResource):
@@ -28,7 +28,7 @@ class Communication(domainresource.DomainResource):
 
     __resource_type__ = "Communication"
 
-    about: typing.List[fhirtypes.ReferenceType] = Field(
+    about: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="about",
         title="Resources that pertain to this communication",
@@ -43,7 +43,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Request fulfilled by this communication",
@@ -58,7 +58,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Message category",
@@ -71,7 +71,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="The Encounter during which this Communication was created",
@@ -86,7 +86,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique identifier",
@@ -100,7 +100,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    inResponseTo: typing.List[fhirtypes.ReferenceType] = Field(
+    inResponseTo: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="inResponseTo",
         title="Reply to",
@@ -112,9 +112,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    instantiatesCanonical: typing.List[
-        typing.Optional[fhirtypes.CanonicalType]
-    ] = Field(
+    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -135,15 +133,13 @@ class Communication(domainresource.DomainResource):
             ],
         },
     )
-    instantiatesCanonical__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    instantiatesCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
+    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -156,13 +152,11 @@ class Communication(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    instantiatesUri__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    instantiatesUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    medium: typing.List[fhirtypes.CodeableConceptType] = Field(
+    medium: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="medium",
         title="A channel of communication",
@@ -172,7 +166,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about the communication",
@@ -185,7 +179,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced event (e.g. Communication, Procedure)",
@@ -200,7 +194,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    payload: typing.List[fhirtypes.CommunicationPayloadType] = Field(
+    payload: typing.List[fhirtypes.CommunicationPayloadType] = Field(  # type: ignore
         None,
         alias="payload",
         title="Message payload",
@@ -213,7 +207,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType = Field(
+    priority: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -228,11 +222,11 @@ class Communication(domainresource.DomainResource):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="reason",
         title="Indication for message",
@@ -244,7 +238,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    received: fhirtypes.DateTimeType = Field(
+    received: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="received",
         title="When received",
@@ -253,11 +247,11 @@ class Communication(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    received__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    received__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_received", title="Extension field for ``received``."
     )
 
-    recipient: typing.List[fhirtypes.ReferenceType] = Field(
+    recipient: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="recipient",
         title="Who the information is shared with",
@@ -284,7 +278,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    sender: fhirtypes.ReferenceType = Field(
+    sender: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="sender",
         title="Who shares the information",
@@ -309,7 +303,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    sent: fhirtypes.DateTimeType = Field(
+    sent: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="sent",
         title="When sent",
@@ -318,11 +312,11 @@ class Communication(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    sent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sent", title="Extension field for ``sent``."
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -347,11 +341,11 @@ class Communication(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: fhirtypes.CodeableConceptType = Field(
+    statusReason: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="statusReason",
         title="Reason for current status",
@@ -361,7 +355,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Focus of message",
@@ -373,7 +367,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    topic: fhirtypes.CodeableConceptType = Field(
+    topic: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="topic",
         title="Description of the purpose/content",
@@ -437,9 +431,6 @@ class Communication(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class CommunicationPayload(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -451,7 +442,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
 
     __resource_type__ = "CommunicationPayload"
 
-    contentAttachment: fhirtypes.AttachmentType = Field(
+    contentAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="contentAttachment",
         title="Message part content",
@@ -467,7 +458,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
         },
     )
 
-    contentCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    contentCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="contentCodeableConcept",
         title="Message part content",
@@ -483,7 +474,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
         },
     )
 
-    contentReference: fhirtypes.ReferenceType = Field(
+    contentReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="contentReference",
         title="Message part content",

@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -24,9 +24,9 @@ class Account(domainresource.DomainResource):
     etc.
     """
 
-    resource_type = Field("Account", const=True)
+    __resource_type__ = "Account"
 
-    active: fhirtypes.PeriodType = Field(
+    active: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="active",
         title="Time window that transactions may be posted to this account",
@@ -35,11 +35,12 @@ class Account(domainresource.DomainResource):
             " transactions posted to it. This period may be different to the "
             "coveragePeriod which is the duration of time that services may occur."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    balance: fhirtypes.MoneyType = Field(
+    balance: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="balance",
         title="How much is in account?",
@@ -47,11 +48,12 @@ class Account(domainresource.DomainResource):
             "Represents the sum of all credits less all debits associated with the "
             "account.  Might be positive, zero or negative."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    coverage: typing.List[fhirtypes.AccountCoverageType] = Field(
+    coverage: typing.List[fhirtypes.AccountCoverageType] = Field(  # type: ignore
         None,
         alias="coverage",
         title=(
@@ -59,11 +61,12 @@ class Account(domainresource.DomainResource):
             "account, and what order should they be applied to the account"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Explanation of purpose/use",
@@ -71,23 +74,25 @@ class Account(domainresource.DomainResource):
             "Provides additional information about what the account tracks and how "
             "it is used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    guarantor: typing.List[fhirtypes.AccountGuarantorType] = Field(
+    guarantor: typing.List[fhirtypes.AccountGuarantorType] = Field(  # type: ignore
         None,
         alias="guarantor",
         title="Responsible for the account",
         description="Parties financially responsible for the account.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Account number",
@@ -95,25 +100,27 @@ class Account(domainresource.DomainResource):
             "Unique identifier used to reference the account.  May or may not be "
             "intended for human use (e.g. credit card number)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Human-readable label",
         description=(
             "Name used for the account when displaying it to humans in reports, " "etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    owner: fhirtypes.ReferenceType = Field(
+    owner: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="owner",
         title="Who is responsible?",
@@ -121,13 +128,14 @@ class Account(domainresource.DomainResource):
             "Indicates the organization, department, etc. with responsibility for "
             "the account."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Transaction window",
@@ -135,26 +143,28 @@ class Account(domainresource.DomainResource):
             "Identifies the period of time the account applies to; e.g. accounts "
             "created per fiscal year, quarter, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | inactive | entered-in-error",
         description="Indicates whether the account is presently used/usable or not.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "inactive", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "inactive", "entered-in-error"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="What is account tied to?",
@@ -162,26 +172,28 @@ class Account(domainresource.DomainResource):
             "Identifies the patient, device, practitioner, location or other object"
             " the account is associated with."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Device",
-            "Practitioner",
-            "Location",
-            "HealthcareService",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Device",
+                "Practitioner",
+                "Location",
+                "HealthcareService",
+                "Organization",
+            ],
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="E.g. patient, expense, depreciation",
         description="Categorizes the account for reporting and searching purposes.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -223,9 +235,9 @@ class AccountCoverage(backboneelement.BackboneElement):
     and what order should they be applied to the account.
     """
 
-    resource_type = Field("AccountCoverage", const=True)
+    __resource_type__ = "AccountCoverage"
 
-    coverage: fhirtypes.ReferenceType = Field(
+    coverage: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="coverage",
         title=(
@@ -238,21 +250,23 @@ class AccountCoverage(backboneelement.BackboneElement):
             "resposible for specific types of charges, and the sequence of the "
             "coverages in the account could be important when processing billing."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Coverage"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Coverage"],
+        },
     )
 
-    priority: fhirtypes.PositiveInt = Field(
+    priority: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="priority",
         title="The priority of the coverage in the context of this account",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
@@ -274,9 +288,9 @@ class AccountGuarantor(backboneelement.BackboneElement):
     Parties financially responsible for the account.
     """
 
-    resource_type = Field("AccountGuarantor", const=True)
+    __resource_type__ = "AccountGuarantor"
 
-    onHold: bool = Field(
+    onHold: bool = Field(  # type: ignore
         None,
         alias="onHold",
         title="Credit or other hold applied",
@@ -284,25 +298,27 @@ class AccountGuarantor(backboneelement.BackboneElement):
             "A guarantor may be placed on credit hold or otherwise have their role "
             "temporarily suspended."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    onHold__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    onHold__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_onHold", title="Extension field for ``onHold``."
     )
 
-    party: fhirtypes.ReferenceType = Field(
+    party: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="party",
         title="Responsible entity",
         description="The entity who is responsible.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "RelatedPerson", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "RelatedPerson", "Organization"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Guarrantee account during",
@@ -310,8 +326,9 @@ class AccountGuarantor(backboneelement.BackboneElement):
             "The timeframe during which the guarantor accepts responsibility for "
             "the account."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

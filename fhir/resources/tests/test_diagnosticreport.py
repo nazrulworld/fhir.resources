@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import diagnosticreport
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_diagnosticreport_1(inst):
@@ -15,33 +15,39 @@ def impl_diagnosticreport_1(inst):
     assert inst.category[0].coding[0].display == "Radiology"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.category[0].coding[1].code == "RAD"
     assert (
         inst.category[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0074"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0074"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "45036003"
     assert inst.code.coding[0].display == "Ultrasonography of abdomen"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Abdominal Ultrasound"
     assert inst.conclusion == "Unremarkable study"
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2012-12-01T12:00:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-12-01T12:00:00+01:00"}
         ).valueDateTime
     )
     assert inst.id == "ultrasound"
     assert (
         inst.issued
-        == ExternalValidatorModel(valueInstant="2012-12-01T12:00:00+01:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2012-12-01T12:00:00+01:00"}
+        ).valueInstant
     )
     assert inst.media[0].comment == "A comment about the image"
     assert inst.media[0].link.display == "WADO example image"
@@ -52,8 +58,8 @@ def impl_diagnosticreport_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].reference == "Practitioner/example"
@@ -90,8 +96,8 @@ def impl_diagnosticreport_2(inst):
     )
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0074"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0074"}
         ).valueUri
     )
     assert inst.category[0].text == "Pathology"
@@ -101,31 +107,39 @@ def impl_diagnosticreport_2(inst):
     )
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="https://www.acmeonline.com").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.acmeonline.com"}
+        ).valueUri
     )
     assert inst.code.text == (
         "Biopsy without Microscopic Description (1 " "Site/Lesion)-Standard"
     )
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="2018-03-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-02"}
+        ).valueDateTime
     )
     assert inst.id == "gingival-biopsy"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="https://www.acmeonline.com").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.acmeonline.com"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "P73456090"
     assert (
         inst.issued
-        == ExternalValidatorModel(valueInstant="2018-03-15T08:13:08Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2018-03-15T08:13:08Z"}
+        ).valueInstant
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].display == "Acme Animal Labs"
@@ -170,20 +184,24 @@ def impl_diagnosticreport_3(inst):
     assert inst.category[0].coding[0].display == "Radiology"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.category[0].coding[1].code == "RAD"
     assert (
         inst.category[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0074"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0074"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "429858000"
     assert inst.code.coding[0].display == "Computed tomography (CT) of head and neck"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "CT of head-neck"
     assert inst.conclusion == "CT brains: large tumor sphenoid/clivus."
@@ -194,26 +212,30 @@ def impl_diagnosticreport_3(inst):
     )
     assert (
         inst.conclusionCode[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.contained[0].id == "is1"
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2012-12-01T12:00:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-12-01T12:00:00+01:00"}
         ).valueDateTime
     )
     assert inst.id == "f201"
     assert (
         inst.issued
-        == ExternalValidatorModel(valueInstant="2012-12-01T12:00:00+01:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2012-12-01T12:00:00+01:00"}
+        ).valueInstant
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].display == "Blijdorp MC"
@@ -250,25 +272,29 @@ def impl_diagnosticreport_4(inst):
     assert inst.code.coding[0].code == "47527-7"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2013-02-11T10:33:33+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-02-11T10:33:33+11:00"}
         ).valueDateTime
     )
     assert inst.id == "pap"
     assert (
         inst.issued
-        == ExternalValidatorModel(valueInstant="2013-02-13T11:45:33+11:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-02-13T11:45:33+11:00"}
+        ).valueInstant
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].reference == "Practitioner/example"
@@ -305,8 +331,8 @@ def impl_diagnosticreport_5(inst):
     )
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0074"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0074"}
         ).valueUri
     )
     assert inst.category[0].text == "Pathology"
@@ -316,31 +342,39 @@ def impl_diagnosticreport_5(inst):
     )
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="https://www.acmeonline.com").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.acmeonline.com"}
+        ).valueUri
     )
     assert inst.code.text == (
         "Biopsy without Microscopic Description (1 " "Site/Lesion)-Standard"
     )
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="2017-03-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-02"}
+        ).valueDateTime
     )
     assert inst.id == "gingival-mass"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="https://www.acmeonline.com").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.acmeonline.com"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "P73456090"
     assert (
         inst.issued
-        == ExternalValidatorModel(valueInstant="2017-03-15T08:13:08Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2017-03-15T08:13:08Z"}
+        ).valueInstant
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].display == "Acme Animal Labs"
@@ -380,7 +414,9 @@ def impl_diagnosticreport_6(inst):
     assert inst.code.coding[0].code == "38269-7"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == "DXA BONE DENSITOMETRY"
     assert inst.conclusionCode[0].coding[0].code == "391040000"
@@ -389,23 +425,29 @@ def impl_diagnosticreport_6(inst):
     )
     assert (
         inst.conclusionCode[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="2008-06-17").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2008-06-17"}
+        ).valueDateTime
     )
     assert inst.id == "102"
     assert (
         inst.issued
-        == ExternalValidatorModel(valueInstant="2008-06-18T09:23:00+10:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2008-06-18T09:23:00+10:00"}
+        ).valueInstant
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].display == "Dr Henry Seven"

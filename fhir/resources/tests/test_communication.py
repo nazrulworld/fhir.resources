@@ -7,32 +7,36 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import communication
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_communication_1(inst):
     assert (
         inst.about[0].identifier.system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.about[0].identifier.value == "12345"
     assert (
         inst.about[1].identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://www.BenefitsInc.com/fhir/claimresponse"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.BenefitsInc.com/fhir/claimresponse"}
         ).valueUri
     )
     assert inst.about[1].identifier.value == "R3500"
     assert inst.category[0].coding[0].code == "SolicitedAttachment"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://acme.org/messagetypes").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/messagetypes"}
+        ).valueUri
     )
     assert inst.id == "fm-attachment"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.providerco.com/communication"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.providerco.com/communication"}
         ).valueUri
     )
     assert inst.identifier[0].value == "12345"
@@ -40,33 +44,35 @@ def impl_communication_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.payload[0].contentAttachment.contentType == "application/pdf"
     assert (
         inst.payload[0].contentAttachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2010-02-01T11:50:23-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2010-02-01T11:50:23-05:00"}
         ).valueDateTime
     )
     assert (
         inst.payload[0].contentAttachment.data
-        == ExternalValidatorModel(valueBase64Binary="SGVsbG8=").valueBase64Binary
+        == ExternalValidatorModel.model_validate(
+            {"valueBase64Binary": "SGVsbG8="}
+        ).valueBase64Binary
     )
     assert inst.payload[0].contentAttachment.title == "accident notes 20100201.pdf"
     assert inst.payload[1].contentAttachment.contentType == "application/pdf"
     assert (
         inst.payload[1].contentAttachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2010-02-01T10:57:34+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2010-02-01T10:57:34+01:00"}
         ).valueDateTime
     )
     assert (
         inst.payload[1].contentAttachment.hash
-        == ExternalValidatorModel(
-            valueBase64Binary="SGVsbG8gdGhlcmU="
+        == ExternalValidatorModel.model_validate(
+            {"valueBase64Binary": "SGVsbG8gdGhlcmU="}
         ).valueBase64Binary
     )
     # Don't know how to create unit test
@@ -74,26 +80,28 @@ def impl_communication_1(inst):
     # which is a Integer64
     assert (
         inst.payload[1].contentAttachment.url
-        == ExternalValidatorModel(valueUrl="http://example.org/docs/AB12345").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://example.org/docs/AB12345"}
+        ).valueUrl
     )
     assert (
         inst.recipient[0].identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://www.jurisdiction.com/insurer"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.jurisdiction.com/insurer"}
         ).valueUri
     )
     assert inst.recipient[0].identifier.value == "123456"
     assert (
         inst.sender.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://www.jurisdiction.com/provideroffices"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.jurisdiction.com/provideroffices"}
         ).valueUri
     )
     assert inst.sender.identifier.value == "3456"
     assert (
         inst.sent
-        == ExternalValidatorModel(
-            valueDateTime="2016-06-12T18:01:10-08:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-06-12T18:01:10-08:00"}
         ).valueDateTime
     )
     assert inst.status == "completed"
@@ -130,7 +138,9 @@ def impl_communication_2(inst):
     assert inst.category[0].coding[0].code == "SolicitedAttachment"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://acme.org/messagetypes").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/messagetypes"}
+        ).valueUri
     )
     assert inst.contained[0].id == "provider"
     assert inst.contained[1].id == "payor"
@@ -138,8 +148,8 @@ def impl_communication_2(inst):
     assert inst.id == "fm-solicited"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.providerco.com/communication"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.providerco.com/communication"}
         ).valueUri
     )
     assert inst.identifier[0].value == "12345"
@@ -147,33 +157,35 @@ def impl_communication_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.payload[0].contentAttachment.contentType == "application/pdf"
     assert (
         inst.payload[0].contentAttachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2010-02-01T11:50:23-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2010-02-01T11:50:23-05:00"}
         ).valueDateTime
     )
     assert (
         inst.payload[0].contentAttachment.data
-        == ExternalValidatorModel(valueBase64Binary="SGVsbG8=").valueBase64Binary
+        == ExternalValidatorModel.model_validate(
+            {"valueBase64Binary": "SGVsbG8="}
+        ).valueBase64Binary
     )
     assert inst.payload[0].contentAttachment.title == "accident notes 20100201.pdf"
     assert inst.payload[1].contentAttachment.contentType == "application/pdf"
     assert (
         inst.payload[1].contentAttachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2010-02-01T10:57:34+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2010-02-01T10:57:34+01:00"}
         ).valueDateTime
     )
     assert (
         inst.payload[1].contentAttachment.hash
-        == ExternalValidatorModel(
-            valueBase64Binary="SGVsbG8gdGhlcmU="
+        == ExternalValidatorModel.model_validate(
+            {"valueBase64Binary": "SGVsbG8gdGhlcmU="}
         ).valueBase64Binary
     )
     # Don't know how to create unit test
@@ -181,16 +193,16 @@ def impl_communication_2(inst):
     # which is a Integer64
     assert (
         inst.payload[1].contentAttachment.url
-        == ExternalValidatorModel(
-            valueUrl="http://happyvalley.com/docs/AB12345"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://happyvalley.com/docs/AB12345"}
         ).valueUrl
     )
     assert inst.recipient[0].reference == "#payor"
     assert inst.sender.reference == "#provider"
     assert (
         inst.sent
-        == ExternalValidatorModel(
-            valueDateTime="2016-06-12T18:01:10-08:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-06-12T18:01:10-08:00"}
         ).valueDateTime
     )
     assert inst.status == "completed"
@@ -227,27 +239,33 @@ def impl_communication_3(inst):
     assert inst.category[0].coding[0].code == "Alert"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://acme.org/messagetypes").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/messagetypes"}
+        ).valueUri
     )
     assert inst.category[0].text == "Alert"
     assert inst.encounter.reference == "Encounter/example"
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:1.3.4.5.6.7").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:1.3.4.5.6.7"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "Paging System"
     assert inst.identifier[0].value == "2345678901"
     assert (
         inst.instantiatesUri[0]
-        == ExternalValidatorModel(valueUri="http://example.org/hyperkalemia").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/hyperkalemia"}
+        ).valueUri
     )
     assert inst.medium[0].coding[0].code == "WRITTEN"
     assert inst.medium[0].coding[0].display == "written"
     assert (
         inst.medium[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"}
         ).valueUri
     )
     assert inst.medium[0].text == "written"
@@ -255,8 +273,8 @@ def impl_communication_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.partOf[0].display == "Serum Potassium Observation"
@@ -267,16 +285,16 @@ def impl_communication_3(inst):
     assert inst.payload[1].contentReference.display == "Serum Potassium Observation"
     assert (
         inst.received
-        == ExternalValidatorModel(
-            valueDateTime="2014-12-12T18:01:11-08:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-12-12T18:01:11-08:00"}
         ).valueDateTime
     )
     assert inst.recipient[0].reference == "Practitioner/example"
     assert inst.sender.reference == "Device/f001"
     assert (
         inst.sent
-        == ExternalValidatorModel(
-            valueDateTime="2014-12-12T18:01:10-08:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-12-12T18:01:10-08:00"}
         ).valueDateTime
     )
     assert inst.status == "completed"

@@ -7,32 +7,38 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import nutritionproduct
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_nutritionproduct_1(inst):
     assert inst.category[0].coding[0].code == "227313005"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.coding[0].code == "227507002"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.id == "example"
     assert (
         inst.instance[0].identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/foodserials").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/foodserials"}
+        ).valueUri
     )
     assert inst.instance[0].identifier[0].value == "77239487"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "active"

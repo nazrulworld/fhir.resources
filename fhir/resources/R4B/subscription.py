@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -28,9 +26,9 @@ class Subscription(domainresource.DomainResource):
     "channel" so that another system can take an appropriate action.
     """
 
-    resource_type = Field("Subscription", const=True)
+    __resource_type__ = "Subscription"
 
-    channel: fhirtypes.SubscriptionChannelType = Field(
+    channel: fhirtypes.SubscriptionChannelType = Field(  # type: ignore
         ...,
         alias="channel",
         title="The channel on which to report matches to the criteria",
@@ -38,11 +36,12 @@ class Subscription(domainresource.DomainResource):
             "Details where to send notifications when resources are received that "
             "meet the criteria."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    contact: typing.List[fhirtypes.ContactPointType] = Field(
+    contact: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for source (e.g. troubleshooting)",
@@ -50,11 +49,12 @@ class Subscription(domainresource.DomainResource):
             "Contact details for a human to contact about the subscription. The "
             "primary use of this for system administrator troubleshooting."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    criteria: fhirtypes.String = Field(
+    criteria: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="criteria",
         title="Rule for server push",
@@ -62,27 +62,29 @@ class Subscription(domainresource.DomainResource):
             "The rules that the server should use to determine when to generate "
             "notifications for this subscription."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    criteria__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    criteria__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_criteria", title="Extension field for ``criteria``."
     )
 
-    end: fhirtypes.Instant = Field(
+    end: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="end",
         title="When to automatically delete the subscription",
         description="The time for the server to turn the subscription off.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_end", title="Extension field for ``end``."
     )
 
-    error: fhirtypes.String = Field(
+    error: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="error",
         title="Latest error note",
@@ -90,27 +92,29 @@ class Subscription(domainresource.DomainResource):
             "A record of the last error that occurred when the server processed a "
             "notification."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    error__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    error__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_error", title="Extension field for ``error``."
     )
 
-    reason: fhirtypes.String = Field(
+    reason: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="reason",
         title="Description of why this subscription was created",
         description="A description of why this subscription is defined.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    reason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reason", title="Extension field for ``reason``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="requested | active | error | off",
@@ -118,14 +122,15 @@ class Subscription(domainresource.DomainResource):
             "The status of the subscription, which marks the server state for "
             "managing the subscription."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["requested", "active", "error", "off"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["requested", "active", "error", "off"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -153,10 +158,7 @@ class Subscription(domainresource.DomainResource):
             "channel",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1478(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -169,52 +171,7 @@ class Subscription(domainresource.DomainResource):
             ("reason", "reason__ext"),
             ("status", "status__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class SubscriptionChannel(backboneelement.BackboneElement):
@@ -227,33 +184,35 @@ class SubscriptionChannel(backboneelement.BackboneElement):
     the criteria.
     """
 
-    resource_type = Field("SubscriptionChannel", const=True)
+    __resource_type__ = "SubscriptionChannel"
 
-    endpoint: fhirtypes.Url = Field(
+    endpoint: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Where the channel points to",
         description="The url that describes the actual end-point to send messages to.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_endpoint", title="Extension field for ``endpoint``."
     )
 
-    header: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    header: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="header",
         title="Usage depends on the channel type",
         description="Additional headers / information to send as part of the notification.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    header__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_header", title="Extension field for ``header``.")
+    header__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_header", title="Extension field for ``header``."
+    )
 
-    payload: fhirtypes.Code = Field(
+    payload: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="payload",
         title="MIME type to send, or omit for no payload",
@@ -263,26 +222,28 @@ class SubscriptionChannel(backboneelement.BackboneElement):
             "no payload in the notification, just a notification. The mime type "
             '"text/plain" may also be used for Email and SMS subscriptions.'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    payload__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    payload__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_payload", title="Extension field for ``payload``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="rest-hook | websocket | email | sms | message",
         description="The type of channel to send notifications on.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["rest-hook", "websocket", "email", "sms", "message"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["rest-hook", "websocket", "email", "sms", "message"],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -302,10 +263,7 @@ class SubscriptionChannel(backboneelement.BackboneElement):
             "header",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2173(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -314,49 +272,4 @@ class SubscriptionChannel(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

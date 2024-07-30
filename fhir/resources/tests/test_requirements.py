@@ -7,15 +7,15 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import requirements
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_requirements_1(inst):
     assert inst.actor[0] == "http://hl7.org/fhir/ActorDefinition/server"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-11-02T14:31:30.239Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-11-02T14:31:30.239Z"}
         ).valueDateTime
     )
     assert inst.derivedFrom[0] == "http://hl7.org/fhir/Requirements/example2"
@@ -23,7 +23,9 @@ def impl_requirements_1(inst):
     assert inst.id == "example2"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.18.2"
     assert inst.name == "ExampleRequirements2"
@@ -44,8 +46,8 @@ def impl_requirements_1(inst):
     assert inst.title == "Example Requirements Set 2"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Requirements/example2"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Requirements/example2"}
         ).valueUri
     )
 
@@ -72,15 +74,17 @@ def impl_requirements_2(inst):
     assert inst.actor[0] == "http://hl7.org/fhir/ActorDefinition/server"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-11-02T14:31:30.239Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-11-02T14:31:30.239Z"}
         ).valueDateTime
     )
     assert inst.description == "Example Requirements Set 1"
     assert inst.id == "example1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.18.1"
     assert inst.name == "ExampleRequirements1"
@@ -91,8 +95,8 @@ def impl_requirements_2(inst):
     )
     assert (
         inst.statement[0].satisfiedBy[0]
-        == ExternalValidatorModel(
-            valueUrl="http://hl7.org/fhir/terminology-service.html#expand"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://hl7.org/fhir/terminology-service.html#expand"}
         ).valueUrl
     )
     assert inst.statement[0].source[0].display == "Grahame Grieve"
@@ -111,8 +115,8 @@ def impl_requirements_2(inst):
     assert inst.title == "Example Requirements Set 1"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Requirements/example1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Requirements/example1"}
         ).valueUri
     )
 

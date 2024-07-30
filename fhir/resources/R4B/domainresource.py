@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import fhirtypes, resource
 
@@ -22,9 +22,9 @@ class DomainResource(resource.Resource):
     A resource that includes narrative, extensions, and contained resources.
     """
 
-    resource_type = Field("DomainResource", const=True)
+    __resource_type__ = "DomainResource"
 
-    contained: typing.List[fhirtypes.ResourceType] = Field(
+    contained: typing.List[fhirtypes.ResourceType] = Field(  # type: ignore
         None,
         alias="contained",
         title="Contained, inline Resources",
@@ -33,11 +33,12 @@ class DomainResource(resource.Resource):
             "resource that contains them - they cannot be identified independently,"
             " and nor can they have their own independent transaction scope."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    extension: typing.List[fhirtypes.ExtensionType] = Field(
+    extension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
         None,
         alias="extension",
         title="Additional content defined by implementations",
@@ -49,11 +50,12 @@ class DomainResource(resource.Resource):
             "define an extension, there is a set of requirements that SHALL be met "
             "as part of the definition of the extension."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(
+    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
         None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored",
@@ -72,11 +74,12 @@ class DomainResource(resource.Resource):
             " DomainResource (including cannot change the meaning of "
             "modifierExtension itself)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    text: fhirtypes.NarrativeType = Field(
+    text: fhirtypes.NarrativeType = Field(  # type: ignore
         None,
         alias="text",
         title="Text summary of the resource, for human interpretation",
@@ -88,8 +91,9 @@ class DomainResource(resource.Resource):
             "just read the narrative. Resource definitions may define what content "
             "should be represented in the narrative to ensure clinical safety."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

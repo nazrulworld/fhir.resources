@@ -6,7 +6,7 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import fhirresourcemodel, fhirtypes
 
@@ -20,9 +20,9 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
     This is the base resource type for everything.
     """
 
-    resource_type = Field("Resource", const=True)
+    __resource_type__ = "Resource"
 
-    id: fhirtypes.Id = Field(
+    id: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="id",
         title="Logical id of this artifact",
@@ -30,11 +30,12 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
             "The logical id of the resource, as used in the URL for the resource. "
             "Once assigned, this value never changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    implicitRules: fhirtypes.Uri = Field(
+    implicitRules: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="implicitRules",
         title="A set of rules under which this content was created",
@@ -44,26 +45,28 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
             "content. Often, this is a reference to an implementation guide that "
             "defines the special rules along with other profiles etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_implicitRules", title="Extension field for ``implicitRules``."
     )
 
-    language: fhirtypes.Code = Field(
+    language: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="language",
         title="Language of the resource content",
         description="The base language in which the resource is written.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    meta: fhirtypes.MetaType = Field(
+    meta: fhirtypes.MetaType = Field(  # type: ignore
         None,
         alias="meta",
         title="Metadata about the resource",
@@ -72,8 +75,9 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
             " the infrastructure. Changes to the content might not always be "
             "associated with version changes to the resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

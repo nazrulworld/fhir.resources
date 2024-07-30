@@ -7,28 +7,28 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import encounter
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_encounter_1(inst):
     assert (
         inst.actualPeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-17T16:30:00+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-17T16:30:00+10:00"}
         ).valueDateTime
     )
     assert (
         inst.actualPeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-17T16:00:00+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-17T16:00:00+10:00"}
         ).valueDateTime
     )
     assert inst.class_fhir[0].coding[0].code == "HH"
     assert inst.class_fhir[0].coding[0].display == "home health"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.contained[0].id == "home"
@@ -37,14 +37,14 @@ def impl_encounter_1(inst):
     assert inst.location[0].location.reference == "#home"
     assert (
         inst.location[0].period.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-17T16:30:00+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-17T16:30:00+10:00"}
         ).valueDateTime
     )
     assert (
         inst.location[0].period.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-17T16:00:00+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-17T16:00:00+10:00"}
         ).valueDateTime
     )
     assert inst.location[0].status == "completed"
@@ -52,29 +52,29 @@ def impl_encounter_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.display == "Dr Adam Careful"
     assert inst.participant[0].actor.reference == "Practitioner/example"
     assert (
         inst.participant[0].period.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-17T16:30:00+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-17T16:30:00+10:00"}
         ).valueDateTime
     )
     assert (
         inst.participant[0].period.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-17T16:00:00+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-17T16:00:00+10:00"}
         ).valueDateTime
     )
     assert inst.participant[0].type[0].coding[0].code == "PPRF"
     assert (
         inst.participant[0].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.participant[1].actor.reference == "Patient/example"
@@ -110,8 +110,8 @@ def impl_encounter_2(inst):
     assert inst.class_fhir[0].coding[0].display == "ambulatory"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.id == "f201"
@@ -121,8 +121,8 @@ def impl_encounter_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/f201"
@@ -130,7 +130,9 @@ def impl_encounter_2(inst):
     assert inst.priority.coding[0].display == "Normal"
     assert (
         inst.priority.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reason[0].value[0].concept.text == (
         "The patient had fever peaks over the last couple of days. He"
@@ -145,7 +147,9 @@ def impl_encounter_2(inst):
     assert inst.type[0].coding[0].display == "Consultation"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -174,18 +178,22 @@ def impl_encounter_3(inst):
     assert inst.admission.admitSource.coding[0].display == "Referral by physician"
     assert (
         inst.admission.admitSource.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.admission.dischargeDisposition.coding[0].code == "306689006"
     assert inst.admission.dischargeDisposition.coding[0].display == "Discharge to home"
     assert (
         inst.admission.dischargeDisposition.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.admission.preAdmissionIdentifier.system
-        == ExternalValidatorModel(
-            valueUri="http://www.bmc.nl/zorgportal/identifiers/pre-admissions"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bmc.nl/zorgportal/identifiers/pre-admissions"}
         ).valueUri
     )
     assert inst.admission.preAdmissionIdentifier.use == "official"
@@ -194,15 +202,15 @@ def impl_encounter_3(inst):
     assert inst.class_fhir[0].coding[0].display == "ambulatory"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.id == "f003"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.bmc.nl/zorgportal/identifiers/encounters"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bmc.nl/zorgportal/identifiers/encounters"}
         ).valueUri
     )
     assert inst.identifier[0].use == "official"
@@ -210,7 +218,9 @@ def impl_encounter_3(inst):
     assert inst.length.code == "min"
     assert (
         inst.length.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.length.unit == "min"
     assert float(inst.length.value) == float(90)
@@ -218,8 +228,8 @@ def impl_encounter_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.display == "E.M. van den Broek"
@@ -230,7 +240,9 @@ def impl_encounter_3(inst):
     )
     assert (
         inst.priority.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reason[0].value[0].concept.coding[0].code == "18099001"
     assert (
@@ -238,7 +250,9 @@ def impl_encounter_3(inst):
     )
     assert (
         inst.reason[0].value[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.serviceProvider.reference == "Organization/f001"
     assert inst.status == "completed"
@@ -249,7 +263,9 @@ def impl_encounter_3(inst):
     assert inst.type[0].coding[0].display == "Patient-initiated encounter"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -279,8 +295,8 @@ def impl_encounter_4(inst):
     assert inst.class_fhir[0].coding[0].display == "inpatient encounter"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.id == "example"
@@ -288,8 +304,8 @@ def impl_encounter_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "in-progress"
@@ -297,8 +313,10 @@ def impl_encounter_4(inst):
     assert inst.subjectStatus.coding[0].code == "receiving-care"
     assert (
         inst.subjectStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/encounter-subject-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/encounter-subject-status"
+            }
         ).valueUri
     )
     assert inst.text.div == (
@@ -331,8 +349,8 @@ def impl_encounter_5(inst):
     assert inst.class_fhir[0].coding[0].display == "inpatient encounter"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.id == "genomicEncounter"
@@ -340,8 +358,8 @@ def impl_encounter_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "in-progress"
@@ -370,18 +388,22 @@ def test_encounter_5(base_settings):
 def impl_encounter_6(inst):
     assert (
         inst.actualPeriod.end
-        == ExternalValidatorModel(valueDateTime="2013-03-20").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-20"}
+        ).valueDateTime
     )
     assert (
         inst.actualPeriod.start
-        == ExternalValidatorModel(valueDateTime="2013-03-11").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-11"}
+        ).valueDateTime
     )
     assert inst.class_fhir[0].coding[0].code == "IMP"
     assert inst.class_fhir[0].coding[0].display == "inpatient encounter"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.id == "colonoscopy"
@@ -389,8 +411,8 @@ def impl_encounter_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.display == "Dr Adam Careful"
@@ -398,8 +420,8 @@ def impl_encounter_6(inst):
     assert inst.participant[0].type[0].coding[0].code == "PART"
     assert (
         inst.participant[0].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.reason[0].value[0].concept.text == "Routine investigation"
@@ -413,7 +435,9 @@ def impl_encounter_6(inst):
     assert inst.type[0].coding[0].display == "Colonoscopy (procedure)"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.type[0].text == "Colonoscopy"
 
@@ -441,18 +465,22 @@ def impl_encounter_7(inst):
     assert inst.admission.admitSource.coding[0].display == "Referral by radiologist"
     assert (
         inst.admission.admitSource.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.admission.dischargeDisposition.coding[0].code == "306689006"
     assert inst.admission.dischargeDisposition.coding[0].display == "Discharge to home"
     assert (
         inst.admission.dischargeDisposition.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.admission.preAdmissionIdentifier.system
-        == ExternalValidatorModel(
-            valueUri="http://www.bmc.nl/zorgportal/identifiers/pre-admissions"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bmc.nl/zorgportal/identifiers/pre-admissions"}
         ).valueUri
     )
     assert inst.admission.preAdmissionIdentifier.use == "official"
@@ -461,15 +489,15 @@ def impl_encounter_7(inst):
     assert inst.class_fhir[0].coding[0].display == "ambulatory"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.id == "f002"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.bmc.nl/zorgportal/identifiers/encounters"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bmc.nl/zorgportal/identifiers/encounters"}
         ).valueUri
     )
     assert inst.identifier[0].use == "official"
@@ -477,7 +505,9 @@ def impl_encounter_7(inst):
     assert inst.length.code == "min"
     assert (
         inst.length.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.length.unit == "min"
     assert float(inst.length.value) == float(140)
@@ -485,8 +515,8 @@ def impl_encounter_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.display == "M.I.M Versteegh"
@@ -495,7 +525,9 @@ def impl_encounter_7(inst):
     assert inst.priority.coding[0].display == "Urgent"
     assert (
         inst.priority.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reason[0].value[0].concept.coding[0].code == "34068001"
     assert (
@@ -503,7 +535,9 @@ def impl_encounter_7(inst):
     )
     assert (
         inst.reason[0].value[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.serviceProvider.display == "BMC"
     assert inst.serviceProvider.reference == "Organization/f001"
@@ -515,7 +549,9 @@ def impl_encounter_7(inst):
     assert inst.type[0].coding[0].display == "Patient-initiated encounter"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -541,11 +577,15 @@ def impl_encounter_8(inst):
     assert inst.account[0].reference == "Account/example"
     assert (
         inst.actualPeriod.end
-        == ExternalValidatorModel(valueDateTime="2013-03-20").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-20"}
+        ).valueDateTime
     )
     assert (
         inst.actualPeriod.start
-        == ExternalValidatorModel(valueDateTime="2013-03-11").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-11"}
+        ).valueDateTime
     )
     assert inst.admission.admitSource.coding[0].code == "309902002"
     assert (
@@ -553,7 +593,9 @@ def impl_encounter_8(inst):
     )
     assert (
         inst.admission.admitSource.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.admission.destination.reference == "Location/2"
     assert inst.admission.origin.reference == "Location/2"
@@ -564,8 +606,8 @@ def impl_encounter_8(inst):
     assert inst.class_fhir[0].coding[0].display == "inpatient encounter"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.diagnosis[0].condition[0].reference.reference == "Condition/stroke"
@@ -573,8 +615,8 @@ def impl_encounter_8(inst):
     assert inst.diagnosis[0].use[0].coding[0].display == "Admission diagnosis"
     assert (
         inst.diagnosis[0].use[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diagnosis-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diagnosis-role"}
         ).valueUri
     )
     assert inst.diagnosis[1].condition[0].reference.reference == "Condition/f201"
@@ -582,15 +624,17 @@ def impl_encounter_8(inst):
     assert inst.diagnosis[1].use[0].coding[0].display == "Discharge diagnosis"
     assert (
         inst.diagnosis[1].use[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diagnosis-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diagnosis-role"}
         ).valueUri
     )
     assert inst.dietPreference[0].coding[0].code == "276026009"
     assert inst.dietPreference[0].coding[0].display == "Fluid balance regulation"
     assert (
         inst.dietPreference[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.episodeOfCare[0].reference == "EpisodeOfCare/example"
     assert inst.id == "f203"
@@ -600,8 +644,8 @@ def impl_encounter_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.partOf.reference == "Encounter/f203"
@@ -609,15 +653,17 @@ def impl_encounter_8(inst):
     assert inst.participant[0].type[0].coding[0].code == "PART"
     assert (
         inst.participant[0].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.priority.coding[0].code == "394849002"
     assert inst.priority.coding[0].display == "High priority"
     assert (
         inst.priority.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reason[0].value[0].concept.text == (
         "The patient seems to suffer from bilateral pneumonia and "
@@ -628,16 +674,20 @@ def impl_encounter_8(inst):
     assert inst.specialArrangement[0].coding[0].display == "Wheelchair"
     assert (
         inst.specialArrangement[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"
+            }
         ).valueUri
     )
     assert inst.specialCourtesy[0].coding[0].code == "NRM"
     assert inst.specialCourtesy[0].coding[0].display == "normal courtesy"
     assert (
         inst.specialCourtesy[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy"
+            }
         ).valueUri
     )
     assert inst.status == "completed"
@@ -648,7 +698,9 @@ def impl_encounter_8(inst):
     assert inst.type[0].coding[0].display == "Inpatient stay for nine days"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -677,15 +729,15 @@ def impl_encounter_9(inst):
     assert inst.class_fhir[0].coding[0].display == "ambulatory"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.id == "xcda"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://healthcare.example.org/identifiers/enocunter"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://healthcare.example.org/identifiers/enocunter"}
         ).valueUri
     )
     assert inst.identifier[0].use == "official"
@@ -694,8 +746,8 @@ def impl_encounter_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/xcda1"
@@ -703,8 +755,8 @@ def impl_encounter_9(inst):
     assert inst.reason[0].value[0].concept.coding[0].display == "Arm"
     assert (
         inst.reason[0].value[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ihe.net/xds/connectathon/eventCodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ihe.net/xds/connectathon/eventCodes"}
         ).valueUri
     )
     assert inst.status == "completed"
@@ -735,8 +787,8 @@ def impl_encounter_10(inst):
     assert inst.class_fhir[0].coding[0].display == "ambulatory"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.diagnosis[0].condition[0].concept.text == (
@@ -746,8 +798,8 @@ def impl_encounter_10(inst):
     assert inst.diagnosis[0].use[0].coding[0].display == "Admission diagnosis"
     assert (
         inst.diagnosis[0].use[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diagnosis-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diagnosis-role"}
         ).valueUri
     )
     assert (
@@ -758,8 +810,8 @@ def impl_encounter_10(inst):
     assert inst.diagnosis[1].use[0].coding[0].display == "Chief complaint"
     assert (
         inst.diagnosis[1].use[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/diagnosis-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/diagnosis-role"}
         ).valueUri
     )
     assert inst.id == "f202"
@@ -768,7 +820,9 @@ def impl_encounter_10(inst):
     assert inst.length.code == "min"
     assert (
         inst.length.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.length.unit == "minutes"
     assert float(inst.length.value) == float(56)
@@ -776,8 +830,8 @@ def impl_encounter_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/f201"
@@ -785,7 +839,9 @@ def impl_encounter_10(inst):
     assert inst.priority.coding[0].display == "Urgent"
     assert (
         inst.priority.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reason[0].value[0].concept.text == "The patient is treated for a tumor."
     assert inst.serviceProvider.reference == "Organization/f201"
@@ -797,7 +853,9 @@ def impl_encounter_10(inst):
     assert inst.type[0].coding[0].display == "Chemotherapy"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 

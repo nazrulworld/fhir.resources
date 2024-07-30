@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -19,9 +19,9 @@ class Coding(element.Element):
     A reference to a code defined by a terminology system.
     """
 
-    resource_type = Field("Coding", const=True)
+    __resource_type__ = "Coding"
 
-    code: fhirtypes.Code = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Symbol in syntax defined by the system",
@@ -30,14 +30,15 @@ class Coding(element.Element):
             "predefined code or an expression in a syntax defined by the coding "
             "system (e.g. post-coordination)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    display: fhirtypes.String = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="Representation defined by the system",
@@ -45,14 +46,15 @@ class Coding(element.Element):
             "A representation of the meaning of the code in the system, following "
             "the rules of the system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    system: fhirtypes.Uri = Field(
+    system: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="system",
         title="Identity of the terminology system",
@@ -60,14 +62,15 @@ class Coding(element.Element):
             "The identification of the code system that defines the meaning of the "
             "symbol in the code."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    userSelected: bool = Field(
+    userSelected: bool = Field(  # type: ignore
         None,
         alias="userSelected",
         title="If this coding was chosen directly by the user",
@@ -75,14 +78,15 @@ class Coding(element.Element):
             "Indicates that this coding was chosen by a user directly - i.e. off a "
             "pick list of available items (codes or displays)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_userSelected", title="Extension field for ``userSelected``."
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Version of the system - if relevant",
@@ -93,10 +97,11 @@ class Coding(element.Element):
             "However this cannot consistently be assured. and when the meaning is "
             "not guaranteed to be consistent, the version SHOULD be exchanged."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 

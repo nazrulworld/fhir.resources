@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -29,9 +27,9 @@ class MedicinalProductDefinition(domainresource.DomainResource):
     (e.g. regulatory use, or drug catalogs).
     """
 
-    resource_type = Field("MedicinalProductDefinition", const=True)
+    __resource_type__ = "MedicinalProductDefinition"
 
-    additionalMonitoringIndicator: fhirtypes.CodeableConceptType = Field(
+    additionalMonitoringIndicator: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="additionalMonitoringIndicator",
         title=(
@@ -42,11 +40,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "Whether the Medicinal Product is subject to additional monitoring for "
             "regulatory reasons, such as heightened reporting requirements."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    attachedDocument: typing.List[fhirtypes.ReferenceType] = Field(
+    attachedDocument: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="attachedDocument",
         title="Additional documentation about the medicinal product",
@@ -54,15 +53,14 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "Additional information or supporting documentation about the medicinal"
             " product."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
-    characteristic: typing.List[
-        fhirtypes.MedicinalProductDefinitionCharacteristicType
-    ] = Field(
+    characteristic: typing.List[fhirtypes.MedicinalProductDefinitionCharacteristicType] = Field(  # type: ignore
         None,
         alias="characteristic",
         title='Key product features such as "sugar free", "modified release"',
@@ -70,11 +68,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             'Allows the key product features to be recorded, such as "sugar free", '
             '"modified release", "parallel import".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    classification: typing.List[fhirtypes.CodeableConceptType] = Field(
+    classification: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="classification",
         title="Allows the product to be classified by various systems",
@@ -82,22 +81,24 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "Allows the product to be classified by various systems, commonly WHO "
             "ATC."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    clinicalTrial: typing.List[fhirtypes.ReferenceType] = Field(
+    clinicalTrial: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="clinicalTrial",
         title="Clinical trials or studies that this product is involved in",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ResearchStudy"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ResearchStudy"],
+        },
     )
 
-    code: typing.List[fhirtypes.CodingType] = Field(
+    code: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="code",
         title="A code that this product is known by, within some formal terminology",
@@ -110,11 +111,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "by codes. The same product may be have multiple codes, applied to it "
             "by multiple organizations."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    combinedPharmaceuticalDoseForm: fhirtypes.CodeableConceptType = Field(
+    combinedPharmaceuticalDoseForm: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="combinedPharmaceuticalDoseForm",
         title=(
@@ -128,22 +130,22 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "mixed, if that might be necessary, for which see "
             "(AdministrableProductDefinition.administrableDoseForm)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    contact: typing.List[fhirtypes.MedicinalProductDefinitionContactType] = Field(
+    contact: typing.List[fhirtypes.MedicinalProductDefinitionContactType] = Field(  # type: ignore
         None,
         alias="contact",
         title="A product specific contact, person (in a role), or an organization",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    crossReference: typing.List[
-        fhirtypes.MedicinalProductDefinitionCrossReferenceType
-    ] = Field(
+    crossReference: typing.List[fhirtypes.MedicinalProductDefinitionCrossReferenceType] = Field(  # type: ignore
         None,
         alias="crossReference",
         title=(
@@ -154,32 +156,35 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "Reference to another product, e.g. for linking authorised to "
             "investigational product, or a virtual product."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="General description of this product",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    domain: fhirtypes.CodeableConceptType = Field(
+    domain: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="domain",
         title="If this medicine applies to human or veterinary uses",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this product. Could be an MPID",
@@ -191,11 +196,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "prescribed, is actually a product type). See also "
             "MedicinalProductDefinition.code."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    impurity: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    impurity: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="impurity",
         title=(
@@ -208,13 +214,14 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "This includes process-related impurities and contaminants, product-"
             "related impurities including degradation products."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["SubstanceDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["SubstanceDefinition"],
+        },
     )
 
-    indication: fhirtypes.Markdown = Field(
+    indication: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="indication",
         title=(
@@ -228,14 +235,15 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "resource. An indication is a medical situation for which using the "
             "product is appropriate."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    indication__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    indication__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_indication", title="Extension field for ``indication``."
     )
 
-    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(
+    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="ingredient",
         title=(
@@ -251,11 +259,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             " detail are not used, the ingredients may be specified directly here "
             "as codes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
+    legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="legalStatusOfSupply",
         title=(
@@ -263,11 +272,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "the regulator"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
+    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(  # type: ignore
         None,
         alias="marketingStatus",
         title=(
@@ -280,11 +290,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "market' as opposed to being allowed to be on the market (which is an "
             "authorization)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    masterFile: typing.List[fhirtypes.ReferenceType] = Field(
+    masterFile: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="masterFile",
         title=(
@@ -298,22 +309,24 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             " facilities, processes or articles used in the manufacturing, "
             "processing, packaging and storing of drug products."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
-    name: typing.List[fhirtypes.MedicinalProductDefinitionNameType] = Field(
+    name: typing.List[fhirtypes.MedicinalProductDefinitionNameType] = Field(  # type: ignore
         ...,
         alias="name",
         title="The product's name, including full name and possibly coded parts",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    operation: typing.List[fhirtypes.MedicinalProductDefinitionOperationType] = Field(
+    operation: typing.List[fhirtypes.MedicinalProductDefinitionOperationType] = Field(  # type: ignore
         None,
         alias="operation",
         title="A manufacturing or administrative process for the medicinal product",
@@ -321,11 +334,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "A manufacturing or administrative process or step associated with (or "
             "performed on) the medicinal product."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    packagedMedicinalProduct: typing.List[fhirtypes.CodeableConceptType] = Field(
+    packagedMedicinalProduct: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="packagedMedicinalProduct",
         title="Package type for the product",
@@ -333,20 +347,22 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "Package type for the product. See also the PackagedProductDefinition "
             "resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    pediatricUseIndicator: fhirtypes.CodeableConceptType = Field(
+    pediatricUseIndicator: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="pediatricUseIndicator",
         title="If authorised for use in children",
         description="If authorised for use in children, or infants, neonates etc.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    route: typing.List[fhirtypes.CodeableConceptType] = Field(
+    route: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="route",
         title=(
@@ -361,11 +377,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "AdministrableProductDefinition.routeOfAdministration.code, and they "
             "cannot be used together."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    specialMeasures: typing.List[fhirtypes.CodeableConceptType] = Field(
+    specialMeasures: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="specialMeasures",
         title=(
@@ -377,11 +394,12 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "regulatory reasons, such as a requirement to conduct post-"
             "authorisation studies."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title="The status within the lifecycle of this product record",
@@ -390,32 +408,35 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "status, this is not intended to duplicate details carried elsewhere "
             "such as legal status, or authorization status."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    statusDate: fhirtypes.DateTime = Field(
+    statusDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="statusDate",
         title="The date at which the given status became applicable",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Regulatory type, e.g. Investigational or Authorized",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="A business identifier relating to a specific version of the product",
@@ -423,10 +444,11 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "A business identifier relating to a specific version of the product, "
             "this is commonly used to support revisions to an existing product."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -486,81 +508,87 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
     "modified release", "parallel import".
     """
 
-    resource_type = Field("MedicinalProductDefinitionCharacteristic", const=True)
+    __resource_type__ = "MedicinalProductDefinitionCharacteristic"
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueDate: fhirtypes.Date = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
     @classmethod
@@ -581,10 +609,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
             "valueAttachment",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4297(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -606,26 +631,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
                 "valueQuantity",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
@@ -636,20 +642,21 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
     A product specific contact, person (in a role), or an organization.
     """
 
-    resource_type = Field("MedicinalProductDefinitionContact", const=True)
+    __resource_type__ = "MedicinalProductDefinitionContact"
 
-    contact: fhirtypes.ReferenceType = Field(
+    contact: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="contact",
         title="A product specific contact, person (in a role), or an organization",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization", "PractitionerRole"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization", "PractitionerRole"],
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -657,8 +664,9 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
             "Pharmacovigilance Enquiry Information"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -681,9 +689,9 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
     investigational product, or a virtual product.
     """
 
-    resource_type = Field("MedicinalProductDefinitionCrossReference", const=True)
+    __resource_type__ = "MedicinalProductDefinitionCrossReference"
 
-    product: fhirtypes.CodeableReferenceType = Field(
+    product: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         ...,
         alias="product",
         title=(
@@ -691,13 +699,14 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
             "investigational product"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MedicinalProductDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MedicinalProductDefinition"],
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -709,8 +718,9 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
             "actual product, product to development product (investigational), "
             "parallel import version."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -730,11 +740,9 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
     The product's name, including full name and possibly coded parts.
     """
 
-    resource_type = Field("MedicinalProductDefinitionName", const=True)
+    __resource_type__ = "MedicinalProductDefinitionName"
 
-    countryLanguage: typing.List[
-        fhirtypes.MedicinalProductDefinitionNameCountryLanguageType
-    ] = Field(
+    countryLanguage: typing.List[fhirtypes.MedicinalProductDefinitionNameCountryLanguageType] = Field(  # type: ignore
         None,
         alias="countryLanguage",
         title="Country and jurisdiction where the name applies",
@@ -742,39 +750,43 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
             "Country and jurisdiction where the name applies, and associated "
             "language."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    namePart: typing.List[fhirtypes.MedicinalProductDefinitionNameNamePartType] = Field(
+    namePart: typing.List[fhirtypes.MedicinalProductDefinitionNameNamePartType] = Field(  # type: ignore
         None,
         alias="namePart",
         title="Coding words or phrases of the name",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    productName: fhirtypes.String = Field(
+    productName: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="productName",
         title="The full product name",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_productName", title="Extension field for ``productName``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type of product name, such as rINN, BAN, Proprietary, Non-Proprietary",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -793,10 +805,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
             "countryLanguage",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3235(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -805,52 +814,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("productName", "productName__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElement):
@@ -862,18 +826,19 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
     Country and jurisdiction where the name applies, and associated language.
     """
 
-    resource_type = Field("MedicinalProductDefinitionNameCountryLanguage", const=True)
+    __resource_type__ = "MedicinalProductDefinitionNameCountryLanguage"
 
-    country: fhirtypes.CodeableConceptType = Field(
+    country: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="country",
         title="Country code for where this name applies",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: fhirtypes.CodeableConceptType = Field(
+    jurisdiction: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Jurisdiction code for where this name applies",
@@ -881,17 +846,19 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
             "Jurisdiction code for where this name applies. A jurisdiction may be a"
             " sub- or supra-national entity (e.g. a state or a geographic region)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    language: fhirtypes.CodeableConceptType = Field(
+    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="language",
         title="Language code for this name",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -918,28 +885,30 @@ class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
     Coding words or phrases of the name.
     """
 
-    resource_type = Field("MedicinalProductDefinitionNameNamePart", const=True)
+    __resource_type__ = "MedicinalProductDefinitionNameNamePart"
 
-    part: fhirtypes.String = Field(
+    part: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="part",
         title="A fragment of a product name",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    part__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    part__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_part", title="Extension field for ``part``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="Identifying type for this part of the name (e.g. strength part)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -950,10 +919,7 @@ class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "part", "type"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_4042(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -962,52 +928,7 @@ class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("part", "part__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
@@ -1020,9 +941,9 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
     performed on) the medicinal product.
     """
 
-    resource_type = Field("MedicinalProductDefinitionOperation", const=True)
+    __resource_type__ = "MedicinalProductDefinitionOperation"
 
-    confidentialityIndicator: fhirtypes.CodeableConceptType = Field(
+    confidentialityIndicator: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="confidentialityIndicator",
         title=(
@@ -1033,20 +954,22 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
             "Specifies whether this particular business or manufacturing process is"
             " considered proprietary or confidential."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    effectiveDate: fhirtypes.PeriodType = Field(
+    effectiveDate: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="effectiveDate",
         title="Date range of applicability",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    organization: typing.List[fhirtypes.ReferenceType] = Field(
+    organization: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="organization",
         title=(
@@ -1058,13 +981,14 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
             " the particular process or step, examples include the manufacturer, "
             "importer, agent."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    type: fhirtypes.CodeableReferenceType = Field(
+    type: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -1076,10 +1000,11 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
             "packaging. For the authorization of this, a RegulatedAuthorization "
             "would point to the same plan or activity referenced here."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
+        },
     )
 
     @classmethod

@@ -7,12 +7,17 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import measurereport
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_measurereport_1(inst):
     assert inst.contained[0].id == "reporter"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2014-04-01").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-04-01"}
+        ).valueDateTime
+    )
     assert inst.evaluatedResource[0].reference == "Condition/example"
     assert inst.group[0].id == "CMS146-group-1"
     assert inst.group[0].population[0].code.coding[0].code == "initial-population"
@@ -201,17 +206,21 @@ def impl_measurereport_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2014-03-31").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-03-31"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2014-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-01-01"}
+        ).valueDateTime
     )
     assert inst.reporter.reference == "#reporter"
     assert inst.status == "complete"
@@ -293,17 +302,21 @@ def impl_measurereport_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2018-12-31").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-12-31"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2018-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-01-01"}
+        ).valueDateTime
     )
     assert inst.status == "complete"
     assert inst.subject.reference == "#patient-new"
@@ -335,8 +348,8 @@ def impl_measurereport_3(inst):
     assert inst.group[0].population[0].code.coding[0].display == "Initial Population"
     assert (
         inst.group[0].population[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/measure-population"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/measure-population"}
         ).valueUri
     )
     assert inst.group[0].population[0].count == 2
@@ -350,20 +363,20 @@ def impl_measurereport_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(
-            valueDateTime="2022-08-31T23:59:59+00:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-08-31T23:59:59+00:00"}
         ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(
-            valueDateTime="2022-08-01T00:00:00+00:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-08-01T00:00:00+00:00"}
         ).valueDateTime
     )
     assert (
@@ -605,17 +618,21 @@ def impl_measurereport_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2018-01-31").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-01-31"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2018-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-01-01"}
+        ).valueDateTime
     )
     assert inst.reporter.reference == "Organization/hl7"
     assert inst.status == "complete"
@@ -643,7 +660,12 @@ def test_measurereport_4(base_settings):
 
 def impl_measurereport_5(inst):
     assert inst.contained[0].id == "reporter"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2014-04-01").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-04-01"}
+        ).valueDateTime
+    )
     assert inst.group[0].id == "CMS146-group-1"
     assert inst.group[0].population[0].code.coding[0].code == "initial-population"
     assert inst.group[0].population[0].count == 500
@@ -831,17 +853,21 @@ def impl_measurereport_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2014-03-31").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-03-31"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2014-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-01-01"}
+        ).valueDateTime
     )
     assert inst.reporter.reference == "#reporter"
     assert inst.status == "complete"

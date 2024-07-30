@@ -7,20 +7,22 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import specimen
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_specimen_1(inst):
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/practitioner01"
     assert inst.collection.method.coding[0].code == "LNV"
     assert (
         inst.collection.method.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0488"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0488"}
         ).valueUri
     )
     assert inst.collection.quantity.unit == "mL"
@@ -28,8 +30,8 @@ def impl_specimen_1(inst):
     assert inst.id == "denovo-2"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/specimens"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/specimens"}
         ).valueUri
     )
     assert inst.identifier[0].value == "2"
@@ -37,13 +39,15 @@ def impl_specimen_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:01Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:01Z"}
+        ).valueDateTime
     )
     assert inst.request[0].reference == "ServiceRequest/genomicServiceRequest"
     assert inst.status == "available"
@@ -54,7 +58,9 @@ def impl_specimen_1(inst):
     assert inst.type.coding[0].display == "Venous blood specimen"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -79,14 +85,16 @@ def test_specimen_1(base_settings):
 def impl_specimen_2(inst):
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/practitioner01"
     assert inst.collection.method.coding[0].code == "LNV"
     assert (
         inst.collection.method.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0488"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0488"}
         ).valueUri
     )
     assert inst.collection.quantity.unit == "mL"
@@ -94,8 +102,8 @@ def impl_specimen_2(inst):
     assert inst.id == "denovo-3"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/specimens"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/specimens"}
         ).valueUri
     )
     assert inst.identifier[0].value == "3"
@@ -103,13 +111,15 @@ def impl_specimen_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:01Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:01Z"}
+        ).valueDateTime
     )
     assert inst.request[0].reference == "ServiceRequest/genomicServiceRequest"
     assert inst.status == "available"
@@ -120,7 +130,9 @@ def impl_specimen_2(inst):
     assert inst.type.coding[0].display == "Venous blood specimen"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -145,21 +157,23 @@ def test_specimen_2(base_settings):
 def impl_specimen_3(inst):
     assert (
         inst.accessionIdentifier.system
-        == ExternalValidatorModel(
-            valueUri="http://lab.acme.org/specimens/2011"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://lab.acme.org/specimens/2011"}
         ).valueUri
     )
     assert inst.accessionIdentifier.value == "X352356-ISO1"
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2015-08-16T07:03:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-16T07:03:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/f202"
     assert inst.collection.method.coding[0].code == "BAP"
     assert (
         inst.collection.method.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0488"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0488"}
         ).valueUri
     )
     assert inst.contained[0].id == "stool"
@@ -168,15 +182,17 @@ def impl_specimen_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == "Patient dropped off specimen"
     assert inst.parent[0].reference == "#stool"
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2015-08-18T07:03:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-18T07:03:00Z"}
+        ).valueDateTime
     )
     assert inst.role[0].coding[0].code == "p"
     assert inst.role[0].coding[0].display == "Patient"
@@ -187,7 +203,9 @@ def impl_specimen_3(inst):
     assert inst.type.coding[0].display == "Bacterial isolate specimen"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -212,14 +230,16 @@ def test_specimen_3(base_settings):
 def impl_specimen_4(inst):
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/practitioner01"
     assert inst.collection.method.coding[0].code == "LNV"
     assert (
         inst.collection.method.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0488"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0488"}
         ).valueUri
     )
     assert inst.collection.quantity.unit == "mL"
@@ -227,8 +247,8 @@ def impl_specimen_4(inst):
     assert inst.id == "specimenMother"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/specimens"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/specimens"}
         ).valueUri
     )
     assert inst.identifier[0].value == "6"
@@ -236,13 +256,15 @@ def impl_specimen_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:01Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:01Z"}
+        ).valueDateTime
     )
     assert inst.request[0].reference == "ServiceRequest/genomicServiceRequest"
     assert inst.status == "available"
@@ -253,7 +275,9 @@ def impl_specimen_4(inst):
     assert inst.type.coding[0].display == "Venous blood specimen"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -278,14 +302,16 @@ def test_specimen_4(base_settings):
 def impl_specimen_5(inst):
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/practitioner01"
     assert inst.collection.method.coding[0].code == "LNV"
     assert (
         inst.collection.method.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0488"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0488"}
         ).valueUri
     )
     assert inst.collection.quantity.unit == "mL"
@@ -293,8 +319,8 @@ def impl_specimen_5(inst):
     assert inst.id == "specimenProband"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/specimens"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/specimens"}
         ).valueUri
     )
     assert inst.identifier[0].value == "5"
@@ -302,13 +328,15 @@ def impl_specimen_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:01Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:01Z"}
+        ).valueDateTime
     )
     assert inst.request[0].reference == "ServiceRequest/genomicServiceRequest"
     assert inst.status == "available"
@@ -319,7 +347,9 @@ def impl_specimen_5(inst):
     assert inst.type.coding[0].display == "Venous blood specimen"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -344,14 +374,16 @@ def test_specimen_5(base_settings):
 def impl_specimen_6(inst):
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/practitioner01"
     assert inst.collection.method.coding[0].code == "LNV"
     assert (
         inst.collection.method.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0488"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0488"}
         ).valueUri
     )
     assert inst.collection.quantity.unit == "mL"
@@ -359,8 +391,8 @@ def impl_specimen_6(inst):
     assert inst.id == "specimenFather"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/specimens"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/specimens"}
         ).valueUri
     )
     assert inst.identifier[0].value == "7"
@@ -368,13 +400,15 @@ def impl_specimen_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:01Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:01Z"}
+        ).valueDateTime
     )
     assert inst.request[0].reference == "ServiceRequest/genomicServiceRequest"
     assert inst.status == "available"
@@ -385,7 +419,9 @@ def impl_specimen_6(inst):
     assert inst.type.coding[0].display == "Venous blood specimen"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -410,22 +446,26 @@ def test_specimen_6(base_settings):
 def impl_specimen_7(inst):
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2019-03-01T01:01:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:01:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/practitioner01"
     assert inst.collection.method.coding[0].code == "129314006"
     assert inst.collection.method.coding[0].display == "Biopsy - action"
     assert (
         inst.collection.method.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.collection.quantity.unit == "mm2"
     assert float(inst.collection.quantity.value) == float(1)
     assert inst.id == "genomicSpecimen"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/specimens"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/specimens"}
         ).valueUri
     )
     assert inst.identifier[0].value == "4"
@@ -433,13 +473,15 @@ def impl_specimen_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2019-03-01T01:01:01Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:01:01Z"}
+        ).valueDateTime
     )
     assert inst.request[0].reference == "ServiceRequest/genomicServiceRequest"
     assert inst.status == "available"
@@ -453,7 +495,9 @@ def impl_specimen_7(inst):
     )
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 
@@ -478,12 +522,16 @@ def test_specimen_7(base_settings):
 def impl_specimen_8(inst):
     assert (
         inst.accessionIdentifier.system
-        == ExternalValidatorModel(valueUri="https://vetmed.iastate.edu/vdl").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://vetmed.iastate.edu/vdl"}
+        ).valueUri
     )
     assert inst.accessionIdentifier.value == "20171120-1234"
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2017-11-14").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-11-14"}
+        ).valueDateTime
     )
     assert inst.collection.collector.display == "James Herriot, FRCVS"
     assert inst.combined == "pooled"
@@ -496,8 +544,8 @@ def impl_specimen_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == "Pooled serum sample from 30 individuals"
@@ -507,7 +555,9 @@ def impl_specimen_8(inst):
     assert inst.type.coding[0].display == "Serum sample, pooled"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="https://vetmed.iastate.edu/vdl").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://vetmed.iastate.edu/vdl"}
+        ).valueUri
     )
     assert inst.type.text == "Pooled serum sample"
 
@@ -533,14 +583,16 @@ def test_specimen_8(base_settings):
 def impl_specimen_9(inst):
     assert (
         inst.accessionIdentifier.system
-        == ExternalValidatorModel(
-            valueUri="http://lab.acme.org/specimens/2015"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://lab.acme.org/specimens/2015"}
         ).valueUri
     )
     assert inst.accessionIdentifier.value == "X352356"
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2015-08-18T07:03:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-18T07:03:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/f202"
     assert (
@@ -554,8 +606,8 @@ def impl_specimen_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.processing[0].additive[0].display == "6 N HCl"
@@ -563,17 +615,21 @@ def impl_specimen_9(inst):
     assert inst.processing[0].method.coding[0].code == "ACID"
     assert (
         inst.processing[0].method.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0373"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0373"}
         ).valueUri
     )
     assert (
         inst.processing[0].timeDateTime
-        == ExternalValidatorModel(valueDateTime="2015-08-18T08:10:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-18T08:10:00Z"}
+        ).valueDateTime
     )
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2015-08-18T07:03:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-18T07:03:00Z"}
+        ).valueDateTime
     )
     assert inst.status == "available"
     assert inst.subject.reference == "Patient/example"
@@ -582,8 +638,8 @@ def impl_specimen_9(inst):
     assert inst.type.coding[0].display == "Urine, Random"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0487"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0487"}
         ).valueUri
     )
 
@@ -609,14 +665,16 @@ def test_specimen_9(base_settings):
 def impl_specimen_10(inst):
     assert (
         inst.collection.collectedDateTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:00Z"}
+        ).valueDateTime
     )
     assert inst.collection.collector.reference == "Practitioner/practitioner01"
     assert inst.collection.method.coding[0].code == "LNV"
     assert (
         inst.collection.method.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0488"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0488"}
         ).valueUri
     )
     assert inst.collection.quantity.unit == "mL"
@@ -624,8 +682,8 @@ def impl_specimen_10(inst):
     assert inst.id == "denovo-1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/specimens"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/specimens"}
         ).valueUri
     )
     assert inst.identifier[0].value == "1"
@@ -633,13 +691,15 @@ def impl_specimen_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.receivedTime
-        == ExternalValidatorModel(valueDateTime="2021-01-01T01:01:01Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:01Z"}
+        ).valueDateTime
     )
     assert inst.request[0].reference == "ServiceRequest/genomicServiceRequest"
     assert inst.status == "available"
@@ -650,7 +710,9 @@ def impl_specimen_10(inst):
     assert inst.type.coding[0].display == "Venous blood specimen"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 

@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,27 +24,29 @@ class Claim(domainresource.DomainResource):
     recovery.
     """
 
-    resource_type = Field("Claim", const=True)
+    __resource_type__ = "Claim"
 
-    accident: fhirtypes.ClaimAccidentType = Field(
+    accident: fhirtypes.ClaimAccidentType = Field(  # type: ignore
         None,
         alias="accident",
         title="Details about an accident",
         description="An accident which resulted in the need for healthcare services.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    billablePeriod: fhirtypes.PeriodType = Field(
+    billablePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="billablePeriod",
         title="Period for charge submission",
         description="The billable period for which charges are being submitted.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    careTeam: typing.List[fhirtypes.ClaimCareTeamType] = Field(
+    careTeam: typing.List[fhirtypes.ClaimCareTeamType] = Field(  # type: ignore
         None,
         alias="careTeam",
         title="Members of the care team",
@@ -54,11 +54,12 @@ class Claim(domainresource.DomainResource):
             "The members of the team who provided the overall service as well as "
             "their role and whether responsible and qualifications."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    created: fhirtypes.DateTime = Field(
+    created: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="created",
         title="Creation date",
@@ -66,23 +67,25 @@ class Claim(domainresource.DomainResource):
             "The date when the enclosed suite of services were performed or "
             "completed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    diagnosis: typing.List[fhirtypes.ClaimDiagnosisType] = Field(
+    diagnosis: typing.List[fhirtypes.ClaimDiagnosisType] = Field(  # type: ignore
         None,
         alias="diagnosis",
         title="List of Diagnosis",
         description="List of patient diagnosis for which care is sought.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    employmentImpacted: fhirtypes.PeriodType = Field(
+    employmentImpacted: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="employmentImpacted",
         title="Period unable to work",
@@ -90,11 +93,12 @@ class Claim(domainresource.DomainResource):
             "The start and optional end dates of when the patient was precluded "
             "from working due to the treatable condition(s)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    enterer: fhirtypes.ReferenceType = Field(
+    enterer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="enterer",
         title="Author",
@@ -102,24 +106,26 @@ class Claim(domainresource.DomainResource):
             "Person who created the invoice/claim/pre-determination or pre-"
             "authorization."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    facility: fhirtypes.ReferenceType = Field(
+    facility: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="facility",
         title="Servicing Facility",
         description="Facility where the services were provided.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    fundsReserve: fhirtypes.CodeableConceptType = Field(
+    fundsReserve: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="fundsReserve",
         title="Funds requested to be reserved",
@@ -130,11 +136,12 @@ class Claim(domainresource.DomainResource):
             "subsequent claim(s). 'None' explicitly indicates no funds reserving is"
             " requested."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    hospitalization: fhirtypes.PeriodType = Field(
+    hospitalization: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="hospitalization",
         title="Period in hospital",
@@ -142,11 +149,12 @@ class Claim(domainresource.DomainResource):
             "The start and optional end dates of when the patient was confined to a"
             " treatment center."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Claim number",
@@ -154,11 +162,12 @@ class Claim(domainresource.DomainResource):
             "The business identifier for the instance: claim number, pre-"
             "determination or pre-authorization number."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    information: typing.List[fhirtypes.ClaimInformationType] = Field(
+    information: typing.List[fhirtypes.ClaimInformationType] = Field(  # type: ignore
         None,
         alias="information",
         title=(
@@ -171,40 +180,44 @@ class Claim(domainresource.DomainResource):
             "Often there are mutiple jurisdiction specific valuesets which are "
             "required."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    insurance: typing.List[fhirtypes.ClaimInsuranceType] = Field(
+    insurance: typing.List[fhirtypes.ClaimInsuranceType] = Field(  # type: ignore
         None,
         alias="insurance",
         title="Insurance or medical plan",
         description="Financial instrument by which payment information for health care.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    insurer: fhirtypes.ReferenceType = Field(
+    insurer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="insurer",
         title="Target",
         description="The Insurer who is target of the request.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    item: typing.List[fhirtypes.ClaimItemType] = Field(
+    item: typing.List[fhirtypes.ClaimItemType] = Field(  # type: ignore
         None,
         alias="item",
         title="Goods and Services",
         description="First tier of goods and services.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    organization: fhirtypes.ReferenceType = Field(
+    organization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="organization",
         title="Responsible organization",
@@ -212,13 +225,14 @@ class Claim(domainresource.DomainResource):
             "The organization which is responsible for the bill, claim pre-"
             "determination, pre-authorization."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    originalPrescription: fhirtypes.ReferenceType = Field(
+    originalPrescription: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="originalPrescription",
         title="Original prescription if superceded by fulfiller",
@@ -232,53 +246,58 @@ class Claim(domainresource.DomainResource):
             "prescription from the pharmacy becomes the 'prescription' and that "
             "from the physician becomes the 'original prescription'."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MedicationRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MedicationRequest"],
+        },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="patient",
         title="The subject of the Products and Services",
         description="Patient Resource.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    payee: fhirtypes.ClaimPayeeType = Field(
+    payee: fhirtypes.ClaimPayeeType = Field(  # type: ignore
         None,
         alias="payee",
         title="Party to be paid any benefits payable",
         description="The party to be reimbursed for the services.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    prescription: fhirtypes.ReferenceType = Field(
+    prescription: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="prescription",
         title="Prescription authorizing services or products",
         description="Prescription to support the dispensing of Pharmacy or Vision products.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MedicationRequest", "VisionPrescription"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MedicationRequest", "VisionPrescription"],
+        },
     )
 
-    priority: fhirtypes.CodeableConceptType = Field(
+    priority: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="priority",
         title="Desired processing priority",
         description="Immediate (STAT), best effort (NORMAL), deferred (DEFER).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    procedure: typing.List[fhirtypes.ClaimProcedureType] = Field(
+    procedure: typing.List[fhirtypes.ClaimProcedureType] = Field(  # type: ignore
         None,
         alias="procedure",
         title="Procedures performed",
@@ -286,11 +305,12 @@ class Claim(domainresource.DomainResource):
             "Ordered list of patient procedures performed to support the "
             "adjudication."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    provider: fhirtypes.ReferenceType = Field(
+    provider: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="provider",
         title="Responsible provider",
@@ -298,13 +318,14 @@ class Claim(domainresource.DomainResource):
             "The provider which is responsible for the bill, claim pre-"
             "determination, pre-authorization."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    referral: fhirtypes.ReferenceType = Field(
+    referral: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="referral",
         title="Treatment Referral",
@@ -312,13 +333,14 @@ class Claim(domainresource.DomainResource):
             "The referral resource which lists the date, practitioner, reason and "
             "other supporting information."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ReferralRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ReferralRequest"],
+        },
     )
 
-    related: typing.List[fhirtypes.ClaimRelatedType] = Field(
+    related: typing.List[fhirtypes.ClaimRelatedType] = Field(  # type: ignore
         None,
         alias="related",
         title="Related Claims which may be revelant to processing this claimn",
@@ -326,26 +348,28 @@ class Claim(domainresource.DomainResource):
             "Other claims which are related to this claim such as prior claim "
             "versions or for related services."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subType: typing.List[fhirtypes.CodeableConceptType] = Field(
+    subType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="subType",
         title="Finer grained claim type information",
@@ -354,20 +378,22 @@ class Claim(domainresource.DomainResource):
             "Inpatient vs Outpatient and/or a specialty service. In the US the "
             "BillType."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    total: fhirtypes.MoneyType = Field(
+    total: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="total",
         title="Total claim cost",
         description="The total value of the claim.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type or discipline",
@@ -375,11 +401,12 @@ class Claim(domainresource.DomainResource):
             "The category of claim, eg, oral, pharmacy, vision, insitutional, "
             "professional."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    use: fhirtypes.Code = Field(
+    use: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="use",
         title="complete | proposed | exploratory | other",
@@ -387,13 +414,14 @@ class Claim(domainresource.DomainResource):
             "Complete (Bill or Claim), Proposed (Pre-Authorization), Exploratory "
             "(Pre-determination)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["complete", "proposed", "exploratory", "other"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["complete", "proposed", "exploratory", "other"],
+        },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_use", title="Extension field for ``use``."
     )
 
@@ -454,54 +482,58 @@ class ClaimAccident(backboneelement.BackboneElement):
     An accident which resulted in the need for healthcare services.
     """
 
-    resource_type = Field("ClaimAccident", const=True)
+    __resource_type__ = "ClaimAccident"
 
-    date: fhirtypes.Date = Field(
+    date: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="date",
         title="When the accident occurred see information codes see information codes",
         description="Date of an accident which these services are addressing.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    locationAddress: fhirtypes.AddressType = Field(
+    locationAddress: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="locationAddress",
         title="Accident Place",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e location[x]
-        one_of_many="location",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e location[x]
+            "one_of_many": "location",
+            "one_of_many_required": False,
+        },
     )
 
-    locationReference: fhirtypes.ReferenceType = Field(
+    locationReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="locationReference",
         title="Accident Place",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e location[x]
-        one_of_many="location",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e location[x]
+            "one_of_many": "location",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="The nature of the accident",
         description="Type of accident: work, auto, etc.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -520,10 +552,7 @@ class ClaimAccident(backboneelement.BackboneElement):
             "locationReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1464(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -532,57 +561,9 @@ class ClaimAccident(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("date", "date__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1464(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -596,26 +577,7 @@ class ClaimAccident(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"location": ["locationAddress", "locationReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ClaimCareTeam(backboneelement.BackboneElement):
@@ -628,29 +590,31 @@ class ClaimCareTeam(backboneelement.BackboneElement):
     role and whether responsible and qualifications.
     """
 
-    resource_type = Field("ClaimCareTeam", const=True)
+    __resource_type__ = "ClaimCareTeam"
 
-    provider: fhirtypes.ReferenceType = Field(
+    provider: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="provider",
         title="Provider individual or organization",
         description="Member of the team who provided the overall service.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner", "Organization"],
+        },
     )
 
-    qualification: fhirtypes.CodeableConceptType = Field(
+    qualification: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="qualification",
         title="Type, classification or Specialization",
         description="The qualification which is applicable for this service.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    responsible: bool = Field(
+    responsible: bool = Field(  # type: ignore
         None,
         alias="responsible",
         title="Billing provider",
@@ -658,14 +622,15 @@ class ClaimCareTeam(backboneelement.BackboneElement):
             "The party who is billing and responsible for the claimed good or "
             "service rendered to the patient."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    responsible__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    responsible__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_responsible", title="Extension field for ``responsible``."
     )
 
-    role: fhirtypes.CodeableConceptType = Field(
+    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="role",
         title="Role on the team",
@@ -673,20 +638,22 @@ class ClaimCareTeam(backboneelement.BackboneElement):
             "The lead, assisting or supervising practitioner and their discipline "
             "if a multidisiplinary team."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Number to covey order of careTeam",
         description="Sequence of the careTeam which serves to order and provide a link.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
@@ -707,10 +674,7 @@ class ClaimCareTeam(backboneelement.BackboneElement):
             "qualification",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1432(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -719,52 +683,7 @@ class ClaimCareTeam(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sequence", "sequence__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ClaimDiagnosis(backboneelement.BackboneElement):
@@ -776,35 +695,37 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
     List of patient diagnosis for which care is sought.
     """
 
-    resource_type = Field("ClaimDiagnosis", const=True)
+    __resource_type__ = "ClaimDiagnosis"
 
-    diagnosisCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    diagnosisCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="diagnosisCodeableConcept",
         title="Patient's diagnosis",
         description="The diagnosis.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e diagnosis[x]
-        one_of_many="diagnosis",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e diagnosis[x]
+            "one_of_many": "diagnosis",
+            "one_of_many_required": True,
+        },
     )
 
-    diagnosisReference: fhirtypes.ReferenceType = Field(
+    diagnosisReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="diagnosisReference",
         title="Patient's diagnosis",
         description="The diagnosis.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e diagnosis[x]
-        one_of_many="diagnosis",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Condition"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e diagnosis[x]
+            "one_of_many": "diagnosis",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Condition"],
+        },
     )
 
-    packageCode: fhirtypes.CodeableConceptType = Field(
+    packageCode: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="packageCode",
         title="Package billing code",
@@ -812,24 +733,26 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
             "The package billing code, for example DRG, based on the assigned "
             "grouping code system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Number to covey order of diagnosis",
         description="Sequence of diagnosis which serves to provide a link.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="type",
         title="Timing or nature of the diagnosis",
@@ -837,8 +760,9 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
             "The type of the Diagnosis, for example: admitting, primary, secondary,"
             " discharge."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -858,10 +782,7 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
             "packageCode",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1597(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -870,57 +791,9 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sequence", "sequence__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1597(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -936,26 +809,7 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
         one_of_many_fields = {
             "diagnosis": ["diagnosisCodeableConcept", "diagnosisReference"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ClaimInformation(backboneelement.BackboneElement):
@@ -970,9 +824,9 @@ class ClaimInformation(backboneelement.BackboneElement):
     mutiple jurisdiction specific valuesets which are required.
     """
 
-    resource_type = Field("ClaimInformation", const=True)
+    __resource_type__ = "ClaimInformation"
 
-    category: fhirtypes.CodeableConceptType = Field(
+    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="category",
         title="General class of information",
@@ -980,11 +834,12 @@ class ClaimInformation(backboneelement.BackboneElement):
             "The general class of the information supplied: information; exception;"
             " accident, employment; onset, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Type of information",
@@ -993,11 +848,12 @@ class ClaimInformation(backboneelement.BackboneElement):
             "special conditions relating to the setting, treatment or patient  for "
             "which care is sought which may influence the adjudication."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reason: fhirtypes.CodeableConceptType = Field(
+    reason: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="reason",
         title="Reason associated with the information",
@@ -1006,51 +862,55 @@ class ClaimInformation(backboneelement.BackboneElement):
             "tooth or any other situation where a reason code is required in "
             "addition to the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Information instance identifier",
         description="Sequence of the information element which serves to provide a link.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    timingDate: fhirtypes.Date = Field(
+    timingDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="timingDate",
         title="When it occurred",
         description="The date when or period to which this information refers.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
-    timingDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    timingDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_timingDate", title="Extension field for ``timingDate``."
     )
 
-    timingPeriod: fhirtypes.PeriodType = Field(
+    timingPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="timingPeriod",
         title="When it occurred",
         description="The date when or period to which this information refers.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="Additional Data or supporting information",
@@ -1059,14 +919,15 @@ class ClaimInformation(backboneelement.BackboneElement):
             "etc. including references to the data or the actual inclusion of the "
             "data."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Additional Data or supporting information",
@@ -1075,14 +936,15 @@ class ClaimInformation(backboneelement.BackboneElement):
             "etc. including references to the data or the actual inclusion of the "
             "data."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(
+    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Additional Data or supporting information",
@@ -1091,16 +953,17 @@ class ClaimInformation(backboneelement.BackboneElement):
             "etc. including references to the data or the actual inclusion of the "
             "data."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    valueString: fhirtypes.String = Field(
+    valueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="valueString",
         title="Additional Data or supporting information",
@@ -1109,13 +972,14 @@ class ClaimInformation(backboneelement.BackboneElement):
             "etc. including references to the data or the actual inclusion of the "
             "data."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
@@ -1141,10 +1005,7 @@ class ClaimInformation(backboneelement.BackboneElement):
             "reason",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1821(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1153,57 +1014,9 @@ class ClaimInformation(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sequence", "sequence__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1821(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1225,26 +1038,7 @@ class ClaimInformation(backboneelement.BackboneElement):
                 "valueString",
             ],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ClaimInsurance(backboneelement.BackboneElement):
@@ -1256,9 +1050,9 @@ class ClaimInsurance(backboneelement.BackboneElement):
     Financial instrument by which payment information for health care.
     """
 
-    resource_type = Field("ClaimInsurance", const=True)
+    __resource_type__ = "ClaimInsurance"
 
-    businessArrangement: fhirtypes.String = Field(
+    businessArrangement: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="businessArrangement",
         title="Business agreement",
@@ -1266,38 +1060,41 @@ class ClaimInsurance(backboneelement.BackboneElement):
             "The contract number of a business agreement which describes the terms "
             "and conditions."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_businessArrangement",
         title="Extension field for ``businessArrangement``.",
     )
 
-    claimResponse: fhirtypes.ReferenceType = Field(
+    claimResponse: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="claimResponse",
         title="Adjudication results",
         description="The Coverages adjudication details.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ClaimResponse"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ClaimResponse"],
+        },
     )
 
-    coverage: fhirtypes.ReferenceType = Field(
+    coverage: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="coverage",
         title="Insurance information",
         description="Reference to the program or plan identification, underwriter or payor.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Coverage"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Coverage"],
+        },
     )
 
-    focal: bool = Field(
+    focal: bool = Field(  # type: ignore
         None,
         alias="focal",
         title="Is the focal Coverage",
@@ -1305,27 +1102,29 @@ class ClaimInsurance(backboneelement.BackboneElement):
             "A flag to indicate that this Coverage is the focus for adjudication. "
             "The Coverage against which the claim is to be adjudicated."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_focal", title="Extension field for ``focal``."
     )
 
-    preAuthRef: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    preAuthRef: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="preAuthRef",
         title="Pre-Authorization/Determination Reference",
         description="A list of references from the Insurer to which these services pertain.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    preAuthRef__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_preAuthRef", title="Extension field for ``preAuthRef``.")
+    preAuthRef__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
+    )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Service instance identifier",
@@ -1333,11 +1132,12 @@ class ClaimInsurance(backboneelement.BackboneElement):
             "Sequence of coverage which serves to provide a link and convey "
             "coordination of benefit order."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
@@ -1359,10 +1159,7 @@ class ClaimInsurance(backboneelement.BackboneElement):
             "claimResponse",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1590(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1371,52 +1168,7 @@ class ClaimInsurance(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("focal", "focal__ext"), ("sequence", "sequence__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ClaimItem(backboneelement.BackboneElement):
@@ -1428,32 +1180,32 @@ class ClaimItem(backboneelement.BackboneElement):
     First tier of goods and services.
     """
 
-    resource_type = Field("ClaimItem", const=True)
+    __resource_type__ = "ClaimItem"
 
-    bodySite: fhirtypes.CodeableConceptType = Field(
+    bodySite: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Service Location",
         description="Physical service site on the patient (limb, tooth, etc).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    careTeamLinkId: typing.List[fhirtypes.PositiveInt] = Field(
+    careTeamLinkId: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
         None,
         alias="careTeamLinkId",
         title="Applicable careTeam members",
         description="CareTeam applicable for this service or product line.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    careTeamLinkId__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    careTeamLinkId__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_careTeamLinkId", title="Extension field for ``careTeamLinkId``."
     )
 
-    category: fhirtypes.CodeableConceptType = Field(
+    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="category",
         title="Type of service or product",
@@ -1461,34 +1213,35 @@ class ClaimItem(backboneelement.BackboneElement):
             "Health Care Service Type Codes  to identify the classification of "
             "service or benefits."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    detail: typing.List[fhirtypes.ClaimItemDetailType] = Field(
+    detail: typing.List[fhirtypes.ClaimItemDetailType] = Field(  # type: ignore
         None,
         alias="detail",
         title="Additional items",
         description="Second tier of goods and services.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    diagnosisLinkId: typing.List[fhirtypes.PositiveInt] = Field(
+    diagnosisLinkId: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
         None,
         alias="diagnosisLinkId",
         title="Applicable diagnoses",
         description="Diagnosis applicable for this service or product line.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    diagnosisLinkId__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    diagnosisLinkId__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_diagnosisLinkId", title="Extension field for ``diagnosisLinkId``."
     )
 
-    encounter: typing.List[fhirtypes.ReferenceType] = Field(
+    encounter: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounters related to this billed item",
@@ -1496,13 +1249,14 @@ class ClaimItem(backboneelement.BackboneElement):
             "A billed item may include goods or services provided in multiple "
             "encounters."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
-    factor: fhirtypes.Decimal = Field(
+    factor: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -1512,14 +1266,15 @@ class ClaimItem(backboneelement.BackboneElement):
             " of a Factor allows for a discount or surcharge multiplier to be "
             "applied to a monetary amount."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    informationLinkId: typing.List[fhirtypes.PositiveInt] = Field(
+    informationLinkId: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
         None,
         alias="informationLinkId",
         title="Applicable exception and supporting information",
@@ -1527,56 +1282,58 @@ class ClaimItem(backboneelement.BackboneElement):
             "Exceptions, special conditions and supporting information pplicable "
             "for this service or product line."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    informationLinkId__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    informationLinkId__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None,
         alias="_informationLinkId",
         title="Extension field for ``informationLinkId``.",
     )
 
-    locationAddress: fhirtypes.AddressType = Field(
+    locationAddress: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="locationAddress",
         title="Place of service",
         description="Where the service was provided.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e location[x]
-        one_of_many="location",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e location[x]
+            "one_of_many": "location",
+            "one_of_many_required": False,
+        },
     )
 
-    locationCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    locationCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="locationCodeableConcept",
         title="Place of service",
         description="Where the service was provided.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e location[x]
-        one_of_many="location",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e location[x]
+            "one_of_many": "location",
+            "one_of_many_required": False,
+        },
     )
 
-    locationReference: fhirtypes.ReferenceType = Field(
+    locationReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="locationReference",
         title="Place of service",
         description="Where the service was provided.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e location[x]
-        one_of_many="location",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e location[x]
+            "one_of_many": "location",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
+    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -1585,11 +1342,12 @@ class ClaimItem(backboneelement.BackboneElement):
             "treatment is cosmetic or associated with TMJ, or for medical whether "
             "the treatment was outside the clinic or out of office hours."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    net: fhirtypes.MoneyType = Field(
+    net: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="net",
         title="Total item cost",
@@ -1599,25 +1357,25 @@ class ClaimItem(backboneelement.BackboneElement):
             "Price (Cost per Point) * factor Number  * points = net Amount. "
             "Quantity, factor and points are assumed to be 1 if not supplied."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    procedureLinkId: typing.List[fhirtypes.PositiveInt] = Field(
+    procedureLinkId: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
         None,
         alias="procedureLinkId",
         title="Applicable procedures",
         description="Procedures applicable for this service or product line.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    procedureLinkId__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    procedureLinkId__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_procedureLinkId", title="Extension field for ``procedureLinkId``."
     )
 
-    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="programCode",
         title="Program specific reason for item inclusion",
@@ -1625,20 +1383,22 @@ class ClaimItem(backboneelement.BackboneElement):
             "For programs which require reason codes for the inclusion or covering "
             "of this billed item under the program or sub-program."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of Products or Services",
         description="The number of repetitions of a service or product.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(
+    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -1646,24 +1406,26 @@ class ClaimItem(backboneelement.BackboneElement):
             "The type of reveneu or cost center providing the product and/or "
             "service."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Service instance",
         description="A service line number.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    service: fhirtypes.CodeableConceptType = Field(
+    service: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="service",
         title="Billing Code",
@@ -1674,11 +1436,12 @@ class ClaimItem(backboneelement.BackboneElement):
             "item then use a group code to indicate the type of thing being grouped"
             " eg. 'glasses' or 'compound'."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    servicedDate: fhirtypes.Date = Field(
+    servicedDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="servicedDate",
         title="Date or dates of Service",
@@ -1686,17 +1449,18 @@ class ClaimItem(backboneelement.BackboneElement):
             "The date or dates when the enclosed suite of services were performed "
             "or completed."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e serviced[x]
-        one_of_many="serviced",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e serviced[x]
+            "one_of_many": "serviced",
+            "one_of_many_required": False,
+        },
     )
-    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_servicedDate", title="Extension field for ``servicedDate``."
     )
 
-    servicedPeriod: fhirtypes.PeriodType = Field(
+    servicedPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="servicedPeriod",
         title="Date or dates of Service",
@@ -1704,34 +1468,37 @@ class ClaimItem(backboneelement.BackboneElement):
             "The date or dates when the enclosed suite of services were performed "
             "or completed."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e serviced[x]
-        one_of_many="serviced",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e serviced[x]
+            "one_of_many": "serviced",
+            "one_of_many_required": False,
+        },
     )
 
-    subSite: typing.List[fhirtypes.CodeableConceptType] = Field(
+    subSite: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="subSite",
         title="Service Sub-location",
         description="A region or surface of the site, eg. limb region or tooth surface(s).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    udi: typing.List[fhirtypes.ReferenceType] = Field(
+    udi: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="udi",
         title="Unique Device Identifier",
         description="List of Unique Device Identifiers associated with this line item.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(
+    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per point",
@@ -1740,8 +1507,9 @@ class ClaimItem(backboneelement.BackboneElement):
             " otherwise this is the total of the fees for the children of the "
             "group."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1780,10 +1548,7 @@ class ClaimItem(backboneelement.BackboneElement):
             "detail",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1061(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1792,57 +1557,9 @@ class ClaimItem(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sequence", "sequence__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1061(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1863,26 +1580,7 @@ class ClaimItem(backboneelement.BackboneElement):
             ],
             "serviced": ["servicedDate", "servicedPeriod"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ClaimItemDetail(backboneelement.BackboneElement):
@@ -1894,9 +1592,9 @@ class ClaimItemDetail(backboneelement.BackboneElement):
     Second tier of goods and services.
     """
 
-    resource_type = Field("ClaimItemDetail", const=True)
+    __resource_type__ = "ClaimItemDetail"
 
-    category: fhirtypes.CodeableConceptType = Field(
+    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="category",
         title="Type of service or product",
@@ -1904,11 +1602,12 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             "Health Care Service Type Codes  to identify the classification of "
             "service or benefits."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    factor: fhirtypes.Decimal = Field(
+    factor: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -1918,14 +1617,15 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             " of a Factor allows for a discount or surcharge multiplier to be "
             "applied to a monetary amount."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
+    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -1934,11 +1634,12 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             "treatment is cosmetic or associated with TMJ, or for medical whether "
             "the treatment was outside the clinic or out of office hours."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    net: fhirtypes.MoneyType = Field(
+    net: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="net",
         title="Total additional item cost",
@@ -1948,11 +1649,12 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             "Price (Cost per Point) * factor Number  * points = net Amount. "
             "Quantity, factor and points are assumed to be 1 if not supplied."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="programCode",
         title="Program specific reason for item inclusion",
@@ -1960,20 +1662,22 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             "For programs which require reson codes for the inclusion, covering, of"
             " this billed item under the program or sub-program."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of Products or Services",
         description="The number of repetitions of a service or product.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(
+    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -1981,24 +1685,26 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             "The type of reveneu or cost center providing the product and/or "
             "service."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Service instance",
         description="A service line number.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    service: fhirtypes.CodeableConceptType = Field(
+    service: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="service",
         title="Billing Code",
@@ -2009,31 +1715,34 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             "use a group code to indicate the type of thing being grouped eg. "
             "'glasses' or 'compound'."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    subDetail: typing.List[fhirtypes.ClaimItemDetailSubDetailType] = Field(
+    subDetail: typing.List[fhirtypes.ClaimItemDetailSubDetailType] = Field(  # type: ignore
         None,
         alias="subDetail",
         title="Additional items",
         description="Third tier of goods and services.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    udi: typing.List[fhirtypes.ReferenceType] = Field(
+    udi: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="udi",
         title="Unique Device Identifier",
         description="List of Unique Device Identifiers associated with this line item.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(
+    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per point",
@@ -2042,8 +1751,9 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             " otherwise this is the total of the fees for the children of the "
             "group."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -2070,10 +1780,7 @@ class ClaimItemDetail(backboneelement.BackboneElement):
             "subDetail",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1655(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -2082,52 +1789,7 @@ class ClaimItemDetail(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sequence", "sequence__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
@@ -2139,9 +1801,9 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
     Third tier of goods and services.
     """
 
-    resource_type = Field("ClaimItemDetailSubDetail", const=True)
+    __resource_type__ = "ClaimItemDetailSubDetail"
 
-    category: fhirtypes.CodeableConceptType = Field(
+    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="category",
         title="Type of service or product",
@@ -2149,11 +1811,12 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
             "Health Care Service Type Codes  to identify the classification of "
             "service or benefits."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    factor: fhirtypes.Decimal = Field(
+    factor: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -2163,14 +1826,15 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
             " of a Factor allows for a discount or surcharge multiplier to be "
             "applied to a monetary amount."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
+    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -2179,11 +1843,12 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
             "treatment is cosmetic or associated with TMJ, or for medical whether "
             "the treatment was outside the clinic or out of office hours."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    net: fhirtypes.MoneyType = Field(
+    net: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="net",
         title="Net additional item cost",
@@ -2193,11 +1858,12 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
             "Price (Cost per Point) * factor Number  * points = net Amount. "
             "Quantity, factor and points are assumed to be 1 if not supplied."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="programCode",
         title="Program specific reason for item inclusion",
@@ -2205,20 +1871,22 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
             "For programs which require reson codes for the inclusion, covering, of"
             " this billed item under the program or sub-program."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of Products or Services",
         description="The number of repetitions of a service or product.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(
+    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -2226,24 +1894,26 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
             "The type of reveneu or cost center providing the product and/or "
             "service."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Service instance",
         description="A service line number.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    service: fhirtypes.CodeableConceptType = Field(
+    service: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="service",
         title="Billing Code",
@@ -2251,28 +1921,31 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
             "A code to indicate the Professional Service or Product supplied (eg. "
             "CTP, HCPCS,USCLS,ICD10, NCPDP,DIN,ACHI,CCI)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    udi: typing.List[fhirtypes.ReferenceType] = Field(
+    udi: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="udi",
         title="Unique Device Identifier",
         description="List of Unique Device Identifiers associated with this line item.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(
+    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per point",
         description="The fee for an addittional service or product or charge.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -2298,10 +1971,7 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
             "udi",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2548(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -2310,52 +1980,7 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sequence", "sequence__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ClaimPayee(backboneelement.BackboneElement):
@@ -2367,40 +1992,43 @@ class ClaimPayee(backboneelement.BackboneElement):
     The party to be reimbursed for the services.
     """
 
-    resource_type = Field("ClaimPayee", const=True)
+    __resource_type__ = "ClaimPayee"
 
-    party: fhirtypes.ReferenceType = Field(
+    party: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="party",
         title="Party to receive the payable",
         description="Party to be reimbursed: Subscriber, provider, other.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "Organization",
-            "Patient",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "Organization",
+                "Patient",
+                "RelatedPerson",
+            ],
+        },
     )
 
-    resourceType: fhirtypes.CodingType = Field(
+    resourceType: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="resourceType",
         title="organization | patient | practitioner | relatedperson",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="Type of party: Subscriber, Provider, other",
         description="Type of Party to be reimbursed: Subscriber, provider, other.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -2421,56 +2049,60 @@ class ClaimProcedure(backboneelement.BackboneElement):
     Ordered list of patient procedures performed to support the adjudication.
     """
 
-    resource_type = Field("ClaimProcedure", const=True)
+    __resource_type__ = "ClaimProcedure"
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="When the procedure was performed",
         description="Date and optionally time the procedure was performed .",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    procedureCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    procedureCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="procedureCodeableConcept",
         title="Patient's list of procedures performed",
         description="The procedure code.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e procedure[x]
-        one_of_many="procedure",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e procedure[x]
+            "one_of_many": "procedure",
+            "one_of_many_required": True,
+        },
     )
 
-    procedureReference: fhirtypes.ReferenceType = Field(
+    procedureReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="procedureReference",
         title="Patient's list of procedures performed",
         description="The procedure code.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e procedure[x]
-        one_of_many="procedure",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Procedure"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e procedure[x]
+            "one_of_many": "procedure",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Procedure"],
+        },
     )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Procedure sequence for reference",
         description="Sequence of procedures which serves to order and provide a link.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
@@ -2490,10 +2122,7 @@ class ClaimProcedure(backboneelement.BackboneElement):
             "procedureReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1591(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -2502,57 +2131,9 @@ class ClaimProcedure(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sequence", "sequence__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1591(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -2568,26 +2149,7 @@ class ClaimProcedure(backboneelement.BackboneElement):
         one_of_many_fields = {
             "procedure": ["procedureCodeableConcept", "procedureReference"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ClaimRelated(backboneelement.BackboneElement):
@@ -2600,9 +2162,9 @@ class ClaimRelated(backboneelement.BackboneElement):
     or for related services.
     """
 
-    resource_type = Field("ClaimRelated", const=True)
+    __resource_type__ = "ClaimRelated"
 
-    claim: fhirtypes.ReferenceType = Field(
+    claim: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="claim",
         title="Reference to the related claim",
@@ -2610,13 +2172,14 @@ class ClaimRelated(backboneelement.BackboneElement):
             "Other claims which are related to this claim such as prior claim "
             "versions or for related services."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Claim"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Claim"],
+        },
     )
 
-    reference: fhirtypes.IdentifierType = Field(
+    reference: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="reference",
         title="Related file or case reference",
@@ -2625,17 +2188,19 @@ class ClaimRelated(backboneelement.BackboneElement):
             "this particular claim pertains - eg Property/Casualy insurer claim # "
             "or Workers Compensation case # ."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    relationship: fhirtypes.CodeableConceptType = Field(
+    relationship: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="relationship",
         title="How the reference claim is related",
         description="For example prior or umbrella.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

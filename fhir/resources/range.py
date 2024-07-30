@@ -22,7 +22,7 @@ class Range(datatype.DataType):
 
     __resource_type__ = "Range"
 
-    high: fhirtypes.QuantityType = Field(
+    high: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="high",
         title="High limit",
@@ -32,7 +32,7 @@ class Range(datatype.DataType):
         },
     )
 
-    low: fhirtypes.QuantityType = Field(
+    low: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="low",
         title="Low limit",

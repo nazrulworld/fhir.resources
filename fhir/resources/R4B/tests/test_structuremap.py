@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import structuremap
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_structuremap_1(inst):
@@ -96,7 +94,12 @@ def impl_structuremap_1(inst):
         inst.structure[1].url == "http://hl7.org/fhir/StructureDefinition/supplyrequest"
     )
     assert inst.text.status == "generated"
-    assert inst.url == "http://hl7.org/fhir/StructureMap/supplyrequest-transform"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureMap/supplyrequest-transform"}
+        ).valueUri
+    )
 
 
 def test_structuremap_1(base_settings):
@@ -106,15 +109,13 @@ def test_structuremap_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "structuremap-supplyrequest-transform.json"
     )
-    inst = structuremap.StructureMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "StructureMap" == inst.resource_type
+    inst = structuremap.StructureMap.model_validate_json(filename.read_bytes())
+    assert "StructureMap" == inst.get_resource_type()
 
     impl_structuremap_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "StructureMap" == data["resourceType"]
 
     inst2 = structuremap.StructureMap(**data)
@@ -124,7 +125,12 @@ def test_structuremap_1(base_settings):
 def impl_structuremap_2(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2017-03-09")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-09"}
+        ).valueDateTime
+    )
     assert inst.description == "Example Structure Map"
     assert inst.experimental is True
     assert inst.group[0].documentation == "test -> testValue"
@@ -142,20 +148,32 @@ def impl_structuremap_2(inst):
     assert inst.group[0].rule[0].target[0].transform == "copy"
     assert inst.group[0].typeMode == "none"
     assert inst.id == "example"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:37843577-95fb-4adb-84c0-8837188a7bf3"
     assert inst.jurisdiction[0].coding[0].code == "009"
     assert inst.jurisdiction[0].coding[0].display == "Oceania"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
+        ).valueUri
     )
     assert inst.name == "ExampleMap"
     assert inst.publisher == "HL7 FHIR Standard"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "Example Map"
-    assert inst.url == "http://hl7.org/fhir/StructureMap/example"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureMap/example"}
+        ).valueUri
+    )
     assert inst.version == "0.1"
 
 
@@ -164,15 +182,13 @@ def test_structuremap_2(base_settings):
     Test File: structuremap-example.json
     """
     filename = base_settings["unittest_data_dir"] / "structuremap-example.json"
-    inst = structuremap.StructureMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "StructureMap" == inst.resource_type
+    inst = structuremap.StructureMap.model_validate_json(filename.read_bytes())
+    assert "StructureMap" == inst.get_resource_type()
 
     impl_structuremap_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "StructureMap" == data["resourceType"]
 
     inst2 = structuremap.StructureMap(**data)

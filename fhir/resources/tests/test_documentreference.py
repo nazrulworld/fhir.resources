@@ -7,21 +7,21 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import documentreference
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_documentreference_1(inst):
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:02:01+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:02:01+01:00"}
         ).valueDateTime
     )
     assert inst.content[0].attachment.title == "Sample Genomic File"
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(
-            valueUrl="http://www.somesystemabc.net/identifiers/files/11114"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://www.somesystemabc.net/identifiers/files/11114"}
         ).valueUrl
     )
     assert inst.description == (
@@ -33,8 +33,8 @@ def impl_documentreference_1(inst):
     assert inst.id == "genomicFile4"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/files"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/files"}
         ).valueUri
     )
     assert inst.identifier[0].value == "11114"
@@ -42,16 +42,16 @@ def impl_documentreference_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.securityLabel[0].coding[0].code == "R"
     assert inst.securityLabel[0].coding[0].display == "Restricted"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -88,7 +88,9 @@ def impl_documentreference_2(inst):
     assert inst.bodySite[0].concept.coding[0].display == "Upper Trunk Structure"
     assert (
         inst.bodySite[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.content[0].attachment.contentType == "application/dicom"
     assert inst.content[0].attachment.height == 480
@@ -97,30 +99,34 @@ def impl_documentreference_2(inst):
     assert inst.event[0].concept.coding[0].display == "Lateral projection"
     assert (
         inst.event[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://nema.org/fhir/extensions#0002-0010"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nema.org/fhir/extensions#0002-0010"}
         ).valueUri
     )
     assert (
         inst.extension[0].valueUri
-        == ExternalValidatorModel(valueUri="urn:oid:1.2.840.10008.1.2.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:1.2.840.10008.1.2.1"}
+        ).valueUri
     )
     assert inst.id == "1.2.840.11361907579238403408700.3.1.04.19970327150033"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://acme-imaging.com/accession/2012"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme-imaging.com/accession/2012"}
         ).valueUri
     )
     assert inst.identifier[0].type.text == "accessionNo"
     assert inst.identifier[0].value == "1234567"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[1].type.text == "studyId"
     assert (
@@ -129,7 +135,7 @@ def impl_documentreference_2(inst):
     )
     assert (
         inst.identifier[2].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[2].type.text == "seriesId"
     assert (
@@ -138,7 +144,7 @@ def impl_documentreference_2(inst):
     )
     assert (
         inst.identifier[3].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[3].type.text == "InstanceUID"
     assert inst.identifier[3].use == "official"
@@ -149,15 +155,15 @@ def impl_documentreference_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.modality[0].coding[0].code == "US"
     assert (
         inst.modality[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -190,15 +196,17 @@ def test_documentreference_2(base_settings):
 def impl_documentreference_3(inst):
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2019-03-01T01:02:01+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:02:01+01:00"}
         ).valueDateTime
     )
     assert inst.content[0].attachment.title == "CNVAnalysis_called"
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(
-            valueUrl="https://chat.fhir.org/user_uploads/10155/Hnv3LtumKn-1QjeyS2KVuw4R/CNVAnalysis_called.bed"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://chat.fhir.org/user_uploads/10155/Hnv3LtumKn-1QjeyS2KVuw4R/CNVAnalysis_called.bed"
+            }
         ).valueUrl
     )
     assert inst.description == (
@@ -210,8 +218,8 @@ def impl_documentreference_3(inst):
     assert inst.id == "CNVAnalysis-called"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/files"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/files"}
         ).valueUri
     )
     assert inst.identifier[0].value == "11120"
@@ -219,16 +227,16 @@ def impl_documentreference_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.securityLabel[0].coding[0].code == "R"
     assert inst.securityLabel[0].coding[0].display == "Restricted"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -260,15 +268,15 @@ def test_documentreference_3(base_settings):
 def impl_documentreference_4(inst):
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:01:01+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:01+01:00"}
         ).valueDateTime
     )
     assert inst.content[0].attachment.title == "Sample Genomic File"
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(
-            valueUrl="http://www.somesystemabc.net/identifiers/files/11113"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://www.somesystemabc.net/identifiers/files/11113"}
         ).valueUrl
     )
     assert inst.description == (
@@ -280,8 +288,8 @@ def impl_documentreference_4(inst):
     assert inst.id == "genomicFileFather"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/files"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/files"}
         ).valueUri
     )
     assert inst.identifier[0].value == "111110"
@@ -289,16 +297,16 @@ def impl_documentreference_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.securityLabel[0].coding[0].code == "R"
     assert inst.securityLabel[0].coding[0].display == "Restricted"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -333,8 +341,8 @@ def impl_documentreference_5(inst):
     assert inst.attester[0].mode.coding[0].code == "professional"
     assert (
         inst.attester[0].mode.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/composition-attestation-mode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/composition-attestation-mode"}
         ).valueUri
     )
     assert inst.attester[0].party.reference == "#in-author"
@@ -342,21 +350,25 @@ def impl_documentreference_5(inst):
     assert inst.category[0].coding[0].code == "11369-6"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.contained[0].id == "in-author"
     assert inst.contained[1].id == "in-patient"
     assert inst.content[0].attachment.contentType == "text/plain"
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2020-12-31T23:50:50-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-12-31T23:50:50-05:00"}
         ).valueDateTime
     )
     assert (
         inst.content[0].attachment.hash
-        == ExternalValidatorModel(
-            valueBase64Binary="OGEzOGYyNjMzMDA2ZmQ1MzUxNDljNDRhM2E3M2YzMTI0MzdiMzQ3OA=="
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueBase64Binary": "OGEzOGYyNjMzMDA2ZmQ1MzUxNDljNDRhM2E3M2YzMTI0MzdiMzQ3OA=="
+            }
         ).valueBase64Binary
     )
     assert inst.content[0].attachment.language == "en"
@@ -369,18 +381,24 @@ def impl_documentreference_5(inst):
     )
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(valueUrl="http://example.com/nowhere.txt").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://example.com/nowhere.txt"}
+        ).valueUrl
     )
     assert inst.content[0].profile[0].valueCoding.code == "urn:ihe:iti:xds-sd:text:2008"
     assert (
         inst.content[0].profile[0].valueCoding.system
-        == ExternalValidatorModel(
-            valueUri="http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode"
+            }
         ).valueUri
     )
     assert (
         inst.date
-        == ExternalValidatorModel(valueInstant="2020-12-31T23:50:50-05:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2020-12-31T23:50:50-05:00"}
+        ).valueInstant
     )
     assert inst.description == (
         "Example of a Comprehensive DocumentReference resource. This "
@@ -390,13 +408,15 @@ def impl_documentreference_5(inst):
     assert inst.event[0].concept.coding[0].code == "ACCTRECEIVABLE"
     assert (
         inst.event[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert (
         inst.event[1].reference.identifier.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.event[1].reference.identifier.value == (
         "urn:oid:1.2.840.113556.1.8000.2554.17917.46600.21181.17878.3"
@@ -404,20 +424,26 @@ def impl_documentreference_5(inst):
     )
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/documentreference-sourcepatient"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/documentreference-sourcepatient"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueReference.reference == "#in-patient"
     assert inst.facilityType.coding[0].code == "82242000"
     assert (
         inst.facilityType.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.id == "example-comprehensive"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == (
         "urn:oid:1.2.840.113556.1.8000.2554.58783.21864.3474.19410.44"
@@ -425,54 +451,58 @@ def impl_documentreference_5(inst):
     )
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[1].value == "urn:uuid:0c287d32-01e3-4d87-9953-9fcc9404eb21"
     assert inst.meta.security[0].code == "HTEST"
     assert (
         inst.meta.security[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(
-            valueDateTime="2020-12-31T23:50:50-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-12-31T23:50:50-05:00"}
         ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(
-            valueDateTime="2020-12-31T23:50:50-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-12-31T23:50:50-05:00"}
         ).valueDateTime
     )
     assert inst.practiceSetting.coding[0].code == "408467006"
     assert (
         inst.practiceSetting.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.relatesTo[0].code.coding[0].code == "appends"
     assert (
         inst.relatesTo[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/document-relationship-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/document-relationship-type"}
         ).valueUri
     )
     assert inst.relatesTo[0].target.reference == "DocumentReference/example"
     assert inst.securityLabel[0].coding[0].code == "N"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -481,7 +511,9 @@ def impl_documentreference_5(inst):
     assert inst.type.coding[0].code == "55107-7"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.version == "urn:uuid:0c287d32-01e3-4d87-9953-9fcc9404eb21"
 
@@ -512,15 +544,15 @@ def test_documentreference_5(base_settings):
 def impl_documentreference_6(inst):
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2019-03-01T01:02:01+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:02:01+01:00"}
         ).valueDateTime
     )
     assert inst.content[0].attachment.title == "Sample Genomic VCF File"
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(
-            valueUrl="http://www.somesystemabc.net/identifiers/files/11114"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://www.somesystemabc.net/identifiers/files/11114"}
         ).valueUrl
     )
     assert inst.description == (
@@ -532,8 +564,8 @@ def impl_documentreference_6(inst):
     assert inst.id == "genomicVCFfile"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/files"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/files"}
         ).valueUri
     )
     assert inst.identifier[0].value == "11116"
@@ -541,16 +573,16 @@ def impl_documentreference_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.securityLabel[0].coding[0].code == "R"
     assert inst.securityLabel[0].coding[0].display == "Restricted"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -582,15 +614,17 @@ def test_documentreference_6(base_settings):
 def impl_documentreference_7(inst):
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2019-03-01T01:02:01+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:02:01+01:00"}
         ).valueDateTime
     )
     assert inst.content[0].attachment.title == "WES_FullSequencedRegion_GRCh38"
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(
-            valueUrl="https://chat.fhir.org/user_uploads/10155/BILYJerATC59WlG15J316BEf/WES_FullSequencedRegion_GRCh38.bed"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://chat.fhir.org/user_uploads/10155/BILYJerATC59WlG15J316BEf/WES_FullSequencedRegion_GRCh38.bed"
+            }
         ).valueUrl
     )
     assert inst.description == (
@@ -602,8 +636,8 @@ def impl_documentreference_7(inst):
     assert inst.id == "WES-FullSequencedRegion-GRCh38"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/files"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/files"}
         ).valueUri
     )
     assert inst.identifier[0].value == "11117"
@@ -611,16 +645,16 @@ def impl_documentreference_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.securityLabel[0].coding[0].code == "R"
     assert inst.securityLabel[0].coding[0].display == "Restricted"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -653,15 +687,17 @@ def test_documentreference_7(base_settings):
 def impl_documentreference_8(inst):
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2019-03-01T01:02:01+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:02:01+01:00"}
         ).valueDateTime
     )
     assert inst.content[0].attachment.title == "SimpleVariantAnalysis_called"
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(
-            valueUrl="https://chat.fhir.org/user_uploads/10155/jQZWWKs4JO8ZfhfrbsCbbMUA/SimpleVariantAnalysis_called.bed"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://chat.fhir.org/user_uploads/10155/jQZWWKs4JO8ZfhfrbsCbbMUA/SimpleVariantAnalysis_called.bed"
+            }
         ).valueUrl
     )
     assert inst.description == (
@@ -673,8 +709,8 @@ def impl_documentreference_8(inst):
     assert inst.id == "SimpleVariantAnalysis-called"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/files"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/files"}
         ).valueUri
     )
     assert inst.identifier[0].value == "11118"
@@ -682,16 +718,16 @@ def impl_documentreference_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.securityLabel[0].coding[0].code == "R"
     assert inst.securityLabel[0].coding[0].display == "Restricted"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -724,15 +760,17 @@ def test_documentreference_8(base_settings):
 def impl_documentreference_9(inst):
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2019-03-01T01:02:01+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:02:01+01:00"}
         ).valueDateTime
     )
     assert inst.content[0].attachment.title == "genomicVCFfile_simple"
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(
-            valueUrl="https://chat.fhir.org/user_uploads/10155/gdL90-np7lJjGwUxeARapUHB/genomicVCFFile_simple.vcf"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://chat.fhir.org/user_uploads/10155/gdL90-np7lJjGwUxeARapUHB/genomicVCFFile_simple.vcf"
+            }
         ).valueUrl
     )
     assert inst.description == (
@@ -744,8 +782,8 @@ def impl_documentreference_9(inst):
     assert inst.id == "genomicVCFfile-simple"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/files"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/files"}
         ).valueUri
     )
     assert inst.identifier[0].value == "11119"
@@ -753,16 +791,16 @@ def impl_documentreference_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.securityLabel[0].coding[0].code == "R"
     assert inst.securityLabel[0].coding[0].display == "Restricted"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"
@@ -795,15 +833,15 @@ def test_documentreference_9(base_settings):
 def impl_documentreference_10(inst):
     assert (
         inst.content[0].attachment.creation
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:01:01+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:01+01:00"}
         ).valueDateTime
     )
     assert inst.content[0].attachment.title == "Sample Genomic File"
     assert (
         inst.content[0].attachment.url
-        == ExternalValidatorModel(
-            valueUrl="http://www.somesystemabc.net/identifiers/files/11112"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://www.somesystemabc.net/identifiers/files/11112"}
         ).valueUrl
     )
     assert inst.description == (
@@ -815,8 +853,8 @@ def impl_documentreference_10(inst):
     assert inst.id == "genomicFile2"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/files"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/files"}
         ).valueUri
     )
     assert inst.identifier[0].value == "11112"
@@ -824,16 +862,16 @@ def impl_documentreference_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.securityLabel[0].coding[0].code == "R"
     assert inst.securityLabel[0].coding[0].display == "Restricted"
     assert (
         inst.securityLabel[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"}
         ).valueUri
     )
     assert inst.status == "current"

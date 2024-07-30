@@ -7,14 +7,14 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import imagingselection
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_imagingselection_1(inst):
     assert inst.code.text == "Observation within a DICOM SR"
     assert (
         inst.derivedFrom[0].identifier.system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert (
         inst.derivedFrom[0].identifier.value
@@ -22,7 +22,7 @@ def impl_imagingselection_1(inst):
     )
     assert (
         inst.derivedFrom[0].type
-        == ExternalValidatorModel(valueUri="ImagingStudy").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "ImagingStudy"}).valueUri
     )
     assert inst.focus[0].reference == "ImagingSelection/example-basic-image-selection"
     assert (
@@ -32,7 +32,7 @@ def impl_imagingselection_1(inst):
     assert inst.id == "example-dicom-sr-selection"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[0].value == (
         "urn:oid:1.2.840.113747.20080222.95946059916364657859950275.2" ".1"
@@ -40,7 +40,9 @@ def impl_imagingselection_1(inst):
     assert inst.instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.88.22"
     assert (
         inst.instance[0].sopClass.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.instance[0].subset[0] == (
         "1.2.840.113747.20080222.95946058738699434572916359950275.10." "1"
@@ -52,8 +54,8 @@ def impl_imagingselection_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.seriesUid == "1.2.840.113747.20080222.95946058738664657859950275.1"
@@ -61,10 +63,15 @@ def impl_imagingselection_1(inst):
     assert inst.studyUid == "1.2.840.113747.20080222.95946058738694657859950275"
     assert (
         inst.subject.identifier.system
-        == ExternalValidatorModel(valueUri="https://fhirhospital.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fhirhospital.org"}
+        ).valueUri
     )
     assert inst.subject.identifier.value == "RNKZPSBNZLNADAZV"
-    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
+    assert (
+        inst.subject.type
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
+    )
     assert inst.text.status == "generated"
 
 
@@ -93,14 +100,14 @@ def impl_imagingselection_2(inst):
     assert inst.code.text == "Key Frames"
     assert (
         inst.derivedFrom[0].identifier.system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.derivedFrom[0].identifier.value == (
         "urn:oid:1.2.840.113747.20080222.3077658758893509802450245542" "21747"
     )
     assert (
         inst.derivedFrom[0].type
-        == ExternalValidatorModel(valueUri="ImagingStudy").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "ImagingStudy"}).valueUri
     )
     assert (
         inst.frameOfReferenceUid
@@ -109,7 +116,7 @@ def impl_imagingselection_2(inst):
     assert inst.id == "example-multiframe-image-selection"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[0].value == (
         "urn:oid:1.2.840.113747.20080222.3077658758693009802450245542" "21747.2.1"
@@ -117,7 +124,9 @@ def impl_imagingselection_2(inst):
     assert inst.instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.2.1"
     assert (
         inst.instance[0].sopClass.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.instance[0].subset[0] == "1"
     assert inst.instance[0].subset[1] == "2"
@@ -130,8 +139,8 @@ def impl_imagingselection_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -141,10 +150,15 @@ def impl_imagingselection_2(inst):
     assert inst.studyUid == "1.2.840.113747.20080222.307765875869300489345024554221747"
     assert (
         inst.subject.identifier.system
-        == ExternalValidatorModel(valueUri="https://fhirhospital.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fhirhospital.org"}
+        ).valueUri
     )
     assert inst.subject.identifier.value == "MNSOIISABIDCHRCY"
-    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
+    assert (
+        inst.subject.type
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
+    )
     assert inst.text.status == "generated"
 
 
@@ -173,14 +187,14 @@ def impl_imagingselection_3(inst):
     assert inst.code.text == "Segment within a DICOM Segmentation instance"
     assert (
         inst.derivedFrom[0].identifier.system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.derivedFrom[0].identifier.value == (
         "urn:oid:1.2.840.113747.20080222.2340823325925226669316502208" "11572"
     )
     assert (
         inst.derivedFrom[0].type
-        == ExternalValidatorModel(valueUri="ImagingStudy").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "ImagingStudy"}).valueUri
     )
     assert (
         inst.frameOfReferenceUid
@@ -189,7 +203,7 @@ def impl_imagingselection_3(inst):
     assert inst.id == "example-segmentation-image-selection"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[0].value == (
         "urn:oid:1.2.840.113747.20080222.2340823325898426669316502208" "11572.2.1"
@@ -197,7 +211,9 @@ def impl_imagingselection_3(inst):
     assert inst.instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.66.4"
     assert (
         inst.instance[0].sopClass.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.instance[0].subset[0] == "1"
     assert inst.instance[0].uid == (
@@ -207,8 +223,8 @@ def impl_imagingselection_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -218,10 +234,15 @@ def impl_imagingselection_3(inst):
     assert inst.studyUid == "1.2.840.113747.20080222.234082332589846966931650220811572"
     assert (
         inst.subject.identifier.system
-        == ExternalValidatorModel(valueUri="https://fhirhospital.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fhirhospital.org"}
+        ).valueUri
     )
     assert inst.subject.identifier.value == "ISRNEJAWJHZOTNBS"
-    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
+    assert (
+        inst.subject.type
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
+    )
     assert inst.text.status == "generated"
 
 
@@ -250,14 +271,14 @@ def impl_imagingselection_4(inst):
     assert inst.code.text == "Key Images"
     assert (
         inst.derivedFrom[0].identifier.system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.derivedFrom[0].identifier.value == (
         "urn:oid:1.2.840.113747.20080222.3573835837292430627041253878" "3781"
     )
     assert (
         inst.derivedFrom[0].type
-        == ExternalValidatorModel(valueUri="ImagingStudy").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "ImagingStudy"}).valueUri
     )
     assert (
         inst.frameOfReferenceUid
@@ -266,7 +287,7 @@ def impl_imagingselection_4(inst):
     assert inst.id == "example-basic-image-selection"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[0].value == (
         "urn:oid:1.2.840.113747.20080222.3573816737292430627041253878" "3781.2.1"
@@ -274,7 +295,9 @@ def impl_imagingselection_4(inst):
     assert inst.instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
     assert (
         inst.instance[0].sopClass.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.instance[0].uid
@@ -283,7 +306,9 @@ def impl_imagingselection_4(inst):
     assert inst.instance[1].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
     assert (
         inst.instance[1].sopClass.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.instance[1].uid
@@ -293,8 +318,8 @@ def impl_imagingselection_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -304,10 +329,15 @@ def impl_imagingselection_4(inst):
     assert inst.studyUid == "1.2.840.113747.20080222.35738167368354306270412538783781"
     assert (
         inst.subject.identifier.system
-        == ExternalValidatorModel(valueUri="https://fhirhospital.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fhirhospital.org"}
+        ).valueUri
     )
     assert inst.subject.identifier.value == "KUTGIQCVCDRHVBUK"
-    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
+    assert (
+        inst.subject.type
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
+    )
     assert inst.text.status == "generated"
 
 
@@ -336,14 +366,14 @@ def impl_imagingselection_5(inst):
     assert inst.code.text == "Referenced DICOM Grayscale Softcopy Presentation State"
     assert (
         inst.derivedFrom[0].identifier.system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.derivedFrom[0].identifier.value == (
         "urn:oid:1.2.840.113747.20080222.1041207392912890031639036314" "39818"
     )
     assert (
         inst.derivedFrom[0].type
-        == ExternalValidatorModel(valueUri="ImagingStudy").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "ImagingStudy"}).valueUri
     )
     assert inst.focus[0].reference == "ImagingSelection/example-basic-image-selection"
     assert (
@@ -353,7 +383,7 @@ def impl_imagingselection_5(inst):
     assert inst.id == "example-presentation-state-selection"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[0].value == (
         "urn:oid:1.2.840.113747.20080222.1041207392938361511639036314" "39818.2.1"
@@ -361,7 +391,9 @@ def impl_imagingselection_5(inst):
     assert inst.instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.11.1"
     assert (
         inst.instance[0].sopClass.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.instance[0].uid == (
         "1.2.840.113747.20080222.104120739293836151289903631439818.1." "0"
@@ -370,8 +402,8 @@ def impl_imagingselection_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -381,10 +413,15 @@ def impl_imagingselection_5(inst):
     assert inst.studyUid == "1.2.840.113747.20080222.104120739293836153163903631439818"
     assert (
         inst.subject.identifier.system
-        == ExternalValidatorModel(valueUri="https://fhirhospital.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fhirhospital.org"}
+        ).valueUri
     )
     assert inst.subject.identifier.value == "WMQVWGBPNPQHAWCO"
-    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
+    assert (
+        inst.subject.type
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
+    )
     assert inst.text.status == "generated"
 
 
@@ -413,14 +450,14 @@ def impl_imagingselection_6(inst):
     assert inst.code.text == "Region selected from multiframe CT volume"
     assert (
         inst.derivedFrom[0].identifier.system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.derivedFrom[0].identifier.value == (
         "urn:oid:1.2.840.113747.20080222.1899142719569233292660249885" "86343"
     )
     assert (
         inst.derivedFrom[0].type
-        == ExternalValidatorModel(valueUri="ImagingStudy").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "ImagingStudy"}).valueUri
     )
     assert (
         inst.frameOfReferenceUid
@@ -429,7 +466,7 @@ def impl_imagingselection_6(inst):
     assert inst.id == "example-3d-image-region-selection"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[0].value == (
         "urn:oid:1.2.840.113747.20080222.1899142719348233292660249885" "86343.2.1"
@@ -448,7 +485,9 @@ def impl_imagingselection_6(inst):
     assert inst.instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.2.1"
     assert (
         inst.instance[0].sopClass.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.instance[0].uid == (
         "1.2.840.113747.20080222.189914271934870656923024988586343.1." "0"
@@ -457,8 +496,8 @@ def impl_imagingselection_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -468,10 +507,15 @@ def impl_imagingselection_6(inst):
     assert inst.studyUid == "1.2.840.113747.20080222.189914271934870656966024988586343"
     assert (
         inst.subject.identifier.system
-        == ExternalValidatorModel(valueUri="https://fhirhospital.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fhirhospital.org"}
+        ).valueUri
     )
     assert inst.subject.identifier.value == "PNWYPXNBXMPGMTWX"
-    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
+    assert (
+        inst.subject.type
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
+    )
     assert inst.text.status == "generated"
 
 
@@ -500,7 +544,7 @@ def impl_imagingselection_7(inst):
     assert inst.code.text == "Region selected from image"
     assert (
         inst.derivedFrom[0].identifier.system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert (
         inst.derivedFrom[0].identifier.value
@@ -508,7 +552,7 @@ def impl_imagingselection_7(inst):
     )
     assert (
         inst.derivedFrom[0].type
-        == ExternalValidatorModel(valueUri="ImagingStudy").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "ImagingStudy"}).valueUri
     )
     assert (
         inst.frameOfReferenceUid
@@ -517,7 +561,7 @@ def impl_imagingselection_7(inst):
     assert inst.id == "example-2d-image-region-selection"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:dicom:uid").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
     )
     assert inst.identifier[0].value == (
         "urn:oid:1.2.840.113747.20080222.3248567223100954657132726086" "516575.2.1"
@@ -534,7 +578,9 @@ def impl_imagingselection_7(inst):
     assert inst.instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
     assert (
         inst.instance[0].sopClass.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.instance[0].uid == (
         "1.2.840.113747.20080222.324856729726823100132726086516575.1." "0"
@@ -543,8 +589,8 @@ def impl_imagingselection_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -554,10 +600,15 @@ def impl_imagingselection_7(inst):
     assert inst.studyUid == "1.2.840.113747.20080222.324856729726854657132726086516575"
     assert (
         inst.subject.identifier.system
-        == ExternalValidatorModel(valueUri="https://fhirhospital.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fhirhospital.org"}
+        ).valueUri
     )
     assert inst.subject.identifier.value == "NTCGFHHKYUYKDPQX"
-    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
+    assert (
+        inst.subject.type
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
+    )
     assert inst.text.status == "generated"
 
 

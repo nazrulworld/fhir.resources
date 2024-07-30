@@ -6,23 +6,28 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import medicationdispense
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_medicationdispense_1(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0316"
     assert inst.contained[0].id == "med0306"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(1)
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "mg/kg"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "mg/kg"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -32,11 +37,18 @@ def impl_medicationdispense_1(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].route.coding[0].code == "255560000"
     assert inst.dosageInstruction[0].route.coding[0].display == "Intravenous"
-    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.dosageInstruction[0].route.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.dosageInstruction[0].sequence == 1
     assert inst.dosageInstruction[0].text == (
         "1.8 mg/kg IV infusion over 30 minutes every 3 weeks for 16 " "cycles"
@@ -51,11 +63,19 @@ def impl_medicationdispense_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "415818005"
-    assert inst.quantity.system == "http://snomed.info/sct"
+    assert (
+        inst.quantity.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert float(inst.quantity.value) == float(3)
     assert inst.status == "stopped"
     assert inst.subject.display == "Donald Duck"
@@ -64,12 +84,23 @@ def impl_medicationdispense_1(inst):
     assert inst.type.coding[0].code == "TF"
     assert inst.type.coding[0].display == "Trial Fill"
     assert (
-        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.type.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
-    assert inst.whenHandedOver == fhirtypes.DateTime.validate(
-        "2015-06-26T07:13:00+05:00"
+    assert (
+        inst.whenHandedOver
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-06-26T07:13:00+05:00"}
+        ).valueDateTime
     )
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-06-25T07:13:00+05:00")
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-06-25T07:13:00+05:00"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_1(base_settings):
@@ -77,15 +108,15 @@ def test_medicationdispense_1(base_settings):
     Test File: medicationdispense0317.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0317.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -96,14 +127,21 @@ def impl_medicationdispense_2(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0318"
     assert inst.contained[0].id == "med0301"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(3)
     assert inst.destination.reference == "Location/ph"
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "mg"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "mg"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -113,17 +151,29 @@ def impl_medicationdispense_2(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].method.coding[0].code == "420620005"
     assert (
         inst.dosageInstruction[0].method.coding[0].display
         == "Push - dosing instruction imperative (qualifier value)"
     )
-    assert inst.dosageInstruction[0].method.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.dosageInstruction[0].method.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.dosageInstruction[0].route.coding[0].code == "255560000"
     assert inst.dosageInstruction[0].route.coding[0].display == "Intravenous"
-    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.dosageInstruction[0].route.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.dosageInstruction[0].sequence == 1
     assert inst.dosageInstruction[0].text == "500mg IV q6h x 3 days"
     assert inst.dosageInstruction[0].timing.repeat.frequency == 1
@@ -137,11 +187,19 @@ def impl_medicationdispense_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "733026001"
-    assert inst.quantity.system == "http://snomed.info.sct"
+    assert (
+        inst.quantity.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info.sct"}
+        ).valueUri
+    )
     assert inst.quantity.unit == "Vial"
     assert float(inst.quantity.value) == float(12)
     assert inst.receiver[0].display == "Donald Duck"
@@ -154,9 +212,17 @@ def impl_medicationdispense_2(inst):
     assert inst.type.coding[0].code == "EM"
     assert inst.type.coding[0].display == "Emergency Supply"
     assert (
-        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.type.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T10:20:00Z"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_2(base_settings):
@@ -164,15 +230,15 @@ def test_medicationdispense_2(base_settings):
     Test File: medicationdispense0301.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0301.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -182,7 +248,12 @@ def test_medicationdispense_2(base_settings):
 def impl_medicationdispense_3(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0321"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(10)
     assert (
@@ -194,7 +265,9 @@ def impl_medicationdispense_3(inst):
     )
     assert (
         inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].code == "203082005"
@@ -205,12 +278,16 @@ def impl_medicationdispense_3(inst):
     )
     assert (
         inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "TAB"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "TAB"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -220,11 +297,18 @@ def impl_medicationdispense_3(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].route.coding[0].code == "26643006"
     assert inst.dosageInstruction[0].route.coding[0].display == "Oral Route"
-    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.dosageInstruction[0].route.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.dosageInstruction[0].sequence == 1
     assert (
         inst.dosageInstruction[0].text == "1 tablet every four hours as needed for pain"
@@ -239,18 +323,26 @@ def impl_medicationdispense_3(inst):
         == "Vicodin 5mg Hydrocodone, 500mg Acetaminophen tablet"
     )
     assert (
-        inst.medicationCodeableConcept.coding[0].system == "http://hl7.org/fhir/sid/ndc"
+        inst.medicationCodeableConcept.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/ndc"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "TAB"
     assert (
         inst.quantity.system
-        == "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"}
+        ).valueUri
     )
     assert float(inst.quantity.value) == float(30)
     assert inst.status == "in-progress"
@@ -260,9 +352,17 @@ def impl_medicationdispense_3(inst):
     assert inst.type.coding[0].code == "RFP"
     assert inst.type.coding[0].display == "Refill - Part Fill"
     assert (
-        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.type.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T10:20:00Z"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_3(base_settings):
@@ -270,15 +370,15 @@ def test_medicationdispense_3(base_settings):
     Test File: medicationdispense0321.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0321.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -289,13 +389,20 @@ def impl_medicationdispense_4(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0323"
     assert inst.contained[0].id == "med0318"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(1)
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "mL"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "mL"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -304,7 +411,9 @@ def impl_medicationdispense_4(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].rateRatio.denominator.code == "h"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].rateRatio.denominator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].rateRatio.denominator.unit == "h"
     assert float(
@@ -313,7 +422,9 @@ def impl_medicationdispense_4(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].rateRatio.numerator.code == "mL"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].rateRatio.numerator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].rateRatio.numerator.unit == "mL"
     assert float(
@@ -323,18 +434,28 @@ def impl_medicationdispense_4(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].route.coding[0].code == "255560000"
     assert inst.dosageInstruction[0].route.coding[0].display == "Intravenous"
-    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.dosageInstruction[0].route.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.dosageInstruction[0].sequence == 1
     assert (
         inst.dosageInstruction[0].text
         == "1000mL infused at 50ml/hour for 4 hours - hang at 2200 hours"
     )
-    assert inst.dosageInstruction[0].timing.event[0] == fhirtypes.DateTime.validate(
-        "2015-01-15T22:00:00+11:00"
+    assert (
+        inst.dosageInstruction[0].timing.event[0]
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T22:00:00+11:00"}
+        ).valueDateTime
     )
     assert inst.dosageInstruction[0].timing.repeat.frequency == 1
     assert float(inst.dosageInstruction[0].timing.repeat.period) == float(24)
@@ -345,20 +466,36 @@ def impl_medicationdispense_4(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "ml"
-    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert (
+        inst.quantity.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert float(inst.quantity.value) == float(1000)
     assert inst.status == "completed"
     assert inst.subject.display == "Donald Duck"
     assert inst.subject.reference == "Patient/pat1"
     assert inst.text.status == "generated"
-    assert inst.whenHandedOver == fhirtypes.DateTime.validate(
-        "2015-03-17T17:13:00+05:00"
+    assert (
+        inst.whenHandedOver
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-03-17T17:13:00+05:00"}
+        ).valueDateTime
     )
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-03-16T17:13:00+05:00")
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-03-16T17:13:00+05:00"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_4(base_settings):
@@ -366,15 +503,15 @@ def test_medicationdispense_4(base_settings):
     Test File: medicationdispense0320.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0320.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -384,13 +521,20 @@ def test_medicationdispense_4(base_settings):
 def impl_medicationdispense_5(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0320"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(30)
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "U"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "U"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -400,14 +544,21 @@ def impl_medicationdispense_5(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].route.coding[0].code == "263887005"
     assert (
         inst.dosageInstruction[0].route.coding[0].display
         == "Subcutaneous (qualifier value)"
     )
-    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.dosageInstruction[0].route.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.dosageInstruction[0].sequence == 1
     assert inst.dosageInstruction[0].text == "20 Units SC three times daily"
     assert inst.dosageInstruction[0].timing.repeat.frequency == 3
@@ -421,16 +572,26 @@ def impl_medicationdispense_5(inst):
     )
     assert (
         inst.medicationCodeableConcept.coding[0].system
-        == "http://www.nlm.nih.gov/research/umls/rxnorm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.nlm.nih.gov/research/umls/rxnorm"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "ml"
-    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert (
+        inst.quantity.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert float(inst.quantity.value) == float(10)
     assert inst.status == "in-progress"
     assert inst.subject.display == "Donald Duck"
@@ -439,9 +600,17 @@ def impl_medicationdispense_5(inst):
     assert inst.type.coding[0].code == "RFP"
     assert inst.type.coding[0].display == "Refill - Part Fill"
     assert (
-        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.type.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-06-25T07:13:00+05:00")
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-06-25T07:13:00+05:00"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_5(base_settings):
@@ -449,15 +618,15 @@ def test_medicationdispense_5(base_settings):
     Test File: medicationdispense0316.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0316.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -467,14 +636,21 @@ def test_medicationdispense_5(base_settings):
 def impl_medicationdispense_6(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0321"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(30)
     assert inst.dosageInstruction[0].additionalInstruction[0].text == "Shake Well"
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "ORINHL"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "ea"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -484,7 +660,9 @@ def impl_medicationdispense_6(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].sequence == 1
     assert inst.dosageInstruction[0].text == "Use two sprays twice daily"
@@ -498,16 +676,26 @@ def impl_medicationdispense_6(inst):
     )
     assert (
         inst.medicationCodeableConcept.coding[0].system
-        == "http://www.nlm.nih.gov/research/umls/rxnorm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.nlm.nih.gov/research/umls/rxnorm"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "ml"
-    assert inst.quantity.system == "http://unitsofmeasure.org"
+    assert (
+        inst.quantity.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert float(inst.quantity.value) == float(30)
     assert inst.status == "completed"
     assert inst.subject.display == "Donald Duck"
@@ -516,10 +704,23 @@ def impl_medicationdispense_6(inst):
     assert inst.type.coding[0].code == "TF"
     assert inst.type.coding[0].display == "Trial Fill"
     assert (
-        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.type.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
-    assert inst.whenHandedOver == fhirtypes.DateTime.validate("2015-01-15T16:20:00Z")
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+    assert (
+        inst.whenHandedOver
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T16:20:00Z"}
+        ).valueDateTime
+    )
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T10:20:00Z"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_6(base_settings):
@@ -527,15 +728,15 @@ def test_medicationdispense_6(base_settings):
     Test File: medicationdispense0327.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0327.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -548,7 +749,9 @@ def impl_medicationdispense_7(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "mg"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "mg"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -558,14 +761,21 @@ def impl_medicationdispense_7(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].route.coding[0].code == "394899003"
     assert (
         inst.dosageInstruction[0].route.coding[0].display
         == "oral administration of treatment"
     )
-    assert inst.dosageInstruction[0].route.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.dosageInstruction[0].route.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.dosageInstruction[0].sequence == 1
     assert inst.dosageInstruction[0].timing.repeat.frequency == 2
     assert float(inst.dosageInstruction[0].timing.repeat.period) == float(21)
@@ -575,7 +785,10 @@ def impl_medicationdispense_7(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.status == "completed"
@@ -589,15 +802,15 @@ def test_medicationdispense_7(base_settings):
     Test File: medicationdispenseexample8.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispenseexample8.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -608,7 +821,12 @@ def impl_medicationdispense_8(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0331"
     assert inst.contained[0].id == "med0352"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(1)
     assert inst.dosageInstruction[0].additionalInstruction[0].text == (
@@ -618,7 +836,9 @@ def impl_medicationdispense_8(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "mg"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "mg"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -628,7 +848,9 @@ def impl_medicationdispense_8(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].sequence == 1
     assert (
@@ -644,11 +866,19 @@ def impl_medicationdispense_8(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "415818006"
-    assert inst.quantity.system == "http://snomed.info/sct"
+    assert (
+        inst.quantity.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert float(inst.quantity.value) == float(1)
     assert inst.status == "in-progress"
     assert inst.subject.display == "Donald Duck"
@@ -657,9 +887,17 @@ def impl_medicationdispense_8(inst):
     assert inst.type.coding[0].code == "DF"
     assert inst.type.coding[0].display == "Daily Fill"
     assert (
-        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.type.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T10:20:00Z"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_8(base_settings):
@@ -667,15 +905,15 @@ def test_medicationdispense_8(base_settings):
     Test File: medicationdispense0331.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0331.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -685,7 +923,12 @@ def test_medicationdispense_8(base_settings):
 def impl_medicationdispense_9(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0324"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(10)
     assert (
@@ -696,7 +939,9 @@ def impl_medicationdispense_9(inst):
     )
     assert (
         inst.dosageInstruction[0].additionalInstruction[0].coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].code == "386661006"
@@ -707,12 +952,16 @@ def impl_medicationdispense_9(inst):
     )
     assert (
         inst.dosageInstruction[0].asNeededCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "mg"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "mg"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -722,12 +971,16 @@ def impl_medicationdispense_9(inst):
     assert inst.dosageInstruction[0].doseAndRate[0].type.coding[0].display == "Ordered"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].maxDosePerPeriod.denominator.code == "d"
     assert (
         inst.dosageInstruction[0].maxDosePerPeriod.denominator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert float(inst.dosageInstruction[0].maxDosePerPeriod.denominator.value) == float(
         1
@@ -735,7 +988,9 @@ def impl_medicationdispense_9(inst):
     assert inst.dosageInstruction[0].maxDosePerPeriod.numerator.code == "mg"
     assert (
         inst.dosageInstruction[0].maxDosePerPeriod.numerator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert float(inst.dosageInstruction[0].maxDosePerPeriod.numerator.value) == float(
         720
@@ -755,18 +1010,26 @@ def impl_medicationdispense_9(inst):
         == "Acetaminophen 120mg Suppository"
     )
     assert (
-        inst.medicationCodeableConcept.coding[0].system == "http://hl7.org/fhir/sid/ndc"
+        inst.medicationCodeableConcept.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/ndc"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "RECSUPP"
     assert (
         inst.quantity.system
-        == "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"}
+        ).valueUri
     )
     assert float(inst.quantity.value) == float(60)
     assert inst.status == "completed"
@@ -776,10 +1039,23 @@ def impl_medicationdispense_9(inst):
     assert inst.type.coding[0].code == "RFP"
     assert inst.type.coding[0].display == "Refill - Part Fill"
     assert (
-        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.type.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
-    assert inst.whenHandedOver == fhirtypes.DateTime.validate("2015-01-15T16:20:00Z")
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+    assert (
+        inst.whenHandedOver
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T16:20:00Z"}
+        ).valueDateTime
+    )
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T10:20:00Z"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_9(base_settings):
@@ -787,15 +1063,15 @@ def test_medicationdispense_9(base_settings):
     Test File: medicationdispense0311.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0311.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)
@@ -805,13 +1081,20 @@ def test_medicationdispense_9(base_settings):
 def impl_medicationdispense_10(inst):
     assert inst.authorizingPrescription[0].reference == "MedicationRequest/medrx0306"
     assert inst.daysSupply.code == "d"
-    assert inst.daysSupply.system == "http://unitsofmeasure.org"
+    assert (
+        inst.daysSupply.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
+    )
     assert inst.daysSupply.unit == "Day"
     assert float(inst.daysSupply.value) == float(30)
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.code == "mg"
     assert (
         inst.dosageInstruction[0].doseAndRate[0].doseQuantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].doseAndRate[0].doseQuantity.unit == "mg"
     assert float(inst.dosageInstruction[0].doseAndRate[0].doseQuantity.value) == float(
@@ -823,7 +1106,9 @@ def impl_medicationdispense_10(inst):
     )
     assert (
         inst.dosageInstruction[0].doseAndRate[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/dose-rate-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/dose-rate-type"}
+        ).valueUri
     )
     assert inst.dosageInstruction[0].sequence == 1
     assert inst.dosageInstruction[0].text == "Take 3 tablets (6mg) once daily"
@@ -837,18 +1122,26 @@ def impl_medicationdispense_10(inst):
         == "Myleran 2mg tablet, film coated"
     )
     assert (
-        inst.medicationCodeableConcept.coding[0].system == "http://hl7.org/fhir/sid/ndc"
+        inst.medicationCodeableConcept.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/ndc"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.performer[0].actor.reference == "Practitioner/f006"
     assert inst.quantity.code == "TAB"
     assert (
         inst.quantity.system
-        == "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"}
+        ).valueUri
     )
     assert float(inst.quantity.value) == float(90)
     assert inst.status == "completed"
@@ -858,10 +1151,23 @@ def impl_medicationdispense_10(inst):
     assert inst.type.coding[0].code == "RFP"
     assert inst.type.coding[0].display == "Refill - Part Fill"
     assert (
-        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.type.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
-    assert inst.whenHandedOver == fhirtypes.DateTime.validate("2015-01-15T16:20:00Z")
-    assert inst.whenPrepared == fhirtypes.DateTime.validate("2015-01-15T10:20:00Z")
+    assert (
+        inst.whenHandedOver
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T16:20:00Z"}
+        ).valueDateTime
+    )
+    assert (
+        inst.whenPrepared
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T10:20:00Z"}
+        ).valueDateTime
+    )
 
 
 def test_medicationdispense_10(base_settings):
@@ -869,15 +1175,15 @@ def test_medicationdispense_10(base_settings):
     Test File: medicationdispense0307.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0307.json"
-    inst = medicationdispense.MedicationDispense.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = medicationdispense.MedicationDispense.model_validate_json(
+        filename.read_bytes()
     )
-    assert "MedicationDispense" == inst.resource_type
+    assert "MedicationDispense" == inst.get_resource_type()
 
     impl_medicationdispense_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "MedicationDispense" == data["resourceType"]
 
     inst2 = medicationdispense.MedicationDispense(**data)

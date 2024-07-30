@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -25,9 +25,9 @@ class UsageContext(element.Element):
     context of care (e.g., venue, care setting, provider of care).
     """
 
-    resource_type = Field("UsageContext", const=True)
+    __resource_type__ = "UsageContext"
 
-    code: fhirtypes.CodingType = Field(
+    code: fhirtypes.CodingType = Field(  # type: ignore
         ...,
         alias="code",
         title="Type of context being specified",
@@ -35,11 +35,12 @@ class UsageContext(element.Element):
             "A code that identifies the type of context being specified by this "
             "usage context."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Value that defines the context",
@@ -47,14 +48,15 @@ class UsageContext(element.Element):
             "A value that defines the context specified in this context of use. The"
             " interpretation of the value is defined by the code."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Value that defines the context",
@@ -62,14 +64,15 @@ class UsageContext(element.Element):
             "A value that defines the context specified in this context of use. The"
             " interpretation of the value is defined by the code."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueRange: fhirtypes.RangeType = Field(
+    valueRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Value that defines the context",
@@ -77,14 +80,15 @@ class UsageContext(element.Element):
             "A value that defines the context specified in this context of use. The"
             " interpretation of the value is defined by the code."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(
+    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Value that defines the context",
@@ -92,21 +96,22 @@ class UsageContext(element.Element):
             "A value that defines the context specified in this context of use. The"
             " interpretation of the value is defined by the code."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "PlanDefinition",
-            "ResearchStudy",
-            "InsurancePlan",
-            "HealthcareService",
-            "Group",
-            "Location",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "PlanDefinition",
+                "ResearchStudy",
+                "InsurancePlan",
+                "HealthcareService",
+                "Group",
+                "Location",
+                "Organization",
+            ],
+        },
     )
 
     @classmethod
@@ -125,10 +130,7 @@ class UsageContext(element.Element):
             "valueReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1443(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -149,23 +151,4 @@ class UsageContext(element.Element):
                 "valueReference",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

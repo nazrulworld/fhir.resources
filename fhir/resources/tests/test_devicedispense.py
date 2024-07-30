@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import devicedispense
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_devicedispense_1(inst):
@@ -15,15 +15,17 @@ def impl_devicedispense_1(inst):
     assert inst.device.concept.coding[0].display == "ADAPTA (TM) Pacemaker"
     assert (
         inst.device.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="https://www.gs1.org/gtin").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.gs1.org/gtin"}
+        ).valueUri
     )
     assert inst.id == "example"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "completed"

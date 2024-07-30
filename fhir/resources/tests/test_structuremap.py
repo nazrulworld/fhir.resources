@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import structuremap
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_structuremap_1(inst):
@@ -81,7 +81,9 @@ def impl_structuremap_1(inst):
     assert inst.id == "supplyrequest-transform"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.13.1"
     assert inst.name == "TransformFromAnActivityDefinitionToASupplyRequest"
@@ -99,8 +101,8 @@ def impl_structuremap_1(inst):
     assert inst.title == "Transform from an ActivityDefinition to a SupplyRequest"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureMap/supplyrequest-transform"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureMap/supplyrequest-transform"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -129,7 +131,12 @@ def test_structuremap_1(base_settings):
 def impl_structuremap_2(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-03-09").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-09"}
+        ).valueDateTime
+    )
     assert inst.description == "Example Structure Map"
     assert inst.experimental is True
     assert inst.group[0].documentation == "test -> testValue"
@@ -149,15 +156,17 @@ def impl_structuremap_2(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.13.2"
     assert inst.jurisdiction[0].coding[0].code == "009"
     assert inst.jurisdiction[0].coding[0].display == "Oceania"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "ExampleMap"
@@ -167,8 +176,8 @@ def impl_structuremap_2(inst):
     assert inst.title == "Example Map"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureMap/example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureMap/example"}
         ).valueUri
     )
     assert inst.version == "5.0.0"

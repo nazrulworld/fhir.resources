@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -24,9 +24,9 @@ class CareTeam(domainresource.DomainResource):
     participate in the coordination and delivery of care for a patient.
     """
 
-    resource_type = Field("CareTeam", const=True)
+    __resource_type__ = "CareTeam"
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Type of team",
@@ -35,11 +35,12 @@ class CareTeam(domainresource.DomainResource):
             "between multiple co-existing teams, such as care plan team, episode of"
             " care team, longitudinal care team."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    context: fhirtypes.ReferenceType = Field(
+    context: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="context",
         title="Encounter or episode associated with CareTeam",
@@ -47,13 +48,14 @@ class CareTeam(domainresource.DomainResource):
             "The encounter or episode of care that establishes the context for this"
             " care team."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter", "EpisodeOfCare"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter", "EpisodeOfCare"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this team",
@@ -62,22 +64,24 @@ class CareTeam(domainresource.DomainResource):
             "defined by business processes and/or used to refer to it when a direct"
             " URL reference to the resource itself is not appropriate."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    managingOrganization: typing.List[fhirtypes.ReferenceType] = Field(
+    managingOrganization: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title="Organization responsible for the care team",
         description="The organization responsible for the care team.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name of the team, such as crisis assessment team",
@@ -85,23 +89,25 @@ class CareTeam(domainresource.DomainResource):
             "A label for human use intended to distinguish like teams.  E.g. the "
             '"red" vs. "green" trauma teams.'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about the CareTeam",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    participant: typing.List[fhirtypes.CareTeamParticipantType] = Field(
+    participant: typing.List[fhirtypes.CareTeamParticipantType] = Field(  # type: ignore
         None,
         alias="participant",
         title="Members of the team",
@@ -109,11 +115,12 @@ class CareTeam(domainresource.DomainResource):
             "Identifies all people and organizations who are expected to be "
             "involved in the care team."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period team covers",
@@ -121,46 +128,56 @@ class CareTeam(domainresource.DomainResource):
             "Indicates when the team did (or is intended to) come into effect and "
             "end."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Why the care team exists",
         description="Describes why the care team exists.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
+    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Why the care team exists",
         description="Condition(s) that this care team addresses.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Condition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Condition"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="proposed | active | suspended | inactive | entered-in-error",
         description="Indicates the current state of the care team.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["proposed", "active", "suspended", "inactive", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "proposed",
+                "active",
+                "suspended",
+                "inactive",
+                "entered-in-error",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Who care team is for",
@@ -168,10 +185,11 @@ class CareTeam(domainresource.DomainResource):
             "Identifies the patient or group whose intended care is handled by the "
             "team."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Group"],
+        },
     )
 
     @classmethod
@@ -214,9 +232,9 @@ class CareTeamParticipant(backboneelement.BackboneElement):
     the care team.
     """
 
-    resource_type = Field("CareTeamParticipant", const=True)
+    __resource_type__ = "CareTeamParticipant"
 
-    member: fhirtypes.ReferenceType = Field(
+    member: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="member",
         title="Who is involved",
@@ -224,30 +242,32 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "The specific person or organization who is participating/expected to "
             "participate in the care team."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "RelatedPerson",
-            "Patient",
-            "Organization",
-            "CareTeam",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "RelatedPerson",
+                "Patient",
+                "Organization",
+                "CareTeam",
+            ],
+        },
     )
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(
+    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="Organization of the practitioner",
         description="The organization of the practitioner.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period of participant",
@@ -255,11 +275,12 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "Indicates when the specific member or organization did (or is intended"
             " to) come into effect and end."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(
+    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="role",
         title="Type of involvement",
@@ -268,8 +289,9 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             'team, such as "Primary care physician", "Trained social worker '
             'counselor", "Caregiver", etc.'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

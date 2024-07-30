@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import riskassessment
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_riskassessment_1(inst):
@@ -17,8 +17,8 @@ def impl_riskassessment_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -54,7 +54,9 @@ def impl_riskassessment_2(inst):
     assert inst.id == "cardiac"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "risk-assessment-cardiac"
@@ -62,13 +64,15 @@ def impl_riskassessment_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2014-07-19T16:04:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-07-19T16:04:00Z"}
+        ).valueDateTime
     )
     assert inst.performer.display == "http://cvdrisk.nhlbi.nih.gov/#cholesterol"
     assert inst.prediction[0].outcome.text == "Heart Attack"
@@ -76,14 +80,18 @@ def impl_riskassessment_2(inst):
     assert inst.prediction[0].whenRange.high.code == "a"
     assert (
         inst.prediction[0].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[0].whenRange.high.unit == "years"
     assert float(inst.prediction[0].whenRange.high.value) == float(49)
     assert inst.prediction[0].whenRange.low.code == "a"
     assert (
         inst.prediction[0].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[0].whenRange.low.unit == "years"
     assert float(inst.prediction[0].whenRange.low.value) == float(39)
@@ -119,22 +127,26 @@ def impl_riskassessment_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.method.coding[0].code == "BRCAPRO"
     assert inst.note[0].text == "High degree of certainty"
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2006-01-13T23:01:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2006-01-13T23:01:00Z"}
+        ).valueDateTime
     )
     assert inst.prediction[0].outcome.text == "Breast Cancer"
     assert float(inst.prediction[0].probabilityDecimal) == float(0.000168)
     assert inst.prediction[0].whenRange.high.code == "a"
     assert (
         inst.prediction[0].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[0].whenRange.high.unit == "years"
     assert float(inst.prediction[0].whenRange.high.value) == float(53)
@@ -143,14 +155,18 @@ def impl_riskassessment_3(inst):
     assert inst.prediction[1].whenRange.high.code == "a"
     assert (
         inst.prediction[1].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[1].whenRange.high.unit == "years"
     assert float(inst.prediction[1].whenRange.high.value) == float(57)
     assert inst.prediction[1].whenRange.low.code == "a"
     assert (
         inst.prediction[1].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[1].whenRange.low.unit == "years"
     assert float(inst.prediction[1].whenRange.low.value) == float(54)
@@ -159,14 +175,18 @@ def impl_riskassessment_3(inst):
     assert inst.prediction[2].whenRange.high.code == "a"
     assert (
         inst.prediction[2].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[2].whenRange.high.unit == "years"
     assert float(inst.prediction[2].whenRange.high.value) == float(62)
     assert inst.prediction[2].whenRange.low.code == "a"
     assert (
         inst.prediction[2].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[2].whenRange.low.unit == "years"
     assert float(inst.prediction[2].whenRange.low.value) == float(58)
@@ -175,14 +195,18 @@ def impl_riskassessment_3(inst):
     assert inst.prediction[3].whenRange.high.code == "a"
     assert (
         inst.prediction[3].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[3].whenRange.high.unit == "years"
     assert float(inst.prediction[3].whenRange.high.value) == float(67)
     assert inst.prediction[3].whenRange.low.code == "a"
     assert (
         inst.prediction[3].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[3].whenRange.low.unit == "years"
     assert float(inst.prediction[3].whenRange.low.value) == float(63)
@@ -191,14 +215,18 @@ def impl_riskassessment_3(inst):
     assert inst.prediction[4].whenRange.high.code == "a"
     assert (
         inst.prediction[4].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[4].whenRange.high.unit == "years"
     assert float(inst.prediction[4].whenRange.high.value) == float(72)
     assert inst.prediction[4].whenRange.low.code == "a"
     assert (
         inst.prediction[4].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[4].whenRange.low.unit == "years"
     assert float(inst.prediction[4].whenRange.low.value) == float(68)
@@ -207,14 +235,18 @@ def impl_riskassessment_3(inst):
     assert inst.prediction[5].whenRange.high.code == "a"
     assert (
         inst.prediction[5].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[5].whenRange.high.unit == "years"
     assert float(inst.prediction[5].whenRange.high.value) == float(77)
     assert inst.prediction[5].whenRange.low.code == "a"
     assert (
         inst.prediction[5].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[5].whenRange.low.unit == "years"
     assert float(inst.prediction[5].whenRange.low.value) == float(73)
@@ -223,14 +255,18 @@ def impl_riskassessment_3(inst):
     assert inst.prediction[6].whenRange.high.code == "a"
     assert (
         inst.prediction[6].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[6].whenRange.high.unit == "years"
     assert float(inst.prediction[6].whenRange.high.value) == float(82)
     assert inst.prediction[6].whenRange.low.code == "a"
     assert (
         inst.prediction[6].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[6].whenRange.low.unit == "years"
     assert float(inst.prediction[6].whenRange.low.value) == float(78)
@@ -239,14 +275,18 @@ def impl_riskassessment_3(inst):
     assert inst.prediction[7].whenRange.high.code == "a"
     assert (
         inst.prediction[7].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[7].whenRange.high.unit == "years"
     assert float(inst.prediction[7].whenRange.high.value) == float(88)
     assert inst.prediction[7].whenRange.low.code == "a"
     assert (
         inst.prediction[7].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[7].whenRange.low.unit == "years"
     assert float(inst.prediction[7].whenRange.low.value) == float(83)
@@ -281,7 +321,9 @@ def impl_riskassessment_4(inst):
     assert inst.code.coding[0].display == "Assessment of risk for disease (procedure)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://browser.ihtsdotools.org/").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://browser.ihtsdotools.org/"}
+        ).valueUri
     )
     assert inst.condition.reference == "Condition/example"
     assert inst.encounter.display == "Encounter with patient @example"
@@ -289,7 +331,9 @@ def impl_riskassessment_4(inst):
     assert inst.id == "riskexample"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "risk-assessment-breastcancer1"
@@ -297,14 +341,16 @@ def impl_riskassessment_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == "This risk assessment is for reference only"
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2017-10-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-10-10"}
+        ).valueDateTime
     )
     assert inst.parent.reference == "DiagnosticReport/example"
     assert inst.performer.reference == "Practitioner/example"
@@ -313,14 +359,18 @@ def impl_riskassessment_4(inst):
     assert inst.prediction[0].whenRange.high.code == "a"
     assert (
         inst.prediction[0].whenRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[0].whenRange.high.unit == "years"
     assert float(inst.prediction[0].whenRange.high.value) == float(57)
     assert inst.prediction[0].whenRange.low.code == "a"
     assert (
         inst.prediction[0].whenRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.prediction[0].whenRange.low.unit == "years"
     assert float(inst.prediction[0].whenRange.low.value) == float(54)
@@ -357,12 +407,16 @@ def impl_riskassessment_5(inst):
     assert inst.code.coding[0].display == "Assessment of risk for disease (procedure)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://browser.ihtsdotools.org/").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://browser.ihtsdotools.org/"}
+        ).valueUri
     )
     assert inst.id == "breastcancer-risk"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "risk-assessment-breastcancer1"
@@ -370,8 +424,8 @@ def impl_riskassessment_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -412,13 +466,15 @@ def impl_riskassessment_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2010-11-22").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2010-11-22"}
+        ).valueDateTime
     )
     assert (
         inst.prediction[0].outcome.coding[0].code
@@ -426,15 +482,17 @@ def impl_riskassessment_6(inst):
     )
     assert (
         inst.prediction[0].outcome.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.prediction[0].outcome.text == "permanent weakness of the left arm"
     assert inst.prediction[0].qualitativeRisk.coding[0].code == "moderate"
     assert inst.prediction[0].qualitativeRisk.coding[0].display == "moderate likelihood"
     assert (
         inst.prediction[0].qualitativeRisk.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/risk-probability"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/risk-probability"}
         ).valueUri
     )
     assert inst.status == "final"

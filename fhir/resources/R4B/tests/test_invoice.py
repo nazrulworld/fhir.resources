@@ -6,29 +6,50 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import invoice
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_invoice_1(inst):
     assert inst.account.reference == "Account/example"
-    assert inst.date == fhirtypes.DateTime.validate("2017-01-25T08:00:00+01:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-25T08:00:00+01:00"}
+        ).valueDateTime
+    )
     assert inst.id == "example"
-    assert inst.identifier[0].system == "http://myHospital.org/Invoices"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://myHospital.org/Invoices"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "654321"
-    assert inst.issuer.identifier.system == "http://myhospital/NamingSystem/departments"
+    assert (
+        inst.issuer.identifier.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://myhospital/NamingSystem/departments"}
+        ).valueUri
+    )
     assert inst.issuer.identifier.value == "CARD_INTERMEDIATE_CARE"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.participant[0].actor.reference == "Practitioner/example"
     assert inst.participant[0].role.coding[0].code == "17561000"
     assert inst.participant[0].role.coding[0].display == "Cardiologist"
-    assert inst.participant[0].role.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.participant[0].role.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.status == "issued"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.div == (
@@ -46,15 +67,13 @@ def test_invoice_1(base_settings):
     Test File: invoice-example.json
     """
     filename = base_settings["unittest_data_dir"] / "invoice-example.json"
-    inst = invoice.Invoice.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Invoice" == inst.resource_type
+    inst = invoice.Invoice.model_validate_json(filename.read_bytes())
+    assert "Invoice" == inst.get_resource_type()
 
     impl_invoice_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Invoice" == data["resourceType"]
 
     inst2 = invoice.Invoice(**data)

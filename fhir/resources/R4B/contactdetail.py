@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -22,21 +22,22 @@ class ContactDetail(element.Element):
     Specifies contact information for a person or organization.
     """
 
-    resource_type = Field("ContactDetail", const=True)
+    __resource_type__ = "ContactDetail"
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name of an individual to contact",
         description="The name of an individual to contact.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="Contact details for individual or organization",
@@ -44,8 +45,9 @@ class ContactDetail(element.Element):
             "The contact details for the individual (if a name was provided) or the"
             " organization."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

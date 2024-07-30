@@ -1,3 +1,4 @@
+import decimal
 import hashlib
 import io
 import os
@@ -5,15 +6,26 @@ import pathlib
 import shutil
 import sys
 import tempfile
+import typing
 import zipfile
 from os.path import dirname
 
 import pytest  # type: ignore
+from fhir_core.types import (
+    Base64BinaryType,
+    DateTimeType,
+    DateType,
+    InstantType,
+    TimeType,
+    UriType,
+    UrlType,
+)
+from pydantic import BaseModel, Field
 
 EXAMPLE_RESOURCES_URL = (
     "https://github.com/nazrulworld/hl7-archives/raw/"
-    "0.2.1/FHIR/STU3/"
-    "3.0.1-examples-json.zip"
+    "0.4.0/FHIR/STU3/"
+    "3.0.2-examples-json.zip"
 )
 ROOT_PATH = dirname(dirname(dirname(dirname(dirname(os.path.abspath(__file__))))))
 CACHE_PATH = os.path.join(ROOT_PATH, ".cache", "STU3")
@@ -84,3 +96,28 @@ def base_settings():
 
     os.environ.pop("FHIR_UNITTEST_DATADIR")
     shutil.rmtree(temp_data_dir)
+
+
+def bytes_validator(v: typing.Any) -> typing.Union[bytes]:
+    if isinstance(v, bytes):
+        return v
+    elif isinstance(v, bytearray):
+        return bytes(v)
+    elif isinstance(v, str):
+        return v.encode()
+    elif isinstance(v, (float, int, decimal.Decimal)):
+        return str(v).encode()
+    else:
+        raise ValueError
+
+
+class ExternalValidatorModel(BaseModel):
+    """This model is used to validate datetime objects against in the tests"""
+
+    valueDate: DateType = Field(None, title="Date")
+    valueTime: TimeType = Field(None, title="Time")
+    valueDateTime: DateTimeType = Field(None, title="DateTime")
+    valueInstant: InstantType = Field(None, title="Instant")
+    valueUri: UriType = Field(None, title="Uri")
+    valueUrl: UrlType = Field(None, title="Url")
+    valueBase64Binary: Base64BinaryType = Field(None, title="Base64Binary")

@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,9 +24,9 @@ class ConceptMap(domainresource.DomainResource):
     concepts, or classes in class models.
     """
 
-    resource_type = Field("ConceptMap", const=True)
+    __resource_type__ = "ConceptMap"
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -36,11 +34,12 @@ class ConceptMap(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -49,14 +48,15 @@ class ConceptMap(domainresource.DomainResource):
             " Copyright statements are generally legal restrictions on the use and "
             "publishing of the concept map."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -66,14 +66,15 @@ class ConceptMap(domainresource.DomainResource):
             "change if the status code changes. In addition, it should change when "
             "the substantive content of the concept map changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the concept map",
@@ -81,14 +82,15 @@ class ConceptMap(domainresource.DomainResource):
             "A free text natural language description of the concept map from a "
             "consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -97,23 +99,25 @@ class ConceptMap(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    group: typing.List[fhirtypes.ConceptMapGroupType] = Field(
+    group: typing.List[fhirtypes.ConceptMapGroupType] = Field(  # type: ignore
         None,
         alias="group",
         title="Same source and target systems",
         description="A group of mappings that all have the same source and target system.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the concept map",
@@ -122,11 +126,12 @@ class ConceptMap(domainresource.DomainResource):
             "is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for concept map (if applicable)",
@@ -134,11 +139,12 @@ class ConceptMap(domainresource.DomainResource):
             "A legal or geographic region in which the concept map is intended to "
             "be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this concept map (computer friendly)",
@@ -147,14 +153,15 @@ class ConceptMap(domainresource.DomainResource):
             "be usable as an identifier for the module by machine processing "
             "applications such as code generation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -162,14 +169,15 @@ class ConceptMap(domainresource.DomainResource):
             "The name of the organization or individual that published the concept "
             "map."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.Markdown = Field(
+    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this concept map is defined",
@@ -177,14 +185,15 @@ class ConceptMap(domainresource.DomainResource):
             "Explanation of why this concept map is needed and why it has been "
             "designed as it has."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    sourceCanonical: fhirtypes.Canonical = Field(
+    sourceCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="sourceCanonical",
         title="The source value set that contains the concepts that are being mapped",
@@ -192,19 +201,20 @@ class ConceptMap(domainresource.DomainResource):
             "Identifier for the source value set that contains the concepts that "
             "are being mapped and provides context for the mappings."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e source[x]
-        one_of_many="source",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e source[x]
+            "one_of_many": "source",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
-    sourceCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sourceCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sourceCanonical", title="Extension field for ``sourceCanonical``."
     )
 
-    sourceUri: fhirtypes.Uri = Field(
+    sourceUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="sourceUri",
         title="The source value set that contains the concepts that are being mapped",
@@ -212,17 +222,18 @@ class ConceptMap(domainresource.DomainResource):
             "Identifier for the source value set that contains the concepts that "
             "are being mapped and provides context for the mappings."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e source[x]
-        one_of_many="source",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e source[x]
+            "one_of_many": "source",
+            "one_of_many_required": False,
+        },
     )
-    sourceUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sourceUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sourceUri", title="Extension field for ``sourceUri``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -230,18 +241,19 @@ class ConceptMap(domainresource.DomainResource):
             "The status of this concept map. Enables tracking the life-cycle of the"
             " content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    targetCanonical: fhirtypes.Canonical = Field(
+    targetCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="targetCanonical",
         title="The target value set which provides context for the mappings",
@@ -251,19 +263,20 @@ class ConceptMap(domainresource.DomainResource):
             "value set provides important context about how the concept mapping "
             "choices are made."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e target[x]
-        one_of_many="target",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e target[x]
+            "one_of_many": "target",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
-    targetCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    targetCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_targetCanonical", title="Extension field for ``targetCanonical``."
     )
 
-    targetUri: fhirtypes.Uri = Field(
+    targetUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="targetUri",
         title="The target value set which provides context for the mappings",
@@ -273,29 +286,31 @@ class ConceptMap(domainresource.DomainResource):
             "value set provides important context about how the concept mapping "
             "choices are made."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e target[x]
-        one_of_many="target",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e target[x]
+            "one_of_many": "target",
+            "one_of_many_required": False,
+        },
     )
-    targetUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    targetUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_targetUri", title="Extension field for ``targetUri``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this concept map (human friendly)",
         description="A short, descriptive, user-friendly title for the concept map.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -311,14 +326,15 @@ class ConceptMap(domainresource.DomainResource):
             "be the target of a canonical reference. It SHALL remain the same when "
             "the concept map is stored on different servers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -329,11 +345,12 @@ class ConceptMap(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate concept map instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the concept map",
@@ -346,10 +363,11 @@ class ConceptMap(domainresource.DomainResource):
             "There is also no expectation that versions can be placed in a "
             "lexicographical sequence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -390,10 +408,7 @@ class ConceptMap(domainresource.DomainResource):
             "group",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1181(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -402,57 +417,9 @@ class ConceptMap(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1181(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -469,26 +436,7 @@ class ConceptMap(domainresource.DomainResource):
             "source": ["sourceCanonical", "sourceUri"],
             "target": ["targetCanonical", "targetUri"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ConceptMapGroup(backboneelement.BackboneElement):
@@ -500,9 +448,9 @@ class ConceptMapGroup(backboneelement.BackboneElement):
     A group of mappings that all have the same source and target system.
     """
 
-    resource_type = Field("ConceptMapGroup", const=True)
+    __resource_type__ = "ConceptMapGroup"
 
-    element: typing.List[fhirtypes.ConceptMapGroupElementType] = Field(
+    element: typing.List[fhirtypes.ConceptMapGroupElementType] = Field(  # type: ignore
         ...,
         alias="element",
         title="Mappings for a concept from the source set",
@@ -510,11 +458,12 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "Mappings for an individual concept in the source to one or more "
             "concepts in the target."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    source: fhirtypes.Uri = Field(
+    source: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="source",
         title="Source system where concepts to be mapped are defined",
@@ -522,14 +471,15 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "An absolute URI that identifies the source system where the concepts "
             "to be mapped are defined."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    sourceVersion: fhirtypes.String = Field(
+    sourceVersion: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="sourceVersion",
         title="Specific version of the  code system",
@@ -537,14 +487,15 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "The specific version of the code system, as determined by the code "
             "system authority."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sourceVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sourceVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sourceVersion", title="Extension field for ``sourceVersion``."
     )
 
-    target: fhirtypes.Uri = Field(
+    target: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="target",
         title="Target system that the concepts are to be mapped to",
@@ -552,14 +503,15 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "An absolute URI that identifies the target system that the concepts "
             "will be mapped to."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    target__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    target__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_target", title="Extension field for ``target``."
     )
 
-    targetVersion: fhirtypes.String = Field(
+    targetVersion: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="targetVersion",
         title="Specific version of the  code system",
@@ -567,14 +519,15 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "The specific version of the code system, as determined by the code "
             "system authority."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    targetVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    targetVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_targetVersion", title="Extension field for ``targetVersion``."
     )
 
-    unmapped: fhirtypes.ConceptMapGroupUnmappedType = Field(
+    unmapped: fhirtypes.ConceptMapGroupUnmappedType = Field(  # type: ignore
         None,
         alias="unmapped",
         title="What to do when there is no mapping for the source concept",
@@ -583,8 +536,9 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             " does not include codes that are unmatched, and the unmapped element "
             "is ignored in a code is specified to have equivalence = unmatched."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -616,21 +570,22 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
     the target.
     """
 
-    resource_type = Field("ConceptMapGroupElement", const=True)
+    __resource_type__ = "ConceptMapGroupElement"
 
-    code: fhirtypes.Code = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Identifies element being mapped",
         description="Identity (code or path) or the element/item being mapped.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    display: fhirtypes.String = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="Display for the code",
@@ -638,20 +593,22 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
             "The display for the code. The display is only provided to help editors"
             " when editing the concept map."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    target: typing.List[fhirtypes.ConceptMapGroupElementTargetType] = Field(
+    target: typing.List[fhirtypes.ConceptMapGroupElementTargetType] = Field(  # type: ignore
         None,
         alias="target",
         title="Concept in target system for element",
         description="A concept from the target value set that this concept maps to.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -672,21 +629,22 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
     A concept from the target value set that this concept maps to.
     """
 
-    resource_type = Field("ConceptMapGroupElementTarget", const=True)
+    __resource_type__ = "ConceptMapGroupElementTarget"
 
-    code: fhirtypes.Code = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Code that identifies the target element",
         description="Identity (code or path) or the element/item that the map refers to.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    comment: fhirtypes.String = Field(
+    comment: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="comment",
         title="Description of status/issues in mapping",
@@ -694,14 +652,15 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "A description of status/issues in mapping that conveys additional "
             "information not represented in  the structured data."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    dependsOn: typing.List[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(
+    dependsOn: typing.List[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(  # type: ignore
         None,
         alias="dependsOn",
         title="Other elements required for this mapping (from context)",
@@ -710,11 +669,12 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "mapping is only applicable if the specified element can be resolved, "
             "and it has the specified value."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    display: fhirtypes.String = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="Display for the code",
@@ -722,14 +682,15 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "The display for the code. The display is only provided to help editors"
             " when editing the concept map."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    equivalence: fhirtypes.Code = Field(
+    equivalence: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="equivalence",
         title=(
@@ -741,29 +702,30 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "the dependencies and products). The equivalence is read from target to"
             " source (e.g. the target is 'wider' than the source)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "relatedto",
-            "equivalent",
-            "equal",
-            "wider",
-            "subsumes",
-            "narrower",
-            "specializes",
-            "inexact",
-            "unmatched",
-            "disjoint",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "relatedto",
+                "equivalent",
+                "equal",
+                "wider",
+                "subsumes",
+                "narrower",
+                "specializes",
+                "inexact",
+                "unmatched",
+                "disjoint",
+            ],
+        },
     )
-    equivalence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    equivalence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_equivalence", title="Extension field for ``equivalence``."
     )
 
-    product: typing.List[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(
+    product: typing.List[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(  # type: ignore
         None,
         alias="product",
         title="Other concepts that this mapping also produces",
@@ -774,8 +736,9 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             " be useful without a place for the additional data elements, but the "
             "equivalence cannot be relied on."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -796,10 +759,7 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "product",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3039(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -808,52 +768,7 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("equivalence", "equivalence__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
@@ -867,9 +782,9 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
     specified value.
     """
 
-    resource_type = Field("ConceptMapGroupElementTargetDependsOn", const=True)
+    __resource_type__ = "ConceptMapGroupElementTargetDependsOn"
 
-    display: fhirtypes.String = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="Display for the code (if value is a code)",
@@ -877,14 +792,15 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "The display for the code. The display is only provided to help editors"
             " when editing the concept map."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    property: fhirtypes.Uri = Field(
+    property: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="property",
         title="Reference to property mapping depends on",
@@ -894,15 +810,16 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "carries an element somewhere that is labeled to correspond with a code"
             " system property."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    property__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    property__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_property", title="Extension field for ``property``."
     )
 
-    system: fhirtypes.Canonical = Field(
+    system: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="system",
         title="Code System (if necessary)",
@@ -910,16 +827,17 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "An absolute URI that identifies the code system of the dependency code"
             " (if the source/dependency is a value set that crosses code systems)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CodeSystem"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CodeSystem"],
+        },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    value: fhirtypes.String = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="Value of the referenced element",
@@ -927,11 +845,12 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "Identity (code or path) or the element/item/ValueSet/text that the map"
             " depends on / refers to."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 
@@ -951,10 +870,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "display",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3929(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -963,52 +879,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("property", "property__ext"), ("value", "value__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
@@ -1022,9 +893,9 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
     in a code is specified to have equivalence = unmatched.
     """
 
-    resource_type = Field("ConceptMapGroupUnmapped", const=True)
+    __resource_type__ = "ConceptMapGroupUnmapped"
 
-    code: fhirtypes.Code = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Fixed code when mode = fixed",
@@ -1032,14 +903,15 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "The fixed code to use when the mode = 'fixed'  - all unmapped codes "
             "are mapped to a single fixed code."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    display: fhirtypes.String = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="Display for the code",
@@ -1047,14 +919,15 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "The display for the code. The display is only provided to help editors"
             " when editing the concept map."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    mode: fhirtypes.Code = Field(
+    mode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="mode",
         title="provided | fixed | other-map",
@@ -1066,18 +939,19 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             " fixed code (a default code), or alternatively, a reference to a "
             "different concept map can be provided (by canonical URL)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["provided", "fixed", "other-map"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["provided", "fixed", "other-map"],
+        },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    url: fhirtypes.Canonical = Field(
+    url: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -1089,12 +963,13 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "to use for mapping if this ConceptMap resource contains no matching "
             "mapping for the source concept."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ConceptMap"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ConceptMap"],
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
@@ -1114,10 +989,7 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "url",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2520(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1126,49 +998,4 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("mode", "mode__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

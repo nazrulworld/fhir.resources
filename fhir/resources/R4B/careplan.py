@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,9 +24,9 @@ class CarePlan(domainresource.DomainResource):
     possibly limited to care for a specific condition or set of conditions.
     """
 
-    resource_type = Field("CarePlan", const=True)
+    __resource_type__ = "CarePlan"
 
-    activity: typing.List[fhirtypes.CarePlanActivityType] = Field(
+    activity: typing.List[fhirtypes.CarePlanActivityType] = Field(  # type: ignore
         None,
         alias="activity",
         title="Action to occur as part of plan",
@@ -37,11 +35,12 @@ class CarePlan(domainresource.DomainResource):
             "example, a medication to be used, lab tests to perform, self-"
             "monitoring, education, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    addresses: typing.List[fhirtypes.ReferenceType] = Field(
+    addresses: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="addresses",
         title="Health issues this plan addresses",
@@ -49,13 +48,14 @@ class CarePlan(domainresource.DomainResource):
             "Identifies the conditions/problems/concerns/diagnoses/etc. whose "
             "management and/or mitigation are handled by this plan."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Condition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Condition"],
+        },
     )
 
-    author: fhirtypes.ReferenceType = Field(
+    author: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="author",
         title="Who is the designated responsible party",
@@ -63,32 +63,34 @@ class CarePlan(domainresource.DomainResource):
             "When populated, the author is responsible for the care plan.  The care"
             " plan is attributed to the author."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "Device",
-            "RelatedPerson",
-            "Organization",
-            "CareTeam",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "Device",
+                "RelatedPerson",
+                "Organization",
+                "CareTeam",
+            ],
+        },
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Fulfills CarePlan",
         description="A care plan that is fulfilled in whole or in part by this care plan.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CarePlan"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CarePlan"],
+        },
     )
 
-    careTeam: typing.List[fhirtypes.ReferenceType] = Field(
+    careTeam: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="careTeam",
         title="Who's involved in plan?",
@@ -96,13 +98,14 @@ class CarePlan(domainresource.DomainResource):
             "Identifies all people and organizations who are expected to be "
             "involved in the care envisioned by this plan."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CareTeam"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CareTeam"],
+        },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Type of plan",
@@ -111,11 +114,12 @@ class CarePlan(domainresource.DomainResource):
             'between multiple co-existing plans; e.g. "Home health", "psychiatric",'
             ' "asthma", "disease management", "wellness plan", etc.'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    contributor: typing.List[fhirtypes.ReferenceType] = Field(
+    contributor: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="contributor",
         title="Who provided the content of the care plan",
@@ -123,21 +127,22 @@ class CarePlan(domainresource.DomainResource):
             "Identifies the individual(s) or organization who provided the contents"
             " of the care plan."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "Device",
-            "RelatedPerson",
-            "Organization",
-            "CareTeam",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "Device",
+                "RelatedPerson",
+                "Organization",
+                "CareTeam",
+            ],
+        },
     )
 
-    created: fhirtypes.DateTime = Field(
+    created: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="created",
         title="Date record was first recorded",
@@ -145,26 +150,28 @@ class CarePlan(domainresource.DomainResource):
             "Represents when this particular CarePlan record was created in the "
             "system, which is often a system-generated date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Summary of nature of plan",
         description="A description of the scope and nature of the plan.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter created as part of",
@@ -172,24 +179,26 @@ class CarePlan(domainresource.DomainResource):
             "The Encounter during which this CarePlan was created or to which the "
             "creation of this record is tightly associated."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
-    goal: typing.List[fhirtypes.ReferenceType] = Field(
+    goal: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="goal",
         title="Desired outcome of plan",
         description="Describes the intended objective(s) of carrying out the care plan.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Goal"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Goal"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this plan",
@@ -198,11 +207,12 @@ class CarePlan(domainresource.DomainResource):
             "other systems which remain constant as the resource is updated and "
             "propagates from server to server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -211,26 +221,25 @@ class CarePlan(domainresource.DomainResource):
             "or other definition that is adhered to in whole or in part by this "
             "CarePlan."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "PlanDefinition",
-            "Questionnaire",
-            "Measure",
-            "ActivityDefinition",
-            "OperationDefinition",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "PlanDefinition",
+                "Questionnaire",
+                "Measure",
+                "ActivityDefinition",
+                "OperationDefinition",
+            ],
+        },
     )
-    instantiatesCanonical__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    instantiatesCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
+    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -239,16 +248,15 @@ class CarePlan(domainresource.DomainResource):
             "questionnaire or other definition that is adhered to in whole or in "
             "part by this CarePlan."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    instantiatesUri__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    instantiatesUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    intent: fhirtypes.Code = Field(
+    intent: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="intent",
         title="proposal | plan | order | option",
@@ -256,27 +264,29 @@ class CarePlan(domainresource.DomainResource):
             "Indicates the level of authority/intentionality associated with the "
             "care plan and where the care plan fits into the workflow chain."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["proposal", "plan", "order", "option"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["proposal", "plan", "order", "option"],
+        },
     )
-    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_intent", title="Extension field for ``intent``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Comments about the plan",
         description="General notes about the care plan not covered elsewhere.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced CarePlan",
@@ -284,13 +294,14 @@ class CarePlan(domainresource.DomainResource):
             "A larger care plan of which this particular care plan is a component "
             "or step."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CarePlan"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CarePlan"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period plan covers",
@@ -298,11 +309,12 @@ class CarePlan(domainresource.DomainResource):
             "Indicates when the plan did (or is intended to) come into effect and "
             "end."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    replaces: typing.List[fhirtypes.ReferenceType] = Field(
+    replaces: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="replaces",
         title="CarePlan replaced by this CarePlan",
@@ -310,13 +322,14 @@ class CarePlan(domainresource.DomainResource):
             "Completed or terminated care plan whose function is taken by this new "
             "care plan."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CarePlan"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CarePlan"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -327,26 +340,27 @@ class CarePlan(domainresource.DomainResource):
             "Indicates whether the plan is currently being acted upon, represents "
             "future intentions or is now a historical record."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "draft",
-            "active",
-            "on-hold",
-            "revoked",
-            "completed",
-            "entered-in-error",
-            "unknown",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "draft",
+                "active",
+                "on-hold",
+                "revoked",
+                "completed",
+                "entered-in-error",
+                "unknown",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="subject",
         title="Who the care plan is for",
@@ -354,13 +368,14 @@ class CarePlan(domainresource.DomainResource):
             "Identifies the patient or group whose intended care is described by "
             "the plan."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Group"],
+        },
     )
 
-    supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
+    supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="supportingInfo",
         title="Information considered as part of plan",
@@ -370,21 +385,23 @@ class CarePlan(domainresource.DomainResource):
             "comorbidities, recent procedures, limitations, recent assessments, "
             "etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Human-friendly name for the care plan",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
@@ -428,10 +445,7 @@ class CarePlan(domainresource.DomainResource):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_951(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -440,52 +454,7 @@ class CarePlan(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("intent", "intent__ext"), ("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class CarePlanActivity(backboneelement.BackboneElement):
@@ -499,9 +468,9 @@ class CarePlanActivity(backboneelement.BackboneElement):
     etc.
     """
 
-    resource_type = Field("CarePlanActivity", const=True)
+    __resource_type__ = "CarePlanActivity"
 
-    detail: fhirtypes.CarePlanActivityDetailType = Field(
+    detail: fhirtypes.CarePlanActivityDetailType = Field(  # type: ignore
         None,
         alias="detail",
         title="In-line definition of activity",
@@ -510,11 +479,12 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "plan system (e.g. form driven) that doesn't know about specific "
             "resources such as procedure etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    outcomeCodeableConcept: typing.List[fhirtypes.CodeableConceptType] = Field(
+    outcomeCodeableConcept: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="outcomeCodeableConcept",
         title="Results of the activity",
@@ -523,11 +493,12 @@ class CarePlanActivity(backboneelement.BackboneElement):
             " assessed.  For example, the outcome of an education activity could be"
             " patient understands (or not)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    outcomeReference: typing.List[fhirtypes.ReferenceType] = Field(
+    outcomeReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="outcomeReference",
         title="Appointment, Encounter, Procedure, etc.",
@@ -538,22 +509,24 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "activity can be conveyed using CarePlan.activity.detail OR using the "
             "CarePlan.activity.reference (a reference to a \u201crequest\u201d resource)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    progress: typing.List[fhirtypes.AnnotationType] = Field(
+    progress: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="progress",
         title="Comments about the activity status/progress",
         description="Notes about the adherence/status/progress of the activity.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reference: fhirtypes.ReferenceType = Field(
+    reference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="reference",
         title="Activity details defined in specific resource",
@@ -561,20 +534,21 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "The details of the proposed activity represented in a specific "
             "resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Appointment",
-            "CommunicationRequest",
-            "DeviceRequest",
-            "MedicationRequest",
-            "NutritionOrder",
-            "Task",
-            "ServiceRequest",
-            "VisionPrescription",
-            "RequestGroup",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Appointment",
+                "CommunicationRequest",
+                "DeviceRequest",
+                "MedicationRequest",
+                "NutritionOrder",
+                "Task",
+                "ServiceRequest",
+                "VisionPrescription",
+                "RequestGroup",
+            ],
+        },
     )
 
     @classmethod
@@ -606,9 +580,9 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     as procedure etc.
     """
 
-    resource_type = Field("CarePlanActivityDetail", const=True)
+    __resource_type__ = "CarePlanActivityDetail"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Detail type of activity",
@@ -616,20 +590,22 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Detailed description of the type of planned activity; e.g. what lab "
             "test, what procedure, what kind of encounter."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    dailyAmount: fhirtypes.QuantityType = Field(
+    dailyAmount: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="dailyAmount",
         title="How to consume/day?",
         description="Identifies the quantity expected to be consumed in a given day.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Extra info describing activity to perform",
@@ -640,14 +616,15 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "it may convey specifics about the activity such as body site, method, "
             "route, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    doNotPerform: bool = Field(
+    doNotPerform: bool = Field(  # type: ignore
         None,
         alias="doNotPerform",
         title="If true, activity is prohibiting action",
@@ -657,14 +634,15 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "that the described activity is one that should be engaged in when "
             "following the plan."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
     )
 
-    goal: typing.List[fhirtypes.ReferenceType] = Field(
+    goal: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="goal",
         title="Goals this activity relates to",
@@ -672,13 +650,14 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Internal reference that identifies the goals that this activity is "
             "intended to contribute towards meeting."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Goal"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Goal"],
+        },
     )
 
-    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -687,26 +666,25 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "or other definition that is adhered to in whole or in part by this "
             "CarePlan activity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "PlanDefinition",
-            "ActivityDefinition",
-            "Questionnaire",
-            "Measure",
-            "OperationDefinition",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "PlanDefinition",
+                "ActivityDefinition",
+                "Questionnaire",
+                "Measure",
+                "OperationDefinition",
+            ],
+        },
     )
-    instantiatesCanonical__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    instantiatesCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
+    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -715,16 +693,15 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "questionnaire or other definition that is adhered to in whole or in "
             "part by this CarePlan activity."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    instantiatesUri__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    instantiatesUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    kind: fhirtypes.Code = Field(
+    kind: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="kind",
         title=(
@@ -738,26 +715,27 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "CarePlan.activity.reference.  For example, a MedicationRequest, a "
             "ServiceRequest, or a CommunicationRequest."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "Appointment",
-            "CommunicationRequest",
-            "DeviceRequest",
-            "MedicationRequest",
-            "NutritionOrder",
-            "Task",
-            "ServiceRequest",
-            "VisionPrescription",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "Appointment",
+                "CommunicationRequest",
+                "DeviceRequest",
+                "MedicationRequest",
+                "NutritionOrder",
+                "Task",
+                "ServiceRequest",
+                "VisionPrescription",
+            ],
+        },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    location: fhirtypes.ReferenceType = Field(
+    location: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="location",
         title="Where it should happen",
@@ -765,33 +743,35 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Identifies the facility where the activity will occur; e.g. home, "
             "hospital, specific clinic, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    performer: typing.List[fhirtypes.ReferenceType] = Field(
+    performer: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="performer",
         title="Who will be responsible?",
         description="Identifies who's expected to be involved in the activity.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "RelatedPerson",
-            "Patient",
-            "CareTeam",
-            "HealthcareService",
-            "Device",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+                "RelatedPerson",
+                "Patient",
+                "CareTeam",
+                "HealthcareService",
+                "Device",
+            ],
+        },
     )
 
-    productCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    productCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="productCodeableConcept",
         title="What is to be administered/supplied",
@@ -799,14 +779,15 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Identifies the food, drug or other product to be consumed or supplied "
             "in the activity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e product[x]
-        one_of_many="product",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e product[x]
+            "one_of_many": "product",
+            "one_of_many_required": False,
+        },
     )
 
-    productReference: fhirtypes.ReferenceType = Field(
+    productReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="productReference",
         title="What is to be administered/supplied",
@@ -814,16 +795,17 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Identifies the food, drug or other product to be consumed or supplied "
             "in the activity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e product[x]
-        one_of_many="product",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Medication", "Substance"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e product[x]
+            "one_of_many": "product",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Medication", "Substance"],
+        },
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="How much to administer/supply/consume",
@@ -831,11 +813,12 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Identifies the quantity expected to be supplied, administered or "
             "consumed by the subject."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Why activity should be done or why activity was prohibited",
@@ -844,11 +827,12 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "activity as part of the plan or the reason why the activity was "
             "prohibited."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
+    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Why activity is needed",
@@ -857,18 +841,19 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "existence justifies this request and drove the inclusion of this "
             "particular activity as part of the plan."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Condition",
-            "Observation",
-            "DiagnosticReport",
-            "DocumentReference",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Condition",
+                "Observation",
+                "DiagnosticReport",
+                "DocumentReference",
+            ],
+        },
     )
 
-    scheduledPeriod: fhirtypes.PeriodType = Field(
+    scheduledPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="scheduledPeriod",
         title="When activity is to occur",
@@ -876,14 +861,15 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e scheduled[x]
-        one_of_many="scheduled",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e scheduled[x]
+            "one_of_many": "scheduled",
+            "one_of_many_required": False,
+        },
     )
 
-    scheduledString: fhirtypes.String = Field(
+    scheduledString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="scheduledString",
         title="When activity is to occur",
@@ -891,17 +877,18 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e scheduled[x]
-        one_of_many="scheduled",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e scheduled[x]
+            "one_of_many": "scheduled",
+            "one_of_many_required": False,
+        },
     )
-    scheduledString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    scheduledString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_scheduledString", title="Extension field for ``scheduledString``."
     )
 
-    scheduledTiming: fhirtypes.TimingType = Field(
+    scheduledTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="scheduledTiming",
         title="When activity is to occur",
@@ -909,14 +896,15 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e scheduled[x]
-        one_of_many="scheduled",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e scheduled[x]
+            "one_of_many": "scheduled",
+            "one_of_many_required": False,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -924,28 +912,29 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "cancelled | stopped | unknown | entered-in-error"
         ),
         description="Identifies what progress is being made for the specific activity.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "not-started",
-            "scheduled",
-            "in-progress",
-            "on-hold",
-            "completed",
-            "cancelled",
-            "stopped",
-            "unknown",
-            "entered-in-error",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "not-started",
+                "scheduled",
+                "in-progress",
+                "on-hold",
+                "completed",
+                "cancelled",
+                "stopped",
+                "unknown",
+                "entered-in-error",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: fhirtypes.CodeableConceptType = Field(
+    statusReason: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="statusReason",
         title="Reason for current status",
@@ -953,8 +942,9 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Provides reason why the activity isn't yet started, is on hold, was "
             "cancelled, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -989,10 +979,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "description",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2389(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1001,57 +988,9 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2389(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1068,23 +1007,4 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "product": ["productCodeableConcept", "productReference"],
             "scheduled": ["scheduledPeriod", "scheduledString", "scheduledTiming"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

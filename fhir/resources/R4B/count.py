@@ -6,8 +6,6 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
-
 from . import quantity
 
 
@@ -22,7 +20,7 @@ class Count(quantity.Quantity):
     including amounts involving arbitrary units and floating currencies.
     """
 
-    resource_type = Field("Count", const=True)
+    __resource_type__ = "Count"
 
     @classmethod
     def elements_sequence(cls):

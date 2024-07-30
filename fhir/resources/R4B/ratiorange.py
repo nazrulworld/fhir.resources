@@ -6,7 +6,7 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -20,33 +20,36 @@ class RatioRange(element.Element):
     A range of ratios expressed as a low and high numerator and a denominator.
     """
 
-    resource_type = Field("RatioRange", const=True)
+    __resource_type__ = "RatioRange"
 
-    denominator: fhirtypes.QuantityType = Field(
+    denominator: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="denominator",
         title="Denominator value",
         description="The value of the denominator.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    highNumerator: fhirtypes.QuantityType = Field(
+    highNumerator: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="highNumerator",
         title="High Numerator limit",
         description="The value of the high limit numerator.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lowNumerator: fhirtypes.QuantityType = Field(
+    lowNumerator: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="lowNumerator",
         title="Low Numerator limit",
         description="The value of the low limit numerator.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

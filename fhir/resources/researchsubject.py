@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ResearchSubject(domainresource.DomainResource):
@@ -26,7 +26,7 @@ class ResearchSubject(domainresource.DomainResource):
 
     __resource_type__ = "ResearchSubject"
 
-    actualComparisonGroup: fhirtypes.IdType = Field(
+    actualComparisonGroup: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="actualComparisonGroup",
         title="What path was followed",
@@ -38,13 +38,13 @@ class ResearchSubject(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    actualComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    actualComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_actualComparisonGroup",
         title="Extension field for ``actualComparisonGroup``.",
     )
 
-    assignedComparisonGroup: fhirtypes.IdType = Field(
+    assignedComparisonGroup: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="assignedComparisonGroup",
         title="What path should be followed",
@@ -56,13 +56,13 @@ class ResearchSubject(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    assignedComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    assignedComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_assignedComparisonGroup",
         title="Extension field for ``assignedComparisonGroup``.",
     )
 
-    consent: typing.List[fhirtypes.ReferenceType] = Field(
+    consent: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="consent",
         title="Agreement to participate in study",
@@ -77,7 +77,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for research subject in a study",
@@ -87,7 +87,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Start and end of participation",
@@ -99,7 +99,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    progress: typing.List[fhirtypes.ResearchSubjectProgressType] = Field(
+    progress: typing.List[fhirtypes.ResearchSubjectProgressType] = Field(  # type: ignore
         None,
         alias="progress",
         title="Subject status",
@@ -112,7 +112,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -125,11 +125,11 @@ class ResearchSubject(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    study: fhirtypes.ReferenceType = Field(
+    study: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="study",
         title="Study subject is part of",
@@ -141,7 +141,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="subject",
         title="Who or what is part of study",
@@ -201,9 +201,6 @@ class ResearchSubject(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class ResearchSubjectProgress(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -216,7 +213,7 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
 
     __resource_type__ = "ResearchSubjectProgress"
 
-    endDate: fhirtypes.DateTimeType = Field(
+    endDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="endDate",
         title="State change date",
@@ -225,11 +222,11 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    endDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    endDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_endDate", title="Extension field for ``endDate``."
     )
 
-    milestone: fhirtypes.CodeableConceptType = Field(
+    milestone: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="milestone",
         title="SignedUp | Screened | Randomized",
@@ -239,7 +236,7 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
         },
     )
 
-    reason: fhirtypes.CodeableConceptType = Field(
+    reason: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="reason",
         title="State change reason",
@@ -252,7 +249,7 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
         },
     )
 
-    startDate: fhirtypes.DateTimeType = Field(
+    startDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="startDate",
         title="State change date",
@@ -261,11 +258,11 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_startDate", title="Extension field for ``startDate``."
     )
 
-    subjectState: fhirtypes.CodeableConceptType = Field(
+    subjectState: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="subjectState",
         title=(
@@ -279,7 +276,7 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="state | milestone",

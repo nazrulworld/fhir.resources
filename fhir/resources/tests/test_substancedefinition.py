@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import substancedefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_substancedefinition_1(inst):
@@ -15,30 +15,30 @@ def impl_substancedefinition_1(inst):
     assert inst.classification[0].coding[0].display == "Chemical"
     assert (
         inst.classification[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/SubstanceType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/SubstanceType"}
         ).valueUri
     )
     assert inst.code[0].code.coding[0].code == "SUB99611MIG"
     assert (
         inst.code[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/Substance"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/Substance"}
         ).valueUri
     )
     assert inst.domain.coding[0].code == "100000000012"
     assert inst.domain.coding[0].display == "Human use"
     assert (
         inst.domain.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/Domain"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/Domain"}
         ).valueUri
     )
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/SMSId"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/SMSId"}
         ).valueUri
     )
     assert inst.identifier[0].value == "100000099270"
@@ -46,15 +46,17 @@ def impl_substancedefinition_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].language[0].coding[0].code == "en"
     assert inst.name[0].language[0].coding[0].display == "English"
     assert (
         inst.name[0].language[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:bcp:47").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:bcp:47"}
+        ).valueUri
     )
     assert inst.name[0].name == "PARACETAMOL"
     assert inst.name[0].preferred is True
@@ -62,15 +64,17 @@ def impl_substancedefinition_1(inst):
     assert inst.name[0].status.coding[0].display == "Current"
     assert (
         inst.name[0].status.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/Status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/Status"}
         ).valueUri
     )
     assert inst.name[1].language[0].coding[0].code == "el"
     assert inst.name[1].language[0].coding[0].display == "Greek"
     assert (
         inst.name[1].language[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:bcp:47").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:bcp:47"}
+        ).valueUri
     )
     assert inst.name[1].name == "ΠΑΡΑΚΕΤΑΜΌΛΗ"
     assert inst.name[1].preferred is False
@@ -78,15 +82,17 @@ def impl_substancedefinition_1(inst):
     assert inst.name[1].status.coding[0].display == "Current"
     assert (
         inst.name[1].status.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/Status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/Status"}
         ).valueUri
     )
     assert inst.name[2].language[0].coding[0].code == "bg"
     assert inst.name[2].language[0].coding[0].display == "Bulgarian"
     assert (
         inst.name[2].language[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:bcp:47").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:bcp:47"}
+        ).valueUri
     )
     assert inst.name[2].name == "ПАРАЦЕТАМОЛ"
     assert inst.name[2].preferred is False
@@ -94,15 +100,17 @@ def impl_substancedefinition_1(inst):
     assert inst.name[2].status.coding[0].display == "Current"
     assert (
         inst.name[2].status.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/Status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/Status"}
         ).valueUri
     )
     assert inst.name[3].language[0].coding[0].code == "en"
     assert inst.name[3].language[0].coding[0].display == "English"
     assert (
         inst.name[3].language[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:bcp:47").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:bcp:47"}
+        ).valueUri
     )
     assert inst.name[3].name == "ACETAMINOPHEN"
     assert inst.name[3].preferred is False
@@ -110,16 +118,16 @@ def impl_substancedefinition_1(inst):
     assert inst.name[3].status.coding[0].display == "Current"
     assert (
         inst.name[3].status.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/Status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/Status"}
         ).valueUri
     )
     assert inst.status.coding[0].code == "200000005004"
     assert inst.status.coding[0].display == "Current"
     assert (
         inst.status.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.europa.eu/fhir/Status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.europa.eu/fhir/Status"}
         ).valueUri
     )
     assert inst.text.status == "generated"

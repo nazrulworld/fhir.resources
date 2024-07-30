@@ -23,7 +23,7 @@ class Identifier(datatype.DataType):
 
     __resource_type__ = "Identifier"
 
-    assigner: fhirtypes.ReferenceType = Field(
+    assigner: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="assigner",
         title="Organization that issued id (may be just text)",
@@ -35,7 +35,7 @@ class Identifier(datatype.DataType):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period when id is/was valid for use",
@@ -45,7 +45,7 @@ class Identifier(datatype.DataType):
         },
     )
 
-    system: fhirtypes.UriType = Field(
+    system: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="system",
         title="The namespace for the identifier value",
@@ -57,11 +57,11 @@ class Identifier(datatype.DataType):
             "element_property": True,
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Description of identifier",
@@ -74,7 +74,7 @@ class Identifier(datatype.DataType):
         },
     )
 
-    use: fhirtypes.CodeType = Field(
+    use: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="use",
         title="usual | official | temp | secondary | old (If known)",
@@ -86,11 +86,11 @@ class Identifier(datatype.DataType):
             "enum_values": ["usual", "official", "temp", "secondary", "old"],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_use", title="Extension field for ``use``."
     )
 
-    value: fhirtypes.StringType = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="The value that is unique",
@@ -102,7 +102,7 @@ class Identifier(datatype.DataType):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

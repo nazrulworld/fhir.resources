@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SpecimenDefinition(domainresource.DomainResource):
@@ -24,7 +24,7 @@ class SpecimenDefinition(domainresource.DomainResource):
 
     __resource_type__ = "SpecimenDefinition"
 
-    approvalDate: fhirtypes.DateType = Field(
+    approvalDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="approvalDate",
         title="When SpecimenDefinition was approved by publisher",
@@ -37,11 +37,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    collection: typing.List[fhirtypes.CodeableConceptType] = Field(
+    collection: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="collection",
         title="Specimen collection procedure",
@@ -51,7 +51,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -64,7 +64,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -77,11 +77,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType = Field(
+    copyrightLabel: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -95,11 +95,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
     )
 
-    date: fhirtypes.DateTimeType = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date status first applied",
@@ -112,11 +112,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    derivedFromCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(
+    derivedFromCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="derivedFromCanonical",
         title="Based on FHIR definition of another SpecimenDefinition",
@@ -130,15 +130,13 @@ class SpecimenDefinition(domainresource.DomainResource):
             "enum_reference_types": ["SpecimenDefinition"],
         },
     )
-    derivedFromCanonical__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    derivedFromCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None,
         alias="_derivedFromCanonical",
         title="Extension field for ``derivedFromCanonical``.",
     )
 
-    derivedFromUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
+    derivedFromUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="derivedFromUri",
         title="Based on external definition",
@@ -151,13 +149,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    derivedFromUri__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    derivedFromUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_derivedFromUri", title="Extension field for ``derivedFromUri``."
     )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the SpecimenDefinition",
@@ -169,11 +165,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(
+    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="The effective date range for the SpecimenDefinition",
@@ -186,7 +182,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="If this SpecimenDefinition is not for real usage",
@@ -198,11 +194,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -212,7 +208,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for this SpecimenDefinition (if applicable)",
@@ -222,7 +218,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType = Field(
+    lastReviewDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="lastReviewDate",
         title="The date on which the asset content was last reviewed by the publisher",
@@ -235,11 +231,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this {{title}} (computer friendly)",
@@ -252,11 +248,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    patientPreparation: typing.List[fhirtypes.CodeableConceptType] = Field(
+    patientPreparation: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="patientPreparation",
         title="Patient preparation for collection",
@@ -266,7 +262,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title=(
@@ -281,11 +277,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType = Field(
+    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this SpecimenDefinition is defined",
@@ -297,11 +293,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -314,11 +310,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="subjectCodeableConcept",
         title="Type of subject for specimen collection",
@@ -334,7 +330,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    subjectReference: fhirtypes.ReferenceType = Field(
+    subjectReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subjectReference",
         title="Type of subject for specimen collection",
@@ -352,7 +348,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    timeAspect: fhirtypes.StringType = Field(
+    timeAspect: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="timeAspect",
         title="Time aspect for collection",
@@ -361,11 +357,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    timeAspect__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    timeAspect__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_timeAspect", title="Extension field for ``timeAspect``."
     )
 
-    title: fhirtypes.StringType = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this SpecimenDefinition (Human friendly)",
@@ -374,11 +370,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    typeCollected: fhirtypes.CodeableConceptType = Field(
+    typeCollected: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="typeCollected",
         title="Kind of material to collect",
@@ -388,7 +384,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    typeTested: typing.List[fhirtypes.SpecimenDefinitionTypeTestedType] = Field(
+    typeTested: typing.List[fhirtypes.SpecimenDefinitionTypeTestedType] = Field(  # type: ignore
         None,
         alias="typeTested",
         title="Specimen in container intended for testing by lab",
@@ -401,7 +397,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    url: fhirtypes.UriType = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -420,11 +416,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="Content intends to support these contexts",
@@ -438,7 +434,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the SpecimenDefinition",
@@ -452,11 +448,11 @@ class SpecimenDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType = Field(
+    versionAlgorithmCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -472,7 +468,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType = Field(
+    versionAlgorithmString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -487,7 +483,7 @@ class SpecimenDefinition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
@@ -571,9 +567,6 @@ class SpecimenDefinition(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -585,7 +578,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
 
     __resource_type__ = "SpecimenDefinitionTypeTested"
 
-    container: fhirtypes.SpecimenDefinitionTypeTestedContainerType = Field(
+    container: fhirtypes.SpecimenDefinitionTypeTestedContainerType = Field(  # type: ignore
         None,
         alias="container",
         title="The specimen's container",
@@ -595,7 +588,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         },
     )
 
-    handling: typing.List[fhirtypes.SpecimenDefinitionTypeTestedHandlingType] = Field(
+    handling: typing.List[fhirtypes.SpecimenDefinitionTypeTestedHandlingType] = Field(  # type: ignore
         None,
         alias="handling",
         title="Specimen handling before testing",
@@ -608,7 +601,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         },
     )
 
-    isDerived: bool = Field(
+    isDerived: bool = Field(  # type: ignore
         None,
         alias="isDerived",
         title="Primary or secondary specimen",
@@ -617,11 +610,11 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    isDerived__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    isDerived__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_isDerived", title="Extension field for ``isDerived``."
     )
 
-    preference: fhirtypes.CodeType = Field(
+    preference: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="preference",
         title="preferred | alternate",
@@ -634,11 +627,11 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "enum_values": ["preferred", "alternate"],
         },
     )
-    preference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preference", title="Extension field for ``preference``."
     )
 
-    rejectionCriterion: typing.List[fhirtypes.CodeableConceptType] = Field(
+    rejectionCriterion: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="rejectionCriterion",
         title="Criterion specified for specimen rejection",
@@ -651,7 +644,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         },
     )
 
-    requirement: fhirtypes.MarkdownType = Field(
+    requirement: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="requirement",
         title="Requirements for specimen delivery and special handling",
@@ -663,11 +656,11 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_requirement", title="Extension field for ``requirement``."
     )
 
-    retentionTime: fhirtypes.DurationType = Field(
+    retentionTime: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="retentionTime",
         title="The usual time for retaining this kind of specimen",
@@ -680,7 +673,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         },
     )
 
-    singleUse: bool = Field(
+    singleUse: bool = Field(  # type: ignore
         None,
         alias="singleUse",
         title="Specimen for single use only",
@@ -689,11 +682,11 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    singleUse__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    singleUse__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_singleUse", title="Extension field for ``singleUse``."
     )
 
-    testingDestination: typing.List[fhirtypes.CodeableConceptType] = Field(
+    testingDestination: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="testingDestination",
         title="Where the specimen will be tested",
@@ -706,7 +699,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type of intended specimen",
@@ -760,9 +753,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
 
     __resource_type__ = "SpecimenDefinitionTypeTestedContainer"
 
-    additive: typing.List[
-        fhirtypes.SpecimenDefinitionTypeTestedContainerAdditiveType
-    ] = Field(
+    additive: typing.List[fhirtypes.SpecimenDefinitionTypeTestedContainerAdditiveType] = Field(  # type: ignore
         None,
         alias="additive",
         title="Additive associated with container",
@@ -775,7 +766,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         },
     )
 
-    cap: fhirtypes.CodeableConceptType = Field(
+    cap: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="cap",
         title="Color of container cap",
@@ -785,7 +776,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         },
     )
 
-    capacity: fhirtypes.QuantityType = Field(
+    capacity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="capacity",
         title="The capacity of this kind of container",
@@ -795,7 +786,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="The description of the kind of container",
@@ -804,11 +795,11 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    material: fhirtypes.CodeableConceptType = Field(
+    material: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="material",
         title="The material type used for the container",
@@ -818,7 +809,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         },
     )
 
-    minimumVolumeQuantity: fhirtypes.QuantityType = Field(
+    minimumVolumeQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="minimumVolumeQuantity",
         title="Minimum volume",
@@ -831,7 +822,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         },
     )
 
-    minimumVolumeString: fhirtypes.StringType = Field(
+    minimumVolumeString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="minimumVolumeString",
         title="Minimum volume",
@@ -843,13 +834,13 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    minimumVolumeString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    minimumVolumeString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_minimumVolumeString",
         title="Extension field for ``minimumVolumeString``.",
     )
 
-    preparation: fhirtypes.MarkdownType = Field(
+    preparation: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="preparation",
         title="Special processing applied to the container for this specimen type",
@@ -861,11 +852,11 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preparation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preparation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preparation", title="Extension field for ``preparation``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of container associated with the kind of specimen",
@@ -927,7 +918,7 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
 
     __resource_type__ = "SpecimenDefinitionTypeTestedContainerAdditive"
 
-    additiveCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    additiveCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="additiveCodeableConcept",
         title="Additive associated with container",
@@ -943,7 +934,7 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         },
     )
 
-    additiveReference: fhirtypes.ReferenceType = Field(
+    additiveReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="additiveReference",
         title="Additive associated with container",
@@ -1006,7 +997,7 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
 
     __resource_type__ = "SpecimenDefinitionTypeTestedHandling"
 
-    instruction: fhirtypes.MarkdownType = Field(
+    instruction: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="instruction",
         title="Preservation instruction",
@@ -1018,11 +1009,11 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_instruction", title="Extension field for ``instruction``."
     )
 
-    maxDuration: fhirtypes.DurationType = Field(
+    maxDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="maxDuration",
         title="Maximum preservation time",
@@ -1035,7 +1026,7 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
         },
     )
 
-    temperatureQualifier: fhirtypes.CodeableConceptType = Field(
+    temperatureQualifier: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="temperatureQualifier",
         title="Qualifies the interval of temperature",
@@ -1049,7 +1040,7 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
         },
     )
 
-    temperatureRange: fhirtypes.RangeType = Field(
+    temperatureRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="temperatureRange",
         title="Temperature range for these handling instructions",

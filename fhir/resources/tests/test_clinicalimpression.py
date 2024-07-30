@@ -7,14 +7,14 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import clinicalimpression
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_clinicalimpression_1(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2014-12-06T22:33:00+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-12-06T22:33:00+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -23,21 +23,23 @@ def impl_clinicalimpression_1(inst):
     )
     assert (
         inst.effectivePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2014-12-06T22:33:00+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-12-06T22:33:00+11:00"}
         ).valueDateTime
     )
     assert (
         inst.effectivePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2014-12-06T20:00:00+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-12-06T20:00:00+11:00"}
         ).valueDateTime
     )
     assert inst.encounter.reference == "Encounter/example"
     assert inst.finding[0].item.concept.coding[0].code == "850.0"
     assert (
         inst.finding[0].item.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/icd-9").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/icd-9"}
+        ).valueUri
     )
     assert inst.id == "example"
     assert inst.identifier[0].value == "12345"
@@ -45,8 +47,8 @@ def impl_clinicalimpression_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer.reference == "Practitioner/example"

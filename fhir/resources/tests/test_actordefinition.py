@@ -7,21 +7,23 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import actordefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_actordefinition_1(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-11-02T14:31:30.239Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-11-02T14:31:30.239Z"}
         ).valueDateTime
     )
     assert inst.description == "Server Actor"
     assert inst.id == "server"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.27.1"
     assert inst.name == "ServerActor"
@@ -31,8 +33,8 @@ def impl_actordefinition_1(inst):
     assert inst.type == "system"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ActorDefinition/server"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ActorDefinition/server"}
         ).valueUri
     )
 
@@ -58,15 +60,17 @@ def test_actordefinition_1(base_settings):
 def impl_actordefinition_2(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-11-02T14:31:30.239Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-11-02T14:31:30.239Z"}
         ).valueDateTime
     )
     assert inst.description == "Client Actor"
     assert inst.id == "client"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.27.2"
     assert inst.name == "ClientActor"
@@ -76,8 +80,8 @@ def impl_actordefinition_2(inst):
     assert inst.type == "system"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ActorDefinition/client"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ActorDefinition/client"}
         ).valueUri
     )
 

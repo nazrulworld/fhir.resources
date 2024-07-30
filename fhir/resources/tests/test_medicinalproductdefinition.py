@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import medicinalproductdefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_medicinalproductdefinition_1(inst):
@@ -16,8 +16,8 @@ def impl_medicinalproductdefinition_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].productName == "Exampleocillin"
@@ -51,13 +51,15 @@ def impl_medicinalproductdefinition_2(inst):
     assert inst.classification[0].coding[0].code == "B01A"
     assert (
         inst.classification[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://www.whocc.no/atc/example").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.whocc.no/atc/example"}
+        ).valueUri
     )
     assert inst.combinedPharmaceuticalDoseForm.coding[0].code == "tablet"
     assert (
         inst.combinedPharmaceuticalDoseForm.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/dosefom"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/dosefom"}
         ).valueUri
     )
     assert (
@@ -67,8 +69,8 @@ def impl_medicinalproductdefinition_2(inst):
     assert inst.id == "equilidem-basics"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/product"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/product"}
         ).valueUri
     )
     assert inst.identifier[0].value == "Equilidem25"
@@ -78,16 +80,16 @@ def impl_medicinalproductdefinition_2(inst):
     assert inst.legalStatusOfSupply.coding[0].display == "Prescription only medicine"
     assert (
         inst.legalStatusOfSupply.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/legalstatusofsupply"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/legalstatusofsupply"}
         ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].productName == "Equilidem 2.5 mg film-coated tablets"
@@ -122,13 +124,15 @@ def impl_medicinalproductdefinition_3(inst):
     assert inst.classification[0].coding[0].code == "B01A"
     assert (
         inst.classification[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://www.whocc.no/atc/example").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.whocc.no/atc/example"}
+        ).valueUri
     )
     assert inst.combinedPharmaceuticalDoseForm.coding[0].code == "tablet"
     assert (
         inst.combinedPharmaceuticalDoseForm.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/dosefom"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/dosefom"}
         ).valueUri
     )
     assert inst.contained[0].id == "EquilidoniumPhosphate"
@@ -140,8 +144,8 @@ def impl_medicinalproductdefinition_3(inst):
     assert inst.id == "equilidem-with-ing-and-auth"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/product"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/product"}
         ).valueUri
     )
     assert inst.identifier[0].value == "Equilidem25"
@@ -149,16 +153,16 @@ def impl_medicinalproductdefinition_3(inst):
     assert inst.legalStatusOfSupply.coding[0].display == "Prescription only medicine"
     assert (
         inst.legalStatusOfSupply.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/legalstatusofsupply"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/legalstatusofsupply"}
         ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].productName == "Equilidem 2.5 mg film-coated tablets"
@@ -195,8 +199,8 @@ def impl_medicinalproductdefinition_4(inst):
     )
     assert (
         inst.combinedPharmaceuticalDoseForm.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/doseform"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/doseform"}
         ).valueUri
     )
     assert inst.contained[0].id == "package"
@@ -205,8 +209,8 @@ def impl_medicinalproductdefinition_4(inst):
     assert inst.id == "drug-and-device"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/product"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/product"}
         ).valueUri
     )
     assert inst.identifier[0].value == "Wonderdrug+"
@@ -214,8 +218,8 @@ def impl_medicinalproductdefinition_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].productName == "Wonderdrug+ liquid 20ml"
@@ -252,8 +256,8 @@ def impl_medicinalproductdefinition_5(inst):
     )
     assert (
         inst.combinedPharmaceuticalDoseForm.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/doseform"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/doseform"}
         ).valueUri
     )
     assert inst.contained[0].id == "package"
@@ -264,8 +268,8 @@ def impl_medicinalproductdefinition_5(inst):
     assert inst.id == "drug-and-device-complete"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/product"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/product"}
         ).valueUri
     )
     assert inst.identifier[0].value == "Wonderdrug+"
@@ -273,8 +277,8 @@ def impl_medicinalproductdefinition_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].productName == "Wonderdrug liquid 20ml (integral syringe)"
@@ -311,8 +315,8 @@ def impl_medicinalproductdefinition_6(inst):
     )
     assert (
         inst.combinedPharmaceuticalDoseForm.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/doseform"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/doseform"}
         ).valueUri
     )
     assert inst.contained[0].id == "packageCombo"
@@ -321,8 +325,8 @@ def impl_medicinalproductdefinition_6(inst):
     assert inst.id == "drug-combo-product"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org.uk/fhir/product"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org.uk/fhir/product"}
         ).valueUri
     )
     assert inst.identifier[0].value == "ThrushTreatCombo"
@@ -330,8 +334,8 @@ def impl_medicinalproductdefinition_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].productName == "ThrushTreat Combo"
@@ -367,15 +371,17 @@ def impl_medicinalproductdefinition_7(inst):
     assert inst.id == "Acetamin-500-20-generic"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.nation.org/drugs").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.nation.org/drugs"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "12345"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].productName == "Acetaminophen 500 mg tablets [generic]"
@@ -410,14 +416,18 @@ def impl_medicinalproductdefinition_8(inst):
     assert inst.classification[0].coding[0].code == "B01AF02"
     assert (
         inst.classification[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/WHOAnatomicalTherapeuticChemicalATCClassificationSystem"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://ema.europa.eu/example/WHOAnatomicalTherapeuticChemicalATCClassificationSystem"
+            }
         ).valueUri
     )
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://ema.europa.eu/example/MPID").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/MPID"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "{mpid}"
     assert inst.masterFile[0].reference == "DocumentReference/example"
@@ -425,8 +435,8 @@ def impl_medicinalproductdefinition_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].part[0].part == "Equilidem"
@@ -439,31 +449,35 @@ def impl_medicinalproductdefinition_8(inst):
     assert inst.name[0].usage[0].country.coding[0].code == "EU"
     assert (
         inst.name[0].usage[0].country.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/countryCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/countryCode"}
         ).valueUri
     )
     assert inst.name[0].usage[0].jurisdiction.coding[0].code == "EU"
     assert (
         inst.name[0].usage[0].jurisdiction.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/jurisdictionCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/jurisdictionCode"}
         ).valueUri
     )
     assert inst.name[0].usage[0].language.coding[0].code == "en"
     assert (
         inst.name[0].usage[0].language.coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:bcp:47").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:bcp:47"}
+        ).valueUri
     )
     assert (
         inst.operation[0].effectiveDate.start
-        == ExternalValidatorModel(valueDateTime="2013-03-15").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-15"}
+        ).valueDateTime
     )
     assert inst.operation[0].type.concept.coding[0].code == "Batchrelease"
     assert (
         inst.operation[0].type.concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/manufacturingOperationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/manufacturingOperationType"}
         ).valueUri
     )
     assert inst.text.status == "generated"

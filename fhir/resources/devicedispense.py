@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceDispense(domainresource.DomainResource):
@@ -25,7 +25,7 @@ class DeviceDispense(domainresource.DomainResource):
 
     __resource_type__ = "DeviceDispense"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="The order or request that this dispense is fulfilling",
@@ -37,7 +37,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Type of device dispense",
@@ -47,7 +47,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    destination: fhirtypes.ReferenceType = Field(
+    destination: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="destination",
         title="Where the device was sent or should be sent",
@@ -62,7 +62,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    device: fhirtypes.CodeableReferenceType = Field(
+    device: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         ...,
         alias="device",
         title="What device was supplied",
@@ -79,7 +79,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter associated with event",
@@ -91,7 +91,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    eventHistory: typing.List[fhirtypes.ReferenceType] = Field(
+    eventHistory: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="eventHistory",
         title="A list of relevant lifecycle events",
@@ -106,7 +106,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this dispensation",
@@ -116,7 +116,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(
+    location: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="location",
         title="Where the dispense occurred",
@@ -128,7 +128,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Information about the dispense",
@@ -141,7 +141,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="partOf",
         title="The bigger event that this dispense is a part of",
@@ -153,7 +153,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    performer: typing.List[fhirtypes.DeviceDispensePerformerType] = Field(
+    performer: typing.List[fhirtypes.DeviceDispensePerformerType] = Field(  # type: ignore
         None,
         alias="performer",
         title="Who performed event",
@@ -163,7 +163,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    preparedDate: fhirtypes.DateTimeType = Field(
+    preparedDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="preparedDate",
         title="When product was packaged and reviewed",
@@ -172,11 +172,11 @@ class DeviceDispense(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    preparedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preparedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preparedDate", title="Extension field for ``preparedDate``."
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="Amount dispensed",
@@ -186,7 +186,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    receiver: fhirtypes.ReferenceType = Field(
+    receiver: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="receiver",
         title="Who collected the device or where the medication was delivered",
@@ -209,7 +209,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -235,11 +235,11 @@ class DeviceDispense(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: fhirtypes.CodeableReferenceType = Field(
+    statusReason: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="statusReason",
         title="Why a dispense was or was not performed",
@@ -251,7 +251,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="subject",
         title="Who the dispense is for",
@@ -266,7 +266,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(
+    supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="supportingInformation",
         title="Information that supports the dispensing of the device",
@@ -278,7 +278,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Trial fill, partial fill, emergency fill, etc",
@@ -288,7 +288,7 @@ class DeviceDispense(domainresource.DomainResource):
         },
     )
 
-    usageInstruction: fhirtypes.MarkdownType = Field(
+    usageInstruction: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="usageInstruction",
         title="Full representation of the usage instructions",
@@ -297,13 +297,13 @@ class DeviceDispense(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    usageInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    usageInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_usageInstruction",
         title="Extension field for ``usageInstruction``.",
     )
 
-    whenHandedOver: fhirtypes.DateTimeType = Field(
+    whenHandedOver: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="whenHandedOver",
         title="When product was given out",
@@ -315,7 +315,7 @@ class DeviceDispense(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    whenHandedOver__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    whenHandedOver__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_whenHandedOver", title="Extension field for ``whenHandedOver``."
     )
 
@@ -369,9 +369,6 @@ class DeviceDispense(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class DeviceDispensePerformer(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -383,7 +380,7 @@ class DeviceDispensePerformer(backboneelement.BackboneElement):
 
     __resource_type__ = "DeviceDispensePerformer"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="actor",
         title="Individual who was performing",
@@ -406,7 +403,7 @@ class DeviceDispensePerformer(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType = Field(
+    function: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="function",
         title="Who performed the dispense and what they did",

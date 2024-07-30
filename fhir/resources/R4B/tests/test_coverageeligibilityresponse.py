@@ -6,19 +6,24 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import coverageeligibilityresponse
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_coverageeligibilityresponse_1(inst):
-    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert (
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
+    )
     assert inst.disposition == "Policy is currently in-force."
     assert inst.id == "E2500"
     assert (
         inst.identifier[0].system
-        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "881234"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
@@ -27,7 +32,10 @@ def impl_coverageeligibilityresponse_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.outcome == "complete"
     assert inst.patient.reference == "Patient/pat1"
@@ -50,15 +58,15 @@ def test_coverageeligibilityresponse_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "coverageeligibilityresponse-example.json"
     )
-    inst = coverageeligibilityresponse.CoverageEligibilityResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = coverageeligibilityresponse.CoverageEligibilityResponse.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CoverageEligibilityResponse" == inst.resource_type
+    assert "CoverageEligibilityResponse" == inst.get_resource_type()
 
     impl_coverageeligibilityresponse_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CoverageEligibilityResponse" == data["resourceType"]
 
     inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(**data)
@@ -66,7 +74,12 @@ def test_coverageeligibilityresponse_1(base_settings):
 
 
 def impl_coverageeligibilityresponse_2(inst):
-    assert inst.created == fhirtypes.DateTime.validate("2014-09-16")
+    assert (
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-16"}
+        ).valueDateTime
+    )
     assert inst.disposition == (
         "Eligibiliy request could not be processed, please address "
         "errors before submitting."
@@ -74,21 +87,33 @@ def impl_coverageeligibilityresponse_2(inst):
     assert inst.error[0].code.coding[0].code == "a001"
     assert (
         inst.error[0].code.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/adjudication-error"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/adjudication-error"}
+        ).valueUri
     )
     assert inst.form.coding[0].code == "ELRSP/2017/01"
-    assert inst.form.coding[0].system == "http://national.org/form"
+    assert (
+        inst.form.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://national.org/form"}
+        ).valueUri
+    )
     assert inst.id == "E2503"
     assert (
         inst.identifier[0].system
-        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "8812343"
     assert inst.insurer.reference == "Organization/2"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.outcome == "error"
     assert inst.patient.reference == "Patient/f201"
@@ -96,7 +121,12 @@ def impl_coverageeligibilityresponse_2(inst):
     assert inst.request.reference == (
         "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse/" "225476332406"
     )
-    assert inst.requestor.identifier.system == "http://national.org/clinic"
+    assert (
+        inst.requestor.identifier.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://national.org/clinic"}
+        ).valueUri
+    )
     assert inst.requestor.identifier.value == "OR1234"
     assert inst.status == "active"
     assert inst.text.div == (
@@ -114,15 +144,15 @@ def test_coverageeligibilityresponse_2(base_settings):
         base_settings["unittest_data_dir"]
         / "coverageeligibilityresponse-example-error.json"
     )
-    inst = coverageeligibilityresponse.CoverageEligibilityResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = coverageeligibilityresponse.CoverageEligibilityResponse.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CoverageEligibilityResponse" == inst.resource_type
+    assert "CoverageEligibilityResponse" == inst.get_resource_type()
 
     impl_coverageeligibilityresponse_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CoverageEligibilityResponse" == data["resourceType"]
 
     inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(**data)
@@ -131,14 +161,26 @@ def test_coverageeligibilityresponse_2(base_settings):
 
 def impl_coverageeligibilityresponse_3(inst):
     assert inst.contained[0].id == "coverage-1"
-    assert inst.created == fhirtypes.DateTime.validate("2014-09-16")
+    assert (
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-16"}
+        ).valueDateTime
+    )
     assert inst.disposition == "Policy is currently in-force."
     assert inst.form.coding[0].code == "ELRSP/2017/01"
-    assert inst.form.coding[0].system == "http://national.org/form"
+    assert (
+        inst.form.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://national.org/form"}
+        ).valueUri
+    )
     assert inst.id == "E2502"
     assert (
         inst.identifier[0].system
-        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "8812342"
     assert inst.insurance[0].coverage.reference == "#coverage-1"
@@ -162,22 +204,30 @@ def impl_coverageeligibilityresponse_3(inst):
     )
     assert (
         inst.insurance[0].item[0].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[0].network.coding[0].code == "in"
     assert (
         inst.insurance[0].item[0].network.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-network"}
+        ).valueUri
     )
     assert inst.insurance[0].item[0].term.coding[0].code == "annual"
     assert (
         inst.insurance[0].item[0].term.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-term"}
+        ).valueUri
     )
     assert inst.insurance[0].item[0].unit.coding[0].code == "individual"
     assert (
         inst.insurance[0].item[0].unit.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-unit"}
+        ).valueUri
     )
     assert inst.insurance[0].item[1].benefit[0].allowedMoney.currency == "USD"
     assert float(inst.insurance[0].item[1].benefit[0].allowedMoney.value) == float(
@@ -188,22 +238,30 @@ def impl_coverageeligibilityresponse_3(inst):
     assert inst.insurance[0].item[1].category.coding[0].display == "Maternity"
     assert (
         inst.insurance[0].item[1].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[1].network.coding[0].code == "in"
     assert (
         inst.insurance[0].item[1].network.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-network"}
+        ).valueUri
     )
     assert inst.insurance[0].item[1].term.coding[0].code == "annual"
     assert (
         inst.insurance[0].item[1].term.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-term"}
+        ).valueUri
     )
     assert inst.insurance[0].item[1].unit.coding[0].code == "individual"
     assert (
         inst.insurance[0].item[1].unit.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-unit"}
+        ).valueUri
     )
     assert inst.insurance[0].item[2].benefit[0].allowedMoney.currency == "USD"
     assert float(inst.insurance[0].item[2].benefit[0].allowedMoney.value) == float(2000)
@@ -212,28 +270,38 @@ def impl_coverageeligibilityresponse_3(inst):
     assert inst.insurance[0].item[2].category.coding[0].display == "Dental Coverage"
     assert (
         inst.insurance[0].item[2].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[2].network.coding[0].code == "in"
     assert (
         inst.insurance[0].item[2].network.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-network"}
+        ).valueUri
     )
     assert inst.insurance[0].item[2].term.coding[0].code == "annual"
     assert (
         inst.insurance[0].item[2].term.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-term"}
+        ).valueUri
     )
     assert inst.insurance[0].item[2].unit.coding[0].code == "individual"
     assert (
         inst.insurance[0].item[2].unit.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-unit"}
+        ).valueUri
     )
     assert inst.insurance[0].item[3].category.coding[0].code == "F6"
     assert inst.insurance[0].item[3].category.coding[0].display == "Vision Coverage"
     assert (
         inst.insurance[0].item[3].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[3].description == (
         "Vision products and services such as exams, glasses and " "contact lenses."
@@ -244,7 +312,10 @@ def impl_coverageeligibilityresponse_3(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.outcome == "complete"
     assert inst.patient.reference == "Patient/f201"
@@ -253,7 +324,12 @@ def impl_coverageeligibilityresponse_3(inst):
     assert inst.request.reference == (
         "http://www.BenefitsInc.com/fhir/coverageeligibilityrequest/2" "25476332405"
     )
-    assert inst.requestor.identifier.system == "http://national.org/clinic"
+    assert (
+        inst.requestor.identifier.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://national.org/clinic"}
+        ).valueUri
+    )
     assert inst.requestor.identifier.value == "OR1234"
     assert inst.status == "active"
     assert inst.text.div == (
@@ -271,15 +347,15 @@ def test_coverageeligibilityresponse_3(base_settings):
         base_settings["unittest_data_dir"]
         / "coverageeligibilityresponse-example-benefits-2.json"
     )
-    inst = coverageeligibilityresponse.CoverageEligibilityResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = coverageeligibilityresponse.CoverageEligibilityResponse.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CoverageEligibilityResponse" == inst.resource_type
+    assert "CoverageEligibilityResponse" == inst.get_resource_type()
 
     impl_coverageeligibilityresponse_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CoverageEligibilityResponse" == data["resourceType"]
 
     inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(**data)
@@ -287,12 +363,19 @@ def test_coverageeligibilityresponse_3(base_settings):
 
 
 def impl_coverageeligibilityresponse_4(inst):
-    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert (
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
+    )
     assert inst.disposition == "Policy is currently in-force."
     assert inst.id == "E2501"
     assert (
         inst.identifier[0].system
-        == "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "881234"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
@@ -314,22 +397,30 @@ def impl_coverageeligibilityresponse_4(inst):
     )
     assert (
         inst.insurance[0].item[0].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[0].network.coding[0].code == "in"
     assert (
         inst.insurance[0].item[0].network.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-network"}
+        ).valueUri
     )
     assert inst.insurance[0].item[0].term.coding[0].code == "annual"
     assert (
         inst.insurance[0].item[0].term.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-term"}
+        ).valueUri
     )
     assert inst.insurance[0].item[0].unit.coding[0].code == "individual"
     assert (
         inst.insurance[0].item[0].unit.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-unit"}
+        ).valueUri
     )
     assert inst.insurance[0].item[1].benefit[0].allowedMoney.currency == "SAR"
     assert float(inst.insurance[0].item[1].benefit[0].allowedMoney.value) == float(
@@ -340,22 +431,30 @@ def impl_coverageeligibilityresponse_4(inst):
     assert inst.insurance[0].item[1].category.coding[0].display == "Maternity"
     assert (
         inst.insurance[0].item[1].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[1].network.coding[0].code == "in"
     assert (
         inst.insurance[0].item[1].network.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-network"}
+        ).valueUri
     )
     assert inst.insurance[0].item[1].term.coding[0].code == "annual"
     assert (
         inst.insurance[0].item[1].term.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-term"}
+        ).valueUri
     )
     assert inst.insurance[0].item[1].unit.coding[0].code == "individual"
     assert (
         inst.insurance[0].item[1].unit.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-unit"}
+        ).valueUri
     )
     assert inst.insurance[0].item[2].benefit[0].allowedMoney.currency == "SAR"
     assert float(inst.insurance[0].item[2].benefit[0].allowedMoney.value) == float(2000)
@@ -364,22 +463,30 @@ def impl_coverageeligibilityresponse_4(inst):
     assert inst.insurance[0].item[2].category.coding[0].display == "Dental Coverage"
     assert (
         inst.insurance[0].item[2].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[2].network.coding[0].code == "in"
     assert (
         inst.insurance[0].item[2].network.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-network"}
+        ).valueUri
     )
     assert inst.insurance[0].item[2].term.coding[0].code == "annual"
     assert (
         inst.insurance[0].item[2].term.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-term"}
+        ).valueUri
     )
     assert inst.insurance[0].item[2].unit.coding[0].code == "individual"
     assert (
         inst.insurance[0].item[2].unit.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-unit"}
+        ).valueUri
     )
     assert inst.insurance[0].item[3].benefit[0].allowedMoney.currency == "SAR"
     assert float(inst.insurance[0].item[3].benefit[0].allowedMoney.value) == float(400)
@@ -388,22 +495,30 @@ def impl_coverageeligibilityresponse_4(inst):
     assert inst.insurance[0].item[3].category.coding[0].display == "Vision Coverage"
     assert (
         inst.insurance[0].item[3].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[3].network.coding[0].code == "in"
     assert (
         inst.insurance[0].item[3].network.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-network"}
+        ).valueUri
     )
     assert inst.insurance[0].item[3].term.coding[0].code == "annual"
     assert (
         inst.insurance[0].item[3].term.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-term"}
+        ).valueUri
     )
     assert inst.insurance[0].item[3].unit.coding[0].code == "individual"
     assert (
         inst.insurance[0].item[3].unit.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-unit"}
+        ).valueUri
     )
     assert inst.insurance[0].item[4].benefit[0].allowedString == "shared"
     assert inst.insurance[0].item[4].benefit[0].type.coding[0].code == "room"
@@ -417,28 +532,39 @@ def impl_coverageeligibilityresponse_4(inst):
     )
     assert (
         inst.insurance[0].item[4].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.insurance[0].item[4].network.coding[0].code == "in"
     assert (
         inst.insurance[0].item[4].network.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-network"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-network"}
+        ).valueUri
     )
     assert inst.insurance[0].item[4].term.coding[0].code == "day"
     assert (
         inst.insurance[0].item[4].term.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-term"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-term"}
+        ).valueUri
     )
     assert inst.insurance[0].item[4].unit.coding[0].code == "individual"
     assert (
         inst.insurance[0].item[4].unit.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/benefit-unit"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/benefit-unit"}
+        ).valueUri
     )
     assert inst.insurer.reference == "Organization/2"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.outcome == "complete"
     assert inst.patient.reference == "Patient/pat1"
@@ -447,7 +573,10 @@ def impl_coverageeligibilityresponse_4(inst):
     assert inst.request.reference == (
         "http://www.BenefitsInc.com/fhir/coverageeligibilityresponse/" "225476332402"
     )
-    assert inst.servicedDate == fhirtypes.Date.validate("2014-09-17")
+    assert (
+        inst.servicedDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-09-17"}).valueDate
+    )
     assert inst.status == "active"
     assert inst.text.div == (
         '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
@@ -464,15 +593,15 @@ def test_coverageeligibilityresponse_4(base_settings):
         base_settings["unittest_data_dir"]
         / "coverageeligibilityresponse-example-benefits.json"
     )
-    inst = coverageeligibilityresponse.CoverageEligibilityResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = coverageeligibilityresponse.CoverageEligibilityResponse.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CoverageEligibilityResponse" == inst.resource_type
+    assert "CoverageEligibilityResponse" == inst.get_resource_type()
 
     impl_coverageeligibilityresponse_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CoverageEligibilityResponse" == data["resourceType"]
 
     inst2 = coverageeligibilityresponse.CoverageEligibilityResponse(**data)

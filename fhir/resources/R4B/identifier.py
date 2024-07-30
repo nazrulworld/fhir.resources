@@ -6,7 +6,7 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -21,29 +21,31 @@ class Identifier(element.Element):
     Typically this is used for business identifiers.
     """
 
-    resource_type = Field("Identifier", const=True)
+    __resource_type__ = "Identifier"
 
-    assigner: fhirtypes.ReferenceType = Field(
+    assigner: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="assigner",
         title="Organization that issued id (may be just text)",
         description="Organization that issued/manages the identifier.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period when id is/was valid for use",
         description="Time period during which identifier is/was valid for use.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    system: fhirtypes.Uri = Field(
+    system: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="system",
         title="The namespace for the identifier value",
@@ -51,14 +53,15 @@ class Identifier(element.Element):
             "Establishes the namespace for the value - that is, a URL that "
             "describes a set values that are unique."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Description of identifier",
@@ -66,26 +69,28 @@ class Identifier(element.Element):
             "A coded type for the identifier that can be used to determine which "
             "identifier to use for a specific purpose."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    use: fhirtypes.Code = Field(
+    use: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="use",
         title="usual | official | temp | secondary | old (If known)",
         description="The purpose of this identifier.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["usual", "official", "temp", "secondary", "old"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["usual", "official", "temp", "secondary", "old"],
+        },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_use", title="Extension field for ``use``."
     )
 
-    value: fhirtypes.String = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="The value that is unique",
@@ -93,10 +98,11 @@ class Identifier(element.Element):
             "The portion of the identifier typically relevant to the user and which"
             " is unique within the context of the system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

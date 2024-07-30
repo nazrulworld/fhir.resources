@@ -25,7 +25,7 @@ class Contributor(datatype.DataType):
 
     __resource_type__ = "Contributor"
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details of the contributor",
@@ -38,7 +38,7 @@ class Contributor(datatype.DataType):
         },
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Who contributed the content",
@@ -51,11 +51,11 @@ class Contributor(datatype.DataType):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="author | editor | reviewer | endorser",
@@ -68,7 +68,7 @@ class Contributor(datatype.DataType):
             "enum_values": ["author", "editor", "reviewer", "endorser"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 

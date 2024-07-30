@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import careplan
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_careplan_1(inst):
@@ -22,8 +22,8 @@ def impl_careplan_1(inst):
     assert inst.id == "f002"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.bmc.nl/zorgportal/identifiers/careplans"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bmc.nl/zorgportal/identifiers/careplans"}
         ).valueUri
     )
     assert inst.identifier[0].use == "official"
@@ -33,17 +33,21 @@ def impl_careplan_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2013-07-07").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-07-07"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2011-07-06").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2011-07-06"}
+        ).valueDateTime
     )
     assert inst.status == "completed"
     assert inst.subject.display == "P. van de Heuvel"
@@ -90,8 +94,8 @@ def impl_careplan_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "active"
@@ -127,8 +131,8 @@ def impl_careplan_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "active"
@@ -165,7 +169,9 @@ def impl_careplan_4(inst):
     )
     assert (
         inst.activity[0].performedActivity[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.activity[0].plannedActivityReference.reference
@@ -178,7 +184,10 @@ def impl_careplan_4(inst):
     assert inst.category[0].text == "Weight management plan"
     assert inst.contained[0].id == "p1"
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-01-01"}
+        ).valueDateTime
     )
     assert inst.custodian.display == "Dr Adam Careful"
     assert inst.custodian.reference == "Practitioner/example"
@@ -189,8 +198,8 @@ def impl_careplan_4(inst):
     assert inst.identifier[0].value == "12345"
     assert (
         inst.instantiatesUri[0]
-        == ExternalValidatorModel(
-            valueUri="http://example.org/protocol-for-obesity"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/protocol-for-obesity"}
         ).valueUri
     )
     assert inst.intent == "plan"
@@ -198,14 +207,16 @@ def impl_careplan_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.partOf[0].display == "Overall wellness plan"
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2017-06-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-06-01"}
+        ).valueDateTime
     )
     assert inst.replaces[0].display == "Plan from urgent care clinic"
     assert inst.status == "active"
@@ -251,17 +262,21 @@ def impl_careplan_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2013-03-13").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-13"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2013-03-11").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-11"}
+        ).valueDateTime
     )
     assert inst.status == "draft"
     assert inst.subject.display == "Roel"
@@ -308,14 +323,14 @@ def impl_careplan_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(
-            valueDateTime="2013-01-01T10:30:00+00:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-01T10:30:00+00:00"}
         ).valueDateTime
     )
     assert inst.status == "active"
@@ -352,7 +367,9 @@ def impl_careplan_7(inst):
     )
     assert (
         inst.activity[0].progress[0].time
-        == ExternalValidatorModel(valueDateTime="2012-09-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-09-10"}
+        ).valueDateTime
     )
     assert (
         inst.activity[1].plannedActivityReference.reference
@@ -371,12 +388,16 @@ def impl_careplan_7(inst):
     )
     assert (
         inst.activity[3].progress[0].time
-        == ExternalValidatorModel(valueDateTime="2012-08-27").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-08-27"}
+        ).valueDateTime
     )
     assert inst.activity[3].progress[1].text == "Eve is still walking the dogs."
     assert (
         inst.activity[3].progress[1].time
-        == ExternalValidatorModel(valueDateTime="2012-09-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-09-10"}
+        ).valueDateTime
     )
     assert (
         inst.activity[4].plannedActivityReference.reference
@@ -385,14 +406,18 @@ def impl_careplan_7(inst):
     assert inst.activity[4].progress[0].text == "Eve walked 4 times the last week."
     assert (
         inst.activity[4].progress[0].time
-        == ExternalValidatorModel(valueDateTime="2012-08-13").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-08-13"}
+        ).valueDateTime
     )
     assert inst.activity[4].progress[1].text == (
         "Eve did not walk to her parents the last week, but has plans" " to start again"
     )
     assert (
         inst.activity[4].progress[1].time
-        == ExternalValidatorModel(valueDateTime="2012-09-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-09-10"}
+        ).valueDateTime
     )
     assert (
         inst.activity[5].plannedActivityReference.reference
@@ -409,7 +434,9 @@ def impl_careplan_7(inst):
     )
     assert (
         inst.activity[6].progress[0].time
-        == ExternalValidatorModel(valueDateTime="2012-08-13").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-08-13"}
+        ).valueDateTime
     )
     assert inst.activity[6].progress[1].text == (
         "Since her skin is improved Eve has not been using the light "
@@ -418,7 +445,9 @@ def impl_careplan_7(inst):
     )
     assert (
         inst.activity[6].progress[1].time
-        == ExternalValidatorModel(valueDateTime="2012-08-27").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-08-27"}
+        ).valueDateTime
     )
     assert (
         inst.activity[7].plannedActivityReference.reference
@@ -430,7 +459,9 @@ def impl_careplan_7(inst):
     )
     assert (
         inst.activity[7].progress[0].time
-        == ExternalValidatorModel(valueDateTime="2012-07-23").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-07-23"}
+        ).valueDateTime
     )
     assert (
         inst.activity[8].plannedActivityReference.reference
@@ -439,7 +470,9 @@ def impl_careplan_7(inst):
     assert inst.activity[8].progress[0].text == "Will be able to esume exercise."
     assert (
         inst.activity[8].progress[0].time
-        == ExternalValidatorModel(valueDateTime="2012-07-30").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-07-30"}
+        ).valueDateTime
     )
     assert (
         inst.activity[8].progress[1].text
@@ -447,7 +480,9 @@ def impl_careplan_7(inst):
     )
     assert (
         inst.activity[8].progress[1].time
-        == ExternalValidatorModel(valueDateTime="2012-08-13").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-08-13"}
+        ).valueDateTime
     )
     assert (
         inst.activity[9].plannedActivityReference.reference
@@ -478,8 +513,8 @@ def impl_careplan_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -522,8 +557,8 @@ def impl_careplan_8(inst):
     assert inst.id == "f003"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.bmc.nl/zorgportal/identifiers/careplans"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bmc.nl/zorgportal/identifiers/careplans"}
         ).valueUri
     )
     assert inst.identifier[0].use == "official"
@@ -533,20 +568,20 @@ def impl_careplan_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(
-            valueDateTime="2013-03-08T09:30:10+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-08T09:30:10+01:00"}
         ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(
-            valueDateTime="2013-03-08T09:00:10+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-08T09:00:10+01:00"}
         ).valueDateTime
     )
     assert inst.status == "completed"
@@ -585,8 +620,8 @@ def impl_careplan_9(inst):
     assert inst.id == "f001"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.bmc.nl/zorgportal/identifiers/careplans"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bmc.nl/zorgportal/identifiers/careplans"}
         ).valueUri
     )
     assert inst.identifier[0].use == "official"
@@ -596,17 +631,21 @@ def impl_careplan_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2011-06-27").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2011-06-27"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2011-06-26").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2011-06-26"}
+        ).valueDateTime
     )
     assert inst.status == "completed"
     assert inst.subject.display == "P. van de Heuvel"
@@ -639,14 +678,16 @@ def impl_careplan_10(inst):
     )
     assert (
         inst.activity[1].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/StructureDefinition/careplan#andetails"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/fhir/StructureDefinition/careplan#andetails"
+            }
         ).valueUri
     )
     assert (
         inst.activity[1].extension[0].valueUri
-        == ExternalValidatorModel(
-            valueUri="http://orionhealth.com/fhir/careplan/1andetails"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://orionhealth.com/fhir/careplan/1andetails"}
         ).valueUri
     )
     assert inst.activity[1].plannedActivityReference.reference == "#activity-1"
@@ -665,13 +706,15 @@ def impl_careplan_10(inst):
     assert inst.contained[7].id == "activity-3"
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/StructureDefinition/careplan#lmp"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/StructureDefinition/careplan#lmp"}
         ).valueUri
     )
     assert (
         inst.extension[0].valueDateTime
-        == ExternalValidatorModel(valueDateTime="2013-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-01"}
+        ).valueDateTime
     )
     assert inst.goal[0].reference == "#goal"
     assert inst.id == "preg"
@@ -680,17 +723,21 @@ def impl_careplan_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2013-10-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-10-01"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2013-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-01"}
+        ).valueDateTime
     )
     assert inst.status == "active"
     assert inst.subject.display == "Eve Everywoman"

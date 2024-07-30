@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -23,9 +23,9 @@ class Coverage(domainresource.DomainResource):
     products and services.
     """
 
-    resource_type = Field("Coverage", const=True)
+    __resource_type__ = "Coverage"
 
-    beneficiary: fhirtypes.ReferenceType = Field(
+    beneficiary: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="beneficiary",
         title="Plan Beneficiary",
@@ -33,36 +33,39 @@ class Coverage(domainresource.DomainResource):
             "The party who benefits from the insurance coverage., the patient when "
             "services are provided."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    contract: typing.List[fhirtypes.ReferenceType] = Field(
+    contract: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="contract",
         title="Contract details",
         description="The policy(s) which constitute this insurance coverage.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Contract"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Contract"],
+        },
     )
 
-    dependent: fhirtypes.String = Field(
+    dependent: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="dependent",
         title="Dependent number",
         description="A unique identifier for a dependent under the coverage.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    dependent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    dependent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_dependent", title="Extension field for ``dependent``."
     )
 
-    grouping: fhirtypes.CoverageGroupingType = Field(
+    grouping: fhirtypes.CoverageGroupingType = Field(  # type: ignore
         None,
         alias="grouping",
         title="Additional coverage classifications",
@@ -70,11 +73,12 @@ class Coverage(domainresource.DomainResource):
             "A suite of underwrite specific classifiers, for example may be used to"
             " identify a class of coverage or employer group, Policy, Plan."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="The primary coverage ID",
@@ -84,11 +88,12 @@ class Coverage(domainresource.DomainResource):
             " or Case ID. May be constructed as the concatination of the "
             "Coverage.SubscriberID and the Coverage.dependant."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    network: fhirtypes.String = Field(
+    network: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="network",
         title="Insurer network",
@@ -98,14 +103,15 @@ class Coverage(domainresource.DomainResource):
             "covered at the 'in-network' rate, otherwise 'out of network' terms and"
             " conditions apply."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    network__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    network__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_network", title="Extension field for ``network``."
     )
 
-    order: fhirtypes.PositiveInt = Field(
+    order: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="order",
         title="Relative order of the coverage",
@@ -115,14 +121,15 @@ class Coverage(domainresource.DomainResource):
             "numbering and this does not imply primary, secondard etc. as the "
             "specific positioning of coverages depends upon the episode of care."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_order", title="Extension field for ``order``."
     )
 
-    payor: typing.List[fhirtypes.ReferenceType] = Field(
+    payor: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="payor",
         title="Identifier for the plan or agreement issuer",
@@ -132,13 +139,14 @@ class Coverage(domainresource.DomainResource):
             "multiple identifiers such as insurance company identifier or business "
             "identifier (BIN number)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization", "Patient", "RelatedPerson"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization", "Patient", "RelatedPerson"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Coverage start and end dates",
@@ -147,11 +155,12 @@ class Coverage(domainresource.DomainResource):
             "date indicates the start date isn't known, a missing end date means "
             "the coverage is continuing to be in force."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    policyHolder: fhirtypes.ReferenceType = Field(
+    policyHolder: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="policyHolder",
         title="Owner of the policy",
@@ -159,22 +168,24 @@ class Coverage(domainresource.DomainResource):
             "The party who 'owns' the insurance policy,  may be an individual, "
             "corporation or the subscriber's employer."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "RelatedPerson", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "RelatedPerson", "Organization"],
+        },
     )
 
-    relationship: fhirtypes.CodeableConceptType = Field(
+    relationship: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="relationship",
         title="Beneficiary relationship to the Subscriber",
         description="The relationship of beneficiary (patient) to the subscriber.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.String = Field(
+    sequence: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="sequence",
         title="The plan instance or sequence counter",
@@ -182,29 +193,31 @@ class Coverage(domainresource.DomainResource):
             "An optional counter for a particular instance of the identified "
             "coverage which increments upon each renewal."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subscriber: fhirtypes.ReferenceType = Field(
+    subscriber: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subscriber",
         title="Subscriber to the policy",
@@ -213,25 +226,27 @@ class Coverage(domainresource.DomainResource):
             " to the policy or to whom the benefit of the policy for services "
             "rendered to them or their family is due."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "RelatedPerson"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "RelatedPerson"],
+        },
     )
 
-    subscriberId: fhirtypes.String = Field(
+    subscriberId: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="subscriberId",
         title="ID assigned to the Subscriber",
         description="The insurer assigned ID for the Subscriber.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subscriberId", title="Extension field for ``subscriberId``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type of coverage such as medical or accident",
@@ -240,8 +255,9 @@ class Coverage(domainresource.DomainResource):
             "(workers compensation, auto), group health or payment by an individual"
             " or organization."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -288,21 +304,22 @@ class CoverageGrouping(backboneelement.BackboneElement):
     identify a class of coverage or employer group, Policy, Plan.
     """
 
-    resource_type = Field("CoverageGrouping", const=True)
+    __resource_type__ = "CoverageGrouping"
 
-    classDisplay: fhirtypes.String = Field(
+    classDisplay: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="classDisplay",
         title="Display text for the class",
         description="A short description for the class.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    classDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    classDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_classDisplay", title="Extension field for ``classDisplay``."
     )
 
-    class_fhir: fhirtypes.String = Field(
+    class_fhir: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="class",
         title="An identifier for the class",
@@ -311,14 +328,15 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify a class of coverage "
             "such as a level of deductables or co-payment."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    class__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    class__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_class", title="Extension field for ``class_fhir``."
     )
 
-    group: fhirtypes.String = Field(
+    group: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="group",
         title="An identifier for the group",
@@ -327,26 +345,28 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify an employer group. "
             "May also be referred to as a Policy or Group ID."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    group__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    group__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_group", title="Extension field for ``group``."
     )
 
-    groupDisplay: fhirtypes.String = Field(
+    groupDisplay: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="groupDisplay",
         title="Display text for an identifier for the group",
         description="A short description for the group.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    groupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    groupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_groupDisplay", title="Extension field for ``groupDisplay``."
     )
 
-    plan: fhirtypes.String = Field(
+    plan: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="plan",
         title="An identifier for the plan",
@@ -356,26 +376,28 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "benefits provided to employees. May be referred to as a Section or "
             "Division ID."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    plan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    plan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_plan", title="Extension field for ``plan``."
     )
 
-    planDisplay: fhirtypes.String = Field(
+    planDisplay: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="planDisplay",
         title="Display text for the plan",
         description="A short description for the plan.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    planDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    planDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_planDisplay", title="Extension field for ``planDisplay``."
     )
 
-    subClass: fhirtypes.String = Field(
+    subClass: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="subClass",
         title="An identifier for the subsection of the class",
@@ -384,26 +406,28 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify a subclass of "
             "coverage such as a sub-level of deductables or co-payment."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    subClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subClass", title="Extension field for ``subClass``."
     )
 
-    subClassDisplay: fhirtypes.String = Field(
+    subClassDisplay: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="subClassDisplay",
         title="Display text for the subsection of the subclass",
         description="A short description for the subclass.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    subClassDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subClassDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subClassDisplay", title="Extension field for ``subClassDisplay``."
     )
 
-    subGroup: fhirtypes.String = Field(
+    subGroup: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="subGroup",
         title="An identifier for the subsection of the group",
@@ -412,26 +436,28 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify a subset of an "
             "employer group."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    subGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subGroup", title="Extension field for ``subGroup``."
     )
 
-    subGroupDisplay: fhirtypes.String = Field(
+    subGroupDisplay: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="subGroupDisplay",
         title="Display text for the subsection of the group",
         description="A short description for the subgroup.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    subGroupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subGroupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subGroupDisplay", title="Extension field for ``subGroupDisplay``."
     )
 
-    subPlan: fhirtypes.String = Field(
+    subPlan: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="subPlan",
         title="An identifier for the subsection of the plan",
@@ -440,22 +466,24 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify a subset of a "
             "collection of benefits provided to employees."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    subPlan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subPlan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subPlan", title="Extension field for ``subPlan``."
     )
 
-    subPlanDisplay: fhirtypes.String = Field(
+    subPlanDisplay: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="subPlanDisplay",
         title="Display text for the subsection of the plan",
         description="A short description for the subplan.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subPlanDisplay", title="Extension field for ``subPlanDisplay``."
     )
 

@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import fhirtypes, resource
+from . import backboneelement, fhirtypes, resource
 
 
 class Parameters(resource.Resource):
@@ -26,7 +26,7 @@ class Parameters(resource.Resource):
 
     __resource_type__ = "Parameters"
 
-    parameter: typing.List[fhirtypes.ParametersParameterType] = Field(
+    parameter: typing.List[fhirtypes.ParametersParameterType] = Field(  # type: ignore
         None,
         alias="parameter",
         title="Operation Parameter",
@@ -45,9 +45,6 @@ class Parameters(resource.Resource):
         return ["id", "meta", "implicitRules", "language", "parameter"]
 
 
-from . import backboneelement
-
-
 class ParametersParameter(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -59,7 +56,7 @@ class ParametersParameter(backboneelement.BackboneElement):
 
     __resource_type__ = "ParametersParameter"
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name from the definition",
@@ -69,11 +66,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    part: typing.List[fhirtypes.ParametersParameterType] = Field(
+    part: typing.List[fhirtypes.ParametersParameterType] = Field(  # type: ignore
         None,
         alias="part",
         title="Named part of a multi-part parameter",
@@ -83,7 +80,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    resource: fhirtypes.ResourceType = Field(
+    resource: fhirtypes.ResourceType = Field(  # type: ignore
         None,
         alias="resource",
         title="If parameter is a whole resource",
@@ -93,7 +90,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueAddress: fhirtypes.AddressType = Field(
+    valueAddress: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="valueAddress",
         title="If parameter is a data type",
@@ -106,7 +103,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueAge: fhirtypes.AgeType = Field(
+    valueAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="valueAge",
         title="If parameter is a data type",
@@ -119,7 +116,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueAnnotation: fhirtypes.AnnotationType = Field(
+    valueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
         None,
         alias="valueAnnotation",
         title="If parameter is a data type",
@@ -132,7 +129,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="If parameter is a data type",
@@ -145,7 +142,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueAvailability: fhirtypes.AvailabilityType = Field(
+    valueAvailability: fhirtypes.AvailabilityType = Field(  # type: ignore
         None,
         alias="valueAvailability",
         title="If parameter is a data type",
@@ -158,7 +155,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueBase64Binary: fhirtypes.Base64BinaryType = Field(
+    valueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
         None,
         alias="valueBase64Binary",
         title="If parameter is a data type",
@@ -170,13 +167,13 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_valueBase64Binary",
         title="Extension field for ``valueBase64Binary``.",
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="If parameter is a data type",
@@ -188,11 +185,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCanonical: fhirtypes.CanonicalType = Field(
+    valueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="valueCanonical",
         title="If parameter is a data type",
@@ -204,11 +201,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueCanonical", title="Extension field for ``valueCanonical``."
     )
 
-    valueCode: fhirtypes.CodeType = Field(
+    valueCode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="valueCode",
         title="If parameter is a data type",
@@ -220,11 +217,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="If parameter is a data type",
@@ -237,7 +234,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueCodeableReference: fhirtypes.CodeableReferenceType = Field(
+    valueCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="valueCodeableReference",
         title="If parameter is a data type",
@@ -250,7 +247,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueCoding: fhirtypes.CodingType = Field(
+    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="If parameter is a data type",
@@ -263,7 +260,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueContactDetail: fhirtypes.ContactDetailType = Field(
+    valueContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
         None,
         alias="valueContactDetail",
         title="If parameter is a data type",
@@ -276,7 +273,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueContactPoint: fhirtypes.ContactPointType = Field(
+    valueContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
         None,
         alias="valueContactPoint",
         title="If parameter is a data type",
@@ -289,7 +286,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueCount: fhirtypes.CountType = Field(
+    valueCount: fhirtypes.CountType = Field(  # type: ignore
         None,
         alias="valueCount",
         title="If parameter is a data type",
@@ -302,7 +299,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueDataRequirement: fhirtypes.DataRequirementType = Field(
+    valueDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
         None,
         alias="valueDataRequirement",
         title="If parameter is a data type",
@@ -315,7 +312,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueDate: fhirtypes.DateType = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="If parameter is a data type",
@@ -327,11 +324,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueDateTime: fhirtypes.DateTimeType = Field(
+    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="If parameter is a data type",
@@ -343,11 +340,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueDecimal: fhirtypes.DecimalType = Field(
+    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="If parameter is a data type",
@@ -359,11 +356,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueDistance: fhirtypes.DistanceType = Field(
+    valueDistance: fhirtypes.DistanceType = Field(  # type: ignore
         None,
         alias="valueDistance",
         title="If parameter is a data type",
@@ -376,7 +373,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueDosage: fhirtypes.DosageType = Field(
+    valueDosage: fhirtypes.DosageType = Field(  # type: ignore
         None,
         alias="valueDosage",
         title="If parameter is a data type",
@@ -389,7 +386,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueDuration: fhirtypes.DurationType = Field(
+    valueDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="valueDuration",
         title="If parameter is a data type",
@@ -402,7 +399,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueExpression: fhirtypes.ExpressionType = Field(
+    valueExpression: fhirtypes.ExpressionType = Field(  # type: ignore
         None,
         alias="valueExpression",
         title="If parameter is a data type",
@@ -415,7 +412,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueExtendedContactDetail: fhirtypes.ExtendedContactDetailType = Field(
+    valueExtendedContactDetail: fhirtypes.ExtendedContactDetailType = Field(  # type: ignore
         None,
         alias="valueExtendedContactDetail",
         title="If parameter is a data type",
@@ -428,7 +425,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueHumanName: fhirtypes.HumanNameType = Field(
+    valueHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
         None,
         alias="valueHumanName",
         title="If parameter is a data type",
@@ -441,7 +438,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueId: fhirtypes.IdType = Field(
+    valueId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="valueId",
         title="If parameter is a data type",
@@ -453,11 +450,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
-    valueIdentifier: fhirtypes.IdentifierType = Field(
+    valueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="valueIdentifier",
         title="If parameter is a data type",
@@ -470,7 +467,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueInstant: fhirtypes.InstantType = Field(
+    valueInstant: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="valueInstant",
         title="If parameter is a data type",
@@ -482,11 +479,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInstant", title="Extension field for ``valueInstant``."
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(
+    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="If parameter is a data type",
@@ -498,11 +495,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueInteger64: fhirtypes.Integer64Type = Field(
+    valueInteger64: fhirtypes.Integer64Type = Field(  # type: ignore
         None,
         alias="valueInteger64",
         title="If parameter is a data type",
@@ -514,11 +511,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInteger64", title="Extension field for ``valueInteger64``."
     )
 
-    valueMarkdown: fhirtypes.MarkdownType = Field(
+    valueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="valueMarkdown",
         title="If parameter is a data type",
@@ -530,11 +527,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
-    valueMeta: fhirtypes.MetaType = Field(
+    valueMeta: fhirtypes.MetaType = Field(  # type: ignore
         None,
         alias="valueMeta",
         title="If parameter is a data type",
@@ -547,7 +544,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueMoney: fhirtypes.MoneyType = Field(
+    valueMoney: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="valueMoney",
         title="If parameter is a data type",
@@ -560,7 +557,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueOid: fhirtypes.OidType = Field(
+    valueOid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="valueOid",
         title="If parameter is a data type",
@@ -572,11 +569,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueOid", title="Extension field for ``valueOid``."
     )
 
-    valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
+    valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
         None,
         alias="valueParameterDefinition",
         title="If parameter is a data type",
@@ -589,7 +586,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valuePeriod: fhirtypes.PeriodType = Field(
+    valuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="valuePeriod",
         title="If parameter is a data type",
@@ -602,7 +599,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valuePositiveInt: fhirtypes.PositiveIntType = Field(
+    valuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="valuePositiveInt",
         title="If parameter is a data type",
@@ -614,13 +611,13 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_valuePositiveInt",
         title="Extension field for ``valuePositiveInt``.",
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="If parameter is a data type",
@@ -633,7 +630,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(
+    valueRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="valueRange",
         title="If parameter is a data type",
@@ -646,7 +643,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueRatio: fhirtypes.RatioType = Field(
+    valueRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="valueRatio",
         title="If parameter is a data type",
@@ -659,7 +656,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueRatioRange: fhirtypes.RatioRangeType = Field(
+    valueRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
         None,
         alias="valueRatioRange",
         title="If parameter is a data type",
@@ -672,7 +669,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(
+    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="valueReference",
         title="If parameter is a data type",
@@ -685,7 +682,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
+    valueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
         None,
         alias="valueRelatedArtifact",
         title="If parameter is a data type",
@@ -698,7 +695,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueSampledData: fhirtypes.SampledDataType = Field(
+    valueSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
         None,
         alias="valueSampledData",
         title="If parameter is a data type",
@@ -711,7 +708,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueSignature: fhirtypes.SignatureType = Field(
+    valueSignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="valueSignature",
         title="If parameter is a data type",
@@ -724,7 +721,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueString: fhirtypes.StringType = Field(
+    valueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="valueString",
         title="If parameter is a data type",
@@ -736,11 +733,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
-    valueTime: fhirtypes.TimeType = Field(
+    valueTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="valueTime",
         title="If parameter is a data type",
@@ -752,11 +749,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
-    valueTiming: fhirtypes.TimingType = Field(
+    valueTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="valueTiming",
         title="If parameter is a data type",
@@ -769,7 +766,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
+    valueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
         None,
         alias="valueTriggerDefinition",
         title="If parameter is a data type",
@@ -782,7 +779,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueUnsignedInt: fhirtypes.UnsignedIntType = Field(
+    valueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="valueUnsignedInt",
         title="If parameter is a data type",
@@ -794,13 +791,13 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_valueUnsignedInt",
         title="Extension field for ``valueUnsignedInt``.",
     )
 
-    valueUri: fhirtypes.UriType = Field(
+    valueUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="valueUri",
         title="If parameter is a data type",
@@ -812,11 +809,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
-    valueUrl: fhirtypes.UrlType = Field(
+    valueUrl: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="valueUrl",
         title="If parameter is a data type",
@@ -828,11 +825,11 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueUrl", title="Extension field for ``valueUrl``."
     )
 
-    valueUsageContext: fhirtypes.UsageContextType = Field(
+    valueUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
         None,
         alias="valueUsageContext",
         title="If parameter is a data type",
@@ -845,7 +842,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueUuid: fhirtypes.UuidType = Field(
+    valueUuid: fhirtypes.UuidType = Field(  # type: ignore
         None,
         alias="valueUuid",
         title="If parameter is a data type",
@@ -857,7 +854,7 @@ class ParametersParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 

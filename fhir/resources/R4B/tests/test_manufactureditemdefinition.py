@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import manufactureditemdefinition
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_manufactureditemdefinition_1(inst):
@@ -17,13 +15,18 @@ def impl_manufactureditemdefinition_1(inst):
     assert inst.manufacturedDoseForm.coding[0].code == "Film-coatedtablet"
     assert (
         inst.manufacturedDoseForm.coding[0].system
-        == "http://ema.europa.eu/example/manufactureddoseform"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/manufactureddoseform"}
+        ).valueUri
     )
     assert inst.manufacturer[0].reference == "Organization/example"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.property[0].type.coding[0].code == "shape"
     assert inst.property[0].valueCodeableConcept.text == "Oval"
@@ -36,7 +39,9 @@ def impl_manufactureditemdefinition_1(inst):
     assert inst.unitOfPresentation.coding[0].code == "Tablet"
     assert (
         inst.unitOfPresentation.coding[0].system
-        == "http://ema.europa.eu/example/unitofpresentation"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/unitofpresentation"}
+        ).valueUri
     )
 
 
@@ -47,15 +52,15 @@ def test_manufactureditemdefinition_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "manufactureditemdefinition-example.json"
     )
-    inst = manufactureditemdefinition.ManufacturedItemDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = manufactureditemdefinition.ManufacturedItemDefinition.model_validate_json(
+        filename.read_bytes()
     )
-    assert "ManufacturedItemDefinition" == inst.resource_type
+    assert "ManufacturedItemDefinition" == inst.get_resource_type()
 
     impl_manufactureditemdefinition_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ManufacturedItemDefinition" == data["resourceType"]
 
     inst2 = manufactureditemdefinition.ManufacturedItemDefinition(**data)

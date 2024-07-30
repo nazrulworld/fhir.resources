@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -27,22 +25,23 @@ class Endpoint(domainresource.DomainResource):
     another FHIR server. This may include any security context information.
     """
 
-    resource_type = Field("Endpoint", const=True)
+    __resource_type__ = "Endpoint"
 
-    address: fhirtypes.Uri = Field(
+    address: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="address",
         title="The technical base address for connecting to this endpoint",
         description="The uri that describes the actual end-point to connect to.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_address", title="Extension field for ``address``."
     )
 
-    connectionType: fhirtypes.CodingType = Field(
+    connectionType: fhirtypes.CodingType = Field(  # type: ignore
         ...,
         alias="connectionType",
         title="Protocol/Profile/Standard to be used with this endpoint connection",
@@ -51,11 +50,12 @@ class Endpoint(domainresource.DomainResource):
             "this endpoint, such as what WSDLs should be used in what way. (e.g. "
             "XDS.b/DICOM/cds-hook)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    contact: typing.List[fhirtypes.ContactPointType] = Field(
+    contact: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for source (e.g. troubleshooting)",
@@ -63,23 +63,25 @@ class Endpoint(domainresource.DomainResource):
             "Contact details for a human to contact about the subscription. The "
             "primary use of this for system administrator troubleshooting."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    header: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    header: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="header",
         title="Usage depends on the channel type",
         description="Additional headers / information to send as part of the notification.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    header__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_header", title="Extension field for ``header``.")
+    header__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_header", title="Extension field for ``header``."
+    )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifies this endpoint across multiple systems",
@@ -87,11 +89,12 @@ class Endpoint(domainresource.DomainResource):
             "Identifier for the organization that is used to identify the endpoint "
             "across multiple disparate systems."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    managingOrganization: fhirtypes.ReferenceType = Field(
+    managingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title=(
@@ -103,25 +106,27 @@ class Endpoint(domainresource.DomainResource):
             "another organisation is hosting this in the cloud, it is the "
             "organisation associated with the data)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="A name that this endpoint can be identified by",
         description="A friendly name that this endpoint can be referred to with.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    payloadMimeType: typing.List[fhirtypes.Code] = Field(
+    payloadMimeType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="payloadMimeType",
         title=(
@@ -134,16 +139,15 @@ class Endpoint(domainresource.DomainResource):
             "sender could send any content (including no content depending on the "
             "connectionType)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    payloadMimeType__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    payloadMimeType__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_payloadMimeType", title="Extension field for ``payloadMimeType``."
     )
 
-    payloadType: typing.List[fhirtypes.CodeableConceptType] = Field(
+    payloadType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         ...,
         alias="payloadType",
         title=(
@@ -154,32 +158,42 @@ class Endpoint(domainresource.DomainResource):
             "The payload type describes the acceptable content that can be "
             "communicated on the endpoint."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Interval the endpoint is expected to be operational",
         description="The interval during which the endpoint is expected to be operational.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | suspended | error | off | entered-in-error | test",
         description="active | suspended | error | off | test.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "suspended", "error", "off", "entered-in-error", "test"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "active",
+                "suspended",
+                "error",
+                "off",
+                "entered-in-error",
+                "test",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -211,10 +225,7 @@ class Endpoint(domainresource.DomainResource):
             "header",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1018(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -223,49 +234,4 @@ class Endpoint(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("address", "address__ext"), ("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

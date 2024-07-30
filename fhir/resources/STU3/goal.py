@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -27,9 +25,9 @@ class Goal(domainresource.DomainResource):
     objective, etc.
     """
 
-    resource_type = Field("Goal", const=True)
+    __resource_type__ = "Goal"
 
-    addresses: typing.List[fhirtypes.ReferenceType] = Field(
+    addresses: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="addresses",
         title="Issues addressed by this goal",
@@ -37,29 +35,31 @@ class Goal(domainresource.DomainResource):
             "The identified conditions and other health record elements that are "
             "intended to be addressed by the goal."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Condition",
-            "Observation",
-            "MedicationStatement",
-            "NutritionOrder",
-            "ProcedureRequest",
-            "RiskAssessment",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Condition",
+                "Observation",
+                "MedicationStatement",
+                "NutritionOrder",
+                "ProcedureRequest",
+                "RiskAssessment",
+            ],
+        },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="E.g. Treatment, dietary, behavioral, etc.",
         description="Indicates a category the goal falls within.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.CodeableConceptType = Field(
+    description: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="description",
         title="Code or text describing goal",
@@ -68,22 +68,24 @@ class Goal(domainresource.DomainResource):
             'objective of care, such as "control blood pressure" or "negotiate an '
             'obstacle course" or "dance with child at wedding".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    expressedBy: fhirtypes.ReferenceType = Field(
+    expressedBy: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="expressedBy",
         title="Who's responsible for creating Goal?",
         description="Indicates whose goal this is - patient goal, practitioner goal, etc.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Practitioner", "RelatedPerson"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Practitioner", "RelatedPerson"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this goal",
@@ -93,20 +95,22 @@ class Goal(domainresource.DomainResource):
             " URL reference to the resource itself is not appropriate (e.g. in CDA "
             "documents, or in written / printed documentation)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Comments about the goal",
         description="Any comments related to the goal.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    outcomeCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    outcomeCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="outcomeCode",
         title="What result was achieved regarding the goal?",
@@ -114,22 +118,24 @@ class Goal(domainresource.DomainResource):
             "Identifies the change (or lack of change) at the point when the status"
             " of the goal is assessed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    outcomeReference: typing.List[fhirtypes.ReferenceType] = Field(
+    outcomeReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="outcomeReference",
         title="Observation that resulted from goal",
         description="Details of what's changed (or not changed).",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Observation"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Observation"],
+        },
     )
 
-    priority: fhirtypes.CodeableConceptType = Field(
+    priority: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="priority",
         title="high-priority | medium-priority | low-priority",
@@ -137,38 +143,41 @@ class Goal(domainresource.DomainResource):
             "Identifies the mutually agreed level of importance associated with "
             "reaching/sustaining the goal."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    startCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    startCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="startCodeableConcept",
         title="When goal pursuit begins",
         description="The date or event after which the goal should begin being pursued.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e start[x]
-        one_of_many="start",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e start[x]
+            "one_of_many": "start",
+            "one_of_many_required": False,
+        },
     )
 
-    startDate: fhirtypes.Date = Field(
+    startDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="startDate",
         title="When goal pursuit begins",
         description="The date or event after which the goal should begin being pursued.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e start[x]
-        one_of_many="start",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e start[x]
+            "one_of_many": "start",
+            "one_of_many_required": False,
+        },
     )
-    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_startDate", title="Extension field for ``startDate``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -180,32 +189,33 @@ class Goal(domainresource.DomainResource):
             "Indicates whether the goal has been reached and is still considered "
             "relevant."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "proposed",
-            "accepted",
-            "planned",
-            "in-progress",
-            "on-target",
-            "ahead-of-target",
-            "behind-target",
-            "sustaining",
-            "achieved",
-            "on-hold",
-            "cancelled",
-            "entered-in-error",
-            "rejected",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "proposed",
+                "accepted",
+                "planned",
+                "in-progress",
+                "on-target",
+                "ahead-of-target",
+                "behind-target",
+                "sustaining",
+                "achieved",
+                "on-hold",
+                "cancelled",
+                "entered-in-error",
+                "rejected",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusDate: fhirtypes.Date = Field(
+    statusDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="statusDate",
         title="When goal status took effect",
@@ -213,26 +223,28 @@ class Goal(domainresource.DomainResource):
             "Identifies when the current status.  I.e. When initially created, when"
             " achieved, when cancelled, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
-    statusReason: fhirtypes.String = Field(
+    statusReason: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="statusReason",
         title="Reason for current status",
         description="Captures the reason for the current status.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    statusReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    statusReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_statusReason", title="Extension field for ``statusReason``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Who this goal is intended for",
@@ -240,19 +252,21 @@ class Goal(domainresource.DomainResource):
             "Identifies the patient, group or organization for whom the goal is "
             "being established."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Group", "Organization"],
+        },
     )
 
-    target: fhirtypes.GoalTargetType = Field(
+    target: fhirtypes.GoalTargetType = Field(  # type: ignore
         None,
         alias="target",
         title="Target outcome for the goal",
         description="Indicates what should be done by when.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -288,10 +302,7 @@ class Goal(domainresource.DomainResource):
             "outcomeReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_566(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -300,57 +311,9 @@ class Goal(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_566(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -364,26 +327,7 @@ class Goal(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"start": ["startCodeableConcept", "startDate"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class GoalTarget(backboneelement.BackboneElement):
@@ -395,9 +339,9 @@ class GoalTarget(backboneelement.BackboneElement):
     Indicates what should be done by when.
     """
 
-    resource_type = Field("GoalTarget", const=True)
+    __resource_type__ = "GoalTarget"
 
-    detailCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    detailCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="detailCodeableConcept",
         title="The target value to be achieved",
@@ -410,14 +354,15 @@ class GoalTarget(backboneelement.BackboneElement):
             "indicates that the goal is achieved at any focus value at or above the"
             " low value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e detail[x]
-        one_of_many="detail",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e detail[x]
+            "one_of_many": "detail",
+            "one_of_many_required": False,
+        },
     )
 
-    detailQuantity: fhirtypes.QuantityType = Field(
+    detailQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="detailQuantity",
         title="The target value to be achieved",
@@ -430,14 +375,15 @@ class GoalTarget(backboneelement.BackboneElement):
             "indicates that the goal is achieved at any focus value at or above the"
             " low value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e detail[x]
-        one_of_many="detail",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e detail[x]
+            "one_of_many": "detail",
+            "one_of_many_required": False,
+        },
     )
 
-    detailRange: fhirtypes.RangeType = Field(
+    detailRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="detailRange",
         title="The target value to be achieved",
@@ -450,14 +396,15 @@ class GoalTarget(backboneelement.BackboneElement):
             "indicates that the goal is achieved at any focus value at or above the"
             " low value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e detail[x]
-        one_of_many="detail",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e detail[x]
+            "one_of_many": "detail",
+            "one_of_many_required": False,
+        },
     )
 
-    dueDate: fhirtypes.Date = Field(
+    dueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="dueDate",
         title="Reach goal on or before",
@@ -465,17 +412,18 @@ class GoalTarget(backboneelement.BackboneElement):
             "Indicates either the date or the duration after start by which the "
             "goal should be met."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e due[x]
-        one_of_many="due",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e due[x]
+            "one_of_many": "due",
+            "one_of_many_required": False,
+        },
     )
-    dueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    dueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_dueDate", title="Extension field for ``dueDate``."
     )
 
-    dueDuration: fhirtypes.DurationType = Field(
+    dueDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="dueDuration",
         title="Reach goal on or before",
@@ -483,14 +431,15 @@ class GoalTarget(backboneelement.BackboneElement):
             "Indicates either the date or the duration after start by which the "
             "goal should be met."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e due[x]
-        one_of_many="due",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e due[x]
+            "one_of_many": "due",
+            "one_of_many_required": False,
+        },
     )
 
-    measure: fhirtypes.CodeableConceptType = Field(
+    measure: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="measure",
         title="The parameter whose value is being tracked",
@@ -498,8 +447,9 @@ class GoalTarget(backboneelement.BackboneElement):
             "The parameter whose value is being tracked, e.g. body weight, blood "
             "pressure, or hemoglobin A1c level."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -520,10 +470,7 @@ class GoalTarget(backboneelement.BackboneElement):
             "dueDuration",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1189(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -540,23 +487,4 @@ class GoalTarget(backboneelement.BackboneElement):
             "detail": ["detailCodeableConcept", "detailQuantity", "detailRange"],
             "due": ["dueDate", "dueDuration"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

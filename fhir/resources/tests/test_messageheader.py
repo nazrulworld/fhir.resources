@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import messageheader
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_messageheader_1(inst):
@@ -17,7 +17,9 @@ def impl_messageheader_1(inst):
     )
     assert (
         inst.destination[0].endpointUrl
-        == ExternalValidatorModel(valueUrl="llp:10.11.12.14:5432").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "llp:10.11.12.14:5432"}
+        ).valueUrl
     )
     assert inst.destination[0].name == "Acme Message Gateway"
     assert (
@@ -28,8 +30,8 @@ def impl_messageheader_1(inst):
     assert inst.eventCoding.code == "admin-notify"
     assert (
         inst.eventCoding.system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/message-events"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/message-events"}
         ).valueUri
     )
     assert inst.focus[0].reference == "Patient/example"
@@ -38,15 +40,17 @@ def impl_messageheader_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.reason.coding[0].code == "admit"
     assert (
         inst.reason.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/message-reasons-encounter"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/message-reasons-encounter"
+            }
         ).valueUri
     )
     assert inst.response.code == "ok"
@@ -56,7 +60,9 @@ def impl_messageheader_1(inst):
     assert inst.source.contact.value == "+1 (555) 123 4567"
     assert (
         inst.source.endpointUrl
-        == ExternalValidatorModel(valueUrl="llp:10.11.12.13:5432").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "llp:10.11.12.13:5432"}
+        ).valueUrl
     )
     assert inst.source.name == "Acme Central Patient Registry"
     assert inst.source.software == "FooBar Patient Manager"

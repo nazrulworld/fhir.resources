@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import datatype, fhirtypes
+from . import datatype, element, fhirtypes
 
 
 class Availability(datatype.DataType):
@@ -23,7 +23,7 @@ class Availability(datatype.DataType):
 
     __resource_type__ = "Availability"
 
-    availableTime: typing.List[fhirtypes.AvailabilityAvailableTimeType] = Field(
+    availableTime: typing.List[fhirtypes.AvailabilityAvailableTimeType] = Field(  # type: ignore
         None,
         alias="availableTime",
         title="Times the {item} is available",
@@ -33,7 +33,7 @@ class Availability(datatype.DataType):
         },
     )
 
-    notAvailableTime: typing.List[fhirtypes.AvailabilityNotAvailableTimeType] = Field(
+    notAvailableTime: typing.List[fhirtypes.AvailabilityNotAvailableTimeType] = Field(  # type: ignore
         None,
         alias="notAvailableTime",
         title="Not available during this time due to provided reason",
@@ -52,9 +52,6 @@ class Availability(datatype.DataType):
         return ["id", "extension", "availableTime", "notAvailableTime"]
 
 
-from . import element
-
-
 class AvailabilityAvailableTime(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -65,7 +62,7 @@ class AvailabilityAvailableTime(element.Element):
 
     __resource_type__ = "AvailabilityAvailableTime"
 
-    allDay: bool = Field(
+    allDay: bool = Field(  # type: ignore
         None,
         alias="allDay",
         title="Always available? i.e. 24 hour service",
@@ -74,11 +71,11 @@ class AvailabilityAvailableTime(element.Element):
             "element_property": True,
         },
     )
-    allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_allDay", title="Extension field for ``allDay``."
     )
 
-    availableEndTime: fhirtypes.TimeType = Field(
+    availableEndTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="availableEndTime",
         title="Closing time of day (ignored if allDay = true)",
@@ -87,13 +84,13 @@ class AvailabilityAvailableTime(element.Element):
             "element_property": True,
         },
     )
-    availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_availableEndTime",
         title="Extension field for ``availableEndTime``.",
     )
 
-    availableStartTime: fhirtypes.TimeType = Field(
+    availableStartTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="availableStartTime",
         title="Opening time of day (ignored if allDay = true)",
@@ -102,13 +99,13 @@ class AvailabilityAvailableTime(element.Element):
             "element_property": True,
         },
     )
-    availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_availableStartTime",
         title="Extension field for ``availableStartTime``.",
     )
 
-    daysOfWeek: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(
+    daysOfWeek: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="daysOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
@@ -120,9 +117,9 @@ class AvailabilityAvailableTime(element.Element):
             "enum_values": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
         },
     )
-    daysOfWeek__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``.")
+    daysOfWeek__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``."
+    )
 
     @classmethod
     def elements_sequence(cls):
@@ -150,7 +147,7 @@ class AvailabilityNotAvailableTime(element.Element):
 
     __resource_type__ = "AvailabilityNotAvailableTime"
 
-    description: fhirtypes.StringType = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Reason presented to the user explaining why time not available",
@@ -159,11 +156,11 @@ class AvailabilityNotAvailableTime(element.Element):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    during: fhirtypes.PeriodType = Field(
+    during: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="during",
         title="Service not available during this period",

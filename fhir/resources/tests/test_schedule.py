@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import schedule
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_schedule_1(inst):
@@ -23,7 +23,9 @@ def impl_schedule_1(inst):
     assert inst.id == "exampleloc1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/scheduleid").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/scheduleid"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "usual"
     assert inst.identifier[0].value == "46"
@@ -31,39 +33,45 @@ def impl_schedule_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.planningHorizon.end
-        == ExternalValidatorModel(valueDateTime="2017-12-25T09:30:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-12-25T09:30:00Z"}
+        ).valueDateTime
     )
     assert (
         inst.planningHorizon.start
-        == ExternalValidatorModel(valueDateTime="2017-12-25T09:15:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-12-25T09:15:00Z"}
+        ).valueDateTime
     )
     assert inst.serviceCategory[0].coding[0].code == "17"
     assert inst.serviceCategory[0].coding[0].display == "General Practice"
     assert (
         inst.serviceCategory[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/service-category"}
         ).valueUri
     )
     assert inst.serviceType[0].concept.coding[0].code == "75"
     assert inst.serviceType[0].concept.coding[0].display == "Genetic Counselling"
     assert (
         inst.serviceType[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/service-type"}
         ).valueUri
     )
     assert inst.specialty[0].coding[0].code == "394580004"
     assert inst.specialty[0].coding[0].display == "Clinical genetics"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -99,7 +107,9 @@ def impl_schedule_2(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/scheduleid").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/scheduleid"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "usual"
     assert inst.identifier[0].value == "45"
@@ -107,40 +117,46 @@ def impl_schedule_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Burgers UMC, South Wing - Immunizations"
     assert (
         inst.planningHorizon.end
-        == ExternalValidatorModel(valueDateTime="2013-12-25T09:30:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-12-25T09:30:00Z"}
+        ).valueDateTime
     )
     assert (
         inst.planningHorizon.start
-        == ExternalValidatorModel(valueDateTime="2013-12-25T09:15:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-12-25T09:15:00Z"}
+        ).valueDateTime
     )
     assert inst.serviceCategory[0].coding[0].code == "17"
     assert inst.serviceCategory[0].coding[0].display == "General Practice"
     assert (
         inst.serviceCategory[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/service-category"}
         ).valueUri
     )
     assert inst.serviceType[0].concept.coding[0].code == "57"
     assert inst.serviceType[0].concept.coding[0].display == "Immunization"
     assert (
         inst.serviceType[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/service-type"}
         ).valueUri
     )
     assert inst.specialty[0].coding[0].code == "408480009"
     assert inst.specialty[0].coding[0].display == "Clinical immunology"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -172,25 +188,29 @@ def impl_schedule_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Burgers UMC, Posttraumatic Stress Disorder counselling"
     assert (
         inst.planningHorizon.end
-        == ExternalValidatorModel(valueDateTime="2023-12-25T09:30:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-12-25T09:30:00Z"}
+        ).valueDateTime
     )
     assert (
         inst.planningHorizon.start
-        == ExternalValidatorModel(valueDateTime="2023-12-25T09:15:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-12-25T09:15:00Z"}
+        ).valueDateTime
     )
     assert inst.serviceCategory[0].coding[0].code == "8"
     assert inst.serviceCategory[0].coding[0].display == "Counselling"
     assert (
         inst.serviceCategory[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/service-category"}
         ).valueUri
     )
     assert (
@@ -202,7 +222,9 @@ def impl_schedule_3(inst):
     assert inst.specialty[0].coding[0].display == "Posttraumatic stress disorder"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -238,7 +260,9 @@ def impl_schedule_4(inst):
     assert inst.id == "exampleloc2"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/scheduleid").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/scheduleid"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "usual"
     assert inst.identifier[0].value == "47"
@@ -246,39 +270,45 @@ def impl_schedule_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.planningHorizon.end
-        == ExternalValidatorModel(valueDateTime="2017-12-25T09:30:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-12-25T09:30:00Z"}
+        ).valueDateTime
     )
     assert (
         inst.planningHorizon.start
-        == ExternalValidatorModel(valueDateTime="2017-12-25T09:15:00Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-12-25T09:15:00Z"}
+        ).valueDateTime
     )
     assert inst.serviceCategory[0].coding[0].code == "31"
     assert inst.serviceCategory[0].coding[0].display == "Specialist Surgical"
     assert (
         inst.serviceCategory[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/service-category"}
         ).valueUri
     )
     assert inst.serviceType[0].concept.coding[0].code == "221"
     assert inst.serviceType[0].concept.coding[0].display == "Surgery - General"
     assert (
         inst.serviceType[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/service-type"}
         ).valueUri
     )
     assert inst.specialty[0].coding[0].code == "394610002"
     assert inst.specialty[0].coding[0].display == "Surgery-Neurosurgery"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.status == "generated"
 

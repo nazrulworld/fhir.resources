@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import manufactureditemdefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_manufactureditemdefinition_1(inst):
@@ -15,8 +15,8 @@ def impl_manufactureditemdefinition_1(inst):
     assert inst.manufacturedDoseForm.coding[0].code == "Film-coatedtablet"
     assert (
         inst.manufacturedDoseForm.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/manufactureddoseform"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/manufactureddoseform"}
         ).valueUri
     )
     assert inst.manufacturer[0].reference == "Organization/example"
@@ -24,8 +24,8 @@ def impl_manufactureditemdefinition_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.property[0].type.coding[0].code == "shape"
@@ -39,8 +39,8 @@ def impl_manufactureditemdefinition_1(inst):
     assert inst.unitOfPresentation.coding[0].code == "Tablet"
     assert (
         inst.unitOfPresentation.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/unitofpresentation"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/unitofpresentation"}
         ).valueUri
     )
 

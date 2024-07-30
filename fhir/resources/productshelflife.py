@@ -24,7 +24,7 @@ class ProductShelfLife(backbonetype.BackboneType):
 
     __resource_type__ = "ProductShelfLife"
 
-    periodDuration: fhirtypes.DurationType = Field(
+    periodDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="periodDuration",
         title=(
@@ -43,7 +43,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         },
     )
 
-    periodString: fhirtypes.StringType = Field(
+    periodString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="periodString",
         title=(
@@ -61,11 +61,11 @@ class ProductShelfLife(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    periodString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    periodString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_periodString", title="Extension field for ``periodString``."
     )
 
-    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] = Field(
+    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="specialPrecautionsForStorage",
         title=(
@@ -79,7 +79,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title=(

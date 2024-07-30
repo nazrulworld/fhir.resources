@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import examplescenario
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_examplescenario_1(inst):
@@ -43,7 +43,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[0].structureType.code == "MedicationRequest"
     assert (
         inst.instance[0].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[0].title == "Initial Prescription"
     assert (
@@ -53,7 +55,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[1].structureType.code == "MedicationRequest"
     assert (
         inst.instance[1].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[1].title == "Request for day 1, morning"
     assert inst.instance[2].description == "The administration request for day 1, lunch"
@@ -61,7 +65,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[2].structureType.code == "MedicationRequest"
     assert (
         inst.instance[2].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[2].title == "Request for day 1, lunch"
     assert (
@@ -71,7 +77,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[3].structureType.code == "MedicationRequest"
     assert (
         inst.instance[3].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[3].title == "Request for day 1, evening"
     assert (
@@ -81,7 +89,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[4].structureType.code == "MedicationRequest"
     assert (
         inst.instance[4].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[4].title == "Request for day 2, morning"
     assert inst.instance[5].description == "The administration request for day 2, lunch"
@@ -89,7 +99,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[5].structureType.code == "MedicationRequest"
     assert (
         inst.instance[5].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[5].title == "Request for day 2, lunch"
     assert (
@@ -99,7 +111,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[6].structureType.code == "MedicationRequest"
     assert (
         inst.instance[6].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[6].title == "Request for day 2, evening"
     assert (
@@ -110,7 +124,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[7].structureType.code == "MedicationAdministration"
     assert (
         inst.instance[7].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[7].title == "Morning meds - taken"
     assert (
@@ -121,7 +137,9 @@ def impl_examplescenario_1(inst):
     assert inst.instance[8].structureType.code == "MedicationAdministration"
     assert (
         inst.instance[8].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[8].title == "Morning meds - not taken"
     assert inst.instance[9].containedInstance[0].instanceReference == "iherx001.001"
@@ -135,15 +153,17 @@ def impl_examplescenario_1(inst):
     assert inst.instance[9].structureType.code == "MedicationRequest"
     assert (
         inst.instance[9].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[9].title == "Bundle of Medication Requests"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.process[0].postConditions == (
@@ -300,7 +320,9 @@ def impl_examplescenario_2(inst):
     assert inst.instance[0].structureType.code == "ServiceRequest"
     assert (
         inst.instance[0].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[0].title == "Request for a lab procedure"
     assert inst.instance[0].version[0].description == "Initial order"
@@ -317,7 +339,9 @@ def impl_examplescenario_2(inst):
     assert inst.instance[1].structureType.code == "Task"
     assert (
         inst.instance[1].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[1].title == "Task"
     assert inst.instance[1].version[0].description == "Initially created"
@@ -337,7 +361,9 @@ def impl_examplescenario_2(inst):
     assert inst.instance[2].structureType.code == "ServiceRequest"
     assert (
         inst.instance[2].structureType.system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.instance[2].title == "Internal lab request"
     assert inst.instance[2].version[0].description == "Order in progress"
@@ -353,8 +379,8 @@ def impl_examplescenario_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "LabOrderTrackingWithTask"

@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -24,9 +22,9 @@ class Media(domainresource.DomainResource):
     actual content may be inline or provided by direct reference.
     """
 
-    resource_type = Field("Media", const=True)
+    __resource_type__ = "Media"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Procedure that caused this media to be created",
@@ -34,13 +32,14 @@ class Media(domainresource.DomainResource):
             "A procedure that is fulfilled in whole or in part by the creation of "
             "this media."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ProcedureRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ProcedureRequest"],
+        },
     )
 
-    bodySite: fhirtypes.CodeableConceptType = Field(
+    bodySite: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Body part in media",
@@ -48,11 +47,12 @@ class Media(domainresource.DomainResource):
             "Indicates the site on the subject's body where the media was collected"
             " (i.e. the target site)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    content: fhirtypes.AttachmentType = Field(
+    content: fhirtypes.AttachmentType = Field(  # type: ignore
         ...,
         alias="content",
         title="Actual Media - reference or data",
@@ -60,11 +60,12 @@ class Media(domainresource.DomainResource):
             "The actual content of the media - inline or by direct reference to the"
             " media source file."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    context: fhirtypes.ReferenceType = Field(
+    context: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="context",
         title="Encounter / Episode associated with media",
@@ -72,36 +73,39 @@ class Media(domainresource.DomainResource):
             "The encounter or episode of care that establishes the context for this"
             " media."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter", "EpisodeOfCare"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter", "EpisodeOfCare"],
+        },
     )
 
-    device: fhirtypes.ReferenceType = Field(
+    device: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="device",
         title="Observing Device",
         description="The device used to collect the media.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device", "DeviceMetric"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device", "DeviceMetric"],
+        },
     )
 
-    duration: fhirtypes.UnsignedInt = Field(
+    duration: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="duration",
         title="Length in seconds (audio / video)",
         description="The duration of the recording in seconds - for audio and video.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_duration", title="Extension field for ``duration``."
     )
 
-    frames: fhirtypes.PositiveInt = Field(
+    frames: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="frames",
         title="Number of frames if > 1 (photo)",
@@ -112,26 +116,28 @@ class Media(domainresource.DomainResource):
             "this SHALL have a value in order to alert interface software that a "
             "multi-frame capable rendering widget is required."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    frames__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    frames__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_frames", title="Extension field for ``frames``."
     )
 
-    height: fhirtypes.PositiveInt = Field(
+    height: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="height",
         title="Height of the image in pixels (photo/video)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    height__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    height__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_height", title="Extension field for ``height``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier(s) for the image",
@@ -141,11 +147,12 @@ class Media(domainresource.DomainResource):
             "(e.g. series ids) and context ids such as accession numbers or other "
             "workflow identifiers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about the media",
@@ -153,71 +160,83 @@ class Media(domainresource.DomainResource):
             "Comments made about the media by the performer, subject or other "
             "participants."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    occurrenceDateTime: fhirtypes.DateTime = Field(
+    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="When Media was collected",
         description="The date and time(s) at which the media was collected.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": False,
+        },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType = Field(
+    occurrencePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="occurrencePeriod",
         title="When Media was collected",
         description="The date and time(s) at which the media was collected.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": False,
+        },
     )
 
-    operator: fhirtypes.ReferenceType = Field(
+    operator: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="operator",
         title="The person who generated the image",
         description="The person who administered the collection of the image.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Why was event performed?",
         description="Describes why the event occurred in coded or textual form.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Who/What this Media is a record of",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Practitioner", "Group", "Device", "Specimen"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Practitioner",
+                "Group",
+                "Device",
+                "Specimen",
+            ],
+        },
     )
 
-    subtype: fhirtypes.CodeableConceptType = Field(
+    subtype: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="subtype",
         title="The type of acquisition equipment/process",
@@ -226,11 +245,12 @@ class Media(domainresource.DomainResource):
             "type of device). If images sourced from a DICOM system, are wrapped in"
             " a Media resource, then this is the modality."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="photo | video | audio",
@@ -238,35 +258,38 @@ class Media(domainresource.DomainResource):
             "Whether the media is a photo (still image), an audio recording, or a "
             "video recording."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["photo", "video", "audio"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["photo", "video", "audio"],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    view: fhirtypes.CodeableConceptType = Field(
+    view: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="view",
         title="Imaging view, e.g. Lateral or Antero-posterior",
         description="The name of the imaging view e.g. Lateral or Antero-posterior (AP).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    width: fhirtypes.PositiveInt = Field(
+    width: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="width",
         title="Width of the image in pixels (photo/video)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    width__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    width__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_width", title="Extension field for ``width``."
     )
 
@@ -306,10 +329,7 @@ class Media(domainresource.DomainResource):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_654(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -318,57 +338,9 @@ class Media(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_654(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -382,23 +354,4 @@ class Media(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"occurrence": ["occurrenceDateTime", "occurrencePeriod"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

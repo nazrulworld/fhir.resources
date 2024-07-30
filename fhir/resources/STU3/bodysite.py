@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -24,71 +24,77 @@ class BodySite(domainresource.DomainResource):
     necessary detail needed for the use case.
     """
 
-    resource_type = Field("BodySite", const=True)
+    __resource_type__ = "BodySite"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this body site record is in active use",
         description="Whether this body site is in active use.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Named anatomical location",
         description="Named anatomical location - ideally coded where possible.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Anatomical location description",
         description="A summary, charactarization or explanation of the anatomic location.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Bodysite identifier",
         description="Identifier for this instance of the anatomical location.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] = Field(
+    image: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="image",
         title="Attached images",
         description="Image or images used to identify a location.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="patient",
         title="Who this is about",
         description="The person to which the body site belongs.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    qualifier: typing.List[fhirtypes.CodeableConceptType] = Field(
+    qualifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="qualifier",
         title="Modification to location code",
@@ -96,8 +102,9 @@ class BodySite(domainresource.DomainResource):
             "Qualifier to refine the anatomical location.  These include qualifiers"
             " for laterality, relative location, directionality, number, and plane."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

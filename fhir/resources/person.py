@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Person(domainresource.DomainResource):
@@ -25,7 +25,7 @@ class Person(domainresource.DomainResource):
 
     __resource_type__ = "Person"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="This person's record is in active use",
@@ -34,11 +34,11 @@ class Person(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
         None,
         alias="address",
         title="One or more addresses for the person",
@@ -48,7 +48,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType = Field(
+    birthDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="birthDate",
         title="The date on which the person was born",
@@ -57,11 +57,11 @@ class Person(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: typing.List[fhirtypes.PersonCommunicationType] = Field(
+    communication: typing.List[fhirtypes.PersonCommunicationType] = Field(  # type: ignore
         None,
         alias="communication",
         title=(
@@ -74,7 +74,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    deceasedBoolean: bool = Field(
+    deceasedBoolean: bool = Field(  # type: ignore
         None,
         alias="deceasedBoolean",
         title="Indicates if the individual is deceased or not",
@@ -86,11 +86,11 @@ class Person(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
     )
 
-    deceasedDateTime: fhirtypes.DateTimeType = Field(
+    deceasedDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="deceasedDateTime",
         title="Indicates if the individual is deceased or not",
@@ -102,13 +102,13 @@ class Person(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_deceasedDateTime",
         title="Extension field for ``deceasedDateTime``.",
     )
 
-    gender: fhirtypes.CodeType = Field(
+    gender: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -120,11 +120,11 @@ class Person(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="A human identifier for this person",
@@ -134,7 +134,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    link: typing.List[fhirtypes.PersonLinkType] = Field(
+    link: typing.List[fhirtypes.PersonLinkType] = Field(  # type: ignore
         None,
         alias="link",
         title="Link to a resource that concerns the same actual person",
@@ -144,7 +144,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType = Field(
+    managingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title="The organization that is the custodian of the person record",
@@ -156,7 +156,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    maritalStatus: fhirtypes.CodeableConceptType = Field(
+    maritalStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="maritalStatus",
         title="Marital (civil) status of a person",
@@ -166,7 +166,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the person",
@@ -176,7 +176,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="photo",
         title="Image of the person",
@@ -189,7 +189,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the person",
@@ -250,9 +250,6 @@ class Person(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class PersonCommunication(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -264,7 +261,7 @@ class PersonCommunication(backboneelement.BackboneElement):
 
     __resource_type__ = "PersonCommunication"
 
-    language: fhirtypes.CodeableConceptType = Field(
+    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="language",
         title=(
@@ -282,7 +279,7 @@ class PersonCommunication(backboneelement.BackboneElement):
         },
     )
 
-    preferred: bool = Field(
+    preferred: bool = Field(  # type: ignore
         None,
         alias="preferred",
         title="Language preference indicator",
@@ -294,7 +291,7 @@ class PersonCommunication(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
@@ -317,7 +314,7 @@ class PersonLink(backboneelement.BackboneElement):
 
     __resource_type__ = "PersonLink"
 
-    assurance: fhirtypes.CodeType = Field(
+    assurance: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="assurance",
         title="level1 | level2 | level3 | level4",
@@ -332,11 +329,11 @@ class PersonLink(backboneelement.BackboneElement):
             "enum_values": ["level1", "level2", "level3", "level4"],
         },
     )
-    assurance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    assurance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_assurance", title="Extension field for ``assurance``."
     )
 
-    target: fhirtypes.ReferenceType = Field(
+    target: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="target",
         title="The resource to which this actual person is associated",

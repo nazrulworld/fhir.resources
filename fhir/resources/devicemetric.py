@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceMetric(domainresource.DomainResource):
@@ -24,7 +24,7 @@ class DeviceMetric(domainresource.DomainResource):
 
     __resource_type__ = "DeviceMetric"
 
-    calibration: typing.List[fhirtypes.DeviceMetricCalibrationType] = Field(
+    calibration: typing.List[fhirtypes.DeviceMetricCalibrationType] = Field(  # type: ignore
         None,
         alias="calibration",
         title=(
@@ -37,7 +37,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    category: fhirtypes.CodeType = Field(
+    category: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="category",
         title="measurement | setting | calculation | unspecified",
@@ -54,11 +54,11 @@ class DeviceMetric(domainresource.DomainResource):
             "enum_values": ["measurement", "setting", "calculation", "unspecified"],
         },
     )
-    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_category", title="Extension field for ``category``."
     )
 
-    color: fhirtypes.CodeType = Field(
+    color: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="color",
         title="Color name (from CSS4) or #RRGGBB code",
@@ -74,11 +74,11 @@ class DeviceMetric(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_color", title="Extension field for ``color``."
     )
 
-    device: fhirtypes.ReferenceType = Field(
+    device: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="device",
         title="Describes the link to the Device",
@@ -93,7 +93,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Instance identifier",
@@ -107,7 +107,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    measurementFrequency: fhirtypes.QuantityType = Field(
+    measurementFrequency: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="measurementFrequency",
         title="Indicates how often the metric is taken or recorded",
@@ -126,7 +126,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    operationalStatus: fhirtypes.CodeType = Field(
+    operationalStatus: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="operationalStatus",
         title="on | off | standby | entered-in-error",
@@ -141,13 +141,13 @@ class DeviceMetric(domainresource.DomainResource):
             "enum_values": ["on", "off", "standby", "entered-in-error"],
         },
     )
-    operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_operationalStatus",
         title="Extension field for ``operationalStatus``.",
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="Identity of metric, for example Heart Rate or PEEP Setting",
@@ -160,7 +160,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    unit: fhirtypes.CodeableConceptType = Field(
+    unit: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="unit",
         title="Unit of Measure for the Metric",
@@ -211,9 +211,6 @@ class DeviceMetric(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class DeviceMetricCalibration(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -225,7 +222,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
 
     __resource_type__ = "DeviceMetricCalibration"
 
-    state: fhirtypes.CodeType = Field(
+    state: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="state",
         title="not-calibrated | calibration-required | calibrated | unspecified",
@@ -242,11 +239,11 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
             ],
         },
     )
-    state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_state", title="Extension field for ``state``."
     )
 
-    time: fhirtypes.InstantType = Field(
+    time: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="time",
         title="Describes the time last calibration has been performed",
@@ -255,11 +252,11 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_time", title="Extension field for ``time``."
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="unspecified | offset | gain | two-point",
@@ -271,7 +268,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
             "enum_values": ["unspecified", "offset", "gain", "two-point"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 

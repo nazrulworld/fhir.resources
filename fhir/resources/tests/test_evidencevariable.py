@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import evidencevariable
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_evidencevariable_1(inst):
@@ -21,7 +21,9 @@ def impl_evidencevariable_1(inst):
     )
     assert (
         inst.characteristic[0].definitionCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.characteristic[0].description == "placebo"
     assert inst.description == "placebo"
@@ -30,8 +32,8 @@ def impl_evidencevariable_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Placebo"
@@ -79,14 +81,16 @@ def impl_evidencevariable_2(inst):
     )
     assert (
         inst.characteristic[0].timeFromEvent[0].eventCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/evidence-variable-event"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/evidence-variable-event"}
         ).valueUri
     )
     assert inst.characteristic[0].timeFromEvent[0].quantity.code == "d"
     assert (
         inst.characteristic[0].timeFromEvent[0].quantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[0].timeFromEvent[0].quantity.unit == "day"
     assert float(inst.characteristic[0].timeFromEvent[0].quantity.value) == float(90)
@@ -99,8 +103,8 @@ def impl_evidencevariable_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "ModifiedRankinScaleScore02At90DaysAfterTreatment"
@@ -145,8 +149,8 @@ def impl_evidencevariable_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "AlteplaseForStroke"
@@ -185,8 +189,8 @@ def impl_evidencevariable_4(inst):
     )
     assert (
         inst.characteristic[0].definitionCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.nlm.nih.gov/research/umls/rxnorm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.nlm.nih.gov/research/umls/rxnorm"}
         ).valueUri
     )
     assert inst.characteristic[0].description == "no alteplase"
@@ -197,8 +201,8 @@ def impl_evidencevariable_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "NoAlteplase"
@@ -249,7 +253,9 @@ def impl_evidencevariable_5(inst):
         .definitionByCombination.characteristic[0]
         .definitionCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[0].definitionByCombination.characteristic[0].description
@@ -277,8 +283,8 @@ def impl_evidencevariable_5(inst):
         .timeFromEvent[0]
         .eventCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/evidence-variable-event"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/evidence-variable-event"}
         ).valueUri
     )
     assert (
@@ -293,7 +299,9 @@ def impl_evidencevariable_5(inst):
         .definitionByCombination.characteristic[0]
         .timeFromEvent[0]
         .quantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[0]
@@ -327,7 +335,9 @@ def impl_evidencevariable_5(inst):
         .definitionByCombination.characteristic[1]
         .definitionCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[0].definitionByCombination.characteristic[1].description
@@ -345,7 +355,9 @@ def impl_evidencevariable_5(inst):
         .definitionByCombination.characteristic[1]
         .timeFromEvent[0]
         .quantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[0]
@@ -372,8 +384,8 @@ def impl_evidencevariable_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "DeadOrFunctionallyDependentAt90Days"
@@ -416,7 +428,9 @@ def impl_evidencevariable_6(inst):
     )
     assert (
         inst.characteristic[0].definitionByTypeAndValue.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.characteristic[0].definitionByTypeAndValue.valueQuantity.code == "a"
     assert (
@@ -424,7 +438,9 @@ def impl_evidencevariable_6(inst):
     )
     assert (
         inst.characteristic[0].definitionByTypeAndValue.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[0].definitionByTypeAndValue.valueQuantity.unit == "year"
     assert float(
@@ -441,7 +457,9 @@ def impl_evidencevariable_6(inst):
     )
     assert (
         inst.characteristic[1].definitionByTypeAndValue.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.characteristic[1].definitionByTypeAndValue.valueQuantity.code == "kg/m2"
     assert (
@@ -449,7 +467,9 @@ def impl_evidencevariable_6(inst):
     )
     assert (
         inst.characteristic[1].definitionByTypeAndValue.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[1].definitionByTypeAndValue.valueQuantity.unit == "kg/m2"
     assert float(
@@ -462,8 +482,8 @@ def impl_evidencevariable_6(inst):
     assert inst.copyright == "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2022-07-24T21:00:00.088Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-07-24T21:00:00.088Z"}
         ).valueDateTime
     )
     assert inst.description == "obese, adult (age ≥18 years old) patients"
@@ -471,7 +491,9 @@ def impl_evidencevariable_6(inst):
     assert inst.identifier[0].assigner.display == "Computable Publishing LLC"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="https://fevir.net").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "FEvIR Object Identifier"
     assert inst.identifier[0].value == "49218"
@@ -479,16 +501,18 @@ def impl_evidencevariable_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "StudyEligibilityCriteriaObesePatients18YearsOld"
     assert inst.publisher == "Computable Publishing LLC"
     assert (
         inst.relatedArtifact[0].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://academic.oup.com/eurheartj/article/43/20/1955/6542137"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://academic.oup.com/eurheartj/article/43/20/1955/6542137"
+            }
         ).valueUrl
     )
     assert inst.relatedArtifact[0].label == "data source"
@@ -508,7 +532,7 @@ def impl_evidencevariable_6(inst):
     assert inst.relatedArtifact[1].resourceReference.reference == "Citation/33400"
     assert (
         inst.relatedArtifact[1].resourceReference.type
-        == ExternalValidatorModel(valueUri="Citation").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Citation"}).valueUri
     )
     assert inst.relatedArtifact[1].type == "supported-with"
     assert inst.status == "active"
@@ -555,7 +579,7 @@ def impl_evidencevariable_7(inst):
         inst.characteristic[0]
         .definitionByCombination.characteristic[0]
         .definitionReference.type
-        == ExternalValidatorModel(valueUri="Group").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Group"}).valueUri
     )
     assert (
         inst.characteristic[0]
@@ -573,7 +597,7 @@ def impl_evidencevariable_7(inst):
         inst.characteristic[0]
         .definitionByCombination.characteristic[1]
         .definitionReference.type
-        == ExternalValidatorModel(valueUri="Group").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Group"}).valueUri
     )
     assert (
         inst.characteristic[0]
@@ -591,7 +615,7 @@ def impl_evidencevariable_7(inst):
         inst.characteristic[0]
         .definitionByCombination.characteristic[2]
         .definitionReference.type
-        == ExternalValidatorModel(valueUri="Group").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Group"}).valueUri
     )
     assert (
         inst.characteristic[0]
@@ -609,7 +633,7 @@ def impl_evidencevariable_7(inst):
         inst.characteristic[0]
         .definitionByCombination.characteristic[3]
         .definitionReference.type
-        == ExternalValidatorModel(valueUri="Group").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Group"}).valueUri
     )
     assert (
         inst.characteristic[0]
@@ -627,7 +651,7 @@ def impl_evidencevariable_7(inst):
         inst.characteristic[0]
         .definitionByCombination.characteristic[4]
         .definitionReference.type
-        == ExternalValidatorModel(valueUri="Group").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Group"}).valueUri
     )
     assert (
         inst.characteristic[0]
@@ -645,7 +669,7 @@ def impl_evidencevariable_7(inst):
         inst.characteristic[0]
         .definitionByCombination.characteristic[5]
         .definitionReference.type
-        == ExternalValidatorModel(valueUri="Group").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Group"}).valueUri
     )
     assert (
         inst.characteristic[0]
@@ -663,7 +687,7 @@ def impl_evidencevariable_7(inst):
         inst.characteristic[0]
         .definitionByCombination.characteristic[6]
         .definitionReference.type
-        == ExternalValidatorModel(valueUri="Group").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Group"}).valueUri
     )
     assert inst.characteristic[0].definitionByCombination.code == "any-of"
     assert inst.characteristic[0].description == (
@@ -681,15 +705,15 @@ def impl_evidencevariable_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "StrokeThrombolysisTrialists20142016IPDMACohort"
     assert (
         inst.relatedArtifact[0].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://doi.org/10.1016/S0140-6736(14)60584-5"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "https://doi.org/10.1016/S0140-6736(14)60584-5"}
         ).valueUrl
     )
     assert inst.relatedArtifact[0].label == "Emberson 2014"
@@ -697,8 +721,8 @@ def impl_evidencevariable_7(inst):
     assert inst.relatedArtifact[1].display == "Figure 2 Lees 2016"
     assert (
         inst.relatedArtifact[1].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://doi.org/10.1161/STROKEAHA.116.013644"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "https://doi.org/10.1161/STROKEAHA.116.013644"}
         ).valueUrl
     )
     assert inst.relatedArtifact[1].label == "Lees 2016"
@@ -741,7 +765,9 @@ def impl_evidencevariable_8(inst):
     )
     assert (
         inst.characteristic[0].definitionCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.characteristic[0].description == "intracranial hemorrhage within 7 days"
     assert inst.characteristic[0].timeFromEvent[0].description == "within 7 days"
@@ -755,21 +781,25 @@ def impl_evidencevariable_8(inst):
     )
     assert (
         inst.characteristic[0].timeFromEvent[0].eventCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/evidence-variable-event"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/evidence-variable-event"}
         ).valueUri
     )
     assert inst.characteristic[0].timeFromEvent[0].range.high.code == "d"
     assert (
         inst.characteristic[0].timeFromEvent[0].range.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[0].timeFromEvent[0].range.high.unit == "day"
     assert float(inst.characteristic[0].timeFromEvent[0].range.high.value) == float(7)
     assert inst.characteristic[0].timeFromEvent[0].range.low.code == "d"
     assert (
         inst.characteristic[0].timeFromEvent[0].range.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[0].timeFromEvent[0].range.low.unit == "day"
     assert float(inst.characteristic[0].timeFromEvent[0].range.low.value) == float(0)
@@ -782,21 +812,27 @@ def impl_evidencevariable_8(inst):
     )
     assert (
         inst.characteristic[1].definitionCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.characteristic[1].description == "death within 7 days"
     assert inst.characteristic[1].timeFromEvent[0].description == "within 7 days"
     assert inst.characteristic[1].timeFromEvent[0].range.high.code == "d"
     assert (
         inst.characteristic[1].timeFromEvent[0].range.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[1].timeFromEvent[0].range.high.unit == "day"
     assert float(inst.characteristic[1].timeFromEvent[0].range.high.value) == float(7)
     assert inst.characteristic[1].timeFromEvent[0].range.low.code == "d"
     assert (
         inst.characteristic[1].timeFromEvent[0].range.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[1].timeFromEvent[0].range.low.unit == "day"
     assert float(inst.characteristic[1].timeFromEvent[0].range.low.value) == float(0)
@@ -807,8 +843,8 @@ def impl_evidencevariable_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "FatalIntracranialHemorrhageWithinSevenDays"
@@ -851,7 +887,9 @@ def impl_evidencevariable_9(inst):
     )
     assert (
         inst.characteristic[0].definitionByTypeAndValue.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.characteristic[0].definitionByTypeAndValue.valueQuantity.code == "a"
     assert (
@@ -859,7 +897,9 @@ def impl_evidencevariable_9(inst):
     )
     assert (
         inst.characteristic[0].definitionByTypeAndValue.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[0].definitionByTypeAndValue.valueQuantity.unit == "years"
     assert float(
@@ -877,7 +917,9 @@ def impl_evidencevariable_9(inst):
     )
     assert (
         inst.characteristic[1].definitionByTypeAndValue.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[1].definitionByTypeAndValue.type.coding[1].code
@@ -889,8 +931,8 @@ def impl_evidencevariable_9(inst):
     )
     assert (
         inst.characteristic[1].definitionByTypeAndValue.type.coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -909,7 +951,9 @@ def impl_evidencevariable_9(inst):
         inst.characteristic[1]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.characteristic[1].description == "Diagnosed with type 2 diabetes."
     assert inst.characteristic[1].exclude is False
@@ -932,7 +976,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -950,7 +996,9 @@ def impl_evidencevariable_9(inst):
         inst.characteristic[2]
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -993,7 +1041,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1014,7 +1064,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1065,7 +1117,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1089,7 +1143,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.6.238").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.6.238"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1144,7 +1200,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1158,7 +1216,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[2]
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.valueRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1185,7 +1245,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[2]
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.valueRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1263,7 +1325,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1277,7 +1341,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[3]
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.valueRange.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1304,7 +1370,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[3]
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.valueRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[2]
@@ -1395,7 +1463,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[3]
@@ -1416,8 +1486,8 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.type.coding[1]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -1436,7 +1506,7 @@ def impl_evidencevariable_9(inst):
         inst.characteristic[3]
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.valueReference.type
-        == ExternalValidatorModel(valueUri="ValueSet").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "ValueSet"}).valueUri
     )
     assert inst.characteristic[3].definitionByCombination.characteristic[
         0
@@ -1462,7 +1532,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[3]
@@ -1483,8 +1555,8 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByTypeAndValue.type.coding[1]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -1506,7 +1578,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[3].definitionByCombination.characteristic[1].description
@@ -1531,7 +1605,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[2]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[3]
@@ -1552,8 +1628,8 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[2]
         .definitionByTypeAndValue.type.coding[1]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -1575,7 +1651,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[2]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[3].definitionByCombination.characteristic[2].description
@@ -1600,14 +1678,18 @@ def impl_evidencevariable_9(inst):
     assert inst.characteristic[3].timeFromEvent[0].range.high.code == "mo"
     assert (
         inst.characteristic[3].timeFromEvent[0].range.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[3].timeFromEvent[0].range.high.unit == "months"
     assert float(inst.characteristic[3].timeFromEvent[0].range.high.value) == float(0)
     assert inst.characteristic[3].timeFromEvent[0].range.low.code == "mo"
     assert (
         inst.characteristic[3].timeFromEvent[0].range.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[3].timeFromEvent[0].range.low.unit == "months"
     assert float(inst.characteristic[3].timeFromEvent[0].range.low.value) == float(-6)
@@ -1647,7 +1729,9 @@ def impl_evidencevariable_9(inst):
     )
     assert (
         inst.characteristic[6].definitionByTypeAndValue.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[6].definitionByTypeAndValue.type.coding[1].code
@@ -1659,8 +1743,8 @@ def impl_evidencevariable_9(inst):
     )
     assert (
         inst.characteristic[6].definitionByTypeAndValue.type.coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -1679,7 +1763,9 @@ def impl_evidencevariable_9(inst):
         inst.characteristic[6]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[6].description
@@ -1698,14 +1784,18 @@ def impl_evidencevariable_9(inst):
     assert inst.characteristic[6].timeFromEvent[0].range.high.code == "mo"
     assert (
         inst.characteristic[6].timeFromEvent[0].range.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[6].timeFromEvent[0].range.high.unit == "months"
     assert float(inst.characteristic[6].timeFromEvent[0].range.high.value) == float(0)
     assert inst.characteristic[6].timeFromEvent[0].range.low.code == "mo"
     assert (
         inst.characteristic[6].timeFromEvent[0].range.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[6].timeFromEvent[0].range.low.unit == "months"
     assert float(inst.characteristic[6].timeFromEvent[0].range.low.value) == float(-6)
@@ -1719,7 +1809,9 @@ def impl_evidencevariable_9(inst):
     )
     assert (
         inst.characteristic[7].definitionByTypeAndValue.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[7].definitionByTypeAndValue.type.coding[1].code
@@ -1731,8 +1823,8 @@ def impl_evidencevariable_9(inst):
     )
     assert (
         inst.characteristic[7].definitionByTypeAndValue.type.coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -1751,7 +1843,9 @@ def impl_evidencevariable_9(inst):
         inst.characteristic[7]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[7].description == "Thrombophlebitis in the past six months."
@@ -1769,14 +1863,18 @@ def impl_evidencevariable_9(inst):
     assert inst.characteristic[7].timeFromEvent[0].range.high.code == "mo"
     assert (
         inst.characteristic[7].timeFromEvent[0].range.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[7].timeFromEvent[0].range.high.unit == "months"
     assert float(inst.characteristic[7].timeFromEvent[0].range.high.value) == float(0)
     assert inst.characteristic[7].timeFromEvent[0].range.low.code == "mo"
     assert (
         inst.characteristic[7].timeFromEvent[0].range.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[7].timeFromEvent[0].range.low.unit == "months"
     assert float(inst.characteristic[7].timeFromEvent[0].range.low.value) == float(-6)
@@ -1799,7 +1897,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8]
@@ -1820,8 +1920,8 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.type.coding[1]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -1843,7 +1943,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[0]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8].definitionByCombination.characteristic[0].description
@@ -1872,7 +1974,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8]
@@ -1893,8 +1997,8 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByTypeAndValue.type.coding[1]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -1916,7 +2020,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[1]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8].definitionByCombination.characteristic[1].description
@@ -1944,7 +2050,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[2]
         .definitionByTypeAndValue.type.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8]
@@ -1965,8 +2073,8 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[2]
         .definitionByTypeAndValue.type.coding[1]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/resource-types"}
         ).valueUri
     )
     assert (
@@ -1988,7 +2096,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[2]
         .definitionByTypeAndValue.valueCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8].definitionByCombination.characteristic[2].description
@@ -2016,7 +2126,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[3]
         .definitionCodeableConcept.coding[0]
         .system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8].definitionByCombination.characteristic[3].description
@@ -2049,7 +2161,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[3]
         .timeFromEvent[0]
         .range.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8]
@@ -2076,7 +2190,9 @@ def impl_evidencevariable_9(inst):
         .definitionByCombination.characteristic[3]
         .timeFromEvent[0]
         .range.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert (
         inst.characteristic[8]
@@ -2120,13 +2236,17 @@ def impl_evidencevariable_9(inst):
     assert inst.copyright == "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     assert (
         inst.effectivePeriod.start
-        == ExternalValidatorModel(valueDateTime="2021-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01"}
+        ).valueDateTime
     )
     assert inst.id == "example-eligibility-criteria-ada-rec-bariatric"
     assert inst.identifier[0].assigner.display == "Computable Publishing LLC"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="https://fevir.net").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "FEvIR Object Identifier"
     assert inst.identifier[0].value == "32140"
@@ -2134,8 +2254,8 @@ def impl_evidencevariable_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == (
@@ -2184,7 +2304,9 @@ def impl_evidencevariable_10(inst):
     )
     assert (
         inst.characteristic[0].definitionCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.characteristic[0].description == "not functionally dependent at 90 days"
     assert inst.characteristic[0].exclude is True
@@ -2198,14 +2320,16 @@ def impl_evidencevariable_10(inst):
     )
     assert (
         inst.characteristic[0].timeFromEvent[0].eventCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/evidence-variable-event"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/evidence-variable-event"}
         ).valueUri
     )
     assert inst.characteristic[0].timeFromEvent[0].quantity.code == "d"
     assert (
         inst.characteristic[0].timeFromEvent[0].quantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[0].timeFromEvent[0].quantity.unit == "day"
     assert float(inst.characteristic[0].timeFromEvent[0].quantity.value) == float(90)
@@ -2218,7 +2342,9 @@ def impl_evidencevariable_10(inst):
     )
     assert (
         inst.characteristic[1].definitionCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.characteristic[1].description == "alive at 90 days"
     assert inst.characteristic[1].exclude is True
@@ -2232,14 +2358,16 @@ def impl_evidencevariable_10(inst):
     )
     assert (
         inst.characteristic[1].timeFromEvent[0].eventCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/evidence-variable-event"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/evidence-variable-event"}
         ).valueUri
     )
     assert inst.characteristic[1].timeFromEvent[0].quantity.code == "d"
     assert (
         inst.characteristic[1].timeFromEvent[0].quantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.characteristic[1].timeFromEvent[0].quantity.unit == "day"
     assert float(inst.characteristic[1].timeFromEvent[0].quantity.value) == float(90)
@@ -2250,8 +2378,8 @@ def impl_evidencevariable_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "AliveAndNotFunctionallyDependentAt90Days"

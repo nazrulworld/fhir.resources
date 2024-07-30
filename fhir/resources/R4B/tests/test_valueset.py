@@ -6,43 +6,70 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import valueset
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_valueset_1(inst):
     assert (
         inst.compose.include[0].system
-        == "http://terminology.hl7.org/CodeSystem/device-status-reason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/device-status-reason"}
+        ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == "The availability status reason of the device."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "oo"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "device-status-reason"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.1081"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -53,7 +80,12 @@ def impl_valueset_1(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "FHIRDeviceStatusReason"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/device-status-reason"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/device-status-reason"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -62,15 +94,13 @@ def test_valueset_1(base_settings):
     Test File: valueset-device-status-reason.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-device-status-reason.json"
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -80,28 +110,48 @@ def test_valueset_1(base_settings):
 def impl_valueset_2(inst):
     assert (
         inst.compose.include[0].system
-        == "http://hl7.org/fhir/definition-resource-types"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/definition-resource-types"}
+        ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2022-05-28T12:47:40+10:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-05-28T12:47:40+10:00"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "A list of all the definition resource types defined in this "
         "version of the FHIR specification."
     )
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "vocab"
     assert inst.id == "definition-resource-types"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.1056"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -112,7 +162,12 @@ def impl_valueset_2(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "DefinitionResourceType"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/definition-resource-types"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/definition-resource-types"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -123,15 +178,13 @@ def test_valueset_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "valueset-definition-resource-types.json"
     )
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -159,29 +212,56 @@ def impl_valueset_3(inst):
     assert inst.compose.include[0].concept[8].display == "Inferior"
     assert inst.compose.include[0].concept[9].code == "255551008"
     assert inst.compose.include[0].concept[9].display == "Posterior"
-    assert inst.compose.include[0].system == "http://snomed.info/sct"
+    assert (
+        inst.compose.include[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.description == "SNOMED-CT concepts modifying the anatomic location"
     assert inst.experimental is True
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "oo"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "draft"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "bodystructure-relative-location"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.140"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -192,7 +272,12 @@ def impl_valueset_3(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "Bodystructure Location Qualifier"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/bodystructure-relative-location"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/bodystructure-relative-location"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -204,15 +289,13 @@ def test_valueset_3(base_settings):
         base_settings["unittest_data_dir"]
         / "valueset-bodystructure-relative-location.json"
     )
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -220,33 +303,65 @@ def test_valueset_3(base_settings):
 
 
 def impl_valueset_4(inst):
-    assert inst.compose.include[0].system == "http://hl7.org/fhir/encounter-status"
+    assert (
+        inst.compose.include[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/encounter-status"}
+        ).valueUri
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == "Current state of the encounter."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "pa"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "encounter-status"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.246"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -257,7 +372,12 @@ def impl_valueset_4(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "EncounterStatus"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/encounter-status"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/encounter-status"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -266,15 +386,13 @@ def test_valueset_4(base_settings):
     Test File: valueset-encounter-status.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-encounter-status.json"
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -284,31 +402,55 @@ def test_valueset_4(base_settings):
 def impl_valueset_5(inst):
     assert (
         inst.compose.include[0].system
-        == "http://terminology.hl7.org/CodeSystem/consentscope"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/consentscope"}
+        ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.copyright == "This is an example set."
     assert inst.description == "This value set includes the four Consent scope codes."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "cbcc"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "consent-scope"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.761"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -319,7 +461,12 @@ def impl_valueset_5(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "Consent Scope Codes"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/consent-scope"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/consent-scope"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -328,15 +475,13 @@ def test_valueset_5(base_settings):
     Test File: valueset-consent-scope.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-consent-scope.json"
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -344,33 +489,65 @@ def test_valueset_5(base_settings):
 
 
 def impl_valueset_6(inst):
-    assert inst.compose.include[0].system == "http://hl7.org/fhir/report-status-codes"
+    assert (
+        inst.compose.include[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/report-status-codes"}
+        ).valueUri
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == "The current status of the test report."
     assert inst.experimental is True
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "fhir"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 0
     assert inst.id == "report-status-codes"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.724"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -381,7 +558,12 @@ def impl_valueset_6(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "TestReportStatus"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/report-status-codes"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/report-status-codes"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -390,15 +572,13 @@ def test_valueset_6(base_settings):
     Test File: valueset-report-status-codes.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-report-status-codes.json"
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -406,33 +586,65 @@ def test_valueset_6(base_settings):
 
 
 def impl_valueset_7(inst):
-    assert inst.compose.include[0].system == "http://hl7.org/fhir/note-type"
+    assert (
+        inst.compose.include[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/note-type"}
+        ).valueUri
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2022-05-28T12:47:40+10:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-05-28T12:47:40+10:00"}
+        ).valueDateTime
+    )
     assert inst.description == "The presentation types of notes."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "fm"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "note-type"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.15"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -449,7 +661,12 @@ def impl_valueset_7(inst):
     )
     assert inst.text.status == "generated"
     assert inst.title == "NoteType"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/note-type"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/note-type"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -458,15 +675,13 @@ def test_valueset_7(base_settings):
     Test File: valueset-note-type.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-note-type.json"
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -474,30 +689,62 @@ def test_valueset_7(base_settings):
 
 
 def impl_valueset_8(inst):
-    assert inst.compose.include[0].system == "https://precision.fda.gov/apps/"
-    assert inst.compose.include[1].system == "https://precision.fda.gov/jobs/"
+    assert (
+        inst.compose.include[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://precision.fda.gov/apps/"}
+        ).valueUri
+    )
+    assert (
+        inst.compose.include[1].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://precision.fda.gov/jobs/"}
+        ).valueUri
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.description == "This value set includes sequence quality method"
     assert inst.experimental is True
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "cg"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "draft"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "sequence-quality-method"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.223"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -507,7 +754,12 @@ def impl_valueset_8(inst):
     assert inst.publisher == "FHIR Project team"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/sequence-quality-method"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/sequence-quality-method"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -518,15 +770,13 @@ def test_valueset_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "valueset-sequence-quality-method.json"
     )
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -534,38 +784,74 @@ def test_valueset_8(base_settings):
 
 
 def impl_valueset_9(inst):
-    assert inst.compose.include[0].system == "http://hl7.org/fhir/issue-severity"
+    assert (
+        inst.compose.include[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/issue-severity"}
+        ).valueUri
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == "How the issue affects the success of the action."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "fhir"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "normative"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "normative-version"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueCode == "4.0.0"
-    assert inst.extension[3].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[3].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[3].valueInteger == 5
     assert inst.id == "issue-severity"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.408"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -576,7 +862,12 @@ def impl_valueset_9(inst):
     assert inst.status == "active"
     assert inst.text.status == "generated"
     assert inst.title == "IssueSeverity"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/issue-severity"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/issue-severity"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -585,15 +876,13 @@ def test_valueset_9(base_settings):
     Test File: valueset-issue-severity.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-issue-severity.json"
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)
@@ -601,30 +890,62 @@ def test_valueset_9(base_settings):
 
 
 def impl_valueset_10(inst):
-    assert inst.compose.include[0].system == "http://www.ensembl.org"
-    assert inst.compose.include[1].system == "http://www.ncbi.nlm.nih.gov/nuccore"
+    assert (
+        inst.compose.include[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ensembl.org"}
+        ).valueUri
+    )
+    assert (
+        inst.compose.include[1].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore"}
+        ).valueUri
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.description == "This value set includes all Reference codes"
     assert inst.experimental is True
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "cg"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "draft"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "sequence-referenceSeq"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.221"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -634,7 +955,12 @@ def impl_valueset_10(inst):
     assert inst.publisher == "FHIR Project team"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert inst.url == "http://hl7.org/fhir/ValueSet/sequence-referenceSeq"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ValueSet/sequence-referenceSeq"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -645,15 +971,13 @@ def test_valueset_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "valueset-sequence-referenceSeq.json"
     )
-    inst = valueset.ValueSet.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ValueSet" == inst.resource_type
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
+    assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ValueSet" == data["resourceType"]
 
     inst2 = valueset.ValueSet(**data)

@@ -25,7 +25,7 @@ class PaymentNotice(domainresource.DomainResource):
 
     __resource_type__ = "PaymentNotice"
 
-    amount: fhirtypes.MoneyType = Field(
+    amount: fhirtypes.MoneyType = Field(  # type: ignore
         ...,
         alias="amount",
         title="Monetary amount of the payment",
@@ -35,7 +35,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType = Field(
+    created: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="created",
         title="Creation date",
@@ -45,11 +45,11 @@ class PaymentNotice(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for the payment notice",
@@ -59,7 +59,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    payee: fhirtypes.ReferenceType = Field(
+    payee: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="payee",
         title="Party being paid",
@@ -78,7 +78,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    payment: fhirtypes.ReferenceType = Field(
+    payment: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="payment",
         title="Payment reference",
@@ -90,7 +90,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    paymentDate: fhirtypes.DateType = Field(
+    paymentDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="paymentDate",
         title="Payment or clearing date",
@@ -99,11 +99,11 @@ class PaymentNotice(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_paymentDate", title="Extension field for ``paymentDate``."
     )
 
-    paymentStatus: fhirtypes.CodeableConceptType = Field(
+    paymentStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="paymentStatus",
         title="Issued or cleared Status of the payment",
@@ -113,7 +113,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    recipient: fhirtypes.ReferenceType = Field(
+    recipient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="recipient",
         title="Party being notified",
@@ -125,7 +125,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    reporter: fhirtypes.ReferenceType = Field(
+    reporter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="reporter",
         title="Responsible practitioner",
@@ -141,7 +141,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    request: fhirtypes.ReferenceType = Field(
+    request: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="request",
         title="Request reference",
@@ -153,7 +153,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    response: fhirtypes.ReferenceType = Field(
+    response: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="response",
         title="Response reference",
@@ -165,7 +165,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -178,7 +178,7 @@ class PaymentNotice(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 

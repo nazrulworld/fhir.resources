@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import chargeitemdefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_chargeitemdefinition_1(inst):
@@ -20,12 +20,19 @@ def impl_chargeitemdefinition_1(inst):
         == "%context.service.suppliedItem.reference='Device/12345'"
     )
     assert inst.applicability[0].condition.language == "text/fhirpath"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2023-02").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-02"}
+        ).valueDateTime
+    )
     assert inst.description == "Financial details for custom made device"
     assert inst.id == "device"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.29.2"
     assert inst.instance[0].reference == "Device/example"
@@ -33,8 +40,8 @@ def impl_chargeitemdefinition_1(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.name == "CustomDevice345675"
@@ -47,8 +54,8 @@ def impl_chargeitemdefinition_1(inst):
     )
     assert (
         inst.propertyGroup[0].priceComponent[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fhir.de/CodeSystem/billing-attributes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fhir.de/CodeSystem/billing-attributes"}
         ).valueUri
     )
     assert inst.propertyGroup[0].priceComponent[0].type == "base"
@@ -68,8 +75,8 @@ def impl_chargeitemdefinition_1(inst):
     )
     assert (
         inst.propertyGroup[1].priceComponent[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fhir.de/CodeSystem/billing-attributes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fhir.de/CodeSystem/billing-attributes"}
         ).valueUri
     )
     assert float(inst.propertyGroup[1].priceComponent[0].factor) == float(1.19)
@@ -90,8 +97,8 @@ def impl_chargeitemdefinition_1(inst):
     )
     assert (
         inst.propertyGroup[2].priceComponent[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fhir.de/CodeSystem/billing-attributes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fhir.de/CodeSystem/billing-attributes"}
         ).valueUri
     )
     assert float(inst.propertyGroup[2].priceComponent[0].factor) == float(1.07)
@@ -102,15 +109,15 @@ def impl_chargeitemdefinition_1(inst):
     assert inst.title == "Financial details for custom made device (345675)"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://sap.org/ChargeItemDefinition/device-123"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://sap.org/ChargeItemDefinition/device-123"}
         ).valueUri
     )
     assert inst.useContext[0].code.code == "venue"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "440655000"
@@ -120,20 +127,24 @@ def impl_chargeitemdefinition_1(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "age"
     assert (
         inst.useContext[1].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[1].valueQuantity.code == "a"
     assert inst.useContext[1].valueQuantity.comparator == ">"
     assert (
         inst.useContext[1].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.useContext[1].valueQuantity.unit == "yrs"
     assert float(inst.useContext[1].valueQuantity.value) == float(18)
@@ -170,11 +181,15 @@ def impl_chargeitemdefinition_2(inst):
     assert inst.applicability[0].condition.language == "text/cql"
     assert (
         inst.applicability[0].effectivePeriod.end
-        == ExternalValidatorModel(valueDateTime="2018-06-30").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-06-30"}
+        ).valueDateTime
     )
     assert (
         inst.applicability[0].effectivePeriod.start
-        == ExternalValidatorModel(valueDateTime="2018-04-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-04-01"}
+        ).valueDateTime
     )
     assert (
         inst.applicability[1].condition.description == "Applies only once per Encounter"
@@ -183,18 +198,22 @@ def impl_chargeitemdefinition_2(inst):
     assert inst.applicability[1].condition.language == "text/CQL"
     assert (
         inst.applicability[1].effectivePeriod.end
-        == ExternalValidatorModel(valueDateTime="2018-06-30").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-06-30"}
+        ).valueDateTime
     )
     assert (
         inst.applicability[1].effectivePeriod.start
-        == ExternalValidatorModel(valueDateTime="2018-04-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-04-01"}
+        ).valueDateTime
     )
     assert inst.code.coding[0].code == "30110"
     assert inst.code.coding[0].display == "Allergologiediagnostik I"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fhir.de/CodingSystem/kbv/ebm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fhir.de/CodingSystem/kbv/ebm"}
         ).valueUri
     )
     assert inst.description == (
@@ -205,7 +224,9 @@ def impl_chargeitemdefinition_2(inst):
     assert inst.id == "ebm"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.29.1"
     assert inst.propertyGroup[0].priceComponent[0].amount.currency == "EUR"
@@ -217,8 +238,8 @@ def impl_chargeitemdefinition_2(inst):
     )
     assert (
         inst.propertyGroup[0].priceComponent[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fhir.de/CodeSystem/kbv/ebm-attribute"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fhir.de/CodeSystem/kbv/ebm-attribute"}
         ).valueUri
     )
     assert inst.propertyGroup[0].priceComponent[0].type == "base"
@@ -231,8 +252,8 @@ def impl_chargeitemdefinition_2(inst):
     )
     assert (
         inst.propertyGroup[0].priceComponent[1].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fhir.de/CodeSystem/kbv/ebm-attribute"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fhir.de/CodeSystem/kbv/ebm-attribute"}
         ).valueUri
     )
     assert float(inst.propertyGroup[0].priceComponent[1].factor) == float(633)
@@ -241,8 +262,8 @@ def impl_chargeitemdefinition_2(inst):
     assert inst.text.status == "generated"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://fhir.de/ChargeItemDefinition/kbv/ebm-30110"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fhir.de/ChargeItemDefinition/kbv/ebm-30110"}
         ).valueUri
     )
     assert inst.version == "2-2018"

@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingStudy(domainresource.DomainResource):
@@ -29,7 +29,7 @@ class ImagingStudy(domainresource.DomainResource):
 
     __resource_type__ = "ImagingStudy"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Request fulfilled",
@@ -50,7 +50,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Institution-generated description",
@@ -62,11 +62,11 @@ class ImagingStudy(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter with which this imaging study is associated",
@@ -81,7 +81,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Study access endpoint",
@@ -99,7 +99,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifiers for the whole study",
@@ -109,7 +109,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(
+    location: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="location",
         title="Where ImagingStudy occurred",
@@ -121,7 +121,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    modality: typing.List[fhirtypes.CodeableConceptType] = Field(
+    modality: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="modality",
         title="All of the distinct values for series' modalities",
@@ -134,7 +134,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="User-defined comments",
@@ -149,7 +149,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    numberOfInstances: fhirtypes.UnsignedIntType = Field(
+    numberOfInstances: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfInstances",
         title="Number of Study Related Instances",
@@ -163,13 +163,13 @@ class ImagingStudy(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_numberOfInstances",
         title="Extension field for ``numberOfInstances``.",
     )
 
-    numberOfSeries: fhirtypes.UnsignedIntType = Field(
+    numberOfSeries: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfSeries",
         title="Number of Study Related Series",
@@ -183,11 +183,11 @@ class ImagingStudy(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    numberOfSeries__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfSeries__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_numberOfSeries", title="Extension field for ``numberOfSeries``."
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced event",
@@ -202,7 +202,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    procedure: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    procedure: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="procedure",
         title="The performed procedure or code",
@@ -218,7 +218,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="reason",
         title="Why the study was requested / performed",
@@ -239,7 +239,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    referrer: fhirtypes.ReferenceType = Field(
+    referrer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="referrer",
         title="Referring physician",
@@ -251,7 +251,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    series: typing.List[fhirtypes.ImagingStudySeriesType] = Field(
+    series: typing.List[fhirtypes.ImagingStudySeriesType] = Field(  # type: ignore
         None,
         alias="series",
         title="Each study has one or more series of instances",
@@ -261,7 +261,7 @@ class ImagingStudy(domainresource.DomainResource):
         },
     )
 
-    started: fhirtypes.DateTimeType = Field(
+    started: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="started",
         title="When the study was started",
@@ -270,11 +270,11 @@ class ImagingStudy(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_started", title="Extension field for ``started``."
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="registered | available | cancelled | entered-in-error | unknown",
@@ -297,11 +297,11 @@ class ImagingStudy(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="subject",
         title="Who or what is the subject of the study",
@@ -360,9 +360,6 @@ class ImagingStudy(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class ImagingStudySeries(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -374,7 +371,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingStudySeries"
 
-    bodySite: fhirtypes.CodeableReferenceType = Field(
+    bodySite: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Body part examined",
@@ -392,7 +389,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.StringType = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="A short human readable summary of the series",
@@ -401,11 +398,11 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Series access endpoint",
@@ -422,7 +419,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(
+    instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(  # type: ignore
         None,
         alias="instance",
         title="A single SOP instance from the series",
@@ -435,7 +432,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    laterality: fhirtypes.CodeableConceptType = Field(
+    laterality: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="laterality",
         title="Body part laterality",
@@ -450,7 +447,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    modality: fhirtypes.CodeableConceptType = Field(
+    modality: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="modality",
         title="The modality used for this series",
@@ -463,7 +460,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    number: fhirtypes.UnsignedIntType = Field(
+    number: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="number",
         title="Numeric identifier of this series",
@@ -472,11 +469,11 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_number", title="Extension field for ``number``."
     )
 
-    numberOfInstances: fhirtypes.UnsignedIntType = Field(
+    numberOfInstances: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfInstances",
         title="Number of Series Related Instances",
@@ -490,13 +487,13 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_numberOfInstances",
         title="Extension field for ``numberOfInstances``.",
     )
 
-    performer: typing.List[fhirtypes.ImagingStudySeriesPerformerType] = Field(
+    performer: typing.List[fhirtypes.ImagingStudySeriesPerformerType] = Field(  # type: ignore
         None,
         alias="performer",
         title="Who performed the series",
@@ -506,7 +503,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    specimen: typing.List[fhirtypes.ReferenceType] = Field(
+    specimen: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="specimen",
         title="Specimen imaged",
@@ -518,7 +515,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    started: fhirtypes.DateTimeType = Field(
+    started: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="started",
         title="When the series started",
@@ -527,11 +524,11 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_started", title="Extension field for ``started``."
     )
 
-    uid: fhirtypes.IdType = Field(
+    uid: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="uid",
         title="DICOM Series Instance UID for the series",
@@ -541,7 +538,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
@@ -593,7 +590,7 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingStudySeriesInstance"
 
-    number: fhirtypes.UnsignedIntType = Field(
+    number: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="number",
         title="The number of this instance in the series",
@@ -602,11 +599,11 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_number", title="Extension field for ``number``."
     )
 
-    sopClass: fhirtypes.CodingType = Field(
+    sopClass: fhirtypes.CodingType = Field(  # type: ignore
         ...,
         alias="sopClass",
         title="DICOM class type",
@@ -616,7 +613,7 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
         },
     )
 
-    title: fhirtypes.StringType = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Description of instance",
@@ -625,11 +622,11 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    uid: fhirtypes.IdType = Field(
+    uid: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="uid",
         title="DICOM SOP Instance UID",
@@ -639,7 +636,7 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
@@ -682,7 +679,7 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingStudySeriesPerformer"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="actor",
         title="Who performed the series",
@@ -703,7 +700,7 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType = Field(
+    function: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="function",
         title="Type of performance",

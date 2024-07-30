@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import formularyitem
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_formularyitem_1(inst):
@@ -18,7 +18,9 @@ def impl_formularyitem_1(inst):
     )
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.coding[1].code == "22571011000036102"
     assert inst.code.coding[1].display == (
@@ -26,15 +28,17 @@ def impl_formularyitem_1(inst):
     )
     assert (
         inst.code.coding[1].system
-        == ExternalValidatorModel(valueUri="http://nehta.gov.au/amt/v2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nehta.gov.au/amt/v2"}
+        ).valueUri
     )
     assert inst.id == "formularyitemexample01"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "generated"

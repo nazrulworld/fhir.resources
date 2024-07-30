@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -23,30 +23,32 @@ class VisionPrescription(domainresource.DomainResource):
     patient.
     """
 
-    resource_type = Field("VisionPrescription", const=True)
+    __resource_type__ = "VisionPrescription"
 
-    dateWritten: fhirtypes.DateTime = Field(
+    dateWritten: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="dateWritten",
         title="When prescription was authorized",
         description="The date (and perhaps time) when the prescription was written.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_dateWritten", title="Extension field for ``dateWritten``."
     )
 
-    dispense: typing.List[fhirtypes.VisionPrescriptionDispenseType] = Field(
+    dispense: typing.List[fhirtypes.VisionPrescriptionDispenseType] = Field(  # type: ignore
         None,
         alias="dispense",
         title="Vision supply authorization",
         description="Deals with details of the dispense part of the supply specification.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Created during encounter / admission / stay",
@@ -54,13 +56,14 @@ class VisionPrescription(domainresource.DomainResource):
             "A link to a resource that identifies the particular occurrence of "
             "contact between patient and health care provider."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -68,11 +71,12 @@ class VisionPrescription(domainresource.DomainResource):
             "Business identifier which may be used by other parties to reference or"
             " identify the prescription."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="patient",
         title="Who prescription is for",
@@ -80,13 +84,14 @@ class VisionPrescription(domainresource.DomainResource):
             "A link to a resource representing the person to whom the vision "
             "products will be supplied."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    prescriber: fhirtypes.ReferenceType = Field(
+    prescriber: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="prescriber",
         title="Who authorizes the vision product",
@@ -94,50 +99,54 @@ class VisionPrescription(domainresource.DomainResource):
             "The healthcare professional responsible for authorizing the "
             "prescription."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="reasonCodeableConcept",
         title="Reason or indication for writing the prescription",
         description="Can be the reason or the indication for writing the prescription.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e reason[x]
-        one_of_many="reason",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e reason[x]
+            "one_of_many": "reason",
+            "one_of_many_required": False,
+        },
     )
 
-    reasonReference: fhirtypes.ReferenceType = Field(
+    reasonReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Reason or indication for writing the prescription",
         description="Can be the reason or the indication for writing the prescription.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e reason[x]
-        one_of_many="reason",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Condition"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e reason[x]
+            "one_of_many": "reason",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Condition"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -167,10 +176,7 @@ class VisionPrescription(domainresource.DomainResource):
             "dispense",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2110(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -184,26 +190,7 @@ class VisionPrescription(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"reason": ["reasonCodeableConcept", "reasonReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class VisionPrescriptionDispense(backboneelement.BackboneElement):
@@ -215,9 +202,9 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
     Deals with details of the dispense part of the supply specification.
     """
 
-    resource_type = Field("VisionPrescriptionDispense", const=True)
+    __resource_type__ = "VisionPrescriptionDispense"
 
-    add: fhirtypes.Decimal = Field(
+    add: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="add",
         title="Lens add",
@@ -225,158 +212,171 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "Power adjustment for multifocal lenses measured in diopters (0.25 "
             "units)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    add__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    add__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_add", title="Extension field for ``add``."
     )
 
-    axis: fhirtypes.Integer = Field(
+    axis: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="axis",
         title="Lens axis",
         description="Adjustment for astigmatism measured in integer degrees.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    axis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    axis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_axis", title="Extension field for ``axis``."
     )
 
-    backCurve: fhirtypes.Decimal = Field(
+    backCurve: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="backCurve",
         title="Contact lens back curvature",
         description="Back curvature measured in millimeters.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_backCurve", title="Extension field for ``backCurve``."
     )
 
-    base: fhirtypes.Code = Field(
+    base: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="base",
         title="up | down | in | out",
         description="The relative base, or reference lens edge, for the prism.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["up", "down", "in", "out"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["up", "down", "in", "out"],
+        },
     )
-    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_base", title="Extension field for ``base``."
     )
 
-    brand: fhirtypes.String = Field(
+    brand: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="brand",
         title="Brand required",
         description="Brand recommendations or restrictions.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    brand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    brand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_brand", title="Extension field for ``brand``."
     )
 
-    color: fhirtypes.String = Field(
+    color: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="color",
         title="Color required",
         description="Special color or pattern.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_color", title="Extension field for ``color``."
     )
 
-    cylinder: fhirtypes.Decimal = Field(
+    cylinder: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="cylinder",
         title="Lens cylinder",
         description="Power adjustment for astigmatism measured in diopters (0.25 units).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_cylinder", title="Extension field for ``cylinder``."
     )
 
-    diameter: fhirtypes.Decimal = Field(
+    diameter: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="diameter",
         title="Contact lens diameter",
         description="Contact lens diameter measured in millimeters.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    diameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    diameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_diameter", title="Extension field for ``diameter``."
     )
 
-    duration: fhirtypes.QuantityType = Field(
+    duration: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="duration",
         title="Lens wear duration",
         description="The recommended maximum wear period for the lens.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    eye: fhirtypes.Code = Field(
+    eye: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="eye",
         title="right | left",
         description="The eye for which the lens applies.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["right", "left"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["right", "left"],
+        },
     )
-    eye__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    eye__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_eye", title="Extension field for ``eye``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Notes for coatings",
         description="Notes for special requirements such as coatings and lens materials.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    power: fhirtypes.Decimal = Field(
+    power: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="power",
         title="Contact lens power",
         description="Contact lens power measured in diopters (0.25 units).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    power__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    power__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_power", title="Extension field for ``power``."
     )
 
-    prism: fhirtypes.Decimal = Field(
+    prism: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="prism",
         title="Lens prism",
         description="Amount of prism to compensate for eye alignment in fractional units.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    prism__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    prism__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_prism", title="Extension field for ``prism``."
     )
 
-    product: fhirtypes.CodeableConceptType = Field(
+    product: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="product",
         title="Product to be supplied",
@@ -384,19 +384,21 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "Identifies the type of vision correction product which is required for"
             " the patient."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sphere: fhirtypes.Decimal = Field(
+    sphere: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="sphere",
         title="Lens sphere",
         description="Lens power measured in diopters (0.25 units).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sphere", title="Extension field for ``sphere``."
     )
 

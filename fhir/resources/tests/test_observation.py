@@ -7,21 +7,25 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import observation
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_observation_1(inst):
     assert inst.bodySite.coding[0].code == "71341001:272741003=7771000"
     assert (
         inst.bodySite.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.bodySite.text == "Left Femur"
     assert inst.code.coding[0].code == "24701-5"
     assert inst.code.coding[0].display == "Femur DXA Bone density"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == "BMD - Left Femur"
     assert inst.id == "bmd"
@@ -29,8 +33,8 @@ def impl_observation_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].display == "Acme Imaging Diagnostics"
@@ -44,7 +48,9 @@ def impl_observation_1(inst):
     assert inst.valueQuantity.code == "g/cm-2"
     assert (
         inst.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.valueQuantity.unit == "g/cm²"
     assert float(inst.valueQuantity.value) == float(0.887)
@@ -73,8 +79,8 @@ def impl_observation_2(inst):
     assert inst.category[0].coding[0].display == "Vital Signs"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/observation-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/observation-category"}
         ).valueUri
     )
     assert inst.category[0].text == "Vital Signs"
@@ -82,12 +88,16 @@ def impl_observation_2(inst):
     assert inst.code.coding[0].display == "Respiratory rate"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == "Respiratory rate"
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="1999-07-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "1999-07-02"}
+        ).valueDateTime
     )
     assert inst.id == "respiratory-rate"
     assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/vitalsigns"
@@ -95,8 +105,8 @@ def impl_observation_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -105,7 +115,9 @@ def impl_observation_2(inst):
     assert inst.valueQuantity.code == "/min"
     assert (
         inst.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.valueQuantity.unit == "breaths/minute"
     assert float(inst.valueQuantity.value) == float(26)
@@ -136,39 +148,47 @@ def impl_observation_3(inst):
     assert inst.category[0].coding[0].display == "Vital Signs"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/observation-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/observation-category"}
         ).valueUri
     )
     assert inst.code.coding[0].code == "29463-7"
     assert inst.code.coding[0].display == "Body Weight"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.coding[1].code == "3141-9"
     assert inst.code.coding[1].display == "Body weight Measured"
     assert (
         inst.code.coding[1].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.coding[2].code == "27113001"
     assert inst.code.coding[2].display == "Body weight"
     assert (
         inst.code.coding[2].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.coding[3].code == "body-weight"
     assert inst.code.coding[3].display == "Body Weight"
     assert (
         inst.code.coding[3].system
-        == ExternalValidatorModel(
-            valueUri="http://acme.org/devices/clinical-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/devices/clinical-codes"}
         ).valueUri
     )
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="2016-03-28").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-03-28"}
+        ).valueDateTime
     )
     assert inst.encounter.reference == "Encounter/example"
     assert inst.id == "example"
@@ -176,8 +196,8 @@ def impl_observation_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -186,7 +206,9 @@ def impl_observation_3(inst):
     assert inst.valueQuantity.code == "[lb_av]"
     assert (
         inst.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.valueQuantity.unit == "lbs"
     assert float(inst.valueQuantity.value) == float(185)
@@ -215,8 +237,8 @@ def impl_observation_4(inst):
     assert inst.category[0].coding[0].display == "Vital Signs"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/observation-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/observation-category"}
         ).valueUri
     )
     assert inst.category[0].text == "Vital Signs"
@@ -224,20 +246,24 @@ def impl_observation_4(inst):
     assert inst.code.coding[0].display == "Mean blood pressure"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == "Mean blood pressure"
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="1999-07-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "1999-07-02"}
+        ).valueDateTime
     )
     assert inst.id == "mbp"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -246,7 +272,9 @@ def impl_observation_4(inst):
     assert inst.valueQuantity.code == "mm[Hg]"
     assert (
         inst.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.valueQuantity.unit == "mm[Hg]"
     assert float(inst.valueQuantity.value) == float(80)
@@ -275,8 +303,8 @@ def impl_observation_5(inst):
     assert inst.category[0].coding[0].display == "Vital Signs"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/observation-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/observation-category"}
         ).valueUri
     )
     assert inst.category[0].text == "Vital Signs"
@@ -284,12 +312,16 @@ def impl_observation_5(inst):
     assert inst.code.coding[0].display == "Body mass index (BMI) [Ratio]"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == "BMI"
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="1999-07-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "1999-07-02"}
+        ).valueDateTime
     )
     assert inst.id == "bmi"
     assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/vitalsigns"
@@ -297,8 +329,8 @@ def impl_observation_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -307,7 +339,9 @@ def impl_observation_5(inst):
     assert inst.valueQuantity.code == "kg/m2"
     assert (
         inst.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.valueQuantity.unit == "kg/m2"
     assert float(inst.valueQuantity.value) == float(16.2)
@@ -336,8 +370,8 @@ def impl_observation_6(inst):
     assert inst.category[0].coding[0].display == "Vital Signs"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/observation-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/observation-category"}
         ).valueUri
     )
     assert inst.category[0].text == "Vital Signs"
@@ -345,12 +379,16 @@ def impl_observation_6(inst):
     assert inst.code.coding[0].display == "Body height"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == "Body height"
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="1999-07-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "1999-07-02"}
+        ).valueDateTime
     )
     assert inst.id == "body-height"
     assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/vitalsigns"
@@ -358,8 +396,8 @@ def impl_observation_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -368,7 +406,9 @@ def impl_observation_6(inst):
     assert inst.valueQuantity.code == "[in_i]"
     assert (
         inst.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.valueQuantity.unit == "in"
     assert float(inst.valueQuantity.value) == float(66.89999999999999)
@@ -398,15 +438,17 @@ def impl_observation_7(inst):
     assert inst.code.text == "eye color"
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="2016-05-18").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-05-18"}
+        ).valueDateTime
     )
     assert inst.id == "eye-color"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -438,8 +480,8 @@ def impl_observation_8(inst):
     assert inst.category[0].coding[0].display == "Vital Signs"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/observation-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/observation-category"}
         ).valueUri
     )
     assert inst.category[0].text == "Vital Signs"
@@ -447,12 +489,16 @@ def impl_observation_8(inst):
     assert inst.code.coding[0].display == "Body temperature"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == "Body temperature"
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(valueDateTime="1999-07-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "1999-07-02"}
+        ).valueDateTime
     )
     assert inst.id == "body-temperature"
     assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/vitalsigns"
@@ -460,8 +506,8 @@ def impl_observation_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -470,7 +516,9 @@ def impl_observation_8(inst):
     assert inst.valueQuantity.code == "Cel"
     assert (
         inst.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.valueQuantity.unit == "C"
     assert float(inst.valueQuantity.value) == float(36.5)
@@ -501,8 +549,8 @@ def impl_observation_9(inst):
     assert inst.category[0].coding[0].display == "Exam"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/observation-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/observation-category"}
         ).valueUri
     )
     assert inst.category[0].text == "Exam"
@@ -510,12 +558,14 @@ def impl_observation_9(inst):
     assert inst.code.coding[0].display == "Tracheostomy care assessment (procedure)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2018-03-11T16:07:54+00:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-11T16:07:54+00:00"}
         ).valueDateTime
     )
     assert inst.focus[0].reference == "Patient/infant-mom"
@@ -524,8 +574,8 @@ def impl_observation_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "final"
@@ -559,19 +609,21 @@ def impl_observation_10(inst):
     assert inst.code.coding[0].display == "Base excess in Blood by calculation"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.effectiveDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2013-04-02T10:30:10+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-04-02T10:30:10+01:00"}
         ).valueDateTime
     )
     assert inst.id == "f002"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.bmc.nl/zorgportal/identifiers/observations"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bmc.nl/zorgportal/identifiers/observations"}
         ).valueUri
     )
     assert inst.identifier[0].use == "official"
@@ -580,20 +632,24 @@ def impl_observation_10(inst):
     assert inst.interpretation[0].coding[0].display == "High"
     assert (
         inst.interpretation[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"
+            }
         ).valueUri
     )
     assert (
         inst.issued
-        == ExternalValidatorModel(valueInstant="2013-04-03T15:30:10+01:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-04-03T15:30:10+01:00"}
+        ).valueInstant
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].display == "A. Langeveld"
@@ -601,14 +657,18 @@ def impl_observation_10(inst):
     assert inst.referenceRange[0].high.code == "mmol/L"
     assert (
         inst.referenceRange[0].high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.referenceRange[0].high.unit == "mmol/l"
     assert float(inst.referenceRange[0].high.value) == float(11.2)
     assert inst.referenceRange[0].low.code == "mmol/L"
     assert (
         inst.referenceRange[0].low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.referenceRange[0].low.unit == "mmol/l"
     assert float(inst.referenceRange[0].low.value) == float(7.1)
@@ -619,7 +679,9 @@ def impl_observation_10(inst):
     assert inst.valueQuantity.code == "mmol/L"
     assert (
         inst.valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.valueQuantity.unit == "mmol/l"
     assert float(inst.valueQuantity.value) == float(12.6)

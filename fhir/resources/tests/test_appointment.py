@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import appointment
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_appointment_1(inst):
@@ -18,8 +18,8 @@ def impl_appointment_1(inst):
     )
     assert (
         inst.appointmentType.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0276"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0276"}
         ).valueUri
     )
     assert inst.basedOn[0].reference == "ServiceRequest/myringotomy"
@@ -27,25 +27,30 @@ def impl_appointment_1(inst):
     assert inst.class_fhir[0].coding[0].display == "ambulatory"
     assert (
         inst.class_fhir[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2013-10-10").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-10-10"}
+        ).valueDateTime
     )
     assert inst.description == "Discussion on the results of your recent MRI"
     assert (
         inst.end
-        == ExternalValidatorModel(valueInstant="2013-12-10T11:00:00Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-12-10T11:00:00Z"}
+        ).valueInstant
     )
     assert inst.id == "example"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -63,8 +68,8 @@ def impl_appointment_1(inst):
     assert inst.participant[1].type[0].coding[0].code == "ATND"
     assert (
         inst.participant[1].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.participant[2].actor.display == "South Wing, second floor"
@@ -80,8 +85,8 @@ def impl_appointment_1(inst):
     assert inst.serviceCategory[0].coding[0].display == "General Practice"
     assert (
         inst.serviceCategory[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/service-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/service-category"}
         ).valueUri
     )
     assert inst.serviceType[0].concept.coding[0].code == "52"
@@ -90,11 +95,15 @@ def impl_appointment_1(inst):
     assert inst.specialty[0].coding[0].display == "General practice"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.start
-        == ExternalValidatorModel(valueInstant="2013-12-10T09:00:00Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-12-10T09:00:00Z"}
+        ).valueInstant
     )
     assert inst.status == "booked"
     assert inst.subject.display == "Peter James Chalmers"
@@ -132,19 +141,22 @@ def impl_appointment_2(inst):
     )
     assert (
         inst.appointmentType.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0276"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0276"}
         ).valueUri
     )
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2015-12-02").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-12-02"}
+        ).valueDateTime
     )
     assert inst.description == "Discussion on the results of your recent MRI"
     assert inst.id == "examplereq"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/sampleappointment-identifier"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/sampleappointment-identifier"}
         ).valueUri
     )
     assert inst.identifier[0].value == "123"
@@ -152,8 +164,8 @@ def impl_appointment_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.minutesDuration == 15
@@ -170,8 +182,8 @@ def impl_appointment_2(inst):
     assert inst.participant[1].type[0].coding[0].code == "ATND"
     assert (
         inst.participant[1].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.participant[2].actor.display == "South Wing, second floor"
@@ -181,23 +193,29 @@ def impl_appointment_2(inst):
     assert inst.reason[0].concept.coding[0].code == "413095006"
     assert (
         inst.reason[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reason[0].concept.text == "Clinical Review"
     assert (
         inst.requestedPeriod[0].end
-        == ExternalValidatorModel(valueDateTime="2016-06-09").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-06-09"}
+        ).valueDateTime
     )
     assert (
         inst.requestedPeriod[0].start
-        == ExternalValidatorModel(valueDateTime="2016-06-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-06-02"}
+        ).valueDateTime
     )
     assert inst.serviceCategory[0].coding[0].code == "gp"
     assert inst.serviceCategory[0].coding[0].display == "General Practice"
     assert (
         inst.serviceCategory[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/service-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/service-category"}
         ).valueUri
     )
     assert inst.slot[0].reference == "Slot/example"
@@ -205,7 +223,9 @@ def impl_appointment_2(inst):
     assert inst.specialty[0].coding[0].display == "General practice"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.status == "proposed"
     assert inst.subject.display == "Peter James Chalmers"
@@ -243,22 +263,24 @@ def impl_appointment_3(inst):
     )
     assert (
         inst.appointmentType.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0276"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0276"}
         ).valueUri
     )
     assert inst.description == "Discussion about Peter Chalmers ultrasound results"
     assert (
         inst.end
-        == ExternalValidatorModel(valueInstant="2013-12-09T11:00:00Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-12-09T11:00:00Z"}
+        ).valueInstant
     )
     assert inst.id == "2docs"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -276,8 +298,8 @@ def impl_appointment_3(inst):
     assert inst.serviceCategory[0].coding[0].display == "General Practice"
     assert (
         inst.serviceCategory[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/service-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/service-category"}
         ).valueUri
     )
     assert inst.serviceType[0].concept.coding[0].code == "52"
@@ -286,11 +308,15 @@ def impl_appointment_3(inst):
     assert inst.specialty[0].coding[0].display == "General practice"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.start
-        == ExternalValidatorModel(valueInstant="2013-12-09T09:00:00Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-12-09T09:00:00Z"}
+        ).valueInstant
     )
     assert inst.status == "booked"
     assert inst.subject.display == "Peter James Chalmers"

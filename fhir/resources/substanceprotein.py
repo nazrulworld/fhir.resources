@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceProtein(domainresource.DomainResource):
@@ -30,7 +30,7 @@ class SubstanceProtein(domainresource.DomainResource):
 
     __resource_type__ = "SubstanceProtein"
 
-    disulfideLinkage: typing.List[typing.Optional[fhirtypes.StringType]] = Field(
+    disulfideLinkage: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="disulfideLinkage",
         title=(
@@ -47,15 +47,13 @@ class SubstanceProtein(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    disulfideLinkage__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    disulfideLinkage__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None,
         alias="_disulfideLinkage",
         title="Extension field for ``disulfideLinkage``.",
     )
 
-    numberOfSubunits: fhirtypes.IntegerType = Field(
+    numberOfSubunits: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="numberOfSubunits",
         title=(
@@ -69,13 +67,13 @@ class SubstanceProtein(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_numberOfSubunits",
         title="Extension field for ``numberOfSubunits``.",
     )
 
-    sequenceType: fhirtypes.CodeableConceptType = Field(
+    sequenceType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="sequenceType",
         title=(
@@ -89,7 +87,7 @@ class SubstanceProtein(domainresource.DomainResource):
         },
     )
 
-    subunit: typing.List[fhirtypes.SubstanceProteinSubunitType] = Field(
+    subunit: typing.List[fhirtypes.SubstanceProteinSubunitType] = Field(  # type: ignore
         None,
         alias="subunit",
         title=(
@@ -130,9 +128,6 @@ class SubstanceProtein(domainresource.DomainResource):
         ]
 
 
-from . import backboneelement
-
-
 class SubstanceProteinSubunit(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -150,7 +145,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceProteinSubunit"
 
-    cTerminalModification: fhirtypes.StringType = Field(
+    cTerminalModification: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="cTerminalModification",
         title="The modification at the C-terminal shall be specified",
@@ -159,13 +154,13 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_cTerminalModification",
         title="Extension field for ``cTerminalModification``.",
     )
 
-    cTerminalModificationId: fhirtypes.IdentifierType = Field(
+    cTerminalModificationId: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="cTerminalModificationId",
         title=(
@@ -178,7 +173,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
 
-    length: fhirtypes.IntegerType = Field(
+    length: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="length",
         title="Length of linear sequences of amino acids contained in the subunit",
@@ -187,11 +182,11 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    length__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    length__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_length", title="Extension field for ``length``."
     )
 
-    nTerminalModification: fhirtypes.StringType = Field(
+    nTerminalModification: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="nTerminalModification",
         title=(
@@ -203,13 +198,13 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_nTerminalModification",
         title="Extension field for ``nTerminalModification``.",
     )
 
-    nTerminalModificationId: fhirtypes.IdentifierType = Field(
+    nTerminalModificationId: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="nTerminalModificationId",
         title=(
@@ -222,7 +217,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.StringType = Field(
+    sequence: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="sequence",
         title=(
@@ -240,11 +235,11 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    sequenceAttachment: fhirtypes.AttachmentType = Field(
+    sequenceAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="sequenceAttachment",
         title=(
@@ -263,7 +258,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
 
-    subunit: fhirtypes.IntegerType = Field(
+    subunit: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="subunit",
         title=(
@@ -277,7 +272,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subunit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subunit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subunit", title="Extension field for ``subunit``."
     )
 

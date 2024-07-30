@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -25,20 +23,21 @@ class Invoice(domainresource.DomainResource):
     individual and total price for Billing purpose.
     """
 
-    resource_type = Field("Invoice", const=True)
+    __resource_type__ = "Invoice"
 
-    account: fhirtypes.ReferenceType = Field(
+    account: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="account",
         title="Account that is being balanced",
         description="Account which is supposed to be balanced with this Invoice.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Account"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Account"],
+        },
     )
 
-    cancelledReason: fhirtypes.String = Field(
+    cancelledReason: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="cancelledReason",
         title="Reason for cancellation of this Invoice",
@@ -46,26 +45,28 @@ class Invoice(domainresource.DomainResource):
             "In case of Invoice cancellation a reason must be given (entered in "
             "error, superseded by corrected invoice etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    cancelledReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    cancelledReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_cancelledReason", title="Extension field for ``cancelledReason``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Invoice date / posting date",
         description="Date/time(s) of when this Invoice was posted.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for item",
@@ -73,22 +74,24 @@ class Invoice(domainresource.DomainResource):
             "Identifier of this Invoice, often used for reference in correspondence"
             " about this invoice or for tracking of payments."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    issuer: fhirtypes.ReferenceType = Field(
+    issuer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="issuer",
         title="Issuing Organization of Invoice",
         description="The organizationissuing the Invoice.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    lineItem: typing.List[fhirtypes.InvoiceLineItemType] = Field(
+    lineItem: typing.List[fhirtypes.InvoiceLineItemType] = Field(  # type: ignore
         None,
         alias="lineItem",
         title="Line items of this Invoice",
@@ -97,11 +100,12 @@ class Invoice(domainresource.DomainResource):
             "Details such as date, code and amount are found in the referenced "
             "ChargeItem resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about the invoice",
@@ -109,22 +113,24 @@ class Invoice(domainresource.DomainResource):
             "Comments made about the invoice by the issuer, subject, or other "
             "participants."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    participant: typing.List[fhirtypes.InvoiceParticipantType] = Field(
+    participant: typing.List[fhirtypes.InvoiceParticipantType] = Field(  # type: ignore
         None,
         alias="participant",
         title="Participant in creation of this Invoice",
         description=(
             "Indicates who or what performed or participated in the charged " "service."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    paymentTerms: fhirtypes.Markdown = Field(
+    paymentTerms: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="paymentTerms",
         title="Payment details",
@@ -132,14 +138,15 @@ class Invoice(domainresource.DomainResource):
             "Payment details such as banking details, period of payment, "
             "deductibles, methods of payment."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    paymentTerms__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    paymentTerms__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_paymentTerms", title="Extension field for ``paymentTerms``."
     )
 
-    recipient: fhirtypes.ReferenceType = Field(
+    recipient: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="recipient",
         title="Recipient of this invoice",
@@ -147,29 +154,37 @@ class Invoice(domainresource.DomainResource):
             "The individual or Organization responsible for balancing of this "
             "invoice."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization", "Patient", "RelatedPerson"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization", "Patient", "RelatedPerson"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | issued | balanced | cancelled | entered-in-error",
         description="The current state of the Invoice.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "issued", "balanced", "cancelled", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "draft",
+                "issued",
+                "balanced",
+                "cancelled",
+                "entered-in-error",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Recipient(s) of goods and services",
@@ -177,33 +192,34 @@ class Invoice(domainresource.DomainResource):
             "The individual or set of individuals receiving the goods and services "
             "billed in this invoice."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Group"],
+        },
     )
 
-    totalGross: fhirtypes.MoneyType = Field(
+    totalGross: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="totalGross",
         title="Gross total of this Invoice",
         description="Invoice total, tax included.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    totalNet: fhirtypes.MoneyType = Field(
+    totalNet: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="totalNet",
         title="Net total of this Invoice",
         description="Invoice total , taxes excluded.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    totalPriceComponent: typing.List[
-        fhirtypes.InvoiceLineItemPriceComponentType
-    ] = Field(
+    totalPriceComponent: typing.List[fhirtypes.InvoiceLineItemPriceComponentType] = Field(  # type: ignore
         None,
         alias="totalPriceComponent",
         title="Components of Invoice total",
@@ -214,11 +230,12 @@ class Invoice(domainresource.DomainResource):
             "transparency to the recipient of the Invoice of how the total price "
             "was calculated."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type of Invoice",
@@ -226,8 +243,9 @@ class Invoice(domainresource.DomainResource):
             "Type of Invoice depending on domain, realm an usage (e.g. "
             "internal/external, dental, preliminary)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -263,10 +281,7 @@ class Invoice(domainresource.DomainResource):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_891(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -275,52 +290,7 @@ class Invoice(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class InvoiceLineItem(backboneelement.BackboneElement):
@@ -334,9 +304,9 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     ChargeItem resource.
     """
 
-    resource_type = Field("InvoiceLineItem", const=True)
+    __resource_type__ = "InvoiceLineItem"
 
-    chargeItemCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    chargeItemCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="chargeItemCodeableConcept",
         title=(
@@ -349,14 +319,15 @@ class InvoiceLineItem(backboneelement.BackboneElement):
             "inline billing codes can be added using the CodeableConcept data type "
             "instead of the Reference."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e chargeItem[x]
-        one_of_many="chargeItem",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e chargeItem[x]
+            "one_of_many": "chargeItem",
+            "one_of_many_required": True,
+        },
     )
 
-    chargeItemReference: fhirtypes.ReferenceType = Field(
+    chargeItemReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="chargeItemReference",
         title=(
@@ -369,16 +340,17 @@ class InvoiceLineItem(backboneelement.BackboneElement):
             "inline billing codes can be added using the CodeableConcept data type "
             "instead of the Reference."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e chargeItem[x]
-        one_of_many="chargeItem",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ChargeItem"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e chargeItem[x]
+            "one_of_many": "chargeItem",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ChargeItem"],
+        },
     )
 
-    priceComponent: typing.List[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
+    priceComponent: typing.List[fhirtypes.InvoiceLineItemPriceComponentType] = Field(  # type: ignore
         None,
         alias="priceComponent",
         title="Components of total line item price",
@@ -391,19 +363,21 @@ class InvoiceLineItem(backboneelement.BackboneElement):
             "transparency to the recipient of the Invoice as to how the prices have"
             " been calculated."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.PositiveInt = Field(
+    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="sequence",
         title="Sequence number of line item",
         description="Sequence in which the items appear on the invoice.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
@@ -423,10 +397,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
             "priceComponent",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1690(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -442,26 +413,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         one_of_many_fields = {
             "chargeItem": ["chargeItemCodeableConcept", "chargeItemReference"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
@@ -478,18 +430,19 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
     of the Invoice as to how the prices have been calculated.
     """
 
-    resource_type = Field("InvoiceLineItemPriceComponent", const=True)
+    __resource_type__ = "InvoiceLineItemPriceComponent"
 
-    amount: fhirtypes.MoneyType = Field(
+    amount: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="amount",
         title="Monetary amount associated with this component",
         description="The amount calculated for this component.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Code identifying the specific component",
@@ -497,11 +450,12 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
             "A code that identifies the component. Codes may be used to "
             "differentiate between kinds of taxes, surcharges, discounts etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    factor: fhirtypes.Decimal = Field(
+    factor: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="factor",
         title="Factor used for calculating this component",
@@ -509,33 +463,35 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
             "The factor that has been applied on the base price for calculating "
             "this component."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="base | surcharge | deduction | discount | tax | informational",
         description="This code identifies the type of the component.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "base",
-            "surcharge",
-            "deduction",
-            "discount",
-            "tax",
-            "informational",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "base",
+                "surcharge",
+                "deduction",
+                "discount",
+                "tax",
+                "informational",
+            ],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -555,10 +511,7 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
             "amount",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3143(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -567,52 +520,7 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class InvoiceParticipant(backboneelement.BackboneElement):
@@ -624,9 +532,9 @@ class InvoiceParticipant(backboneelement.BackboneElement):
     Indicates who or what performed or participated in the charged service.
     """
 
-    resource_type = Field("InvoiceParticipant", const=True)
+    __resource_type__ = "InvoiceParticipant"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="actor",
         title="Individual who was involved",
@@ -634,20 +542,21 @@ class InvoiceParticipant(backboneelement.BackboneElement):
             "The device, practitioner, etc. who performed or participated in the "
             "service."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "Organization",
-            "Patient",
-            "PractitionerRole",
-            "Device",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "Organization",
+                "Patient",
+                "PractitionerRole",
+                "Device",
+                "RelatedPerson",
+            ],
+        },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(
+    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="role",
         title="Type of involvement in creation of this Invoice",
@@ -656,8 +565,9 @@ class InvoiceParticipant(backboneelement.BackboneElement):
             "etc.). If the invoice has been created automatically, the Participant "
             "may be a billing engine or another kind of device."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

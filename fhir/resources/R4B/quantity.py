@@ -6,7 +6,7 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -22,9 +22,9 @@ class Quantity(element.Element):
     including amounts involving arbitrary units and floating currencies.
     """
 
-    resource_type = Field("Quantity", const=True)
+    __resource_type__ = "Quantity"
 
-    code: fhirtypes.Code = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Coded form of the unit",
@@ -32,14 +32,15 @@ class Quantity(element.Element):
             "A computer processable form of the unit in some unit representation "
             "system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    comparator: fhirtypes.Code = Field(
+    comparator: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="comparator",
         title="< | <= | >= | > - how to understand the value",
@@ -49,17 +50,15 @@ class Quantity(element.Element):
             'measurement issues; e.g. if the comparator is "<" , then the real '
             "value is < stated value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["\u003c", "\u003c=", "\u003e=", "\u003e"],
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    comparator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    comparator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_comparator", title="Extension field for ``comparator``."
     )
 
-    system: fhirtypes.Uri = Field(
+    system: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="system",
         title="System that defines coded unit form",
@@ -67,26 +66,28 @@ class Quantity(element.Element):
             "The identification of the system that provides the coded form of the "
             "unit."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    unit: fhirtypes.String = Field(
+    unit: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="unit",
         title="Unit representation",
         description="A human-readable form of the unit.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    unit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    unit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_unit", title="Extension field for ``unit``."
     )
 
-    value: fhirtypes.Decimal = Field(
+    value: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="value",
         title="Numerical value (with implicit precision)",
@@ -94,10 +95,11 @@ class Quantity(element.Element):
             "The value of the measured amount. The value includes an implicit "
             "precision in the presentation of the value."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

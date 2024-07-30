@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageHeader(domainresource.DomainResource):
@@ -28,7 +28,7 @@ class MessageHeader(domainresource.DomainResource):
 
     __resource_type__ = "MessageHeader"
 
-    author: fhirtypes.ReferenceType = Field(
+    author: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="author",
         title="The source of the decision",
@@ -50,7 +50,7 @@ class MessageHeader(domainresource.DomainResource):
         },
     )
 
-    definition: fhirtypes.CanonicalType = Field(
+    definition: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="definition",
         title="Link to the definition for this message",
@@ -61,11 +61,11 @@ class MessageHeader(domainresource.DomainResource):
             "enum_reference_types": ["MessageDefinition"],
         },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    destination: typing.List[fhirtypes.MessageHeaderDestinationType] = Field(
+    destination: typing.List[fhirtypes.MessageHeaderDestinationType] = Field(  # type: ignore
         None,
         alias="destination",
         title="Message destination application(s)",
@@ -75,7 +75,7 @@ class MessageHeader(domainresource.DomainResource):
         },
     )
 
-    eventCanonical: fhirtypes.CanonicalType = Field(
+    eventCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="eventCanonical",
         title="Event code or link to EventDefinition",
@@ -94,11 +94,11 @@ class MessageHeader(domainresource.DomainResource):
             "enum_reference_types": ["EventDefinition"],
         },
     )
-    eventCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    eventCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_eventCanonical", title="Extension field for ``eventCanonical``."
     )
 
-    eventCoding: fhirtypes.CodingType = Field(
+    eventCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="eventCoding",
         title="Event code or link to EventDefinition",
@@ -116,7 +116,7 @@ class MessageHeader(domainresource.DomainResource):
         },
     )
 
-    focus: typing.List[fhirtypes.ReferenceType] = Field(
+    focus: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="focus",
         title="The actual content of the message",
@@ -131,7 +131,7 @@ class MessageHeader(domainresource.DomainResource):
         },
     )
 
-    reason: fhirtypes.CodeableConceptType = Field(
+    reason: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="reason",
         title="Cause of event",
@@ -144,7 +144,7 @@ class MessageHeader(domainresource.DomainResource):
         },
     )
 
-    response: fhirtypes.MessageHeaderResponseType = Field(
+    response: fhirtypes.MessageHeaderResponseType = Field(  # type: ignore
         None,
         alias="response",
         title="If this is a reply to prior message",
@@ -157,7 +157,7 @@ class MessageHeader(domainresource.DomainResource):
         },
     )
 
-    responsible: fhirtypes.ReferenceType = Field(
+    responsible: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="responsible",
         title="Final responsibility for event",
@@ -177,7 +177,7 @@ class MessageHeader(domainresource.DomainResource):
         },
     )
 
-    sender: fhirtypes.ReferenceType = Field(
+    sender: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="sender",
         title="Real world sender of the message",
@@ -196,7 +196,7 @@ class MessageHeader(domainresource.DomainResource):
         },
     )
 
-    source: fhirtypes.MessageHeaderSourceType = Field(
+    source: fhirtypes.MessageHeaderSourceType = Field(  # type: ignore
         ...,
         alias="source",
         title="Message source application",
@@ -251,9 +251,6 @@ class MessageHeader(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class MessageHeaderDestination(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -265,7 +262,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
 
     __resource_type__ = "MessageHeaderDestination"
 
-    endpointReference: fhirtypes.ReferenceType = Field(
+    endpointReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="endpointReference",
         title="Actual destination address or Endpoint resource",
@@ -280,7 +277,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         },
     )
 
-    endpointUrl: fhirtypes.UrlType = Field(
+    endpointUrl: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="endpointUrl",
         title="Actual destination address or Endpoint resource",
@@ -292,11 +289,11 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    endpointUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    endpointUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_endpointUrl", title="Extension field for ``endpointUrl``."
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name of system",
@@ -305,11 +302,11 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    receiver: fhirtypes.ReferenceType = Field(
+    receiver: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="receiver",
         title='Intended "real-world" recipient for the data',
@@ -329,7 +326,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         },
     )
 
-    target: fhirtypes.ReferenceType = Field(
+    target: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="target",
         title="Particular delivery destination within the destination",
@@ -390,7 +387,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
 
     __resource_type__ = "MessageHeaderResponse"
 
-    code: fhirtypes.CodeType = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="ok | transient-error | fatal-error",
@@ -406,11 +403,11 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
             "enum_values": ["ok", "transient-error", "fatal-error"],
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    details: fhirtypes.ReferenceType = Field(
+    details: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="details",
         title="Specific list of hints/warnings/errors",
@@ -422,7 +419,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         ...,
         alias="identifier",
         title="Bundle.identifier of original message",
@@ -466,7 +463,7 @@ class MessageHeaderSource(backboneelement.BackboneElement):
 
     __resource_type__ = "MessageHeaderSource"
 
-    contact: fhirtypes.ContactPointType = Field(
+    contact: fhirtypes.ContactPointType = Field(  # type: ignore
         None,
         alias="contact",
         title="Human contact for problems",
@@ -479,7 +476,7 @@ class MessageHeaderSource(backboneelement.BackboneElement):
         },
     )
 
-    endpointReference: fhirtypes.ReferenceType = Field(
+    endpointReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="endpointReference",
         title="Actual source address or Endpoint resource",
@@ -494,7 +491,7 @@ class MessageHeaderSource(backboneelement.BackboneElement):
         },
     )
 
-    endpointUrl: fhirtypes.UrlType = Field(
+    endpointUrl: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="endpointUrl",
         title="Actual source address or Endpoint resource",
@@ -506,11 +503,11 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    endpointUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    endpointUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_endpointUrl", title="Extension field for ``endpointUrl``."
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name of system",
@@ -519,11 +516,11 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    software: fhirtypes.StringType = Field(
+    software: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="software",
         title="Name of software running the system",
@@ -532,11 +529,11 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    software__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    software__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_software", title="Extension field for ``software``."
     )
 
-    version: fhirtypes.StringType = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Version of software running",
@@ -548,7 +545,7 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 

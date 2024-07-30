@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import searchparameter
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_searchparameter_1(inst):
@@ -35,8 +35,8 @@ def impl_searchparameter_1(inst):
     assert inst.type == "reference"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/SearchParameter/example-extension"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/SearchParameter/example-extension"}
         ).valueUri
     )
 
@@ -67,7 +67,12 @@ def impl_searchparameter_2(inst):
     assert inst.contact[0].name == "FHIR Project"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2018-07-26").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-07-26"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "This is the formal declaration for the _filter parameter, "
         "documented at [http://hl7.org/fhir/search_filter.html](http:"
@@ -87,8 +92,8 @@ def impl_searchparameter_2(inst):
     assert inst.type == "special"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/SearchParameter/filter"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/SearchParameter/filter"}
         ).valueUri
     )
     assert inst.version == "1"
@@ -132,8 +137,8 @@ def impl_searchparameter_3(inst):
     assert inst.type == "reference"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/SearchParameter/example-constraint"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/SearchParameter/example-constraint"}
         ).valueUri
     )
 
@@ -166,7 +171,12 @@ def impl_searchparameter_4(inst):
     assert inst.contact[0].name == "[string]"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2013-10-23").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-10-23"}
+        ).valueDateTime
+    )
     assert inst.description == "Search by condition subject"
     assert inst.experimental is True
     assert inst.expression == "Condition.subject"
@@ -183,8 +193,8 @@ def impl_searchparameter_4(inst):
     assert inst.type == "reference"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/SearchParameter/example-reference"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/SearchParameter/example-reference"}
         ).valueUri
     )
 
@@ -215,7 +225,12 @@ def impl_searchparameter_5(inst):
     assert inst.contact[0].name == "[string]"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2013-10-23").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-10-23"}
+        ).valueDateTime
+    )
     assert inst.derivedFrom == "http://hl7.org/fhir/SearchParameter/Resource-id"
     assert inst.description == (
         "Search by resource identifier - e.g. same as the read "
@@ -228,7 +243,9 @@ def impl_searchparameter_5(inst):
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.name == "IDSEARCHPARAMETER"
     assert inst.processingMode == "normal"
@@ -244,22 +261,22 @@ def impl_searchparameter_5(inst):
     assert inst.type == "token"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/SearchParameter/example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/SearchParameter/example"}
         ).valueUri
     )
     assert inst.useContext[0].code.code == "focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "positive"
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/variant-state"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/variant-state"}
         ).valueUri
     )
     assert inst.version == "1"

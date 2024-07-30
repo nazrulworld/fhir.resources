@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Organization(domainresource.DomainResource):
@@ -27,7 +27,7 @@ class Organization(domainresource.DomainResource):
 
     __resource_type__ = "Organization"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether the organization's record is still in active use",
@@ -36,11 +36,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    alias: typing.List[typing.Optional[fhirtypes.StringType]] = Field(
+    alias: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="alias",
         title=(
@@ -52,11 +52,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    alias__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_alias", title="Extension field for ``alias``.")
+    alias__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_alias", title="Extension field for ``alias``."
+    )
 
-    contact: typing.List[fhirtypes.ExtendedContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ExtendedContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Official contact details for the Organization",
@@ -70,7 +70,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title=(
@@ -86,11 +86,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -105,7 +105,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifies this organization  across multiple systems",
@@ -118,7 +118,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name used for the organization",
@@ -127,11 +127,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    partOf: fhirtypes.ReferenceType = Field(
+    partOf: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="partOf",
         title="The organization of which this organization forms a part",
@@ -143,7 +143,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    qualification: typing.List[fhirtypes.OrganizationQualificationType] = Field(
+    qualification: typing.List[fhirtypes.OrganizationQualificationType] = Field(  # type: ignore
         None,
         alias="qualification",
         title=(
@@ -162,7 +162,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of organization",
@@ -200,9 +200,6 @@ class Organization(domainresource.DomainResource):
         ]
 
 
-from . import backboneelement
-
-
 class OrganizationQualification(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -220,7 +217,7 @@ class OrganizationQualification(backboneelement.BackboneElement):
 
     __resource_type__ = "OrganizationQualification"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Coded representation of the qualification",
@@ -230,7 +227,7 @@ class OrganizationQualification(backboneelement.BackboneElement):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="An identifier for this qualification for the organization",
@@ -240,7 +237,7 @@ class OrganizationQualification(backboneelement.BackboneElement):
         },
     )
 
-    issuer: fhirtypes.ReferenceType = Field(
+    issuer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="issuer",
         title="Organization that regulates and issues the qualification",
@@ -252,7 +249,7 @@ class OrganizationQualification(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Period during which the qualification is valid",

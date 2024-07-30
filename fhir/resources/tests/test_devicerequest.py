@@ -7,21 +7,23 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import devicerequest
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_devicerequest_1(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(
-            valueDateTime="2013-05-08T09:33:27+07:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-05-08T09:33:27+07:00"}
         ).valueDateTime
     )
     assert inst.basedOn[0].display == "Homecare - DM follow-up"
     assert inst.code.concept.coding[0].code == "43148-6"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.concept.text == "Insulin delivery device panel"
     assert inst.encounter.display == "Encounter 1"
@@ -36,15 +38,15 @@ def impl_devicerequest_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == "this is the right device brand and model"
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2013-05-08T09:33:27+07:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-05-08T09:33:27+07:00"}
         ).valueDateTime
     )
     assert inst.performer.reference.display == "Nurse Rossignol"
@@ -85,20 +87,24 @@ def impl_devicerequest_2(inst):
     assert inst.code.concept.coding[0].code == "lens"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+            }
         ).valueUri
     )
     assert (
         inst.groupIdentifier.system
-        == ExternalValidatorModel(valueUri="http://acme.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org"}
+        ).valueUri
     )
     assert inst.groupIdentifier.value == "15013"
     assert inst.id == "left-lens"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.happysight.com/prescription"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.happysight.com/prescription"}
         ).valueUri
     )
     assert inst.identifier[0].value == "15013L"
@@ -107,13 +113,15 @@ def impl_devicerequest_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2014-06-15").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-06-15"}
+        ).valueDateTime
     )
     assert inst.parameter[0].code.coding[0].code == "28842-3"
     assert (
@@ -122,13 +130,17 @@ def impl_devicerequest_2(inst):
     )
     assert (
         inst.parameter[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.parameter[0].code.text == "sphere, left lens"
     assert inst.parameter[0].valueQuantity.code == "[diop]"
     assert (
         inst.parameter[0].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.parameter[0].valueQuantity.unit == "Diopter"
     assert float(inst.parameter[0].valueQuantity.value) == float(-1.0)
@@ -139,13 +151,17 @@ def impl_devicerequest_2(inst):
     )
     assert (
         inst.parameter[1].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.parameter[1].code.text == "cylinder, left lens"
     assert inst.parameter[1].valueQuantity.code == "[diop]"
     assert (
         inst.parameter[1].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.parameter[1].valueQuantity.unit == "Diopter"
     assert float(inst.parameter[1].valueQuantity.value) == float(-0.5)
@@ -156,13 +172,17 @@ def impl_devicerequest_2(inst):
     )
     assert (
         inst.parameter[2].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.parameter[2].code.text == "axis, left lens"
     assert inst.parameter[2].valueQuantity.code == "deg"
     assert (
         inst.parameter[2].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.parameter[2].valueQuantity.unit == "Degrees"
     assert float(inst.parameter[2].valueQuantity.value) == float(180)
@@ -194,20 +214,24 @@ def impl_devicerequest_3(inst):
     assert inst.code.concept.coding[0].code == "lens"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
+            }
         ).valueUri
     )
     assert (
         inst.groupIdentifier.system
-        == ExternalValidatorModel(valueUri="http://acme.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org"}
+        ).valueUri
     )
     assert inst.groupIdentifier.value == "15013"
     assert inst.id == "right-lens"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.happysight.com/prescription"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.happysight.com/prescription"}
         ).valueUri
     )
     assert inst.identifier[0].value == "15013R"
@@ -216,13 +240,15 @@ def impl_devicerequest_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2014-06-15").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-06-15"}
+        ).valueDateTime
     )
     assert inst.parameter[0].code.coding[0].code == "28826-6"
     assert (
@@ -231,13 +257,17 @@ def impl_devicerequest_3(inst):
     )
     assert (
         inst.parameter[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.parameter[0].code.text == "sphere, right lens"
     assert inst.parameter[0].valueQuantity.code == "[diop]"
     assert (
         inst.parameter[0].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.parameter[0].valueQuantity.unit == "Diopter"
     assert float(inst.parameter[0].valueQuantity.value) == float(-2.0)
@@ -248,13 +278,17 @@ def impl_devicerequest_3(inst):
     )
     assert (
         inst.parameter[1].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.parameter[1].code.text == "prisms, right lens"
     assert inst.parameter[1].valueQuantity.code == "[diop]"
     assert (
         inst.parameter[1].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.parameter[1].valueQuantity.unit == "Diopter"
     assert float(inst.parameter[1].valueQuantity.value) == float(-2.0)
@@ -262,13 +296,17 @@ def impl_devicerequest_3(inst):
     assert inst.parameter[2].code.coding[0].display == "Add 1 LM glasses lens - right"
     assert (
         inst.parameter[2].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.parameter[2].code.text == "add, right lens"
     assert inst.parameter[2].valueQuantity.code == "[diop]"
     assert (
         inst.parameter[2].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.parameter[2].valueQuantity.unit == "Diopter"
     assert float(inst.parameter[2].valueQuantity.value) == float(2.0)
@@ -304,8 +342,8 @@ def impl_devicerequest_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "completed"

@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductDefinition(domainresource.DomainResource):
@@ -29,7 +29,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
 
     __resource_type__ = "MedicinalProductDefinition"
 
-    additionalMonitoringIndicator: fhirtypes.CodeableConceptType = Field(
+    additionalMonitoringIndicator: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="additionalMonitoringIndicator",
         title=(
@@ -45,7 +45,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    attachedDocument: typing.List[fhirtypes.ReferenceType] = Field(
+    attachedDocument: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="attachedDocument",
         title="Additional documentation about the medicinal product",
@@ -60,9 +60,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    characteristic: typing.List[
-        fhirtypes.MedicinalProductDefinitionCharacteristicType
-    ] = Field(
+    characteristic: typing.List[fhirtypes.MedicinalProductDefinitionCharacteristicType] = Field(  # type: ignore
         None,
         alias="characteristic",
         title='Key product features such as "sugar free", "modified release"',
@@ -75,7 +73,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    classification: typing.List[fhirtypes.CodeableConceptType] = Field(
+    classification: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="classification",
         title="Allows the product to be classified by various systems",
@@ -88,7 +86,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    clinicalTrial: typing.List[fhirtypes.ReferenceType] = Field(
+    clinicalTrial: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="clinicalTrial",
         title="Clinical trials or studies that this product is involved in",
@@ -100,7 +98,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    code: typing.List[fhirtypes.CodingType] = Field(
+    code: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="code",
         title="A code that this product is known by, within some formal terminology",
@@ -118,7 +116,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    combinedPharmaceuticalDoseForm: fhirtypes.CodeableConceptType = Field(
+    combinedPharmaceuticalDoseForm: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="combinedPharmaceuticalDoseForm",
         title=(
@@ -137,7 +135,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    comprisedOf: typing.List[fhirtypes.ReferenceType] = Field(
+    comprisedOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="comprisedOf",
         title=(
@@ -157,7 +155,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.MedicinalProductDefinitionContactType] = Field(
+    contact: typing.List[fhirtypes.MedicinalProductDefinitionContactType] = Field(  # type: ignore
         None,
         alias="contact",
         title="A product specific contact, person (in a role), or an organization",
@@ -167,9 +165,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    crossReference: typing.List[
-        fhirtypes.MedicinalProductDefinitionCrossReferenceType
-    ] = Field(
+    crossReference: typing.List[fhirtypes.MedicinalProductDefinitionCrossReferenceType] = Field(  # type: ignore
         None,
         alias="crossReference",
         title=(
@@ -185,7 +181,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="General description of this product",
@@ -194,11 +190,11 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    domain: fhirtypes.CodeableConceptType = Field(
+    domain: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="domain",
         title="If this medicine applies to human or veterinary uses",
@@ -208,7 +204,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this product. Could be an MPID",
@@ -225,7 +221,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    impurity: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    impurity: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="impurity",
         title=(
@@ -245,7 +241,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    indication: fhirtypes.MarkdownType = Field(
+    indication: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="indication",
         title=(
@@ -263,11 +259,11 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    indication__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    indication__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_indication", title="Extension field for ``indication``."
     )
 
-    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(
+    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="ingredient",
         title=(
@@ -288,7 +284,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
+    legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="legalStatusOfSupply",
         title=(
@@ -301,7 +297,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
+    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(  # type: ignore
         None,
         alias="marketingStatus",
         title=(
@@ -319,7 +315,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    masterFile: typing.List[fhirtypes.ReferenceType] = Field(
+    masterFile: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="masterFile",
         title=(
@@ -340,7 +336,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.MedicinalProductDefinitionNameType] = Field(
+    name: typing.List[fhirtypes.MedicinalProductDefinitionNameType] = Field(  # type: ignore
         ...,
         alias="name",
         title="The product's name, including full name and possibly coded parts",
@@ -350,7 +346,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    operation: typing.List[fhirtypes.MedicinalProductDefinitionOperationType] = Field(
+    operation: typing.List[fhirtypes.MedicinalProductDefinitionOperationType] = Field(  # type: ignore
         None,
         alias="operation",
         title="A manufacturing or administrative process for the medicinal product",
@@ -363,7 +359,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    packagedMedicinalProduct: typing.List[fhirtypes.CodeableConceptType] = Field(
+    packagedMedicinalProduct: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="packagedMedicinalProduct",
         title="Package type for the product",
@@ -376,7 +372,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    pediatricUseIndicator: fhirtypes.CodeableConceptType = Field(
+    pediatricUseIndicator: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="pediatricUseIndicator",
         title="If authorised for use in children",
@@ -386,7 +382,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    route: typing.List[fhirtypes.CodeableConceptType] = Field(
+    route: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="route",
         title=(
@@ -406,7 +402,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    specialMeasures: typing.List[fhirtypes.CodeableConceptType] = Field(
+    specialMeasures: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="specialMeasures",
         title=(
@@ -423,7 +419,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title="The status within the lifecycle of this product record",
@@ -437,7 +433,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    statusDate: fhirtypes.DateTimeType = Field(
+    statusDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="statusDate",
         title="The date at which the given status became applicable",
@@ -446,11 +442,11 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Regulatory type, e.g. Investigational or Authorized",
@@ -460,7 +456,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="A business identifier relating to a specific version of the product",
@@ -472,7 +468,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -523,9 +519,6 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ]
 
 
-from . import backboneelement
-
-
 class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -538,7 +531,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicinalProductDefinitionCharacteristic"
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
@@ -548,7 +541,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="A value for the characteristic",
@@ -561,7 +554,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="A value for the characteristic",
@@ -573,11 +566,11 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="A value for the characteristic",
@@ -590,7 +583,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueDate: fhirtypes.DateType = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="A value for the characteristic",
@@ -602,11 +595,11 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(
+    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="A value for the characteristic",
@@ -618,11 +611,11 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueMarkdown: fhirtypes.MarkdownType = Field(
+    valueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="valueMarkdown",
         title="A value for the characteristic",
@@ -634,11 +627,11 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="A value for the characteristic",
@@ -708,7 +701,7 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicinalProductDefinitionContact"
 
-    contact: fhirtypes.ReferenceType = Field(
+    contact: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="contact",
         title="A product specific contact, person (in a role), or an organization",
@@ -720,7 +713,7 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -755,7 +748,7 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicinalProductDefinitionCrossReference"
 
-    product: fhirtypes.CodeableReferenceType = Field(
+    product: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         ...,
         alias="product",
         title=(
@@ -770,7 +763,7 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -806,7 +799,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicinalProductDefinitionName"
 
-    part: typing.List[fhirtypes.MedicinalProductDefinitionNamePartType] = Field(
+    part: typing.List[fhirtypes.MedicinalProductDefinitionNamePartType] = Field(  # type: ignore
         None,
         alias="part",
         title="Coding words or phrases of the name",
@@ -816,7 +809,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    productName: fhirtypes.StringType = Field(
+    productName: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="productName",
         title="The full product name",
@@ -826,11 +819,11 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_productName", title="Extension field for ``productName``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type of product name, such as rINN, BAN, Proprietary, Non-Proprietary",
@@ -840,7 +833,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    usage: typing.List[fhirtypes.MedicinalProductDefinitionNameUsageType] = Field(
+    usage: typing.List[fhirtypes.MedicinalProductDefinitionNameUsageType] = Field(  # type: ignore
         None,
         alias="usage",
         title="Country and jurisdiction where the name applies",
@@ -891,7 +884,7 @@ class MedicinalProductDefinitionNamePart(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicinalProductDefinitionNamePart"
 
-    part: fhirtypes.StringType = Field(
+    part: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="part",
         title="A fragment of a product name",
@@ -901,11 +894,11 @@ class MedicinalProductDefinitionNamePart(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    part__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    part__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_part", title="Extension field for ``part``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="Identifying type for this part of the name (e.g. strength part)",
@@ -946,7 +939,7 @@ class MedicinalProductDefinitionNameUsage(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicinalProductDefinitionNameUsage"
 
-    country: fhirtypes.CodeableConceptType = Field(
+    country: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="country",
         title="Country code for where this name applies",
@@ -956,7 +949,7 @@ class MedicinalProductDefinitionNameUsage(backboneelement.BackboneElement):
         },
     )
 
-    jurisdiction: fhirtypes.CodeableConceptType = Field(
+    jurisdiction: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Jurisdiction code for where this name applies",
@@ -969,7 +962,7 @@ class MedicinalProductDefinitionNameUsage(backboneelement.BackboneElement):
         },
     )
 
-    language: fhirtypes.CodeableConceptType = Field(
+    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="language",
         title="Language code for this name",
@@ -1007,7 +1000,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicinalProductDefinitionOperation"
 
-    confidentialityIndicator: fhirtypes.CodeableConceptType = Field(
+    confidentialityIndicator: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="confidentialityIndicator",
         title=(
@@ -1023,7 +1016,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         },
     )
 
-    effectiveDate: fhirtypes.PeriodType = Field(
+    effectiveDate: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="effectiveDate",
         title="Date range of applicability",
@@ -1033,7 +1026,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         },
     )
 
-    organization: typing.List[fhirtypes.ReferenceType] = Field(
+    organization: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="organization",
         title=(
@@ -1052,7 +1045,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableReferenceType = Field(
+    type: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         None,
         alias="type",
         title=(

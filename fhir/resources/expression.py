@@ -24,7 +24,7 @@ class Expression(datatype.DataType):
 
     __resource_type__ = "Expression"
 
-    description: fhirtypes.StringType = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the condition",
@@ -36,11 +36,11 @@ class Expression(datatype.DataType):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    expression: fhirtypes.StringType = Field(
+    expression: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="expression",
         title="Expression in specified language",
@@ -49,11 +49,11 @@ class Expression(datatype.DataType):
             "element_property": True,
         },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    language: fhirtypes.CodeType = Field(
+    language: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="language",
         title="text/cql | text/fhirpath | application/x-fhir-query | etc.",
@@ -70,11 +70,11 @@ class Expression(datatype.DataType):
             ],
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    name: fhirtypes.CodeType = Field(
+    name: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="name",
         title="Short name assigned to expression for reuse",
@@ -86,11 +86,11 @@ class Expression(datatype.DataType):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    reference: fhirtypes.UriType = Field(
+    reference: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="reference",
         title="Where the expression is found",
@@ -99,7 +99,7 @@ class Expression(datatype.DataType):
             "element_property": True,
         },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reference", title="Extension field for ``reference``."
     )
 

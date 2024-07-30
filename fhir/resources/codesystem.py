@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class CodeSystem(domainresource.DomainResource):
@@ -27,7 +27,7 @@ class CodeSystem(domainresource.DomainResource):
 
     __resource_type__ = "CodeSystem"
 
-    approvalDate: fhirtypes.DateType = Field(
+    approvalDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="approvalDate",
         title="When the CodeSystem was approved by publisher",
@@ -40,11 +40,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] = Field(
+    author: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="author",
         title="Who authored the CodeSystem",
@@ -57,7 +57,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    caseSensitive: bool = Field(
+    caseSensitive: bool = Field(  # type: ignore
         None,
         alias="caseSensitive",
         title="If code comparison is case sensitive",
@@ -69,11 +69,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    caseSensitive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    caseSensitive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_caseSensitive", title="Extension field for ``caseSensitive``."
     )
 
-    compositional: bool = Field(
+    compositional: bool = Field(  # type: ignore
         None,
         alias="compositional",
         title="If code system defines a compositional grammar",
@@ -82,11 +82,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    compositional__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    compositional__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_compositional", title="Extension field for ``compositional``."
     )
 
-    concept: typing.List[fhirtypes.CodeSystemConceptType] = Field(
+    concept: typing.List[fhirtypes.CodeSystemConceptType] = Field(  # type: ignore
         None,
         alias="concept",
         title="Concepts in the code system",
@@ -100,7 +100,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -113,7 +113,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    content: fhirtypes.CodeType = Field(
+    content: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="content",
         title="not-present | example | fragment | complete | supplement",
@@ -135,11 +135,11 @@ class CodeSystem(domainresource.DomainResource):
             ],
         },
     )
-    content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_content", title="Extension field for ``content``."
     )
 
-    copyright: fhirtypes.MarkdownType = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -152,11 +152,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType = Field(
+    copyrightLabel: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -170,11 +170,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
     )
 
-    count: fhirtypes.UnsignedIntType = Field(
+    count: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="count",
         title="Total concepts in the code system",
@@ -187,11 +187,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_count", title="Extension field for ``count``."
     )
 
-    date: fhirtypes.DateTimeType = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -206,11 +206,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the code system",
@@ -222,11 +222,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] = Field(
+    editor: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="editor",
         title="Who edited the CodeSystem",
@@ -239,7 +239,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(
+    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="When the CodeSystem is expected to be used",
@@ -252,7 +252,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] = Field(
+    endorser: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="endorser",
         title="Who endorsed the CodeSystem",
@@ -266,7 +266,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -279,11 +279,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    filter: typing.List[fhirtypes.CodeSystemFilterType] = Field(
+    filter: typing.List[fhirtypes.CodeSystemFilterType] = Field(  # type: ignore
         None,
         alias="filter",
         title="Filter that can be used in a value set",
@@ -296,7 +296,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    hierarchyMeaning: fhirtypes.CodeType = Field(
+    hierarchyMeaning: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="hierarchyMeaning",
         title="grouped-by | is-a | part-of | classified-with",
@@ -311,13 +311,13 @@ class CodeSystem(domainresource.DomainResource):
             "enum_values": ["grouped-by", "is-a", "part-of", "classified-with"],
         },
     )
-    hierarchyMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    hierarchyMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_hierarchyMeaning",
         title="Extension field for ``hierarchyMeaning``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the code system (business identifier)",
@@ -331,7 +331,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for code system (if applicable)",
@@ -344,7 +344,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType = Field(
+    lastReviewDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="lastReviewDate",
         title="When the CodeSystem was last reviewed by the publisher",
@@ -357,11 +357,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this code system (computer friendly)",
@@ -374,11 +374,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    property: typing.List[fhirtypes.CodeSystemPropertyType] = Field(
+    property: typing.List[fhirtypes.CodeSystemPropertyType] = Field(  # type: ignore
         None,
         alias="property",
         title="Additional information supplied about each concept",
@@ -391,7 +391,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -403,11 +403,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType = Field(
+    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this code system is defined",
@@ -419,11 +419,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
         None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc",
@@ -437,7 +437,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(
+    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="reviewer",
         title="Who reviewed the CodeSystem",
@@ -450,7 +450,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -466,11 +466,11 @@ class CodeSystem(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    supplements: fhirtypes.CanonicalType = Field(
+    supplements: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="supplements",
         title="Canonical URL of Code System this adds designations and properties to",
@@ -484,11 +484,11 @@ class CodeSystem(domainresource.DomainResource):
             "enum_reference_types": ["CodeSystem"],
         },
     )
-    supplements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    supplements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_supplements", title="Extension field for ``supplements``."
     )
 
-    title: fhirtypes.StringType = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this code system (human friendly)",
@@ -497,11 +497,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: typing.List[fhirtypes.CodeableConceptType] = Field(
+    topic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
@@ -515,7 +515,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    url: fhirtypes.UriType = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -536,11 +536,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -556,7 +556,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    valueSet: fhirtypes.CanonicalType = Field(
+    valueSet: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="valueSet",
         title="Canonical reference to the value set with entire code system",
@@ -570,11 +570,11 @@ class CodeSystem(domainresource.DomainResource):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
-    version: fhirtypes.StringType = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the code system (Coding.version)",
@@ -592,11 +592,11 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType = Field(
+    versionAlgorithmCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -612,7 +612,7 @@ class CodeSystem(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType = Field(
+    versionAlgorithmString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -627,13 +627,13 @@ class CodeSystem(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
 
-    versionNeeded: bool = Field(
+    versionNeeded: bool = Field(  # type: ignore
         None,
         alias="versionNeeded",
         title="If definitions are not stable",
@@ -646,7 +646,7 @@ class CodeSystem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    versionNeeded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    versionNeeded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_versionNeeded", title="Extension field for ``versionNeeded``."
     )
 
@@ -735,9 +735,6 @@ class CodeSystem(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class CodeSystemConcept(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -751,7 +748,7 @@ class CodeSystemConcept(backboneelement.BackboneElement):
 
     __resource_type__ = "CodeSystemConcept"
 
-    code: fhirtypes.CodeType = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Code that identifies concept",
@@ -764,11 +761,11 @@ class CodeSystemConcept(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    concept: typing.List[fhirtypes.CodeSystemConceptType] = Field(
+    concept: typing.List[fhirtypes.CodeSystemConceptType] = Field(  # type: ignore
         None,
         alias="concept",
         title="Child Concepts (is-a/contains/categorizes)",
@@ -782,7 +779,7 @@ class CodeSystemConcept(backboneelement.BackboneElement):
         },
     )
 
-    definition: fhirtypes.StringType = Field(
+    definition: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="definition",
         title="Formal definition",
@@ -796,11 +793,11 @@ class CodeSystemConcept(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    designation: typing.List[fhirtypes.CodeSystemConceptDesignationType] = Field(
+    designation: typing.List[fhirtypes.CodeSystemConceptDesignationType] = Field(  # type: ignore
         None,
         alias="designation",
         title="Additional representations for the concept",
@@ -813,7 +810,7 @@ class CodeSystemConcept(backboneelement.BackboneElement):
         },
     )
 
-    display: fhirtypes.StringType = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="Text to display to the user",
@@ -825,11 +822,11 @@ class CodeSystemConcept(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    property: typing.List[fhirtypes.CodeSystemConceptPropertyType] = Field(
+    property: typing.List[fhirtypes.CodeSystemConceptPropertyType] = Field(  # type: ignore
         None,
         alias="property",
         title="Property value for the concept",
@@ -881,7 +878,7 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
 
     __resource_type__ = "CodeSystemConceptDesignation"
 
-    additionalUse: typing.List[fhirtypes.CodingType] = Field(
+    additionalUse: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="additionalUse",
         title="Additional ways how this designation would be used",
@@ -894,7 +891,7 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
         },
     )
 
-    language: fhirtypes.CodeType = Field(
+    language: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="language",
         title="Human language of the designation",
@@ -903,11 +900,11 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    use: fhirtypes.CodingType = Field(
+    use: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="use",
         title="Details how this designation would be used",
@@ -917,7 +914,7 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
         },
     )
 
-    value: fhirtypes.StringType = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="The text value for this designation",
@@ -927,7 +924,7 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 
@@ -970,7 +967,7 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
 
     __resource_type__ = "CodeSystemConceptProperty"
 
-    code: fhirtypes.CodeType = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Reference to CodeSystem.property.code",
@@ -980,11 +977,11 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Value of the property for this concept",
@@ -996,11 +993,11 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCode: fhirtypes.CodeType = Field(
+    valueCode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="valueCode",
         title="Value of the property for this concept",
@@ -1012,11 +1009,11 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
-    valueCoding: fhirtypes.CodingType = Field(
+    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Value of the property for this concept",
@@ -1029,7 +1026,7 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueDateTime: fhirtypes.DateTimeType = Field(
+    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="Value of the property for this concept",
@@ -1041,11 +1038,11 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueDecimal: fhirtypes.DecimalType = Field(
+    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="Value of the property for this concept",
@@ -1057,11 +1054,11 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(
+    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Value of the property for this concept",
@@ -1073,11 +1070,11 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueString: fhirtypes.StringType = Field(
+    valueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="valueString",
         title="Value of the property for this concept",
@@ -1089,7 +1086,7 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
@@ -1163,7 +1160,7 @@ class CodeSystemFilter(backboneelement.BackboneElement):
 
     __resource_type__ = "CodeSystemFilter"
 
-    code: fhirtypes.CodeType = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Code that identifies the filter",
@@ -1176,11 +1173,11 @@ class CodeSystemFilter(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    description: fhirtypes.StringType = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="How or why the filter is used",
@@ -1189,11 +1186,11 @@ class CodeSystemFilter(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    operator: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(
+    operator: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="operator",
         title=(
@@ -1221,11 +1218,11 @@ class CodeSystemFilter(backboneelement.BackboneElement):
             ],
         },
     )
-    operator__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_operator", title="Extension field for ``operator``.")
+    operator__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_operator", title="Extension field for ``operator``."
+    )
 
-    value: fhirtypes.StringType = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="What to use for the value",
@@ -1235,7 +1232,7 @@ class CodeSystemFilter(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 
@@ -1283,7 +1280,7 @@ class CodeSystemProperty(backboneelement.BackboneElement):
 
     __resource_type__ = "CodeSystemProperty"
 
-    code: fhirtypes.CodeType = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -1300,11 +1297,11 @@ class CodeSystemProperty(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    description: fhirtypes.StringType = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Why the property is defined, and/or what it conveys",
@@ -1316,11 +1313,11 @@ class CodeSystemProperty(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="code | Coding | string | integer | boolean | dateTime | decimal",
@@ -1345,11 +1342,11 @@ class CodeSystemProperty(backboneelement.BackboneElement):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    uri: fhirtypes.UriType = Field(
+    uri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="uri",
         title="Formal identifier for the property",
@@ -1362,7 +1359,7 @@ class CodeSystemProperty(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uri", title="Extension field for ``uri``."
     )
 

@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Subscription(domainresource.DomainResource):
@@ -25,7 +25,7 @@ class Subscription(domainresource.DomainResource):
 
     __resource_type__ = "Subscription"
 
-    channelType: fhirtypes.CodingType = Field(
+    channelType: fhirtypes.CodingType = Field(  # type: ignore
         ...,
         alias="channelType",
         title="Channel type for notifications",
@@ -35,7 +35,7 @@ class Subscription(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactPointType] = Field(
+    contact: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for source (e.g. troubleshooting)",
@@ -48,7 +48,7 @@ class Subscription(domainresource.DomainResource):
         },
     )
 
-    content: fhirtypes.CodeType = Field(
+    content: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="content",
         title="empty | id-only | full-resource",
@@ -64,11 +64,11 @@ class Subscription(domainresource.DomainResource):
             "enum_values": ["empty", "id-only", "full-resource"],
         },
     )
-    content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_content", title="Extension field for ``content``."
     )
 
-    contentType: fhirtypes.CodeType = Field(
+    contentType: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="contentType",
         title="MIME type to send, or omit for no payload",
@@ -85,11 +85,11 @@ class Subscription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
-    end: fhirtypes.InstantType = Field(
+    end: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="end",
         title="When to automatically delete the subscription",
@@ -98,11 +98,11 @@ class Subscription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_end", title="Extension field for ``end``."
     )
 
-    endpoint: fhirtypes.UrlType = Field(
+    endpoint: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Where the channel points to",
@@ -111,11 +111,11 @@ class Subscription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_endpoint", title="Extension field for ``endpoint``."
     )
 
-    filterBy: typing.List[fhirtypes.SubscriptionFilterByType] = Field(
+    filterBy: typing.List[fhirtypes.SubscriptionFilterByType] = Field(  # type: ignore
         None,
         alias="filterBy",
         title="Criteria for narrowing the subscription topic stream",
@@ -130,7 +130,7 @@ class Subscription(domainresource.DomainResource):
         },
     )
 
-    heartbeatPeriod: fhirtypes.UnsignedIntType = Field(
+    heartbeatPeriod: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="heartbeatPeriod",
         title="Interval in seconds to send 'heartbeat' notification",
@@ -143,11 +143,11 @@ class Subscription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    heartbeatPeriod__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    heartbeatPeriod__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_heartbeatPeriod", title="Extension field for ``heartbeatPeriod``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifiers (business identifier)",
@@ -161,7 +161,7 @@ class Subscription(domainresource.DomainResource):
         },
     )
 
-    managingEntity: fhirtypes.ReferenceType = Field(
+    managingEntity: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="managingEntity",
         title="Entity responsible for Subscription changes",
@@ -185,7 +185,7 @@ class Subscription(domainresource.DomainResource):
         },
     )
 
-    maxCount: fhirtypes.PositiveIntType = Field(
+    maxCount: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="maxCount",
         title="Maximum number of events that can be combined in a single notification",
@@ -198,11 +198,11 @@ class Subscription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    maxCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_maxCount", title="Extension field for ``maxCount``."
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Human readable name for this subscription",
@@ -211,11 +211,11 @@ class Subscription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    parameter: typing.List[fhirtypes.SubscriptionParameterType] = Field(
+    parameter: typing.List[fhirtypes.SubscriptionParameterType] = Field(  # type: ignore
         None,
         alias="parameter",
         title="Channel type",
@@ -228,7 +228,7 @@ class Subscription(domainresource.DomainResource):
         },
     )
 
-    reason: fhirtypes.StringType = Field(
+    reason: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="reason",
         title="Description of why this subscription was created",
@@ -237,11 +237,11 @@ class Subscription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    reason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reason", title="Extension field for ``reason``."
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="requested | active | error | off | entered-in-error",
@@ -257,11 +257,11 @@ class Subscription(domainresource.DomainResource):
             "enum_values": ["requested", "active", "error", "off", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    timeout: fhirtypes.UnsignedIntType = Field(
+    timeout: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="timeout",
         title="Timeout in seconds to attempt notification delivery",
@@ -273,11 +273,11 @@ class Subscription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    timeout__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    timeout__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_timeout", title="Extension field for ``timeout``."
     )
 
-    topic: fhirtypes.CanonicalType = Field(
+    topic: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="topic",
         title="Reference to the subscription topic being subscribed to",
@@ -289,7 +289,7 @@ class Subscription(domainresource.DomainResource):
             "enum_reference_types": ["SubscriptionTopic"],
         },
     )
-    topic__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    topic__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_topic", title="Extension field for ``topic``."
     )
 
@@ -339,9 +339,6 @@ class Subscription(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class SubscriptionFilterBy(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -356,7 +353,7 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
 
     __resource_type__ = "SubscriptionFilterBy"
 
-    comparator: fhirtypes.CodeType = Field(
+    comparator: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="comparator",
         title="eq | ne | gt | lt | ge | le | sa | eb | ap",
@@ -368,11 +365,11 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
             "enum_values": ["eq", "ne", "gt", "lt", "ge", "le", "sa", "eb", "ap"],
         },
     )
-    comparator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    comparator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_comparator", title="Extension field for ``comparator``."
     )
 
-    filterParameter: fhirtypes.StringType = Field(
+    filterParameter: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="filterParameter",
         title="Filter label defined in SubscriptionTopic",
@@ -385,11 +382,11 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    filterParameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    filterParameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_filterParameter", title="Extension field for ``filterParameter``."
     )
 
-    modifier: fhirtypes.CodeType = Field(
+    modifier: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="modifier",
         title=(
@@ -420,11 +417,11 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
             ],
         },
     )
-    modifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    modifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_modifier", title="Extension field for ``modifier``."
     )
 
-    resourceType: fhirtypes.UriType = Field(
+    resourceType: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="resourceType",
         title=(
@@ -440,11 +437,11 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    resourceType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    resourceType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_resourceType", title="Extension field for ``resourceType``."
     )
 
-    value: fhirtypes.StringType = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="Literal value or resource path",
@@ -457,7 +454,7 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 
@@ -505,7 +502,7 @@ class SubscriptionParameter(backboneelement.BackboneElement):
 
     __resource_type__ = "SubscriptionParameter"
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name (key) of the parameter",
@@ -519,11 +516,11 @@ class SubscriptionParameter(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    value: fhirtypes.StringType = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="Value of the parameter to use or pass through",
@@ -537,7 +534,7 @@ class SubscriptionParameter(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

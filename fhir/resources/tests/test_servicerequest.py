@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import servicerequest
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_servicerequest_1(inst):
@@ -18,21 +18,23 @@ def impl_servicerequest_1(inst):
     )
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.encounter.reference == "Encounter/denovoEncounter"
     assert inst.id == "genomicServiceRequest"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/serviceRequests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/serviceRequests"}
         ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "LACSN"
     assert (
         inst.identifier[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
         ).valueUri
     )
     assert inst.identifier[0].type.text == "Laboratory Accession ID"
@@ -42,8 +44,8 @@ def impl_servicerequest_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "active"
@@ -75,7 +77,9 @@ def impl_servicerequest_2(inst):
     assert inst.asNeededCodeableConcept.text == "as needed to clear mucus"
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(valueDateTime="2017-02-01T17:23:07Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-02-01T17:23:07Z"}
+        ).valueDateTime
     )
     assert inst.basedOn[0].reference == "CarePlan/gpvisit"
     assert inst.code.concept.coding[0].code == "34431008"
@@ -84,21 +88,25 @@ def impl_servicerequest_2(inst):
     )
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.contained[0].id == "signature"
     assert inst.contained[1].id == "cystic-fibrosis"
     assert inst.id == "physiotherapy"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://goodhealth.org/placer-ids").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealth.org/placer-ids"}
+        ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "PLAC"
     assert inst.identifier[0].type.coding[0].display == "Placer Identifier"
     assert (
         inst.identifier[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
         ).valueUri
     )
     assert inst.identifier[0].type.text == "Placer"
@@ -108,8 +116,8 @@ def impl_servicerequest_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert float(inst.occurrenceTiming.repeat.duration) == float(15)
@@ -155,21 +163,23 @@ def impl_servicerequest_3(inst):
     )
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.encounter.reference == "Encounter/denovoEncounter"
     assert inst.id == "genomicSRMother"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/serviceRequests"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/serviceRequests"}
         ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "LACSN"
     assert (
         inst.identifier[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
         ).valueUri
     )
     assert inst.identifier[0].type.text == "Laboratory Accession ID"
@@ -179,8 +189,8 @@ def impl_servicerequest_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.status == "active"
@@ -211,19 +221,25 @@ def test_servicerequest_3(base_settings):
 def impl_servicerequest_4(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(valueDateTime="2017-02-01T17:23:07Z").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-02-01T17:23:07Z"}
+        ).valueDateTime
     )
     assert inst.code.concept.coding[0].code == "359962006"
     assert inst.code.concept.coding[0].display == "Turning patient in bed (procedure)"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.doNotPerform is True
     assert inst.id == "do-not-turn"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://goodhealth.org/placer-ids").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealth.org/placer-ids"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "20170201-0002"
     assert inst.intent == "order"
@@ -231,8 +247,8 @@ def impl_servicerequest_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.priority == "stat"
@@ -266,7 +282,9 @@ def impl_servicerequest_5(inst):
     assert inst.code.concept.coding[0].code == "LIPID"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://acme.org/tests").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.org/tests"}
+        ).valueUri
     )
     assert inst.code.concept.text == "Lipid Panel"
     assert inst.contained[0].id == "fasting"
@@ -275,13 +293,15 @@ def impl_servicerequest_5(inst):
     assert inst.id == "lipid"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:1.3.4.5.6.7").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:1.3.4.5.6.7"}
+        ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "PLAC"
     assert (
         inst.identifier[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
         ).valueUri
     )
     assert inst.identifier[0].type.text == "Placer"
@@ -291,15 +311,15 @@ def impl_servicerequest_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == "patient is afraid of needles"
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2013-05-02T16:16:00-07:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-05-02T16:16:00-07:00"}
         ).valueDateTime
     )
     assert inst.performer[0].reference == "Practitioner/f202"
@@ -307,7 +327,9 @@ def impl_servicerequest_5(inst):
     assert inst.reason[0].concept.coding[0].display == "Fam hx-ischem heart dis"
     assert (
         inst.reason[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/icd-9").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/icd-9"}
+        ).valueUri
     )
     assert inst.requester.reference == "Practitioner/example"
     assert inst.specimen[0].display == "Serum specimen"
@@ -340,13 +362,17 @@ def test_servicerequest_5(base_settings):
 def impl_servicerequest_6(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(valueDateTime="2017-03-05").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-05"}
+        ).valueDateTime
     )
     assert inst.code.concept.coding[0].code == "76164006"
     assert inst.code.concept.coding[0].display == "Biopsy of colon (procedure)"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.concept.text == "Biopsy of colon"
     assert inst.id == "colon-biopsy"
@@ -356,8 +382,8 @@ def impl_servicerequest_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].display == "Dr Adam Careful"
@@ -368,7 +394,9 @@ def impl_servicerequest_6(inst):
     )
     assert (
         inst.requisition.system
-        == ExternalValidatorModel(valueUri="http://bumc.org/requisitions").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://bumc.org/requisitions"}
+        ).valueUri
     )
     assert inst.requisition.value == "req12345"
     assert inst.status == "completed"
@@ -402,7 +430,9 @@ def impl_servicerequest_7(inst):
     assert inst.code.concept.coding[0].display == "Bench Press (regime/therapy)"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.id == "benchpress"
     assert inst.intent == "plan"
@@ -410,8 +440,8 @@ def impl_servicerequest_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.occurrenceTiming.repeat.count == 20
@@ -449,13 +479,17 @@ def test_servicerequest_7(base_settings):
 def impl_servicerequest_8(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(valueDateTime="2016-08-16").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-08-16"}
+        ).valueDateTime
     )
     assert inst.category[0].coding[0].code == "311401005"
     assert inst.category[0].coding[0].display == "Patient education (procedure)"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.category[0].text == "Education"
     assert inst.code.concept.coding[0].code == "48023004"
@@ -465,7 +499,9 @@ def impl_servicerequest_8(inst):
     )
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.concept.text == "Health education - breast examination"
     assert inst.id == "education"
@@ -474,13 +510,15 @@ def impl_servicerequest_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.performer[0].display == "Pamela Educator, RN"
     assert inst.reason[0].concept.text == "early detection of breast mass"
@@ -511,13 +549,17 @@ def test_servicerequest_8(base_settings):
 def impl_servicerequest_9(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(valueDateTime="2018-02-20").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-02-20"}
+        ).valueDateTime
     )
     assert inst.code.concept.coding[0].code == "40617009"
     assert inst.code.concept.coding[0].display == "Artificial respiration (procedure)"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.concept.text == "Mechanical Ventilation"
     assert inst.id == "vent"
@@ -526,8 +568,8 @@ def impl_servicerequest_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].display == "Dr Cecil Surgeon"
@@ -565,7 +607,9 @@ def test_servicerequest_9(base_settings):
 def impl_servicerequest_10(inst):
     assert (
         inst.authoredOn
-        == ExternalValidatorModel(valueDateTime="2017-03-05").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-03-05"}
+        ).valueDateTime
     )
     assert inst.basedOn[0].display == "Maternity care plan"
     assert inst.basedOn[0].reference == "CarePlan/preg"
@@ -573,7 +617,9 @@ def impl_servicerequest_10(inst):
     assert inst.code.concept.coding[0].display == "Ambulating patient (procedure)"
     assert (
         inst.code.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.concept.text == "Ambulation"
     assert inst.id == "ambulation"
@@ -583,8 +629,8 @@ def impl_servicerequest_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.reason[0].reference.display == "Blood Pressure"

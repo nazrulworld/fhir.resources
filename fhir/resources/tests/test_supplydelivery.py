@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import supplydelivery
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_supplydelivery_1(inst):
@@ -18,8 +18,8 @@ def impl_supplydelivery_1(inst):
     assert inst.id == "ISBT128"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/ProductConsignment"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/ProductConsignment"}
         ).valueUri
     )
     assert inst.identifier[0].value == "A999922123450101"
@@ -27,8 +27,8 @@ def impl_supplydelivery_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.suppliedItem[0].itemReference.reference == "#Item1"
@@ -37,8 +37,8 @@ def impl_supplydelivery_1(inst):
     assert inst.supplier.display == "Community Blood Center"
     assert (
         inst.supplier.identifier.system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/ProcessorFIN"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/ProcessorFIN"}
         ).valueUri
     )
     assert inst.supplier.identifier.value == "A9999"
@@ -46,8 +46,8 @@ def impl_supplydelivery_1(inst):
     assert inst.type.coding[0].code == "biologicallyderivedproduct"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/supplydelivery-supplyitemtype"}
         ).valueUri
     )
     assert inst.type.text == "Blood Dispatch"
@@ -80,8 +80,8 @@ def impl_supplydelivery_2(inst):
     assert inst.id == "mphodelivery"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/ProductConsignment"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/ProductConsignment"}
         ).valueUri
     )
     assert inst.identifier[0].value == "A999922123450101"
@@ -89,8 +89,8 @@ def impl_supplydelivery_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.suppliedItem[0].itemReference.reference == "#Item1"
@@ -101,8 +101,8 @@ def impl_supplydelivery_2(inst):
     assert inst.type.coding[0].code == "biologicallyderivedproduct"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/supplydelivery-supplyitemtype"}
         ).valueUri
     )
     assert inst.type.text == "Blood Dispatch"
@@ -137,13 +137,15 @@ def impl_supplydelivery_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2016-12-31").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-12-31"}
+        ).valueDateTime
     )
     assert inst.partOf[0].display == "Central Supply Restock"
     assert inst.status == "completed"
@@ -158,8 +160,8 @@ def impl_supplydelivery_3(inst):
     assert inst.type.coding[0].code == "device"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/supplydelivery-supplyitemtype"}
         ).valueUri
     )
     assert inst.type.text == "Blood collect tubes blue cap"
@@ -192,8 +194,8 @@ def impl_supplydelivery_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.display == "Mr. Belpit"

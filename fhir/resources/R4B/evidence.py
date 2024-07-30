@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -27,9 +25,9 @@ class Evidence(domainresource.DomainResource):
     confounding variables), the statistics, and the certainty of this evidence.
     """
 
-    resource_type = Field("Evidence", const=True)
+    __resource_type__ = "Evidence"
 
-    approvalDate: fhirtypes.Date = Field(
+    approvalDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="approvalDate",
         title="When the summary was approved by publisher",
@@ -38,26 +36,28 @@ class Evidence(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    assertion: fhirtypes.Markdown = Field(
+    assertion: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="assertion",
         title="Declarative description of the Evidence",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    assertion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    assertion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_assertion", title="Extension field for ``assertion``."
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] = Field(
+    author: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="author",
         title="Who authored the content",
@@ -65,11 +65,12 @@ class Evidence(domainresource.DomainResource):
             "An individiual, organization, or device primarily involved in the "
             "creation and maintenance of the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    certainty: typing.List[fhirtypes.EvidenceCertaintyType] = Field(
+    certainty: typing.List[fhirtypes.EvidenceCertaintyType] = Field(  # type: ignore
         None,
         alias="certainty",
         title="Certainty or quality of the evidence",
@@ -77,40 +78,43 @@ class Evidence(domainresource.DomainResource):
             "Assessment of certainty, confidence in the estimates, or quality of "
             "the evidence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    citeAsMarkdown: fhirtypes.Markdown = Field(
+    citeAsMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="citeAsMarkdown",
         title="Citation for this evidence",
         description="Citation Resource or display of suggested citation for this evidence.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e citeAs[x]
-        one_of_many="citeAs",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e citeAs[x]
+            "one_of_many": "citeAs",
+            "one_of_many_required": False,
+        },
     )
-    citeAsMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    citeAsMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_citeAsMarkdown", title="Extension field for ``citeAsMarkdown``."
     )
 
-    citeAsReference: fhirtypes.ReferenceType = Field(
+    citeAsReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="citeAsReference",
         title="Citation for this evidence",
         description="Citation Resource or display of suggested citation for this evidence.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e citeAs[x]
-        one_of_many="citeAs",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Citation"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e citeAs[x]
+            "one_of_many": "citeAs",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Citation"],
+        },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -118,11 +122,12 @@ class Evidence(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -132,14 +137,15 @@ class Evidence(domainresource.DomainResource):
             "if the status code changes. In addition, it should change when the "
             "substantive content of the summary changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Description of the particular summary",
@@ -147,14 +153,15 @@ class Evidence(domainresource.DomainResource):
             "A free text natural language description of the evidence from a "
             "consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] = Field(
+    editor: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="editor",
         title="Who edited the content",
@@ -162,11 +169,12 @@ class Evidence(domainresource.DomainResource):
             "An individiual, organization, or device primarily responsible for "
             "internal coherence of the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] = Field(
+    endorser: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="endorser",
         title="Who endorsed the content",
@@ -174,11 +182,12 @@ class Evidence(domainresource.DomainResource):
             "An individiual, organization, or device responsible for officially "
             "endorsing the content for use in some setting."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the summary",
@@ -187,11 +196,12 @@ class Evidence(domainresource.DomainResource):
             "represented in other formats, or referenced in a specification, model,"
             " design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastReviewDate: fhirtypes.Date = Field(
+    lastReviewDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="lastReviewDate",
         title="When the summary was last reviewed",
@@ -200,46 +210,50 @@ class Evidence(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Footnotes and/or explanatory notes",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
         description=(
             "The name of the organization or individual that published the " "evidence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
         None,
         alias="relatedArtifact",
         title="Link or citation to artifact associated with the summary",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(
+    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="reviewer",
         title="Who reviewed the content",
@@ -247,20 +261,22 @@ class Evidence(domainresource.DomainResource):
             "An individiual, organization, or device primarily responsible for "
             "review of some aspect of the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    statistic: typing.List[fhirtypes.EvidenceStatisticType] = Field(
+    statistic: typing.List[fhirtypes.EvidenceStatisticType] = Field(  # type: ignore
         None,
         alias="statistic",
         title="Values and parameters for a single statistic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -268,48 +284,52 @@ class Evidence(domainresource.DomainResource):
             "The status of this summary. Enables tracking the life-cycle of the "
             "content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    studyType: fhirtypes.CodeableConceptType = Field(
+    studyType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="studyType",
         title="The type of study that produced this evidence",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    synthesisType: fhirtypes.CodeableConceptType = Field(
+    synthesisType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="synthesisType",
         title="The method to combine studies",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this summary (human friendly)",
         description="A short, descriptive, user-friendly title for the summary.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -325,14 +345,15 @@ class Evidence(domainresource.DomainResource):
             "the target of a canonical reference. It SHALL remain the same when the"
             " summary is stored on different servers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -343,20 +364,22 @@ class Evidence(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate evidence instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    variableDefinition: typing.List[fhirtypes.EvidenceVariableDefinitionType] = Field(
+    variableDefinition: typing.List[fhirtypes.EvidenceVariableDefinitionType] = Field(  # type: ignore
         ...,
         alias="variableDefinition",
         title="Evidence variable such as population, exposure, or outcome",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of this summary",
@@ -369,10 +392,11 @@ class Evidence(domainresource.DomainResource):
             "no expectation that versions can be placed in a lexicographical "
             "sequence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -419,10 +443,7 @@ class Evidence(domainresource.DomainResource):
             "certainty",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_973(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -431,57 +452,9 @@ class Evidence(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_973(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -495,26 +468,7 @@ class Evidence(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"citeAs": ["citeAsMarkdown", "citeAsReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class EvidenceCertainty(backboneelement.BackboneElement):
@@ -527,66 +481,72 @@ class EvidenceCertainty(backboneelement.BackboneElement):
     evidence.
     """
 
-    resource_type = Field("EvidenceCertainty", const=True)
+    __resource_type__ = "EvidenceCertainty"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Textual description of certainty",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Footnotes and/or explanatory notes",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    rater: fhirtypes.String = Field(
+    rater: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="rater",
         title="Individual or group who did the rating",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    rater__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    rater__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_rater", title="Extension field for ``rater``."
     )
 
-    rating: fhirtypes.CodeableConceptType = Field(
+    rating: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="rating",
         title="Assessment or judgement of the aspect",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    subcomponent: typing.List[fhirtypes.EvidenceCertaintyType] = Field(
+    subcomponent: typing.List[fhirtypes.EvidenceCertaintyType] = Field(  # type: ignore
         None,
         alias="subcomponent",
         title="A domain or subdomain of certainty",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Aspect of certainty being rated",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -616,11 +576,9 @@ class EvidenceStatistic(backboneelement.BackboneElement):
     Values and parameters for a single statistic.
     """
 
-    resource_type = Field("EvidenceStatistic", const=True)
+    __resource_type__ = "EvidenceStatistic"
 
-    attributeEstimate: typing.List[
-        fhirtypes.EvidenceStatisticAttributeEstimateType
-    ] = Field(
+    attributeEstimate: typing.List[fhirtypes.EvidenceStatisticAttributeEstimateType] = Field(  # type: ignore
         None,
         alias="attributeEstimate",
         title="An attribute of the Statistic",
@@ -628,11 +586,12 @@ class EvidenceStatistic(backboneelement.BackboneElement):
             "A statistical attribute of the statistic such as a measure of "
             "heterogeneity."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    category: fhirtypes.CodeableConceptType = Field(
+    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="category",
         title="Associated category for categorical variable",
@@ -640,43 +599,45 @@ class EvidenceStatistic(backboneelement.BackboneElement):
             "When the measured variable is handled categorically, the category "
             "element is used to define which category the statistic is reporting."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Description of content",
         description="A description of the content value of the statistic.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    modelCharacteristic: typing.List[
-        fhirtypes.EvidenceStatisticModelCharacteristicType
-    ] = Field(
+    modelCharacteristic: typing.List[fhirtypes.EvidenceStatisticModelCharacteristicType] = Field(  # type: ignore
         None,
         alias="modelCharacteristic",
         title="An aspect of the statistical model",
         description="A component of the method to generate the statistic.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Footnotes and/or explanatory notes",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    numberAffected: fhirtypes.UnsignedInt = Field(
+    numberAffected: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberAffected",
         title="The number of participants affected",
@@ -684,14 +645,15 @@ class EvidenceStatistic(backboneelement.BackboneElement):
             "The number of participants affected where the unit of analysis is the "
             "same as sampleSize.knownDataCount and sampleSize.numberOfParticipants."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    numberAffected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberAffected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_numberAffected", title="Extension field for ``numberAffected``."
     )
 
-    numberOfEvents: fhirtypes.UnsignedInt = Field(
+    numberOfEvents: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfEvents",
         title="The number of events associated with the statistic",
@@ -700,38 +662,42 @@ class EvidenceStatistic(backboneelement.BackboneElement):
             "analysis is different from numberAffected, sampleSize.knownDataCount "
             "and sampleSize.numberOfParticipants."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    numberOfEvents__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfEvents__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_numberOfEvents", title="Extension field for ``numberOfEvents``."
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="Statistic value",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sampleSize: fhirtypes.EvidenceStatisticSampleSizeType = Field(
+    sampleSize: fhirtypes.EvidenceStatisticSampleSizeType = Field(  # type: ignore
         None,
         alias="sampleSize",
         title="Number of samples in the statistic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    statisticType: fhirtypes.CodeableConceptType = Field(
+    statisticType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="statisticType",
         title="Type of statistic, eg relative risk",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -767,11 +733,9 @@ class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
     heterogeneity.
     """
 
-    resource_type = Field("EvidenceStatisticAttributeEstimate", const=True)
+    __resource_type__ = "EvidenceStatisticAttributeEstimate"
 
-    attributeEstimate: typing.List[
-        fhirtypes.EvidenceStatisticAttributeEstimateType
-    ] = Field(
+    attributeEstimate: typing.List[fhirtypes.EvidenceStatisticAttributeEstimateType] = Field(  # type: ignore
         None,
         alias="attributeEstimate",
         title=(
@@ -779,44 +743,48 @@ class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
             "attribute estimate"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Textual description of the attribute estimate",
         description="Human-readable summary of the estimate.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    level: fhirtypes.Decimal = Field(
+    level: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="level",
         title="Level of confidence interval, eg 0.95 for 95% confidence interval",
         description="Use 95 for a 95% confidence interval.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    level__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    level__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_level", title="Extension field for ``level``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Footnote or explanatory note about the estimate",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title=(
@@ -825,26 +793,29 @@ class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
             "measure"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    range: fhirtypes.RangeType = Field(
+    range: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="range",
         title="Lower and upper bound values of the attribute estimate",
         description="Lower bound of confidence interval.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="The type of attribute estimate, eg confidence interval or p value",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -876,29 +847,29 @@ class EvidenceStatisticModelCharacteristic(backboneelement.BackboneElement):
     A component of the method to generate the statistic.
     """
 
-    resource_type = Field("EvidenceStatisticModelCharacteristic", const=True)
+    __resource_type__ = "EvidenceStatisticModelCharacteristic"
 
-    attributeEstimate: typing.List[
-        fhirtypes.EvidenceStatisticAttributeEstimateType
-    ] = Field(
+    attributeEstimate: typing.List[fhirtypes.EvidenceStatisticAttributeEstimateType] = Field(  # type: ignore
         None,
         alias="attributeEstimate",
         title="An attribute of the statistic used as a model characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Model specification",
         description="Description of a component of the method to generate the statistic.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    value: fhirtypes.QuantityType = Field(
+    value: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="value",
         title="Numerical value to complete model specification",
@@ -906,19 +877,19 @@ class EvidenceStatisticModelCharacteristic(backboneelement.BackboneElement):
             "Further specification of the quantified value of the component of the "
             "method to generate the statistic."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    variable: typing.List[
-        fhirtypes.EvidenceStatisticModelCharacteristicVariableType
-    ] = Field(
+    variable: typing.List[fhirtypes.EvidenceStatisticModelCharacteristicVariableType] = Field(  # type: ignore
         None,
         alias="variable",
         title="A variable adjusted for in the adjusted analysis",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -946,59 +917,64 @@ class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneEleme
     A variable adjusted for in the adjusted analysis.
     """
 
-    resource_type = Field("EvidenceStatisticModelCharacteristicVariable", const=True)
+    __resource_type__ = "EvidenceStatisticModelCharacteristicVariable"
 
-    handling: fhirtypes.Code = Field(
+    handling: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="handling",
         title="continuous | dichotomous | ordinal | polychotomous",
         description="How the variable is classified for use in adjusted analysis.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["continuous", "dichotomous", "ordinal", "polychotomous"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["continuous", "dichotomous", "ordinal", "polychotomous"],
+        },
     )
-    handling__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    handling__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_handling", title="Extension field for ``handling``."
     )
 
-    valueCategory: typing.List[fhirtypes.CodeableConceptType] = Field(
+    valueCategory: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="valueCategory",
         title="Description for grouping of ordinal or polychotomous variables",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valueQuantity: typing.List[fhirtypes.QuantityType] = Field(
+    valueQuantity: typing.List[fhirtypes.QuantityType] = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Discrete value for grouping of ordinal or polychotomous variables",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valueRange: typing.List[fhirtypes.RangeType] = Field(
+    valueRange: typing.List[fhirtypes.RangeType] = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Range of values for grouping of ordinal or polychotomous variables",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    variableDefinition: fhirtypes.ReferenceType = Field(
+    variableDefinition: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="variableDefinition",
         title="Description of the variable",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Group", "EvidenceVariable"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Group", "EvidenceVariable"],
+        },
     )
 
     @classmethod
@@ -1027,42 +1003,45 @@ class EvidenceStatisticSampleSize(backboneelement.BackboneElement):
     Number of samples in the statistic.
     """
 
-    resource_type = Field("EvidenceStatisticSampleSize", const=True)
+    __resource_type__ = "EvidenceStatisticSampleSize"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Textual description of sample size for statistic",
         description="Human-readable summary of population sample size.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    knownDataCount: fhirtypes.UnsignedInt = Field(
+    knownDataCount: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="knownDataCount",
         title="Number of participants with known results for measured variables",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    knownDataCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    knownDataCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_knownDataCount", title="Extension field for ``knownDataCount``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Footnote or explanatory note about the sample size",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    numberOfParticipants: fhirtypes.UnsignedInt = Field(
+    numberOfParticipants: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfParticipants",
         title="Cumulative number of participants",
@@ -1070,24 +1049,26 @@ class EvidenceStatisticSampleSize(backboneelement.BackboneElement):
             "A human-readable string to clarify or explain concepts about the "
             "sample size."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    numberOfParticipants__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfParticipants__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_numberOfParticipants",
         title="Extension field for ``numberOfParticipants``.",
     )
 
-    numberOfStudies: fhirtypes.UnsignedInt = Field(
+    numberOfStudies: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfStudies",
         title="Number of contributing studies",
         description="Number of participants in the population.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    numberOfStudies__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfStudies__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_numberOfStudies", title="Extension field for ``numberOfStudies``."
     )
 
@@ -1117,21 +1098,22 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
     Evidence variable such as population, exposure, or outcome.
     """
 
-    resource_type = Field("EvidenceVariableDefinition", const=True)
+    __resource_type__ = "EvidenceVariableDefinition"
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="A text description or summary of the variable",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    directnessMatch: fhirtypes.CodeableConceptType = Field(
+    directnessMatch: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="directnessMatch",
         title="low | moderate | high | exact",
@@ -1139,42 +1121,46 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
             "Indication of quality of match between intended variable to actual "
             "variable."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    intended: fhirtypes.ReferenceType = Field(
+    intended: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="intended",
         title="Definition of the intended variable related to the Evidence",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Group", "EvidenceVariable"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Group", "EvidenceVariable"],
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Footnotes and/or explanatory notes",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    observed: fhirtypes.ReferenceType = Field(
+    observed: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="observed",
         title="Definition of the actual variable related to the statistic(s)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Group", "EvidenceVariable"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Group", "EvidenceVariable"],
+        },
     )
 
-    variableRole: fhirtypes.CodeableConceptType = Field(
+    variableRole: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="variableRole",
         title=(
@@ -1182,8 +1168,9 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
             "measuredVariable | confounder"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

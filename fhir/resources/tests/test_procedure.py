@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import procedure
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_procedure_1(inst):
@@ -15,13 +15,17 @@ def impl_procedure_1(inst):
     assert inst.bodySite[0].coding[0].display == "Sphenoid bone"
     assert (
         inst.bodySite[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.coding[0].code == "367336001"
     assert inst.code.coding[0].display == "Chemotherapy"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.encounter.display == "Roel's encounter on January 28th, 2013"
     assert inst.encounter.reference == "Encounter/f202"
@@ -33,8 +37,8 @@ def impl_procedure_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -43,14 +47,14 @@ def impl_procedure_1(inst):
     )
     assert (
         inst.occurrencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2013-01-28T14:27:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-28T14:27:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurrencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2013-01-28T13:31:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-28T13:31:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.display == "Dokter Bronsig"
@@ -59,7 +63,9 @@ def impl_procedure_1(inst):
     assert inst.performer[0].function.coding[0].display == "Medical oncologist"
     assert (
         inst.performer[0].function.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.reason[0].concept.text == "DiagnosticReport/f201"
     assert inst.status == "completed"
@@ -93,15 +99,19 @@ def impl_procedure_2(inst):
     assert inst.code.coding[0].display == "Ambulating patient (procedure)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Ambulation"
     assert inst.id == "ambulation"
     assert inst.identifier[0].value == "12345"
     assert (
         inst.instantiatesUri[0]
-        == ExternalValidatorModel(
-            valueUri="http://example.org/protocol-for-hypertension-during-pregnancy"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/protocol-for-hypertension-during-pregnancy"
+            }
         ).valueUri
     )
     assert (
@@ -113,8 +123,8 @@ def impl_procedure_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].actor.display == "Maternity CareTeam"
@@ -128,7 +138,9 @@ def impl_procedure_2(inst):
     assert inst.statusReason.coding[0].display == "  Pre-eclampsia (disorder)"
     assert (
         inst.statusReason.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.statusReason.text == "Pre-eclampsia"
     assert inst.subject.reference == "Patient/example"
@@ -164,14 +176,18 @@ def impl_procedure_3(inst):
     )
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Implant Pacemaker"
     assert inst.contained[0].id == "example-pacemaker"
     assert inst.focalDevice[0].action.coding[0].code == "implanted"
     assert (
         inst.focalDevice[0].action.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/device-action").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/device-action"}
+        ).valueUri
     )
     assert inst.focalDevice[0].manipulated.reference == "#example-pacemaker"
     assert inst.followUp[0].text == "ROS 5 days  - 2013-04-10"
@@ -180,8 +196,8 @@ def impl_procedure_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -189,7 +205,9 @@ def impl_procedure_3(inst):
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2015-04-05").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-04-05"}
+        ).valueDateTime
     )
     assert inst.performer[0].actor.display == "Dr Cecil Surgeon"
     assert inst.performer[0].actor.reference == "Practitioner/example"
@@ -222,7 +240,9 @@ def impl_procedure_4(inst):
     assert inst.code.coding[0].display == "Biopsy of colon (procedure)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Biopsy of colon"
     assert inst.id == "colon-biopsy"
@@ -236,8 +256,8 @@ def impl_procedure_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.partOf[0].display == "Colonoscopy"
@@ -278,13 +298,17 @@ def impl_procedure_5(inst):
     assert inst.bodySite[0].coding[0].display == "Retropharyngeal area"
     assert (
         inst.bodySite[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.coding[0].code == "48387007"
     assert inst.code.coding[0].display == "Tracheotomy"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.encounter.reference == "Encounter/f003"
     assert inst.followUp[0].text == "described in care plan"
@@ -293,20 +317,20 @@ def impl_procedure_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2013-03-22T10:30:10+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-22T10:30:10+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurrencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2013-03-22T09:30:10+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-22T09:30:10+01:00"}
         ).valueDateTime
     )
     assert inst.outcome.text == "removal of the retropharyngeal abscess"
@@ -316,8 +340,8 @@ def impl_procedure_5(inst):
     assert inst.performer[0].function.coding[0].display == "Arts"
     assert (
         inst.performer[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="urn:oid:2.16.840.1.113883.2.4.15.111"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.2.4.15.111"}
         ).valueUri
     )
     assert inst.performer[0].function.text == "Care role"
@@ -357,7 +381,9 @@ def impl_procedure_6(inst):
     assert inst.category[0].coding[0].display == "Patient education (procedure)"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.category[0].text == "Education"
     assert inst.code.coding[0].code == "48023004"
@@ -367,7 +393,9 @@ def impl_procedure_6(inst):
     )
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Health education - breast examination"
     assert inst.id == "education"
@@ -376,13 +404,15 @@ def impl_procedure_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.performer[0].actor.display == "Pamela Educator, RN"
     assert inst.reason[0].concept.text == "early detection of breast mass"
@@ -419,7 +449,9 @@ def impl_procedure_7(inst):
     assert inst.code.coding[0].display == "Colonoscopy (procedure)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Colonoscopy"
     assert inst.complication[0].reference.display == "Perforated intestine condition"
@@ -434,8 +466,8 @@ def impl_procedure_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer[0].actor.display == "Dr Adam Careful"
@@ -477,14 +509,18 @@ def impl_procedure_8(inst):
     assert inst.bodySite[0].coding[0].display == "Both knees (body structure)"
     assert (
         inst.bodySite[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.bodySite[0].text == "Both knees"
     assert inst.category[0].coding[0].code == "386053000"
     assert inst.category[0].coding[0].display == "Evaluation procedure (procedure)"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.category[0].text == "Evaluation"
     assert inst.code.coding[0].code == "710830005"
@@ -494,7 +530,9 @@ def impl_procedure_8(inst):
     )
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Assessment of passive range of motion"
     assert inst.id == "physical-therapy"
@@ -503,13 +541,15 @@ def impl_procedure_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2016-09-27").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-09-27"}
+        ).valueDateTime
     )
     assert inst.performer[0].actor.display == "Paul Therapist, PT"
     assert (
@@ -551,13 +591,17 @@ def impl_procedure_9(inst):
     assert inst.bodySite[0].coding[0].display == "Retropharyngeal area"
     assert (
         inst.bodySite[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.coding[0].code == "172960003"
     assert inst.code.coding[0].display == "Incision of retropharyngeal abscess"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.encounter.reference == "Encounter/f003"
     assert inst.followUp[0].text == "described in care plan"
@@ -566,20 +610,20 @@ def impl_procedure_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2013-03-24T10:30:10+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-24T10:30:10+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurrencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2013-03-24T09:30:10+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-03-24T09:30:10+01:00"}
         ).valueDateTime
     )
     assert inst.outcome.text == "removal of the retropharyngeal abscess"
@@ -589,8 +633,8 @@ def impl_procedure_9(inst):
     assert inst.performer[0].function.coding[0].display == "Arts"
     assert (
         inst.performer[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="urn:oid:2.16.840.1.113883.2.4.15.111"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.2.4.15.111"}
         ).valueUri
     )
     assert inst.performer[0].function.text == "Care role"
@@ -628,7 +672,9 @@ def impl_procedure_10(inst):
     assert inst.code.coding[0].display == "Appendectomy (Procedure)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Appendectomy"
     assert inst.followUp[0].text == "ROS 5 days  - 2013-04-10"
@@ -637,8 +683,8 @@ def impl_procedure_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.meta.versionId == "1"
@@ -647,7 +693,9 @@ def impl_procedure_10(inst):
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(valueDateTime="2013-04-05").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-04-05"}
+        ).valueDateTime
     )
     assert inst.performer[0].actor.display == "Dr Cecil Surgeon"
     assert inst.performer[0].actor.reference == "Practitioner/example"

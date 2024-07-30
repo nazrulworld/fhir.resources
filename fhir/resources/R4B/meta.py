@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -24,21 +24,22 @@ class Meta(element.Element):
     be associated with version changes to the resource.
     """
 
-    resource_type = Field("Meta", const=True)
+    __resource_type__ = "Meta"
 
-    lastUpdated: fhirtypes.Instant = Field(
+    lastUpdated: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="lastUpdated",
         title="When the resource version last changed",
         description="When the resource last changed - e.g. when the version changed.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
     )
 
-    profile: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    profile: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="profile",
         title="Profiles this resource claims to conform to",
@@ -49,16 +50,17 @@ class Meta(element.Element):
             "[StructureDefinition.url](structuredefinition-"
             "definitions.html#StructureDefinition.url)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition"],
+        },
     )
-    profile__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_profile", title="Extension field for ``profile``.")
+    profile__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_profile", title="Extension field for ``profile``."
+    )
 
-    security: typing.List[fhirtypes.CodingType] = Field(
+    security: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="security",
         title="Security Labels applied to this resource",
@@ -66,11 +68,12 @@ class Meta(element.Element):
             "Security labels applied to this resource. These tags connect specific "
             "resources to the overall security policy and infrastructure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    source: fhirtypes.Uri = Field(
+    source: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="source",
         title="Identifies where the resource comes from",
@@ -81,14 +84,15 @@ class Meta(element.Element):
             " resource. The source may identify another FHIR server, document, "
             "message, database, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    tag: typing.List[fhirtypes.CodingType] = Field(
+    tag: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="tag",
         title="Tags applied to this resource",
@@ -98,11 +102,12 @@ class Meta(element.Element):
             "applications are not required to consider the tags when interpreting "
             "the meaning of a resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    versionId: fhirtypes.Id = Field(
+    versionId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="versionId",
         title="Version specific identifier",
@@ -111,10 +116,11 @@ class Meta(element.Element):
             "of the URL. This value changes when the resource is created, updated, "
             "or deleted."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_versionId", title="Extension field for ``versionId``."
     )
 

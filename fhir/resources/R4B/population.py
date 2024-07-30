@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import backboneelement, fhirtypes
 
@@ -23,42 +23,45 @@ class Population(backboneelement.BackboneElement):
     A populatioof people with some set of grouping criteria.
     """
 
-    resource_type = Field("Population", const=True)
+    __resource_type__ = "Population"
 
-    ageCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    ageCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="ageCodeableConcept",
         title="The age of the specific population",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e age[x]
-        one_of_many="age",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e age[x]
+            "one_of_many": "age",
+            "one_of_many_required": False,
+        },
     )
 
-    ageRange: fhirtypes.RangeType = Field(
+    ageRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="ageRange",
         title="The age of the specific population",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e age[x]
-        one_of_many="age",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e age[x]
+            "one_of_many": "age",
+            "one_of_many_required": False,
+        },
     )
 
-    gender: fhirtypes.CodeableConceptType = Field(
+    gender: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="gender",
         title="The gender of the specific population",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    physiologicalCondition: fhirtypes.CodeableConceptType = Field(
+    physiologicalCondition: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="physiologicalCondition",
         title=(
@@ -66,17 +69,19 @@ class Population(backboneelement.BackboneElement):
             "which this applies"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    race: fhirtypes.CodeableConceptType = Field(
+    race: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="race",
         title="Race of the specific population",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -96,10 +101,7 @@ class Population(backboneelement.BackboneElement):
             "physiologicalCondition",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1257(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -113,23 +115,4 @@ class Population(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"age": ["ageCodeableConcept", "ageRange"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

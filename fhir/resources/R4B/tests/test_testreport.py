@@ -6,34 +6,57 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import testreport
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_testreport_1(inst):
     assert inst.id == "testreport-example"
-    assert inst.identifier.system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier.value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.9878"
-    assert inst.issued == fhirtypes.DateTime.validate("2016-10-07T08:25:34-05:00")
+    assert (
+        inst.issued
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-10-07T08:25:34-05:00"}
+        ).valueDateTime
+    )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.name == "TestReport Example for TestScript Example"
     assert inst.participant[0].display == "Crucible"
     assert inst.participant[0].type == "test-engine"
-    assert inst.participant[0].uri == "http://projectcrucible.org"
+    assert (
+        inst.participant[0].uri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://projectcrucible.org"}
+        ).valueUri
+    )
     assert inst.participant[1].display == "HealthIntersections STU3"
     assert inst.participant[1].type == "server"
-    assert inst.participant[1].uri == "http://fhir3.healthintersections.com.au/open"
+    assert (
+        inst.participant[1].uri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fhir3.healthintersections.com.au/open"}
+        ).valueUri
+    )
     assert inst.result == "pass"
     assert float(inst.score) == float(100.0)
     assert (
         inst.setup.action[0].operation.detail
-        == "http://projectcrucible.org/permalink/1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://projectcrucible.org/permalink/1"}
+        ).valueUri
     )
     assert inst.setup.action[0].operation.message == "DELETE Patient"
     assert inst.setup.action[0].operation.result == "pass"
@@ -45,7 +68,9 @@ def impl_testreport_1(inst):
     assert inst.setup.action[1].assert_fhir.result == "pass"
     assert (
         inst.setup.action[2].operation.detail
-        == "http://projectcrucible.org/permalink/1"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://projectcrucible.org/permalink/1"}
+        ).valueUri
     )
     assert (
         inst.setup.action[2].operation.message == "POST Patient/fixture-patient-create"
@@ -60,7 +85,9 @@ def impl_testreport_1(inst):
     assert inst.status == "completed"
     assert (
         inst.teardown.action[0].operation.detail
-        == "http://projectcrucible.org/permalink/3"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://projectcrucible.org/permalink/3"}
+        ).valueUri
     )
     assert (
         inst.teardown.action[0].operation.message
@@ -70,7 +97,9 @@ def impl_testreport_1(inst):
     assert inst.testScript.reference == "TestScript/testscript-example"
     assert (
         inst.test[0].action[0].operation.detail
-        == "http://projectcrucible.org/permalink/2"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://projectcrucible.org/permalink/2"}
+        ).valueUri
     )
     assert (
         inst.test[0].action[0].operation.message == "GET Patient/fixture-patient-create"
@@ -148,15 +177,13 @@ def test_testreport_1(base_settings):
     Test File: testreport-example.json
     """
     filename = base_settings["unittest_data_dir"] / "testreport-example.json"
-    inst = testreport.TestReport.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "TestReport" == inst.resource_type
+    inst = testreport.TestReport.model_validate_json(filename.read_bytes())
+    assert "TestReport" == inst.get_resource_type()
 
     impl_testreport_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "TestReport" == data["resourceType"]
 
     inst2 = testreport.TestReport(**data)

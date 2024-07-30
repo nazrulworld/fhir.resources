@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import provenance
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_provenance_1(inst):
@@ -15,28 +15,32 @@ def impl_provenance_1(inst):
     assert inst.activity.coding[0].display == "authenticated"
     assert (
         inst.activity.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion"}
         ).valueUri
     )
     assert inst.agent[0].type.coding[0].code == "VERF"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
+            }
         ).valueUri
     )
     assert (
         inst.agent[0].who.identifier.system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.agent[0].who.identifier.value == "mailto://hhd@ssa.gov"
     assert inst.authorization[0].concept.coding[0].code == "TREAT"
     assert inst.authorization[0].concept.coding[0].display == "treatment"
     assert (
         inst.authorization[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.id == "signature"
@@ -44,17 +48,21 @@ def impl_provenance_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2015-08-27T08:39:24+10:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2015-08-27T08:39:24+10:00"}
+        ).valueInstant
     )
     assert (
         inst.signature[0].data
-        == ExternalValidatorModel(valueBase64Binary="Li4u").valueBase64Binary
+        == ExternalValidatorModel.model_validate(
+            {"valueBase64Binary": "Li4u"}
+        ).valueBase64Binary
     )
     assert inst.signature[0].sigFormat == "application/signature+xml"
     assert inst.signature[0].targetFormat == "application/fhir+xml"
@@ -62,11 +70,15 @@ def impl_provenance_1(inst):
     assert inst.signature[0].type[0].display == "Verification Signature"
     assert (
         inst.signature[0].type[0].system
-        == ExternalValidatorModel(valueUri="urn:iso-astm:E1762-95:2013").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso-astm:E1762-95:2013"}
+        ).valueUri
     )
     assert (
         inst.signature[0].when
-        == ExternalValidatorModel(valueInstant="2015-08-27T08:39:24+10:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2015-08-27T08:39:24+10:00"}
+        ).valueInstant
     )
     assert inst.signature[0].who.reference == "Practitioner/xcda-author"
     assert inst.target[0].reference == "DocumentReference/example/_history/4"
@@ -95,16 +107,16 @@ def impl_provenance_2(inst):
     assert inst.activity.coding[0].code == "originate"
     assert (
         inst.activity.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle"}
         ).valueUri
     )
     assert inst.agent[0].type.coding[0].code == "110153"
     assert inst.agent[0].type.coding[0].display == "Source Role ID"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.agent[0].who.display == "myMachine.example.org"
@@ -112,8 +124,8 @@ def impl_provenance_2(inst):
     assert inst.agent[1].type.coding[0].display == "Destination Role ID"
     assert (
         inst.agent[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://dicom.nema.org/resources/ontology/DCM"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
         ).valueUri
     )
     assert inst.agent[1].who.reference == "Device/example"
@@ -121,16 +133,16 @@ def impl_provenance_2(inst):
     assert inst.agent[2].type.coding[0].display == "Informant"
     assert (
         inst.agent[2].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.agent[2].who.display == "Betty Jones"
     assert inst.authorization[0].concept.coding[0].code == "TREAT"
     assert (
         inst.authorization[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.basedOn[0].reference == "CarePlan/example"
@@ -141,35 +153,43 @@ def impl_provenance_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurredDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2020-04-29T09:49:00.000Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-04-29T09:49:00.000Z"}
         ).valueDateTime
     )
     assert inst.patient.reference == "Patient/example"
     assert (
         inst.policy[0]
-        == ExternalValidatorModel(valueUri="http://example.org/policy/1234").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/policy/1234"}
+        ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2020-04-29T09:49:00.000Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2020-04-29T09:49:00.000Z"}
+        ).valueInstant
     )
     assert inst.signature[0].sigFormat == "image/jpeg"
     assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.5"
     assert inst.signature[0].type[0].display == "Verification Signature"
     assert (
         inst.signature[0].type[0].system
-        == ExternalValidatorModel(valueUri="urn:iso-astm:E1762-95:2013").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso-astm:E1762-95:2013"}
+        ).valueUri
     )
     assert (
         inst.signature[0].when
-        == ExternalValidatorModel(valueInstant="2020-04-29T09:49:00.000Z").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2020-04-29T09:49:00.000Z"}
+        ).valueInstant
     )
     assert inst.signature[0].who.display == "Betty Jones"
     assert inst.target[0].reference == "List/example"
@@ -198,8 +218,8 @@ def impl_provenance_3(inst):
     assert inst.agent[0].type.coding[0].code == "INF"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.agent[0].who.reference == "Patient/pat3"
@@ -208,23 +228,25 @@ def impl_provenance_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2021-12-07T12:23:45+11:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2021-12-07T12:23:45+11:00"}
+        ).valueInstant
     )
     assert (
         inst.target[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/targetElement"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/targetElement"}
         ).valueUri
     )
     assert (
         inst.target[0].extension[0].valueUri
-        == ExternalValidatorModel(valueUri="n1").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "n1"}).valueUri
     )
     assert inst.target[0].reference == "Patient/pat3/_history/1"
     assert inst.text.status == "generated"
@@ -253,15 +275,15 @@ def impl_provenance_4(inst):
     assert inst.activity.coding[0].display == "authenticated"
     assert (
         inst.activity.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion"}
         ).valueUri
     )
     assert inst.agent[0].role[0].coding[0].code == "AUT"
     assert (
         inst.agent[0].role[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.agent[0].who.reference == "Patient/72"
@@ -270,19 +292,21 @@ def impl_provenance_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2016-05-26T00:41:10-04:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2016-05-26T00:41:10-04:00"}
+        ).valueInstant
     )
     assert (
         inst.signature[0].data
-        == ExternalValidatorModel(
-            valueBase64Binary="dGhpcyBibG9iIGlzIHNuaXBwZWQ="
+        == ExternalValidatorModel.model_validate(
+            {"valueBase64Binary": "dGhpcyBibG9iIGlzIHNuaXBwZWQ="}
         ).valueBase64Binary
     )
     assert inst.signature[0].sigFormat == "application/signature+xml"
@@ -291,11 +315,15 @@ def impl_provenance_4(inst):
     assert inst.signature[0].type[0].display == "Author's Signature"
     assert (
         inst.signature[0].type[0].system
-        == ExternalValidatorModel(valueUri="urn:iso-astm:E1762-95:2013").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso-astm:E1762-95:2013"}
+        ).valueUri
     )
     assert (
         inst.signature[0].when
-        == ExternalValidatorModel(valueInstant="2016-05-26T00:41:10-04:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2016-05-26T00:41:10-04:00"}
+        ).valueInstant
     )
     assert inst.signature[0].who.reference == "Patient/72"
     assert inst.target[0].reference == "Consent/consent-example-basic/_history/1"
@@ -325,8 +353,8 @@ def impl_provenance_5(inst):
     assert inst.activity.coding[0].display == "create"
     assert (
         inst.activity.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-DataOperation"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-DataOperation"}
         ).valueUri
     )
     assert inst.activity.text == (
@@ -335,8 +363,8 @@ def impl_provenance_5(inst):
     assert inst.agent[0].type.coding[0].code == "AUT"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.agent[0].who.reference == "Patient/example"
@@ -345,8 +373,8 @@ def impl_provenance_5(inst):
     assert inst.entity[0].what.identifier.type.coding[0].display == "lobSTR"
     assert (
         inst.entity[0].what.identifier.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="https://github.com/common-workflow-language/workflows"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://github.com/common-workflow-language/workflows"}
         ).valueUri
     )
     assert inst.entity[0].what.identifier.value == (
@@ -359,17 +387,21 @@ def impl_provenance_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurredPeriod.start
-        == ExternalValidatorModel(valueDateTime="2016-11-30").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-11-30"}
+        ).valueDateTime
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2016-12-01T08:12:14+10:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2016-12-01T08:12:14+10:00"}
+        ).valueInstant
     )
     assert inst.target[0].reference == "MolecularSequence/example-pgx-1/_history/1"
     assert inst.text.status == "generated"
@@ -398,16 +430,18 @@ def impl_provenance_6(inst):
     assert inst.activity.coding[0].display == "create"
     assert (
         inst.activity.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-DataOperation"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-DataOperation"}
         ).valueUri
     )
     assert inst.agent[0].type.coding[0].code == "assembler"
     assert inst.agent[0].type.coding[0].display == "Assembler"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.agent[0].who.display == "LEAP Consent Management Service"
@@ -420,15 +454,15 @@ def impl_provenance_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/example"
     assert (
         inst.recorded
-        == ExternalValidatorModel(
-            valueInstant="2021-09-10T07:08:21.722+00:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2021-09-10T07:08:21.722+00:00"}
         ).valueInstant
     )
     assert inst.target[0].reference == "Consent/consent-example-basic/_history/1"
@@ -459,23 +493,25 @@ def impl_provenance_7(inst):
     assert inst.activity.coding[0].code == "DELETE"
     assert (
         inst.activity.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-DataOperation"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-DataOperation"}
         ).valueUri
     )
     assert inst.agent[0].type.coding[0].code == "author"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert inst.agent[0].who.display == "Brian Postlethwaite"
     assert inst.authorization[0].concept.coding[0].code == "METAMGT"
     assert (
         inst.authorization[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.entity[0].role == "source"
@@ -487,13 +523,15 @@ def impl_provenance_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2015-06-27T08:39:24+10:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2015-06-27T08:39:24+10:00"}
+        ).valueInstant
     )
     assert inst.target[0].reference == (
         "http://terminology.hl7.org/CodeSystem/location-physical-" "type/_history/3"
@@ -523,8 +561,8 @@ def impl_provenance_8(inst):
     assert inst.agent[0].type.coding[0].code == "INF"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.agent[0].who.reference == "RelatedPerson/f001"
@@ -533,23 +571,25 @@ def impl_provenance_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2021-12-08T16:54:24+11:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2021-12-08T16:54:24+11:00"}
+        ).valueInstant
     )
     assert (
         inst.target[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/targetElement"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/targetElement"}
         ).valueUri
     )
     assert (
         inst.target[0].extension[0].valueUri
-        == ExternalValidatorModel(valueUri="n2").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "n2"}).valueUri
     )
     assert inst.target[0].reference == "Patient/pat3/_history/1"
     assert inst.text.status == "generated"
@@ -578,16 +618,16 @@ def impl_provenance_9(inst):
     assert inst.activity.coding[0].display == "create"
     assert (
         inst.activity.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-DataOperation"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-DataOperation"}
         ).valueUri
     )
     assert inst.activity.text == "antiviral resistance detection"
     assert inst.agent[0].type.coding[0].code == "AUT"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
         ).valueUri
     )
     assert inst.agent[0].who.reference == "Practitioner/example"
@@ -596,7 +636,9 @@ def impl_provenance_9(inst):
     assert inst.entity[0].what.identifier.type.coding[0].display == "obj.1001"
     assert (
         inst.entity[0].what.identifier.type.coding[0].system
-        == ExternalValidatorModel(valueUri="https://hive.biochemistry.gwu.edu").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://hive.biochemistry.gwu.edu"}
+        ).valueUri
     )
     assert inst.entity[0].what.identifier.value == (
         "https://hive.biochemistry.gwu.edu/cgi-"
@@ -607,17 +649,21 @@ def impl_provenance_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurredPeriod.start
-        == ExternalValidatorModel(valueDateTime="2017-06-06").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-06-06"}
+        ).valueDateTime
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2016-06-09T08:12:14+10:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2016-06-09T08:12:14+10:00"}
+        ).valueInstant
     )
     assert inst.target[0].reference == "MolecularSequence/example/_history/1"
     assert inst.text.status == "generated"
@@ -647,16 +693,18 @@ def impl_provenance_10(inst):
     assert inst.activity.coding[0].code == "verify"
     assert (
         inst.activity.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle"}
         ).valueUri
     )
     assert inst.agent[0].type.coding[0].code == "verifier"
     assert inst.agent[0].type.coding[0].display == "Verifier"
     assert (
         inst.agent[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
         ).valueUri
     )
     assert (
@@ -668,30 +716,36 @@ def impl_provenance_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/pat2"
     assert (
         inst.policy[0]
-        == ExternalValidatorModel(
-            valueUri="http://example.org/policy/Reviewed"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/policy/Reviewed"}
         ).valueUri
     )
     assert (
         inst.recorded
-        == ExternalValidatorModel(valueInstant="2011-03-04T08:30:00+11:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2011-03-04T08:30:00+11:00"}
+        ).valueInstant
     )
     assert inst.signature[0].type[0].code == "ProofOfapproval"
     assert inst.signature[0].type[0].display == "Proof of approval"
     assert (
         inst.signature[0].type[0].system
-        == ExternalValidatorModel(valueUri="http://uri.etsi.org/01903/v1.2.2").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://uri.etsi.org/01903/v1.2.2"}
+        ).valueUri
     )
     assert (
         inst.signature[0].when
-        == ExternalValidatorModel(valueInstant="2011-03-04T08:30:00+11:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2011-03-04T08:30:00+11:00"}
+        ).valueInstant
     )
     assert (
         inst.signature[0].who.reference

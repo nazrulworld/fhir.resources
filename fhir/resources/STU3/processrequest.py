@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -25,9 +23,9 @@ class ProcessRequest(domainresource.DomainResource):
     for an action to be performed by the target on or about existing resources.
     """
 
-    resource_type = Field("ProcessRequest", const=True)
+    __resource_type__ = "ProcessRequest"
 
-    action: fhirtypes.Code = Field(
+    action: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="action",
         title="cancel | poll | reprocess | status",
@@ -35,62 +33,67 @@ class ProcessRequest(domainresource.DomainResource):
             "The type of processing action being requested, for example Reversal, "
             "Readjudication, StatusRequest,PendedRequest."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["cancel", "poll", "reprocess", "status"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["cancel", "poll", "reprocess", "status"],
+        },
     )
-    action__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    action__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_action", title="Extension field for ``action``."
     )
 
-    created: fhirtypes.DateTime = Field(
+    created: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="created",
         title="Creation date",
         description="The date when this resource was created.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    exclude: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    exclude: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="exclude",
         title="Resource type(s) to exclude",
         description="Names of resource types to exclude.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    exclude__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_exclude", title="Extension field for ``exclude``.")
+    exclude__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_exclude", title="Extension field for ``exclude``."
+    )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier",
         description="The ProcessRequest business identifier.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    include: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    include: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="include",
         title="Resource type(s) to include",
         description="Names of resource types to include.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    include__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_include", title="Extension field for ``include``.")
+    include__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_include", title="Extension field for ``include``."
+    )
 
-    item: typing.List[fhirtypes.ProcessRequestItemType] = Field(
+    item: typing.List[fhirtypes.ProcessRequestItemType] = Field(  # type: ignore
         None,
         alias="item",
         title="Items to re-adjudicate",
@@ -98,23 +101,25 @@ class ProcessRequest(domainresource.DomainResource):
             "List of top level items to be re-adjudicated, if none specified then "
             "the entire submission is re-adjudicated."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    nullify: bool = Field(
+    nullify: bool = Field(  # type: ignore
         None,
         alias="nullify",
         title="Remove history",
         description="If true remove all history excluding audit.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    nullify__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    nullify__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_nullify", title="Extension field for ``nullify``."
     )
 
-    organization: fhirtypes.ReferenceType = Field(
+    organization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="organization",
         title="Responsible organization",
@@ -122,13 +127,14 @@ class ProcessRequest(domainresource.DomainResource):
             "The organization which is responsible for the action speccified in "
             "this request."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Selection period",
@@ -136,11 +142,12 @@ class ProcessRequest(domainresource.DomainResource):
             "A period of time during which the fulfilling resources would have been"
             " created."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    provider: fhirtypes.ReferenceType = Field(
+    provider: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="provider",
         title="Responsible practitioner",
@@ -148,36 +155,39 @@ class ProcessRequest(domainresource.DomainResource):
             "The practitioner who is responsible for the action specified in this "
             "request."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    reference: fhirtypes.String = Field(
+    reference: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="reference",
         title="Reference number/string",
         description="A reference to supply which authenticates the process.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reference", title="Extension field for ``reference``."
     )
 
-    request: fhirtypes.ReferenceType = Field(
+    request: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="request",
         title="Reference to the Request resource",
         description="Reference of resource which is the target or subject of this action.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    response: fhirtypes.ReferenceType = Field(
+    response: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="response",
         title="Reference to the Response resource",
@@ -185,36 +195,39 @@ class ProcessRequest(domainresource.DomainResource):
             "Reference of a prior response to resource which is the target or "
             "subject of this action."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    target: fhirtypes.ReferenceType = Field(
+    target: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="target",
         title="Party which is the target of the request",
         description="The organization which is the target of the request.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     @classmethod
@@ -260,18 +273,19 @@ class ProcessRequestItem(backboneelement.BackboneElement):
     entire submission is re-adjudicated.
     """
 
-    resource_type = Field("ProcessRequestItem", const=True)
+    __resource_type__ = "ProcessRequestItem"
 
-    sequenceLinkId: fhirtypes.Integer = Field(
+    sequenceLinkId: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="sequenceLinkId",
         title="Service instance",
         description="A service line number.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."
     )
 
@@ -283,10 +297,7 @@ class ProcessRequestItem(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "sequenceLinkId"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2068(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -295,49 +306,4 @@ class ProcessRequestItem(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sequenceLinkId", "sequenceLinkId__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

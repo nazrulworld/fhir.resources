@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import searchparameter
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_searchparameter_1(inst):
@@ -20,8 +18,13 @@ def impl_searchparameter_1(inst):
     assert inst.name == "workflow"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert inst.url == (
-        "http://hl7.org/fhir/SearchParameter/valueset-extensions-" "ValueSet-workflow"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-workflow"
+            }
+        ).valueUri
     )
     assert inst.version == "4.3.0"
     assert inst.xpath == (
@@ -39,15 +42,13 @@ def test_searchparameter_1(base_settings):
         base_settings["unittest_data_dir"]
         / "valueset-extensions-ValueSet-workflow.json"
     )
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -62,8 +63,13 @@ def impl_searchparameter_2(inst):
     assert inst.name == "author"
     assert inst.status == "draft"
     assert inst.type == "string"
-    assert inst.url == (
-        "http://hl7.org/fhir/SearchParameter/codesystem-extensions-" "CodeSystem-author"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-author"
+            }
+        ).valueUri
     )
     assert inst.version == "4.3.0"
     assert inst.xpath == (
@@ -81,15 +87,13 @@ def test_searchparameter_2(base_settings):
         base_settings["unittest_data_dir"]
         / "codesystem-extensions-CodeSystem-author.json"
     )
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -117,7 +121,12 @@ def impl_searchparameter_3(inst):
     assert inst.target[0] == "DocumentReference"
     assert inst.text.status == "generated"
     assert inst.type == "reference"
-    assert inst.url == "http://hl7.org/fhir/SearchParameter/example-extension"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/SearchParameter/example-extension"}
+        ).valueUri
+    )
     assert inst.xpath == (
         "f:DocumentReference/f:extension[@url='http://example.org/fhi"
         "r/StructureDefinition/participation-agreement']"
@@ -132,15 +141,13 @@ def test_searchparameter_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "searchparameter-example-extension.json"
     )
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -166,9 +173,13 @@ def impl_searchparameter_4(inst):
     assert inst.name == "item-subject"
     assert inst.status == "draft"
     assert inst.type == "reference"
-    assert inst.url == (
-        "http://hl7.org/fhir/SearchParameter/questionnaireresponse-"
-        "extensions-QuestionnaireResponse-item-subject"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/SearchParameter/questionnaireresponse-extensions-QuestionnaireResponse-item-subject"
+            }
+        ).valueUri
     )
     assert inst.version == "4.3.0"
     assert inst.xpathUsage == "normal"
@@ -182,15 +193,13 @@ def test_searchparameter_4(base_settings):
         base_settings["unittest_data_dir"]
         / "questionnaireresponse-extensions-QuestionnaireResponse-item-subject.json"
     )
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -203,7 +212,12 @@ def impl_searchparameter_5(inst):
     assert inst.contact[0].name == "FHIR Project"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2018-07-26")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-07-26"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "This is the formal declaration for the _filter parameter, "
         "documented at [http://hl7.org/fhir/search_filter.html](http:"
@@ -220,7 +234,12 @@ def impl_searchparameter_5(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.type == "special"
-    assert inst.url == "http://hl7.org/fhir/SearchParameter/filter"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/SearchParameter/filter"}
+        ).valueUri
+    )
     assert inst.version == "1"
 
 
@@ -229,15 +248,13 @@ def test_searchparameter_5(base_settings):
     Test File: searchparameter-filter.json
     """
     filename = base_settings["unittest_data_dir"] / "searchparameter-filter.json"
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -252,7 +269,12 @@ def impl_searchparameter_6(inst):
     assert inst.contact[0].name == "[string]"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2013-10-23")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-10-23"}
+        ).valueDateTime
+    )
     assert inst.description == "Search by condition subject"
     assert inst.experimental is True
     assert inst.expression == "Condition.subject"
@@ -265,7 +287,12 @@ def impl_searchparameter_6(inst):
     assert inst.target[0] == "Organization"
     assert inst.text.status == "generated"
     assert inst.type == "reference"
-    assert inst.url == "http://hl7.org/fhir/SearchParameter/example-reference"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/SearchParameter/example-reference"}
+        ).valueUri
+    )
     assert inst.xpathUsage == "normal"
 
 
@@ -276,15 +303,13 @@ def test_searchparameter_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "searchparameter-example-reference.json"
     )
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -304,9 +329,13 @@ def impl_searchparameter_7(inst):
     assert inst.name == "assessed-condition"
     assert inst.status == "draft"
     assert inst.type == "reference"
-    assert inst.url == (
-        "http://hl7.org/fhir/SearchParameter/diagnosticreport-"
-        "genetic-DiagnosticReport-assessed-condition"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/SearchParameter/diagnosticreport-genetic-DiagnosticReport-assessed-condition"
+            }
+        ).valueUri
     )
     assert inst.version == "4.3.0"
     assert inst.xpathUsage == "normal"
@@ -320,15 +349,13 @@ def test_searchparameter_7(base_settings):
         base_settings["unittest_data_dir"]
         / "diagnosticreport-genetic-DiagnosticReport-assessed-condition.json"
     )
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -348,8 +375,13 @@ def impl_searchparameter_8(inst):
     assert inst.name == "din"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert inst.url == (
-        "http://hl7.org/fhir/SearchParameter/device-extensions-" "Device-din"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/SearchParameter/device-extensions-Device-din"
+            }
+        ).valueUri
     )
     assert inst.version == "4.3.0"
     assert inst.xpathUsage == "normal"
@@ -360,15 +392,13 @@ def test_searchparameter_8(base_settings):
     Test File: device-extensions-Device-din.json
     """
     filename = base_settings["unittest_data_dir"] / "device-extensions-Device-din.json"
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -388,9 +418,13 @@ def impl_searchparameter_9(inst):
     assert inst.name == "gene-identifier"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert inst.url == (
-        "http://hl7.org/fhir/SearchParameter/observation-genetic-"
-        "Observation-gene-identifier"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/SearchParameter/observation-genetic-Observation-gene-identifier"
+            }
+        ).valueUri
     )
     assert inst.version == "4.3.0"
     assert inst.xpathUsage == "normal"
@@ -404,15 +438,13 @@ def test_searchparameter_9(base_settings):
         base_settings["unittest_data_dir"]
         / "observation-genetic-Observation-gene-identifier.json"
     )
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)
@@ -427,9 +459,13 @@ def impl_searchparameter_10(inst):
     assert inst.name == "workflow"
     assert inst.status == "draft"
     assert inst.type == "token"
-    assert inst.url == (
-        "http://hl7.org/fhir/SearchParameter/codesystem-extensions-"
-        "CodeSystem-workflow"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/SearchParameter/codesystem-extensions-CodeSystem-workflow"
+            }
+        ).valueUri
     )
     assert inst.version == "4.3.0"
     assert inst.xpath == (
@@ -447,15 +483,13 @@ def test_searchparameter_10(base_settings):
         base_settings["unittest_data_dir"]
         / "codesystem-extensions-CodeSystem-workflow.json"
     )
-    inst = searchparameter.SearchParameter.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "SearchParameter" == inst.resource_type
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
+    assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SearchParameter" == data["resourceType"]
 
     inst2 = searchparameter.SearchParameter(**data)

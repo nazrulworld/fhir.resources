@@ -7,14 +7,14 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import genomicstudy
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_genomicstudy_1(inst):
     assert (
         inst.analysis[0].date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[0].device[0].device.reference == "Device/NGS-device"
@@ -24,8 +24,8 @@ def impl_genomicstudy_1(inst):
     )
     assert (
         inst.analysis[0].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[0].identifier[0].use == "temp"
@@ -35,8 +35,8 @@ def impl_genomicstudy_1(inst):
     assert inst.analysis[0].input[0].type.coding[0].display == "VCF"
     assert (
         inst.analysis[0].instantiatesUri
-        == ExternalValidatorModel(
-            valueUri="https://pubmed.ncbi.nlm.nih.gov/33927380/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://pubmed.ncbi.nlm.nih.gov/33927380/"}
         ).valueUri
     )
     assert (
@@ -50,8 +50,10 @@ def impl_genomicstudy_1(inst):
     assert inst.analysis[0].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[0].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert inst.analysis[0].specimen[0].reference == "Specimen/denovo-1"
@@ -60,16 +62,16 @@ def impl_genomicstudy_1(inst):
     )
     assert (
         inst.analysis[1].date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[1].device[0].device.reference == "Device/NGS-device"
     assert inst.analysis[1].focus[0].reference == "Patient/denovoMother"
     assert (
         inst.analysis[1].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[1].identifier[0].use == "temp"
@@ -79,8 +81,8 @@ def impl_genomicstudy_1(inst):
     assert inst.analysis[1].input[0].type.coding[0].display == "VCF"
     assert (
         inst.analysis[1].instantiatesUri
-        == ExternalValidatorModel(
-            valueUri="https://pubmed.ncbi.nlm.nih.gov/33927380/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://pubmed.ncbi.nlm.nih.gov/33927380/"}
         ).valueUri
     )
     assert inst.analysis[1].note[0].text == (
@@ -93,8 +95,10 @@ def impl_genomicstudy_1(inst):
     assert inst.analysis[1].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[1].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert inst.analysis[1].specimen[0].reference == "Specimen/denovo-2"
@@ -103,16 +107,16 @@ def impl_genomicstudy_1(inst):
     )
     assert (
         inst.analysis[2].date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[2].device[0].device.reference == "Device/NGS-device"
     assert inst.analysis[2].focus[0].reference == "Patient/denovoFather"
     assert (
         inst.analysis[2].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[2].identifier[0].use == "temp"
@@ -122,8 +126,8 @@ def impl_genomicstudy_1(inst):
     assert inst.analysis[2].input[0].type.coding[0].display == "VCF"
     assert (
         inst.analysis[2].instantiatesUri
-        == ExternalValidatorModel(
-            valueUri="https://pubmed.ncbi.nlm.nih.gov/33927380/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://pubmed.ncbi.nlm.nih.gov/33927380/"}
         ).valueUri
     )
     assert inst.analysis[2].note[0].text == (
@@ -136,8 +140,10 @@ def impl_genomicstudy_1(inst):
     assert inst.analysis[2].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[2].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert inst.analysis[2].specimen[0].reference == "Specimen/denovo-3"
@@ -146,15 +152,15 @@ def impl_genomicstudy_1(inst):
     )
     assert (
         inst.analysis[3].date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-01T03:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01T03:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[3].device[0].device.reference == "Device/Triodenovo-SW"
     assert (
         inst.analysis[3].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[3].identifier[0].use == "temp"
@@ -170,8 +176,8 @@ def impl_genomicstudy_1(inst):
     assert inst.analysis[3].input[2].type.coding[0].display == "VCF"
     assert (
         inst.analysis[3].instantiatesUri
-        == ExternalValidatorModel(
-            valueUri="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6885382/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6885382/"}
         ).valueUri
     )
     assert inst.analysis[3].note[0].text == (
@@ -185,8 +191,10 @@ def impl_genomicstudy_1(inst):
     assert inst.analysis[3].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[3].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert inst.analysis[3].title == "De Novo Mutation Detection and Interpretation"
@@ -196,8 +204,8 @@ def impl_genomicstudy_1(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicstudies"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicstudies"}
         ).valueUri
     )
     assert inst.identifier[0].use == "temp"
@@ -207,8 +215,8 @@ def impl_genomicstudy_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -222,12 +230,16 @@ def impl_genomicstudy_1(inst):
     )
     assert (
         inst.reason[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.referrer.reference == "Practitioner/practitioner01"
     assert (
         inst.startDate
-        == ExternalValidatorModel(valueDateTime="2021-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01"}
+        ).valueDateTime
     )
     assert inst.status == "unknown"
     assert inst.subject.reference == "Patient/denovoChild"
@@ -236,8 +248,8 @@ def impl_genomicstudy_1(inst):
     assert inst.type[0].coding[0].display == "Familial variant segregation"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/genomicstudy-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/genomicstudy-type"}
         ).valueUri
     )
 
@@ -263,24 +275,24 @@ def test_genomicstudy_1(base_settings):
 def impl_genomicstudy_2(inst):
     assert (
         inst.analysis[0].date
-        == ExternalValidatorModel(
-            valueDateTime="2022-07-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-07-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[0].device[0].device.reference == "Device/NGS-device"
     assert inst.analysis[0].focus[0].reference == "Patient/mother"
     assert (
         inst.analysis[0].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[0].identifier[0].use == "temp"
     assert inst.analysis[0].identifier[0].value == "urn:uuid:1111-1111-1111-1112"
     assert (
         inst.analysis[0].instantiatesUri
-        == ExternalValidatorModel(
-            valueUri="https://pubmed.ncbi.nlm.nih.gov/33927380/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://pubmed.ncbi.nlm.nih.gov/33927380/"}
         ).valueUri
     )
     assert inst.analysis[0].note[0].text == (
@@ -293,8 +305,10 @@ def impl_genomicstudy_2(inst):
     assert inst.analysis[0].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[0].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert inst.analysis[0].specimen[0].reference == "Specimen/specimenMother"
@@ -303,24 +317,24 @@ def impl_genomicstudy_2(inst):
     )
     assert (
         inst.analysis[1].date
-        == ExternalValidatorModel(
-            valueDateTime="2022-07-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-07-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[1].device[0].device.reference == "Device/NGS-device"
     assert inst.analysis[1].focus[0].reference == "Patient/father"
     assert (
         inst.analysis[1].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[1].identifier[0].use == "temp"
     assert inst.analysis[1].identifier[0].value == "urn:uuid:1111-1111-1111-1113"
     assert (
         inst.analysis[1].instantiatesUri
-        == ExternalValidatorModel(
-            valueUri="https://pubmed.ncbi.nlm.nih.gov/33927380/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://pubmed.ncbi.nlm.nih.gov/33927380/"}
         ).valueUri
     )
     assert inst.analysis[1].note[0].text == (
@@ -333,8 +347,10 @@ def impl_genomicstudy_2(inst):
     assert inst.analysis[1].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[1].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert inst.analysis[1].specimen[0].reference == "Specimen/specimenFather"
@@ -343,8 +359,8 @@ def impl_genomicstudy_2(inst):
     )
     assert (
         inst.analysis[2].date
-        == ExternalValidatorModel(
-            valueDateTime="2022-07-01T03:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-07-01T03:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[2].device[0].device.reference == "Device/Triodenovo-SW"
@@ -357,8 +373,8 @@ def impl_genomicstudy_2(inst):
     )
     assert (
         inst.analysis[2].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[2].identifier[0].use == "temp"
@@ -371,8 +387,8 @@ def impl_genomicstudy_2(inst):
     assert inst.analysis[2].input[0].type.coding[0].display == "BAM"
     assert (
         inst.analysis[2].input[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/genomicstudy-dataformat"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/genomicstudy-dataformat"}
         ).valueUri
     )
     assert (
@@ -383,8 +399,8 @@ def impl_genomicstudy_2(inst):
     assert inst.analysis[2].input[1].type.coding[0].display == "BAM"
     assert (
         inst.analysis[2].input[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/genomicstudy-dataformat"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/genomicstudy-dataformat"}
         ).valueUri
     )
     assert (
@@ -395,14 +411,14 @@ def impl_genomicstudy_2(inst):
     assert inst.analysis[2].input[2].type.coding[0].display == "BAM"
     assert (
         inst.analysis[2].input[2].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/genomicstudy-dataformat"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/genomicstudy-dataformat"}
         ).valueUri
     )
     assert (
         inst.analysis[2].instantiatesUri
-        == ExternalValidatorModel(
-            valueUri="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6885382/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6885382/"}
         ).valueUri
     )
     assert inst.analysis[2].note[0].text == (
@@ -417,8 +433,8 @@ def impl_genomicstudy_2(inst):
     assert inst.analysis[2].output[0].type.coding[0].display == "VCF"
     assert (
         inst.analysis[2].output[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/genomicstudy-dataformat"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/genomicstudy-dataformat"}
         ).valueUri
     )
     assert (
@@ -428,8 +444,10 @@ def impl_genomicstudy_2(inst):
     assert inst.analysis[2].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[2].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert inst.analysis[2].title == "De Novo Mutation Detection and Interpretation"
@@ -440,8 +458,8 @@ def impl_genomicstudy_2(inst):
     assert inst.id == "example-trio2"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicstudies"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicstudies"}
         ).valueUri
     )
     assert inst.identifier[0].use == "temp"
@@ -451,8 +469,8 @@ def impl_genomicstudy_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -466,12 +484,16 @@ def impl_genomicstudy_2(inst):
     )
     assert (
         inst.reason[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.referrer.reference == "Practitioner/practitioner01"
     assert (
         inst.startDate
-        == ExternalValidatorModel(valueDateTime="2022-05-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-05-01"}
+        ).valueDateTime
     )
     assert inst.status == "available"
     assert inst.subject.reference == "Patient/proband"
@@ -503,24 +525,30 @@ def impl_genomicstudy_3(inst):
     assert inst.analysis[0].changeType[0].coding[0].display == "SNV"
     assert (
         inst.analysis[0].changeType[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://sequenceontology.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://sequenceontology.org"}
+        ).valueUri
     )
     assert inst.analysis[0].changeType[1].coding[0].code == "SO:0002007"
     assert inst.analysis[0].changeType[1].coding[0].display == "MNV"
     assert (
         inst.analysis[0].changeType[1].coding[0].system
-        == ExternalValidatorModel(valueUri="http://sequenceontology.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://sequenceontology.org"}
+        ).valueUri
     )
     assert inst.analysis[0].changeType[2].coding[0].code == "SO:1000032"
     assert inst.analysis[0].changeType[2].coding[0].display == "delins"
     assert (
         inst.analysis[0].changeType[2].coding[0].system
-        == ExternalValidatorModel(valueUri="http://sequenceontology.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://sequenceontology.org"}
+        ).valueUri
     )
     assert (
         inst.analysis[0].date
-        == ExternalValidatorModel(
-            valueDateTime="2019-03-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[0].device[0].device.reference == "Device/NGS-device"
@@ -532,12 +560,14 @@ def impl_genomicstudy_3(inst):
     assert inst.analysis[0].genomeBuild.coding[0].display == "GRCh38"
     assert (
         inst.analysis[0].genomeBuild.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.analysis[0].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[0].identifier[0].use == "official"
@@ -549,7 +579,9 @@ def impl_genomicstudy_3(inst):
     )
     assert (
         inst.analysis[0].methodType[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.analysis[0].note[0].text == (
         "For technical reasons, PIK3CB was deemed uncallable using " "this method."
@@ -567,8 +599,10 @@ def impl_genomicstudy_3(inst):
     assert inst.analysis[0].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[0].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert (
@@ -585,24 +619,28 @@ def impl_genomicstudy_3(inst):
     assert inst.analysis[1].changeType[0].coding[0].display == "CNV"
     assert (
         inst.analysis[1].changeType[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://sequenceontology.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://sequenceontology.org"}
+        ).valueUri
     )
     assert (
         inst.analysis[1].date
-        == ExternalValidatorModel(
-            valueDateTime="2019-03-01T01:01:10-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01T01:01:10-06:00"}
         ).valueDateTime
     )
     assert inst.analysis[1].genomeBuild.coding[0].code == "LA26806-2"
     assert inst.analysis[1].genomeBuild.coding[0].display == "GRCh38"
     assert (
         inst.analysis[1].genomeBuild.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert (
         inst.analysis[1].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicAnalyses"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicAnalyses"}
         ).valueUri
     )
     assert inst.analysis[1].identifier[0].use == "official"
@@ -614,7 +652,9 @@ def impl_genomicstudy_3(inst):
     )
     assert (
         inst.analysis[1].methodType[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.analysis[1].note[0].text == (
         "For technical reasons, PIK3CB was deemed uncallable using " "this method."
@@ -632,8 +672,10 @@ def impl_genomicstudy_3(inst):
     assert inst.analysis[1].performer[0].role.coding[0].display == "Performer"
     assert (
         inst.analysis[1].performer[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationType.html"
+            }
         ).valueUri
     )
     assert (
@@ -657,8 +699,8 @@ def impl_genomicstudy_3(inst):
     assert inst.id == "example-lungMass"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/genomicstudies"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/genomicstudies"}
         ).valueUri
     )
     assert inst.identifier[0].use == "temp"
@@ -668,8 +710,8 @@ def impl_genomicstudy_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == "For technical reasons, PIK3CB was deemed uncallable."
@@ -677,12 +719,16 @@ def impl_genomicstudy_3(inst):
     assert inst.reason[0].concept.coding[0].display == "Lung mass (finding) "
     assert (
         inst.reason[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.referrer.reference == "Practitioner/practitioner01"
     assert (
         inst.startDate
-        == ExternalValidatorModel(valueDateTime="2019-03-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-03-01"}
+        ).valueDateTime
     )
     assert inst.status == "registered"
     assert inst.subject.reference == "Patient/genomicPatient"
@@ -694,7 +740,9 @@ def impl_genomicstudy_3(inst):
     )
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 

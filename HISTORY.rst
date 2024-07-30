@@ -2,10 +2,14 @@
 History
 =======
 
-7.1.1 (unreleased)
-------------------
+8.0.0b1 (unreleased)
+--------------------
 
-- Nothing changed yet.
+Breaking
+
+- Drop support for python 3.7
+
+- FHIR DTU2 packages are no longer available.
 
 
 7.1.0 (2023-12-14)

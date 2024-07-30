@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -25,35 +23,37 @@ class VisionPrescription(domainresource.DomainResource):
     patient.
     """
 
-    resource_type = Field("VisionPrescription", const=True)
+    __resource_type__ = "VisionPrescription"
 
-    created: fhirtypes.DateTime = Field(
+    created: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="created",
         title="Response creation date",
         description="The date this resource was created.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    dateWritten: fhirtypes.DateTime = Field(
+    dateWritten: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="dateWritten",
         title="When prescription was authorized",
         description="The date (and perhaps time) when the prescription was written.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_dateWritten", title="Extension field for ``dateWritten``."
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Created during encounter / admission / stay",
@@ -62,24 +62,24 @@ class VisionPrescription(domainresource.DomainResource):
             " contact between patient and health care provider during which the "
             "prescription was issued."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for vision prescription",
         description="A unique identifier assigned to this vision prescription.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lensSpecification: typing.List[
-        fhirtypes.VisionPrescriptionLensSpecificationType
-    ] = Field(
+    lensSpecification: typing.List[fhirtypes.VisionPrescriptionLensSpecificationType] = Field(  # type: ignore
         ...,
         alias="lensSpecification",
         title="Vision lens authorization",
@@ -87,11 +87,12 @@ class VisionPrescription(domainresource.DomainResource):
             "Contain the details of  the individual lens specifications and serves "
             "as the authorization for the fullfillment by certified professionals."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="patient",
         title="Who prescription is for",
@@ -99,13 +100,14 @@ class VisionPrescription(domainresource.DomainResource):
             "A resource reference to the person to whom the vision prescription "
             "applies."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    prescriber: fhirtypes.ReferenceType = Field(
+    prescriber: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="prescriber",
         title="Who authorized the vision prescription",
@@ -113,25 +115,27 @@ class VisionPrescription(domainresource.DomainResource):
             "The healthcare professional responsible for authorizing the "
             "prescription."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "PractitionerRole"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner", "PractitionerRole"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -160,10 +164,7 @@ class VisionPrescription(domainresource.DomainResource):
             "lensSpecification",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2110(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -176,52 +177,7 @@ class VisionPrescription(domainresource.DomainResource):
             ("dateWritten", "dateWritten__ext"),
             ("status", "status__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
@@ -234,9 +190,9 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     the authorization for the fullfillment by certified professionals.
     """
 
-    resource_type = Field("VisionPrescriptionLensSpecification", const=True)
+    __resource_type__ = "VisionPrescriptionLensSpecification"
 
-    add: fhirtypes.Decimal = Field(
+    add: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="add",
         title="Added power for multifocal levels",
@@ -244,141 +200,153 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
             "Power adjustment for multifocal lenses measured in dioptres (0.25 "
             "units)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    add__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    add__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_add", title="Extension field for ``add``."
     )
 
-    axis: fhirtypes.Integer = Field(
+    axis: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="axis",
         title="Lens meridian which contain no power for astigmatism",
         description="Adjustment for astigmatism measured in integer degrees.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    axis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    axis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_axis", title="Extension field for ``axis``."
     )
 
-    backCurve: fhirtypes.Decimal = Field(
+    backCurve: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="backCurve",
         title="Contact lens back curvature",
         description="Back curvature measured in millimetres.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_backCurve", title="Extension field for ``backCurve``."
     )
 
-    brand: fhirtypes.String = Field(
+    brand: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="brand",
         title="Brand required",
         description="Brand recommendations or restrictions.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    brand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    brand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_brand", title="Extension field for ``brand``."
     )
 
-    color: fhirtypes.String = Field(
+    color: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="color",
         title="Color required",
         description="Special color or pattern.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_color", title="Extension field for ``color``."
     )
 
-    cylinder: fhirtypes.Decimal = Field(
+    cylinder: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="cylinder",
         title="Lens power for astigmatism",
         description="Power adjustment for astigmatism measured in dioptres (0.25 units).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_cylinder", title="Extension field for ``cylinder``."
     )
 
-    diameter: fhirtypes.Decimal = Field(
+    diameter: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="diameter",
         title="Contact lens diameter",
         description="Contact lens diameter measured in millimetres.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    diameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    diameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_diameter", title="Extension field for ``diameter``."
     )
 
-    duration: fhirtypes.QuantityType = Field(
+    duration: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="duration",
         title="Lens wear duration",
         description="The recommended maximum wear period for the lens.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    eye: fhirtypes.Code = Field(
+    eye: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="eye",
         title="right | left",
         description="The eye for which the lens specification applies.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["right", "left"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["right", "left"],
+        },
     )
-    eye__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    eye__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_eye", title="Extension field for ``eye``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Notes for coatings",
         description="Notes for special requirements such as coatings and lens materials.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    power: fhirtypes.Decimal = Field(
+    power: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="power",
         title="Contact lens power",
         description="Contact lens power measured in dioptres (0.25 units).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    power__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    power__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_power", title="Extension field for ``power``."
     )
 
-    prism: typing.List[fhirtypes.VisionPrescriptionLensSpecificationPrismType] = Field(
+    prism: typing.List[fhirtypes.VisionPrescriptionLensSpecificationPrismType] = Field(  # type: ignore
         None,
         alias="prism",
         title="Eye alignment compensation",
         description="Allows for adjustment on two axis.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    product: fhirtypes.CodeableConceptType = Field(
+    product: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="product",
         title="Product to be supplied",
@@ -386,19 +354,21 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
             "Identifies the type of vision correction product which is required for"
             " the patient."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sphere: fhirtypes.Decimal = Field(
+    sphere: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="sphere",
         title="Power of the lens",
         description="Lens power measured in dioptres (0.25 units).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sphere", title="Extension field for ``sphere``."
     )
 
@@ -428,10 +398,7 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3857(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -440,52 +407,7 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("eye", "eye__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
@@ -497,34 +419,36 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
     Allows for adjustment on two axis.
     """
 
-    resource_type = Field("VisionPrescriptionLensSpecificationPrism", const=True)
+    __resource_type__ = "VisionPrescriptionLensSpecificationPrism"
 
-    amount: fhirtypes.Decimal = Field(
+    amount: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="amount",
         title="Amount of adjustment",
         description="Amount of prism to compensate for eye alignment in fractional units.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    amount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    amount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_amount", title="Extension field for ``amount``."
     )
 
-    base: fhirtypes.Code = Field(
+    base: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="base",
         title="up | down | in | out",
         description="The relative base, or reference lens edge, for the prism.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["up", "down", "in", "out"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["up", "down", "in", "out"],
+        },
     )
-    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_base", title="Extension field for ``base``."
     )
 
@@ -536,10 +460,7 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "amount", "base"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_4379(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -548,49 +469,4 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("amount", "amount__ext"), ("base", "base__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

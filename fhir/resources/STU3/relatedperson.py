@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -25,42 +25,45 @@ class RelatedPerson(domainresource.DomainResource):
     care process.
     """
 
-    resource_type = Field("RelatedPerson", const=True)
+    __resource_type__ = "RelatedPerson"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this related person's record is in active use",
         description="Whether this related person record is in active use.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
         None,
         alias="address",
         title="Address where the related person can be contacted or visited",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    birthDate: fhirtypes.Date = Field(
+    birthDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="birthDate",
         title="The date on which the related person was born",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    gender: fhirtypes.Code = Field(
+    gender: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -68,46 +71,50 @@ class RelatedPerson(domainresource.DomainResource):
             "Administrative Gender - the gender that the person is considered to "
             "have for administration and record keeping purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["male", "female", "other", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["male", "female", "other", "unknown"],
+        },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="A human identifier for this person",
         description="Identifier for a person within a particular scope.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the person",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="patient",
         title="The patient this person is related to",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Period of time that this relationship is considered valid",
@@ -115,20 +122,22 @@ class RelatedPerson(domainresource.DomainResource):
             "The period of time that this relationship is considered to be valid. "
             "If there are no dates defined, then the interval is unknown."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="photo",
         title="Image of the person",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    relationship: fhirtypes.CodeableConceptType = Field(
+    relationship: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="relationship",
         title="The nature of the relationship",
@@ -136,11 +145,12 @@ class RelatedPerson(domainresource.DomainResource):
             "The nature of the relationship between a patient and the related "
             "person."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the person",
@@ -148,8 +158,9 @@ class RelatedPerson(domainresource.DomainResource):
             "A contact detail for the person, e.g. a telephone number or an email "
             "address."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

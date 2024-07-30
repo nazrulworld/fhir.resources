@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -24,18 +24,19 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     into another (possibly the same) biological entity.
     """
 
-    resource_type = Field("BiologicallyDerivedProduct", const=True)
+    __resource_type__ = "BiologicallyDerivedProduct"
 
-    collection: fhirtypes.BiologicallyDerivedProductCollectionType = Field(
+    collection: fhirtypes.BiologicallyDerivedProductCollectionType = Field(  # type: ignore
         None,
         alias="collection",
         title="How this product was collected",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External ids for this item",
@@ -46,11 +47,12 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             " appropriate (e.g. in CDA documents, or in written / printed "
             "documentation)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    manipulation: fhirtypes.BiologicallyDerivedProductManipulationType = Field(
+    manipulation: fhirtypes.BiologicallyDerivedProductManipulationType = Field(  # type: ignore
         None,
         alias="manipulation",
         title="Any manipulation of product post-collection",
@@ -59,22 +61,24 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             "the product.  For example a buffy-coat enrichment or CD8 reduction of "
             "Peripheral Blood Stem Cells to make it more suitable for infusion."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    parent: typing.List[fhirtypes.ReferenceType] = Field(
+    parent: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="parent",
         title="BiologicallyDerivedProduct parent",
         description="Parent product (if any).",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["BiologicallyDerivedProduct"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["BiologicallyDerivedProduct"],
+        },
     )
 
-    processing: typing.List[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
+    processing: typing.List[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(  # type: ignore
         None,
         alias="processing",
         title="Any processing of the product during collection",
@@ -83,26 +87,28 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             "the fundamental nature of the product. For example adding anti-"
             "coagulants during the collection of Peripheral Blood Stem Cells."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    productCategory: fhirtypes.Code = Field(
+    productCategory: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="productCategory",
         title="organ | tissue | fluid | cells | biologicalAgent",
         description="Broad category of this product.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["organ", "tissue", "fluid", "cells", "biologicalAgent"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["organ", "tissue", "fluid", "cells", "biologicalAgent"],
+        },
     )
-    productCategory__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    productCategory__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_productCategory", title="Extension field for ``productCategory``."
     )
 
-    productCode: fhirtypes.CodeableConceptType = Field(
+    productCode: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="productCode",
         title="What this biologically derived product is",
@@ -110,55 +116,60 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             "A code that identifies the kind of this biologically derived product "
             "(SNOMED Ctcode)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    quantity: fhirtypes.Integer = Field(
+    quantity: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="quantity",
         title="The amount of this biologically derived product",
         description="Number of discrete units within this product.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_quantity", title="Extension field for ``quantity``."
     )
 
-    request: typing.List[fhirtypes.ReferenceType] = Field(
+    request: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="request",
         title="Procedure request",
         description="Procedure request to obtain this biologically derived product.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ServiceRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ServiceRequest"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="available | unavailable",
         description="Whether the product is currently available.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["available", "unavailable"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["available", "unavailable"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    storage: typing.List[fhirtypes.BiologicallyDerivedProductStorageType] = Field(
+    storage: typing.List[fhirtypes.BiologicallyDerivedProductStorageType] = Field(  # type: ignore
         None,
         alias="storage",
         title="Product storage",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -198,49 +209,52 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     How this product was collected.
     """
 
-    resource_type = Field("BiologicallyDerivedProductCollection", const=True)
+    __resource_type__ = "BiologicallyDerivedProductCollection"
 
-    collectedDateTime: fhirtypes.DateTime = Field(
+    collectedDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="collectedDateTime",
         title="Time of product collection",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e collected[x]
-        one_of_many="collected",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e collected[x]
+            "one_of_many": "collected",
+            "one_of_many_required": False,
+        },
     )
-    collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_collectedDateTime",
         title="Extension field for ``collectedDateTime``.",
     )
 
-    collectedPeriod: fhirtypes.PeriodType = Field(
+    collectedPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="collectedPeriod",
         title="Time of product collection",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e collected[x]
-        one_of_many="collected",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e collected[x]
+            "one_of_many": "collected",
+            "one_of_many_required": False,
+        },
     )
 
-    collector: fhirtypes.ReferenceType = Field(
+    collector: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="collector",
         title="Individual performing collection",
         description="Healthcare professional who is performing the collection.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "PractitionerRole"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner", "PractitionerRole"],
+        },
     )
 
-    source: fhirtypes.ReferenceType = Field(
+    source: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="source",
         title="Who is product from",
@@ -248,10 +262,11 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
             "The patient or entity, such as a hospital or vendor in the case of a "
             "processed/manipulated/manufactured product, providing the product."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Organization"],
+        },
     )
 
     @classmethod
@@ -270,10 +285,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
             "collectedPeriod",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3898(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -287,26 +299,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"collected": ["collectedDateTime", "collectedPeriod"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
@@ -320,45 +313,48 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
     Peripheral Blood Stem Cells to make it more suitable for infusion.
     """
 
-    resource_type = Field("BiologicallyDerivedProductManipulation", const=True)
+    __resource_type__ = "BiologicallyDerivedProductManipulation"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Description of manipulation",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    timeDateTime: fhirtypes.DateTime = Field(
+    timeDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="timeDateTime",
         title="Time of manipulation",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e time[x]
-        one_of_many="time",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e time[x]
+            "one_of_many": "time",
+            "one_of_many_required": False,
+        },
     )
-    timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_timeDateTime", title="Extension field for ``timeDateTime``."
     )
 
-    timePeriod: fhirtypes.PeriodType = Field(
+    timePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="timePeriod",
         title="Time of manipulation",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e time[x]
-        one_of_many="time",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e time[x]
+            "one_of_many": "time",
+            "one_of_many_required": False,
+        },
     )
 
     @classmethod
@@ -376,10 +372,7 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
             "timePeriod",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4127(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -393,26 +386,7 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"time": ["timeDateTime", "timePeriod"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
@@ -426,65 +400,70 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     during the collection of Peripheral Blood Stem Cells.
     """
 
-    resource_type = Field("BiologicallyDerivedProductProcessing", const=True)
+    __resource_type__ = "BiologicallyDerivedProductProcessing"
 
-    additive: fhirtypes.ReferenceType = Field(
+    additive: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="additive",
         title="Substance added during processing",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Substance"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Substance"],
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Description of of processing",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    procedure: fhirtypes.CodeableConceptType = Field(
+    procedure: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="procedure",
         title="Procesing code",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    timeDateTime: fhirtypes.DateTime = Field(
+    timeDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="timeDateTime",
         title="Time of processing",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e time[x]
-        one_of_many="time",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e time[x]
+            "one_of_many": "time",
+            "one_of_many_required": False,
+        },
     )
-    timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_timeDateTime", title="Extension field for ``timeDateTime``."
     )
 
-    timePeriod: fhirtypes.PeriodType = Field(
+    timePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="timePeriod",
         title="Time of processing",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e time[x]
-        one_of_many="time",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e time[x]
+            "one_of_many": "time",
+            "one_of_many_required": False,
+        },
     )
 
     @classmethod
@@ -504,10 +483,7 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
             "timePeriod",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3908(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -521,26 +497,7 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"time": ["timeDateTime", "timePeriod"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
@@ -551,53 +508,57 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     Product storage.
     """
 
-    resource_type = Field("BiologicallyDerivedProductStorage", const=True)
+    __resource_type__ = "BiologicallyDerivedProductStorage"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Description of storage",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    duration: fhirtypes.PeriodType = Field(
+    duration: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="duration",
         title="Storage timeperiod",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    scale: fhirtypes.Code = Field(
+    scale: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="scale",
         title="farenheit | celsius | kelvin",
         description="Temperature scale used.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["farenheit", "celsius", "kelvin"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["farenheit", "celsius", "kelvin"],
+        },
     )
-    scale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    scale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_scale", title="Extension field for ``scale``."
     )
 
-    temperature: fhirtypes.Decimal = Field(
+    temperature: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="temperature",
         title="Storage temperature",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    temperature__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    temperature__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_temperature", title="Extension field for ``temperature``."
     )
 

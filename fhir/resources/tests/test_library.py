@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import library
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_library_1(inst):
@@ -18,10 +18,17 @@ def impl_library_1(inst):
     assert inst.content[0].contentType == "application/xml"
     assert (
         inst.content[0].url
-        == ExternalValidatorModel(valueUrl="elm/OMTK-modelinfo-0.1.0.xml").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "elm/OMTK-modelinfo-0.1.0.xml"}
+        ).valueUrl
     )
     assert inst.copyright == "© CDC 2016+."
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-05-05").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-05-05"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Opioid Management Terminology Knowledge Base Model "
         "Definition for use in implementing CDC Opioid Prescribing "
@@ -35,14 +42,16 @@ def impl_library_1(inst):
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "OMTKModelInfo"
@@ -56,8 +65,8 @@ def impl_library_1(inst):
     assert inst.type.coding[0].code == "model-definition"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
         ).valueUri
     )
     assert inst.usage == (
@@ -68,8 +77,8 @@ def impl_library_1(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
@@ -79,14 +88,16 @@ def impl_library_1(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
@@ -96,7 +107,9 @@ def impl_library_1(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -123,30 +136,39 @@ def impl_library_2(inst):
     assert inst.content[0].contentType == "text/cql"
     assert (
         inst.content[0].url
-        == ExternalValidatorModel(
-            valueUrl="library-hiv-indicators-content.cql"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "library-hiv-indicators-content.cql"}
         ).valueUrl
     )
     assert inst.content[1].contentType == "application/elm+xml"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2018-08-03").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-08-03"}
+        ).valueDateTime
+    )
     assert inst.description == "HIV Indicators Reporting Example"
     assert inst.experimental is True
     assert inst.id == "hiv-indicators"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.17.1"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="http://ohie.org/Library/").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ohie.org/Library/"}
+        ).valueUri
     )
     assert inst.identifier[1].value == "hiv-indicators"
     assert inst.name == "HIVIndicators"
     assert (
         inst.relatedArtifact[0].document.url
-        == ExternalValidatorModel(
-            valueUrl="http://wiki.ihe.net/index.php/Aggregate_Data_Exchange_-_HIV"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://wiki.ihe.net/index.php/Aggregate_Data_Exchange_-_HIV"}
         ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "derived-from"
@@ -156,14 +178,14 @@ def impl_library_2(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
         ).valueUri
     )
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://ohie.org/Library/hiv-indicators"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ohie.org/Library/hiv-indicators"}
         ).valueUri
     )
     assert inst.version == "0.0.0"
@@ -191,11 +213,16 @@ def impl_library_3(inst):
     assert inst.content[0].contentType == "application/xml"
     assert (
         inst.content[0].url
-        == ExternalValidatorModel(
-            valueUrl="http://cqlrepository.org/quick-modelinfo.xml"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://cqlrepository.org/quick-modelinfo.xml"}
         ).valueUrl
     )
-    assert inst.date == ExternalValidatorModel(valueDateTime="2016-07-08").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-07-08"}
+        ).valueDateTime
+    )
     assert inst.description == "Model definition for the QUICK Logical Model"
     assert inst.id == "library-quick-model-definition"
     assert inst.identifier[0].use == "official"
@@ -204,8 +231,8 @@ def impl_library_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "QUICKModelDefinition"
@@ -257,8 +284,8 @@ def impl_library_4(inst):
     assert inst.dataRequirement[1].type == "MedicationRequest"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2018-03-25T13:49:09-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-25T13:49:09-06:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -274,14 +301,16 @@ def impl_library_4(inst):
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "OpioidCDSLogicForRecommendation11"
@@ -297,8 +326,10 @@ def impl_library_4(inst):
     )
     assert (
         inst.relatedArtifact[0].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
         ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "documentation"
@@ -314,8 +345,8 @@ def impl_library_4(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
         ).valueUri
     )
     assert inst.usage == (
@@ -327,8 +358,8 @@ def impl_library_4(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
@@ -338,14 +369,16 @@ def impl_library_4(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
@@ -355,7 +388,9 @@ def impl_library_4(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -404,8 +439,8 @@ def impl_library_5(inst):
     assert inst.dataRequirement[4].type == "Encounter"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2018-03-25T13:49:09-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-25T13:49:09-06:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
@@ -416,14 +451,16 @@ def impl_library_5(inst):
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "OpioidCDSLogicForRecommendation7"
@@ -440,8 +477,10 @@ def impl_library_5(inst):
     )
     assert (
         inst.relatedArtifact[0].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
         ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "documentation"
@@ -457,8 +496,8 @@ def impl_library_5(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
         ).valueUri
     )
     assert inst.usage == (
@@ -470,8 +509,8 @@ def impl_library_5(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
@@ -481,14 +520,16 @@ def impl_library_5(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
@@ -498,7 +539,9 @@ def impl_library_5(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -527,11 +570,16 @@ def impl_library_6(inst):
     assert inst.content[0].contentType == "application/xml"
     assert (
         inst.content[0].url
-        == ExternalValidatorModel(
-            valueUrl="http://cqlrepository.org/fhirmodel-modelinfo.xml"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://cqlrepository.org/fhirmodel-modelinfo.xml"}
         ).valueUrl
     )
-    assert inst.date == ExternalValidatorModel(valueDateTime="2016-07-08").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-07-08"}
+        ).valueDateTime
+    )
     assert inst.description == "Model definition for the FHIR Model"
     assert inst.id == "library-fhir-model-definition"
     assert inst.identifier[0].use == "official"
@@ -540,8 +588,8 @@ def impl_library_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "FHIRModelDefinition"
@@ -576,9 +624,16 @@ def impl_library_7(inst):
     assert inst.content[0].title == "FHIR Helpers"
     assert (
         inst.content[0].url
-        == ExternalValidatorModel(valueUrl="library-fhir-helpers-content.cql").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "library-fhir-helpers-content.cql"}
+        ).valueUrl
     )
-    assert inst.date == ExternalValidatorModel(valueDateTime="2016-11-14").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-11-14"}
+        ).valueDateTime
+    )
     assert inst.description == "FHIR Helpers"
     assert inst.experimental is True
     assert inst.id == "library-fhir-helpers-predecessor"
@@ -588,8 +643,8 @@ def impl_library_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "FHIRHelpers"
@@ -659,8 +714,8 @@ def impl_library_8(inst):
     assert inst.dataRequirement[3].type == "Observation"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2018-03-25T13:49:09-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-25T13:49:09-06:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -676,14 +731,16 @@ def impl_library_8(inst):
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "OpioidCDSLogicForRecommendation10"
@@ -694,8 +751,10 @@ def impl_library_8(inst):
     )
     assert (
         inst.relatedArtifact[0].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
         ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "documentation"
@@ -711,8 +770,8 @@ def impl_library_8(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
         ).valueUri
     )
     assert inst.usage == (
@@ -724,8 +783,8 @@ def impl_library_8(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
@@ -735,14 +794,16 @@ def impl_library_8(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
@@ -752,7 +813,9 @@ def impl_library_8(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -839,7 +902,12 @@ def impl_library_9(inst):
         == "urn:oid:2.16.840.1.113883.3.464.1003.196.12.1001"
     )
     assert inst.dataRequirement[7].type == "MedicationStatement"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2015-07-22").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-07-22"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Logic for CMS 146: Appropriate Testing for Children with " "Pharyngitis"
     )
@@ -847,7 +915,9 @@ def impl_library_9(inst):
     assert inst.id == "library-cms146-example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.17.2"
     assert inst.identifier[1].use == "official"
@@ -864,8 +934,8 @@ def impl_library_9(inst):
     assert inst.type.coding[0].code == "logic-library"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/Library/library-cms146-example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Library/library-cms146-example"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -901,8 +971,10 @@ def impl_library_10(inst):
     assert inst.dataRequirement[0].codeFilter[1].code[0].code == "outpatient"
     assert (
         inst.dataRequirement[0].codeFilter[1].code[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/medicationrequest-category"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/medicationrequest-category"
+            }
         ).valueUri
     )
     assert inst.dataRequirement[0].codeFilter[1].path == "category"
@@ -910,8 +982,8 @@ def impl_library_10(inst):
     assert inst.dataRequirement[0].type == "MedicationRequest"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2018-03-25T13:49:09-06:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-25T13:49:09-06:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -926,14 +998,16 @@ def impl_library_10(inst):
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "OpioidCDSLogicForRecommendation5"
@@ -949,8 +1023,10 @@ def impl_library_10(inst):
     )
     assert (
         inst.relatedArtifact[0].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
         ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "documentation"
@@ -962,8 +1038,10 @@ def impl_library_10(inst):
     assert inst.relatedArtifact[2].display == "MME Conversion Tables"
     assert (
         inst.relatedArtifact[2].document.url
-        == ExternalValidatorModel(
-            valueUrl="https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+            }
         ).valueUrl
     )
     assert inst.relatedArtifact[2].type == "documentation"
@@ -974,8 +1052,8 @@ def impl_library_10(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
         ).valueUri
     )
     assert inst.usage == (
@@ -986,8 +1064,8 @@ def impl_library_10(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
@@ -997,14 +1075,16 @@ def impl_library_10(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
@@ -1014,7 +1094,9 @@ def impl_library_10(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 

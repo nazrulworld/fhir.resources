@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import organizationaffiliation
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_organizationaffiliation_1(inst):
@@ -15,8 +15,8 @@ def impl_organizationaffiliation_1(inst):
     assert inst.code[0].coding[0].code == "provider"
     assert (
         inst.code[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/organization-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/organization-role"}
         ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "email"
@@ -27,7 +27,9 @@ def impl_organizationaffiliation_1(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://www.acme.org/practitioners").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.acme.org/practitioners"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "23"
     assert inst.location[0].display == "South Wing, second floor"
@@ -36,8 +38,8 @@ def impl_organizationaffiliation_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.network[0].display == "HL7 Payer Network"
@@ -46,17 +48,23 @@ def impl_organizationaffiliation_1(inst):
     assert inst.participatingOrganization.reference == "Organization/f001"
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2012-03-31").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-03-31"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2012-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-01-01"}
+        ).valueDateTime
     )
     assert inst.specialty[0].coding[0].code == "408443003"
     assert inst.specialty[0].coding[0].display == "General medical practice"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -89,8 +97,8 @@ def impl_organizationaffiliation_2(inst):
     assert inst.code[0].coding[0].display == "Member"
     assert (
         inst.code[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/organization-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/organization-role"}
         ).valueUri
     )
     assert inst.code[0].text == "Hospital member"
@@ -99,8 +107,8 @@ def impl_organizationaffiliation_2(inst):
     assert inst.identifier[0].assigner.display == "Monument Health Information Exchange"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/www.monumentHIE.com"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/www.monumentHIE.com"}
         ).valueUri
     )
     assert inst.identifier[0].type.text == "member hospital"
@@ -110,8 +118,8 @@ def impl_organizationaffiliation_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.organization.display == "Monument Health Information Exchange"
@@ -147,8 +155,8 @@ def impl_organizationaffiliation_3(inst):
     assert inst.code[0].coding[0].display == "Provider"
     assert (
         inst.code[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/organization-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/organization-role"}
         ).valueUri
     )
     assert inst.code[0].coding[0].userSelected is True
@@ -162,8 +170,8 @@ def impl_organizationaffiliation_3(inst):
     assert inst.identifier[0].assigner.display == "Founding Fathers Memorial Hospital"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/www.foundingfathersmemorial.com"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/www.foundingfathersmemorial.com"}
         ).valueUri
     )
     assert inst.identifier[0].use == "secondary"
@@ -173,8 +181,8 @@ def impl_organizationaffiliation_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.network[0].display == "Patriot Preferred Provider Network"
@@ -185,17 +193,23 @@ def impl_organizationaffiliation_3(inst):
     )
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2022-02-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-02-01"}
+        ).valueDateTime
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2018-02-09").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-02-09"}
+        ).valueDateTime
     )
     assert inst.specialty[0].coding[0].code == "394602003"
     assert inst.specialty[0].coding[0].display == "Rehabilitation - specialty"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.specialty[0].text == "Rehabilitation"
     assert inst.text.status == "generated"

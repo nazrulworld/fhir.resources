@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import codesystem
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_codesystem_1(inst):
@@ -43,27 +41,54 @@ def impl_codesystem_1(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.content == "complete"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == "How the referenced structure is used in this mapping."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "fhir"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "map-model-mode"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.676"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -74,7 +99,12 @@ def impl_codesystem_1(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "StructureMapModelMode"
-    assert inst.url == "http://hl7.org/fhir/map-model-mode"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/map-model-mode"}
+        ).valueUri
+    )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/map-model-mode"
     assert inst.version == "4.3.0"
 
@@ -84,15 +114,13 @@ def test_codesystem_1(base_settings):
     Test File: codesystem-map-model-mode.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-map-model-mode.json"
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -119,8 +147,13 @@ def impl_codesystem_2(inst):
         "the material."
     )
     assert inst.concept[3].display == "Sufficient Quantity"
-    assert inst.concept[3].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/codesystem-concept-" "comments"
+    assert (
+        inst.concept[3].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/codesystem-concept-comments"
+            }
+        ).valueUri
     )
     assert inst.concept[3].extension[0].valueString == (
         "used in formulations (e.g. 'Add 10mg of ingredient X, 50mg "
@@ -136,35 +169,63 @@ def impl_codesystem_2(inst):
         == "The are no known applicable values in this context."
     )
     assert inst.concept[5].display == "Nil Known"
-    assert inst.concept[5].extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/codesystem-concept-" "comments"
+    assert (
+        inst.concept[5].extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/codesystem-concept-comments"
+            }
+        ).valueUri
     )
     assert (
         inst.concept[5].extension[0].valueString
         == "The existence of this subject to review"
     )
     assert inst.content == "complete"
-    assert inst.date == fhirtypes.DateTime.validate("2022-05-28T12:47:40+10:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-05-28T12:47:40+10:00"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "A set of generally useful codes defined so they can be "
         "included in value sets."
     )
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "fhir"
     assert inst.id == "special-values"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.1.1049"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert inst.name == "SpecialValues"
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
     assert inst.title == "SpecialValues"
-    assert inst.url == "http://terminology.hl7.org/CodeSystem/special-values"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/special-values"}
+        ).valueUri
+    )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/special-values"
     assert inst.version == "4.3.0"
 
@@ -174,15 +235,13 @@ def test_codesystem_2(base_settings):
     Test File: codesystem-special-values.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-special-values.json"
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -230,29 +289,56 @@ def impl_codesystem_3(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.content == "complete"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert (
         inst.description == "Codes for the reason why a communication did not happen."
     )
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "pc"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "draft"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "communication-not-done-reason"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.1077"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -263,8 +349,13 @@ def impl_codesystem_3(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "CommunicationNotDoneReason"
-    assert inst.url == (
-        "http://terminology.hl7.org/CodeSystem/communication-not-" "done-reason"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/communication-not-done-reason"
+            }
+        ).valueUri
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/communication-not-done-reason"
     assert inst.version == "4.3.0"
@@ -278,15 +369,13 @@ def test_codesystem_3(base_settings):
         base_settings["unittest_data_dir"]
         / "codesystem-communication-not-done-reason.json"
     )
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -312,34 +401,65 @@ def impl_codesystem_4(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.content == "complete"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert (
         inst.description == "The meaning of the hierarchy of concepts in a code system."
     )
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "vocab"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "normative"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "normative-version"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueCode == "4.0.0"
-    assert inst.extension[3].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[3].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[3].valueInteger == 5
     assert inst.id == "codesystem-hierarchy-meaning"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.785"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -350,7 +470,12 @@ def impl_codesystem_4(inst):
     assert inst.status == "active"
     assert inst.text.status == "generated"
     assert inst.title == "CodeSystemHierarchyMeaning"
-    assert inst.url == "http://hl7.org/fhir/codesystem-hierarchy-meaning"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/codesystem-hierarchy-meaning"}
+        ).valueUri
+    )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/codesystem-hierarchy-meaning"
     assert inst.version == "4.3.0"
 
@@ -363,15 +488,13 @@ def test_codesystem_4(base_settings):
         base_settings["unittest_data_dir"]
         / "codesystem-codesystem-hierarchy-meaning.json"
     )
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -402,15 +525,28 @@ def impl_codesystem_5(inst):
     assert inst.concept[2].display == "Seasonal"
     assert inst.content == "complete"
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "phx"
     assert inst.id == "medicationrequest-course-of-therapy"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.1.1327"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -419,8 +555,13 @@ def impl_codesystem_5(inst):
     assert inst.name == "MedicationRequest Course of Therapy Codes"
     assert inst.status == "draft"
     assert inst.text.status == "generated"
-    assert inst.url == (
-        "http://terminology.hl7.org/CodeSystem/medicationrequest-" "course-of-therapy"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy"
+            }
+        ).valueUri
     )
     assert inst.valueSet == (
         "http://hl7.org/fhir/ValueSet/medicationrequest-course-of-" "therapy"
@@ -436,15 +577,13 @@ def test_codesystem_5(base_settings):
         base_settings["unittest_data_dir"]
         / "codesystem-medicationrequest-course-of-therapy.json"
     )
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -481,27 +620,54 @@ def impl_codesystem_6(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.content == "complete"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == "Indicates whether the event succeeded or failed."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "sec"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 3
     assert inst.id == "audit-event-outcome"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.455"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -512,7 +678,12 @@ def impl_codesystem_6(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "AuditEventOutcome"
-    assert inst.url == "http://hl7.org/fhir/audit-event-outcome"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/audit-event-outcome"}
+        ).valueUri
+    )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/audit-event-outcome"
     assert inst.version == "4.3.0"
 
@@ -524,15 +695,13 @@ def test_codesystem_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "codesystem-audit-event-outcome.json"
     )
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -556,15 +725,28 @@ def impl_codesystem_7(inst):
     assert inst.copyright == "This is an example set."
     assert inst.description == "This value set includes sample Contract Subtype codes."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "fm"
     assert inst.id == "contract-subtype"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.1.0"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T12:47:40.239+10:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T12:47:40.239+10:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -574,7 +756,12 @@ def impl_codesystem_7(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "Contract Subtype Codes"
-    assert inst.url == "http://hl7.org/fhir/contract-subtype"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/contract-subtype"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -583,15 +770,13 @@ def test_codesystem_7(base_settings):
     Test File: codesystem-contract-subtype.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-contract-subtype.json"
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -663,27 +848,54 @@ def impl_codesystem_8(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.content == "complete"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == "How data is copied/created."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "fhir"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "map-transform"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.682"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -694,7 +906,12 @@ def impl_codesystem_8(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "StructureMapTransform"
-    assert inst.url == "http://hl7.org/fhir/map-transform"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/map-transform"}
+        ).valueUri
+    )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/map-transform"
     assert inst.version == "4.3.0"
 
@@ -704,15 +921,13 @@ def test_codesystem_8(base_settings):
     Test File: codesystem-map-transform.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-map-transform.json"
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -796,30 +1011,57 @@ def impl_codesystem_9(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.content == "complete"
-    assert inst.date == fhirtypes.DateTime.validate("2021-08-15T16:55:11+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-08-15T16:55:11+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Classification of relationship between a therapy and a "
         "contraindication or an indication."
     )
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "brr"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "therapy-relationship-type"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.1.1560"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -830,7 +1072,12 @@ def impl_codesystem_9(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "TherapyRelationshipType"
-    assert inst.url == "http://hl7.org/fhir/therapy-relationship-type"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/therapy-relationship-type"}
+        ).valueUri
+    )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/therapy-relationship-type"
     assert inst.version == "4.3.0"
 
@@ -842,15 +1089,13 @@ def test_codesystem_9(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "codesystem-therapy-relationship-type.json"
     )
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)
@@ -886,27 +1131,54 @@ def impl_codesystem_10(inst):
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.content == "complete"
-    assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-17T07:06:13+11:00"}
+        ).valueDateTime
+    )
     assert inst.description == "The status of the ImagingStudy."
     assert inst.experimental is False
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
+        ).valueUri
     )
     assert inst.extension[0].valueCode == "ii"
-    assert inst.extension[1].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-        "standards-status"
+    assert (
+        inst.extension[1].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
+        ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
-    assert inst.extension[2].url == (
-        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
+        ).valueUri
     )
     assert inst.extension[2].valueInteger == 3
     assert inst.id == "imagingstudy-status"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.991"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
-        "2022-05-28T13:47:40.239+11:00"
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2022-05-28T13:47:40.239+11:00"}
+        ).valueInstant
     )
     assert (
         inst.meta.profile[0]
@@ -917,7 +1189,12 @@ def impl_codesystem_10(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "ImagingStudyStatus"
-    assert inst.url == "http://hl7.org/fhir/imagingstudy-status"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/imagingstudy-status"}
+        ).valueUri
+    )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/imagingstudy-status"
     assert inst.version == "4.3.0"
 
@@ -929,15 +1206,13 @@ def test_codesystem_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "codesystem-imagingstudy-status.json"
     )
-    inst = codesystem.CodeSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CodeSystem" == inst.resource_type
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
+    assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CodeSystem" == data["resourceType"]
 
     inst2 = codesystem.CodeSystem(**data)

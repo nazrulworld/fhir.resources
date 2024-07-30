@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import location
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_location_1(inst):
@@ -24,8 +24,8 @@ def impl_location_1(inst):
     assert inst.characteristic[0].coding[0].display == "Wheelchair accessible"
     assert (
         inst.characteristic[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/location-characteristic"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/location-characteristic"}
         ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "phone"
@@ -47,8 +47,8 @@ def impl_location_1(inst):
     assert inst.form.coding[0].display == "Wing"
     assert (
         inst.form.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/location-physical-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/location-physical-type"}
         ).valueUri
     )
     assert inst.id == "1"
@@ -58,8 +58,8 @@ def impl_location_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "instance"
@@ -105,8 +105,8 @@ def impl_location_2(inst):
     assert inst.form.coding[0].display == "Room"
     assert (
         inst.form.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/location-physical-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/location-physical-type"}
         ).valueUri
     )
     assert inst.id == "2"
@@ -116,8 +116,8 @@ def impl_location_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "instance"
@@ -126,8 +126,8 @@ def impl_location_2(inst):
     assert inst.operationalStatus.display == "Housekeeping"
     assert (
         inst.operationalStatus.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0116"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0116"}
         ).valueUri
     )
     assert inst.partOf.reference == "Location/1"
@@ -142,8 +142,8 @@ def impl_location_2(inst):
     assert inst.type[0].coding[0].display == "Neuroradiology unit"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"}
         ).valueUri
     )
 
@@ -175,8 +175,8 @@ def impl_location_3(inst):
     assert inst.form.coding[0].display == "Vehicle"
     assert (
         inst.form.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/location-physical-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/location-physical-type"}
         ).valueUri
     )
     assert inst.id == "amb"
@@ -185,8 +185,8 @@ def impl_location_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "kind"
@@ -200,8 +200,8 @@ def impl_location_3(inst):
     assert inst.type[0].coding[0].display == "Ambulance"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"}
         ).valueUri
     )
 
@@ -227,8 +227,10 @@ def test_location_3(base_settings):
 def impl_location_4(inst):
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/location-boundary-geojson"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/location-boundary-geojson"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueAttachment.contentType == "application/geo+json"
@@ -237,16 +239,18 @@ def impl_location_4(inst):
     # which is a Integer64
     assert (
         inst.extension[0].valueAttachment.url
-        == ExternalValidatorModel(
-            valueUrl="https://github.com/OpenDataDE/State-zip-code-GeoJSON/raw/master/dc_district_of_columbia_zip_codes_geo.min.json"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://github.com/OpenDataDE/State-zip-code-GeoJSON/raw/master/dc_district_of_columbia_zip_codes_geo.min.json"
+            }
         ).valueUrl
     )
     assert inst.form.coding[0].code == "area"
     assert inst.form.coding[0].display == "Area"
     assert (
         inst.form.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/location-physical-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/location-physical-type"}
         ).valueUri
     )
     assert inst.id == "wash-dc-metro"
@@ -257,8 +261,8 @@ def impl_location_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Washington, DC metro area"
@@ -293,8 +297,8 @@ def impl_location_5(inst):
     assert inst.form.coding[0].display == "Jurisdiction"
     assert (
         inst.form.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/location-physical-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/location-physical-type"}
         ).valueUri
     )
     assert inst.id == "ukp"
@@ -302,8 +306,8 @@ def impl_location_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "kind"
@@ -317,8 +321,8 @@ def impl_location_5(inst):
     assert inst.type[0].coding[0].display == "Pharmacy"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"}
         ).valueUri
     )
 
@@ -347,8 +351,8 @@ def impl_location_6(inst):
     assert inst.form.coding[0].display == "House"
     assert (
         inst.form.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/location-physical-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/location-physical-type"}
         ).valueUri
     )
     assert inst.id == "ph"
@@ -357,8 +361,8 @@ def impl_location_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "kind"
@@ -372,8 +376,8 @@ def impl_location_6(inst):
     assert inst.type[0].coding[0].display == "Patient's Residence"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"}
         ).valueUri
     )
 
@@ -415,8 +419,8 @@ def impl_location_7(inst):
     assert inst.form.coding[0].display == "Building"
     assert (
         inst.form.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/location-physical-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/location-physical-type"}
         ).valueUri
     )
     assert inst.id == "hl7"
@@ -424,8 +428,8 @@ def impl_location_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "instance"
@@ -438,8 +442,8 @@ def impl_location_7(inst):
     assert inst.type[0].coding[0].display == "Sleep disorders unit"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"}
         ).valueUri
     )
 

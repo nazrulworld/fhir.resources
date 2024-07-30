@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -21,9 +21,9 @@ class PackagedProductDefinition(domainresource.DomainResource):
     A medically related item or items, in a container or package.
     """
 
-    resource_type = Field("PackagedProductDefinition", const=True)
+    __resource_type__ = "PackagedProductDefinition"
 
-    characteristic: typing.List[fhirtypes.CodeableConceptType] = Field(
+    characteristic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="characteristic",
         title=(
@@ -34,11 +34,12 @@ class PackagedProductDefinition(domainresource.DomainResource):
             'Allows the key features to be recorded, such as "hospital pack", '
             '"nurse prescribable", "calendar pack".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    containedItemQuantity: typing.List[fhirtypes.QuantityType] = Field(
+    containedItemQuantity: typing.List[fhirtypes.QuantityType] = Field(  # type: ignore
         None,
         alias="containedItemQuantity",
         title=(
@@ -62,11 +63,12 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "represent different pack sizes (e.g. 20 pack vs. 50 pack) - which "
             "would be different instances of this resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copackagedIndicator: bool = Field(
+    copackagedIndicator: bool = Field(  # type: ignore
         None,
         alias="copackagedIndicator",
         title=(
@@ -77,16 +79,17 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "States whether a drug product is supplied with another item such as a "
             "diluent or adjuvant."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    copackagedIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copackagedIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_copackagedIndicator",
         title="Extension field for ``copackagedIndicator``.",
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title=(
@@ -94,14 +97,15 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "product"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="A unique identifier for this package as whole",
@@ -110,13 +114,12 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "identifiers assigned to a package by manufacturers, regulators, drug "
             "catalogue custodians or other organizations."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    legalStatusOfSupply: typing.List[
-        fhirtypes.PackagedProductDefinitionLegalStatusOfSupplyType
-    ] = Field(
+    legalStatusOfSupply: typing.List[fhirtypes.PackagedProductDefinitionLegalStatusOfSupplyType] = Field(  # type: ignore
         None,
         alias="legalStatusOfSupply",
         title=(
@@ -124,11 +127,12 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "regulator"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
+    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="manufacturer",
         title=(
@@ -139,13 +143,14 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "Manufacturer of this package type. When there are multiple it means "
             "these are all possible manufacturers."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
+    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(  # type: ignore
         None,
         alias="marketingStatus",
         title=(
@@ -153,11 +158,12 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "is not available, and the dates and locations associated"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title=(
@@ -168,14 +174,15 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "A name for this package. Typically what it would be listed as in a "
             "drug formulary or catalogue, inventory etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    package: fhirtypes.PackagedProductDefinitionPackageType = Field(
+    package: fhirtypes.PackagedProductDefinitionPackageType = Field(  # type: ignore
         None,
         alias="package",
         title=(
@@ -188,22 +195,24 @@ class PackagedProductDefinition(domainresource.DomainResource):
             " with other packaging items within, or a packaging component, such as "
             "bottle cap (which is not a device or a medication manufactured item)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    packageFor: typing.List[fhirtypes.ReferenceType] = Field(
+    packageFor: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="packageFor",
         title="The product that this is a pack for",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MedicinalProductDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MedicinalProductDefinition"],
+        },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -216,23 +225,25 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "this is not intended to duplicate details carried elsewhere such as "
             "legal status, or authorization or marketing status."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    statusDate: fhirtypes.DateTime = Field(
+    statusDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="statusDate",
         title="The date at which the given status became applicable",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -243,8 +254,9 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "A high level category e.g. medicinal product, raw material, "
             "shipping/transport container, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -288,9 +300,9 @@ class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneEleme
     regulator.
     """
 
-    resource_type = Field("PackagedProductDefinitionLegalStatusOfSupply", const=True)
+    __resource_type__ = "PackagedProductDefinitionLegalStatusOfSupply"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -301,11 +313,12 @@ class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneEleme
             "The actual status of supply. Conveys in what situation this package "
             "type may be supplied for use."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: fhirtypes.CodeableConceptType = Field(
+    jurisdiction: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="The place where the legal status of supply applies",
@@ -313,8 +326,9 @@ class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneEleme
             "The place where the legal status of supply applies. When not "
             "specified, this indicates it is unknown in this context."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -338,9 +352,9 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
     (which is not a device or a medication manufactured item).
     """
 
-    resource_type = Field("PackagedProductDefinitionPackage", const=True)
+    __resource_type__ = "PackagedProductDefinitionPackage"
 
-    alternateMaterial: typing.List[fhirtypes.CodeableConceptType] = Field(
+    alternateMaterial: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="alternateMaterial",
         title=(
@@ -352,22 +366,22 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
             "allowed to be used instead of the usual material (e.g. different types"
             " of plastic for a blister sleeve)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    containedItem: typing.List[
-        fhirtypes.PackagedProductDefinitionPackageContainedItemType
-    ] = Field(
+    containedItem: typing.List[fhirtypes.PackagedProductDefinitionPackageContainedItemType] = Field(  # type: ignore
         None,
         alias="containedItem",
         title="The item(s) within the packaging",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title=(
@@ -378,11 +392,12 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
             "An identifier that is specific to this particular part of the "
             "packaging. Including possibly Data Carrier Identifier (a GS1 barcode)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
+    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="manufacturer",
         title=(
@@ -393,22 +408,24 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
             "Manufacturer of this package Item. When there are multiple it means "
             "these are all possible manufacturers."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    material: typing.List[fhirtypes.CodeableConceptType] = Field(
+    material: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="material",
         title="Material type of the package item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    package: typing.List[fhirtypes.PackagedProductDefinitionPackageType] = Field(
+    package: typing.List[fhirtypes.PackagedProductDefinitionPackageType] = Field(  # type: ignore
         None,
         alias="package",
         title=(
@@ -420,22 +437,22 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
             "still a single packaged product.  See also PackagedProductDefinition.p"
             "ackage.containedItem.item(PackagedProductDefinition)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    property: typing.List[
-        fhirtypes.PackagedProductDefinitionPackagePropertyType
-    ] = Field(
+    property: typing.List[fhirtypes.PackagedProductDefinitionPackagePropertyType] = Field(  # type: ignore
         None,
         alias="property",
         title="General characteristics of this item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    quantity: fhirtypes.Integer = Field(
+    quantity: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="quantity",
         title=(
@@ -446,31 +463,32 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
             "The quantity of this level of packaging in the package that contains "
             "it. If specified, the outermost level is always 1."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_quantity", title="Extension field for ``quantity``."
     )
 
-    shelfLifeStorage: typing.List[
-        fhirtypes.PackagedProductDefinitionPackageShelfLifeStorageType
-    ] = Field(
+    shelfLifeStorage: typing.List[fhirtypes.PackagedProductDefinitionPackageShelfLifeStorageType] = Field(  # type: ignore
         None,
         alias="shelfLifeStorage",
         title="Shelf Life and storage information",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="The physical type of the container of the items",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -504,18 +522,19 @@ class PackagedProductDefinitionPackageContainedItem(backboneelement.BackboneElem
     The item(s) within the packaging.
     """
 
-    resource_type = Field("PackagedProductDefinitionPackageContainedItem", const=True)
+    __resource_type__ = "PackagedProductDefinitionPackageContainedItem"
 
-    amount: fhirtypes.QuantityType = Field(
+    amount: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="amount",
         title="The number of this type of item within this packaging",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    item: fhirtypes.CodeableReferenceType = Field(
+    item: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         ...,
         alias="item",
         title=(
@@ -533,16 +552,17 @@ class PackagedProductDefinitionPackageContainedItem(backboneelement.BackboneElem
             " as a wholesale or distribution pack (for layers within one package, "
             "use PackagedProductDefinition.package.package)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "ManufacturedItemDefinition",
-            "DeviceDefinition",
-            "PackagedProductDefinition",
-            "BiologicallyDerivedProduct",
-            "NutritionProduct",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "ManufacturedItemDefinition",
+                "DeviceDefinition",
+                "PackagedProductDefinition",
+                "BiologicallyDerivedProduct",
+                "NutritionProduct",
+            ],
+        },
     )
 
     @classmethod
@@ -562,81 +582,87 @@ class PackagedProductDefinitionPackageProperty(backboneelement.BackboneElement):
     General characteristics of this item.
     """
 
-    resource_type = Field("PackagedProductDefinitionPackageProperty", const=True)
+    __resource_type__ = "PackagedProductDefinitionPackageProperty"
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueDate: fhirtypes.Date = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
     @classmethod
@@ -657,10 +683,7 @@ class PackagedProductDefinitionPackageProperty(backboneelement.BackboneElement):
             "valueAttachment",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4308(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -682,26 +705,7 @@ class PackagedProductDefinitionPackageProperty(backboneelement.BackboneElement):
                 "valueQuantity",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneElement):
@@ -712,11 +716,9 @@ class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneE
     Shelf Life and storage information.
     """
 
-    resource_type = Field(
-        "PackagedProductDefinitionPackageShelfLifeStorage", const=True
-    )
+    __resource_type__ = "PackagedProductDefinitionPackageShelfLifeStorage"
 
-    periodDuration: fhirtypes.DurationType = Field(
+    periodDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="periodDuration",
         title=(
@@ -727,14 +729,15 @@ class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneE
             "used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e period[x]
-        one_of_many="period",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e period[x]
+            "one_of_many": "period",
+            "one_of_many_required": False,
+        },
     )
 
-    periodString: fhirtypes.String = Field(
+    periodString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="periodString",
         title=(
@@ -745,17 +748,18 @@ class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneE
             "used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e period[x]
-        one_of_many="period",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e period[x]
+            "one_of_many": "period",
+            "one_of_many_required": False,
+        },
     )
-    periodString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    periodString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_periodString", title="Extension field for ``periodString``."
     )
 
-    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] = Field(
+    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="specialPrecautionsForStorage",
         title=(
@@ -764,11 +768,12 @@ class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneE
             "controlled term identifier shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -780,8 +785,9 @@ class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneE
             "the controlled term identifier shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -800,10 +806,7 @@ class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneE
             "specialPrecautionsForStorage",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_5026(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -817,23 +820,4 @@ class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneE
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"period": ["periodDuration", "periodString"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

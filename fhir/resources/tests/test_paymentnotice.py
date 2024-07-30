@@ -7,20 +7,23 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import paymentnotice
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_paymentnotice_1(inst):
     assert inst.amount.currency == "USD"
     assert float(inst.amount.value) == float(12500.0)
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.id == "77654"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://benefitsinc.com/paymentnotice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://benefitsinc.com/paymentnotice"}
         ).valueUri
     )
     assert inst.identifier[0].value == "776543"
@@ -28,23 +31,28 @@ def impl_paymentnotice_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.payee.reference == "Organization/1"
     assert inst.payment.reference == "PaymentReconciliation/ER2500"
-    assert inst.paymentDate == ExternalValidatorModel(valueDate="2014-08-15").valueDate
+    assert (
+        inst.paymentDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-15"}).valueDate
+    )
     assert inst.paymentStatus.coding[0].code == "paid"
     assert (
         inst.paymentStatus.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/paymentstatus"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/paymentstatus"}
         ).valueUri
     )
     assert (
         inst.recipient.identifier.system
-        == ExternalValidatorModel(valueUri="http://regulators.gov").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://regulators.gov"}
+        ).valueUri
     )
     assert inst.recipient.identifier.value == "AB123"
     assert inst.reporter.reference == "Organization/1"

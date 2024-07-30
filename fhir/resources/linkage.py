@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Linkage(domainresource.DomainResource):
@@ -25,7 +25,7 @@ class Linkage(domainresource.DomainResource):
 
     __resource_type__ = "Linkage"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this linkage assertion is active or not",
@@ -37,11 +37,11 @@ class Linkage(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    author: fhirtypes.ReferenceType = Field(
+    author: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="author",
         title="Who is responsible for linkages",
@@ -61,7 +61,7 @@ class Linkage(domainresource.DomainResource):
         },
     )
 
-    item: typing.List[fhirtypes.LinkageItemType] = Field(
+    item: typing.List[fhirtypes.LinkageItemType] = Field(  # type: ignore
         ...,
         alias="item",
         title="Item to be linked",
@@ -96,9 +96,6 @@ class Linkage(domainresource.DomainResource):
         ]
 
 
-from . import backboneelement
-
-
 class LinkageItem(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -112,7 +109,7 @@ class LinkageItem(backboneelement.BackboneElement):
 
     __resource_type__ = "LinkageItem"
 
-    resource: fhirtypes.ReferenceType = Field(
+    resource: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="resource",
         title="Resource being linked",
@@ -124,7 +121,7 @@ class LinkageItem(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="source | alternate | historical",
@@ -140,7 +137,7 @@ class LinkageItem(backboneelement.BackboneElement):
             "enum_values": ["source", "alternate", "historical"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 

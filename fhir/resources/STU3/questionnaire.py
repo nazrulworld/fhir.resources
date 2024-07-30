@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -27,9 +25,9 @@ class Questionnaire(domainresource.DomainResource):
     collection.
     """
 
-    resource_type = Field("Questionnaire", const=True)
+    __resource_type__ = "Questionnaire"
 
-    approvalDate: fhirtypes.Date = Field(
+    approvalDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="approvalDate",
         title="When the questionnaire was approved by publisher",
@@ -38,14 +36,15 @@ class Questionnaire(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    code: typing.List[fhirtypes.CodingType] = Field(
+    code: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="code",
         title="Concept that represents the overall questionnaire",
@@ -53,11 +52,12 @@ class Questionnaire(domainresource.DomainResource):
             "An identifier for this question or group of questions in a particular "
             "terminology such as LOINC."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -65,11 +65,12 @@ class Questionnaire(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -78,14 +79,15 @@ class Questionnaire(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the questionnaire."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date this was last changed",
@@ -95,14 +97,15 @@ class Questionnaire(domainresource.DomainResource):
             "must change if the status code changes. In addition, it should change "
             "when the substantive content of the questionnaire changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the questionnaire",
@@ -110,14 +113,15 @@ class Questionnaire(domainresource.DomainResource):
             "A free text natural language description of the questionnaire from a "
             "consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(
+    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="When the questionnaire is expected to be used",
@@ -125,11 +129,12 @@ class Questionnaire(domainresource.DomainResource):
             "The period during which the questionnaire content was or is planned to"
             " be in active use."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -138,14 +143,15 @@ class Questionnaire(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the questionnaire",
@@ -154,11 +160,12 @@ class Questionnaire(domainresource.DomainResource):
             "it is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    item: typing.List[fhirtypes.QuestionnaireItemType] = Field(
+    item: typing.List[fhirtypes.QuestionnaireItemType] = Field(  # type: ignore
         None,
         alias="item",
         title="Questions and sections within the Questionnaire",
@@ -166,11 +173,12 @@ class Questionnaire(domainresource.DomainResource):
             "A particular question, question grouping or display text that is part "
             "of the questionnaire."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for questionnaire (if applicable)",
@@ -178,11 +186,12 @@ class Questionnaire(domainresource.DomainResource):
             "A legal or geographic region in which the questionnaire is intended to"
             " be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastReviewDate: fhirtypes.Date = Field(
+    lastReviewDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="lastReviewDate",
         title="When the questionnaire was last reviewed",
@@ -191,14 +200,15 @@ class Questionnaire(domainresource.DomainResource):
             "happens periodically after approval, but doesn't change the original "
             "approval date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this questionnaire (computer friendly)",
@@ -207,14 +217,15 @@ class Questionnaire(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -222,14 +233,15 @@ class Questionnaire(domainresource.DomainResource):
             "The name of the individual or organization that published the "
             "questionnaire."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.Markdown = Field(
+    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this questionnaire is defined",
@@ -237,14 +249,15 @@ class Questionnaire(domainresource.DomainResource):
             "Explaination of why this questionnaire is needed and why it has been "
             "designed as it has."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -252,18 +265,19 @@ class Questionnaire(domainresource.DomainResource):
             "The status of this questionnaire. Enables tracking the life-cycle of "
             "the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subjectType: typing.List[fhirtypes.Code] = Field(
+    subjectType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="subjectType",
         title="Resource that can be subject of QuestionnaireResponse",
@@ -271,26 +285,28 @@ class Questionnaire(domainresource.DomainResource):
             "The types of subjects that can be the subject of responses created for"
             " the questionnaire."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    subjectType__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_subjectType", title="Extension field for ``subjectType``.")
+    subjectType__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_subjectType", title="Extension field for ``subjectType``."
+    )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this questionnaire (human friendly)",
         description="A short, descriptive, user-friendly title for the questionnaire.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title="Logical URI to reference this questionnaire (globally unique)",
@@ -302,14 +318,15 @@ class Questionnaire(domainresource.DomainResource):
             "include the major version of the questionnaire. For more information "
             "see [Technical and Business Versions](resource.html#versions)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="Context the content is intended to support",
@@ -318,11 +335,12 @@ class Questionnaire(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate questionnaire instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the questionnaire",
@@ -335,10 +353,11 @@ class Questionnaire(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -380,10 +399,7 @@ class Questionnaire(domainresource.DomainResource):
             "item",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1565(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -392,52 +408,7 @@ class Questionnaire(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class QuestionnaireItem(backboneelement.BackboneElement):
@@ -450,9 +421,9 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     the questionnaire.
     """
 
-    resource_type = Field("QuestionnaireItem", const=True)
+    __resource_type__ = "QuestionnaireItem"
 
-    code: typing.List[fhirtypes.CodingType] = Field(
+    code: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="code",
         title="Corresponding concept for this item in a terminology",
@@ -460,11 +431,12 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "A terminology code that corresponds to this group or question (e.g. a "
             "code from LOINC, which defines many questions and answers)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    definition: fhirtypes.Uri = Field(
+    definition: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="definition",
         title="ElementDefinition - details for the item",
@@ -479,14 +451,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "elements on a Questionnaire Item overrides the information from the "
             "definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    enableWhen: typing.List[fhirtypes.QuestionnaireItemEnableWhenType] = Field(
+    enableWhen: typing.List[fhirtypes.QuestionnaireItemEnableWhenType] = Field(  # type: ignore
         None,
         alias="enableWhen",
         title="Only allow data when",
@@ -495,11 +468,12 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "(displayed/allow answers to be captured) when the specified condition "
             "is true."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    initialAttachment: fhirtypes.AttachmentType = Field(
+    initialAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="initialAttachment",
         title="Default value when item is first rendered",
@@ -507,14 +481,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
 
-    initialBoolean: bool = Field(
+    initialBoolean: bool = Field(  # type: ignore
         None,
         alias="initialBoolean",
         title="Default value when item is first rendered",
@@ -522,17 +497,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
-    initialBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    initialBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_initialBoolean", title="Extension field for ``initialBoolean``."
     )
 
-    initialCoding: fhirtypes.CodingType = Field(
+    initialCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="initialCoding",
         title="Default value when item is first rendered",
@@ -540,14 +516,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
 
-    initialDate: fhirtypes.Date = Field(
+    initialDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="initialDate",
         title="Default value when item is first rendered",
@@ -555,17 +532,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
-    initialDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    initialDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_initialDate", title="Extension field for ``initialDate``."
     )
 
-    initialDateTime: fhirtypes.DateTime = Field(
+    initialDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="initialDateTime",
         title="Default value when item is first rendered",
@@ -573,17 +551,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
-    initialDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    initialDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_initialDateTime", title="Extension field for ``initialDateTime``."
     )
 
-    initialDecimal: fhirtypes.Decimal = Field(
+    initialDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="initialDecimal",
         title="Default value when item is first rendered",
@@ -591,17 +570,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
-    initialDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    initialDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_initialDecimal", title="Extension field for ``initialDecimal``."
     )
 
-    initialInteger: fhirtypes.Integer = Field(
+    initialInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="initialInteger",
         title="Default value when item is first rendered",
@@ -609,17 +589,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
-    initialInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    initialInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_initialInteger", title="Extension field for ``initialInteger``."
     )
 
-    initialQuantity: fhirtypes.QuantityType = Field(
+    initialQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="initialQuantity",
         title="Default value when item is first rendered",
@@ -627,14 +608,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
 
-    initialReference: fhirtypes.ReferenceType = Field(
+    initialReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="initialReference",
         title="Default value when item is first rendered",
@@ -642,16 +624,17 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    initialString: fhirtypes.String = Field(
+    initialString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="initialString",
         title="Default value when item is first rendered",
@@ -659,17 +642,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
-    initialString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    initialString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_initialString", title="Extension field for ``initialString``."
     )
 
-    initialTime: fhirtypes.Time = Field(
+    initialTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="initialTime",
         title="Default value when item is first rendered",
@@ -677,17 +661,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
-    initialTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    initialTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_initialTime", title="Extension field for ``initialTime``."
     )
 
-    initialUri: fhirtypes.Uri = Field(
+    initialUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="initialUri",
         title="Default value when item is first rendered",
@@ -695,17 +680,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e initial[x]
-        one_of_many="initial",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e initial[x]
+            "one_of_many": "initial",
+            "one_of_many_required": False,
+        },
     )
-    initialUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    initialUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_initialUri", title="Extension field for ``initialUri``."
     )
 
-    item: typing.List[fhirtypes.QuestionnaireItemType] = Field(
+    item: typing.List[fhirtypes.QuestionnaireItemType] = Field(  # type: ignore
         None,
         alias="item",
         title="Nested questionnaire items",
@@ -713,11 +699,12 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "Text, questions and other groups to be nested beneath a question or "
             "group."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    linkId: fhirtypes.String = Field(
+    linkId: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="linkId",
         title="Unique id for item in questionnaire",
@@ -725,15 +712,16 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "An identifier that is unique within the Questionnaire allowing linkage"
             " to the equivalent item in a QuestionnaireResponse resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    maxLength: fhirtypes.Integer = Field(
+    maxLength: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="maxLength",
         title="No more than this many characters",
@@ -741,23 +729,25 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The maximum number of characters that are permitted in the answer to "
             'be considered a "valid" QuestionnaireResponse.'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_maxLength", title="Extension field for ``maxLength``."
     )
 
-    option: typing.List[fhirtypes.QuestionnaireItemOptionType] = Field(
+    option: typing.List[fhirtypes.QuestionnaireItemOptionType] = Field(  # type: ignore
         None,
         alias="option",
         title="Permitted answer",
         description='One of the permitted answers for a "choice" or "open-choice" question.',
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    options: fhirtypes.ReferenceType = Field(
+    options: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="options",
         title="Valueset containing permitted answers",
@@ -765,13 +755,14 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "A reference to a value set containing a list of codes representing "
             'permitted answers for a "choice" or "open-choice" question.'
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
 
-    prefix: fhirtypes.String = Field(
+    prefix: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="prefix",
         title='E.g. "1(a)", "2.5.3"',
@@ -780,14 +771,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "within the questionnaire used for reference by the individual "
             "completing the questionnaire."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    prefix__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    prefix__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_prefix", title="Extension field for ``prefix``."
     )
 
-    readOnly: bool = Field(
+    readOnly: bool = Field(  # type: ignore
         None,
         alias="readOnly",
         title="Don't allow human editing",
@@ -795,14 +787,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "An indication, when true, that the value cannot be changed by a human "
             "respondent to the Questionnaire."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    readOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    readOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_readOnly", title="Extension field for ``readOnly``."
     )
 
-    repeats: bool = Field(
+    repeats: bool = Field(  # type: ignore
         None,
         alias="repeats",
         title="Whether the item may repeat",
@@ -811,14 +804,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "response, collecting multiple answers answers for questions or "
             "multiple sets of answers for groups."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    repeats__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    repeats__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_repeats", title="Extension field for ``repeats``."
     )
 
-    required: bool = Field(
+    required: bool = Field(  # type: ignore
         None,
         alias="required",
         title="Whether the item must be included in data results",
@@ -827,14 +821,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             " QuestionnaireResponse.  If false, the item may be skipped when "
             "answering the questionnaire."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_required", title="Extension field for ``required``."
     )
 
-    text: fhirtypes.String = Field(
+    text: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="text",
         title="Primary text for the item",
@@ -842,14 +837,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The name of a section, the text of a question or text content for a "
             "display item."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="group | display | boolean | decimal | integer | date | dateTime +",
@@ -858,23 +854,24 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "grouping of other items or a particular type of data to be captured "
             "(string, integer, coded choice, etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "group",
-            "display",
-            "boolean",
-            "decimal",
-            "integer",
-            "date",
-            "dateTime",
-            "+",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "group",
+                "display",
+                "boolean",
+                "decimal",
+                "integer",
+                "date",
+                "dateTime",
+                "+",
+            ],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -916,10 +913,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "item",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1972(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -928,57 +922,9 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("linkId", "linkId__ext"), ("type", "type__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1972(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1007,26 +953,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
                 "initialUri",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
@@ -1040,9 +967,9 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     true.
     """
 
-    resource_type = Field("QuestionnaireItemEnableWhen", const=True)
+    __resource_type__ = "QuestionnaireItemEnableWhen"
 
-    answerAttachment: fhirtypes.AttachmentType = Field(
+    answerAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="answerAttachment",
         title="Value question must have",
@@ -1050,14 +977,15 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
 
-    answerBoolean: bool = Field(
+    answerBoolean: bool = Field(  # type: ignore
         None,
         alias="answerBoolean",
         title="Value question must have",
@@ -1065,17 +993,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
-    answerBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    answerBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_answerBoolean", title="Extension field for ``answerBoolean``."
     )
 
-    answerCoding: fhirtypes.CodingType = Field(
+    answerCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="answerCoding",
         title="Value question must have",
@@ -1083,14 +1012,15 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
 
-    answerDate: fhirtypes.Date = Field(
+    answerDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="answerDate",
         title="Value question must have",
@@ -1098,17 +1028,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
-    answerDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    answerDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_answerDate", title="Extension field for ``answerDate``."
     )
 
-    answerDateTime: fhirtypes.DateTime = Field(
+    answerDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="answerDateTime",
         title="Value question must have",
@@ -1116,17 +1047,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
-    answerDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    answerDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_answerDateTime", title="Extension field for ``answerDateTime``."
     )
 
-    answerDecimal: fhirtypes.Decimal = Field(
+    answerDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="answerDecimal",
         title="Value question must have",
@@ -1134,17 +1066,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
-    answerDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    answerDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_answerDecimal", title="Extension field for ``answerDecimal``."
     )
 
-    answerInteger: fhirtypes.Integer = Field(
+    answerInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="answerInteger",
         title="Value question must have",
@@ -1152,17 +1085,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
-    answerInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    answerInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_answerInteger", title="Extension field for ``answerInteger``."
     )
 
-    answerQuantity: fhirtypes.QuantityType = Field(
+    answerQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="answerQuantity",
         title="Value question must have",
@@ -1170,14 +1104,15 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
 
-    answerReference: fhirtypes.ReferenceType = Field(
+    answerReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="answerReference",
         title="Value question must have",
@@ -1185,16 +1120,17 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    answerString: fhirtypes.String = Field(
+    answerString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="answerString",
         title="Value question must have",
@@ -1202,17 +1138,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
-    answerString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    answerString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_answerString", title="Extension field for ``answerString``."
     )
 
-    answerTime: fhirtypes.Time = Field(
+    answerTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="answerTime",
         title="Value question must have",
@@ -1220,17 +1157,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
-    answerTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    answerTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_answerTime", title="Extension field for ``answerTime``."
     )
 
-    answerUri: fhirtypes.Uri = Field(
+    answerUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="answerUri",
         title="Value question must have",
@@ -1238,17 +1176,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e answer[x]
-        one_of_many="answer",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e answer[x]
+            "one_of_many": "answer",
+            "one_of_many_required": False,
+        },
     )
-    answerUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    answerUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_answerUri", title="Extension field for ``answerUri``."
     )
 
-    hasAnswer: bool = Field(
+    hasAnswer: bool = Field(  # type: ignore
         None,
         alias="hasAnswer",
         title="Enable when answered or not",
@@ -1257,14 +1196,15 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "question is answered (hasAnswer=true) or not answered "
             "(hasAnswer=false)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    hasAnswer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    hasAnswer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_hasAnswer", title="Extension field for ``hasAnswer``."
     )
 
-    question: fhirtypes.String = Field(
+    question: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="question",
         title="Question that determines whether item is enabled",
@@ -1272,11 +1212,12 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "The linkId for the question whose answer (or lack of answer) governs "
             "whether this item is enabled."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    question__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    question__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_question", title="Extension field for ``question``."
     )
 
@@ -1306,10 +1247,7 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "answerReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2958(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1318,57 +1256,9 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("question", "question__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2958(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1397,26 +1287,7 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
                 "answerUri",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class QuestionnaireItemOption(backboneelement.BackboneElement):
@@ -1428,77 +1299,82 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
     One of the permitted answers for a "choice" or "open-choice" question.
     """
 
-    resource_type = Field("QuestionnaireItemOption", const=True)
+    __resource_type__ = "QuestionnaireItemOption"
 
-    valueCoding: fhirtypes.CodingType = Field(
+    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueDate: fhirtypes.Date = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueInteger: fhirtypes.Integer = Field(
+    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueString: fhirtypes.String = Field(
+    valueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="valueString",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
-    valueTime: fhirtypes.Time = Field(
+    valueTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="valueTime",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
@@ -1519,10 +1395,7 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
             "valueCoding",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2606(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1544,23 +1417,4 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
                 "valueTime",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Endpoint(domainresource.DomainResource):
@@ -28,7 +28,7 @@ class Endpoint(domainresource.DomainResource):
 
     __resource_type__ = "Endpoint"
 
-    address: fhirtypes.UrlType = Field(
+    address: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="address",
         title="The technical base address for connecting to this endpoint",
@@ -38,11 +38,11 @@ class Endpoint(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_address", title="Extension field for ``address``."
     )
 
-    connectionType: typing.List[fhirtypes.CodeableConceptType] = Field(
+    connectionType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         ...,
         alias="connectionType",
         title="Protocol/Profile/Standard to be used with this endpoint connection",
@@ -56,7 +56,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactPointType] = Field(
+    contact: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for source (e.g. troubleshooting)",
@@ -69,7 +69,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title=(
@@ -85,11 +85,11 @@ class Endpoint(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    environmentType: typing.List[fhirtypes.CodeableConceptType] = Field(
+    environmentType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="environmentType",
         title="The type of environment(s) exposed at this endpoint",
@@ -102,7 +102,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    header: typing.List[typing.Optional[fhirtypes.StringType]] = Field(
+    header: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="header",
         title="Usage depends on the channel type",
@@ -111,11 +111,11 @@ class Endpoint(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    header__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_header", title="Extension field for ``header``.")
+    header__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_header", title="Extension field for ``header``."
+    )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifies this endpoint across multiple systems",
@@ -128,7 +128,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType = Field(
+    managingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title=(
@@ -147,7 +147,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="A name that this endpoint can be identified by",
@@ -156,11 +156,11 @@ class Endpoint(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    payload: typing.List[fhirtypes.EndpointPayloadType] = Field(
+    payload: typing.List[fhirtypes.EndpointPayloadType] = Field(  # type: ignore
         None,
         alias="payload",
         title="Set of payloads that are provided by this endpoint",
@@ -170,7 +170,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Interval the endpoint is expected to be operational",
@@ -180,7 +180,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | suspended | error | off | entered-in-error | test",
@@ -203,7 +203,7 @@ class Endpoint(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -248,9 +248,6 @@ class Endpoint(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class EndpointPayload(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -262,7 +259,7 @@ class EndpointPayload(backboneelement.BackboneElement):
 
     __resource_type__ = "EndpointPayload"
 
-    mimeType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(
+    mimeType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="mimeType",
         title=(
@@ -279,11 +276,11 @@ class EndpointPayload(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    mimeType__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_mimeType", title="Extension field for ``mimeType``.")
+    mimeType__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_mimeType", title="Extension field for ``mimeType``."
+    )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="type",
         title=(

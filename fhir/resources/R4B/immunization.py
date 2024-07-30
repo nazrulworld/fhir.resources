@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -25,18 +23,19 @@ class Immunization(domainresource.DomainResource):
     of an immunization as reported by a patient, a clinician or another party.
     """
 
-    resource_type = Field("Immunization", const=True)
+    __resource_type__ = "Immunization"
 
-    doseQuantity: fhirtypes.QuantityType = Field(
+    doseQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="doseQuantity",
         title="Amount of vaccine administered",
         description="The quantity of vaccine product that was administered.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    education: typing.List[fhirtypes.ImmunizationEducationType] = Field(
+    education: typing.List[fhirtypes.ImmunizationEducationType] = Field(  # type: ignore
         None,
         alias="education",
         title="Educational material presented to patient",
@@ -44,11 +43,12 @@ class Immunization(domainresource.DomainResource):
             "Educational material presented to the patient (or guardian) at the "
             "time of vaccine administration."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter immunization was part of",
@@ -56,25 +56,27 @@ class Immunization(domainresource.DomainResource):
             "The visit or admission or other contact between patient and health "
             "care provider the immunization was performed as part of."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
-    expirationDate: fhirtypes.Date = Field(
+    expirationDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="expirationDate",
         title="Vaccine expiration date",
         description="Date vaccine batch expires.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_expirationDate", title="Extension field for ``expirationDate``."
     )
 
-    fundingSource: fhirtypes.CodeableConceptType = Field(
+    fundingSource: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="fundingSource",
         title="Funding source for the vaccine",
@@ -85,20 +87,22 @@ class Immunization(domainresource.DomainResource):
             "issues, vaccine purchased with private funds was actually "
             "administered)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
         description="A unique identifier assigned to this immunization record.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    isSubpotent: bool = Field(
+    isSubpotent: bool = Field(  # type: ignore
         None,
         alias="isSubpotent",
         title="Dose potency",
@@ -106,14 +110,15 @@ class Immunization(domainresource.DomainResource):
             "Indication if a dose is considered to be subpotent. By default, a dose"
             " should be considered to be potent."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    isSubpotent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    isSubpotent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_isSubpotent", title="Extension field for ``isSubpotent``."
     )
 
-    location: fhirtypes.ReferenceType = Field(
+    location: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="location",
         title="Where immunization occurred",
@@ -121,36 +126,39 @@ class Immunization(domainresource.DomainResource):
             "The service delivery location where the vaccine administration "
             "occurred."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    lotNumber: fhirtypes.String = Field(
+    lotNumber: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="lotNumber",
         title="Vaccine lot number",
         description="Lot number of the  vaccine product.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
-    manufacturer: fhirtypes.ReferenceType = Field(
+    manufacturer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="manufacturer",
         title="Vaccine manufacturer",
         description="Name of vaccine manufacturer.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Additional immunization notes",
@@ -158,65 +166,70 @@ class Immunization(domainresource.DomainResource):
             "Extra information about the immunization that is not conveyed by the "
             "other attributes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    occurrenceDateTime: fhirtypes.DateTime = Field(
+    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="Vaccine administration date",
         description="Date vaccine administered or was to be administered.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": True,
+        },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrenceString: fhirtypes.String = Field(
+    occurrenceString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="occurrenceString",
         title="Vaccine administration date",
         description="Date vaccine administered or was to be administered.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": True,
+        },
     )
-    occurrenceString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    occurrenceString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_occurrenceString",
         title="Extension field for ``occurrenceString``.",
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="patient",
         title="Who was immunized",
         description="The patient who either received or did not receive the immunization.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    performer: typing.List[fhirtypes.ImmunizationPerformerType] = Field(
+    performer: typing.List[fhirtypes.ImmunizationPerformerType] = Field(  # type: ignore
         None,
         alias="performer",
         title="Who performed event",
         description="Indicates who performed the immunization event.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    primarySource: bool = Field(
+    primarySource: bool = Field(  # type: ignore
         None,
         alias="primarySource",
         title="Indicates context the data was recorded in",
@@ -225,23 +238,25 @@ class Immunization(domainresource.DomainResource):
             "from the person who administered the vaccine. This reflects the "
             "context under which the data was originally recorded."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    primarySource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    primarySource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_primarySource", title="Extension field for ``primarySource``."
     )
 
-    programEligibility: typing.List[fhirtypes.CodeableConceptType] = Field(
+    programEligibility: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="programEligibility",
         title="Patient eligibility for a vaccination program",
         description="Indicates a patient's eligibility for a funding program.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    protocolApplied: typing.List[fhirtypes.ImmunizationProtocolAppliedType] = Field(
+    protocolApplied: typing.List[fhirtypes.ImmunizationProtocolAppliedType] = Field(  # type: ignore
         None,
         alias="protocolApplied",
         title="Protocol followed by the provider",
@@ -249,11 +264,12 @@ class Immunization(domainresource.DomainResource):
             "The protocol (set of recommendations) being followed by the provider "
             "who administered the dose."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reaction: typing.List[fhirtypes.ImmunizationReactionType] = Field(
+    reaction: typing.List[fhirtypes.ImmunizationReactionType] = Field(  # type: ignore
         None,
         alias="reaction",
         title="Details of a reaction that follows immunization",
@@ -261,20 +277,22 @@ class Immunization(domainresource.DomainResource):
             "Categorical data indicating that an adverse event is associated in "
             "time to an immunization."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Why immunization occurred",
         description="Reasons why the vaccine was administered.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
+    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Why immunization occurred",
@@ -282,13 +300,14 @@ class Immunization(domainresource.DomainResource):
             "Condition, Observation or DiagnosticReport that supports why the "
             "immunization was administered."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Condition", "Observation", "DiagnosticReport"],
+        },
     )
 
-    recorded: fhirtypes.DateTime = Field(
+    recorded: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="recorded",
         title="When the immunization was first captured in the subject's record",
@@ -296,14 +315,15 @@ class Immunization(domainresource.DomainResource):
             "The date the occurrence of the immunization was first captured in the "
             "record - potentially significantly after the occurrence of the event."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    reportOrigin: fhirtypes.CodeableConceptType = Field(
+    reportOrigin: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="reportOrigin",
         title="Indicates the source of a secondarily reported record",
@@ -311,69 +331,76 @@ class Immunization(domainresource.DomainResource):
             "The source of the data when the report of the immunization event is "
             "not based on information from the person who administered the vaccine."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    route: fhirtypes.CodeableConceptType = Field(
+    route: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="route",
         title="How vaccine entered body",
         description="The path by which the vaccine product is taken into the body.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    site: fhirtypes.CodeableConceptType = Field(
+    site: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="site",
         title="Body site vaccine  was administered",
         description="Body site where vaccine was administered.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="completed | entered-in-error | not-done",
         description="Indicates the current status of the immunization event.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["completed", "entered-in-error", "not-done"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["completed", "entered-in-error", "not-done"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: fhirtypes.CodeableConceptType = Field(
+    statusReason: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="statusReason",
         title="Reason not done",
         description="Indicates the reason the immunization event was not performed.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    subpotentReason: typing.List[fhirtypes.CodeableConceptType] = Field(
+    subpotentReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="subpotentReason",
         title="Reason for being subpotent",
         description="Reason why a dose is considered to be subpotent.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    vaccineCode: fhirtypes.CodeableConceptType = Field(
+    vaccineCode: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="vaccineCode",
         title="Vaccine product administered",
         description="Vaccine that was administered or was to be administered.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -422,10 +449,7 @@ class Immunization(domainresource.DomainResource):
             "protocolApplied",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1467(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -434,57 +458,9 @@ class Immunization(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1467(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -498,26 +474,7 @@ class Immunization(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"occurrence": ["occurrenceDateTime", "occurrenceString"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ImmunizationEducation(backboneelement.BackboneElement):
@@ -530,47 +487,50 @@ class ImmunizationEducation(backboneelement.BackboneElement):
     vaccine administration.
     """
 
-    resource_type = Field("ImmunizationEducation", const=True)
+    __resource_type__ = "ImmunizationEducation"
 
-    documentType: fhirtypes.String = Field(
+    documentType: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="documentType",
         title="Educational material document identifier",
         description="Identifier of the material presented to the patient.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    documentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    documentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_documentType", title="Extension field for ``documentType``."
     )
 
-    presentationDate: fhirtypes.DateTime = Field(
+    presentationDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="presentationDate",
         title="Educational material presentation date",
         description="Date the educational material was given to the patient.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    presentationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    presentationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_presentationDate",
         title="Extension field for ``presentationDate``.",
     )
 
-    publicationDate: fhirtypes.DateTime = Field(
+    publicationDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="publicationDate",
         title="Educational material publication date",
         description="Date the educational material was published.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    publicationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publicationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publicationDate", title="Extension field for ``publicationDate``."
     )
 
-    reference: fhirtypes.Uri = Field(
+    reference: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="reference",
         title="Educational material reference pointer",
@@ -578,10 +538,11 @@ class ImmunizationEducation(backboneelement.BackboneElement):
             "Reference pointer to the educational material given to the patient if "
             "the information was on line."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reference", title="Extension field for ``reference``."
     )
 
@@ -611,20 +572,25 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
     Indicates who performed the immunization event.
     """
 
-    resource_type = Field("ImmunizationPerformer", const=True)
+    __resource_type__ = "ImmunizationPerformer"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="actor",
         title="Individual or organization who was performing",
         description="The practitioner or organization who performed the action.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+            ],
+        },
     )
 
-    function: fhirtypes.CodeableConceptType = Field(
+    function: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="function",
         title="What type of performance was done",
@@ -632,8 +598,9 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
             "Describes the type of performance (e.g. ordering provider, "
             "administering provider, etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -655,9 +622,9 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
     administered the dose.
     """
 
-    resource_type = Field("ImmunizationProtocolApplied", const=True)
+    __resource_type__ = "ImmunizationProtocolApplied"
 
-    authority: fhirtypes.ReferenceType = Field(
+    authority: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="authority",
         title="Who is responsible for publishing the recommendations",
@@ -665,47 +632,50 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
             "Indicates the authority who published the protocol (e.g. ACIP) that is"
             " being followed."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
+    doseNumberPositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="doseNumberPositiveInt",
         title="Dose number within series",
         description="Nominal position in a series.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e doseNumber[x]
-        one_of_many="doseNumber",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e doseNumber[x]
+            "one_of_many": "doseNumber",
+            "one_of_many_required": True,
+        },
     )
-    doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_doseNumberPositiveInt",
         title="Extension field for ``doseNumberPositiveInt``.",
     )
 
-    doseNumberString: fhirtypes.String = Field(
+    doseNumberString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="doseNumberString",
         title="Dose number within series",
         description="Nominal position in a series.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e doseNumber[x]
-        one_of_many="doseNumber",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e doseNumber[x]
+            "one_of_many": "doseNumber",
+            "one_of_many_required": True,
+        },
     )
-    doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_doseNumberString",
         title="Extension field for ``doseNumberString``.",
     )
 
-    series: fhirtypes.String = Field(
+    series: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="series",
         title="Name of vaccine series",
@@ -713,56 +683,60 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
             "One possible path to achieve presumed immunity against a disease - "
             "within the context of an authority."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_series", title="Extension field for ``series``."
     )
 
-    seriesDosesPositiveInt: fhirtypes.PositiveInt = Field(
+    seriesDosesPositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="seriesDosesPositiveInt",
         title="Recommended number of doses for immunity",
         description="The recommended number of doses to achieve immunity.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e seriesDoses[x]
-        one_of_many="seriesDoses",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e seriesDoses[x]
+            "one_of_many": "seriesDoses",
+            "one_of_many_required": False,
+        },
     )
-    seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_seriesDosesPositiveInt",
         title="Extension field for ``seriesDosesPositiveInt``.",
     )
 
-    seriesDosesString: fhirtypes.String = Field(
+    seriesDosesString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="seriesDosesString",
         title="Recommended number of doses for immunity",
         description="The recommended number of doses to achieve immunity.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e seriesDoses[x]
-        one_of_many="seriesDoses",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e seriesDoses[x]
+            "one_of_many": "seriesDoses",
+            "one_of_many_required": False,
+        },
     )
-    seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_seriesDosesString",
         title="Extension field for ``seriesDosesString``.",
     )
 
-    targetDisease: typing.List[fhirtypes.CodeableConceptType] = Field(
+    targetDisease: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="targetDisease",
         title="Vaccine preventatable disease being targetted",
         description=(
             "The vaccine preventable disease the dose is being administered " "against."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -784,10 +758,7 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
             "seriesDosesString",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3010(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -804,26 +775,7 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
             "doseNumber": ["doseNumberPositiveInt", "doseNumberString"],
             "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ImmunizationReaction(backboneelement.BackboneElement):
@@ -836,40 +788,43 @@ class ImmunizationReaction(backboneelement.BackboneElement):
     an immunization.
     """
 
-    resource_type = Field("ImmunizationReaction", const=True)
+    __resource_type__ = "ImmunizationReaction"
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="When reaction started",
         description="Date of reaction to the immunization.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    detail: fhirtypes.ReferenceType = Field(
+    detail: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="detail",
         title="Additional information on reaction",
         description="Details of the reaction.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Observation"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Observation"],
+        },
     )
 
-    reported: bool = Field(
+    reported: bool = Field(  # type: ignore
         None,
         alias="reported",
         title="Indicates self-reported reaction",
         description="Self-reported indicator.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    reported__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    reported__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_reported", title="Extension field for ``reported``."
     )
 

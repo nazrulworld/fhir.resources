@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import molecularsequence
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_molecularsequence_1(inst):
@@ -16,8 +16,8 @@ def impl_molecularsequence_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.relative[0].coordinateSystem.coding[0].code == "LA30100-4"
@@ -27,7 +27,9 @@ def impl_molecularsequence_1(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].edit[0].end == 32316187
     assert inst.relative[0].edit[0].replacedSequence == "C"
@@ -43,8 +45,8 @@ def impl_molecularsequence_1(inst):
     )
     assert (
         inst.relative[0].startingSequence.sequenceCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.ncbi.nlm.nih.gov/nuccore/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore/"}
         ).valueUri
     )
     assert inst.relative[0].startingSequence.windowEnd == 101499444
@@ -85,8 +87,8 @@ def impl_molecularsequence_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.performer.display == "HL7"
@@ -98,7 +100,9 @@ def impl_molecularsequence_2(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].edit[0].end == 128273736
     assert inst.relative[0].edit[0].replacedSequence == "CTCCATTGCATGCGTT"
@@ -110,8 +114,8 @@ def impl_molecularsequence_2(inst):
     )
     assert (
         inst.relative[0].startingSequence.sequenceCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.ncbi.nlm.nih.gov/nuccore"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore"}
         ).valueUri
     )
     assert inst.relative[0].startingSequence.strand == "watson"
@@ -149,8 +153,8 @@ def impl_molecularsequence_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.relative[0].coordinateSystem.coding[0].code == "LA30102-0"
@@ -160,7 +164,9 @@ def impl_molecularsequence_3(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].edit[0].end == 18139214
     assert inst.relative[0].edit[0].replacedSequence == "G"
@@ -172,8 +178,8 @@ def impl_molecularsequence_3(inst):
     )
     assert (
         inst.relative[0].startingSequence.sequenceCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.ncbi.nlm.nih.gov/nuccore"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore"}
         ).valueUri
     )
     assert inst.relative[0].startingSequence.strand == "watson"
@@ -210,8 +216,8 @@ def impl_molecularsequence_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.relative[0].coordinateSystem.coding[0].code == "LA30100-4"
@@ -221,7 +227,9 @@ def impl_molecularsequence_4(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].edit[0].end == 55227979
     assert inst.relative[0].edit[0].replacedSequence == "T"
@@ -234,8 +242,8 @@ def impl_molecularsequence_4(inst):
     )
     assert (
         inst.relative[0].startingSequence.sequenceCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.ncbi.nlm.nih.gov/nuccore"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore"}
         ).valueUri
     )
     assert inst.relative[0].startingSequence.strand == "watson"
@@ -271,8 +279,10 @@ def impl_molecularsequence_5(inst):
     assert inst.formatted[0].title == "GA4GH API"
     assert (
         inst.formatted[0].url
-        == ExternalValidatorModel(
-            valueUrl="http://grch37.rest.ensembl.org/ga4gh/variants/3:rs1333049?content-type=application/json"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "http://grch37.rest.ensembl.org/ga4gh/variants/3:rs1333049?content-type=application/json"
+            }
         ).valueUrl
     )
     assert inst.id == "example"
@@ -280,8 +290,8 @@ def impl_molecularsequence_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.subject.reference == "Patient/example"
@@ -315,8 +325,8 @@ def impl_molecularsequence_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.relative[0].coordinateSystem.coding[0].code == "LA30102-0"
@@ -326,7 +336,9 @@ def impl_molecularsequence_6(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].edit[0].end == 3
     assert inst.relative[0].edit[0].replacedSequence == "-"
@@ -374,8 +386,8 @@ def impl_molecularsequence_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.relative[0].coordinateSystem.coding[0].code == "LA30102-0"
@@ -385,7 +397,9 @@ def impl_molecularsequence_7(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].edit[0].end == 18131012
     assert inst.relative[0].edit[0].replacedSequence == "C"
@@ -397,8 +411,8 @@ def impl_molecularsequence_7(inst):
     )
     assert (
         inst.relative[0].startingSequence.sequenceCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.ncbi.nlm.nih.gov/nuccore"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore"}
         ).valueUri
     )
     assert inst.relative[0].startingSequence.strand == "watson"
@@ -435,8 +449,8 @@ def impl_molecularsequence_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.relative[0].coordinateSystem.coding[0].code == "LA30100-4"
@@ -446,7 +460,9 @@ def impl_molecularsequence_8(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].edit[0].end == 55227977
     assert inst.relative[0].edit[0].replacedSequence == "T"
@@ -459,8 +475,8 @@ def impl_molecularsequence_8(inst):
     )
     assert (
         inst.relative[0].startingSequence.sequenceCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.ncbi.nlm.nih.gov/nuccore"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore"}
         ).valueUri
     )
     assert inst.relative[0].startingSequence.strand == "watson"
@@ -497,8 +513,8 @@ def impl_molecularsequence_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.relative[0].coordinateSystem.coding[0].code == "LA30101-2"
@@ -508,7 +524,9 @@ def impl_molecularsequence_9(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].edit[0].end == 2
     assert inst.relative[0].edit[0].replacedSequence == "-"
@@ -556,8 +574,8 @@ def impl_molecularsequence_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.relative[0].coordinateSystem.coding[0].code == "LA30102-0"
@@ -567,7 +585,9 @@ def impl_molecularsequence_10(inst):
     )
     assert (
         inst.relative[0].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[0].ordinalPosition == 1
     assert float(inst.relative[0].sequenceRange.high.value) == float(2194)
@@ -578,8 +598,8 @@ def impl_molecularsequence_10(inst):
     )
     assert (
         inst.relative[0].startingSequence.sequenceCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.ncbi.nlm.nih.gov/nuccore/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore/"}
         ).valueUri
     )
     assert inst.relative[0].startingSequence.windowEnd == 2194
@@ -591,7 +611,9 @@ def impl_molecularsequence_10(inst):
     )
     assert (
         inst.relative[1].coordinateSystem.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.relative[1].ordinalPosition == 2
     assert float(inst.relative[1].sequenceRange.high.value) == float(4899)
@@ -602,8 +624,8 @@ def impl_molecularsequence_10(inst):
     )
     assert (
         inst.relative[1].startingSequence.sequenceCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.ncbi.nlm.nih.gov/nuccore/"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ncbi.nlm.nih.gov/nuccore/"}
         ).valueUri
     )
     assert inst.relative[1].startingSequence.windowEnd == 6822

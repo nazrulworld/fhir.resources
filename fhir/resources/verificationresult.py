@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class VerificationResult(domainresource.DomainResource):
@@ -24,7 +24,7 @@ class VerificationResult(domainresource.DomainResource):
 
     __resource_type__ = "VerificationResult"
 
-    attestation: fhirtypes.VerificationResultAttestationType = Field(
+    attestation: fhirtypes.VerificationResultAttestationType = Field(  # type: ignore
         None,
         alias="attestation",
         title="Information about the entity attesting to information",
@@ -34,7 +34,7 @@ class VerificationResult(domainresource.DomainResource):
         },
     )
 
-    failureAction: fhirtypes.CodeableConceptType = Field(
+    failureAction: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="failureAction",
         title="fatal | warn | rec-only | none",
@@ -44,7 +44,7 @@ class VerificationResult(domainresource.DomainResource):
         },
     )
 
-    frequency: fhirtypes.TimingType = Field(
+    frequency: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="frequency",
         title="Frequency of revalidation",
@@ -54,7 +54,7 @@ class VerificationResult(domainresource.DomainResource):
         },
     )
 
-    lastPerformed: fhirtypes.DateTimeType = Field(
+    lastPerformed: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="lastPerformed",
         title=(
@@ -66,11 +66,11 @@ class VerificationResult(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastPerformed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastPerformed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lastPerformed", title="Extension field for ``lastPerformed``."
     )
 
-    need: fhirtypes.CodeableConceptType = Field(
+    need: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="need",
         title="none | initial | periodic",
@@ -83,7 +83,7 @@ class VerificationResult(domainresource.DomainResource):
         },
     )
 
-    nextScheduled: fhirtypes.DateType = Field(
+    nextScheduled: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="nextScheduled",
         title="The date when target is next validated, if appropriate",
@@ -92,11 +92,11 @@ class VerificationResult(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    nextScheduled__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    nextScheduled__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_nextScheduled", title="Extension field for ``nextScheduled``."
     )
 
-    primarySource: typing.List[fhirtypes.VerificationResultPrimarySourceType] = Field(
+    primarySource: typing.List[fhirtypes.VerificationResultPrimarySourceType] = Field(  # type: ignore
         None,
         alias="primarySource",
         title="Information about the primary source(s) involved in validation",
@@ -106,7 +106,7 @@ class VerificationResult(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -133,11 +133,11 @@ class VerificationResult(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusDate: fhirtypes.DateTimeType = Field(
+    statusDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="statusDate",
         title="When the validation status was updated",
@@ -146,11 +146,11 @@ class VerificationResult(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
-    target: typing.List[fhirtypes.ReferenceType] = Field(
+    target: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="target",
         title="A resource that was validated",
@@ -162,7 +162,7 @@ class VerificationResult(domainresource.DomainResource):
         },
     )
 
-    targetLocation: typing.List[typing.Optional[fhirtypes.StringType]] = Field(
+    targetLocation: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="targetLocation",
         title="The fhirpath location(s) within the resource that was validated",
@@ -171,13 +171,11 @@ class VerificationResult(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    targetLocation__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(
+    targetLocation__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
         None, alias="_targetLocation", title="Extension field for ``targetLocation``."
     )
 
-    validationProcess: typing.List[fhirtypes.CodeableConceptType] = Field(
+    validationProcess: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="validationProcess",
         title=(
@@ -190,7 +188,7 @@ class VerificationResult(domainresource.DomainResource):
         },
     )
 
-    validationType: fhirtypes.CodeableConceptType = Field(
+    validationType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="validationType",
         title="nothing | primary | multiple",
@@ -203,7 +201,7 @@ class VerificationResult(domainresource.DomainResource):
         },
     )
 
-    validator: typing.List[fhirtypes.VerificationResultValidatorType] = Field(
+    validator: typing.List[fhirtypes.VerificationResultValidatorType] = Field(  # type: ignore
         None,
         alias="validator",
         title="Information about the entity validating information",
@@ -256,9 +254,6 @@ class VerificationResult(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class VerificationResultAttestation(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -269,7 +264,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
 
     __resource_type__ = "VerificationResultAttestation"
 
-    communicationMethod: fhirtypes.CodeableConceptType = Field(
+    communicationMethod: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="communicationMethod",
         title="The method by which attested information was submitted/retrieved",
@@ -282,7 +277,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         },
     )
 
-    date: fhirtypes.DateType = Field(
+    date: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="date",
         title="The date the information was attested to",
@@ -291,11 +286,11 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(
+    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title=(
@@ -314,7 +309,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         },
     )
 
-    proxyIdentityCertificate: fhirtypes.StringType = Field(
+    proxyIdentityCertificate: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="proxyIdentityCertificate",
         title=(
@@ -326,13 +321,13 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    proxyIdentityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    proxyIdentityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_proxyIdentityCertificate",
         title="Extension field for ``proxyIdentityCertificate``.",
     )
 
-    proxySignature: fhirtypes.SignatureType = Field(
+    proxySignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="proxySignature",
         title="Proxy signature (digital or image)",
@@ -346,7 +341,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         },
     )
 
-    sourceIdentityCertificate: fhirtypes.StringType = Field(
+    sourceIdentityCertificate: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="sourceIdentityCertificate",
         title="A digital identity certificate associated with the attestation source",
@@ -355,13 +350,13 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sourceIdentityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sourceIdentityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_sourceIdentityCertificate",
         title="Extension field for ``sourceIdentityCertificate``.",
     )
 
-    sourceSignature: fhirtypes.SignatureType = Field(
+    sourceSignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="sourceSignature",
         title="Attester signature (digital or image)",
@@ -374,7 +369,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         },
     )
 
-    who: fhirtypes.ReferenceType = Field(
+    who: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="who",
         title="The individual or organization attesting to information",
@@ -421,7 +416,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
 
     __resource_type__ = "VerificationResultPrimarySource"
 
-    canPushUpdates: fhirtypes.CodeableConceptType = Field(
+    canPushUpdates: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="canPushUpdates",
         title="yes | no | undetermined",
@@ -434,7 +429,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         },
     )
 
-    communicationMethod: typing.List[fhirtypes.CodeableConceptType] = Field(
+    communicationMethod: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="communicationMethod",
         title="Method for exchanging information with the primary source",
@@ -444,7 +439,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         },
     )
 
-    pushTypeAvailable: typing.List[fhirtypes.CodeableConceptType] = Field(
+    pushTypeAvailable: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="pushTypeAvailable",
         title="specific | any | source",
@@ -457,7 +452,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -471,7 +466,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         },
     )
 
-    validationDate: fhirtypes.DateTimeType = Field(
+    validationDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="validationDate",
         title="When the target was validated against the primary source",
@@ -480,11 +475,11 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    validationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    validationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_validationDate", title="Extension field for ``validationDate``."
     )
 
-    validationStatus: fhirtypes.CodeableConceptType = Field(
+    validationStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="validationStatus",
         title="successful | failed | unknown",
@@ -497,7 +492,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         },
     )
 
-    who: fhirtypes.ReferenceType = Field(
+    who: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="who",
         title="Reference to the primary source",
@@ -543,7 +538,7 @@ class VerificationResultValidator(backboneelement.BackboneElement):
 
     __resource_type__ = "VerificationResultValidator"
 
-    attestationSignature: fhirtypes.SignatureType = Field(
+    attestationSignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="attestationSignature",
         title="Validator signature (digital or image)",
@@ -556,7 +551,7 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         },
     )
 
-    identityCertificate: fhirtypes.StringType = Field(
+    identityCertificate: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="identityCertificate",
         title="A digital identity certificate associated with the validator",
@@ -565,13 +560,13 @@ class VerificationResultValidator(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    identityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    identityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_identityCertificate",
         title="Extension field for ``identityCertificate``.",
     )
 
-    organization: fhirtypes.ReferenceType = Field(
+    organization: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="organization",
         title="Reference to the organization validating information",

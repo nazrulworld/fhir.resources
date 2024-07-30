@@ -26,7 +26,7 @@ class Binary(resource.Resource):
 
     __resource_type__ = "Binary"
 
-    contentType: fhirtypes.CodeType = Field(
+    contentType: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="contentType",
         title="MimeType of the binary content",
@@ -39,11 +39,11 @@ class Binary(resource.Resource):
             "element_required": True,
         },
     )
-    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
-    data: fhirtypes.Base64BinaryType = Field(
+    data: fhirtypes.Base64BinaryType = Field(  # type: ignore
         None,
         alias="data",
         title="The actual content",
@@ -52,11 +52,11 @@ class Binary(resource.Resource):
             "element_property": True,
         },
     )
-    data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_data", title="Extension field for ``data``."
     )
 
-    securityContext: fhirtypes.ReferenceType = Field(
+    securityContext: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="securityContext",
         title=(

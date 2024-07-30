@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -25,30 +25,32 @@ class Organization(domainresource.DomainResource):
     groups, healthcare practice groups, etc.
     """
 
-    resource_type = Field("Organization", const=True)
+    __resource_type__ = "Organization"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether the organization's record is still in active use",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
         None,
         alias="address",
         title="An address for the organization",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    alias: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="alias",
         title=(
@@ -56,23 +58,25 @@ class Organization(domainresource.DomainResource):
             "known as in the past"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    alias__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_alias", title="Extension field for ``alias``.")
+    alias__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_alias", title="Extension field for ``alias``."
+    )
 
-    contact: typing.List[fhirtypes.OrganizationContactType] = Field(
+    contact: typing.List[fhirtypes.OrganizationContactType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact for the organization for a certain purpose",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -80,13 +84,14 @@ class Organization(domainresource.DomainResource):
             "organization"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Endpoint"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifies this organization  across multiple systems",
@@ -94,49 +99,54 @@ class Organization(domainresource.DomainResource):
             "Identifier for the organization that is used to identify the "
             "organization across multiple disparate systems."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name used for the organization",
         description="A name associated with the organization.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    partOf: fhirtypes.ReferenceType = Field(
+    partOf: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="partOf",
         title="The organization of which this organization forms a part",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the organization",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of organization",
         description="The kind(s) of organization that this is.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -175,36 +185,39 @@ class OrganizationContact(backboneelement.BackboneElement):
     Contact for the organization for a certain purpose.
     """
 
-    resource_type = Field("OrganizationContact", const=True)
+    __resource_type__ = "OrganizationContact"
 
-    address: fhirtypes.AddressType = Field(
+    address: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="address",
         title="Visiting or postal addresses for the contact",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.HumanNameType = Field(
+    name: fhirtypes.HumanNameType = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the contact",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    purpose: fhirtypes.CodeableConceptType = Field(
+    purpose: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="purpose",
         title="The type of contact",
         description="Indicates a purpose for which the contact can be reached.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="Contact details (telephone, email, etc.)  for a contact",
@@ -212,8 +225,9 @@ class OrganizationContact(backboneelement.BackboneElement):
             "A contact detail (e.g. a telephone number or an email address) by "
             "which the party may be contacted."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

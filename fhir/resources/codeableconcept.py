@@ -25,7 +25,7 @@ class CodeableConcept(datatype.DataType):
 
     __resource_type__ = "CodeableConcept"
 
-    coding: typing.List[fhirtypes.CodingType] = Field(
+    coding: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="coding",
         title="Code defined by a terminology system",
@@ -35,7 +35,7 @@ class CodeableConcept(datatype.DataType):
         },
     )
 
-    text: fhirtypes.StringType = Field(
+    text: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="text",
         title="Plain text representation of the concept",
@@ -48,7 +48,7 @@ class CodeableConcept(datatype.DataType):
             "element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 

@@ -7,13 +7,18 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import graphdefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_graphdefinition_1(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2015-08-04").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-04"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Specify to include list references when generating a "
         "document using the $document operation"
@@ -60,8 +65,8 @@ def impl_graphdefinition_1(inst):
     assert inst.title == "Document Generation Template"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://h7.org/fhir/GraphDefinition/example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://h7.org/fhir/GraphDefinition/example"}
         ).valueUri
     )
 

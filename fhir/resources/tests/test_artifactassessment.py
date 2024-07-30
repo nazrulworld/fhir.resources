@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import artifactassessment
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_artifactassessment_1(inst):
@@ -23,8 +23,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].classifier[0].coding[0].userSelected is True
@@ -40,8 +40,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[0].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[0].classifier[0].coding[0].userSelected is True
@@ -65,8 +65,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[1].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[1].classifier[0].coding[0].userSelected is True
@@ -105,8 +105,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[1].component[4].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert (
@@ -147,8 +147,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[2].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[2].classifier[0].coding[0].userSelected is True
@@ -171,8 +171,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[2].component[1].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert (
@@ -275,8 +275,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[3].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[3].classifier[0].coding[0].userSelected is True
@@ -297,8 +297,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[4].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[4].classifier[0].coding[0].userSelected is True
@@ -326,8 +326,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[5].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[5].classifier[0].coding[0].userSelected is True
@@ -349,8 +349,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[5].component[1].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert (
@@ -398,8 +398,8 @@ def impl_artifactassessment_1(inst):
     )
     assert (
         inst.content[0].component[5].component[2].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert (
@@ -435,8 +435,8 @@ def impl_artifactassessment_1(inst):
     assert inst.content[0].type.coding[0].display == "Risk of bias"
     assert (
         inst.content[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-type"}
         ).valueUri
     )
     assert inst.content[0].type.coding[0].userSelected is True
@@ -450,8 +450,8 @@ def impl_artifactassessment_1(inst):
     assert inst.content[1].type.coding[0].display == "Inconsistency"
     assert (
         inst.content[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-type"}
         ).valueUri
     )
     assert inst.content[1].type.coding[0].userSelected is True
@@ -459,27 +459,30 @@ def impl_artifactassessment_1(inst):
     assert inst.copyright == "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-11-02T14:31:30.239Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-11-02T14:31:30.239Z"}
         ).valueDateTime
     )
     assert inst.id == "risk-of-bias-example"
     assert inst.identifier[0].assigner.display == "Computable Publishing LLC"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="https://fevir.net").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "FEvIR Object Identifier"
     assert inst.identifier[0].value == "27751"
     assert (
-        inst.lastReviewDate == ExternalValidatorModel(valueDate="2021-08-11").valueDate
+        inst.lastReviewDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2021-08-11"}).valueDate
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "generated"
@@ -517,15 +520,15 @@ def impl_artifactassessment_2(inst):
     assert inst.artifactReference.reference == "Evidence/18812"
     assert (
         inst.artifactReference.type
-        == ExternalValidatorModel(valueUri="Evidence").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Evidence"}).valueUri
     )
     assert inst.content[0].author.display == "Brian S. Alper"
     assert inst.content[0].classifier[0].coding[0].code == "very-low"
     assert inst.content[0].classifier[0].coding[0].display == "Very low quality"
     assert (
         inst.content[0].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[0].author.display == "Brian S. Alper"
@@ -538,8 +541,8 @@ def impl_artifactassessment_2(inst):
     )
     assert (
         inst.content[0].component[0].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[0].informationType == "rating"
@@ -550,8 +553,8 @@ def impl_artifactassessment_2(inst):
     assert inst.content[0].component[0].type.coding[0].display == "Risk of bias"
     assert (
         inst.content[0].component[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-type"}
         ).valueUri
     )
     assert inst.content[0].component[1].author.display == "Brian S. Alper"
@@ -564,8 +567,8 @@ def impl_artifactassessment_2(inst):
     )
     assert (
         inst.content[0].component[1].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[1].informationType == "rating"
@@ -578,8 +581,8 @@ def impl_artifactassessment_2(inst):
     assert inst.content[0].component[1].type.coding[0].display == "Inconsistency"
     assert (
         inst.content[0].component[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-type"}
         ).valueUri
     )
     assert inst.content[0].component[2].author.display == "Brian S. Alper"
@@ -590,8 +593,8 @@ def impl_artifactassessment_2(inst):
     )
     assert (
         inst.content[0].component[2].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[2].informationType == "rating"
@@ -599,8 +602,8 @@ def impl_artifactassessment_2(inst):
     assert inst.content[0].component[2].type.coding[0].display == "Indirectness"
     assert (
         inst.content[0].component[2].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-type"}
         ).valueUri
     )
     assert inst.content[0].component[3].author.display == "Brian S. Alper"
@@ -613,8 +616,8 @@ def impl_artifactassessment_2(inst):
     )
     assert (
         inst.content[0].component[3].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[3].informationType == "rating"
@@ -625,8 +628,8 @@ def impl_artifactassessment_2(inst):
     assert inst.content[0].component[3].type.coding[0].display == "Imprecision"
     assert (
         inst.content[0].component[3].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-type"}
         ).valueUri
     )
     assert inst.content[0].component[4].author.display == "Brian S. Alper"
@@ -637,8 +640,8 @@ def impl_artifactassessment_2(inst):
     )
     assert (
         inst.content[0].component[4].classifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-rating"}
         ).valueUri
     )
     assert inst.content[0].component[4].informationType == "rating"
@@ -646,8 +649,8 @@ def impl_artifactassessment_2(inst):
     assert inst.content[0].component[4].type.coding[0].display == "Publication bias"
     assert (
         inst.content[0].component[4].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-type"}
         ).valueUri
     )
     assert inst.content[0].freeToShare is True
@@ -659,22 +662,24 @@ def impl_artifactassessment_2(inst):
     assert inst.content[0].type.coding[0].display == "Overall certainty"
     assert (
         inst.content[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/certainty-type"}
         ).valueUri
     )
     assert inst.copyright == "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-11-02T14:48:59.890Z"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-11-02T14:48:59.890Z"}
         ).valueDateTime
     )
     assert inst.id == "example-certainty-rating"
     assert inst.identifier[0].assigner.display == "Computable Publishing LLC"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="https://fevir.net").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://fevir.net"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "FEvIR Object Identifier"
     assert inst.identifier[0].value == "27756"
@@ -682,8 +687,8 @@ def impl_artifactassessment_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "generated"

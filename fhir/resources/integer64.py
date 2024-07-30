@@ -22,7 +22,7 @@ class Integer64(primitivetype.PrimitiveType):
 
     __resource_type__ = "integer64"
 
-    value: fhirtypes.Integer64Type = Field(
+    value: fhirtypes.Integer64Type = Field(  # type: ignore
         None,
         alias="value",
         title="Primitive value for integer64",
@@ -31,7 +31,7 @@ class Integer64(primitivetype.PrimitiveType):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -25,9 +23,9 @@ class RelatedArtifact(element.Element):
     bibliographic references.
     """
 
-    resource_type = Field("RelatedArtifact", const=True)
+    __resource_type__ = "RelatedArtifact"
 
-    citation: fhirtypes.Markdown = Field(
+    citation: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="citation",
         title="Bibliographic citation for the artifact",
@@ -35,14 +33,15 @@ class RelatedArtifact(element.Element):
             "A bibliographic citation for the related artifact. This text SHOULD be"
             " formatted according to an accepted citation format."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    citation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    citation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_citation", title="Extension field for ``citation``."
     )
 
-    display: fhirtypes.String = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="Brief description of the related artifact",
@@ -50,14 +49,15 @@ class RelatedArtifact(element.Element):
             "A brief description of the document or knowledge resource being "
             "referenced, suitable for display to a consumer."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    document: fhirtypes.AttachmentType = Field(
+    document: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="document",
         title="What document is being referenced",
@@ -65,11 +65,12 @@ class RelatedArtifact(element.Element):
             "The document being referenced, represented as an attachment. This is "
             "exclusive with the resource element."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    label: fhirtypes.String = Field(
+    label: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="label",
         title="Short label",
@@ -77,14 +78,15 @@ class RelatedArtifact(element.Element):
             "A short label that can be used to reference the citation from "
             "elsewhere in the containing artifact, such as a footnote index."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_label", title="Extension field for ``label``."
     )
 
-    resource: fhirtypes.Canonical = Field(
+    resource: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="resource",
         title="What resource is being referenced",
@@ -92,16 +94,17 @@ class RelatedArtifact(element.Element):
             "The related resource, such as a library, value set, profile, or other "
             "knowledge resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
-    resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_resource", title="Extension field for ``resource``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -109,27 +112,28 @@ class RelatedArtifact(element.Element):
             "derived-from | depends-on | composed-of"
         ),
         description="The type of relationship to the related artifact.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "documentation",
-            "justification",
-            "citation",
-            "predecessor",
-            "successor",
-            "derived-from",
-            "depends-on",
-            "composed-of",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "documentation",
+                "justification",
+                "citation",
+                "predecessor",
+                "successor",
+                "derived-from",
+                "depends-on",
+                "composed-of",
+            ],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    url: fhirtypes.Url = Field(
+    url: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="url",
         title="Where the artifact can be accessed",
@@ -137,10 +141,11 @@ class RelatedArtifact(element.Element):
             "A url for the artifact that can be followed to access the actual "
             "content."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
@@ -162,10 +167,7 @@ class RelatedArtifact(element.Element):
             "resource",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1717(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -174,49 +176,4 @@ class RelatedArtifact(element.Element):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

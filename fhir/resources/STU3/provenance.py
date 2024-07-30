@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -33,9 +31,9 @@ class Provenance(domainresource.DomainResource):
     impact security, privacy, and trust policies.
     """
 
-    resource_type = Field("Provenance", const=True)
+    __resource_type__ = "Provenance"
 
-    activity: fhirtypes.CodingType = Field(
+    activity: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="activity",
         title="Activity that occurred",
@@ -44,11 +42,12 @@ class Provenance(domainresource.DomainResource):
             "upon or with entities; it may include consuming, processing, "
             "transforming, modifying, relocating, using, or generating entities."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(
+    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(  # type: ignore
         ...,
         alias="agent",
         title="Actor involved",
@@ -56,40 +55,44 @@ class Provenance(domainresource.DomainResource):
             "An actor taking a role in an activity  for which it can be assigned "
             "some degree of responsibility for the activity taking place."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    entity: typing.List[fhirtypes.ProvenanceEntityType] = Field(
+    entity: typing.List[fhirtypes.ProvenanceEntityType] = Field(  # type: ignore
         None,
         alias="entity",
         title="An entity used in this activity",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    location: fhirtypes.ReferenceType = Field(
+    location: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="location",
         title="Where the activity occurred, if relevant",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="When the activity occurred",
         description="The period during which the activity occurred.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    policy: typing.List[fhirtypes.Uri] = Field(
+    policy: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="policy",
         title="Policy or plan the activity was defined by",
@@ -98,36 +101,39 @@ class Provenance(domainresource.DomainResource):
             "activity may have multiple applicable policy documents, such as "
             "patient consent, guarantor funding, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    policy__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_policy", title="Extension field for ``policy``.")
+    policy__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_policy", title="Extension field for ``policy``."
+    )
 
-    reason: typing.List[fhirtypes.CodingType] = Field(
+    reason: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="reason",
         title="Reason the activity is occurring",
         description="The reason that the activity was taking place.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    recorded: fhirtypes.Instant = Field(
+    recorded: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="recorded",
         title="When the activity was recorded / updated",
         description="The instant of time at which the activity was recorded.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    signature: typing.List[fhirtypes.SignatureType] = Field(
+    signature: typing.List[fhirtypes.SignatureType] = Field(  # type: ignore
         None,
         alias="signature",
         title="Signature on target",
@@ -135,11 +141,12 @@ class Provenance(domainresource.DomainResource):
             "A digital signature on the target Reference(s). The signer should "
             "match a Provenance.agent. The purpose of the signature is indicated."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    target: typing.List[fhirtypes.ReferenceType] = Field(
+    target: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         ...,
         alias="target",
         title="Target Reference(s) (usually version specific)",
@@ -149,10 +156,11 @@ class Provenance(domainresource.DomainResource):
             "target if multiple resources were created/updated by the same "
             "activity."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     @classmethod
@@ -182,10 +190,7 @@ class Provenance(domainresource.DomainResource):
             "signature",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1222(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -194,52 +199,7 @@ class Provenance(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("recorded", "recorded__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ProvenanceAgent(backboneelement.BackboneElement):
@@ -252,53 +212,56 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     degree of responsibility for the activity taking place.
     """
 
-    resource_type = Field("ProvenanceAgent", const=True)
+    __resource_type__ = "ProvenanceAgent"
 
-    onBehalfOfReference: fhirtypes.ReferenceType = Field(
+    onBehalfOfReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="onBehalfOfReference",
         title="Who the agent is representing",
         description="The individual, device, or organization for whom the change was made.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onBehalfOf[x]
-        one_of_many="onBehalfOf",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "RelatedPerson",
-            "Patient",
-            "Device",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onBehalfOf[x]
+            "one_of_many": "onBehalfOf",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "RelatedPerson",
+                "Patient",
+                "Device",
+                "Organization",
+            ],
+        },
     )
 
-    onBehalfOfUri: fhirtypes.Uri = Field(
+    onBehalfOfUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="onBehalfOfUri",
         title="Who the agent is representing",
         description="The individual, device, or organization for whom the change was made.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onBehalfOf[x]
-        one_of_many="onBehalfOf",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onBehalfOf[x]
+            "one_of_many": "onBehalfOf",
+            "one_of_many_required": False,
+        },
     )
-    onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_onBehalfOfUri", title="Extension field for ``onBehalfOfUri``."
     )
 
-    relatedAgentType: fhirtypes.CodeableConceptType = Field(
+    relatedAgentType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="relatedAgentType",
         title="Type of relationship between agents",
         description="The type of relationship between agents.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    role: typing.List[fhirtypes.CodeableConceptType] = Field(
+    role: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="role",
         title="What the agents role was",
@@ -306,42 +269,45 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "The function of the agent with respect to the activity. The security "
             "role enabling the agent with respect to the activity."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    whoReference: fhirtypes.ReferenceType = Field(
+    whoReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="whoReference",
         title="Who participated",
         description="The individual, device or organization that participated in the event.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e who[x]
-        one_of_many="who",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "RelatedPerson",
-            "Patient",
-            "Device",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e who[x]
+            "one_of_many": "who",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "RelatedPerson",
+                "Patient",
+                "Device",
+                "Organization",
+            ],
+        },
     )
 
-    whoUri: fhirtypes.Uri = Field(
+    whoUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="whoUri",
         title="Who participated",
         description="The individual, device or organization that participated in the event.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e who[x]
-        one_of_many="who",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e who[x]
+            "one_of_many": "who",
+            "one_of_many_required": True,
+        },
     )
-    whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_whoUri", title="Extension field for ``whoUri``."
     )
 
@@ -371,10 +337,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "relatedAgentType",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1732(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -391,26 +354,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "onBehalfOf": ["onBehalfOfReference", "onBehalfOfUri"],
             "who": ["whoReference", "whoUri"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ProvenanceEntity(backboneelement.BackboneElement):
@@ -421,9 +365,9 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     An entity used in this activity.
     """
 
-    resource_type = Field("ProvenanceEntity", const=True)
+    __resource_type__ = "ProvenanceEntity"
 
-    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(
+    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(  # type: ignore
         None,
         alias="agent",
         title="Entity is attributed to this agent",
@@ -433,27 +377,29 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             " description can be understood as shorthand for saying that the agent "
             "was responsible for the activity which generated the entity."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    role: fhirtypes.Code = Field(
+    role: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="role",
         title="derivation | revision | quotation | source | removal",
         description="How the entity was used during the activity.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["derivation", "revision", "quotation", "source", "removal"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["derivation", "revision", "quotation", "source", "removal"],
+        },
     )
-    role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_role", title="Extension field for ``role``."
     )
 
-    whatIdentifier: fhirtypes.IdentifierType = Field(
+    whatIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="whatIdentifier",
         title="Identity of entity",
@@ -461,14 +407,15 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             "Identity of the  Entity used. May be a logical or physical uri and "
             "maybe absolute or relative."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e what[x]
-        one_of_many="what",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e what[x]
+            "one_of_many": "what",
+            "one_of_many_required": True,
+        },
     )
 
-    whatReference: fhirtypes.ReferenceType = Field(
+    whatReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="whatReference",
         title="Identity of entity",
@@ -476,16 +423,17 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             "Identity of the  Entity used. May be a logical or physical uri and "
             "maybe absolute or relative."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e what[x]
-        one_of_many="what",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e what[x]
+            "one_of_many": "what",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    whatUri: fhirtypes.Uri = Field(
+    whatUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="whatUri",
         title="Identity of entity",
@@ -493,13 +441,14 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             "Identity of the  Entity used. May be a logical or physical uri and "
             "maybe absolute or relative."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e what[x]
-        one_of_many="what",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e what[x]
+            "one_of_many": "what",
+            "one_of_many_required": True,
+        },
     )
-    whatUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    whatUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_whatUri", title="Extension field for ``whatUri``."
     )
 
@@ -520,10 +469,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             "agent",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1879(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -532,57 +478,9 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("role", "role__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1879(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -596,23 +494,4 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"what": ["whatIdentifier", "whatReference", "whatUri"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

@@ -27,7 +27,7 @@ class UsageContext(datatype.DataType):
 
     __resource_type__ = "UsageContext"
 
-    code: fhirtypes.CodingType = Field(
+    code: fhirtypes.CodingType = Field(  # type: ignore
         ...,
         alias="code",
         title="Type of context being specified",
@@ -40,7 +40,7 @@ class UsageContext(datatype.DataType):
         },
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Value that defines the context",
@@ -56,7 +56,7 @@ class UsageContext(datatype.DataType):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Value that defines the context",
@@ -72,7 +72,7 @@ class UsageContext(datatype.DataType):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(
+    valueRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Value that defines the context",
@@ -88,7 +88,7 @@ class UsageContext(datatype.DataType):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(
+    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Value that defines the context",

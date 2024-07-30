@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -29,9 +27,9 @@ class ImagingStudy(domainresource.DomainResource):
     ultrasound), but a study may have multiple series of different modalities.
     """
 
-    resource_type = Field("ImagingStudy", const=True)
+    __resource_type__ = "ImagingStudy"
 
-    accession: fhirtypes.IdentifierType = Field(
+    accession: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="accession",
         title='Related workflow identifier ("Accession Number")',
@@ -42,26 +40,28 @@ class ImagingStudy(domainresource.DomainResource):
             "Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiol"
             "ogy/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    availability: fhirtypes.Code = Field(
+    availability: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="availability",
         title="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE",
         description="Availability of study (online, offline, or nearline).",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["ONLINE", "OFFLINE", "NEARLINE", "UNAVAILABLE"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["ONLINE", "OFFLINE", "NEARLINE", "UNAVAILABLE"],
+        },
     )
-    availability__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    availability__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_availability", title="Extension field for ``availability``."
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Request fulfilled",
@@ -69,24 +69,26 @@ class ImagingStudy(domainresource.DomainResource):
             "A list of the diagnostic requests that resulted in this imaging study "
             "being performed."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ReferralRequest", "CarePlan", "ProcedureRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ReferralRequest", "CarePlan", "ProcedureRequest"],
+        },
     )
 
-    context: fhirtypes.ReferenceType = Field(
+    context: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="context",
         title="Originating context",
         description="The encounter or episode at which the request is initiated.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter", "EpisodeOfCare"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter", "EpisodeOfCare"],
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Institution-generated description",
@@ -94,14 +96,15 @@ class ImagingStudy(domainresource.DomainResource):
             "Institution-generated description or classification of the Study "
             "performed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Study access endpoint",
@@ -112,33 +115,36 @@ class ImagingStudy(domainresource.DomainResource):
             "study, unless overridden by a series-level endpoint with the same "
             "Endpoint.type."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Endpoint"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Other identifiers for the study",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    interpreter: typing.List[fhirtypes.ReferenceType] = Field(
+    interpreter: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="interpreter",
         title="Who interpreted images",
         description="Who read the study and interpreted the images or other content.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    modalityList: typing.List[fhirtypes.CodingType] = Field(
+    modalityList: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="modalityList",
         title="All series modality if actual acquisition modalities",
@@ -147,11 +153,12 @@ class ImagingStudy(domainresource.DomainResource):
             "acquisition modalities, i.e. those in the DICOM Context Group 29 "
             "(value set OID 1.2.840.10008.6.1.19)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    numberOfInstances: fhirtypes.UnsignedInt = Field(
+    numberOfInstances: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfInstances",
         title="Number of Study Related Instances",
@@ -161,16 +168,17 @@ class ImagingStudy(domainresource.DomainResource):
             " availability, security, or other factors. This element should be "
             "present if any instance elements are present."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_numberOfInstances",
         title="Extension field for ``numberOfInstances``.",
     )
 
-    numberOfSeries: fhirtypes.UnsignedInt = Field(
+    numberOfSeries: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfSeries",
         title="Number of Study Related Series",
@@ -180,45 +188,49 @@ class ImagingStudy(domainresource.DomainResource):
             "availability, security, or other factors. This element should be "
             "present if any series elements are present."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    numberOfSeries__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfSeries__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_numberOfSeries", title="Extension field for ``numberOfSeries``."
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="patient",
         title="Who the images are of",
         description="The patient imaged in the study.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    procedureCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    procedureCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="procedureCode",
         title="The performed procedure code",
         description="The code for the performed procedure type.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    procedureReference: typing.List[fhirtypes.ReferenceType] = Field(
+    procedureReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="procedureReference",
         title="The performed Procedure reference",
         description="A reference to the performed Procedure.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Procedure"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Procedure"],
+        },
     )
 
-    reason: fhirtypes.CodeableConceptType = Field(
+    reason: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="reason",
         title="Why the study was requested",
@@ -226,52 +238,57 @@ class ImagingStudy(domainresource.DomainResource):
             "Description of clinical condition indicating why the ImagingStudy was "
             "requested."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    referrer: fhirtypes.ReferenceType = Field(
+    referrer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="referrer",
         title="Referring physician",
         description="The requesting/referring physician.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    series: typing.List[fhirtypes.ImagingStudySeriesType] = Field(
+    series: typing.List[fhirtypes.ImagingStudySeriesType] = Field(  # type: ignore
         None,
         alias="series",
         title="Each study has one or more series of instances",
         description="Each study has one or more series of images or other content.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    started: fhirtypes.DateTime = Field(
+    started: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="started",
         title="When the study was started",
         description="Date and time the study started.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_started", title="Extension field for ``started``."
     )
 
-    uid: fhirtypes.Oid = Field(
+    uid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="uid",
         title="Formal DICOM identifier for the study",
         description="Formal identifier for the study.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
@@ -311,10 +328,7 @@ class ImagingStudy(domainresource.DomainResource):
             "series",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1431(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -323,52 +337,7 @@ class ImagingStudy(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("uid", "uid__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ImagingStudySeries(backboneelement.BackboneElement):
@@ -380,24 +349,25 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     Each study has one or more series of images or other content.
     """
 
-    resource_type = Field("ImagingStudySeries", const=True)
+    __resource_type__ = "ImagingStudySeries"
 
-    availability: fhirtypes.Code = Field(
+    availability: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="availability",
         title="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE",
         description="Availability of series (online, offline or nearline).",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["ONLINE", "OFFLINE", "NEARLINE", "UNAVAILABLE"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["ONLINE", "OFFLINE", "NEARLINE", "UNAVAILABLE"],
+        },
     )
-    availability__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    availability__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_availability", title="Extension field for ``availability``."
     )
 
-    bodySite: fhirtypes.CodingType = Field(
+    bodySite: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Body part examined",
@@ -408,23 +378,25 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "laterality of body part imaged; if so, it shall be consistent with any"
             " content of ImagingStudy.series.laterality."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="A short human readable summary of the series",
         description="A description of the series.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Series access endpoint",
@@ -434,13 +406,14 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             " DICOM endpoints. A series-level endpoint, if present, has precedence "
             "over a study-level endpoint with the same Endpoint.type."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Endpoint"],
+        },
     )
 
-    instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(
+    instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(  # type: ignore
         None,
         alias="instance",
         title="A single SOP instance from the series",
@@ -448,11 +421,12 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "A single SOP instance within the series, e.g. an image, or "
             "presentation state."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    laterality: fhirtypes.CodingType = Field(
+    laterality: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="laterality",
         title="Body part laterality",
@@ -462,32 +436,35 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "shall be consistent with any laterality information indicated in "
             "ImagingStudy.series.bodySite."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    modality: fhirtypes.CodingType = Field(
+    modality: fhirtypes.CodingType = Field(  # type: ignore
         ...,
         alias="modality",
         title="The modality of the instances in the series",
         description="The modality of this series sequence.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    number: fhirtypes.UnsignedInt = Field(
+    number: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="number",
         title="Numeric identifier of this series",
         description="The numeric identifier of this series in the study.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_number", title="Extension field for ``number``."
     )
 
-    numberOfInstances: fhirtypes.UnsignedInt = Field(
+    numberOfInstances: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="numberOfInstances",
         title="Number of Series Related Instances",
@@ -497,16 +474,17 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "resource availability, security, or other factors. This element should"
             " be present if any instance elements are present."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_numberOfInstances",
         title="Extension field for ``numberOfInstances``.",
     )
 
-    performer: typing.List[fhirtypes.ReferenceType] = Field(
+    performer: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="performer",
         title="Who performed the series",
@@ -517,34 +495,37 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "practitioner, at different times, and using different devices. A "
             "series may be performed by multiple practitioners."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
-    started: fhirtypes.DateTime = Field(
+    started: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="started",
         title="When the series started",
         description="The date and time the series was started.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_started", title="Extension field for ``started``."
     )
 
-    uid: fhirtypes.Oid = Field(
+    uid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="uid",
         title="Formal DICOM identifier for this series",
         description="Formal identifier for this series.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
@@ -572,10 +553,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "instance",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2044(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -584,52 +562,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("uid", "uid__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ImagingStudySeriesInstance(backboneelement.BackboneElement):
@@ -642,55 +575,59 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     state.
     """
 
-    resource_type = Field("ImagingStudySeriesInstance", const=True)
+    __resource_type__ = "ImagingStudySeriesInstance"
 
-    number: fhirtypes.UnsignedInt = Field(
+    number: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="number",
         title="The number of this instance in the series",
         description="The number of instance in the series.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_number", title="Extension field for ``number``."
     )
 
-    sopClass: fhirtypes.Oid = Field(
+    sopClass: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="sopClass",
         title="DICOM class type",
         description="DICOM instance  type.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_sopClass", title="Extension field for ``sopClass``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Description of instance",
         description="The description of the instance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    uid: fhirtypes.Oid = Field(
+    uid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="uid",
         title="Formal DICOM identifier for this instance",
         description="Formal identifier for this image or other content.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
@@ -710,10 +647,7 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
             "title",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2851(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -722,49 +656,4 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("sopClass", "sopClass__ext"), ("uid", "uid__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

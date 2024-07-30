@@ -25,7 +25,7 @@ class SampledData(datatype.DataType):
 
     __resource_type__ = "SampledData"
 
-    codeMap: fhirtypes.CanonicalType = Field(
+    codeMap: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="codeMap",
         title="Defines the codes used in the data",
@@ -36,11 +36,11 @@ class SampledData(datatype.DataType):
             "enum_reference_types": ["ConceptMap"],
         },
     )
-    codeMap__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    codeMap__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_codeMap", title="Extension field for ``codeMap``."
     )
 
-    data: fhirtypes.StringType = Field(
+    data: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="data",
         title='Decimal values with spaces, or "E" | "U" | "L", or another code',
@@ -54,11 +54,11 @@ class SampledData(datatype.DataType):
             "element_property": True,
         },
     )
-    data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_data", title="Extension field for ``data``."
     )
 
-    dimensions: fhirtypes.PositiveIntType = Field(
+    dimensions: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="dimensions",
         title="Number of sample points at each time point",
@@ -72,11 +72,11 @@ class SampledData(datatype.DataType):
             "element_required": True,
         },
     )
-    dimensions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    dimensions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_dimensions", title="Extension field for ``dimensions``."
     )
 
-    factor: fhirtypes.DecimalType = Field(
+    factor: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="factor",
         title="Multiply data by this before adding to origin",
@@ -88,11 +88,11 @@ class SampledData(datatype.DataType):
             "element_property": True,
         },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    interval: fhirtypes.DecimalType = Field(
+    interval: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="interval",
         title="Number of intervalUnits between samples",
@@ -104,11 +104,11 @@ class SampledData(datatype.DataType):
             "element_property": True,
         },
     )
-    interval__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    interval__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_interval", title="Extension field for ``interval``."
     )
 
-    intervalUnit: fhirtypes.CodeType = Field(
+    intervalUnit: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="intervalUnit",
         title="The measurement unit of the interval between samples",
@@ -118,11 +118,11 @@ class SampledData(datatype.DataType):
             "element_required": True,
         },
     )
-    intervalUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    intervalUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_intervalUnit", title="Extension field for ``intervalUnit``."
     )
 
-    lowerLimit: fhirtypes.DecimalType = Field(
+    lowerLimit: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="lowerLimit",
         title="Lower limit of detection",
@@ -135,11 +135,11 @@ class SampledData(datatype.DataType):
             "element_property": True,
         },
     )
-    lowerLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lowerLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lowerLimit", title="Extension field for ``lowerLimit``."
     )
 
-    offsets: fhirtypes.StringType = Field(
+    offsets: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="offsets",
         title="Offsets, typically in time, at which data values were taken",
@@ -154,11 +154,11 @@ class SampledData(datatype.DataType):
             "element_property": True,
         },
     )
-    offsets__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    offsets__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_offsets", title="Extension field for ``offsets``."
     )
 
-    origin: fhirtypes.QuantityType = Field(
+    origin: fhirtypes.QuantityType = Field(  # type: ignore
         ...,
         alias="origin",
         title="Zero value and units",
@@ -171,7 +171,7 @@ class SampledData(datatype.DataType):
         },
     )
 
-    upperLimit: fhirtypes.DecimalType = Field(
+    upperLimit: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="upperLimit",
         title="Upper limit of detection",
@@ -184,7 +184,7 @@ class SampledData(datatype.DataType):
             "element_property": True,
         },
     )
-    upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_upperLimit", title="Extension field for ``upperLimit``."
     )
 

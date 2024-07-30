@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Medication(domainresource.DomainResource):
@@ -27,7 +27,7 @@ class Medication(domainresource.DomainResource):
 
     __resource_type__ = "Medication"
 
-    batch: fhirtypes.MedicationBatchType = Field(
+    batch: fhirtypes.MedicationBatchType = Field(  # type: ignore
         None,
         alias="batch",
         title="Details about packaged medications",
@@ -37,7 +37,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Codes that identify this medication",
@@ -53,7 +53,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    definition: fhirtypes.ReferenceType = Field(
+    definition: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="definition",
         title="Knowledge about this medication",
@@ -68,7 +68,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    doseForm: fhirtypes.CodeableConceptType = Field(
+    doseForm: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="doseForm",
         title="powder | tablets | capsule +",
@@ -78,7 +78,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this medication",
@@ -88,7 +88,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    ingredient: typing.List[fhirtypes.MedicationIngredientType] = Field(
+    ingredient: typing.List[fhirtypes.MedicationIngredientType] = Field(  # type: ignore
         None,
         alias="ingredient",
         title="Active or inactive ingredient",
@@ -98,7 +98,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    marketingAuthorizationHolder: fhirtypes.ReferenceType = Field(
+    marketingAuthorizationHolder: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="marketingAuthorizationHolder",
         title="Organization that has authorization to market medication",
@@ -116,7 +116,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | inactive | entered-in-error",
@@ -128,11 +128,11 @@ class Medication(domainresource.DomainResource):
             "enum_values": ["active", "inactive", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    totalVolume: fhirtypes.QuantityType = Field(
+    totalVolume: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="totalVolume",
         title=(
@@ -179,9 +179,6 @@ class Medication(domainresource.DomainResource):
         ]
 
 
-from . import backboneelement
-
-
 class MedicationBatch(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -193,7 +190,7 @@ class MedicationBatch(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicationBatch"
 
-    expirationDate: fhirtypes.DateTimeType = Field(
+    expirationDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="expirationDate",
         title="When batch will expire",
@@ -202,11 +199,11 @@ class MedicationBatch(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_expirationDate", title="Extension field for ``expirationDate``."
     )
 
-    lotNumber: fhirtypes.StringType = Field(
+    lotNumber: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="lotNumber",
         title="Identifier assigned to batch",
@@ -215,7 +212,7 @@ class MedicationBatch(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
@@ -239,7 +236,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicationIngredient"
 
-    isActive: bool = Field(
+    isActive: bool = Field(  # type: ignore
         None,
         alias="isActive",
         title="Active ingredient indicator",
@@ -251,11 +248,11 @@ class MedicationIngredient(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    isActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    isActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_isActive", title="Extension field for ``isActive``."
     )
 
-    item: fhirtypes.CodeableReferenceType = Field(
+    item: fhirtypes.CodeableReferenceType = Field(  # type: ignore
         ...,
         alias="item",
         title=(
@@ -274,7 +271,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
         },
     )
 
-    strengthCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    strengthCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="strengthCodeableConcept",
         title="Quantity of ingredient present",
@@ -293,7 +290,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
         },
     )
 
-    strengthQuantity: fhirtypes.QuantityType = Field(
+    strengthQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="strengthQuantity",
         title="Quantity of ingredient present",
@@ -312,7 +309,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
         },
     )
 
-    strengthRatio: fhirtypes.RatioType = Field(
+    strengthRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="strengthRatio",
         title="Quantity of ingredient present",

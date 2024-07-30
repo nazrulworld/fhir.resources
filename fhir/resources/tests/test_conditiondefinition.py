@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import conditiondefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_conditiondefinition_1(inst):
@@ -15,18 +15,22 @@ def impl_conditiondefinition_1(inst):
     assert inst.code.coding[0].display == "Hyperlipidemia (disorder)"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2019-05-26T10:44:00+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-05-26T10:44:00+10:00"}
         ).valueDateTime
     )
     assert (
         inst.definition[0]
-        == ExternalValidatorModel(
-            valueUri="https://med.stanford.edu/content/dam/sm/cerc/documents/Hyperlipidemia%20Management%20Protocol.pdf"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "https://med.stanford.edu/content/dam/sm/cerc/documents/Hyperlipidemia%20Management%20Protocol.pdf"
+            }
         ).valueUri
     )
     assert inst.description == "Hyperlipidemia Status"
@@ -36,15 +40,17 @@ def impl_conditiondefinition_1(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.25.1"
     assert inst.medication[0].code.coding[0].code == "203151"
     assert inst.medication[0].code.coding[0].display == "Gemfibrozil"
     assert (
         inst.medication[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.nlm.nih.gov/research/umls/rxnorm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.nlm.nih.gov/research/umls/rxnorm"}
         ).valueUri
     )
     assert inst.name == "Hyperlipidemia"
@@ -55,26 +61,34 @@ def impl_conditiondefinition_1(inst):
     )
     assert (
         inst.observation[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.observation[0].code.text == "Lipid Panel"
     assert inst.observation[1].code.coding[0].code == "35200-5"
     assert (
         inst.observation[1].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.observation[1].code.text == "Cholesterol"
     assert inst.observation[2].code.coding[0].code == "35217-9"
     assert (
         inst.observation[2].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.observation[2].code.text == "Triglyceride"
     assert inst.observation[3].code.coding[0].code == "2085-9"
     assert inst.observation[3].code.coding[0].display == "HDL Cholesterol"
     assert (
         inst.observation[3].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.observation[3].code.text == "Cholesterol in HDL"
     assert inst.observation[4].code.coding[0].code == "13457-7"
@@ -83,7 +97,9 @@ def impl_conditiondefinition_1(inst):
     )
     assert (
         inst.observation[4].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.observation[4].code.text == "LDL Chol. (Calc)"
     assert inst.plan[0].reference.reference == (
@@ -94,8 +110,8 @@ def impl_conditiondefinition_1(inst):
     assert inst.title == "Hyperlipidemia Status"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ConditionDefinition/example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ConditionDefinition/example"}
         ).valueUri
     )
 

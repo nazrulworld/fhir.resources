@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import careteam
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_careteam_1(inst):
@@ -15,7 +15,9 @@ def impl_careteam_1(inst):
     assert inst.category[0].coding[0].display == "Encounter-focused care team"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.contained[0].id == "pr1"
     assert inst.id == "example"
@@ -25,8 +27,8 @@ def impl_careteam_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Peter James Charlmers Care Team for Inpatient Encounter"
@@ -35,11 +37,15 @@ def impl_careteam_1(inst):
     assert inst.participant[0].role.text == "responsiblePerson"
     assert (
         inst.participant[1].coverageTiming.repeat.boundsPeriod.end
-        == ExternalValidatorModel(valueDateTime="2013-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-01"}
+        ).valueDateTime
     )
     assert (
         inst.participant[1].coverageTiming.repeat.boundsPeriod.start
-        == ExternalValidatorModel(valueDateTime="2010-12-23").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2010-12-23"}
+        ).valueDateTime
     )
     assert inst.participant[1].coverageTiming.repeat.dayOfWeek[0] == "mon"
     assert inst.participant[1].coverageTiming.repeat.frequency == 1
@@ -52,7 +58,9 @@ def impl_careteam_1(inst):
     assert inst.participant[1].role.text == "adviser"
     assert (
         inst.period.end
-        == ExternalValidatorModel(valueDateTime="2013-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-01-01"}
+        ).valueDateTime
     )
     assert inst.status == "active"
     assert inst.subject.display == "Peter James Chalmers"

@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -23,9 +23,9 @@ class Condition(domainresource.DomainResource):
     or clinical concept that has risen to a level of concern.
     """
 
-    resource_type = Field("Condition", const=True)
+    __resource_type__ = "Condition"
 
-    abatementAge: fhirtypes.AgeType = Field(
+    abatementAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="abatementAge",
         title="When in resolution/remission",
@@ -35,14 +35,15 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e abatement[x]
-        one_of_many="abatement",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e abatement[x]
+            "one_of_many": "abatement",
+            "one_of_many_required": False,
+        },
     )
 
-    abatementDateTime: fhirtypes.DateTime = Field(
+    abatementDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="abatementDateTime",
         title="When in resolution/remission",
@@ -52,19 +53,20 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e abatement[x]
-        one_of_many="abatement",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e abatement[x]
+            "one_of_many": "abatement",
+            "one_of_many_required": False,
+        },
     )
-    abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_abatementDateTime",
         title="Extension field for ``abatementDateTime``.",
     )
 
-    abatementPeriod: fhirtypes.PeriodType = Field(
+    abatementPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="abatementPeriod",
         title="When in resolution/remission",
@@ -74,14 +76,15 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e abatement[x]
-        one_of_many="abatement",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e abatement[x]
+            "one_of_many": "abatement",
+            "one_of_many_required": False,
+        },
     )
 
-    abatementRange: fhirtypes.RangeType = Field(
+    abatementRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="abatementRange",
         title="When in resolution/remission",
@@ -91,14 +94,15 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e abatement[x]
-        one_of_many="abatement",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e abatement[x]
+            "one_of_many": "abatement",
+            "one_of_many_required": False,
+        },
     )
 
-    abatementString: fhirtypes.String = Field(
+    abatementString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="abatementString",
         title="When in resolution/remission",
@@ -108,69 +112,75 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e abatement[x]
-        one_of_many="abatement",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e abatement[x]
+            "one_of_many": "abatement",
+            "one_of_many_required": False,
+        },
     )
-    abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_abatementString", title="Extension field for ``abatementString``."
     )
 
-    asserter: fhirtypes.ReferenceType = Field(
+    asserter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="asserter",
         title="Person who asserts this condition",
         description="Individual who is making the condition statement.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Patient",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Patient",
+                "RelatedPerson",
+            ],
+        },
     )
 
-    bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
+    bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Anatomical location, if relevant",
         description="The anatomical location where this condition manifests itself.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="problem-list-item | encounter-diagnosis",
         description="A category assigned to the condition.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    clinicalStatus: fhirtypes.CodeableConceptType = Field(
+    clinicalStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="clinicalStatus",
         title="active | recurrence | relapse | inactive | remission | resolved",
         description="The clinical status of the condition.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Identification of the condition, problem or diagnosis",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter created as part of",
@@ -178,13 +188,14 @@ class Condition(domainresource.DomainResource):
             "The Encounter during which this Condition was created or to which the "
             "creation of this record is tightly associated."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
-    evidence: typing.List[fhirtypes.ConditionEvidenceType] = Field(
+    evidence: typing.List[fhirtypes.ConditionEvidenceType] = Field(  # type: ignore
         None,
         alias="evidence",
         title="Supporting evidence",
@@ -193,11 +204,12 @@ class Condition(domainresource.DomainResource):
             "Condition's verification status, such as evidence that confirmed or "
             "refuted the condition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this condition",
@@ -206,11 +218,12 @@ class Condition(domainresource.DomainResource):
             "other systems which remain constant as the resource is updated and "
             "propagates from server to server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Additional information about the Condition",
@@ -219,11 +232,12 @@ class Condition(domainresource.DomainResource):
             "notes/comments entry  for description of the Condition, its diagnosis "
             "and prognosis."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    onsetAge: fhirtypes.AgeType = Field(
+    onsetAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="onsetAge",
         title="Estimated or actual date,  date-time, or age",
@@ -231,14 +245,15 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
-    onsetDateTime: fhirtypes.DateTime = Field(
+    onsetDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="onsetDateTime",
         title="Estimated or actual date,  date-time, or age",
@@ -246,17 +261,18 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
-    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_onsetDateTime", title="Extension field for ``onsetDateTime``."
     )
 
-    onsetPeriod: fhirtypes.PeriodType = Field(
+    onsetPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="onsetPeriod",
         title="Estimated or actual date,  date-time, or age",
@@ -264,14 +280,15 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
-    onsetRange: fhirtypes.RangeType = Field(
+    onsetRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="onsetRange",
         title="Estimated or actual date,  date-time, or age",
@@ -279,14 +296,15 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
-    onsetString: fhirtypes.String = Field(
+    onsetString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="onsetString",
         title="Estimated or actual date,  date-time, or age",
@@ -294,17 +312,18 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
-    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
-    recordedDate: fhirtypes.DateTime = Field(
+    recordedDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="recordedDate",
         title="Date record was first recorded",
@@ -312,14 +331,15 @@ class Condition(domainresource.DomainResource):
             "The recordedDate represents when this particular Condition record was "
             "created in the system, which is often a system-generated date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_recordedDate", title="Extension field for ``recordedDate``."
     )
 
-    recorder: fhirtypes.ReferenceType = Field(
+    recorder: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="recorder",
         title="Who recorded the condition",
@@ -327,18 +347,19 @@ class Condition(domainresource.DomainResource):
             "Individual who recorded the record and takes responsibility for its "
             "content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Patient",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Patient",
+                "RelatedPerson",
+            ],
+        },
     )
 
-    severity: fhirtypes.CodeableConceptType = Field(
+    severity: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="severity",
         title="Subjective severity of condition",
@@ -346,11 +367,12 @@ class Condition(domainresource.DomainResource):
             "A subjective assessment of the severity of the condition as evaluated "
             "by the clinician."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    stage: typing.List[fhirtypes.ConditionStageType] = Field(
+    stage: typing.List[fhirtypes.ConditionStageType] = Field(  # type: ignore
         None,
         alias="stage",
         title="Stage/grade, usually assessed formally",
@@ -358,11 +380,12 @@ class Condition(domainresource.DomainResource):
             "Clinical stage or grade of a condition. May include formal severity "
             "assessments."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="subject",
         title="Who has the condition?",
@@ -370,13 +393,14 @@ class Condition(domainresource.DomainResource):
             "Indicates the patient or group who the condition record is associated "
             "with."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Group"],
+        },
     )
 
-    verificationStatus: fhirtypes.CodeableConceptType = Field(
+    verificationStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="verificationStatus",
         title=(
@@ -387,8 +411,9 @@ class Condition(domainresource.DomainResource):
             "The verification status to support the clinical status of the "
             "condition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -433,10 +458,7 @@ class Condition(domainresource.DomainResource):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1112(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -465,26 +487,7 @@ class Condition(domainresource.DomainResource):
                 "onsetString",
             ],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ConditionEvidence(backboneelement.BackboneElement):
@@ -498,28 +501,30 @@ class ConditionEvidence(backboneelement.BackboneElement):
     condition.
     """
 
-    resource_type = Field("ConditionEvidence", const=True)
+    __resource_type__ = "ConditionEvidence"
 
-    code: typing.List[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="code",
         title="Manifestation/symptom",
         description=(
             "A manifestation or symptom that led to the recording of this " "condition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    detail: typing.List[fhirtypes.ReferenceType] = Field(
+    detail: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="detail",
         title="Supporting information found elsewhere",
         description="Links to other relevant information, including pathology reports.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     @classmethod
@@ -541,9 +546,9 @@ class ConditionStage(backboneelement.BackboneElement):
     assessments.
     """
 
-    resource_type = Field("ConditionStage", const=True)
+    __resource_type__ = "ConditionStage"
 
-    assessment: typing.List[fhirtypes.ReferenceType] = Field(
+    assessment: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="assessment",
         title="Formal record of assessment",
@@ -551,13 +556,18 @@ class ConditionStage(backboneelement.BackboneElement):
             "Reference to a formal record of the evidence on which the staging "
             "assessment is based."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ClinicalImpression", "DiagnosticReport", "Observation"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "ClinicalImpression",
+                "DiagnosticReport",
+                "Observation",
+            ],
+        },
     )
 
-    summary: fhirtypes.CodeableConceptType = Field(
+    summary: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="summary",
         title="Simple summary (disease specific)",
@@ -565,17 +575,19 @@ class ConditionStage(backboneelement.BackboneElement):
             'A simple summary of the stage such as "Stage 3". The determination of '
             "the stage is disease-specific."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of staging",
         description="The kind of staging, such as pathological or clinical staging.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

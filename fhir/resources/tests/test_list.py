@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import list
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_list_1(inst):
@@ -15,21 +15,23 @@ def impl_list_1(inst):
     assert inst.code.coding[0].display == "Review of medication"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Medication Review"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2013-11-20T23:10:23+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-11-20T23:10:23+11:00"}
         ).valueDateTime
     )
     assert inst.entry[0].flag.coding[0].code == "01"
     assert inst.entry[0].flag.coding[0].display == "Prescribed"
     assert (
         inst.entry[0].flag.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://nehta.gov.au/codes/medications/changetype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nehta.gov.au/codes/medications/changetype"}
         ).valueUri
     )
     assert inst.entry[0].item.display == "hydroxocobalamin"
@@ -38,8 +40,8 @@ def impl_list_1(inst):
     assert inst.entry[1].flag.coding[0].display == "Cancelled"
     assert (
         inst.entry[1].flag.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://nehta.gov.au/codes/medications/changetype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nehta.gov.au/codes/medications/changetype"}
         ).valueUri
     )
     assert inst.entry[1].item.display == "Morphine Sulfate"
@@ -48,8 +50,8 @@ def impl_list_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "changes"
@@ -81,33 +83,37 @@ def impl_list_2(inst):
     assert inst.contained[0].id == "a1"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2004-12-25T23:50:50-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2004-12-25T23:50:50-05:00"}
         ).valueDateTime
     )
     assert inst.entry[0].item.reference == "DocumentReference/example"
     assert inst.id == "example-xds"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/documents").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/documents"}
+        ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "master"
     assert (
         inst.identifier[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ihe.net/fhir/CodeSystem/identifier-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ihe.net/fhir/CodeSystem/identifier-type"}
         ).valueUri
     )
     assert inst.identifier[0].value == "23425234234-2346"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="http://example.org/documents").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/documents"}
+        ).valueUri
     )
     assert inst.identifier[1].type.coding[0].code == "set"
     assert (
         inst.identifier[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ihe.net/fhir/CodeSystem/identifier-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ihe.net/fhir/CodeSystem/identifier-type"}
         ).valueUri
     )
     assert inst.identifier[1].value == "23425234234-2347"
@@ -115,8 +121,8 @@ def impl_list_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "working"
@@ -150,7 +156,9 @@ def impl_list_3(inst):
     assert inst.code.coding[0].display == "History of family member diseases"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.contained[0].id == "image"
     assert inst.contained[1].id == "1"
@@ -177,8 +185,8 @@ def impl_list_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "snapshot"
@@ -214,12 +222,14 @@ def impl_list_4(inst):
     assert inst.code.coding[0].display == "Patient Admission List"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://acme.com/list-codes").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.com/list-codes"}
+        ).valueUri
     )
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2016-07-14T11:54:05+10:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-07-14T11:54:05+10:00"}
         ).valueDateTime
     )
     assert inst.id == "example-simple-empty"
@@ -227,8 +237,8 @@ def impl_list_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "snapshot"
@@ -259,21 +269,23 @@ def impl_list_5(inst):
     assert inst.code.coding[0].display == "Review of medication"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.code.text == "Medication Review"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2012-11-26T07:30:23+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-11-26T07:30:23+11:00"}
         ).valueDateTime
     )
     assert inst.emptyReason.coding[0].code == "nilknown"
     assert inst.emptyReason.coding[0].display == "Nil Known"
     assert (
         inst.emptyReason.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/list-empty-reason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/list-empty-reason"}
         ).valueUri
     )
     assert inst.emptyReason.text == "The patient is not on any medications"
@@ -282,8 +294,8 @@ def impl_list_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "snapshot"
@@ -315,7 +327,9 @@ def impl_list_6(inst):
     assert inst.code.coding[0].display == "History of family member diseases"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.contained[0].id == "1"
     assert inst.contained[1].id == "2"
@@ -340,8 +354,8 @@ def impl_list_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "snapshot"
@@ -377,7 +391,9 @@ def impl_list_7(inst):
     assert inst.code.coding[0].display == "History of family member diseases"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.contained[0].id == "fmh-1"
     assert inst.contained[1].id == "fmh-2"
@@ -388,8 +404,8 @@ def impl_list_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "snapshot"
@@ -425,8 +441,8 @@ def test_list_7(base_settings):
 def impl_list_8(inst):
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2012-11-25T22:17:00+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-11-25T22:17:00+11:00"}
         ).valueDateTime
     )
     assert inst.encounter.reference == "Encounter/example"
@@ -438,8 +454,8 @@ def impl_list_8(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="urn:uuid:a9fcea7c-fcdf-4d17-a5e0-f26dda030b59"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:uuid:a9fcea7c-fcdf-4d17-a5e0-f26dda030b59"}
         ).valueUri
     )
     assert inst.identifier[0].value == "23974652"
@@ -447,8 +463,8 @@ def impl_list_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "changes"
@@ -481,21 +497,23 @@ def impl_list_9(inst):
     assert inst.code.coding[0].display == "Allergies and Adverse Drug Reactions"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == "Current Allergy List"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2015-07-14T23:10:23+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-07-14T23:10:23+11:00"}
         ).valueDateTime
     )
     assert inst.entry[0].item.reference == "AllergyIntolerance/example"
     assert inst.entry[1].item.reference == "AllergyIntolerance/medication"
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/list-for"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/list-for"}
         ).valueUri
     )
     assert inst.extension[0].valueReference.display == "Dr Adam Careful"
@@ -505,16 +523,16 @@ def impl_list_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "working"
     assert inst.orderedBy.coding[0].code == "entry-date"
     assert (
         inst.orderedBy.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/list-order"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/list-order"}
         ).valueUri
     )
     assert inst.source.reference == "Patient/example"
@@ -549,7 +567,9 @@ def impl_list_10(inst):
     )
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
     assert inst.code.text == (
         "TPMT gene mutations found [Identifier] in Blood or Tissue by"
@@ -572,8 +592,8 @@ def impl_list_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.mode == "snapshot"

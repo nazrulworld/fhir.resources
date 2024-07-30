@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -24,21 +22,22 @@ class MeasureReport(domainresource.DomainResource):
     The MeasureReport resource contains the results of evaluating a measure.
     """
 
-    resource_type = Field("MeasureReport", const=True)
+    __resource_type__ = "MeasureReport"
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="When the report was generated",
         description="The date this measure report was generated.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    evaluatedResources: fhirtypes.ReferenceType = Field(
+    evaluatedResources: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="evaluatedResources",
         title="What data was evaluated to produce the measure score",
@@ -46,13 +45,14 @@ class MeasureReport(domainresource.DomainResource):
             "A reference to a Bundle containing the Resources that were used in the"
             " evaluation of this report."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Bundle"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Bundle"],
+        },
     )
 
-    group: typing.List[fhirtypes.MeasureReportGroupType] = Field(
+    group: typing.List[fhirtypes.MeasureReportGroupType] = Field(  # type: ignore
         None,
         alias="group",
         title="Measure results for each group",
@@ -60,11 +60,12 @@ class MeasureReport(domainresource.DomainResource):
             "The results of the calculation, one for each population group in the "
             "measure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the Report",
@@ -73,53 +74,58 @@ class MeasureReport(domainresource.DomainResource):
             "represented in other formats, or referenced in a specification, model,"
             " design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    measure: fhirtypes.ReferenceType = Field(
+    measure: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="measure",
         title="What measure was evaluated",
         description="A reference to the Measure that was evaluated to produce this report.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Measure"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Measure"],
+        },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="patient",
         title="What patient the report is for",
         description="Optional Patient if the report was requested for a single patient.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         ...,
         alias="period",
         title="What period the report covers",
         description="The reporting period for which the report was calculated.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reportingOrganization: fhirtypes.ReferenceType = Field(
+    reportingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="reportingOrganization",
         title="Who is reporting the data",
         description="Reporting Organization.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="complete | pending | error",
@@ -127,18 +133,19 @@ class MeasureReport(domainresource.DomainResource):
             "The report status. No data will be available until the report status "
             "is complete."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["complete", "pending", "error"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["complete", "pending", "error"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="individual | patient-list | summary",
@@ -149,14 +156,15 @@ class MeasureReport(domainresource.DomainResource):
             "the measure; or a summary report, which returns a population count for"
             " each of the criteria in the measure."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["individual", "patient-list", "summary"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["individual", "patient-list", "summary"],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -187,10 +195,7 @@ class MeasureReport(domainresource.DomainResource):
             "evaluatedResources",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1551(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -199,52 +204,7 @@ class MeasureReport(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext"), ("type", "type__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class MeasureReportGroup(backboneelement.BackboneElement):
@@ -257,9 +217,9 @@ class MeasureReportGroup(backboneelement.BackboneElement):
     measure.
     """
 
-    resource_type = Field("MeasureReportGroup", const=True)
+    __resource_type__ = "MeasureReportGroup"
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         ...,
         alias="identifier",
         title="What group of the measure",
@@ -267,11 +227,12 @@ class MeasureReportGroup(backboneelement.BackboneElement):
             "The identifier of the population group as defined in the measure "
             "definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    measureScore: fhirtypes.Decimal = Field(
+    measureScore: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="measureScore",
         title="What score this group achieved",
@@ -280,14 +241,15 @@ class MeasureReportGroup(backboneelement.BackboneElement):
             " for the measure type and scoring method, and based on the contents of"
             " the populations defined in the group."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_measureScore", title="Extension field for ``measureScore``."
     )
 
-    population: typing.List[fhirtypes.MeasureReportGroupPopulationType] = Field(
+    population: typing.List[fhirtypes.MeasureReportGroupPopulationType] = Field(  # type: ignore
         None,
         alias="population",
         title="The populations in the group",
@@ -295,11 +257,12 @@ class MeasureReportGroup(backboneelement.BackboneElement):
             "The populations that make up the population group, one for each type "
             "of population appropriate for the measure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    stratifier: typing.List[fhirtypes.MeasureReportGroupStratifierType] = Field(
+    stratifier: typing.List[fhirtypes.MeasureReportGroupStratifierType] = Field(  # type: ignore
         None,
         alias="stratifier",
         title="Stratification results",
@@ -307,8 +270,9 @@ class MeasureReportGroup(backboneelement.BackboneElement):
             "When a measure includes multiple stratifiers, there will be a "
             "stratifier group for each stratifier defined by the measure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -338,9 +302,9 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
     population appropriate for the measure.
     """
 
-    resource_type = Field("MeasureReportGroupPopulation", const=True)
+    __resource_type__ = "MeasureReportGroupPopulation"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -349,23 +313,25 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
             "measure-population-exclusion | measure-score"
         ),
         description="The type of the population.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    count: fhirtypes.Integer = Field(
+    count: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="count",
         title="Size of the population",
         description="The number of members of the population.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_count", title="Extension field for ``count``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Population identifier as defined in the measure",
@@ -373,11 +339,12 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
             "The identifier of the population being reported, as defined by the "
             "population element of the measure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patients: fhirtypes.ReferenceType = Field(
+    patients: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="patients",
         title="For patient-list reports, the patients in this population",
@@ -385,10 +352,11 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
             "This element refers to a List of patient level MeasureReport "
             "resources, one for each patient in this population."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["List"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["List"],
+        },
     )
 
     @classmethod
@@ -418,9 +386,9 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
     group for each stratifier defined by the measure.
     """
 
-    resource_type = Field("MeasureReportGroupStratifier", const=True)
+    __resource_type__ = "MeasureReportGroupStratifier"
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="What stratifier of the group",
@@ -428,11 +396,12 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
             "The identifier of this stratifier, as defined in the measure "
             "definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    stratum: typing.List[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(
+    stratum: typing.List[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(  # type: ignore
         None,
         alias="stratum",
         title="Stratum results, one for each unique value in the stratifier",
@@ -441,8 +410,9 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
             "stratifier. For example, when stratifying on administrative gender, "
             "there will be four strata, one for each possible gender value."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -465,9 +435,9 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     will be four strata, one for each possible gender value.
     """
 
-    resource_type = Field("MeasureReportGroupStratifierStratum", const=True)
+    __resource_type__ = "MeasureReportGroupStratifierStratum"
 
-    measureScore: fhirtypes.Decimal = Field(
+    measureScore: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="measureScore",
         title="What score this stratum achieved",
@@ -476,16 +446,15 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "measure type and scoring method, and based on only the members of this"
             " stratum."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_measureScore", title="Extension field for ``measureScore``."
     )
 
-    population: typing.List[
-        fhirtypes.MeasureReportGroupStratifierStratumPopulationType
-    ] = Field(
+    population: typing.List[fhirtypes.MeasureReportGroupStratifierStratumPopulationType] = Field(  # type: ignore
         None,
         alias="population",
         title="Population results in this stratum",
@@ -493,11 +462,12 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "The populations that make up the stratum, one for each type of "
             "population appropriate to the measure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    value: fhirtypes.String = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="The stratum value, e.g. male",
@@ -506,11 +476,12 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "stratifiers on complex values, the value must be rendered such that "
             "the value for each stratum within the stratifier is unique."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 
@@ -529,10 +500,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "measureScore",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3874(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -541,52 +509,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("value", "value__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElement):
@@ -599,9 +522,9 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
     appropriate to the measure.
     """
 
-    resource_type = Field("MeasureReportGroupStratifierStratumPopulation", const=True)
+    __resource_type__ = "MeasureReportGroupStratifierStratumPopulation"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -610,23 +533,25 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
             "measure-population-exclusion | measure-score"
         ),
         description="The type of the population.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    count: fhirtypes.Integer = Field(
+    count: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="count",
         title="Size of the population",
         description="The number of members of the population in this stratum.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_count", title="Extension field for ``count``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Population identifier as defined in the measure",
@@ -634,11 +559,12 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
             "The identifier of the population being reported, as defined by the "
             "population element of the measure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    patients: fhirtypes.ReferenceType = Field(
+    patients: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="patients",
         title="For patient-list reports, the patients in this population",
@@ -646,10 +572,11 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
             "This element refers to a List of patient level MeasureReport "
             "resources, one for each patient in this population in this stratum."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["List"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["List"],
+        },
     )
 
     @classmethod

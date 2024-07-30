@@ -6,23 +6,33 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import list
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_list_1(inst):
     assert inst.code.coding[0].code == "182836005"
     assert inst.code.coding[0].display == "Review of medication"
-    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.code.text == "Medication Review"
-    assert inst.date == fhirtypes.DateTime.validate("2013-11-20T23:10:23+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-11-20T23:10:23+11:00"}
+        ).valueDateTime
+    )
     assert inst.entry[0].flag.coding[0].code == "01"
     assert inst.entry[0].flag.coding[0].display == "Prescribed"
     assert (
         inst.entry[0].flag.coding[0].system
-        == "http://nehta.gov.au/codes/medications/changetype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nehta.gov.au/codes/medications/changetype"}
+        ).valueUri
     )
     assert inst.entry[0].item.display == "hydroxocobalamin"
     assert inst.entry[1].deleted is True
@@ -30,14 +40,19 @@ def impl_list_1(inst):
     assert inst.entry[1].flag.coding[0].display == "Cancelled"
     assert (
         inst.entry[1].flag.coding[0].system
-        == "http://nehta.gov.au/codes/medications/changetype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://nehta.gov.au/codes/medications/changetype"}
+        ).valueUri
     )
     assert inst.entry[1].item.display == "Morphine Sulfate"
     assert inst.id == "med-list"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "changes"
     assert inst.source.reference == "Patient/example"
@@ -50,15 +65,13 @@ def test_list_1(base_settings):
     Test File: list-example-medlist.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-medlist.json"
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -68,7 +81,12 @@ def test_list_1(base_settings):
 def impl_list_2(inst):
     assert inst.code.coding[0].code == "8670-2"
     assert inst.code.coding[0].display == "History of family member diseases"
-    assert inst.code.coding[0].system == "http://loinc.org"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
+    )
     assert inst.contained[0].id == "image"
     assert inst.contained[1].id == "1"
     assert inst.contained[2].id == "2"
@@ -93,7 +111,10 @@ def impl_list_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "snapshot"
     assert inst.status == "current"
@@ -110,15 +131,13 @@ def test_list_2(base_settings):
         base_settings["unittest_data_dir"]
         / "list-example-familyhistory-genetics-profile-annie.json"
     )
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -128,13 +147,26 @@ def test_list_2(base_settings):
 def impl_list_3(inst):
     assert inst.code.coding[0].code == "346638"
     assert inst.code.coding[0].display == "Patient Admission List"
-    assert inst.code.coding[0].system == "http://acme.com/list-codes"
-    assert inst.date == fhirtypes.DateTime.validate("2016-07-14T11:54:05+10:00")
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://acme.com/list-codes"}
+        ).valueUri
+    )
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-07-14T11:54:05+10:00"}
+        ).valueDateTime
+    )
     assert inst.id == "example-simple-empty"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "snapshot"
     assert inst.status == "current"
@@ -146,15 +178,13 @@ def test_list_3(base_settings):
     Test File: list-example-simple-empty.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-simple-empty.json"
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -164,21 +194,36 @@ def test_list_3(base_settings):
 def impl_list_4(inst):
     assert inst.code.coding[0].code == "182836005"
     assert inst.code.coding[0].display == "Review of medication"
-    assert inst.code.coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.code.text == "Medication Review"
-    assert inst.date == fhirtypes.DateTime.validate("2012-11-26T07:30:23+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-11-26T07:30:23+11:00"}
+        ).valueDateTime
+    )
     assert inst.emptyReason.coding[0].code == "nilknown"
     assert inst.emptyReason.coding[0].display == "Nil Known"
     assert (
         inst.emptyReason.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/list-empty-reason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/list-empty-reason"}
+        ).valueUri
     )
     assert inst.emptyReason.text == "The patient is not on any medications"
     assert inst.id == "example-empty"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "snapshot"
     assert inst.source.reference == "Patient/example"
@@ -191,15 +236,13 @@ def test_list_4(base_settings):
     Test File: list-example-empty.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-empty.json"
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -209,7 +252,12 @@ def test_list_4(base_settings):
 def impl_list_5(inst):
     assert inst.code.coding[0].code == "8670-2"
     assert inst.code.coding[0].display == "History of family member diseases"
-    assert inst.code.coding[0].system == "http://loinc.org"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
+    )
     assert inst.contained[0].id == "1"
     assert inst.contained[1].id == "2"
     assert inst.contained[2].id == "3"
@@ -232,7 +280,10 @@ def impl_list_5(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "snapshot"
     assert inst.status == "current"
@@ -249,15 +300,13 @@ def test_list_5(base_settings):
         base_settings["unittest_data_dir"]
         / "list-example-familyhistory-genetics-profile.json"
     )
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -267,7 +316,12 @@ def test_list_5(base_settings):
 def impl_list_6(inst):
     assert inst.code.coding[0].code == "8670-2"
     assert inst.code.coding[0].display == "History of family member diseases"
-    assert inst.code.coding[0].system == "http://loinc.org"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
+    )
     assert inst.contained[0].id == "fmh-1"
     assert inst.contained[1].id == "fmh-2"
     assert inst.entry[0].item.reference == "#fmh-1"
@@ -276,7 +330,10 @@ def impl_list_6(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "snapshot"
     assert inst.note[0].text == (
@@ -295,15 +352,13 @@ def test_list_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "list-example-familyhistory-f201-roel.json"
     )
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -311,7 +366,12 @@ def test_list_6(base_settings):
 
 
 def impl_list_7(inst):
-    assert inst.date == fhirtypes.DateTime.validate("2012-11-25T22:17:00+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2012-11-25T22:17:00+11:00"}
+        ).valueDateTime
+    )
     assert inst.encounter.reference == "Encounter/example"
     assert inst.entry[0].deleted is True
     assert inst.entry[0].flag.text == "Deleted due to error"
@@ -319,12 +379,20 @@ def impl_list_7(inst):
     assert inst.entry[1].flag.text == "Added"
     assert inst.entry[1].item.reference == "Condition/example2"
     assert inst.id == "example"
-    assert inst.identifier[0].system == "urn:uuid:a9fcea7c-fcdf-4d17-a5e0-f26dda030b59"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:uuid:a9fcea7c-fcdf-4d17-a5e0-f26dda030b59"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "23974652"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "changes"
     assert inst.source.reference == "Patient/example"
@@ -338,15 +406,13 @@ def test_list_7(base_settings):
     Test File: list-example.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example.json"
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -356,22 +422,37 @@ def test_list_7(base_settings):
 def impl_list_8(inst):
     assert inst.code.coding[0].code == "52472-8"
     assert inst.code.coding[0].display == "Allergies and Adverse Drug Reactions"
-    assert inst.code.coding[0].system == "http://loinc.org"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
+    )
     assert inst.code.text == "Current Allergy List"
-    assert inst.date == fhirtypes.DateTime.validate("2015-07-14T23:10:23+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-07-14T23:10:23+11:00"}
+        ).valueDateTime
+    )
     assert inst.entry[0].item.reference == "AllergyIntolerance/example"
     assert inst.entry[1].item.reference == "AllergyIntolerance/medication"
     assert inst.id == "current-allergies"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "working"
     assert inst.orderedBy.coding[0].code == "entry-date"
     assert (
         inst.orderedBy.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/list-order"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/list-order"}
+        ).valueUri
     )
     assert inst.source.reference == "Patient/example"
     assert inst.status == "current"
@@ -384,15 +465,13 @@ def test_list_8(base_settings):
     Test File: list-example-allergies.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-allergies.json"
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -405,7 +484,12 @@ def impl_list_9(inst):
         "TPMT gene mutations found [Identifier] in Blood or Tissue by"
         " Sequencing Nominal"
     )
-    assert inst.code.coding[0].system == "http://loinc.org"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
+    )
     assert inst.code.text == (
         "TPMT gene mutations found [Identifier] in Blood or Tissue by"
         " Sequencing Nominal"
@@ -426,7 +510,10 @@ def impl_list_9(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "snapshot"
     assert inst.status == "current"
@@ -443,15 +530,13 @@ def test_list_9(base_settings):
         base_settings["unittest_data_dir"]
         / "list-example-double-cousin-relationship-pedigree.json"
     )
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)
@@ -459,7 +544,12 @@ def test_list_9(base_settings):
 
 
 def impl_list_10(inst):
-    assert inst.date == fhirtypes.DateTime.validate("2018-02-21T12:17:00+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-02-21T12:17:00+11:00"}
+        ).valueDateTime
+    )
     assert inst.entry[0].item.reference == "Patient/example"
     assert inst.entry[1].item.reference == "Patient/pat1"
     assert inst.entry[2].item.reference == "Patient/pat2"
@@ -474,7 +564,10 @@ def impl_list_10(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mode == "changes"
     assert inst.status == "current"
@@ -486,15 +579,13 @@ def test_list_10(base_settings):
     Test File: list-example-long.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-long.json"
-    inst = list.List.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "List" == inst.resource_type
+    inst = list.List.model_validate_json(filename.read_bytes())
+    assert "List" == inst.get_resource_type()
 
     impl_list_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "List" == data["resourceType"]
 
     inst2 = list.List(**data)

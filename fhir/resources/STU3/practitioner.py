@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -24,21 +24,22 @@ class Practitioner(domainresource.DomainResource):
     healthcare.
     """
 
-    resource_type = Field("Practitioner", const=True)
+    __resource_type__ = "Practitioner"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this practitioner's record is in active use",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
         None,
         alias="address",
         title=(
@@ -50,32 +51,35 @@ class Practitioner(domainresource.DomainResource):
             "home address).  Work addresses are not typically entered in this "
             "property as they are usually role dependent."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    birthDate: fhirtypes.Date = Field(
+    birthDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="birthDate",
         title="The date  on which the practitioner was born",
         description="The date of birth for the practitioner.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: typing.List[fhirtypes.CodeableConceptType] = Field(
+    communication: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="communication",
         title="A language the practitioner is able to use in patient communication",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    gender: fhirtypes.Code = Field(
+    gender: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -83,53 +87,58 @@ class Practitioner(domainresource.DomainResource):
             "Administrative Gender - the gender that the person is considered to "
             "have for administration and record keeping purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["male", "female", "other", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["male", "female", "other", "unknown"],
+        },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="A identifier for the person as this agent",
         description="An identifier that applies to this person in this role.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(  # type: ignore
         None,
         alias="name",
         title="The name(s) associated with the practitioner",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="photo",
         title="Image of the person",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    qualification: typing.List[fhirtypes.PractitionerQualificationType] = Field(
+    qualification: typing.List[fhirtypes.PractitionerQualificationType] = Field(  # type: ignore
         None,
         alias="qualification",
         title="Qualifications obtained by training and certification",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the practitioner (that apply to all roles)",
@@ -137,8 +146,9 @@ class Practitioner(domainresource.DomainResource):
             "A contact detail for the practitioner, e.g. a telephone number or an "
             "email address."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -177,46 +187,50 @@ class PractitionerQualification(backboneelement.BackboneElement):
     Qualifications obtained by training and certification.
     """
 
-    resource_type = Field("PractitionerQualification", const=True)
+    __resource_type__ = "PractitionerQualification"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Coded representation of the qualification",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="An identifier for this qualification for the practitioner",
         description=(
             "An identifier that applies to this person's qualification in this " "role."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    issuer: fhirtypes.ReferenceType = Field(
+    issuer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="issuer",
         title="Organization that regulates and issues the qualification",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Period during which the qualification is valid",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

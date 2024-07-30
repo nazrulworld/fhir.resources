@@ -7,19 +7,22 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import enrollmentresponse
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_enrollmentresponse_1(inst):
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.disposition == "Dependant added to policy."
     assert inst.id == "ER2500"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.BenefitsInc.com/fhir/enrollmentresponse"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.BenefitsInc.com/fhir/enrollmentresponse"}
         ).valueUri
     )
     assert inst.identifier[0].value == "781234"
@@ -27,8 +30,8 @@ def impl_enrollmentresponse_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.organization.reference == "Organization/2"

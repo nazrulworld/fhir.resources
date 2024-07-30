@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import detectedissue
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_detectedissue_1(inst):
@@ -17,7 +15,10 @@ def impl_detectedissue_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.status == "final"
     assert inst.text.div == (
@@ -31,15 +32,13 @@ def test_detectedissue_1(base_settings):
     Test File: detectedissue-example-allergy.json
     """
     filename = base_settings["unittest_data_dir"] / "detectedissue-example-allergy.json"
-    inst = detectedissue.DetectedIssue.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "DetectedIssue" == inst.resource_type
+    inst = detectedissue.DetectedIssue.model_validate_json(filename.read_bytes())
+    assert "DetectedIssue" == inst.get_resource_type()
 
     impl_detectedissue_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "DetectedIssue" == data["resourceType"]
 
     inst2 = detectedissue.DetectedIssue(**data)
@@ -51,12 +50,25 @@ def impl_detectedissue_2(inst):
     assert inst.code.coding[0].code == "DUPTHPY"
     assert inst.code.coding[0].display == "Duplicate Therapy Alert"
     assert (
-        inst.code.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
     assert inst.detail == "Similar test was performed within the past 14 days"
     assert inst.id == "duplicate"
-    assert inst.identifiedDateTime == fhirtypes.DateTime.validate("2013-05-08")
-    assert inst.identifier[0].system == "http://example.org"
+    assert (
+        inst.identifiedDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-05-08"}
+        ).valueDateTime
+    )
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
+    )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "12345"
     assert (
@@ -72,12 +84,19 @@ def impl_detectedissue_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.patient.reference == "Patient/dicom"
-    assert inst.reference == (
-        "http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CH"
-        "EST%20IMAGING%20GUIDELINES%202011.pdf"
+    assert (
+        inst.reference
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CHEST%20IMAGING%20GUIDELINES%202011.pdf"
+            }
+        ).valueUri
     )
     assert inst.status == "final"
     assert inst.text.status == "generated"
@@ -88,15 +107,13 @@ def test_detectedissue_2(base_settings):
     Test File: detectedissue-example-dup.json
     """
     filename = base_settings["unittest_data_dir"] / "detectedissue-example-dup.json"
-    inst = detectedissue.DetectedIssue.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "DetectedIssue" == inst.resource_type
+    inst = detectedissue.DetectedIssue.model_validate_json(filename.read_bytes())
+    assert "DetectedIssue" == inst.get_resource_type()
 
     impl_detectedissue_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "DetectedIssue" == data["resourceType"]
 
     inst2 = detectedissue.DetectedIssue(**data)
@@ -108,10 +125,18 @@ def impl_detectedissue_3(inst):
     assert inst.code.coding[0].code == "DRG"
     assert inst.code.coding[0].display == "Drug Interaction Alert"
     assert (
-        inst.code.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        inst.code.coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
     assert inst.id == "ddi"
-    assert inst.identifiedDateTime == fhirtypes.DateTime.validate("2014-01-05")
+    assert (
+        inst.identifiedDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-01-05"}
+        ).valueDateTime
+    )
     assert (
         inst.implicated[0].display
         == "500 mg Acetaminophen tablet 1/day, PRN since 2010"
@@ -122,13 +147,18 @@ def impl_detectedissue_3(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.mitigation[0].action.coding[0].code == "13"
     assert inst.mitigation[0].action.coding[0].display == "Stopped Concurrent Therapy"
     assert (
         inst.mitigation[0].action.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
+        ).valueUri
     )
     assert inst.mitigation[0].action.text == (
         "Asked patient to discontinue regular use of Tylenol and to "
@@ -137,7 +167,12 @@ def impl_detectedissue_3(inst):
     )
     assert inst.mitigation[0].author.display == "Dr. Adam Careful"
     assert inst.mitigation[0].author.reference == "Practitioner/example"
-    assert inst.mitigation[0].date == fhirtypes.DateTime.validate("2014-01-05")
+    assert (
+        inst.mitigation[0].date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-01-05"}
+        ).valueDateTime
+    )
     assert inst.severity == "high"
     assert inst.status == "final"
     assert inst.text.status == "generated"
@@ -148,15 +183,13 @@ def test_detectedissue_3(base_settings):
     Test File: detectedissue-example.json
     """
     filename = base_settings["unittest_data_dir"] / "detectedissue-example.json"
-    inst = detectedissue.DetectedIssue.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "DetectedIssue" == inst.resource_type
+    inst = detectedissue.DetectedIssue.model_validate_json(filename.read_bytes())
+    assert "DetectedIssue" == inst.get_resource_type()
 
     impl_detectedissue_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "DetectedIssue" == data["resourceType"]
 
     inst2 = detectedissue.DetectedIssue(**data)
@@ -168,7 +201,10 @@ def impl_detectedissue_4(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.status == "final"
     assert inst.text.div == (
@@ -182,15 +218,13 @@ def test_detectedissue_4(base_settings):
     Test File: detectedissue-example-lab.json
     """
     filename = base_settings["unittest_data_dir"] / "detectedissue-example-lab.json"
-    inst = detectedissue.DetectedIssue.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "DetectedIssue" == inst.resource_type
+    inst = detectedissue.DetectedIssue.model_validate_json(filename.read_bytes())
+    assert "DetectedIssue" == inst.get_resource_type()
 
     impl_detectedissue_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "DetectedIssue" == data["resourceType"]
 
     inst2 = detectedissue.DetectedIssue(**data)

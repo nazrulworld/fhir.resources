@@ -6,8 +6,6 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
-
 from . import quantity
 
 
@@ -19,7 +17,7 @@ class Distance(quantity.Quantity):
     A length - a value with a unit that is a physical distance.
     """
 
-    resource_type = Field("Distance", const=True)
+    __resource_type__ = "Distance"
 
     @classmethod
     def elements_sequence(cls):

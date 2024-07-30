@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import codesystem
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_codesystem_1(inst):
@@ -43,42 +43,52 @@ def impl_codesystem_1(inst):
     assert inst.content == "complete"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-05T10:01:24+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-05T10:01:24+11:00"}
         ).valueDateTime
     )
     assert inst.description == "How the referenced structure is used in this mapping."
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "fhir"
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "map-model-mode"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.676"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "old"
     assert inst.identifier[1].value == "urn:oid:2.16.840.1.113883.4.642.1.662"
@@ -86,14 +96,14 @@ def impl_codesystem_1(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -107,8 +117,8 @@ def impl_codesystem_1(inst):
     assert inst.title == "Structure Map Model Mode"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/map-model-mode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/map-model-mode"}
         ).valueUri
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/map-model-mode"
@@ -150,30 +160,36 @@ def impl_codesystem_2(inst):
     assert inst.content == "complete"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2022-05-15T16:55:11.085+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-05-15T16:55:11.085+11:00"}
         ).valueDateTime
     )
     assert inst.description == "Codes for the main intent of the study."
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "brr"
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueInteger == 0
@@ -182,14 +198,14 @@ def impl_codesystem_2(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -203,8 +219,8 @@ def impl_codesystem_2(inst):
     assert inst.title == "ResearchStudy Focus Type Code System"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/research-study-focus-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/research-study-focus-type"}
         ).valueUri
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/research-study-focus-type"
@@ -252,8 +268,8 @@ def impl_codesystem_3(inst):
     assert inst.content == "complete"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-05T10:01:24+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-05T10:01:24+11:00"}
         ).valueDateTime
     )
     assert (
@@ -262,41 +278,53 @@ def impl_codesystem_3(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "vocab"
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "normative"
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueCode == "4.0.0"
     assert (
         inst.extension[3].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[3].valueInteger == 5
     assert inst.id == "codesystem-hierarchy-meaning"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.785"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "old"
     assert inst.identifier[1].value == "urn:oid:2.16.840.1.113883.4.642.1.768"
@@ -304,14 +332,14 @@ def impl_codesystem_3(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -325,8 +353,8 @@ def impl_codesystem_3(inst):
     assert inst.title == "Code System Hierarchy Meaning"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/codesystem-hierarchy-meaning"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/codesystem-hierarchy-meaning"}
         ).valueUri
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/codesystem-hierarchy-meaning"
@@ -439,42 +467,52 @@ def impl_codesystem_4(inst):
     assert inst.content == "complete"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-05T10:01:24+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-05T10:01:24+11:00"}
         ).valueDateTime
     )
     assert inst.description == "How data is copied/created."
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "fhir"
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "map-transform"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.682"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "old"
     assert inst.identifier[1].value == "urn:oid:2.16.840.1.113883.4.642.1.668"
@@ -482,14 +520,14 @@ def impl_codesystem_4(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -506,7 +544,9 @@ def impl_codesystem_4(inst):
     assert inst.title == "Structure Map Transform"
     assert (
         inst.url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/map-transform").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/map-transform"}
+        ).valueUri
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/map-transform"
     assert inst.version == "5.0.0"
@@ -609,8 +649,8 @@ def impl_codesystem_5(inst):
     assert inst.content == "complete"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-08-15T16:55:11+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-08-15T16:55:11+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -620,43 +660,51 @@ def impl_codesystem_5(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "brr"
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "therapy-relationship-type"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.1994"
     assert inst.jurisdiction[0].coding[0].code == "001"
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -670,8 +718,8 @@ def impl_codesystem_5(inst):
     assert inst.title == "Therapy Relationship Type"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/therapy-relationship-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/therapy-relationship-type"}
         ).valueUri
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/therapy-relationship-type"
@@ -729,51 +777,59 @@ def impl_codesystem_6(inst):
     assert inst.content == "complete"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-05T10:01:24+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-05T10:01:24+11:00"}
         ).valueDateTime
     )
     assert inst.description == "The status of the ImagingStudy."
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "ii"
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueInteger == 4
     assert inst.id == "imagingstudy-status"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.991"
     assert inst.jurisdiction[0].coding[0].code == "001"
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -787,8 +843,8 @@ def impl_codesystem_6(inst):
     assert inst.title == "Imaging Study Status"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/imagingstudy-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/imagingstudy-status"}
         ).valueUri
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/imagingstudy-status"
@@ -831,29 +887,33 @@ def impl_codesystem_7(inst):
     assert inst.experimental is True
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "sd"
     assert inst.id == "catalogType"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.2013"
     assert inst.jurisdiction[0].coding[0].code == "001"
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -867,7 +927,9 @@ def impl_codesystem_7(inst):
     assert inst.title == "Catalog Type"
     assert (
         inst.url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/catalogType").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/catalogType"}
+        ).valueUri
     )
     assert inst.version == "5.0.0"
 
@@ -899,8 +961,8 @@ def impl_codesystem_8(inst):
     assert inst.content == "complete"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -909,28 +971,36 @@ def impl_codesystem_8(inst):
     assert inst.experimental is True
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/valueset-special-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/valueset-special-status"
+            }
         ).valueUri
     )
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "inm"
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueCode == "draft"
     assert (
         inst.extension[3].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[3].valueInteger == 1
@@ -939,14 +1009,14 @@ def impl_codesystem_8(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert inst.name == "MessageEvent"
@@ -956,8 +1026,8 @@ def impl_codesystem_8(inst):
     assert inst.title == "MessageEvent"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/message-events"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/message-events"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -1011,8 +1081,8 @@ def impl_codesystem_9(inst):
     assert inst.content == "complete"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2021-01-05T10:01:24+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-05T10:01:24+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -1022,43 +1092,51 @@ def impl_codesystem_9(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "brr"
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "ingredient-role"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.2080"
     assert inst.jurisdiction[0].coding[0].code == "001"
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -1072,8 +1150,8 @@ def impl_codesystem_9(inst):
     assert inst.title == "Ingredient Role"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ingredient-role"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ingredient-role"}
         ).valueUri
     )
     assert inst.valueSet == "http://hl7.org/fhir/ValueSet/ingredient-role"
@@ -1146,29 +1224,33 @@ def impl_codesystem_10(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueCode == "fhir"
     assert inst.id == "color-names"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.4.2120"
     assert inst.jurisdiction[0].coding[0].code == "001"
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2023-03-26T15:21:02.749+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2023-03-26T15:21:02.749+11:00"}
         ).valueInstant
     )
     assert (
@@ -1188,7 +1270,9 @@ def impl_codesystem_10(inst):
     assert inst.title == "Codes for Colors"
     assert (
         inst.url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/color-names").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/color-names"}
+        ).valueUri
     )
     assert inst.version == "5.0.0"
 

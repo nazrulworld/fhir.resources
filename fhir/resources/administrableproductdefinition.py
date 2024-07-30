@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class AdministrableProductDefinition(domainresource.DomainResource):
@@ -27,7 +27,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
 
     __resource_type__ = "AdministrableProductDefinition"
 
-    administrableDoseForm: fhirtypes.CodeableConceptType = Field(
+    administrableDoseForm: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="administrableDoseForm",
         title=(
@@ -47,7 +47,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title=(
@@ -65,11 +65,11 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    device: fhirtypes.ReferenceType = Field(
+    device: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="device",
         title=(
@@ -88,7 +88,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    formOf: typing.List[fhirtypes.ReferenceType] = Field(
+    formOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="formOf",
         title=(
@@ -113,7 +113,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="An identifier for the administrable product",
@@ -123,7 +123,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(
+    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="ingredient",
         title=(
@@ -146,7 +146,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    producedFrom: typing.List[fhirtypes.ReferenceType] = Field(
+    producedFrom: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="producedFrom",
         title=(
@@ -172,7 +172,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    property: typing.List[fhirtypes.AdministrableProductDefinitionPropertyType] = Field(
+    property: typing.List[fhirtypes.AdministrableProductDefinitionPropertyType] = Field(  # type: ignore
         None,
         alias="property",
         title="Characteristics e.g. a product's onset of action",
@@ -182,9 +182,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    routeOfAdministration: typing.List[
-        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationType
-    ] = Field(
+    routeOfAdministration: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationType] = Field(  # type: ignore
         ...,
         alias="routeOfAdministration",
         title=(
@@ -202,7 +200,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -218,11 +216,11 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    unitOfPresentation: fhirtypes.CodeableConceptType = Field(
+    unitOfPresentation: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="unitOfPresentation",
         title=(
@@ -279,9 +277,6 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -292,7 +287,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
 
     __resource_type__ = "AdministrableProductDefinitionProperty"
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title="The status of characteristic e.g. assigned or pending",
@@ -302,7 +297,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
@@ -312,7 +307,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="A value for the characteristic",
@@ -325,7 +320,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="A value for the characteristic",
@@ -337,11 +332,11 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="A value for the characteristic",
@@ -354,7 +349,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueDate: fhirtypes.DateType = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="A value for the characteristic",
@@ -366,11 +361,11 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueMarkdown: fhirtypes.MarkdownType = Field(
+    valueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="valueMarkdown",
         title="A value for the characteristic",
@@ -382,11 +377,11 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="A value for the characteristic",
@@ -399,7 +394,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(
+    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="valueReference",
         title="A value for the characteristic",
@@ -478,7 +473,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
 
     __resource_type__ = "AdministrableProductDefinitionRouteOfAdministration"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Coded expression for the route",
@@ -488,7 +483,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    firstDose: fhirtypes.QuantityType = Field(
+    firstDose: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="firstDose",
         title=(
@@ -504,7 +499,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    maxDosePerDay: fhirtypes.QuantityType = Field(
+    maxDosePerDay: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="maxDosePerDay",
         title="The maximum dose quantity to be administered in any one 24-h period",
@@ -517,7 +512,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    maxDosePerTreatmentPeriod: fhirtypes.RatioType = Field(
+    maxDosePerTreatmentPeriod: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="maxDosePerTreatmentPeriod",
         title="The maximum dose per treatment period that can be administered",
@@ -527,7 +522,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    maxSingleDose: fhirtypes.QuantityType = Field(
+    maxSingleDose: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="maxSingleDose",
         title="The maximum single dose that can be administered",
@@ -540,7 +535,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    maxTreatmentPeriod: fhirtypes.DurationType = Field(
+    maxTreatmentPeriod: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="maxTreatmentPeriod",
         title=(
@@ -553,9 +548,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    targetSpecies: typing.List[
-        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType
-    ] = Field(
+    targetSpecies: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType] = Field(  # type: ignore
         None,
         alias="targetSpecies",
         title="A species for which this route applies",
@@ -599,7 +592,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
         "AdministrableProductDefinitionRouteOfAdministrationTargetSpecies"
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Coded expression for the species",
@@ -609,9 +602,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
         },
     )
 
-    withdrawalPeriod: typing.List[
-        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType
-    ] = Field(
+    withdrawalPeriod: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType] = Field(  # type: ignore
         None,
         alias="withdrawalPeriod",
         title=(
@@ -646,7 +637,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
 
     __resource_type__ = "AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod"
 
-    supportingInformation: fhirtypes.StringType = Field(
+    supportingInformation: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="supportingInformation",
         title="Extra information about the withdrawal period",
@@ -655,13 +646,13 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
             "element_property": True,
         },
     )
-    supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_supportingInformation",
         title="Extension field for ``supportingInformation``.",
     )
 
-    tissue: fhirtypes.CodeableConceptType = Field(
+    tissue: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="tissue",
         title=(
@@ -677,7 +668,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
         },
     )
 
-    value: fhirtypes.QuantityType = Field(
+    value: fhirtypes.QuantityType = Field(  # type: ignore
         ...,
         alias="value",
         title="A value for the time",

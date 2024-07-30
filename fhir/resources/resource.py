@@ -22,7 +22,7 @@ class Resource(base.Base):
 
     __resource_type__ = "Resource"
 
-    id: fhirtypes.IdType = Field(
+    id: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="id",
         title="Logical id of this artifact",
@@ -35,7 +35,7 @@ class Resource(base.Base):
         },
     )
 
-    implicitRules: fhirtypes.UriType = Field(
+    implicitRules: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="implicitRules",
         title="A set of rules under which this content was created",
@@ -49,11 +49,11 @@ class Resource(base.Base):
             "element_property": True,
         },
     )
-    implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_implicitRules", title="Extension field for ``implicitRules``."
     )
 
-    language: fhirtypes.CodeType = Field(
+    language: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="language",
         title="Language of the resource content",
@@ -62,11 +62,11 @@ class Resource(base.Base):
             "element_property": True,
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    meta: fhirtypes.MetaType = Field(
+    meta: fhirtypes.MetaType = Field(  # type: ignore
         None,
         alias="meta",
         title="Metadata about the resource",

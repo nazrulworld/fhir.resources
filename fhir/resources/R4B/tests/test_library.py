@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import library
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_library_1(inst):
@@ -18,9 +16,19 @@ def impl_library_1(inst):
     assert inst.author[2].name == "Floyd Eisenberg, MD, MPH"
     assert inst.author[3].name == "Robert McClure, MD, MPH"
     assert inst.content[0].contentType == "application/xml"
-    assert inst.content[0].url == "elm/OMTK-modelinfo-0.1.0.xml"
+    assert (
+        inst.content[0].url
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "elm/OMTK-modelinfo-0.1.0.xml"}
+        ).valueUrl
+    )
     assert inst.copyright == "© CDC 2016+."
-    assert inst.date == fhirtypes.DateTime.validate("2017-05-05")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-05-05"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Opioid Management Terminology Knowledge Base Model "
         "Definition for use in implementing CDC Opioid Prescribing "
@@ -32,11 +40,19 @@ def impl_library_1(inst):
     assert inst.identifier[0].value == "OMTKModelInfo"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
-    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert (
+        inst.jurisdiction[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
+    )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
     assert inst.purpose == (
@@ -48,7 +64,9 @@ def impl_library_1(inst):
     assert inst.type.coding[0].code == "model-definition"
     assert (
         inst.type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
+        ).valueUri
     )
     assert inst.usage == (
         "This library is used to resolve data elements in the Opioid "
@@ -58,7 +76,9 @@ def impl_library_1(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
     assert (
@@ -67,13 +87,17 @@ def impl_library_1(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
     assert (
@@ -82,7 +106,9 @@ def impl_library_1(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -92,15 +118,13 @@ def test_library_1(base_settings):
     Test File: library-omtk-modelinfo.json
     """
     filename = base_settings["unittest_data_dir"] / "library-omtk-modelinfo.json"
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -109,22 +133,41 @@ def test_library_1(base_settings):
 
 def impl_library_2(inst):
     assert inst.content[0].contentType == "text/cql"
-    assert inst.content[0].url == "library-hiv-indicators-content.cql"
+    assert (
+        inst.content[0].url
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "library-hiv-indicators-content.cql"}
+        ).valueUrl
+    )
     assert inst.content[1].contentType == "application/elm+xml"
-    assert inst.date == fhirtypes.DateTime.validate("2018-08-03")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-08-03"}
+        ).valueDateTime
+    )
     assert inst.description == "HIV Indicators Reporting Example"
     assert inst.experimental is True
     assert inst.id == "hiv-indicators"
-    assert inst.identifier[0].system == "http://ohie.org/Library/"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ohie.org/Library/"}
+        ).valueUri
+    )
     assert inst.identifier[0].value == "hiv-indicators"
     assert (
         inst.relatedArtifact[0].document.url
-        == "http://wiki.ihe.net/index.php/Aggregate_Data_Exchange_-_HIV"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://wiki.ihe.net/index.php/Aggregate_Data_Exchange_-_HIV"}
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "derived-from"
     assert (
         inst.relatedArtifact[0].url
-        == "http://wiki.ihe.net/index.php/Aggregate_Data_Exchange_-_HIV"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://wiki.ihe.net/index.php/Aggregate_Data_Exchange_-_HIV"}
+        ).valueUrl
     )
     assert inst.status == "draft"
     assert inst.title == "HIV Indicators"
@@ -132,9 +175,16 @@ def impl_library_2(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
+        ).valueUri
     )
-    assert inst.url == "http://ohie.org/Library/hiv-indicators"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ohie.org/Library/hiv-indicators"}
+        ).valueUri
+    )
     assert inst.version == "0.0.0"
 
 
@@ -143,15 +193,13 @@ def test_library_2(base_settings):
     Test File: library-hiv-indicators.json
     """
     filename = base_settings["unittest_data_dir"] / "library-hiv-indicators.json"
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -160,8 +208,18 @@ def test_library_2(base_settings):
 
 def impl_library_3(inst):
     assert inst.content[0].contentType == "application/xml"
-    assert inst.content[0].url == "http://cqlrepository.org/quick-modelinfo.xml"
-    assert inst.date == fhirtypes.DateTime.validate("2016-07-08")
+    assert (
+        inst.content[0].url
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://cqlrepository.org/quick-modelinfo.xml"}
+        ).valueUrl
+    )
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-07-08"}
+        ).valueDateTime
+    )
     assert inst.description == "Model definition for the QUICK Logical Model"
     assert inst.experimental is True
     assert inst.id == "library-quick-model-definition"
@@ -170,7 +228,10 @@ def impl_library_3(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.status == "draft"
     assert inst.text.status == "generated"
@@ -187,15 +248,13 @@ def test_library_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-quick-model-definition.json"
     )
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -220,7 +279,12 @@ def impl_library_4(inst):
         "http://example.org/fhir/ValueSet/opioids-abused-in-" "ambulatory-care"
     )
     assert inst.dataRequirement[1].type == "MedicationRequest"
-    assert inst.date == fhirtypes.DateTime.validate("2018-03-25T13:49:09-06:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-25T13:49:09-06:00"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Opioid decision support logic to avoid prescribing opioid "
         "pain medication and benzodiazepines concurrently whenever "
@@ -232,11 +296,19 @@ def impl_library_4(inst):
     assert inst.identifier[0].value == "OpioidCDS_REC_11"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
-    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert (
+        inst.jurisdiction[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
+    )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
     assert inst.purpose == (
@@ -248,16 +320,22 @@ def impl_library_4(inst):
         inst.relatedArtifact[0].display
         == "CDC guideline for prescribing opioids for chronic pain"
     )
-    assert inst.relatedArtifact[0].document.url == (
-        "https://guidelines.gov/summaries/summary/50153/cdc-"
-        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
-        "states-2016#420"
+    assert (
+        inst.relatedArtifact[0].document.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert inst.relatedArtifact[0].url == (
-        "https://guidelines.gov/summaries/summary/50153/cdc-"
-        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
-        "states-2016#420"
+    assert (
+        inst.relatedArtifact[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
+        ).valueUrl
     )
     assert (
         inst.relatedArtifact[1].resource
@@ -271,7 +349,9 @@ def impl_library_4(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
+        ).valueUri
     )
     assert inst.usage == (
         "This library is used to notify the prescriber/user to avoid "
@@ -282,7 +362,9 @@ def impl_library_4(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
     assert (
@@ -291,13 +373,17 @@ def impl_library_4(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
     assert (
@@ -306,7 +392,9 @@ def impl_library_4(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -318,15 +406,13 @@ def test_library_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-opioidcds-recommendation-11.json"
     )
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -355,18 +441,31 @@ def impl_library_5(inst):
     )
     assert inst.dataRequirement[3].type == "MedicationRequest"
     assert inst.dataRequirement[4].type == "Encounter"
-    assert inst.date == fhirtypes.DateTime.validate("2018-03-25T13:49:09-06:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-25T13:49:09-06:00"}
+        ).valueDateTime
+    )
     assert inst.experimental is False
     assert inst.id == "opioidcds-recommendation-07"
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "OpioidCDS_REC_07"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
-    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert (
+        inst.jurisdiction[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
+    )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
     assert inst.purpose == (
@@ -379,16 +478,22 @@ def impl_library_5(inst):
         inst.relatedArtifact[0].display
         == "CDC guideline for prescribing opioids for chronic pain"
     )
-    assert inst.relatedArtifact[0].document.url == (
-        "https://guidelines.gov/summaries/summary/50153/cdc-"
-        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
-        "states-2016#420"
+    assert (
+        inst.relatedArtifact[0].document.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert inst.relatedArtifact[0].url == (
-        "https://guidelines.gov/summaries/summary/50153/cdc-"
-        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
-        "states-2016#420"
+    assert (
+        inst.relatedArtifact[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
+        ).valueUrl
     )
     assert (
         inst.relatedArtifact[1].resource
@@ -402,7 +507,9 @@ def impl_library_5(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
+        ).valueUri
     )
     assert inst.usage == (
         "This library is used to notify the prescriber/user whether "
@@ -413,7 +520,9 @@ def impl_library_5(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
     assert (
@@ -422,13 +531,17 @@ def impl_library_5(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
     assert (
@@ -437,7 +550,9 @@ def impl_library_5(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -449,15 +564,13 @@ def test_library_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-opioidcds-recommendation-07.json"
     )
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -465,23 +578,44 @@ def test_library_5(base_settings):
 
 
 def impl_library_6(inst):
-    assert inst.approvalDate == fhirtypes.Date.validate("2021-03-02")
+    assert (
+        inst.approvalDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2021-03-02"}).valueDate
+    )
     assert inst.content[0].contentType == "application/xml"
-    assert inst.content[0].url == "http://cqlrepository.org/fhirmodel-modelinfo.xml"
-    assert inst.date == fhirtypes.DateTime.validate("2016-07-08")
+    assert (
+        inst.content[0].url
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://cqlrepository.org/fhirmodel-modelinfo.xml"}
+        ).valueUrl
+    )
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-07-08"}
+        ).valueDateTime
+    )
     assert inst.description == "Model definition for the FHIR Model"
     assert inst.experimental is False
     assert inst.id == "FHIR-ModelInfo"
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "FHIR"
-    assert inst.lastReviewDate == fhirtypes.Date.validate("2021-03-02")
+    assert (
+        inst.lastReviewDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2021-03-02"}).valueDate
+    )
     assert inst.name == "FHIR"
     assert inst.status == "active"
     assert inst.text.status == "generated"
     assert inst.title == "FHIR Model Definition"
     assert inst.topic[0].text == "FHIR"
     assert inst.type.coding[0].code == "model-definition"
-    assert inst.url == "http://hl7.org/fhir/Library/FHIR-ModelInfo"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Library/FHIR-ModelInfo"}
+        ).valueUri
+    )
     assert inst.version == "4.3.0"
 
 
@@ -490,15 +624,13 @@ def test_library_6(base_settings):
     Test File: library-fhir-model-definition.json
     """
     filename = base_settings["unittest_data_dir"] / "library-fhir-model-definition.json"
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -508,8 +640,18 @@ def test_library_6(base_settings):
 def impl_library_7(inst):
     assert inst.content[0].contentType == "text/cql"
     assert inst.content[0].title == "FHIR Helpers"
-    assert inst.content[0].url == "library-fhir-helpers-content.cql"
-    assert inst.date == fhirtypes.DateTime.validate("2016-11-14")
+    assert (
+        inst.content[0].url
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "library-fhir-helpers-content.cql"}
+        ).valueUrl
+    )
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-11-14"}
+        ).valueDateTime
+    )
     assert inst.description == "FHIR Helpers"
     assert inst.experimental is True
     assert inst.id == "library-fhir-helpers-predecessor"
@@ -518,7 +660,10 @@ def impl_library_7(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert (
         inst.relatedArtifact[0].resource
@@ -543,15 +688,13 @@ def test_library_7(base_settings):
     Test File: library-predecessor-example.json
     """
     filename = base_settings["unittest_data_dir"] / "library-predecessor-example.json"
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -586,7 +729,12 @@ def impl_library_8(inst):
         == "http://example.org/fhir/ValueSet/opioid-urine-screening"
     )
     assert inst.dataRequirement[3].type == "Observation"
-    assert inst.date == fhirtypes.DateTime.validate("2018-03-25T13:49:09-06:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-25T13:49:09-06:00"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Opioid decision support logic to evaluate whether the "
         "patient has had a urine screening in the past 12 months and "
@@ -598,27 +746,41 @@ def impl_library_8(inst):
     assert inst.identifier[0].value == "OpioidCDS_REC_10"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
-    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert (
+        inst.jurisdiction[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
+    )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
     assert (
         inst.relatedArtifact[0].display
         == "CDC guideline for prescribing opioids for chronic pain"
     )
-    assert inst.relatedArtifact[0].document.url == (
-        "https://guidelines.gov/summaries/summary/50153/cdc-"
-        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
-        "states-2016#420"
+    assert (
+        inst.relatedArtifact[0].document.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert inst.relatedArtifact[0].url == (
-        "https://guidelines.gov/summaries/summary/50153/cdc-"
-        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
-        "states-2016#420"
+    assert (
+        inst.relatedArtifact[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
+        ).valueUrl
     )
     assert (
         inst.relatedArtifact[1].resource
@@ -632,7 +794,9 @@ def impl_library_8(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
+        ).valueUri
     )
     assert inst.usage == (
         "This library is used to notify the prescriber/user whether "
@@ -643,7 +807,9 @@ def impl_library_8(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
     assert (
@@ -652,13 +818,17 @@ def impl_library_8(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
     assert (
@@ -667,7 +837,9 @@ def impl_library_8(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -679,15 +851,13 @@ def test_library_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-opioidcds-recommendation-10.json"
     )
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -756,7 +926,12 @@ def impl_library_9(inst):
         == "urn:oid:2.16.840.1.113883.3.464.1003.196.12.1001"
     )
     assert inst.dataRequirement[7].type == "MedicationStatement"
-    assert inst.date == fhirtypes.DateTime.validate("2015-07-22")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-07-22"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Logic for CMS 146: Appropriate Testing for Children with " "Pharyngitis"
     )
@@ -774,7 +949,12 @@ def impl_library_9(inst):
     assert inst.text.status == "generated"
     assert inst.title == "CMS146: Appropriate Testing for Children with Pharyngitis"
     assert inst.type.coding[0].code == "logic-library"
-    assert inst.url == "http://hl7.org/fhir/Library/library-cms146-example"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/Library/library-cms146-example"}
+        ).valueUri
+    )
     assert inst.version == "2.0.0"
 
 
@@ -783,15 +963,13 @@ def test_library_9(base_settings):
     Test File: library-cms146-example.json
     """
     filename = base_settings["unittest_data_dir"] / "library-cms146-example.json"
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)
@@ -808,13 +986,23 @@ def impl_library_10(inst):
     assert inst.dataRequirement[0].codeFilter[0].code[0].code == "active"
     assert inst.dataRequirement[0].codeFilter[0].path == "status"
     assert inst.dataRequirement[0].codeFilter[1].code[0].code == "outpatient"
-    assert inst.dataRequirement[0].codeFilter[1].code[0].system == (
-        "http://terminology.hl7.org/CodeSystem/medicationrequest-" "category"
+    assert (
+        inst.dataRequirement[0].codeFilter[1].code[0].system
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/medicationrequest-category"
+            }
+        ).valueUri
     )
     assert inst.dataRequirement[0].codeFilter[1].path == "category"
     assert inst.dataRequirement[0].id == "medications"
     assert inst.dataRequirement[0].type == "MedicationRequest"
-    assert inst.date == fhirtypes.DateTime.validate("2018-03-25T13:49:09-06:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2018-03-25T13:49:09-06:00"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Opioid Decision Support Logic for use in implementing CDC "
         "Opioid Prescribing Guidelines."
@@ -825,11 +1013,19 @@ def impl_library_10(inst):
     assert inst.identifier[0].value == "OpioidCDS_REC_05"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America"
-    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert (
+        inst.jurisdiction[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
+    )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.publisher == "Centers for Disease Control and Prevention (CDC)"
     assert inst.purpose == (
@@ -841,16 +1037,22 @@ def impl_library_10(inst):
         inst.relatedArtifact[0].display
         == "CDC guideline for prescribing opioids for chronic pain"
     )
-    assert inst.relatedArtifact[0].document.url == (
-        "https://guidelines.gov/summaries/summary/50153/cdc-"
-        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
-        "states-2016#420"
+    assert (
+        inst.relatedArtifact[0].document.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].type == "documentation"
-    assert inst.relatedArtifact[0].url == (
-        "https://guidelines.gov/summaries/summary/50153/cdc-"
-        "guideline-for-prescribing-opioids-for-chronic-pain---united-"
-        "states-2016#420"
+    assert (
+        inst.relatedArtifact[0].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            }
+        ).valueUrl
     )
     assert (
         inst.relatedArtifact[1].resource
@@ -858,12 +1060,22 @@ def impl_library_10(inst):
     )
     assert inst.relatedArtifact[1].type == "depends-on"
     assert inst.relatedArtifact[2].display == "MME Conversion Tables"
-    assert inst.relatedArtifact[2].document.url == (
-        "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily" "_dose-a.pdf"
+    assert (
+        inst.relatedArtifact[2].document.url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+            }
+        ).valueUrl
     )
     assert inst.relatedArtifact[2].type == "documentation"
-    assert inst.relatedArtifact[2].url == (
-        "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily" "_dose-a.pdf"
+    assert (
+        inst.relatedArtifact[2].url
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUrl": "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+            }
+        ).valueUrl
     )
     assert inst.status == "active"
     assert inst.title == "Opioid CDS Logic for recommendation #5"
@@ -872,7 +1084,9 @@ def impl_library_10(inst):
     assert inst.type.coding[0].display == "Logic Library"
     assert (
         inst.type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/library-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/library-type"}
+        ).valueUri
     )
     assert inst.usage == (
         "This library is to notify the prescriber/user whether the "
@@ -882,7 +1096,9 @@ def impl_library_10(inst):
     assert inst.useContext[0].code.display == "Clinical Focus"
     assert (
         inst.useContext[0].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "182888003"
     assert (
@@ -891,13 +1107,17 @@ def impl_library_10(inst):
     )
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.useContext[1].code.code == "focus"
     assert inst.useContext[1].code.display == "Clinical Focus"
     assert (
         inst.useContext[1].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
+        ).valueUri
     )
     assert inst.useContext[1].valueCodeableConcept.coding[0].code == "82423001"
     assert (
@@ -906,7 +1126,9 @@ def impl_library_10(inst):
     )
     assert (
         inst.useContext[1].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.version == "0.1.0"
 
@@ -918,15 +1140,13 @@ def test_library_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-opioidcds-recommendation-05.json"
     )
-    inst = library.Library.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Library" == inst.resource_type
+    inst = library.Library.model_validate_json(filename.read_bytes())
+    assert "Library" == inst.get_resource_type()
 
     impl_library_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Library" == data["resourceType"]
 
     inst2 = library.Library(**data)

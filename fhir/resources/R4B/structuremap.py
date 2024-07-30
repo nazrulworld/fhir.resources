@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -24,9 +22,9 @@ class StructureMap(domainresource.DomainResource):
     data.
     """
 
-    resource_type = Field("StructureMap", const=True)
+    __resource_type__ = "StructureMap"
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -34,11 +32,12 @@ class StructureMap(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -47,14 +46,15 @@ class StructureMap(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the structure map."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -64,14 +64,15 @@ class StructureMap(domainresource.DomainResource):
             "change if the status code changes. In addition, it should change when "
             "the substantive content of the structure map changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the structure map",
@@ -79,14 +80,15 @@ class StructureMap(domainresource.DomainResource):
             "A free text natural language description of the structure map from a "
             "consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -95,14 +97,15 @@ class StructureMap(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    group: typing.List[fhirtypes.StructureMapGroupType] = Field(
+    group: typing.List[fhirtypes.StructureMapGroupType] = Field(  # type: ignore
         ...,
         alias="group",
         title="Named sections for reader convenience",
@@ -110,11 +113,12 @@ class StructureMap(domainresource.DomainResource):
             "Organizes the mapping into manageable chunks for human review/ease of "
             "maintenance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the structure map",
@@ -123,25 +127,27 @@ class StructureMap(domainresource.DomainResource):
             "it is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    import_fhir: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    import_fhir: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="import",
         title="Other maps used by this map (canonical URLs)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureMap"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureMap"],
+        },
     )
-    import__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_import", title="Extension field for ``import_fhir``.")
+    import__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_import", title="Extension field for ``import_fhir``."
+    )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for structure map (if applicable)",
@@ -149,11 +155,12 @@ class StructureMap(domainresource.DomainResource):
             "A legal or geographic region in which the structure map is intended to"
             " be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this structure map (computer friendly)",
@@ -162,15 +169,16 @@ class StructureMap(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -178,14 +186,15 @@ class StructureMap(domainresource.DomainResource):
             "The name of the organization or individual that published the "
             "structure map."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.Markdown = Field(
+    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this structure map is defined",
@@ -193,14 +202,15 @@ class StructureMap(domainresource.DomainResource):
             "Explanation of why this structure map is needed and why it has been "
             "designed as it has."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -208,18 +218,19 @@ class StructureMap(domainresource.DomainResource):
             "The status of this structure map. Enables tracking the life-cycle of "
             "the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    structure: typing.List[fhirtypes.StructureMapStructureType] = Field(
+    structure: typing.List[fhirtypes.StructureMapStructureType] = Field(  # type: ignore
         None,
         alias="structure",
         title="Structure Definition used by this map",
@@ -228,23 +239,25 @@ class StructureMap(domainresource.DomainResource):
             "describe instances that are converted, or the instances that are "
             "produced."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this structure map (human friendly)",
         description="A short, descriptive, user-friendly title for the structure map.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -260,15 +273,16 @@ class StructureMap(domainresource.DomainResource):
             " be the target of a canonical reference. It SHALL remain the same when"
             " the structure map is stored on different servers."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -279,11 +293,12 @@ class StructureMap(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate structure map instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the structure map",
@@ -296,10 +311,11 @@ class StructureMap(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -338,10 +354,7 @@ class StructureMap(domainresource.DomainResource):
             "group",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1458(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -354,52 +367,7 @@ class StructureMap(domainresource.DomainResource):
             ("status", "status__ext"),
             ("url", "url__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class StructureMapGroup(backboneelement.BackboneElement):
@@ -412,9 +380,9 @@ class StructureMapGroup(backboneelement.BackboneElement):
     maintenance.
     """
 
-    resource_type = Field("StructureMapGroup", const=True)
+    __resource_type__ = "StructureMapGroup"
 
-    documentation: fhirtypes.String = Field(
+    documentation: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="documentation",
         title="Additional description/explanation for group",
@@ -422,26 +390,28 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "Additional supporting documentation that explains the purpose of the "
             "group and the types of mappings within it."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    extends: fhirtypes.Id = Field(
+    extends: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="extends",
         title="Another group that this group adds rules to",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    extends__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    extends__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_extends", title="Extension field for ``extends``."
     )
 
-    input: typing.List[fhirtypes.StructureMapGroupInputType] = Field(
+    input: typing.List[fhirtypes.StructureMapGroupInputType] = Field(  # type: ignore
         ...,
         alias="input",
         title="Named instance provided when invoking the map",
@@ -449,33 +419,36 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "A name assigned to an instance of data. The instance must be provided "
             "when the mapping is invoked."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.Id = Field(
+    name: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="name",
         title="Human-readable label",
         description="A unique name for the group for the convenience of human readers.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    rule: typing.List[fhirtypes.StructureMapGroupRuleType] = Field(
+    rule: typing.List[fhirtypes.StructureMapGroupRuleType] = Field(  # type: ignore
         ...,
         alias="rule",
         title="Transform Rule from source to target",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    typeMode: fhirtypes.Code = Field(
+    typeMode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="typeMode",
         title="none | types | type-and-types",
@@ -483,14 +456,15 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "If this is the default rule set to apply for the source type or this "
             "combination of types."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["none", "types", "type-and-types"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["none", "types", "type-and-types"],
+        },
     )
-    typeMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    typeMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_typeMode", title="Extension field for ``typeMode``."
     )
 
@@ -512,10 +486,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "rule",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1983(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -524,52 +495,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("name", "name__ext"), ("typeMode", "typeMode__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class StructureMapGroupInput(backboneelement.BackboneElement):
@@ -582,58 +508,62 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
     the mapping is invoked.
     """
 
-    resource_type = Field("StructureMapGroupInput", const=True)
+    __resource_type__ = "StructureMapGroupInput"
 
-    documentation: fhirtypes.String = Field(
+    documentation: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="documentation",
         title="Documentation for this instance of data",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    mode: fhirtypes.Code = Field(
+    mode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="mode",
         title="source | target",
         description="Mode for this instance of data.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["source", "target"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["source", "target"],
+        },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    name: fhirtypes.Id = Field(
+    name: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this instance of data",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    type: fhirtypes.String = Field(
+    type: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="type",
         title="Type for this instance of data",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -653,10 +583,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
             "documentation",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2515(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -665,52 +592,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("mode", "mode__ext"), ("name", "name__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class StructureMapGroupRule(backboneelement.BackboneElement):
@@ -721,67 +603,73 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
     Transform Rule from source to target.
     """
 
-    resource_type = Field("StructureMapGroupRule", const=True)
+    __resource_type__ = "StructureMapGroupRule"
 
-    dependent: typing.List[fhirtypes.StructureMapGroupRuleDependentType] = Field(
+    dependent: typing.List[fhirtypes.StructureMapGroupRuleDependentType] = Field(  # type: ignore
         None,
         alias="dependent",
         title="Which other rules to apply in the context of this rule",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    documentation: fhirtypes.String = Field(
+    documentation: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="documentation",
         title="Documentation for this instance of data",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    name: fhirtypes.Id = Field(
+    name: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="name",
         title="Name of the rule for internal references",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    rule: typing.List[fhirtypes.StructureMapGroupRuleType] = Field(
+    rule: typing.List[fhirtypes.StructureMapGroupRuleType] = Field(  # type: ignore
         None,
         alias="rule",
         title="Rules contained in this rule",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    source: typing.List[fhirtypes.StructureMapGroupRuleSourceType] = Field(
+    source: typing.List[fhirtypes.StructureMapGroupRuleSourceType] = Field(  # type: ignore
         ...,
         alias="source",
         title="Source inputs to the mapping",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    target: typing.List[fhirtypes.StructureMapGroupRuleTargetType] = Field(
+    target: typing.List[fhirtypes.StructureMapGroupRuleTargetType] = Field(  # type: ignore
         None,
         alias="target",
         title="Content to create because of this mapping rule",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -802,10 +690,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
             "documentation",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2380(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -814,52 +699,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("name", "name__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
@@ -870,33 +710,35 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
     Which other rules to apply in the context of this rule.
     """
 
-    resource_type = Field("StructureMapGroupRuleDependent", const=True)
+    __resource_type__ = "StructureMapGroupRuleDependent"
 
-    name: fhirtypes.Id = Field(
+    name: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="name",
         title="Name of a rule or group to apply",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    variable: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    variable: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="variable",
         title="Variable to pass to the rule or group",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    variable__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_variable", title="Extension field for ``variable``.")
+    variable__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_variable", title="Extension field for ``variable``."
+    )
 
     @classmethod
     def elements_sequence(cls):
@@ -906,10 +748,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "name", "variable"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3314(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -918,52 +757,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("name", "name__ext"), ("variable", "variable__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class StructureMapGroupRuleSource(backboneelement.BackboneElement):
@@ -974,9 +768,9 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     Source inputs to the mapping.
     """
 
-    resource_type = Field("StructureMapGroupRuleSource", const=True)
+    __resource_type__ = "StructureMapGroupRuleSource"
 
-    check: fhirtypes.String = Field(
+    check: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="check",
         title=(
@@ -984,753 +778,808 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "error instead of completing"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    check__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    check__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_check", title="Extension field for ``check``."
     )
 
-    condition: fhirtypes.String = Field(
+    condition: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="condition",
         title="FHIRPath expression  - must be true or the rule does not apply",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_condition", title="Extension field for ``condition``."
     )
 
-    context: fhirtypes.Id = Field(
+    context: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="context",
         title="Type or variable this rule applies to",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_context", title="Extension field for ``context``."
     )
 
-    defaultValueAddress: fhirtypes.AddressType = Field(
+    defaultValueAddress: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="defaultValueAddress",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueAge: fhirtypes.AgeType = Field(
+    defaultValueAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="defaultValueAge",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueAnnotation: fhirtypes.AnnotationType = Field(
+    defaultValueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
         None,
         alias="defaultValueAnnotation",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueAttachment: fhirtypes.AttachmentType = Field(
+    defaultValueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="defaultValueAttachment",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueBase64Binary: fhirtypes.Base64Binary = Field(
+    defaultValueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
         None,
         alias="defaultValueBase64Binary",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueBase64Binary",
         title="Extension field for ``defaultValueBase64Binary``.",
     )
 
-    defaultValueBoolean: bool = Field(
+    defaultValueBoolean: bool = Field(  # type: ignore
         None,
         alias="defaultValueBoolean",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueBoolean",
         title="Extension field for ``defaultValueBoolean``.",
     )
 
-    defaultValueCanonical: fhirtypes.Canonical = Field(
+    defaultValueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="defaultValueCanonical",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueCanonical",
         title="Extension field for ``defaultValueCanonical``.",
     )
 
-    defaultValueCode: fhirtypes.Code = Field(
+    defaultValueCode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="defaultValueCode",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueCode",
         title="Extension field for ``defaultValueCode``.",
     )
 
-    defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="defaultValueCodeableConcept",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueCoding: fhirtypes.CodingType = Field(
+    defaultValueCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="defaultValueCoding",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueContactDetail: fhirtypes.ContactDetailType = Field(
+    defaultValueContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
         None,
         alias="defaultValueContactDetail",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueContactPoint: fhirtypes.ContactPointType = Field(
+    defaultValueContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
         None,
         alias="defaultValueContactPoint",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueContributor: fhirtypes.ContributorType = Field(
+    defaultValueContributor: fhirtypes.ContributorType = Field(  # type: ignore
         None,
         alias="defaultValueContributor",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueCount: fhirtypes.CountType = Field(
+    defaultValueCount: fhirtypes.CountType = Field(  # type: ignore
         None,
         alias="defaultValueCount",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueDataRequirement: fhirtypes.DataRequirementType = Field(
+    defaultValueDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
         None,
         alias="defaultValueDataRequirement",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueDate: fhirtypes.Date = Field(
+    defaultValueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="defaultValueDate",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueDate",
         title="Extension field for ``defaultValueDate``.",
     )
 
-    defaultValueDateTime: fhirtypes.DateTime = Field(
+    defaultValueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="defaultValueDateTime",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueDateTime",
         title="Extension field for ``defaultValueDateTime``.",
     )
 
-    defaultValueDecimal: fhirtypes.Decimal = Field(
+    defaultValueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="defaultValueDecimal",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueDecimal",
         title="Extension field for ``defaultValueDecimal``.",
     )
 
-    defaultValueDistance: fhirtypes.DistanceType = Field(
+    defaultValueDistance: fhirtypes.DistanceType = Field(  # type: ignore
         None,
         alias="defaultValueDistance",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueDosage: fhirtypes.DosageType = Field(
+    defaultValueDosage: fhirtypes.DosageType = Field(  # type: ignore
         None,
         alias="defaultValueDosage",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueDuration: fhirtypes.DurationType = Field(
+    defaultValueDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="defaultValueDuration",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueExpression: fhirtypes.ExpressionType = Field(
+    defaultValueExpression: fhirtypes.ExpressionType = Field(  # type: ignore
         None,
         alias="defaultValueExpression",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueHumanName: fhirtypes.HumanNameType = Field(
+    defaultValueHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
         None,
         alias="defaultValueHumanName",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueId: fhirtypes.Id = Field(
+    defaultValueId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="defaultValueId",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_defaultValueId", title="Extension field for ``defaultValueId``."
     )
 
-    defaultValueIdentifier: fhirtypes.IdentifierType = Field(
+    defaultValueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="defaultValueIdentifier",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueInstant: fhirtypes.Instant = Field(
+    defaultValueInstant: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="defaultValueInstant",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueInstant",
         title="Extension field for ``defaultValueInstant``.",
     )
 
-    defaultValueInteger: fhirtypes.Integer = Field(
+    defaultValueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="defaultValueInteger",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueInteger",
         title="Extension field for ``defaultValueInteger``.",
     )
 
-    defaultValueMarkdown: fhirtypes.Markdown = Field(
+    defaultValueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="defaultValueMarkdown",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueMarkdown",
         title="Extension field for ``defaultValueMarkdown``.",
     )
 
-    defaultValueMeta: fhirtypes.MetaType = Field(
+    defaultValueMeta: fhirtypes.MetaType = Field(  # type: ignore
         None,
         alias="defaultValueMeta",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueMoney: fhirtypes.MoneyType = Field(
+    defaultValueMoney: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="defaultValueMoney",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueOid: fhirtypes.Oid = Field(
+    defaultValueOid: fhirtypes.OidType = Field(  # type: ignore
         None,
         alias="defaultValueOid",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_defaultValueOid", title="Extension field for ``defaultValueOid``."
     )
 
-    defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
+    defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
         None,
         alias="defaultValueParameterDefinition",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValuePeriod: fhirtypes.PeriodType = Field(
+    defaultValuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="defaultValuePeriod",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValuePositiveInt: fhirtypes.PositiveInt = Field(
+    defaultValuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="defaultValuePositiveInt",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValuePositiveInt",
         title="Extension field for ``defaultValuePositiveInt``.",
     )
 
-    defaultValueQuantity: fhirtypes.QuantityType = Field(
+    defaultValueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="defaultValueQuantity",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueRange: fhirtypes.RangeType = Field(
+    defaultValueRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="defaultValueRange",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueRatio: fhirtypes.RatioType = Field(
+    defaultValueRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="defaultValueRatio",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueReference: fhirtypes.ReferenceType = Field(
+    defaultValueReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="defaultValueReference",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
+    defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
         None,
         alias="defaultValueRelatedArtifact",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueSampledData: fhirtypes.SampledDataType = Field(
+    defaultValueSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
         None,
         alias="defaultValueSampledData",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueSignature: fhirtypes.SignatureType = Field(
+    defaultValueSignature: fhirtypes.SignatureType = Field(  # type: ignore
         None,
         alias="defaultValueSignature",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueString: fhirtypes.String = Field(
+    defaultValueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="defaultValueString",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueString",
         title="Extension field for ``defaultValueString``.",
     )
 
-    defaultValueTime: fhirtypes.Time = Field(
+    defaultValueTime: fhirtypes.TimeType = Field(  # type: ignore
         None,
         alias="defaultValueTime",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueTime",
         title="Extension field for ``defaultValueTime``.",
     )
 
-    defaultValueTiming: fhirtypes.TimingType = Field(
+    defaultValueTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="defaultValueTiming",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
+    defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
         None,
         alias="defaultValueTriggerDefinition",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueUnsignedInt: fhirtypes.UnsignedInt = Field(
+    defaultValueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="defaultValueUnsignedInt",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueUnsignedInt",
         title="Extension field for ``defaultValueUnsignedInt``.",
     )
 
-    defaultValueUri: fhirtypes.Uri = Field(
+    defaultValueUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="defaultValueUri",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_defaultValueUri", title="Extension field for ``defaultValueUri``."
     )
 
-    defaultValueUrl: fhirtypes.Url = Field(
+    defaultValueUrl: fhirtypes.UrlType = Field(  # type: ignore
         None,
         alias="defaultValueUrl",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_defaultValueUrl", title="Extension field for ``defaultValueUrl``."
     )
 
-    defaultValueUsageContext: fhirtypes.UsageContextType = Field(
+    defaultValueUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
         None,
         alias="defaultValueUsageContext",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
 
-    defaultValueUuid: fhirtypes.Uuid = Field(
+    defaultValueUuid: fhirtypes.UuidType = Field(  # type: ignore
         None,
         alias="defaultValueUuid",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e defaultValue[x]
-        one_of_many="defaultValue",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e defaultValue[x]
+            "one_of_many": "defaultValue",
+            "one_of_many_required": False,
+        },
     )
-    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_defaultValueUuid",
         title="Extension field for ``defaultValueUuid``.",
     )
 
-    element: fhirtypes.String = Field(
+    element: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="element",
         title="Optional field for this source",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_element", title="Extension field for ``element``."
     )
 
-    listMode: fhirtypes.Code = Field(
+    listMode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="listMode",
         title="first | not_first | last | not_last | only_one",
         description="How to handle the list mode for this element.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["first", "not_first", "last", "not_last", "only_one"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["first", "not_first", "last", "not_last", "only_one"],
+        },
     )
-    listMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    listMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_listMode", title="Extension field for ``listMode``."
     )
 
-    logMessage: fhirtypes.String = Field(
+    logMessage: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="logMessage",
         title="Message to put in log if source exists (FHIRPath)",
@@ -1738,14 +1587,15 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "A FHIRPath expression which specifies a message to put in the "
             "transform log when content matching the source rule is found."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    logMessage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    logMessage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_logMessage", title="Extension field for ``logMessage``."
     )
 
-    max: fhirtypes.String = Field(
+    max: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="max",
         title="Specified maximum cardinality (number or *)",
@@ -1754,14 +1604,15 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "This is optional; if present, it acts an implicit check on the input "
             "content (* just serves as documentation; it's the default value)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.Integer = Field(
+    min: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="min",
         title="Specified minimum cardinality",
@@ -1769,14 +1620,15 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "Specified minimum cardinality for the element. This is optional; if "
             "present, it acts an implicit check on the input content."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    type: fhirtypes.String = Field(
+    type: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="type",
         title="Rule only applies if source has this type",
@@ -1784,22 +1636,24 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "Specified type for the element. This works as a condition on the "
             "mapping - use for polymorphic elements."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    variable: fhirtypes.Id = Field(
+    variable: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="variable",
         title="Named context for field, if a field is specified",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_variable", title="Extension field for ``variable``."
     )
 
@@ -1875,10 +1729,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "logMessage",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3005(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1887,57 +1738,9 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("context", "context__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3005(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -2004,26 +1807,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
                 "defaultValueUuid",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
@@ -2034,107 +1818,115 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
     Content to create because of this mapping rule.
     """
 
-    resource_type = Field("StructureMapGroupRuleTarget", const=True)
+    __resource_type__ = "StructureMapGroupRuleTarget"
 
-    context: fhirtypes.Id = Field(
+    context: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="context",
         title="Type or variable this rule applies to",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_context", title="Extension field for ``context``."
     )
 
-    contextType: fhirtypes.Code = Field(
+    contextType: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="contextType",
         title="type | variable",
         description="How to interpret the context.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["type", "variable"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["type", "variable"],
+        },
     )
-    contextType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    contextType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_contextType", title="Extension field for ``contextType``."
     )
 
-    element: fhirtypes.String = Field(
+    element: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="element",
         title="Field to create in the context",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_element", title="Extension field for ``element``."
     )
 
-    listMode: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    listMode: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
         None,
         alias="listMode",
         title="first | share | last | collate",
         description="If field is a list, how to manage the list.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["first", "share", "last", "collate"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["first", "share", "last", "collate"],
+        },
     )
-    listMode__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_listMode", title="Extension field for ``listMode``.")
+    listMode__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_listMode", title="Extension field for ``listMode``."
+    )
 
-    listRuleId: fhirtypes.Id = Field(
+    listRuleId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="listRuleId",
         title="Internal rule reference for shared list items",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    listRuleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    listRuleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_listRuleId", title="Extension field for ``listRuleId``."
     )
 
-    parameter: typing.List[fhirtypes.StructureMapGroupRuleTargetParameterType] = Field(
+    parameter: typing.List[fhirtypes.StructureMapGroupRuleTargetParameterType] = Field(  # type: ignore
         None,
         alias="parameter",
         title="Parameters to the transform",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    transform: fhirtypes.Code = Field(
+    transform: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="transform",
         title="create | copy +",
         description="How the data is copied / created.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["create", "copy", "+"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["create", "copy", "+"],
+        },
     )
-    transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_transform", title="Extension field for ``transform``."
     )
 
-    variable: fhirtypes.Id = Field(
+    variable: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="variable",
         title="Named context for field, if desired, and a field is specified",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_variable", title="Extension field for ``variable``."
     )
 
@@ -2167,80 +1959,85 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
     Parameters to the transform.
     """
 
-    resource_type = Field("StructureMapGroupRuleTargetParameter", const=True)
+    __resource_type__ = "StructureMapGroupRuleTargetParameter"
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Parameter value - variable or literal",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueDecimal: fhirtypes.Decimal = Field(
+    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="Parameter value - variable or literal",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueId: fhirtypes.Id = Field(
+    valueId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="valueId",
         title="Parameter value - variable or literal",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
-    valueInteger: fhirtypes.Integer = Field(
+    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Parameter value - variable or literal",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueString: fhirtypes.String = Field(
+    valueString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="valueString",
         title="Parameter value - variable or literal",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
@@ -2261,10 +2058,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
             "valueDecimal",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3937(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -2286,26 +2080,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
                 "valueString",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class StructureMapStructure(backboneelement.BackboneElement):
@@ -2318,60 +2093,64 @@ class StructureMapStructure(backboneelement.BackboneElement):
     describe instances that are converted, or the instances that are produced.
     """
 
-    resource_type = Field("StructureMapStructure", const=True)
+    __resource_type__ = "StructureMapStructure"
 
-    alias: fhirtypes.String = Field(
+    alias: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="alias",
         title="Name for type in this map",
         description="The name used for this type in the map.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    alias__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    alias__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_alias", title="Extension field for ``alias``."
     )
 
-    documentation: fhirtypes.String = Field(
+    documentation: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="documentation",
         title="Documentation on use of structure",
         description="Documentation that describes how the structure is used in the mapping.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    mode: fhirtypes.Code = Field(
+    mode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="mode",
         title="source | queried | target | produced",
         description="How the referenced structure is used in this mapping.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["source", "queried", "target", "produced"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["source", "queried", "target", "produced"],
+        },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    url: fhirtypes.Canonical = Field(
+    url: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="url",
         title="Canonical reference to structure definition",
         description="The canonical reference to the structure.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition"],
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
@@ -2391,10 +2170,7 @@ class StructureMapStructure(backboneelement.BackboneElement):
             "documentation",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2424(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -2403,49 +2179,4 @@ class StructureMapStructure(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("mode", "mode__ext"), ("url", "url__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -25,27 +23,29 @@ class CatalogEntry(domainresource.DomainResource):
     catalog.
     """
 
-    resource_type = Field("CatalogEntry", const=True)
+    __resource_type__ = "CatalogEntry"
 
-    additionalCharacteristic: typing.List[fhirtypes.CodeableConceptType] = Field(
+    additionalCharacteristic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="additionalCharacteristic",
         title="Additional characteristics of the catalog entry",
         description="Used for examplefor Out of Formulary, or any specifics.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    additionalClassification: typing.List[fhirtypes.CodeableConceptType] = Field(
+    additionalClassification: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="additionalClassification",
         title="Additional classification of the catalog entry",
         description="User for example for ATC classification, or.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    additionalIdentifier: typing.List[fhirtypes.IdentifierType] = Field(
+    additionalIdentifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="additionalIdentifier",
         title=(
@@ -53,20 +53,22 @@ class CatalogEntry(domainresource.DomainResource):
             "granularity or concept"
         ),
         description="Used in supporting related concepts, e.g. NDC to RxNorm.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    classification: typing.List[fhirtypes.CodeableConceptType] = Field(
+    classification: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="classification",
         title="Classification (category or class) of the item entry",
         description="Classes of devices, or ATC for medication.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique identifier of the catalog item",
@@ -74,11 +76,12 @@ class CatalogEntry(domainresource.DomainResource):
             "Used in supporting different identifiers for the same product, e.g. "
             "manufacturer code and retailer code."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastUpdated: fhirtypes.DateTime = Field(
+    lastUpdated: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="lastUpdated",
         title="When was this catalog last updated",
@@ -86,50 +89,53 @@ class CatalogEntry(domainresource.DomainResource):
             "Typically date of issue is different from the beginning of the "
             "validity. This can be used to see when an item was last updated."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
     )
 
-    orderable: bool = Field(
+    orderable: bool = Field(  # type: ignore
         None,
         alias="orderable",
         title="Whether the entry represents an orderable item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    orderable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    orderable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_orderable", title="Extension field for ``orderable``."
     )
 
-    referencedItem: fhirtypes.ReferenceType = Field(
+    referencedItem: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="referencedItem",
         title="The item that is being defined",
         description="The item in a catalog or definition.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Medication",
-            "Device",
-            "Organization",
-            "Practitioner",
-            "PractitionerRole",
-            "HealthcareService",
-            "ActivityDefinition",
-            "PlanDefinition",
-            "SpecimenDefinition",
-            "ObservationDefinition",
-            "Binary",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Medication",
+                "Device",
+                "Organization",
+                "Practitioner",
+                "PractitionerRole",
+                "HealthcareService",
+                "ActivityDefinition",
+                "PlanDefinition",
+                "SpecimenDefinition",
+                "ObservationDefinition",
+                "Binary",
+            ],
+        },
     )
 
-    relatedEntry: typing.List[fhirtypes.CatalogEntryRelatedEntryType] = Field(
+    relatedEntry: typing.List[fhirtypes.CatalogEntryRelatedEntryType] = Field(  # type: ignore
         None,
         alias="relatedEntry",
         title="An item that this catalog entry is related to",
@@ -137,11 +143,12 @@ class CatalogEntry(domainresource.DomainResource):
             "Used for example, to point to a substance, or to a device used to "
             "administer a medication."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -149,44 +156,48 @@ class CatalogEntry(domainresource.DomainResource):
             "Used to support catalog exchange even for unsupported products, e.g. "
             "getting list of medications even if not prescribable."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="The type of item - medication, device, service, protocol or other",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    validTo: fhirtypes.DateTime = Field(
+    validTo: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="validTo",
         title="The date until which this catalog entry is expected to be active",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    validTo__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    validTo__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_validTo", title="Extension field for ``validTo``."
     )
 
-    validityPeriod: fhirtypes.PeriodType = Field(
+    validityPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="validityPeriod",
         title="The time period in which this catalog entry is expected to be active",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -219,10 +230,7 @@ class CatalogEntry(domainresource.DomainResource):
             "relatedEntry",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1417(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -231,52 +239,7 @@ class CatalogEntry(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("orderable", "orderable__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
@@ -289,20 +252,21 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
     administer a medication.
     """
 
-    resource_type = Field("CatalogEntryRelatedEntry", const=True)
+    __resource_type__ = "CatalogEntryRelatedEntry"
 
-    item: fhirtypes.ReferenceType = Field(
+    item: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="item",
         title="The reference to the related item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CatalogEntry"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CatalogEntry"],
+        },
     )
 
-    relationtype: fhirtypes.Code = Field(
+    relationtype: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="relationtype",
         title="triggers | is-replaced-by",
@@ -310,14 +274,15 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
             "The type of relation to the related item: child, parent, "
             "packageContent, containerPackage, usedIn, uses, requires, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["triggers", "is-replaced-by"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["triggers", "is-replaced-by"],
+        },
     )
-    relationtype__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    relationtype__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_relationtype", title="Extension field for ``relationtype``."
     )
 
@@ -329,10 +294,7 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "relationtype", "item"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2652(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -341,49 +303,4 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("relationtype", "relationtype__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

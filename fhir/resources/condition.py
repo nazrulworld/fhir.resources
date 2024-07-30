@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Condition(domainresource.DomainResource):
@@ -25,7 +25,7 @@ class Condition(domainresource.DomainResource):
 
     __resource_type__ = "Condition"
 
-    abatementAge: fhirtypes.AgeType = Field(
+    abatementAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="abatementAge",
         title="When in resolution/remission",
@@ -44,7 +44,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    abatementDateTime: fhirtypes.DateTimeType = Field(
+    abatementDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="abatementDateTime",
         title="When in resolution/remission",
@@ -62,13 +62,13 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_abatementDateTime",
         title="Extension field for ``abatementDateTime``.",
     )
 
-    abatementPeriod: fhirtypes.PeriodType = Field(
+    abatementPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="abatementPeriod",
         title="When in resolution/remission",
@@ -87,7 +87,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    abatementRange: fhirtypes.RangeType = Field(
+    abatementRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="abatementRange",
         title="When in resolution/remission",
@@ -106,7 +106,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    abatementString: fhirtypes.StringType = Field(
+    abatementString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="abatementString",
         title="When in resolution/remission",
@@ -124,11 +124,11 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_abatementString", title="Extension field for ``abatementString``."
     )
 
-    bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
+    bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Anatomical location, if relevant",
@@ -138,7 +138,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="problem-list-item | encounter-diagnosis",
@@ -148,7 +148,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    clinicalStatus: fhirtypes.CodeableConceptType = Field(
+    clinicalStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="clinicalStatus",
         title=(
@@ -161,7 +161,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Identification of the condition, problem or diagnosis",
@@ -171,7 +171,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="The Encounter during which this Condition was created",
@@ -186,7 +186,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    evidence: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    evidence: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="evidence",
         title="Supporting evidence for the verification status",
@@ -202,7 +202,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this condition",
@@ -216,7 +216,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Additional information about the Condition",
@@ -230,7 +230,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    onsetAge: fhirtypes.AgeType = Field(
+    onsetAge: fhirtypes.AgeType = Field(  # type: ignore
         None,
         alias="onsetAge",
         title="Estimated or actual date,  date-time, or age",
@@ -246,7 +246,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    onsetDateTime: fhirtypes.DateTimeType = Field(
+    onsetDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="onsetDateTime",
         title="Estimated or actual date,  date-time, or age",
@@ -261,11 +261,11 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_onsetDateTime", title="Extension field for ``onsetDateTime``."
     )
 
-    onsetPeriod: fhirtypes.PeriodType = Field(
+    onsetPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="onsetPeriod",
         title="Estimated or actual date,  date-time, or age",
@@ -281,7 +281,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    onsetRange: fhirtypes.RangeType = Field(
+    onsetRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="onsetRange",
         title="Estimated or actual date,  date-time, or age",
@@ -297,7 +297,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    onsetString: fhirtypes.StringType = Field(
+    onsetString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="onsetString",
         title="Estimated or actual date,  date-time, or age",
@@ -312,11 +312,11 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
-    participant: typing.List[fhirtypes.ConditionParticipantType] = Field(
+    participant: typing.List[fhirtypes.ConditionParticipantType] = Field(  # type: ignore
         None,
         alias="participant",
         title=(
@@ -332,7 +332,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    recordedDate: fhirtypes.DateTimeType = Field(
+    recordedDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="recordedDate",
         title="Date condition was first recorded",
@@ -344,11 +344,11 @@ class Condition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_recordedDate", title="Extension field for ``recordedDate``."
     )
 
-    severity: fhirtypes.CodeableConceptType = Field(
+    severity: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="severity",
         title="Subjective severity of condition",
@@ -361,7 +361,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    stage: typing.List[fhirtypes.ConditionStageType] = Field(
+    stage: typing.List[fhirtypes.ConditionStageType] = Field(  # type: ignore
         None,
         alias="stage",
         title="Stage/grade, usually assessed formally",
@@ -376,7 +376,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="subject",
         title="Who has the condition?",
@@ -391,7 +391,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    verificationStatus: fhirtypes.CodeableConceptType = Field(
+    verificationStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="verificationStatus",
         title=(
@@ -481,9 +481,6 @@ class Condition(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class ConditionParticipant(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -497,7 +494,7 @@ class ConditionParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionParticipant"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="actor",
         title="Who or what participated in the activities related to the condition",
@@ -520,7 +517,7 @@ class ConditionParticipant(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType = Field(
+    function: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="function",
         title="Type of involvement",
@@ -555,7 +552,7 @@ class ConditionStage(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionStage"
 
-    assessment: typing.List[fhirtypes.ReferenceType] = Field(
+    assessment: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="assessment",
         title="Formal record of assessment",
@@ -574,7 +571,7 @@ class ConditionStage(backboneelement.BackboneElement):
         },
     )
 
-    summary: fhirtypes.CodeableConceptType = Field(
+    summary: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="summary",
         title="Simple summary (disease specific)",
@@ -589,7 +586,7 @@ class ConditionStage(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of staging",

@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -23,9 +23,9 @@ class BackboneElement(element.Element):
     not those in a data type.
     """
 
-    resource_type = Field("BackboneElement", const=True)
+    __resource_type__ = "BackboneElement"
 
-    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(
+    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
         None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored even if unrecognized",
@@ -44,8 +44,9 @@ class BackboneElement(element.Element):
             "elements on Resource or DomainResource (including cannot change the "
             "meaning of modifierExtension itself)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

@@ -7,27 +7,34 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import messagedefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_messagedefinition_1(inst):
     assert inst.category == "notification"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2016-11-09").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-11-09"}
+        ).valueDateTime
+    )
     assert inst.description == "Message definition base example"
     assert inst.eventCoding.code == "admin-notify"
     assert (
         inst.eventCoding.system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/message-events"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/message-events"}
         ).valueUri
     )
     assert inst.experimental is True
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.15.3"
     assert inst.name == "EXAMPLE"
@@ -44,8 +51,8 @@ def impl_messagedefinition_1(inst):
     assert inst.title == "Message definition base example"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/MessageDefinition/example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/MessageDefinition/example"}
         ).valueUri
     )
 
@@ -83,7 +90,12 @@ def impl_messagedefinition_2(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org"
     assert inst.copyright == "� HL7.org 2011+"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-02-03").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-02-03"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "Notification of two patient records that represent the same "
         "individual that require an established linkage."
@@ -91,8 +103,8 @@ def impl_messagedefinition_2(inst):
     assert inst.eventCoding.code == "admin-notify"
     assert (
         inst.eventCoding.system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/message-events"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/message-events"}
         ).valueUri
     )
     assert inst.experimental is True
@@ -103,14 +115,18 @@ def impl_messagedefinition_2(inst):
     assert inst.id == "patient-link-notification"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.15.2"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.name == "PATIENTLINKNOTIFICATION"
     assert inst.publisher == "Health Level Seven, Int'l"
@@ -126,22 +142,24 @@ def impl_messagedefinition_2(inst):
     assert inst.title == "Link Patients Notification"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/MessageDefinition/patient-link-notification"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/MessageDefinition/patient-link-notification"
+            }
         ).valueUri
     )
     assert inst.useContext[0].code.code == "focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "positive"
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/variant-state"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/variant-state"}
         ).valueUri
     )
     assert inst.version == "1"
@@ -176,13 +194,18 @@ def impl_messagedefinition_3(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org"
     assert inst.copyright == "� HL7.org 2011+"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-02-03").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-02-03"}
+        ).valueDateTime
+    )
     assert inst.description == "Optional response to a patient link notification."
     assert inst.eventCoding.code == "admin-notify"
     assert (
         inst.eventCoding.system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/message-events"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/message-events"}
         ).valueUri
     )
     assert inst.experimental is True
@@ -193,14 +216,18 @@ def impl_messagedefinition_3(inst):
     assert inst.id == "patient-link-response"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.15.1"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.name == "PATIENTLINKRESPONSE"
     assert inst.publisher == "Health Level Seven, Int'l"
@@ -216,22 +243,22 @@ def impl_messagedefinition_3(inst):
     assert inst.title == "Link Patients Response"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/MessageDefinition/patient-link-response"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/MessageDefinition/patient-link-response"}
         ).valueUri
     )
     assert inst.useContext[0].code.code == "focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "positive"
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/variant-state"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/variant-state"}
         ).valueUri
     )
     assert inst.version == "1"

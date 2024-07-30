@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -29,26 +27,27 @@ class DiagnosticReport(domainresource.DomainResource):
     interpretations, and formatted representation of diagnostic reports.
     """
 
-    resource_type = Field("DiagnosticReport", const=True)
+    __resource_type__ = "DiagnosticReport"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="What was requested",
         description="Details concerning a service requested.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "CarePlan",
-            "ImmunizationRecommendation",
-            "MedicationRequest",
-            "NutritionOrder",
-            "ServiceRequest",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "CarePlan",
+                "ImmunizationRecommendation",
+                "MedicationRequest",
+                "NutritionOrder",
+                "ServiceRequest",
+            ],
+        },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Service category",
@@ -58,20 +57,22 @@ class DiagnosticReport(domainresource.DomainResource):
             "biochemistry, hematology, MRI). This is used for searching, sorting "
             "and display purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Name/Code for this diagnostic report",
         description="A code or name that describes this diagnostic report.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    conclusion: fhirtypes.String = Field(
+    conclusion: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="conclusion",
         title="Clinical conclusion (interpretation) of test results",
@@ -79,14 +80,15 @@ class DiagnosticReport(domainresource.DomainResource):
             "Concise and clinically contextualized summary conclusion "
             "(interpretation/impression) of the diagnostic report."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_conclusion", title="Extension field for ``conclusion``."
     )
 
-    conclusionCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+    conclusionCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="conclusionCode",
         title="Codes for the clinical conclusion of test results",
@@ -94,11 +96,12 @@ class DiagnosticReport(domainresource.DomainResource):
             "One or more codes that represent the summary conclusion "
             "(interpretation/impression) of the diagnostic report."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    effectiveDateTime: fhirtypes.DateTime = Field(
+    effectiveDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="effectiveDateTime",
         title="Clinically relevant time/time-period for report",
@@ -108,19 +111,20 @@ class DiagnosticReport(domainresource.DomainResource):
             " the procedure or of specimen collection(s), but very often the source"
             " of the date/time is not known, only the date/time itself."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e effective[x]
-        one_of_many="effective",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e effective[x]
+            "one_of_many": "effective",
+            "one_of_many_required": False,
+        },
     )
-    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_effectiveDateTime",
         title="Extension field for ``effectiveDateTime``.",
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(
+    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="Clinically relevant time/time-period for report",
@@ -130,14 +134,15 @@ class DiagnosticReport(domainresource.DomainResource):
             " the procedure or of specimen collection(s), but very often the source"
             " of the date/time is not known, only the date/time itself."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e effective[x]
-        one_of_many="effective",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e effective[x]
+            "one_of_many": "effective",
+            "one_of_many_required": False,
+        },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Health care event when test ordered",
@@ -145,22 +150,24 @@ class DiagnosticReport(domainresource.DomainResource):
             "The healthcare event  (e.g. a patient and healthcare provider "
             "interaction) which this DiagnosticReport is about."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for report",
         description="Identifiers assigned to this report by the performer or other systems.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    imagingStudy: typing.List[fhirtypes.ReferenceType] = Field(
+    imagingStudy: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="imagingStudy",
         title=(
@@ -174,13 +181,14 @@ class DiagnosticReport(domainresource.DomainResource):
             "PACS viewer can use this information to provide views of the source "
             "images."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ImagingStudy"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ImagingStudy"],
+        },
     )
 
-    issued: fhirtypes.Instant = Field(
+    issued: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="issued",
         title="DateTime this version was made",
@@ -188,14 +196,15 @@ class DiagnosticReport(domainresource.DomainResource):
             "The date and time that this version of the report was made available "
             "to providers, typically after the report was reviewed and verified."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    media: typing.List[fhirtypes.DiagnosticReportMediaType] = Field(
+    media: typing.List[fhirtypes.DiagnosticReportMediaType] = Field(  # type: ignore
         None,
         alias="media",
         title="Key images associated with this report",
@@ -204,27 +213,29 @@ class DiagnosticReport(domainresource.DomainResource):
             "generally created during the diagnostic process, and may be directly "
             "of the patient, or of treated specimens (i.e. slides of interest)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    performer: typing.List[fhirtypes.ReferenceType] = Field(
+    performer: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="performer",
         title="Responsible Diagnostic Service",
         description="The diagnostic service that is responsible for issuing the report.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "CareTeam",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+                "CareTeam",
+            ],
+        },
     )
 
-    presentedForm: typing.List[fhirtypes.AttachmentType] = Field(
+    presentedForm: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="presentedForm",
         title="Entire report as issued",
@@ -233,11 +244,12 @@ class DiagnosticReport(domainresource.DomainResource):
             "diagnostic service. Multiple formats are allowed but they SHALL be "
             "semantically equivalent."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    result: typing.List[fhirtypes.ReferenceType] = Field(
+    result: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="result",
         title="Observations",
@@ -245,13 +257,14 @@ class DiagnosticReport(domainresource.DomainResource):
             "[Observations](observation.html)  that are part of this diagnostic "
             "report."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Observation"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Observation"],
+        },
     )
 
-    resultsInterpreter: typing.List[fhirtypes.ReferenceType] = Field(
+    resultsInterpreter: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="resultsInterpreter",
         title="Primary result interpreter",
@@ -259,45 +272,48 @@ class DiagnosticReport(domainresource.DomainResource):
             "The practitioner or organization that is responsible for the report's "
             "conclusions and interpretations."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "CareTeam",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+                "CareTeam",
+            ],
+        },
     )
 
-    specimen: typing.List[fhirtypes.ReferenceType] = Field(
+    specimen: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="specimen",
         title="Specimens this report is based on",
         description="Details about the specimens on which this diagnostic report is based.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Specimen"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Specimen"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="registered | partial | preliminary | final +",
         description="The status of the diagnostic report.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["registered", "partial", "preliminary", "final", "+"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["registered", "partial", "preliminary", "final", "+"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="The subject of the report - usually, but not always, the patient",
@@ -306,20 +322,21 @@ class DiagnosticReport(domainresource.DomainResource):
             " However, diagnostic services also perform analyses on specimens "
             "collected from a variety of other sources."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Group",
-            "Device",
-            "Location",
-            "Organization",
-            "Procedure",
-            "Practitioner",
-            "Medication",
-            "Substance",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Group",
+                "Device",
+                "Location",
+                "Organization",
+                "Procedure",
+                "Practitioner",
+                "Medication",
+                "Substance",
+            ],
+        },
     )
 
     @classmethod
@@ -358,10 +375,7 @@ class DiagnosticReport(domainresource.DomainResource):
             "presentedForm",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1849(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -370,57 +384,9 @@ class DiagnosticReport(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1849(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -434,26 +400,7 @@ class DiagnosticReport(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"effective": ["effectiveDateTime", "effectivePeriod"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class DiagnosticReportMedia(backboneelement.BackboneElement):
@@ -467,9 +414,9 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
     or of treated specimens (i.e. slides of interest).
     """
 
-    resource_type = Field("DiagnosticReportMedia", const=True)
+    __resource_type__ = "DiagnosticReportMedia"
 
-    comment: fhirtypes.String = Field(
+    comment: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="comment",
         title="Comment about the image (e.g. explanation)",
@@ -478,22 +425,24 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
             "explanation for why the image is included, or to draw the viewer's "
             "attention to important features."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    link: fhirtypes.ReferenceType = Field(
+    link: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="link",
         title="Reference to the image source",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Media"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Media"],
+        },
     )
 
     @classmethod

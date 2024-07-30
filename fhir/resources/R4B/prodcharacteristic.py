@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, fhirtypes
 
@@ -23,9 +23,9 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     available.
     """
 
-    resource_type = Field("ProdCharacteristic", const=True)
+    __resource_type__ = "ProdCharacteristic"
 
-    color: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    color: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="color",
         title=(
@@ -34,14 +34,15 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    color__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_color", title="Extension field for ``color``.")
+    color__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_color", title="Extension field for ``color``."
+    )
 
-    depth: fhirtypes.QuantityType = Field(
+    depth: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="depth",
         title=(
@@ -51,11 +52,12 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             " and the symbol identifier shall be used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    externalDiameter: fhirtypes.QuantityType = Field(
+    externalDiameter: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="externalDiameter",
         title=(
@@ -65,11 +67,12 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "terminology The symbol and the symbol identifier shall be used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    height: fhirtypes.QuantityType = Field(
+    height: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="height",
         title=(
@@ -79,11 +82,12 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             " and the symbol identifier shall be used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] = Field(
+    image: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="image",
         title=(
@@ -91,23 +95,25 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "attachment shall be specified by regional implementations"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    imprint: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    imprint: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="imprint",
         title="Where applicable, the imprint can be specified as text",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    imprint__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_imprint", title="Extension field for ``imprint``.")
+    imprint__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_imprint", title="Extension field for ``imprint``."
+    )
 
-    nominalVolume: fhirtypes.QuantityType = Field(
+    nominalVolume: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="nominalVolume",
         title=(
@@ -117,11 +123,12 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "terminology The symbol and the symbol identifier shall be used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    scoring: fhirtypes.CodeableConceptType = Field(
+    scoring: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="scoring",
         title=(
@@ -130,11 +137,12 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "shall be used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    shape: fhirtypes.String = Field(
+    shape: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="shape",
         title=(
@@ -143,14 +151,15 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    shape__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    shape__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_shape", title="Extension field for ``shape``."
     )
 
-    weight: fhirtypes.QuantityType = Field(
+    weight: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="weight",
         title=(
@@ -160,11 +169,12 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             " and the symbol identifier shall be used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    width: fhirtypes.QuantityType = Field(
+    width: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="width",
         title=(
@@ -174,8 +184,9 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             " and the symbol identifier shall be used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

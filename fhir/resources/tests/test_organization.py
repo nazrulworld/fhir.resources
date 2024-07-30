@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import organization
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_organization_1(inst):
@@ -19,20 +19,22 @@ def impl_organization_1(inst):
     assert inst.contact[0].address.state == "MI"
     assert (
         inst.contact[0].extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/extended-contact-availability"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/extended-contact-availability"
+            }
         ).valueUri
     )
     assert (
         inst.contact[0].extension[0].valueAvailability.availableTime[0].availableEndTime
-        == ExternalValidatorModel(valueTime="07:00:00").valueTime
+        == ExternalValidatorModel.model_validate({"valueTime": "07:00:00"}).valueTime
     )
     assert (
         inst.contact[0]
         .extension[0]
         .valueAvailability.availableTime[0]
         .availableStartTime
-        == ExternalValidatorModel(valueTime="09:00:00").valueTime
+        == ExternalValidatorModel.model_validate({"valueTime": "09:00:00"}).valueTime
     )
     assert (
         inst.contact[0].extension[0].valueAvailability.availableTime[0].daysOfWeek[0]
@@ -70,8 +72,8 @@ def impl_organization_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Health Level Seven International"
@@ -104,8 +106,8 @@ def impl_organization_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Acme Corporation"
@@ -140,15 +142,17 @@ def impl_organization_3(inst):
     assert inst.id == "1"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://www.acme.org.au/units").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.acme.org.au/units"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "Gastro"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Gastroenterology"
@@ -178,8 +182,8 @@ def impl_organization_4(inst):
     assert inst.id == "3"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://michigan.gov/state-dept-ids"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://michigan.gov/state-dept-ids"}
         ).valueUri
     )
     assert inst.identifier[0].value == "25"
@@ -187,8 +191,8 @@ def impl_organization_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Michigan Health"
@@ -223,15 +227,17 @@ def impl_organization_5(inst):
     assert inst.id == "1832473e-2fe0-452d-abe9-3cdb9879522f"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://www.acme.org.au/units").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.acme.org.au/units"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "ClinLab"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Clinical Lab"
@@ -263,8 +269,8 @@ def impl_organization_6(inst):
     assert inst.contact[0].purpose.coding[0].code == "ADMIN"
     assert (
         inst.contact[0].purpose.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contactentity-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/contactentity-type"}
         ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "phone"
@@ -278,8 +284,8 @@ def impl_organization_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Burgers UMC Cardiology unit"
@@ -289,8 +295,8 @@ def impl_organization_6(inst):
     assert inst.type[0].coding[0].display == "Hospital Department"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/organization-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/organization-type"}
         ).valueUri
     )
 
@@ -342,7 +348,9 @@ def impl_organization_7(inst):
     assert inst.id == "f201"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://www.zorgkaartnederland.nl/").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.zorgkaartnederland.nl/"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "Artis University Medical Center"
@@ -350,8 +358,8 @@ def impl_organization_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Artis University Medical Center (AUMC)"
@@ -360,22 +368,24 @@ def impl_organization_7(inst):
     assert inst.type[0].coding[0].display == "Academic Medical Center"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.type[0].coding[1].code == "V6"
     assert inst.type[0].coding[1].display == "University Medical Hospital"
     assert (
         inst.type[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="urn:oid:2.16.840.1.113883.2.4.15.1060"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.2.4.15.1060"}
         ).valueUri
     )
     assert inst.type[0].coding[2].code == "prov"
     assert inst.type[0].coding[2].display == "Healthcare Provider"
     assert (
         inst.type[0].coding[2].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/organization-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/organization-type"}
         ).valueUri
     )
 
@@ -404,15 +414,17 @@ def impl_organization_8(inst):
     assert inst.id == "2.16.840.1.113883.19.5"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.19.5"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Good Health Clinic"
@@ -457,8 +469,8 @@ def impl_organization_9(inst):
     assert inst.contact[3].purpose.coding[0].code == "PRESS"
     assert (
         inst.contact[3].purpose.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contactentity-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/contactentity-type"}
         ).valueUri
     )
     assert inst.contact[3].telecom[0].system == "phone"
@@ -466,8 +478,8 @@ def impl_organization_9(inst):
     assert inst.contact[4].purpose.coding[0].code == "PATINF"
     assert (
         inst.contact[4].purpose.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contactentity-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/contactentity-type"}
         ).valueUri
     )
     assert inst.contact[4].telecom[0].system == "phone"
@@ -475,13 +487,17 @@ def impl_organization_9(inst):
     assert inst.id == "f001"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.528.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.528.1"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "91654"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.2.4.6.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.2.4.6.1"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "usual"
     assert inst.identifier[1].value == "17-0112278"
@@ -489,8 +505,8 @@ def impl_organization_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Burgers University Medical Center"
@@ -499,16 +515,16 @@ def impl_organization_9(inst):
     assert inst.type[0].coding[0].display == "University Medical Hospital"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="urn:oid:2.16.840.1.113883.2.4.15.1060"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.2.4.15.1060"}
         ).valueUri
     )
     assert inst.type[0].coding[1].code == "prov"
     assert inst.type[0].coding[1].display == "Healthcare Provider"
     assert (
         inst.type[0].coding[1].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/organization-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/organization-type"}
         ).valueUri
     )
 
@@ -538,8 +554,8 @@ def impl_organization_10(inst):
     assert inst.id == "2"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="urn:oid:2.16.840.1.113883.3.19.2.3"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.3.19.2.3"}
         ).valueUri
     )
     assert inst.identifier[0].value == "666666"
@@ -547,8 +563,8 @@ def impl_organization_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "XYZ Insurance"

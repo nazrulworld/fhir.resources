@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import medicationadministration
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_medicationadministration_1(inst):
@@ -16,7 +16,9 @@ def impl_medicationadministration_1(inst):
     assert inst.dosage.dose.code == "mg"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.dose.unit == "mg"
     assert float(inst.dosage.dose.value) == float(500)
@@ -25,7 +27,9 @@ def impl_medicationadministration_1(inst):
     assert inst.dosage.route.coding[0].display == "Intravenous route (qualifier value)"
     assert (
         inst.dosage.route.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.text == "500mg IV q6h x 3 days"
     assert inst.encounter.display == "encounter who leads to this prescription"
@@ -38,14 +42,14 @@ def impl_medicationadministration_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T14:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T14:30:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"
@@ -54,8 +58,10 @@ def impl_medicationadministration_1(inst):
     assert inst.reason[0].concept.coding[0].display == "Given as Ordered"
     assert (
         inst.reason[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/reason-medication-given"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/reason-medication-given"
+            }
         ).valueUri
     )
     assert inst.request.reference == "MedicationRequest/medrx0318"
@@ -94,8 +100,8 @@ def impl_medicationadministration_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.note[0].text == (
@@ -104,14 +110,14 @@ def impl_medicationadministration_2(inst):
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T14:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T14:30:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T14:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T14:30:00+01:00"}
         ).valueDateTime
     )
     assert inst.request.reference == "MedicationRequest/medrx0317"
@@ -122,7 +128,9 @@ def impl_medicationadministration_2(inst):
     )
     assert (
         inst.statusReason[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.subject.display == "Donald Duck"
     assert inst.subject.reference == "Patient/pat1"
@@ -158,7 +166,9 @@ def impl_medicationadministration_3(inst):
     assert inst.dosage.dose.code == "mg"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.dose.unit == "mg"
     assert float(inst.dosage.dose.value) == float(7)
@@ -169,12 +179,16 @@ def impl_medicationadministration_3(inst):
     )
     assert (
         inst.dosage.method.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.rateQuantity.code == "min"
     assert (
         inst.dosage.rateQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.rateQuantity.unit == "min"
     assert float(inst.dosage.rateQuantity.value) == float(4)
@@ -182,7 +196,9 @@ def impl_medicationadministration_3(inst):
     assert inst.dosage.route.coding[0].display == "Intravenous"
     assert (
         inst.dosage.route.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.text == (
         "0.05 - 0.1mg/kg IV over 2-5 minutes every 15 minutes as " "needed"
@@ -195,20 +211,20 @@ def impl_medicationadministration_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T14:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T14:30:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T04:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T04:30:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"
@@ -217,8 +233,10 @@ def impl_medicationadministration_3(inst):
     assert inst.performer[0].function.coding[0].display == "Performer"
     assert (
         inst.performer[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/med-admin-perform-function"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/med-admin-perform-function"
+            }
         ).valueUri
     )
     assert inst.request.reference == "MedicationRequest/medrx0315"
@@ -253,8 +271,8 @@ def impl_medicationadministration_4(inst):
     assert inst.dosage.dose.code == "TAB"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"}
         ).valueUri
     )
     assert inst.dosage.dose.unit == "TAB"
@@ -263,7 +281,9 @@ def impl_medicationadministration_4(inst):
     assert inst.dosage.route.coding[0].display == "Oral Route"
     assert (
         inst.dosage.route.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.text == (
         "0.25mg PO every 6-12 hours as needed for menses from Jan "
@@ -275,20 +295,20 @@ def impl_medicationadministration_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-16T02:03:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-16T02:03:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T22:03:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T22:03:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"
@@ -297,7 +317,9 @@ def impl_medicationadministration_4(inst):
     assert inst.reason[0].concept.coding[0].display == "Dysmenorrhea"
     assert (
         inst.reason[0].concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.request.reference == "MedicationRequest/medrx0305"
     assert inst.status == "completed"
@@ -331,7 +353,9 @@ def impl_medicationadministration_5(inst):
     assert inst.dosage.dose.code == "mg"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.dose.unit == "mg"
     assert float(inst.dosage.dose.value) == float(6)
@@ -339,7 +363,9 @@ def impl_medicationadministration_5(inst):
     assert inst.dosage.route.coding[0].display == "Oral route (qualifier value)"
     assert (
         inst.dosage.route.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.text == (
         "6 mg PO daily for remission induction; adjust dosage to "
@@ -353,20 +379,20 @@ def impl_medicationadministration_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-16T02:03:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-16T02:03:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T22:03:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T22:03:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"
@@ -403,8 +429,8 @@ def impl_medicationadministration_6(inst):
     assert inst.dosage.dose.code == "TAB"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"}
         ).valueUri
     )
     assert inst.dosage.dose.unit == "TAB"
@@ -416,13 +442,17 @@ def impl_medicationadministration_6(inst):
     )
     assert (
         inst.dosage.method.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.route.coding[0].code == "26643006"
     assert inst.dosage.route.coding[0].display == "Oral Route"
     assert (
         inst.dosage.route.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.text == "Two tablets at once"
     assert inst.encounter.display == "encounter who leads to this prescription"
@@ -433,20 +463,20 @@ def impl_medicationadministration_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T14:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T14:30:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T04:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T04:30:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"
@@ -455,8 +485,10 @@ def impl_medicationadministration_6(inst):
     assert inst.performer[0].function.coding[0].display == "Performer"
     assert (
         inst.performer[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/med-admin-perform-function"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/med-admin-perform-function"
+            }
         ).valueUri
     )
     assert inst.request.reference == "MedicationRequest/medrx0302"
@@ -492,7 +524,9 @@ def impl_medicationadministration_7(inst):
     assert inst.dosage.dose.code == "mL"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.dose.unit == "mL"
     assert float(inst.dosage.dose.value) == float(1000)
@@ -500,14 +534,18 @@ def impl_medicationadministration_7(inst):
     assert inst.dosage.rateRatio.denominator.code == "h"
     assert (
         inst.dosage.rateRatio.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.rateRatio.denominator.unit == "h"
     assert float(inst.dosage.rateRatio.denominator.value) == float(1)
     assert inst.dosage.rateRatio.numerator.code == "mL"
     assert (
         inst.dosage.rateRatio.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.rateRatio.numerator.unit == "mL"
     assert float(inst.dosage.rateRatio.numerator.value) == float(50)
@@ -515,7 +553,9 @@ def impl_medicationadministration_7(inst):
     assert inst.dosage.route.coding[0].display == "Intravenous"
     assert (
         inst.dosage.route.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.site.coding[0].code == "6073002"
     assert (
@@ -524,7 +564,9 @@ def impl_medicationadministration_7(inst):
     )
     assert (
         inst.dosage.site.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.dosage.text
@@ -536,20 +578,20 @@ def impl_medicationadministration_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-16T02:03:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-16T02:03:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T22:03:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T22:03:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"
@@ -558,8 +600,10 @@ def impl_medicationadministration_7(inst):
     assert inst.performer[0].function.coding[0].display == "Performer"
     assert (
         inst.performer[0].function.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/med-admin-perform-function"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/med-admin-perform-function"
+            }
         ).valueUri
     )
     assert inst.request.reference == "MedicationRequest/medrx0323"
@@ -593,7 +637,9 @@ def impl_medicationadministration_8(inst):
     assert inst.dosage.dose.code == "mg"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.dose.unit == "mg"
     assert float(inst.dosage.dose.value) == float(240)
@@ -601,7 +647,9 @@ def impl_medicationadministration_8(inst):
     assert inst.dosage.site.coding[0].display == "Rectum structure"
     assert (
         inst.dosage.site.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.text == (
         "Insert one suppository rectally twice daily as needed for "
@@ -615,26 +663,28 @@ def impl_medicationadministration_8(inst):
     )
     assert (
         inst.medication.concept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-16T02:03:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-16T02:03:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T22:03:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T22:03:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"
@@ -643,8 +693,10 @@ def impl_medicationadministration_8(inst):
     assert inst.reason[0].concept.coding[0].display == "Emergency"
     assert (
         inst.reason[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/reason-medication-given"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/reason-medication-given"
+            }
         ).valueUri
     )
     assert inst.request.reference == "MedicationRequest/medrx0324"
@@ -679,19 +731,25 @@ def impl_medicationadministration_9(inst):
     assert inst.dosage.dose.code == "mg/kg"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.dose.unit == "mg/kg"
     assert float(inst.dosage.dose.value) == float(1.8)
     assert (
         inst.dosage.rateRatio.denominator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.rateRatio.denominator.unit == "min"
     assert float(inst.dosage.rateRatio.denominator.value) == float(30)
     assert (
         inst.dosage.rateRatio.numerator.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.rateRatio.numerator.unit == "ml"
     assert float(inst.dosage.rateRatio.numerator.value) == float(250)
@@ -699,7 +757,9 @@ def impl_medicationadministration_9(inst):
     assert inst.dosage.route.coding[0].display == "Intravenous"
     assert (
         inst.dosage.route.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.text == "1.8 mg/kg IV infusion over 30 minutes"
     assert inst.encounter.display == "encounter who leads to this prescription"
@@ -710,20 +770,20 @@ def impl_medicationadministration_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T14:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T14:30:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T04:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T04:30:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"
@@ -760,7 +820,9 @@ def impl_medicationadministration_10(inst):
     assert inst.dosage.dose.code == "mg"
     assert (
         inst.dosage.dose.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.dosage.dose.unit == "mg"
     assert float(inst.dosage.dose.value) == float(3)
@@ -771,13 +833,17 @@ def impl_medicationadministration_10(inst):
     )
     assert (
         inst.dosage.method.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.route.coding[0].code == "47625008"
     assert inst.dosage.route.coding[0].display == "Intravenous route (qualifier value)"
     assert (
         inst.dosage.route.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.dosage.text == (
         "Rapid daily-dose escalation, until tolerated, from 3 mg/d, "
@@ -793,20 +859,20 @@ def impl_medicationadministration_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurencePeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T14:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T14:30:00+01:00"}
         ).valueDateTime
     )
     assert (
         inst.occurencePeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-01-15T04:30:00+01:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-15T04:30:00+01:00"}
         ).valueDateTime
     )
     assert inst.performer[0].actor.reference.display == "Patrick Pump"

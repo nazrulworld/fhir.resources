@@ -8,7 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, fhirtypes
 
@@ -22,18 +22,19 @@ class ProductShelfLife(backboneelement.BackboneElement):
     container can be described using this class.
     """
 
-    resource_type = Field("ProductShelfLife", const=True)
+    __resource_type__ = "ProductShelfLife"
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique identifier for the packaged Medicinal Product",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    period: fhirtypes.QuantityType = Field(
+    period: fhirtypes.QuantityType = Field(  # type: ignore
         ...,
         alias="period",
         title=(
@@ -44,11 +45,12 @@ class ProductShelfLife(backboneelement.BackboneElement):
             "used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] = Field(
+    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="specialPrecautionsForStorage",
         title=(
@@ -57,11 +59,12 @@ class ProductShelfLife(backboneelement.BackboneElement):
             "controlled term identifier shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title=(
@@ -73,8 +76,9 @@ class ProductShelfLife(backboneelement.BackboneElement):
             "the controlled term identifier shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

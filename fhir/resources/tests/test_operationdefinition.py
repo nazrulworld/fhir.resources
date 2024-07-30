@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import operationdefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_operationdefinition_1(inst):
@@ -19,22 +19,26 @@ def impl_operationdefinition_1(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 1
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -44,8 +48,8 @@ def impl_operationdefinition_1(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -57,8 +61,10 @@ def impl_operationdefinition_1(inst):
     assert inst.parameter[0].use == "in"
     assert (
         inst.parameter[1].binding.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
+            }
         ).valueUri
     )
     assert (
@@ -76,8 +82,10 @@ def impl_operationdefinition_1(inst):
     assert inst.parameter[1].use == "in"
     assert (
         inst.parameter[2].binding.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
+            }
         ).valueUri
     )
     assert (
@@ -156,8 +164,10 @@ def impl_operationdefinition_1(inst):
     assert inst.type is True
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/NamingSystem-translate-id"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/NamingSystem-translate-id"
+            }
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -194,22 +204,26 @@ def impl_operationdefinition_2(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 3
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -219,8 +233,8 @@ def impl_operationdefinition_2(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -284,8 +298,10 @@ def impl_operationdefinition_2(inst):
     assert inst.type is True
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/DocumentReference-docref"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/DocumentReference-docref"
+            }
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -322,8 +338,8 @@ def impl_operationdefinition_3(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -333,15 +349,19 @@ def impl_operationdefinition_3(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 2
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -351,8 +371,8 @@ def impl_operationdefinition_3(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -395,8 +415,8 @@ def impl_operationdefinition_3(inst):
     assert inst.type is True
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/Subscription-status"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/Subscription-status"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -431,8 +451,8 @@ def impl_operationdefinition_4(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -443,15 +463,19 @@ def impl_operationdefinition_4(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 3
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -461,8 +485,8 @@ def impl_operationdefinition_4(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -502,8 +526,10 @@ def impl_operationdefinition_4(inst):
     assert inst.type is False
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/Measure-data-requirements"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/Measure-data-requirements"
+            }
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -540,22 +566,26 @@ def impl_operationdefinition_5(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 1
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -565,8 +595,8 @@ def impl_operationdefinition_5(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -664,8 +694,8 @@ def impl_operationdefinition_5(inst):
     assert inst.type is True
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/ConceptMap-translate"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/ConceptMap-translate"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -702,8 +732,8 @@ def impl_operationdefinition_6(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -714,15 +744,19 @@ def impl_operationdefinition_6(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 0
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -732,8 +766,8 @@ def impl_operationdefinition_6(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -765,8 +799,8 @@ def impl_operationdefinition_6(inst):
     assert inst.type is False
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/Resource-add"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/Resource-add"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -806,8 +840,8 @@ def impl_operationdefinition_7(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -817,15 +851,19 @@ def impl_operationdefinition_7(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 1
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -835,8 +873,8 @@ def impl_operationdefinition_7(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -927,8 +965,10 @@ def impl_operationdefinition_7(inst):
     assert inst.type is True
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/SpecimenDefinition-apply"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/OperationDefinition/SpecimenDefinition-apply"
+            }
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -965,22 +1005,26 @@ def impl_operationdefinition_8(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 5
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "normative"
@@ -990,8 +1034,8 @@ def impl_operationdefinition_8(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -1077,8 +1121,8 @@ def impl_operationdefinition_8(inst):
     assert inst.type is True
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/ValueSet-expand"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -1113,8 +1157,8 @@ def impl_operationdefinition_9(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -1124,15 +1168,19 @@ def impl_operationdefinition_9(inst):
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 3
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -1142,8 +1190,8 @@ def impl_operationdefinition_9(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -1168,8 +1216,8 @@ def impl_operationdefinition_9(inst):
     assert inst.type is False
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/Resource-meta-add"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/Resource-meta-add"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -1204,22 +1252,26 @@ def impl_operationdefinition_10(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is False
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueInteger == 2
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status"
+            }
         ).valueUri
     )
     assert inst.extension[1].valueCode == "trial-use"
@@ -1229,8 +1281,8 @@ def impl_operationdefinition_10(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unstats.un.org/unsd/methods/m49/m49.htm"}
         ).valueUri
     )
     assert inst.kind == "operation"
@@ -1275,8 +1327,8 @@ def impl_operationdefinition_10(inst):
     assert inst.type is False
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/OperationDefinition/Encounter-everything"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/OperationDefinition/Encounter-everything"}
         ).valueUri
     )
     assert inst.version == "5.0.0"

@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -22,9 +22,9 @@ class HumanName(element.Element):
     A human's name with the ability to identify parts and usage.
     """
 
-    resource_type = Field("HumanName", const=True)
+    __resource_type__ = "HumanName"
 
-    family: fhirtypes.String = Field(
+    family: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="family",
         title="Family name (often called 'Surname')",
@@ -32,26 +32,28 @@ class HumanName(element.Element):
             "The part of a name that links to the genealogy. In some cultures (e.g."
             " Eritrea) the family name of a son is the first name of his father."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    family__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    family__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_family", title="Extension field for ``family``."
     )
 
-    given: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    given: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="given",
         title="Given names (not always 'first'). Includes middle names",
         description="Given name.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    given__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_given", title="Extension field for ``given``.")
+    given__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_given", title="Extension field for ``given``."
+    )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period when name was/is in use",
@@ -59,11 +61,12 @@ class HumanName(element.Element):
             "Indicates the period of time when this name was valid for the named "
             "person."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    prefix: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    prefix: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="prefix",
         title="Parts that come before the name",
@@ -72,14 +75,15 @@ class HumanName(element.Element):
             "employment or nobility status, etc. and that appears at the start of "
             "the name."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    prefix__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_prefix", title="Extension field for ``prefix``.")
+    prefix__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_prefix", title="Extension field for ``prefix``."
+    )
 
-    suffix: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    suffix: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="suffix",
         title="Parts that come after the name",
@@ -88,45 +92,48 @@ class HumanName(element.Element):
             "employment or nobility status, etc. and that appears at the end of the"
             " name."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    suffix__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_suffix", title="Extension field for ``suffix``.")
+    suffix__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_suffix", title="Extension field for ``suffix``."
+    )
 
-    text: fhirtypes.String = Field(
+    text: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="text",
         title="Text representation of the full name",
         description="A full text representation of the name.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    use: fhirtypes.Code = Field(
+    use: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="use",
         title="usual | official | temp | nickname | anonymous | old | maiden",
         description="Identifies the purpose for this name.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "usual",
-            "official",
-            "temp",
-            "nickname",
-            "anonymous",
-            "old",
-            "maiden",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "usual",
+                "official",
+                "temp",
+                "nickname",
+                "anonymous",
+                "old",
+                "maiden",
+            ],
+        },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_use", title="Extension field for ``use``."
     )
 

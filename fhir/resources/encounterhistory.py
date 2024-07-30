@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class EncounterHistory(domainresource.DomainResource):
@@ -26,7 +26,7 @@ class EncounterHistory(domainresource.DomainResource):
 
     __resource_type__ = "EncounterHistory"
 
-    actualPeriod: fhirtypes.PeriodType = Field(
+    actualPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="actualPeriod",
         title=(
@@ -43,7 +43,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    class_fhir: fhirtypes.CodeableConceptType = Field(
+    class_fhir: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="class",
         title="Classification of patient encounter",
@@ -57,7 +57,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="The Encounter associated with this set of historic values",
@@ -69,7 +69,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier(s) by which this encounter is known",
@@ -79,7 +79,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    length: fhirtypes.DurationType = Field(
+    length: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="length",
         title="Actual quantity of time the encounter lasted (less time absent)",
@@ -93,7 +93,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.EncounterHistoryLocationType] = Field(
+    location: typing.List[fhirtypes.EncounterHistoryLocationType] = Field(  # type: ignore
         None,
         alias="location",
         title="Location of the patient at this point in the encounter",
@@ -107,7 +107,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    plannedEndDate: fhirtypes.DateTimeType = Field(
+    plannedEndDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="plannedEndDate",
         title="The planned end date/time (or discharge date) of the encounter",
@@ -116,11 +116,11 @@ class EncounterHistory(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    plannedEndDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    plannedEndDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_plannedEndDate", title="Extension field for ``plannedEndDate``."
     )
 
-    plannedStartDate: fhirtypes.DateTimeType = Field(
+    plannedStartDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="plannedStartDate",
         title="The planned start date/time (or admission date) of the encounter",
@@ -129,13 +129,13 @@ class EncounterHistory(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    plannedStartDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    plannedStartDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_plannedStartDate",
         title="Extension field for ``plannedStartDate``.",
     )
 
-    serviceType: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    serviceType: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="serviceType",
         title="Specific type of service",
@@ -150,7 +150,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -176,11 +176,11 @@ class EncounterHistory(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="The patient or group related to this encounter",
@@ -196,7 +196,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    subjectStatus: fhirtypes.CodeableConceptType = Field(
+    subjectStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="subjectStatus",
         title="The current status of the subject in relation to the Encounter",
@@ -210,7 +210,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="type",
         title="Specific type of encounter",
@@ -265,9 +265,6 @@ class EncounterHistory(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class EncounterHistoryLocation(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -281,7 +278,7 @@ class EncounterHistoryLocation(backboneelement.BackboneElement):
 
     __resource_type__ = "EncounterHistoryLocation"
 
-    form: fhirtypes.CodeableConceptType = Field(
+    form: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="form",
         title=(
@@ -297,7 +294,7 @@ class EncounterHistoryLocation(backboneelement.BackboneElement):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(
+    location: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="location",
         title="Location the encounter takes place",

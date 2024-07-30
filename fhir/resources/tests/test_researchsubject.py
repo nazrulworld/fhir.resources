@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import researchsubject
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_researchsubject_1(inst):
@@ -19,19 +19,23 @@ def impl_researchsubject_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.period.start
-        == ExternalValidatorModel(valueDateTime="2022-06-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-06-10"}
+        ).valueDateTime
     )
     assert inst.progress[0].type.coding[0].code == "Enrollment"
     assert (
         inst.progress[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-subject-state-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-subject-state-type"
+            }
         ).valueUri
     )
     assert inst.progress[0].type.text == "Enrollment status"
@@ -39,21 +43,25 @@ def impl_researchsubject_1(inst):
     assert inst.progress[1].reason.text == "Informed consent signed"
     assert (
         inst.progress[1].startDate
-        == ExternalValidatorModel(valueDateTime="2022-06-10").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2022-06-10"}
+        ).valueDateTime
     )
     assert inst.progress[1].subjectState.coding[0].code == "on-study"
     assert (
         inst.progress[1].subjectState.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-subject-state"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/research-subject-state"}
         ).valueUri
     )
     assert inst.progress[1].subjectState.text == "On-study"
     assert inst.progress[1].type.coding[0].code == "Enrollment"
     assert (
         inst.progress[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/research-subject-state-type"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/research-subject-state-type"
+            }
         ).valueUri
     )
     assert inst.progress[1].type.text == "Enrollment status"

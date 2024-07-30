@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import packagedproductdefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_packagedproductdefinition_1(inst):
@@ -17,23 +17,25 @@ def impl_packagedproductdefinition_1(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://ema.europa.eu/example/pcid").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/pcid"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "{PCID}"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.packaging.manufacturer[0].reference == "Organization/example"
     assert inst.packaging.material[0].coding[0].code == "Paperboard"
     assert (
         inst.packaging.material[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/packageItemContainerMaterial"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/packageItemContainerMaterial"}
         ).valueUri
     )
     assert float(inst.packaging.packaging[0].containedItem[0].amount.value) == float(10)
@@ -47,29 +49,31 @@ def impl_packagedproductdefinition_1(inst):
     assert inst.packaging.packaging[0].material[0].coding[0].code == "PVC"
     assert (
         inst.packaging.packaging[0].material[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/packageItemContainerMaterial"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/packageItemContainerMaterial"}
         ).valueUri
     )
     assert inst.packaging.packaging[0].material[1].coding[0].code == "PVDC"
     assert (
         inst.packaging.packaging[0].material[1].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/packageItemContainerMaterial"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/packageItemContainerMaterial"}
         ).valueUri
     )
     assert inst.packaging.packaging[0].material[2].coding[0].code == "alu"
     assert (
         inst.packaging.packaging[0].material[2].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/packageItemContainerMaterial"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/packageItemContainerMaterial"}
         ).valueUri
     )
     assert inst.packaging.packaging[0].property[0].type.coding[0].code == "height"
     assert inst.packaging.packaging[0].property[0].valueQuantity.code == "mm"
     assert (
         inst.packaging.packaging[0].property[0].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.packaging.packaging[0].property[0].valueQuantity.unit == "mm"
     assert float(inst.packaging.packaging[0].property[0].valueQuantity.value) == float(
@@ -79,7 +83,9 @@ def impl_packagedproductdefinition_1(inst):
     assert inst.packaging.packaging[0].property[1].valueQuantity.code == "mm"
     assert (
         inst.packaging.packaging[0].property[1].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.packaging.packaging[0].property[1].valueQuantity.unit == "mm"
     assert float(inst.packaging.packaging[0].property[1].valueQuantity.value) == float(
@@ -89,7 +95,9 @@ def impl_packagedproductdefinition_1(inst):
     assert inst.packaging.packaging[0].shelfLifeStorage[0].periodDuration.code == "a"
     assert (
         inst.packaging.packaging[0].shelfLifeStorage[0].periodDuration.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.packaging.packaging[0].shelfLifeStorage[0].periodDuration.unit == "year"
     assert float(
@@ -109,8 +117,8 @@ def impl_packagedproductdefinition_1(inst):
         .specialPrecautionsForStorage[0]
         .coding[0]
         .system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/specialprecautionsforstorage"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/specialprecautionsforstorage"}
         ).valueUri
     )
     assert (
@@ -119,22 +127,24 @@ def impl_packagedproductdefinition_1(inst):
     )
     assert (
         inst.packaging.packaging[0].shelfLifeStorage[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/shelfLifeTypePlaceHolder"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/shelfLifeTypePlaceHolder"}
         ).valueUri
     )
     assert inst.packaging.packaging[0].type.coding[0].code == "Blister"
     assert (
         inst.packaging.packaging[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/packageitemcontainertype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/packageitemcontainertype"}
         ).valueUri
     )
     assert inst.packaging.property[0].type.coding[0].code == "height"
     assert inst.packaging.property[0].valueQuantity.code == "mm"
     assert (
         inst.packaging.property[0].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.packaging.property[0].valueQuantity.unit == "mm"
     assert float(inst.packaging.property[0].valueQuantity.value) == float(50)
@@ -142,7 +152,9 @@ def impl_packagedproductdefinition_1(inst):
     assert inst.packaging.property[1].valueQuantity.code == "mm"
     assert (
         inst.packaging.property[1].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.packaging.property[1].valueQuantity.unit == "mm"
     assert float(inst.packaging.property[1].valueQuantity.value) == float(45)
@@ -150,7 +162,9 @@ def impl_packagedproductdefinition_1(inst):
     assert inst.packaging.property[2].valueQuantity.code == "mm"
     assert (
         inst.packaging.property[2].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.packaging.property[2].valueQuantity.unit == "mm"
     assert float(inst.packaging.property[2].valueQuantity.value) == float(23.5)
@@ -158,8 +172,8 @@ def impl_packagedproductdefinition_1(inst):
     assert inst.packaging.type.coding[0].code == "Carton"
     assert (
         inst.packaging.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/packageitemcontainertype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/packageitemcontainertype"}
         ).valueUri
     )
     assert inst.text.status == "generated"
@@ -195,8 +209,8 @@ def impl_packagedproductdefinition_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -206,7 +220,9 @@ def impl_packagedproductdefinition_2(inst):
     assert inst.packaging.containedItem[0].amount.code == "mL"
     assert (
         inst.packaging.containedItem[0].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.packaging.containedItem[0].amount.unit == "ml"
     assert float(inst.packaging.containedItem[0].amount.value) == float(20)

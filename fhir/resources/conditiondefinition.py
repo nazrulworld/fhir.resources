@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class ConditionDefinition(domainresource.DomainResource):
@@ -24,7 +24,7 @@ class ConditionDefinition(domainresource.DomainResource):
 
     __resource_type__ = "ConditionDefinition"
 
-    bodySite: fhirtypes.CodeableConceptType = Field(
+    bodySite: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Anatomical location, if relevant",
@@ -34,7 +34,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Identification of the condition, problem or diagnosis",
@@ -44,7 +44,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -57,7 +57,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -72,11 +72,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    definition: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
+    definition: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="definition",
         title="Formal Definition for the condition",
@@ -88,11 +88,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    definition__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_definition", title="Extension field for ``definition``.")
+    definition__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_definition", title="Extension field for ``definition``."
+    )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the condition definition",
@@ -104,11 +104,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -121,11 +121,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    hasBodySite: bool = Field(
+    hasBodySite: bool = Field(  # type: ignore
         None,
         alias="hasBodySite",
         title="Whether bodySite is appropriate",
@@ -134,11 +134,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    hasBodySite__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    hasBodySite__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_hasBodySite", title="Extension field for ``hasBodySite``."
     )
 
-    hasSeverity: bool = Field(
+    hasSeverity: bool = Field(  # type: ignore
         None,
         alias="hasSeverity",
         title="Whether Severity is appropriate",
@@ -147,11 +147,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    hasSeverity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    hasSeverity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_hasSeverity", title="Extension field for ``hasSeverity``."
     )
 
-    hasStage: bool = Field(
+    hasStage: bool = Field(  # type: ignore
         None,
         alias="hasStage",
         title="Whether stage is appropriate",
@@ -160,11 +160,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    hasStage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    hasStage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_hasStage", title="Extension field for ``hasStage``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the condition definition",
@@ -178,7 +178,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for condition definition (if applicable)",
@@ -191,7 +191,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    medication: typing.List[fhirtypes.ConditionDefinitionMedicationType] = Field(
+    medication: typing.List[fhirtypes.ConditionDefinitionMedicationType] = Field(  # type: ignore
         None,
         alias="medication",
         title="Medications particularly relevant for this condition",
@@ -201,7 +201,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this condition definition (computer friendly)",
@@ -214,11 +214,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    observation: typing.List[fhirtypes.ConditionDefinitionObservationType] = Field(
+    observation: typing.List[fhirtypes.ConditionDefinitionObservationType] = Field(  # type: ignore
         None,
         alias="observation",
         title="Observations particularly relevant to this condition",
@@ -228,7 +228,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    plan: typing.List[fhirtypes.ConditionDefinitionPlanType] = Field(
+    plan: typing.List[fhirtypes.ConditionDefinitionPlanType] = Field(  # type: ignore
         None,
         alias="plan",
         title="Plan that is appropriate",
@@ -238,7 +238,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    precondition: typing.List[fhirtypes.ConditionDefinitionPreconditionType] = Field(
+    precondition: typing.List[fhirtypes.ConditionDefinitionPreconditionType] = Field(  # type: ignore
         None,
         alias="precondition",
         title="Observation that suggets this condition",
@@ -248,7 +248,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -260,11 +260,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    questionnaire: typing.List[fhirtypes.ConditionDefinitionQuestionnaireType] = Field(
+    questionnaire: typing.List[fhirtypes.ConditionDefinitionQuestionnaireType] = Field(  # type: ignore
         None,
         alias="questionnaire",
         title="Questionnaire for this condition",
@@ -274,7 +274,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    severity: fhirtypes.CodeableConceptType = Field(
+    severity: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="severity",
         title="Subjective severity of condition",
@@ -287,7 +287,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    stage: fhirtypes.CodeableConceptType = Field(
+    stage: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="stage",
         title="Stage/grade, usually assessed formally",
@@ -300,7 +300,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -316,11 +316,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subtitle: fhirtypes.StringType = Field(
+    subtitle: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="subtitle",
         title="Subordinate title of the event definition",
@@ -332,11 +332,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
-    team: typing.List[fhirtypes.ReferenceType] = Field(
+    team: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="team",
         title="Appropriate team for this condition",
@@ -348,7 +348,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this condition definition (human friendly)",
@@ -359,11 +359,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -384,11 +384,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -404,7 +404,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the condition definition",
@@ -421,11 +421,11 @@ class ConditionDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType = Field(
+    versionAlgorithmCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -441,7 +441,7 @@ class ConditionDefinition(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType = Field(
+    versionAlgorithmString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -456,7 +456,7 @@ class ConditionDefinition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
@@ -539,9 +539,6 @@ class ConditionDefinition(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class ConditionDefinitionMedication(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -552,7 +549,7 @@ class ConditionDefinitionMedication(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionDefinitionMedication"
 
-    category: fhirtypes.CodeableConceptType = Field(
+    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="category",
         title="Category that is relevant",
@@ -562,7 +559,7 @@ class ConditionDefinitionMedication(backboneelement.BackboneElement):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Code for relevant Medication",
@@ -591,7 +588,7 @@ class ConditionDefinitionObservation(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionDefinitionObservation"
 
-    category: fhirtypes.CodeableConceptType = Field(
+    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="category",
         title="Category that is relevant",
@@ -601,7 +598,7 @@ class ConditionDefinitionObservation(backboneelement.BackboneElement):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="Code for relevant Observation",
@@ -630,7 +627,7 @@ class ConditionDefinitionPlan(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionDefinitionPlan"
 
-    reference: fhirtypes.ReferenceType = Field(
+    reference: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="reference",
         title="The actual plan",
@@ -642,7 +639,7 @@ class ConditionDefinitionPlan(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(
+    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="role",
         title="Use for the plan",
@@ -672,7 +669,7 @@ class ConditionDefinitionPrecondition(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionDefinitionPrecondition"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Code for relevant Observation",
@@ -682,7 +679,7 @@ class ConditionDefinitionPrecondition(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="sensitive | specific",
@@ -695,11 +692,11 @@ class ConditionDefinitionPrecondition(backboneelement.BackboneElement):
             "enum_values": ["sensitive", "specific"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Value of Observation",
@@ -712,7 +709,7 @@ class ConditionDefinitionPrecondition(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Value of Observation",
@@ -779,7 +776,7 @@ class ConditionDefinitionQuestionnaire(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionDefinitionQuestionnaire"
 
-    purpose: fhirtypes.CodeType = Field(
+    purpose: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="purpose",
         title="preadmit | diff-diagnosis | outcome",
@@ -792,11 +789,11 @@ class ConditionDefinitionQuestionnaire(backboneelement.BackboneElement):
             "enum_values": ["preadmit", "diff-diagnosis", "outcome"],
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    reference: fhirtypes.ReferenceType = Field(
+    reference: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="reference",
         title="Specific Questionnaire",

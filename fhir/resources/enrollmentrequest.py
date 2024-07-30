@@ -25,7 +25,7 @@ class EnrollmentRequest(domainresource.DomainResource):
 
     __resource_type__ = "EnrollmentRequest"
 
-    candidate: fhirtypes.ReferenceType = Field(
+    candidate: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="candidate",
         title="The subject to be enrolled",
@@ -37,7 +37,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    coverage: fhirtypes.ReferenceType = Field(
+    coverage: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="coverage",
         title="Insurance information",
@@ -49,7 +49,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType = Field(
+    created: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="created",
         title="Creation date",
@@ -58,11 +58,11 @@ class EnrollmentRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier",
@@ -72,7 +72,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    insurer: fhirtypes.ReferenceType = Field(
+    insurer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="insurer",
         title="Target",
@@ -84,7 +84,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    provider: fhirtypes.ReferenceType = Field(
+    provider: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="provider",
         title="Responsible practitioner",
@@ -103,7 +103,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -115,7 +115,7 @@ class EnrollmentRequest(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 

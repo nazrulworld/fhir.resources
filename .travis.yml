@@ -2,43 +2,43 @@
 language: python
 jobs:
   include:
-    - name: "Python 3.7 on Linux (dist:xenial)"
+    - name: "Python 3.8 on Linux (dist:jammy)"
       os: linux
-      dist: xenial
-      language: python
-      python: 3.7
-      env: python_version=3.7
-
-    - name: "Python 3.8 on Linux (dist:focal)"
-      os: linux
-      dist: focal
+      dist: jammy
       language: python
       python: 3.8
       env: python_version=3.8
 
-    - name: "Python 3.9 on Linux (dist:focal)"
+    - name: "Python 3.9 on Linux (dist:jammy)"
       os: linux
-      dist: focal
+      dist: jammy
       language: python
       python: 3.9
       env: python_version=3.9
 
-    - name: "Python 3.10 on Linux (dist:focal)"
+    - name: "Python 3.10 on Linux (dist:jammy)"
       os: linux
-      dist: focal
+      dist: jammy
       language: python
       python: 3.10
       env: python_version=3.10
 
-    - name: "Python 3.11-dev on Linux (dist:focal)"
+    - name: "Python 3.11 on Linux (dist:jammy)"
       os: linux
-      dist: focal
+      dist: jammy
       language: python
-      python: 3.11-dev
-      env: python_version=3.11-dev
+      python: 3.11
+      env: python_version=3.11
+
+    - name: "Python 3.12-dev on Linux (dist:jammy)"
+      os: linux
+      dist: jammy
+      language: python
+      python: 3.12-dev
+      env: python_version=3.12-dev
 
   allow_failures:
-    - python: 3.11-dev
+    - python: 3.12-dev
 
 cache:
   directories:
@@ -51,12 +51,10 @@ install:
 script:
   - make clean
   - make lint
-  - mypy fhir/resources/
-  - black --check --verbose --exclude 'fhir/resources/DSTU2/tests/' fhir/resources/
+  - black --check --verbose fhir/resources/
 #  - pytest tests
-#  - pytest fhir/resources/DSTU2/tests
-#  - pytest fhir/resources/STU3/tests
-#  - pytest -s --cov=fhir/resources/R4B/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/R4B/tests
+  - pytest fhir/resources/STU3/tests
+  - pytest -s --cov=fhir/resources/R4B/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/R4B/tests
   - pytest -s --cov=fhir/resources/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/tests
 after_success:
   - codecov

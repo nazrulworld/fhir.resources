@@ -7,22 +7,22 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import administrableproductdefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_administrableproductdefinition_1(inst):
     assert inst.administrableDoseForm.coding[0].code == "Film-coatedtablet"
     assert (
         inst.administrableDoseForm.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/administrabledoseform"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/administrabledoseform"}
         ).valueUri
     )
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/phpididentifiersets"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/phpididentifiersets"}
         ).valueUri
     )
     assert inst.identifier[0].value == "{PhPID}"
@@ -30,15 +30,15 @@ def impl_administrableproductdefinition_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.routeOfAdministration[0].code.coding[0].code == "OralUse"
     assert (
         inst.routeOfAdministration[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/routeofadministration"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/routeofadministration"}
         ).valueUri
     )
     assert inst.status == "active"
@@ -46,8 +46,8 @@ def impl_administrableproductdefinition_1(inst):
     assert inst.unitOfPresentation.coding[0].code == "Tablet"
     assert (
         inst.unitOfPresentation.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/unitofpresentation"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/unitofpresentation"}
         ).valueUri
     )
 

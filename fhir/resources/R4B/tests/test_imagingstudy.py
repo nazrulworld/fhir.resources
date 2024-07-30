@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import imagingstudy
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_imagingstudy_1(inst):
@@ -17,7 +15,10 @@ def impl_imagingstudy_1(inst):
     assert inst.encounter.reference == "Encounter/example"
     assert inst.endpoint[0].reference == "Endpoint/example-wadors"
     assert inst.id == "example-xr"
-    assert inst.identifier[0].system == "urn:dicom:uid"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
+    )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == (
         "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "46"
@@ -26,7 +27,9 @@ def impl_imagingstudy_1(inst):
     assert inst.identifier[1].type.coding[0].code == "ACSN"
     assert (
         inst.identifier[1].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "usual"
     assert inst.identifier[1].value == "W12342398"
@@ -37,16 +40,29 @@ def impl_imagingstudy_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.modality[0].code == "DX"
-    assert inst.modality[0].system == "http://dicom.nema.org/resources/ontology/DCM"
+    assert (
+        inst.modality[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
+        ).valueUri
+    )
     assert inst.note[0].text == "XR Wrist 3+ Views"
     assert inst.numberOfInstances == 2
     assert inst.numberOfSeries == 1
     assert inst.procedureCode[0].coding[0].code == "RPID2589"
     assert inst.procedureCode[0].coding[0].display == "XR Wrist 3+ Views"
-    assert inst.procedureCode[0].coding[0].system == "http://www.radlex.org"
+    assert (
+        inst.procedureCode[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.radlex.org"}
+        ).valueUri
+    )
     assert inst.procedureCode[0].text == "XR Wrist 3+ Views"
     assert inst.procedureReference.reference == "Procedure/example"
     assert inst.reasonCode[0].coding[0].code == "357009"
@@ -54,18 +70,33 @@ def impl_imagingstudy_1(inst):
         inst.reasonCode[0].coding[0].display
         == "Closed fracture of trapezoidal bone of wrist"
     )
-    assert inst.reasonCode[0].coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.reasonCode[0].coding[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.referrer.reference == "Practitioner/example"
     assert inst.series[0].bodySite.code == "T-15460"
     assert inst.series[0].bodySite.display == "Wrist Joint"
-    assert inst.series[0].bodySite.system == "http://snomed.info/sct"
+    assert (
+        inst.series[0].bodySite.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.series[0].description == "XR Wrist 3+ Views"
     assert inst.series[0].endpoint[0].reference == "Endpoint/example-wadors"
     assert inst.series[0].instance[0].number == 1
     assert (
         inst.series[0].instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
     )
-    assert inst.series[0].instance[0].sopClass.system == "urn:ietf:rfc:3986"
+    assert (
+        inst.series[0].instance[0].sopClass.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.series[0].instance[0].title == "PA VIEW"
     assert (
         inst.series[0].instance[0].uid
@@ -75,7 +106,12 @@ def impl_imagingstudy_1(inst):
     assert (
         inst.series[0].instance[1].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
     )
-    assert inst.series[0].instance[1].sopClass.system == "urn:ietf:rfc:3986"
+    assert (
+        inst.series[0].instance[1].sopClass.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert inst.series[0].instance[1].title == "LL VIEW"
     assert (
         inst.series[0].instance[1].uid
@@ -83,10 +119,18 @@ def impl_imagingstudy_1(inst):
     )
     assert inst.series[0].laterality.code == "419161000"
     assert inst.series[0].laterality.display == "Unilateral left"
-    assert inst.series[0].laterality.system == "http://snomed.info/sct"
+    assert (
+        inst.series[0].laterality.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.series[0].modality.code == "DX"
     assert (
-        inst.series[0].modality.system == "http://dicom.nema.org/resources/ontology/DCM"
+        inst.series[0].modality.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
+        ).valueUri
     )
     assert inst.series[0].number == 3
     assert inst.series[0].numberOfInstances == 2
@@ -94,15 +138,25 @@ def impl_imagingstudy_1(inst):
     assert inst.series[0].performer[0].function.coding[0].code == "PRF"
     assert (
         inst.series[0].performer[0].function.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"}
+        ).valueUri
     )
-    assert inst.series[0].started == fhirtypes.DateTime.validate(
-        "2011-01-01T11:01:20+03:00"
+    assert (
+        inst.series[0].started
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2011-01-01T11:01:20+03:00"}
+        ).valueDateTime
     )
     assert (
         inst.series[0].uid == "2.16.124.113543.6003.1154777499.30246.19789.3503430045.1"
     )
-    assert inst.started == fhirtypes.DateTime.validate("2017-01-01T11:01:20+03:00")
+    assert (
+        inst.started
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-01T11:01:20+03:00"}
+        ).valueDateTime
+    )
     assert inst.status == "available"
     assert inst.subject.reference == "Patient/dicom"
     assert inst.text.div == (
@@ -118,15 +172,13 @@ def test_imagingstudy_1(base_settings):
     Test File: imagingstudy-example-xr.json
     """
     filename = base_settings["unittest_data_dir"] / "imagingstudy-example-xr.json"
-    inst = imagingstudy.ImagingStudy.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ImagingStudy" == inst.resource_type
+    inst = imagingstudy.ImagingStudy.model_validate_json(filename.read_bytes())
+    assert "ImagingStudy" == inst.get_resource_type()
 
     impl_imagingstudy_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ImagingStudy" == data["resourceType"]
 
     inst2 = imagingstudy.ImagingStudy(**data)
@@ -135,40 +187,64 @@ def test_imagingstudy_1(base_settings):
 
 def impl_imagingstudy_2(inst):
     assert inst.id == "example"
-    assert inst.identifier[0].system == "urn:dicom:uid"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate({"valueUri": "urn:dicom:uid"}).valueUri
+    )
     assert inst.identifier[0].value == (
         "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.35034300" "45"
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.numberOfInstances == 1
     assert inst.numberOfSeries == 1
     assert inst.series[0].bodySite.code == "67734004"
     assert inst.series[0].bodySite.display == "Upper Trunk Structure"
-    assert inst.series[0].bodySite.system == "http://snomed.info/sct"
+    assert (
+        inst.series[0].bodySite.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
+    )
     assert inst.series[0].description == "CT Surview 180"
     assert inst.series[0].instance[0].number == 1
     assert (
         inst.series[0].instance[0].sopClass.code == "urn:oid:1.2.840.10008.5.1.4.1.1.2"
     )
-    assert inst.series[0].instance[0].sopClass.system == "urn:ietf:rfc:3986"
+    assert (
+        inst.series[0].instance[0].sopClass.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
+    )
     assert (
         inst.series[0].instance[0].uid
         == "2.16.124.113543.6003.189642796.63084.16748.2599092903"
     )
     assert inst.series[0].modality.code == "CT"
     assert (
-        inst.series[0].modality.system == "http://dicom.nema.org/resources/ontology/DCM"
+        inst.series[0].modality.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://dicom.nema.org/resources/ontology/DCM"}
+        ).valueUri
     )
     assert inst.series[0].number == 3
     assert inst.series[0].numberOfInstances == 1
     assert (
         inst.series[0].uid == "2.16.124.113543.6003.2588828330.45298.17418.2723805630"
     )
-    assert inst.started == fhirtypes.DateTime.validate("2011-01-01T11:01:20+03:00")
+    assert (
+        inst.started
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2011-01-01T11:01:20+03:00"}
+        ).valueDateTime
+    )
     assert inst.status == "available"
     assert inst.subject.reference == "Patient/dicom"
     assert inst.text.div == (
@@ -184,15 +260,13 @@ def test_imagingstudy_2(base_settings):
     Test File: imagingstudy-example.json
     """
     filename = base_settings["unittest_data_dir"] / "imagingstudy-example.json"
-    inst = imagingstudy.ImagingStudy.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ImagingStudy" == inst.resource_type
+    inst = imagingstudy.ImagingStudy.model_validate_json(filename.read_bytes())
+    assert "ImagingStudy" == inst.get_resource_type()
 
     impl_imagingstudy_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ImagingStudy" == data["resourceType"]
 
     inst2 = imagingstudy.ImagingStudy(**data)

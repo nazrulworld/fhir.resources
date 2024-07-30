@@ -22,7 +22,7 @@ class RatioRange(datatype.DataType):
 
     __resource_type__ = "RatioRange"
 
-    denominator: fhirtypes.QuantityType = Field(
+    denominator: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="denominator",
         title="Denominator value",
@@ -32,7 +32,7 @@ class RatioRange(datatype.DataType):
         },
     )
 
-    highNumerator: fhirtypes.QuantityType = Field(
+    highNumerator: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="highNumerator",
         title="High Numerator limit",
@@ -42,7 +42,7 @@ class RatioRange(datatype.DataType):
         },
     )
 
-    lowNumerator: fhirtypes.QuantityType = Field(
+    lowNumerator: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="lowNumerator",
         title="Low Numerator limit",

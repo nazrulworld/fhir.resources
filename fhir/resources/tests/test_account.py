@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import account
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_account_1(inst):
@@ -17,15 +17,17 @@ def impl_account_1(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:0.1.2.3.4.5.6.7").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:0.1.2.3.4.5.6.7"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "654321"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "HACC Funded Billing for Peter James Chalmers"
@@ -34,17 +36,21 @@ def impl_account_1(inst):
     assert inst.relatedAccount[0].relationship.coding[0].code == "guarantor"
     assert (
         inst.relatedAccount[0].relationship.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/account-relationship"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/account-relationship"}
         ).valueUri
     )
     assert (
         inst.servicePeriod.end
-        == ExternalValidatorModel(valueDateTime="2016-06-30").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-06-30"}
+        ).valueDateTime
     )
     assert (
         inst.servicePeriod.start
-        == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-01-01"}
+        ).valueDateTime
     )
     assert inst.status == "active"
     assert inst.subject[0].display == "Peter James Chalmers"
@@ -58,8 +64,8 @@ def impl_account_1(inst):
     assert inst.type.coding[0].display == "patient billing account"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.type.text == "patient"
@@ -94,20 +100,24 @@ def impl_account_2(inst):
     assert inst.guarantor[0].party.reference == "RelatedPerson/benedicte"
     assert (
         inst.guarantor[0].period.start
-        == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-01-01"}
+        ).valueDateTime
     )
     assert inst.id == "ewg"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:0.1.2.3.4.5.6.7").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:0.1.2.3.4.5.6.7"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "654321"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Inpatient: Peter James Chalmers"
@@ -115,11 +125,15 @@ def impl_account_2(inst):
     assert inst.owner.reference == "Organization/f001"
     assert (
         inst.servicePeriod.end
-        == ExternalValidatorModel(valueDateTime="2016-06-30").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-06-30"}
+        ).valueDateTime
     )
     assert (
         inst.servicePeriod.start
-        == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-01-01"}
+        ).valueDateTime
     )
     assert inst.status == "active"
     assert inst.subject[0].display == "Peter James Chalmers"
@@ -133,8 +147,8 @@ def impl_account_2(inst):
     assert inst.type.coding[0].display == "patient billing account"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.type.text == "patient"

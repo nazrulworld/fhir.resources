@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DocumentReference(domainresource.DomainResource):
@@ -32,7 +32,7 @@ class DocumentReference(domainresource.DomainResource):
 
     __resource_type__ = "DocumentReference"
 
-    attester: typing.List[fhirtypes.DocumentReferenceAttesterType] = Field(
+    attester: typing.List[fhirtypes.DocumentReferenceAttesterType] = Field(  # type: ignore
         None,
         alias="attester",
         title="Attests to accuracy of the document",
@@ -42,7 +42,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    author: typing.List[fhirtypes.ReferenceType] = Field(
+    author: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="author",
         title="Who and/or what authored the document",
@@ -65,7 +65,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Procedure that caused this media to be created",
@@ -97,7 +97,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    bodySite: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    bodySite: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Body part included",
@@ -109,7 +109,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Categorization of document",
@@ -123,7 +123,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    content: typing.List[fhirtypes.DocumentReferenceContentType] = Field(
+    content: typing.List[fhirtypes.DocumentReferenceContentType] = Field(  # type: ignore
         ...,
         alias="content",
         title="Document referenced",
@@ -137,7 +137,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    context: typing.List[fhirtypes.ReferenceType] = Field(
+    context: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="context",
         title="Context of the document content",
@@ -152,7 +152,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    custodian: fhirtypes.ReferenceType = Field(
+    custodian: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="custodian",
         title="Organization which maintains the document",
@@ -167,7 +167,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.InstantType = Field(
+    date: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="date",
         title="When this document reference was created",
@@ -176,11 +176,11 @@ class DocumentReference(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Human-readable description",
@@ -189,11 +189,11 @@ class DocumentReference(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    docStatus: fhirtypes.CodeType = Field(
+    docStatus: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="docStatus",
         title=(
@@ -220,11 +220,11 @@ class DocumentReference(domainresource.DomainResource):
             ],
         },
     )
-    docStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    docStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_docStatus", title="Extension field for ``docStatus``."
     )
 
-    event: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    event: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="event",
         title="Main clinical acts documented",
@@ -240,7 +240,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    facilityType: fhirtypes.CodeableConceptType = Field(
+    facilityType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="facilityType",
         title="Kind of facility where patient was seen",
@@ -250,7 +250,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifiers for the document",
@@ -263,7 +263,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    modality: typing.List[fhirtypes.CodeableConceptType] = Field(
+    modality: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="modality",
         title="Imaging modality used",
@@ -276,7 +276,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time of service that is being documented",
@@ -289,7 +289,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    practiceSetting: fhirtypes.CodeableConceptType = Field(
+    practiceSetting: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="practiceSetting",
         title=(
@@ -305,7 +305,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    relatesTo: typing.List[fhirtypes.DocumentReferenceRelatesToType] = Field(
+    relatesTo: typing.List[fhirtypes.DocumentReferenceRelatesToType] = Field(  # type: ignore
         None,
         alias="relatesTo",
         title="Relationships to other documents",
@@ -318,7 +318,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    securityLabel: typing.List[fhirtypes.CodeableConceptType] = Field(
+    securityLabel: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="securityLabel",
         title="Document security-tags",
@@ -340,7 +340,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="current | superseded | entered-in-error",
@@ -353,11 +353,11 @@ class DocumentReference(domainresource.DomainResource):
             "enum_values": ["current", "superseded", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Who/what is the subject of the document",
@@ -374,7 +374,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of document (LOINC if possible)",
@@ -388,7 +388,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title=(
@@ -400,7 +400,7 @@ class DocumentReference(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -456,9 +456,6 @@ class DocumentReference(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class DocumentReferenceAttester(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -470,7 +467,7 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentReferenceAttester"
 
-    mode: fhirtypes.CodeableConceptType = Field(
+    mode: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="mode",
         title="personal | professional | legal | official",
@@ -480,7 +477,7 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
         },
     )
 
-    party: fhirtypes.ReferenceType = Field(
+    party: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="party",
         title="Who attested the document",
@@ -498,7 +495,7 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
         },
     )
 
-    time: fhirtypes.DateTimeType = Field(
+    time: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="time",
         title="When the document was attested",
@@ -507,7 +504,7 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_time", title="Extension field for ``time``."
     )
 
@@ -533,7 +530,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentReferenceContent"
 
-    attachment: fhirtypes.AttachmentType = Field(
+    attachment: fhirtypes.AttachmentType = Field(  # type: ignore
         ...,
         alias="attachment",
         title="Where to access the document",
@@ -546,7 +543,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
         },
     )
 
-    profile: typing.List[fhirtypes.DocumentReferenceContentProfileType] = Field(
+    profile: typing.List[fhirtypes.DocumentReferenceContentProfileType] = Field(  # type: ignore
         None,
         alias="profile",
         title="Content profile rules for the document",
@@ -582,7 +579,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentReferenceContentProfile"
 
-    valueCanonical: fhirtypes.CanonicalType = Field(
+    valueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="valueCanonical",
         title="Code|uri|canonical",
@@ -594,11 +591,11 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueCanonical", title="Extension field for ``valueCanonical``."
     )
 
-    valueCoding: fhirtypes.CodingType = Field(
+    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Code|uri|canonical",
@@ -611,7 +608,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
         },
     )
 
-    valueUri: fhirtypes.UriType = Field(
+    valueUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="valueUri",
         title="Code|uri|canonical",
@@ -623,7 +620,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
@@ -671,7 +668,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentReferenceRelatesTo"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="The relationship type with another document",
@@ -681,7 +678,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    target: fhirtypes.ReferenceType = Field(
+    target: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="target",
         title="Target of the relationship",

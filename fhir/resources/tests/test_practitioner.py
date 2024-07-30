@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import practitioner
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_practitioner_1(inst):
@@ -17,19 +17,26 @@ def impl_practitioner_1(inst):
     assert inst.address[0].line[0] == "Walvisbaai 3"
     assert inst.address[0].postalCode == "2333ZA"
     assert inst.address[0].use == "work"
-    assert inst.birthDate == ExternalValidatorModel(valueDate="1983-04-20").valueDate
+    assert (
+        inst.birthDate
+        == ExternalValidatorModel.model_validate({"valueDate": "1983-04-20"}).valueDate
+    )
     assert inst.gender == "male"
     assert inst.id == "f203"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.528.1.1007.3.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.528.1.1007.3.1"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "UZI-nummer"
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "12345678903"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="https://www.bigregister.nl/").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.bigregister.nl/"}
+        ).valueUri
     )
     assert inst.identifier[1].type.text == "BIG-nummer"
     assert inst.identifier[1].use == "official"
@@ -38,8 +45,8 @@ def impl_practitioner_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].text == "Juri van Gelder"
@@ -76,12 +83,17 @@ def impl_practitioner_2(inst):
     assert inst.address[0].line[1] == "C4 - Automatisering"
     assert inst.address[0].postalCode == "2333ZA"
     assert inst.address[0].use == "work"
-    assert inst.birthDate == ExternalValidatorModel(valueDate="1956-12-24").valueDate
+    assert (
+        inst.birthDate
+        == ExternalValidatorModel.model_validate({"valueDate": "1956-12-24"}).valueDate
+    )
     assert inst.gender == "male"
     assert inst.id == "f201"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.528.1.1007.3.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.528.1.1007.3.1"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "UZI-nummer"
     assert inst.identifier[0].use == "official"
@@ -90,8 +102,8 @@ def impl_practitioner_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Bronsig"
@@ -103,7 +115,9 @@ def impl_practitioner_2(inst):
     assert inst.qualification[0].code.coding[0].display == "Pulmonologist"
     assert (
         inst.qualification[0].code.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.telecom[0].system == "phone"
     assert inst.telecom[0].use == "work"
@@ -135,20 +149,22 @@ def impl_practitioner_3(inst):
     assert inst.identifier[0].assigner.display == "Child Hospital"
     assert (
         inst.identifier[0].period.start
-        == ExternalValidatorModel(valueDateTime="2021-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01"}
+        ).valueDateTime
     )
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/persons"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/persons"}
         ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "PRN"
     assert inst.identifier[0].type.coding[0].display == "Provider number"
     assert (
         inst.identifier[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
         ).valueUri
     )
     assert inst.identifier[0].use == "temp"
@@ -157,8 +173,8 @@ def impl_practitioner_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Doel"
@@ -193,19 +209,26 @@ def impl_practitioner_4(inst):
     assert inst.address[0].line[1] == "C4 - Automatisering"
     assert inst.address[0].postalCode == "2333ZA"
     assert inst.address[0].use == "work"
-    assert inst.birthDate == ExternalValidatorModel(valueDate="1960-06-12").valueDate
+    assert (
+        inst.birthDate
+        == ExternalValidatorModel.model_validate({"valueDate": "1960-06-12"}).valueDate
+    )
     assert inst.gender == "male"
     assert inst.id == "f202"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.528.1.1007.3.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.528.1.1007.3.1"}
+        ).valueUri
     )
     assert inst.identifier[0].type.text == "UZI-nummer"
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "12345678902"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="https://www.bigregister.nl/").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.bigregister.nl/"}
+        ).valueUri
     )
     assert inst.identifier[1].type.text == "BIG-nummer"
     assert inst.identifier[1].use == "official"
@@ -214,8 +237,8 @@ def impl_practitioner_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Maas"
@@ -253,8 +276,8 @@ def impl_practitioner_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Hippocrates"
@@ -289,24 +312,33 @@ def impl_practitioner_6(inst):
     assert inst.address[0].line[0] == "Galapagosweg 91"
     assert inst.address[0].postalCode == "1105 AZ"
     assert inst.address[0].use == "work"
-    assert inst.birthDate == ExternalValidatorModel(valueDate="1963-07-01").valueDate
+    assert (
+        inst.birthDate
+        == ExternalValidatorModel.model_validate({"valueDate": "1963-07-01"}).valueDate
+    )
     assert inst.communication[0].language.coding[0].code == "nl"
     assert inst.communication[0].language.coding[0].display == "Dutch"
     assert (
         inst.communication[0].language.coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:bcp:47").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:bcp:47"}
+        ).valueUri
     )
     assert inst.gender == "male"
     assert inst.id == "f003"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.528.1.1007.3.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.528.1.1007.3.1"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "846100293"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.2.4.6.3").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.2.4.6.3"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "usual"
     assert inst.identifier[1].value == "243HID3RT938"
@@ -314,8 +346,8 @@ def impl_practitioner_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Versteegh"
@@ -358,18 +390,25 @@ def impl_practitioner_7(inst):
     assert inst.address[0].line[0] == "Galapagosweg 91"
     assert inst.address[0].postalCode == "9105 PZ"
     assert inst.address[0].use == "work"
-    assert inst.birthDate == ExternalValidatorModel(valueDate="1979-04-29").valueDate
+    assert (
+        inst.birthDate
+        == ExternalValidatorModel.model_validate({"valueDate": "1979-04-29"}).valueDate
+    )
     assert inst.gender == "male"
     assert inst.id == "f002"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.528.1.1007.3.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.528.1.1007.3.1"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "730291637"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.2.4.6.3").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.2.4.6.3"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "usual"
     assert inst.identifier[1].value == "174BIP3JH438"
@@ -377,8 +416,8 @@ def impl_practitioner_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Voigt"
@@ -425,15 +464,17 @@ def impl_practitioner_8(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://www.acme.org/practitioners").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.acme.org/practitioners"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "23"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Careful"
@@ -443,22 +484,24 @@ def impl_practitioner_8(inst):
     assert inst.qualification[0].code.coding[0].display == "Bachelor of Science"
     assert (
         inst.qualification[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0360/2.7"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7"}
         ).valueUri
     )
     assert inst.qualification[0].code.text == "Bachelor of Science"
     assert (
         inst.qualification[0].identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/UniversityIdentifier"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/UniversityIdentifier"}
         ).valueUri
     )
     assert inst.qualification[0].identifier[0].value == "12345"
     assert inst.qualification[0].issuer.display == "Example University"
     assert (
         inst.qualification[0].period.start
-        == ExternalValidatorModel(valueDateTime="1995").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "1995"}
+        ).valueDateTime
     )
     assert inst.text.status == "generated"
 
@@ -487,18 +530,25 @@ def impl_practitioner_9(inst):
     assert inst.address[0].line[0] == "Galapagosweg 91"
     assert inst.address[0].postalCode == "9105 PZ"
     assert inst.address[0].use == "work"
-    assert inst.birthDate == ExternalValidatorModel(valueDate="1971-11-07").valueDate
+    assert (
+        inst.birthDate
+        == ExternalValidatorModel.model_validate({"valueDate": "1971-11-07"}).valueDate
+    )
     assert inst.gender == "female"
     assert inst.id == "f007"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.528.1.1007.3.1").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.528.1.1007.3.1"}
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "874635264"
     assert (
         inst.identifier[1].system
-        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.2.4.6.3").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:oid:2.16.840.1.113883.2.4.6.3"}
+        ).valueUri
     )
     assert inst.identifier[1].use == "usual"
     assert inst.identifier[1].value == "567IUI51C154"
@@ -506,8 +556,8 @@ def impl_practitioner_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Heps"
@@ -550,20 +600,22 @@ def impl_practitioner_10(inst):
     assert inst.identifier[0].assigner.display == "Child Hospital"
     assert (
         inst.identifier[0].period.start
-        == ExternalValidatorModel(valueDateTime="2021-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-01-01"}
+        ).valueDateTime
     )
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.somesystemabc.net/identifiers/persons"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.somesystemabc.net/identifiers/persons"}
         ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "PRN"
     assert inst.identifier[0].type.coding[0].display == "Provider number"
     assert (
         inst.identifier[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0203"}
         ).valueUri
     )
     assert inst.identifier[0].use == "temp"
@@ -572,8 +624,8 @@ def impl_practitioner_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name[0].family == "Doel"

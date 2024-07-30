@@ -21,7 +21,7 @@ class Coding(datatype.DataType):
 
     __resource_type__ = "Coding"
 
-    code: fhirtypes.CodeType = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Symbol in syntax defined by the system",
@@ -34,11 +34,11 @@ class Coding(datatype.DataType):
             "element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    display: fhirtypes.StringType = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="Representation defined by the system",
@@ -50,11 +50,11 @@ class Coding(datatype.DataType):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    system: fhirtypes.UriType = Field(
+    system: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="system",
         title="Identity of the terminology system",
@@ -66,11 +66,11 @@ class Coding(datatype.DataType):
             "element_property": True,
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    userSelected: bool = Field(
+    userSelected: bool = Field(  # type: ignore
         None,
         alias="userSelected",
         title="If this coding was chosen directly by the user",
@@ -82,11 +82,11 @@ class Coding(datatype.DataType):
             "element_property": True,
         },
     )
-    userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_userSelected", title="Extension field for ``userSelected``."
     )
 
-    version: fhirtypes.StringType = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Version of the system - if relevant",
@@ -101,7 +101,7 @@ class Coding(datatype.DataType):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 

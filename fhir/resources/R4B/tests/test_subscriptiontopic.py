@@ -6,10 +6,8 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import subscriptiontopic
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_subscriptiontopic_1(inst):
@@ -21,7 +19,10 @@ def impl_subscriptiontopic_1(inst):
     assert inst.canFilterBy[0].modifier[0] == "="
     assert inst.canFilterBy[0].modifier[1] == "in"
     assert inst.canFilterBy[0].modifier[2] == "not-in"
-    assert inst.canFilterBy[0].resource == "Encounter"
+    assert (
+        inst.canFilterBy[0].resource
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
+    )
     assert inst.description == "Example admission topic"
     assert (
         inst.eventTrigger[0].description
@@ -34,11 +35,15 @@ def impl_subscriptiontopic_1(inst):
     )
     assert (
         inst.eventTrigger[0].event.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0003"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0003"}
+        ).valueUri
     )
     assert (
         inst.eventTrigger[0].resource
-        == "http://hl7.org/fhir/StructureDefinition/Encounter"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/Encounter"}
+        ).valueUri
     )
     assert inst.id == "admission"
     assert inst.notificationShape[0].include[0] == "Encounter:patient"
@@ -48,7 +53,10 @@ def impl_subscriptiontopic_1(inst):
     assert inst.notificationShape[0].include[4] == "Encounter:diagnosis"
     assert inst.notificationShape[0].include[5] == "Encounter:observation"
     assert inst.notificationShape[0].include[6] == "Encounter:location"
-    assert inst.notificationShape[0].resource == "Encounter"
+    assert (
+        inst.notificationShape[0].resource
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
+    )
     assert (
         inst.resourceTrigger[0].description
         == "Encounter resource moving to state 'in-progress'"
@@ -63,14 +71,21 @@ def impl_subscriptiontopic_1(inst):
     assert inst.resourceTrigger[0].queryCriteria.resultForDelete == "test-fails"
     assert (
         inst.resourceTrigger[0].resource
-        == "http://hl7.org/fhir/StructureDefinition/Encounter"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/Encounter"}
+        ).valueUri
     )
     assert inst.resourceTrigger[0].supportedInteraction[0] == "create"
     assert inst.resourceTrigger[0].supportedInteraction[1] == "update"
     assert inst.status == "active"
     assert inst.text.status == "generated"
     assert inst.title == "admission"
-    assert inst.url == "http://example.org/FHIR/R4B/SubscriptionTopic/admission"
+    assert (
+        inst.url
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/FHIR/R4B/SubscriptionTopic/admission"}
+        ).valueUri
+    )
 
 
 def test_subscriptiontopic_1(base_settings):
@@ -80,15 +95,15 @@ def test_subscriptiontopic_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "subscriptiontopic-example-admission.json"
     )
-    inst = subscriptiontopic.SubscriptionTopic.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = subscriptiontopic.SubscriptionTopic.model_validate_json(
+        filename.read_bytes()
     )
-    assert "SubscriptionTopic" == inst.resource_type
+    assert "SubscriptionTopic" == inst.get_resource_type()
 
     impl_subscriptiontopic_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SubscriptionTopic" == data["resourceType"]
 
     inst2 = subscriptiontopic.SubscriptionTopic(**data)

@@ -8,9 +8,8 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field
-
-from fhir.resources.core import fhirabstractmodel
+from fhir_core import fhirabstractmodel
+from pydantic import Field
 
 from . import fhirtypes
 
@@ -24,9 +23,9 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
     Base definition for all elements in a resource.
     """
 
-    resource_type = Field("Element", const=True)
+    __resource_type__ = "Element"
 
-    extension: typing.List[fhirtypes.ExtensionType] = Field(
+    extension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
         None,
         alias="extension",
         title="Additional content defined by implementations",
@@ -38,11 +37,12 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
             "define an extension, there is a set of requirements that SHALL be met "
             "as part of the definition of the extension."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    id: fhirtypes.Id = Field(
+    id: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="id",
         title="Unique id for inter-element referencing",
@@ -50,8 +50,9 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
             "Unique id for the element within a resource (for internal references)."
             " This may be any string value that does not contain spaces."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

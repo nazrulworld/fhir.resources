@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -27,9 +25,9 @@ class AdministrableProductDefinition(domainresource.DomainResource):
     been performed).
     """
 
-    resource_type = Field("AdministrableProductDefinition", const=True)
+    __resource_type__ = "AdministrableProductDefinition"
 
-    administrableDoseForm: fhirtypes.CodeableConceptType = Field(
+    administrableDoseForm: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="administrableDoseForm",
         title=(
@@ -44,11 +42,12 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "'solution for injection' (once mixed with another item having "
             "manufactured form 'solvent for solution for injection')."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    device: fhirtypes.ReferenceType = Field(
+    device: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="device",
         title=(
@@ -60,13 +59,14 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             'considered as an "ingredient" of the medicinal product. This is not '
             "intended for devices that are just co-packaged."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DeviceDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DeviceDefinition"],
+        },
     )
 
-    formOf: typing.List[fhirtypes.ReferenceType] = Field(
+    formOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="formOf",
         title=(
@@ -84,22 +84,24 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "specific components of the product that are used in this preparation, "
             "rather than the product as a whole."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MedicinalProductDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MedicinalProductDefinition"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="An identifier for the administrable product",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(
+    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="ingredient",
         title=(
@@ -117,11 +119,12 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "Ingredient resource, to state in detail which substances exist within "
             "this. This element allows a basic coded ingredient to be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    producedFrom: typing.List[fhirtypes.ReferenceType] = Field(
+    producedFrom: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="producedFrom",
         title=(
@@ -140,24 +143,24 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "available as part of an overall product, but not involve applying the "
             "also supplied cream."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ManufacturedItemDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ManufacturedItemDefinition"],
+        },
     )
 
-    property: typing.List[fhirtypes.AdministrableProductDefinitionPropertyType] = Field(
+    property: typing.List[fhirtypes.AdministrableProductDefinitionPropertyType] = Field(  # type: ignore
         None,
         alias="property",
         title="Characteristics e.g. a product's onset of action",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    routeOfAdministration: typing.List[
-        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationType
-    ] = Field(
+    routeOfAdministration: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationType] = Field(  # type: ignore
         ...,
         alias="routeOfAdministration",
         title=(
@@ -170,11 +173,12 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "route. RouteOfAdministration cannot be used when the 'formOf' product "
             "already uses MedicinalProductDefinition.route (and vice versa)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -182,18 +186,19 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "The status of this administrable product. Enables tracking the life-"
             "cycle of the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    unitOfPresentation: fhirtypes.CodeableConceptType = Field(
+    unitOfPresentation: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="unitOfPresentation",
         title=(
@@ -205,8 +210,9 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "for a spray - 'puff' (as in 'contains 100 mcg per puff'), or for a "
             "liquid - 'vial' (as in 'contains 5 ml per vial')."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -236,10 +242,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "routeOfAdministration",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3288(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -248,52 +251,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
@@ -304,90 +262,97 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
     Characteristics e.g. a product's onset of action.
     """
 
-    resource_type = Field("AdministrableProductDefinitionProperty", const=True)
+    __resource_type__ = "AdministrableProductDefinitionProperty"
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title="The status of characteristic e.g. assigned or pending",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueDate: fhirtypes.Date = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="A value for the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
     @classmethod
@@ -409,10 +374,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
             "status",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4168(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -434,26 +396,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
                 "valueQuantity",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class AdministrableProductDefinitionRouteOfAdministration(
@@ -470,20 +413,19 @@ class AdministrableProductDefinitionRouteOfAdministration(
     MedicinalProductDefinition.route (and vice versa).
     """
 
-    resource_type = Field(
-        "AdministrableProductDefinitionRouteOfAdministration", const=True
-    )
+    __resource_type__ = "AdministrableProductDefinitionRouteOfAdministration"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Coded expression for the route",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    firstDose: fhirtypes.QuantityType = Field(
+    firstDose: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="firstDose",
         title=(
@@ -494,11 +436,12 @@ class AdministrableProductDefinitionRouteOfAdministration(
             "The first dose (dose quantity) administered can be specified for the "
             "product, using a numerical value and its unit of measurement."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    maxDosePerDay: fhirtypes.QuantityType = Field(
+    maxDosePerDay: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="maxDosePerDay",
         title="The maximum dose quantity to be administered in any one 24-h period",
@@ -506,20 +449,22 @@ class AdministrableProductDefinitionRouteOfAdministration(
             "The maximum dose per day (maximum dose quantity to be administered in "
             "any one 24-h period) that can be administered."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    maxDosePerTreatmentPeriod: fhirtypes.RatioType = Field(
+    maxDosePerTreatmentPeriod: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="maxDosePerTreatmentPeriod",
         title="The maximum dose per treatment period that can be administered",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    maxSingleDose: fhirtypes.QuantityType = Field(
+    maxSingleDose: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="maxSingleDose",
         title="The maximum single dose that can be administered",
@@ -527,11 +472,12 @@ class AdministrableProductDefinitionRouteOfAdministration(
             "The maximum single dose that can be administered, specified using a "
             "numerical value and its unit of measurement."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    maxTreatmentPeriod: fhirtypes.DurationType = Field(
+    maxTreatmentPeriod: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="maxTreatmentPeriod",
         title=(
@@ -539,19 +485,19 @@ class AdministrableProductDefinitionRouteOfAdministration(
             "administered"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    targetSpecies: typing.List[
-        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType
-    ] = Field(
+    targetSpecies: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType] = Field(  # type: ignore
         None,
         alias="targetSpecies",
         title="A species for which this route applies",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -584,22 +530,21 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
     A species for which this route applies.
     """
 
-    resource_type = Field(
-        "AdministrableProductDefinitionRouteOfAdministrationTargetSpecies", const=True
+    __resource_type__ = (
+        "AdministrableProductDefinitionRouteOfAdministrationTargetSpecies"
     )
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="code",
         title="Coded expression for the species",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    withdrawalPeriod: typing.List[
-        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType  # noqa: B950
-    ] = Field(
+    withdrawalPeriod: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType] = Field(  # type: ignore
         None,
         alias="withdrawalPeriod",
         title=(
@@ -607,15 +552,15 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
             "not appropriate"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``AdministrableProductDefinitionRoute
-        OfAdministrationTargetSpecies`` according specification,
+        ``AdministrableProductDefinitionRouteOfAdministrationTargetSpecies`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "withdrawalPeriod"]
@@ -632,26 +577,24 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
     appropriate.
     """
 
-    resource_type = Field(
-        "AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod",
-        const=True,
-    )
+    __resource_type__ = "AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod"
 
-    supportingInformation: fhirtypes.String = Field(
+    supportingInformation: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="supportingInformation",
         title="Extra information about the withdrawal period",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_supportingInformation",
         title="Extension field for ``supportingInformation``.",
     )
 
-    tissue: fhirtypes.CodeableConceptType = Field(
+    tissue: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="tissue",
         title=(
@@ -662,25 +605,26 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
             "Coded expression for the type of tissue for which the withdrawal "
             "period applies, e.g. meat, milk."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    value: fhirtypes.QuantityType = Field(
+    value: fhirtypes.QuantityType = Field(  # type: ignore
         ...,
         alias="value",
         title="A value for the time",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``AdministrableProductDefinitionRoute
-        OfAdministrationTargetSpeciesWithdrawalPeriod``
-        according specification, with preserving original sequence order.
+        ``AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod`` according specification,
+        with preserving original sequence order.
         """
         return [
             "id",

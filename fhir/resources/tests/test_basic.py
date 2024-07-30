@@ -7,64 +7,64 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import basic
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_basic_1(inst):
     assert inst.code.coding[0].code == "UMLCLASSMODEL"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/do-not-use/fhir-codes#resourceTypes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/do-not-use/fhir-codes#resourceTypes"}
         ).valueUri
     )
     assert (
         inst.extension[0].extension[0].url
-        == ExternalValidatorModel(valueUri="name").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "name"}).valueUri
     )
     assert inst.extension[0].extension[0].valueString == "Class1"
     assert (
         inst.extension[0].extension[1].extension[0].url
-        == ExternalValidatorModel(valueUri="name").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "name"}).valueUri
     )
     assert inst.extension[0].extension[1].extension[0].valueString == "attribute1"
     assert (
         inst.extension[0].extension[1].extension[1].url
-        == ExternalValidatorModel(valueUri="minOccurs").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "minOccurs"}).valueUri
     )
     assert inst.extension[0].extension[1].extension[1].valueInteger == 1
     assert (
         inst.extension[0].extension[1].extension[2].url
-        == ExternalValidatorModel(valueUri="maxOccurs").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "maxOccurs"}).valueUri
     )
     assert inst.extension[0].extension[1].extension[2].valueCode == "*"
     assert (
         inst.extension[0].extension[1].url
-        == ExternalValidatorModel(valueUri="attribute").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "attribute"}).valueUri
     )
     assert (
         inst.extension[0].extension[2].extension[0].url
-        == ExternalValidatorModel(valueUri="name").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "name"}).valueUri
     )
     assert inst.extension[0].extension[2].extension[0].valueString == "attribute2"
     assert (
         inst.extension[0].extension[2].extension[1].url
-        == ExternalValidatorModel(valueUri="minOccurs").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "minOccurs"}).valueUri
     )
     assert inst.extension[0].extension[2].extension[1].valueInteger == 0
     assert (
         inst.extension[0].extension[2].extension[2].url
-        == ExternalValidatorModel(valueUri="maxOccurs").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "maxOccurs"}).valueUri
     )
     assert inst.extension[0].extension[2].extension[2].valueInteger == 1
     assert (
         inst.extension[0].extension[2].url
-        == ExternalValidatorModel(valueUri="attribute").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "attribute"}).valueUri
     )
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/do-not-use/fhir-extensions/UMLclass"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/do-not-use/fhir-extensions/UMLclass"}
         ).valueUri
     )
     assert inst.id == "classModel"
@@ -72,8 +72,8 @@ def impl_basic_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "generated"
@@ -104,8 +104,8 @@ def impl_basic_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.text.status == "additional"
@@ -134,25 +134,30 @@ def impl_basic_3(inst):
     assert inst.code.coding[0].code == "referral"
     assert (
         inst.code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/basic-resource-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/basic-resource-type"}
         ).valueUri
     )
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2013-05-14").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-05-14"}
+        ).valueDateTime
     )
     assert (
         inst.extension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/do-not-use/fhir-extensions/referral#requestingPractitioner"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/do-not-use/fhir-extensions/referral#requestingPractitioner"
+            }
         ).valueUri
     )
     assert inst.extension[0].valueReference.display == "Dokter Bronsig"
     assert inst.extension[0].valueReference.reference == "Practitioner/f201"
     assert (
         inst.extension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/do-not-use/fhir-extensions/referral#notes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/do-not-use/fhir-extensions/referral#notes"}
         ).valueUri
     )
     assert inst.extension[1].valueString == (
@@ -161,16 +166,18 @@ def impl_basic_3(inst):
     )
     assert (
         inst.extension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/do-not-use/fhir-extensions/referral#fulfillingEncounter"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/do-not-use/fhir-extensions/referral#fulfillingEncounter"
+            }
         ).valueUri
     )
     assert inst.extension[2].valueReference.reference == "Encounter/f201"
     assert inst.id == "referral"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://goodhealth.org/basic/identifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://goodhealth.org/basic/identifiers"}
         ).valueUri
     )
     assert inst.identifier[0].value == "19283746"
@@ -178,14 +185,16 @@ def impl_basic_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.modifierExtension[0].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/do-not-use/fhir-extensions/referral#referredForService"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/do-not-use/fhir-extensions/referral#referredForService"
+            }
         ).valueUri
     )
     assert inst.modifierExtension[0].valueCodeableConcept.coding[0].code == "11429006"
@@ -195,26 +204,36 @@ def impl_basic_3(inst):
     )
     assert (
         inst.modifierExtension[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert (
         inst.modifierExtension[1].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/do-not-use/fhir-extensions/referral#targetDate"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/do-not-use/fhir-extensions/referral#targetDate"
+            }
         ).valueUri
     )
     assert (
         inst.modifierExtension[1].valuePeriod.end
-        == ExternalValidatorModel(valueDateTime="2013-04-15").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-04-15"}
+        ).valueDateTime
     )
     assert (
         inst.modifierExtension[1].valuePeriod.start
-        == ExternalValidatorModel(valueDateTime="2013-04-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-04-01"}
+        ).valueDateTime
     )
     assert (
         inst.modifierExtension[2].url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/do-not-use/fhir-extensions/referral#status"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://example.org/do-not-use/fhir-extensions/referral#status"
+            }
         ).valueUri
     )
     assert inst.modifierExtension[2].valueCode == "complete"

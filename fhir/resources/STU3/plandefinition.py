@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -28,18 +26,19 @@ class PlanDefinition(domainresource.DomainResource):
     such as clinical decision support rules, order sets and protocols.
     """
 
-    resource_type = Field("PlanDefinition", const=True)
+    __resource_type__ = "PlanDefinition"
 
-    action: typing.List[fhirtypes.PlanDefinitionActionType] = Field(
+    action: typing.List[fhirtypes.PlanDefinitionActionType] = Field(  # type: ignore
         None,
         alias="action",
         title="Action defined by the plan",
         description="An action to be taken as part of the plan.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    approvalDate: fhirtypes.Date = Field(
+    approvalDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="approvalDate",
         title="When the plan definition was approved by publisher",
@@ -48,14 +47,15 @@ class PlanDefinition(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -63,11 +63,12 @@ class PlanDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    contributor: typing.List[fhirtypes.ContributorType] = Field(
+    contributor: typing.List[fhirtypes.ContributorType] = Field(  # type: ignore
         None,
         alias="contributor",
         title="A content contributor",
@@ -75,11 +76,12 @@ class PlanDefinition(domainresource.DomainResource):
             "A contributor to the content of the asset, including authors, editors,"
             " reviewers, and endorsers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -88,14 +90,15 @@ class PlanDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the plan definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date this was last changed",
@@ -106,14 +109,15 @@ class PlanDefinition(domainresource.DomainResource):
             " should change when the substantive content of the plan definition "
             "changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the plan definition",
@@ -121,14 +125,15 @@ class PlanDefinition(domainresource.DomainResource):
             "A free text natural language description of the plan definition from a"
             " consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(
+    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="When the plan definition is expected to be used",
@@ -136,11 +141,12 @@ class PlanDefinition(domainresource.DomainResource):
             "The period during which the plan definition content was or is planned "
             "to be in active use."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -149,14 +155,15 @@ class PlanDefinition(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    goal: typing.List[fhirtypes.PlanDefinitionGoalType] = Field(
+    goal: typing.List[fhirtypes.PlanDefinitionGoalType] = Field(  # type: ignore
         None,
         alias="goal",
         title="What the plan is trying to accomplish",
@@ -166,11 +173,12 @@ class PlanDefinition(domainresource.DomainResource):
             "living, obtaining herd immunity via immunization, meeting a process "
             "improvement objective, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the plan definition",
@@ -179,11 +187,12 @@ class PlanDefinition(domainresource.DomainResource):
             " it is represented in other formats, or referenced in a specification,"
             " model, design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for plan definition (if applicable)",
@@ -191,11 +200,12 @@ class PlanDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the plan definition is intended "
             "to be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastReviewDate: fhirtypes.Date = Field(
+    lastReviewDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="lastReviewDate",
         title="When the plan definition was last reviewed",
@@ -204,14 +214,15 @@ class PlanDefinition(domainresource.DomainResource):
             "happens periodically after approval, but doesn't change the original "
             "approval date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    library: typing.List[fhirtypes.ReferenceType] = Field(
+    library: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="library",
         title="Logic used by the plan definition",
@@ -219,13 +230,14 @@ class PlanDefinition(domainresource.DomainResource):
             "A reference to a Library resource containing any formal logic used by "
             "the plan definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Library"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Library"],
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this plan definition (computer friendly)",
@@ -234,14 +246,15 @@ class PlanDefinition(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -249,14 +262,15 @@ class PlanDefinition(domainresource.DomainResource):
             "The name of the individual or organization that published the plan "
             "definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.Markdown = Field(
+    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this plan definition is defined",
@@ -264,14 +278,15 @@ class PlanDefinition(domainresource.DomainResource):
             "Explaination of why this plan definition is needed and why it has been"
             " designed as it has."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
         None,
         alias="relatedArtifact",
         title="Related artifacts for the asset",
@@ -279,11 +294,12 @@ class PlanDefinition(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -291,30 +307,32 @@ class PlanDefinition(domainresource.DomainResource):
             "The status of this plan definition. Enables tracking the life-cycle of"
             " the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this plan definition (human friendly)",
         description="A short, descriptive, user-friendly title for the plan definition.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: typing.List[fhirtypes.CodeableConceptType] = Field(
+    topic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
@@ -323,11 +341,12 @@ class PlanDefinition(domainresource.DomainResource):
             "Topics provide a high-level categorization of the definition that can "
             "be useful for filtering and searching."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="order-set | protocol | eca-rule",
@@ -335,11 +354,12 @@ class PlanDefinition(domainresource.DomainResource):
             "The type of asset the plan definition represents, e.g. an order set, "
             "protocol, or event-condition-action rule."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title="Logical URI to reference this plan definition (globally unique)",
@@ -351,14 +371,15 @@ class PlanDefinition(domainresource.DomainResource):
             "include the major version of the plan definition. For more information"
             " see [Technical and Business Versions](resource.html#versions)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    usage: fhirtypes.String = Field(
+    usage: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="usage",
         title="Describes the clinical usage of the asset",
@@ -366,14 +387,15 @@ class PlanDefinition(domainresource.DomainResource):
             "A detailed description of how the asset is used from a clinical "
             "perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_usage", title="Extension field for ``usage``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="Context the content is intended to support",
@@ -382,11 +404,12 @@ class PlanDefinition(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate plan definition instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the plan definition",
@@ -404,10 +427,11 @@ class PlanDefinition(domainresource.DomainResource):
             " Note that a version is required for non-experimental active "
             "artifacts."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -454,10 +478,7 @@ class PlanDefinition(domainresource.DomainResource):
             "action",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1618(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -466,52 +487,7 @@ class PlanDefinition(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class PlanDefinitionAction(backboneelement.BackboneElement):
@@ -523,9 +499,9 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     An action to be taken as part of the plan.
     """
 
-    resource_type = Field("PlanDefinitionAction", const=True)
+    __resource_type__ = "PlanDefinitionAction"
 
-    action: typing.List[fhirtypes.PlanDefinitionActionType] = Field(
+    action: typing.List[fhirtypes.PlanDefinitionActionType] = Field(  # type: ignore
         None,
         alias="action",
         title="A sub-action",
@@ -535,28 +511,30 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "a selection behavior of at-most-one indicates that of the sub-actions,"
             " at most one may be chosen as part of realizing the action definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    cardinalityBehavior: fhirtypes.Code = Field(
+    cardinalityBehavior: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="cardinalityBehavior",
         title="single | multiple",
         description="Defines whether the action can be selected multiple times.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["single", "multiple"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["single", "multiple"],
+        },
     )
-    cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_cardinalityBehavior",
         title="Extension field for ``cardinalityBehavior``.",
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="code",
         title="Code representing the meaning of the action or sub-actions",
@@ -565,11 +543,12 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "example, a section may have a LOINC code for a the section of a "
             "documentation template."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    condition: typing.List[fhirtypes.PlanDefinitionActionConditionType] = Field(
+    condition: typing.List[fhirtypes.PlanDefinitionActionConditionType] = Field(  # type: ignore
         None,
         alias="condition",
         title="Whether or not the action is applicable",
@@ -577,11 +556,12 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "An expression that describes applicability criteria, or start/stop "
             "conditions for the action."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    definition: fhirtypes.ReferenceType = Field(
+    definition: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="definition",
         title="Description of the activity to be performed",
@@ -590,13 +570,14 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "taken in detail, or a PlanDefinition that describes a series of "
             "actions to be taken."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
+        },
     )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Short description of the action",
@@ -604,14 +585,15 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "A short description of the action used to provide a summary to display"
             " to the user."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    documentation: typing.List[fhirtypes.RelatedArtifactType] = Field(
+    documentation: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
         None,
         alias="documentation",
         title="Supporting documentation for the intended performer of the action",
@@ -620,11 +602,12 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "that can be provided to the CDS recipient. Information resources can "
             "include inline text commentary and links to web resources."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    dynamicValue: typing.List[fhirtypes.PlanDefinitionActionDynamicValueType] = Field(
+    dynamicValue: typing.List[fhirtypes.PlanDefinitionActionDynamicValueType] = Field(  # type: ignore
         None,
         alias="dynamicValue",
         title="Dynamic aspects of the definition",
@@ -635,11 +618,12 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "specify an expression that calculated the weight, and the path on the "
             "resource that would contain the result."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    goalId: typing.List[fhirtypes.Id] = Field(
+    goalId: typing.List[typing.Optional[fhirtypes.IdType]] = Field(  # type: ignore
         None,
         alias="goalId",
         title="What goals this action supports",
@@ -647,96 +631,104 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "Identifies goals that this action supports. The reference must be to a"
             " goal element defined within this plan definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    goalId__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_goalId", title="Extension field for ``goalId``.")
+    goalId__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_goalId", title="Extension field for ``goalId``."
+    )
 
-    groupingBehavior: fhirtypes.Code = Field(
+    groupingBehavior: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="groupingBehavior",
         title="visual-group | logical-group | sentence-group",
         description="Defines the grouping behavior for the action and its children.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["visual-group", "logical-group", "sentence-group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["visual-group", "logical-group", "sentence-group"],
+        },
     )
-    groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_groupingBehavior",
         title="Extension field for ``groupingBehavior``.",
     )
 
-    input: typing.List[fhirtypes.DataRequirementType] = Field(
+    input: typing.List[fhirtypes.DataRequirementType] = Field(  # type: ignore
         None,
         alias="input",
         title="Input data requirements",
         description="Defines input data requirements for the action.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    label: fhirtypes.String = Field(
+    label: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="label",
         title="User-visible label for the action (e.g. 1. or A.)",
         description="A user-visible label for the action.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_label", title="Extension field for ``label``."
     )
 
-    output: typing.List[fhirtypes.DataRequirementType] = Field(
+    output: typing.List[fhirtypes.DataRequirementType] = Field(  # type: ignore
         None,
         alias="output",
         title="Output data definition",
         description="Defines the outputs of the action, if any.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    participant: typing.List[fhirtypes.PlanDefinitionActionParticipantType] = Field(
+    participant: typing.List[fhirtypes.PlanDefinitionActionParticipantType] = Field(  # type: ignore
         None,
         alias="participant",
         title="Who should participate in the action",
         description="Indicates who should participate in performing the action described.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    precheckBehavior: fhirtypes.Code = Field(
+    precheckBehavior: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="precheckBehavior",
         title="yes | no",
         description="Defines whether the action should usually be preselected.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["yes", "no"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["yes", "no"],
+        },
     )
-    precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_precheckBehavior",
         title="Extension field for ``precheckBehavior``.",
     )
 
-    reason: typing.List[fhirtypes.CodeableConceptType] = Field(
+    reason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="reason",
         title="Why the action should be performed",
         description="A description of why this action is necessary or appropriate.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    relatedAction: typing.List[fhirtypes.PlanDefinitionActionRelatedActionType] = Field(
+    relatedAction: typing.List[fhirtypes.PlanDefinitionActionRelatedActionType] = Field(  # type: ignore
         None,
         alias="relatedAction",
         title="Relationship to another action",
@@ -744,52 +736,55 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             'A relationship to another action such as "before" or "30-60 minutes '
             'after start of".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    requiredBehavior: fhirtypes.Code = Field(
+    requiredBehavior: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="requiredBehavior",
         title="must | could | must-unless-documented",
         description="Defines the requiredness behavior for the action.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["must", "could", "must-unless-documented"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["must", "could", "must-unless-documented"],
+        },
     )
-    requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_requiredBehavior",
         title="Extension field for ``requiredBehavior``.",
     )
 
-    selectionBehavior: fhirtypes.Code = Field(
+    selectionBehavior: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="selectionBehavior",
         title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
         description="Defines the selection behavior for the action and its children.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "any",
-            "all",
-            "all-or-none",
-            "exactly-one",
-            "at-most-one",
-            "one-or-more",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "any",
+                "all",
+                "all-or-none",
+                "exactly-one",
+                "at-most-one",
+                "one-or-more",
+            ],
+        },
     )
-    selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_selectionBehavior",
         title="Extension field for ``selectionBehavior``.",
     )
 
-    textEquivalent: fhirtypes.String = Field(
+    textEquivalent: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="textEquivalent",
         title=(
@@ -802,89 +797,96 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "consumed by a system that may not be capable of interpreting it "
             "dynamically."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_textEquivalent", title="Extension field for ``textEquivalent``."
     )
 
-    timingDateTime: fhirtypes.DateTime = Field(
+    timingDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="timingDateTime",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
-    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_timingDateTime", title="Extension field for ``timingDateTime``."
     )
 
-    timingDuration: fhirtypes.DurationType = Field(
+    timingDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="timingDuration",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
-    timingPeriod: fhirtypes.PeriodType = Field(
+    timingPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="timingPeriod",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
-    timingRange: fhirtypes.RangeType = Field(
+    timingRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="timingRange",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
-    timingTiming: fhirtypes.TimingType = Field(
+    timingTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="timingTiming",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="User-visible title",
         description="The title of the action displayed to a user.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    transform: fhirtypes.ReferenceType = Field(
+    transform: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="transform",
         title="Transform to apply the template",
@@ -893,28 +895,31 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "can be executed to produce the intent resource using the "
             "ActivityDefinition instance as the input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureMap"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureMap"],
+        },
     )
 
-    triggerDefinition: typing.List[fhirtypes.TriggerDefinitionType] = Field(
+    triggerDefinition: typing.List[fhirtypes.TriggerDefinitionType] = Field(  # type: ignore
         None,
         alias="triggerDefinition",
         title="When the action should be triggered",
         description="A description of when the action should be triggered.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodingType = Field(
+    type: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="type",
         title="create | update | remove | fire-event",
         description="The type of action to perform (create, update, remove).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -958,10 +963,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "action",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2224(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -983,26 +985,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
                 "timingTiming",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class PlanDefinitionActionCondition(backboneelement.BackboneElement):
@@ -1015,9 +998,9 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     conditions for the action.
     """
 
-    resource_type = Field("PlanDefinitionActionCondition", const=True)
+    __resource_type__ = "PlanDefinitionActionCondition"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the condition",
@@ -1025,14 +1008,15 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "A brief, natural language description of the condition that "
             "effectively communicates the intended semantics."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    expression: fhirtypes.String = Field(
+    expression: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="expression",
         title="Boolean-valued expression",
@@ -1040,38 +1024,41 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "An expression that returns true or false, indicating whether or not "
             "the condition is satisfied."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    kind: fhirtypes.Code = Field(
+    kind: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="kind",
         title="applicability | start | stop",
         description="The kind of condition.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["applicability", "start", "stop"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["applicability", "start", "stop"],
+        },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    language: fhirtypes.String = Field(
+    language: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="language",
         title="Language of the expression",
         description="The media type of the language for the expression.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
@@ -1091,10 +1078,7 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "expression",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3159(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1103,52 +1087,7 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("kind", "kind__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
@@ -1164,9 +1103,9 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
     the result.
     """
 
-    resource_type = Field("PlanDefinitionActionDynamicValue", const=True)
+    __resource_type__ = "PlanDefinitionActionDynamicValue"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the dynamic value",
@@ -1174,38 +1113,41 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "A brief, natural language description of the intended semantics of the"
             " dynamic value."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    expression: fhirtypes.String = Field(
+    expression: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="expression",
         title="An expression that provides the dynamic value for the customization",
         description="An expression specifying the value of the customized element.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    language: fhirtypes.String = Field(
+    language: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="language",
         title="Language of the expression",
         description="The media type of the language for the expression.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    path: fhirtypes.String = Field(
+    path: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="path",
         title="The path to the element to be set dynamically",
@@ -1214,10 +1156,11 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "resource that will hold the result of the calculation defined by the "
             "expression."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_path", title="Extension field for ``path``."
     )
 
@@ -1247,9 +1190,9 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
     Indicates who should participate in performing the action described.
     """
 
-    resource_type = Field("PlanDefinitionActionParticipant", const=True)
+    __resource_type__ = "PlanDefinitionActionParticipant"
 
-    role: fhirtypes.CodeableConceptType = Field(
+    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="role",
         title="E.g. Nurse, Surgeon, Parent, etc",
@@ -1257,23 +1200,25 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
             "The role the participant should play in performing the described "
             "action."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="patient | practitioner | related-person",
         description="The type of participant in the action.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["patient", "practitioner", "related-person"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["patient", "practitioner", "related-person"],
+        },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -1285,10 +1230,7 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "type", "role"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3381(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1297,52 +1239,7 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
@@ -1355,22 +1252,23 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     start of".
     """
 
-    resource_type = Field("PlanDefinitionActionRelatedAction", const=True)
+    __resource_type__ = "PlanDefinitionActionRelatedAction"
 
-    actionId: fhirtypes.Id = Field(
+    actionId: fhirtypes.IdType = Field(  # type: ignore
         None,
         alias="actionId",
         title="What action is this related to",
         description="The element id of the related action.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_actionId", title="Extension field for ``actionId``."
     )
 
-    offsetDuration: fhirtypes.DurationType = Field(
+    offsetDuration: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="offsetDuration",
         title="Time offset for the relationship",
@@ -1378,14 +1276,15 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "A duration or range of durations to apply to the relationship. For "
             "example, 30-60 minutes before."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e offset[x]
-        one_of_many="offset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e offset[x]
+            "one_of_many": "offset",
+            "one_of_many_required": False,
+        },
     )
 
-    offsetRange: fhirtypes.RangeType = Field(
+    offsetRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="offsetRange",
         title="Time offset for the relationship",
@@ -1393,14 +1292,15 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "A duration or range of durations to apply to the relationship. For "
             "example, 30-60 minutes before."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e offset[x]
-        one_of_many="offset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e offset[x]
+            "one_of_many": "offset",
+            "one_of_many_required": False,
+        },
     )
 
-    relationship: fhirtypes.Code = Field(
+    relationship: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="relationship",
         title=(
@@ -1408,24 +1308,25 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
         description="The relationship of this action to the related action.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "before-start",
-            "before",
-            "before-end",
-            "concurrent-with-start",
-            "concurrent",
-            "concurrent-with-end",
-            "after-start",
-            "after",
-            "after-end",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "before-start",
+                "before",
+                "before-end",
+                "concurrent-with-start",
+                "concurrent",
+                "concurrent-with-end",
+                "after-start",
+                "after",
+                "after-end",
+            ],
+        },
     )
-    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_relationship", title="Extension field for ``relationship``."
     )
 
@@ -1445,10 +1346,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "offsetRange",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3535(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1460,57 +1358,9 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             ("actionId", "actionId__ext"),
             ("relationship", "relationship__ext"),
         ]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3535(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1524,26 +1374,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"offset": ["offsetDuration", "offsetRange"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class PlanDefinitionGoal(backboneelement.BackboneElement):
@@ -1558,9 +1389,9 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
     objective, etc.
     """
 
-    resource_type = Field("PlanDefinitionGoal", const=True)
+    __resource_type__ = "PlanDefinitionGoal"
 
-    addresses: typing.List[fhirtypes.CodeableConceptType] = Field(
+    addresses: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="addresses",
         title="What does the goal address",
@@ -1568,20 +1399,22 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             "Identifies problems, conditions, issues, or concerns the goal is "
             "intended to address."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    category: fhirtypes.CodeableConceptType = Field(
+    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="category",
         title="E.g. Treatment, dietary, behavioral, etc",
         description="Indicates a category the goal falls within.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.CodeableConceptType = Field(
+    description: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="description",
         title="Code or text describing the goal",
@@ -1590,11 +1423,12 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             'objective of care, such as "control blood pressure" or "negotiate an '
             'obstacle course" or "dance with child at wedding".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    documentation: typing.List[fhirtypes.RelatedArtifactType] = Field(
+    documentation: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
         None,
         alias="documentation",
         title="Supporting documentation for the goal",
@@ -1604,11 +1438,12 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             "Information resources can include inline text commentary and links to "
             "web resources."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    priority: fhirtypes.CodeableConceptType = Field(
+    priority: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="priority",
         title="high-priority | medium-priority | low-priority",
@@ -1616,26 +1451,29 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             "Identifies the expected level of importance associated with "
             "reaching/sustaining the defined goal."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    start: fhirtypes.CodeableConceptType = Field(
+    start: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="start",
         title="When goal pursuit begins",
         description="The event after which the goal should begin being pursued.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    target: typing.List[fhirtypes.PlanDefinitionGoalTargetType] = Field(
+    target: typing.List[fhirtypes.PlanDefinitionGoalTargetType] = Field(  # type: ignore
         None,
         alias="target",
         title="Target outcome for the goal",
         description="Indicates what should be done and within what timeframe.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1667,9 +1505,9 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
     Indicates what should be done and within what timeframe.
     """
 
-    resource_type = Field("PlanDefinitionGoalTarget", const=True)
+    __resource_type__ = "PlanDefinitionGoalTarget"
 
-    detailCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    detailCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="detailCodeableConcept",
         title="The target value to be achieved",
@@ -1681,14 +1519,15 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "value. Similarly, if the high value is missing, it indicates that the "
             "goal is achieved at any value at or above the low value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e detail[x]
-        one_of_many="detail",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e detail[x]
+            "one_of_many": "detail",
+            "one_of_many_required": False,
+        },
     )
 
-    detailQuantity: fhirtypes.QuantityType = Field(
+    detailQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="detailQuantity",
         title="The target value to be achieved",
@@ -1700,14 +1539,15 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "value. Similarly, if the high value is missing, it indicates that the "
             "goal is achieved at any value at or above the low value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e detail[x]
-        one_of_many="detail",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e detail[x]
+            "one_of_many": "detail",
+            "one_of_many_required": False,
+        },
     )
 
-    detailRange: fhirtypes.RangeType = Field(
+    detailRange: fhirtypes.RangeType = Field(  # type: ignore
         None,
         alias="detailRange",
         title="The target value to be achieved",
@@ -1719,14 +1559,15 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "value. Similarly, if the high value is missing, it indicates that the "
             "goal is achieved at any value at or above the low value."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e detail[x]
-        one_of_many="detail",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e detail[x]
+            "one_of_many": "detail",
+            "one_of_many_required": False,
+        },
     )
 
-    due: fhirtypes.DurationType = Field(
+    due: fhirtypes.DurationType = Field(  # type: ignore
         None,
         alias="due",
         title="Reach goal within",
@@ -1734,11 +1575,12 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "Indicates the timeframe after the start of the goal in which the goal "
             "should be met."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    measure: fhirtypes.CodeableConceptType = Field(
+    measure: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="measure",
         title="The parameter whose value is to be tracked",
@@ -1746,8 +1588,9 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "The parameter whose value is to be tracked, e.g. body weigth, blood "
             "pressure, or hemoglobin A1c level."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1767,10 +1610,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "due",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2626(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1786,23 +1626,4 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         one_of_many_fields = {
             "detail": ["detailCodeableConcept", "detailQuantity", "detailRange"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

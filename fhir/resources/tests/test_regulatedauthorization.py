@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import regulatedauthorization
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_regulatedauthorization_1(inst):
@@ -18,8 +18,8 @@ def impl_regulatedauthorization_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.regulator.display == "FDA"
@@ -27,7 +27,9 @@ def impl_regulatedauthorization_1(inst):
     assert inst.status.coding[0].code == "active"
     assert (
         inst.statusDate
-        == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-01-01"}
+        ).valueDateTime
     )
     assert inst.subject[0].reference == "MedicinalProductDefinition/equilidem"
     assert inst.text.status == "generated"
@@ -60,12 +62,14 @@ def test_regulatedauthorization_1(base_settings):
 def impl_regulatedauthorization_2(inst):
     assert (
         inst.case.application[0].dateDateTime
-        == ExternalValidatorModel(valueDateTime="2015-08-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-01"}
+        ).valueDateTime
     )
     assert (
         inst.case.application[0].identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/applicationidentifier-number"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/applicationidentifier-number"}
         ).valueUri
     )
     assert inst.case.application[0].identifier.value == "IA38G"
@@ -75,18 +79,22 @@ def impl_regulatedauthorization_2(inst):
     )
     assert (
         inst.case.application[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/marketingAuthorizationApplicationType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://ema.europa.eu/example/marketingAuthorizationApplicationType"
+            }
         ).valueUri
     )
     assert (
         inst.case.application[1].dateDateTime
-        == ExternalValidatorModel(valueDateTime="2014-09-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-01"}
+        ).valueDateTime
     )
     assert (
         inst.case.application[1].identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/applicationidentifier-number"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/applicationidentifier-number"}
         ).valueUri
     )
     assert inst.case.application[1].identifier.value == "IA38F"
@@ -96,38 +104,46 @@ def impl_regulatedauthorization_2(inst):
     )
     assert (
         inst.case.application[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/marketingAuthorizationApplicationType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://ema.europa.eu/example/marketingAuthorizationApplicationType"
+            }
         ).valueUri
     )
     assert (
         inst.case.datePeriod.end
-        == ExternalValidatorModel(valueDateTime="2015-08-21").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-08-21"}
+        ).valueDateTime
     )
     assert (
         inst.case.datePeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-09-02").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-02"}
+        ).valueDateTime
     )
     assert (
         inst.case.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/procedureidentifier-number"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/procedureidentifier-number"}
         ).valueUri
     )
     assert inst.case.identifier.value == "EMEA/H/C/009999/IA/0099/G"
     assert inst.case.type.coding[0].code == "VariationTypeIA"
     assert (
         inst.case.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/marketingAuthorizationProcedureType"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://ema.europa.eu/example/marketingAuthorizationProcedureType"
+            }
         ).valueUri
     )
     assert inst.holder.reference == "Organization/example"
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/marketingAuthorizationNumber"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/marketingAuthorizationNumber"}
         ).valueUri
     )
     assert inst.identifier[0].value == "EU/1/11/999/001"
@@ -135,37 +151,43 @@ def impl_regulatedauthorization_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.region[0].coding[0].code == "EU"
     assert (
         inst.region[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/country"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/country"}
         ).valueUri
     )
     assert inst.regulator.reference == "Organization/example"
     assert inst.status.coding[0].code == "active"
     assert (
         inst.status.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://ema.europa.eu/example/authorizationstatus"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://ema.europa.eu/example/authorizationstatus"}
         ).valueUri
     )
     assert (
         inst.statusDate
-        == ExternalValidatorModel(valueDateTime="2015-01-14").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-14"}
+        ).valueDateTime
     )
     assert inst.text.status == "generated"
     assert (
         inst.validityPeriod.end
-        == ExternalValidatorModel(valueDateTime="2020-05-20").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2020-05-20"}
+        ).valueDateTime
     )
     assert (
         inst.validityPeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-09-03").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-09-03"}
+        ).valueDateTime
     )
 
 

@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import testscript
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_testscript_1(inst):
@@ -16,12 +16,19 @@ def impl_testscript_1(inst):
     assert inst.contact[0].telecom[0].use == "work"
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-01-18").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-18"}
+        ).valueDateTime
+    )
     assert inst.destination[0].index == 1
     assert inst.destination[0].profile.code == "FHIR-Server"
     assert (
         inst.destination[0].url
-        == ExternalValidatorModel(valueUrl="http://acme.com/fhir/test").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://acme.com/fhir/test"}
+        ).valueUrl
     )
     assert inst.destination[1].index == 2
     assert inst.destination[1].profile.code == "FHIR-Server"
@@ -29,14 +36,18 @@ def impl_testscript_1(inst):
     assert inst.id == "testscript-example-multisystem"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.12.6"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert (
         inst.metadata.capability[0].capabilities
@@ -46,8 +57,8 @@ def impl_testscript_1(inst):
     assert inst.metadata.capability[0].destination == 1
     assert (
         inst.metadata.capability[0].link[0]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#read"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#read"}
         ).valueUri
     )
     assert inst.metadata.capability[0].origin[0] == 1
@@ -61,8 +72,8 @@ def impl_testscript_1(inst):
     assert inst.metadata.capability[1].destination == 2
     assert (
         inst.metadata.capability[1].link[0]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#read"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#read"}
         ).valueUri
     )
     assert inst.metadata.capability[1].origin[0] == 1
@@ -75,7 +86,9 @@ def impl_testscript_1(inst):
     )
     assert (
         inst.metadata.link[0].url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/patient.html").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/patient.html"}
+        ).valueUri
     )
     assert inst.name == "Testscriptexamplemultisystem"
     assert inst.origin[0].index == 1
@@ -96,13 +109,13 @@ def impl_testscript_1(inst):
     assert inst.test[0].action[0].operation.requestId == "request-read-patient-01"
     assert (
         inst.test[0].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[0].operation.type.code == "read"
     assert (
         inst.test[0].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.test[0].action[1].assert_fhir.description == (
@@ -145,7 +158,7 @@ def impl_testscript_1(inst):
     assert inst.test[0].action[5].assert_fhir.direction == "response"
     assert (
         inst.test[0].action[5].assert_fhir.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[5].assert_fhir.stopTestOnFail is False
     assert inst.test[0].action[5].assert_fhir.warningOnly is False
@@ -170,13 +183,13 @@ def impl_testscript_1(inst):
     assert inst.test[1].action[0].operation.requestHeader[0].value == "utf-8"
     assert (
         inst.test[1].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[1].action[0].operation.type.code == "read"
     assert (
         inst.test[1].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -212,7 +225,7 @@ def impl_testscript_1(inst):
     assert inst.test[1].action[4].assert_fhir.direction == "response"
     assert (
         inst.test[1].action[4].assert_fhir.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[1].action[4].assert_fhir.stopTestOnFail is False
     assert inst.test[1].action[4].assert_fhir.warningOnly is False
@@ -227,8 +240,10 @@ def impl_testscript_1(inst):
     assert inst.title == "Multisystem Test Script"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/TestScript/testscript-example-multisystem"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://hl7.org/fhir/TestScript/testscript-example-multisystem"
+            }
         ).valueUri
     )
     assert inst.variable[0].defaultValue == "example"
@@ -264,7 +279,12 @@ def impl_testscript_2(inst):
     assert inst.contact[0].telecom[0].use == "work"
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-01-18").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-18"}
+        ).valueDateTime
+    )
     assert inst.experimental is True
     assert inst.fixture[0].autocreate is False
     assert inst.fixture[0].autodelete is False
@@ -279,14 +299,18 @@ def impl_testscript_2(inst):
     assert inst.id == "testscript-example-history"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.12.1"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert (
         inst.metadata.capability[0].capabilities
@@ -298,20 +322,20 @@ def impl_testscript_2(inst):
     )
     assert (
         inst.metadata.capability[0].link[0]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#update"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#update"}
         ).valueUri
     )
     assert (
         inst.metadata.capability[0].link[1]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#delete"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#delete"}
         ).valueUri
     )
     assert (
         inst.metadata.capability[0].link[2]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#history"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#history"}
         ).valueUri
     )
     assert inst.metadata.capability[0].required is True
@@ -323,7 +347,9 @@ def impl_testscript_2(inst):
     )
     assert (
         inst.metadata.link[0].url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/patient.html").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/patient.html"}
+        ).valueUri
     )
     assert inst.name == "TestScriptExampleHistory"
     assert inst.profile[0] == "http://hl7.org/fhir/StructureDefinition/Bundle"
@@ -342,13 +368,13 @@ def impl_testscript_2(inst):
     assert inst.setup.action[0].operation.params == "/${createResourceId}"
     assert (
         inst.setup.action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[0].operation.type.code == "delete"
     assert (
         inst.setup.action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.setup.action[1].assert_fhir.description == (
@@ -370,14 +396,14 @@ def impl_testscript_2(inst):
     assert inst.setup.action[2].operation.params == "/${createResourceId}"
     assert (
         inst.setup.action[2].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[2].operation.sourceId == "fixture-patient-create"
     assert inst.setup.action[2].operation.type.code == "update"
     assert (
         inst.setup.action[2].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -399,14 +425,14 @@ def impl_testscript_2(inst):
     assert inst.setup.action[4].operation.params == "/${createResourceId}"
     assert (
         inst.setup.action[4].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[4].operation.sourceId == "fixture-patient-update"
     assert inst.setup.action[4].operation.type.code == "update"
     assert (
         inst.setup.action[4].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -427,14 +453,14 @@ def impl_testscript_2(inst):
     assert inst.test[0].action[0].operation.encodeRequestUrl is True
     assert (
         inst.test[0].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[0].operation.targetId == "fixture-patient-create"
     assert inst.test[0].action[0].operation.type.code == "history"
     assert (
         inst.test[0].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -451,7 +477,7 @@ def impl_testscript_2(inst):
     )
     assert (
         inst.test[0].action[2].assert_fhir.resource
-        == ExternalValidatorModel(valueUri="Bundle").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Bundle"}).valueUri
     )
     assert inst.test[0].action[2].assert_fhir.stopTestOnFail is False
     assert inst.test[0].action[2].assert_fhir.warningOnly is False
@@ -480,8 +506,8 @@ def impl_testscript_2(inst):
     assert inst.title == "TestScript Example History"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/TestScript/testscript-example-history"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/TestScript/testscript-example-history"}
         ).valueUri
     )
     assert inst.variable[0].name == "createResourceId"
@@ -514,7 +540,12 @@ def impl_testscript_3(inst):
     assert inst.contact[0].telecom[0].use == "work"
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-01-18").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-18"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "TestScript example resource with setup to delete if present "
         "and create a new instance of a Patient; and single test "
@@ -534,14 +565,18 @@ def impl_testscript_3(inst):
     assert inst.id == "testscript-example-update"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.12.5"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert (
         inst.metadata.capability[0].capabilities
@@ -553,14 +588,14 @@ def impl_testscript_3(inst):
     )
     assert (
         inst.metadata.capability[0].link[0]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#update"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#update"}
         ).valueUri
     )
     assert (
         inst.metadata.capability[0].link[1]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#delete"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#delete"}
         ).valueUri
     )
     assert inst.metadata.capability[0].required is True
@@ -572,7 +607,9 @@ def impl_testscript_3(inst):
     )
     assert (
         inst.metadata.link[0].url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/patient.html").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/patient.html"}
+        ).valueUri
     )
     assert inst.name == "TestScriptExampleUpdate"
     assert inst.profile[0] == "http://hl7.org/fhir/StructureDefinition/Patient"
@@ -588,13 +625,13 @@ def impl_testscript_3(inst):
     assert inst.setup.action[0].operation.params == "/${createResourceId}"
     assert (
         inst.setup.action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[0].operation.type.code == "delete"
     assert (
         inst.setup.action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.setup.action[1].assert_fhir.description == (
@@ -616,14 +653,14 @@ def impl_testscript_3(inst):
     assert inst.setup.action[2].operation.params == "/${createResourceId}"
     assert (
         inst.setup.action[2].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[2].operation.sourceId == "fixture-patient-create"
     assert inst.setup.action[2].operation.type.code == "update"
     assert (
         inst.setup.action[2].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -646,14 +683,14 @@ def impl_testscript_3(inst):
     assert inst.test[0].action[0].operation.params == "/${createResourceId}"
     assert (
         inst.test[0].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[0].operation.sourceId == "fixture-patient-update"
     assert inst.test[0].action[0].operation.type.code == "update"
     assert (
         inst.test[0].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -686,8 +723,8 @@ def impl_testscript_3(inst):
     assert inst.title == "TestScript Example Update"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/TestScript/testscript-example-update"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/TestScript/testscript-example-update"}
         ).valueUri
     )
     assert inst.variable[0].name == "createResourceId"
@@ -720,7 +757,12 @@ def impl_testscript_4(inst):
     assert inst.contact[0].telecom[0].use == "work"
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-01-18").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-18"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "TestScript example resource with simple Patient search test."
         " The read tests will utilize user defined dynamic variables "
@@ -735,14 +777,18 @@ def impl_testscript_4(inst):
     assert inst.id == "testscript-example-search"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.12.3"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert (
         inst.metadata.capability[0].capabilities
@@ -751,8 +797,8 @@ def impl_testscript_4(inst):
     assert inst.metadata.capability[0].description == "Patient Search Operation"
     assert (
         inst.metadata.capability[0].link[0]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#search"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#search"}
         ).valueUri
     )
     assert inst.metadata.capability[0].required is True
@@ -764,7 +810,9 @@ def impl_testscript_4(inst):
     )
     assert (
         inst.metadata.link[0].url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/patient.html").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/patient.html"}
+        ).valueUri
     )
     assert inst.name == "TestScriptExampleSearch"
     assert inst.profile[0] == "http://hl7.org/fhir/StructureDefinition/Bundle"
@@ -782,13 +830,13 @@ def impl_testscript_4(inst):
     )
     assert (
         inst.setup.action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[0].operation.type.code == "search"
     assert (
         inst.setup.action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.setup.action[1].assert_fhir.description == (
@@ -813,7 +861,7 @@ def impl_testscript_4(inst):
     )
     assert (
         inst.setup.action[3].assert_fhir.resource
-        == ExternalValidatorModel(valueUri="Bundle").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Bundle"}).valueUri
     )
     assert inst.setup.action[3].assert_fhir.stopTestOnFail is False
     assert inst.setup.action[3].assert_fhir.warningOnly is False
@@ -832,15 +880,15 @@ def impl_testscript_4(inst):
     assert inst.test[0].action[0].operation.encodeRequestUrl is True
     assert (
         inst.test[0].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[0].operation.responseId == "PatientCreateResponse"
     assert inst.test[0].action[0].operation.sourceId == "fixture-patient-create"
     assert inst.test[0].action[0].operation.type.code == "create"
     assert (
         inst.test[0].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -867,8 +915,8 @@ def impl_testscript_4(inst):
     assert inst.test[0].action[3].operation.type.code == "read"
     assert (
         inst.test[0].action[3].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.test[0].action[3].operation.url == "${PatientCreateLocation}"
@@ -885,7 +933,7 @@ def impl_testscript_4(inst):
     )
     assert (
         inst.test[0].action[5].assert_fhir.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[5].assert_fhir.stopTestOnFail is False
     assert inst.test[0].action[5].assert_fhir.warningOnly is False
@@ -907,13 +955,13 @@ def impl_testscript_4(inst):
     )
     assert (
         inst.test[1].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[1].action[0].operation.type.code == "search"
     assert (
         inst.test[1].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -936,7 +984,7 @@ def impl_testscript_4(inst):
     )
     assert (
         inst.test[1].action[3].assert_fhir.resource
-        == ExternalValidatorModel(valueUri="Bundle").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Bundle"}).valueUri
     )
     assert inst.test[1].action[3].assert_fhir.stopTestOnFail is True
     assert inst.test[1].action[3].assert_fhir.warningOnly is False
@@ -976,8 +1024,8 @@ def impl_testscript_4(inst):
     assert inst.title == "TestScript Example Search"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/TestScript/testscript-example-search"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/TestScript/testscript-example-search"}
         ).valueUri
     )
     assert inst.variable[0].headerField == "Location"
@@ -1026,7 +1074,12 @@ def impl_testscript_5(inst):
     assert inst.contact[0].telecom[0].use == "work"
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-01-18").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-18"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "TestScript example resource with setup to delete if present "
         "and create a new instance of a Patient; and single test "
@@ -1046,14 +1099,18 @@ def impl_testscript_5(inst):
     assert inst.id == "testscript-example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.12.4"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert (
         inst.metadata.capability[0].capabilities
@@ -1065,20 +1122,20 @@ def impl_testscript_5(inst):
     )
     assert (
         inst.metadata.capability[0].link[0]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#delete"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#delete"}
         ).valueUri
     )
     assert (
         inst.metadata.capability[0].link[1]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#read"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#read"}
         ).valueUri
     )
     assert (
         inst.metadata.capability[0].link[2]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#update"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#update"}
         ).valueUri
     )
     assert inst.metadata.capability[0].required is True
@@ -1090,7 +1147,9 @@ def impl_testscript_5(inst):
     )
     assert (
         inst.metadata.link[0].url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/patient.html").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/patient.html"}
+        ).valueUri
     )
     assert inst.name == "TestScriptExample"
     assert inst.profile[0] == "http://hl7.org/fhir/StructureDefinition/Patient"
@@ -1108,13 +1167,13 @@ def impl_testscript_5(inst):
     assert inst.setup.action[0].operation.params == "/${createResourceId}"
     assert (
         inst.setup.action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[0].operation.type.code == "delete"
     assert (
         inst.setup.action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.setup.action[1].assert_fhir.description == (
@@ -1136,14 +1195,14 @@ def impl_testscript_5(inst):
     assert inst.setup.action[2].operation.params == "/${createResourceId}"
     assert (
         inst.setup.action[2].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[2].operation.sourceId == "fixture-patient-create"
     assert inst.setup.action[2].operation.type.code == "update"
     assert (
         inst.setup.action[2].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -1161,14 +1220,14 @@ def impl_testscript_5(inst):
     assert inst.setup.action[4].operation.encodeRequestUrl is True
     assert (
         inst.setup.action[4].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.setup.action[4].operation.targetId == "fixture-patient-create"
     assert inst.setup.action[4].operation.type.code == "read"
     assert (
         inst.setup.action[4].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -1203,14 +1262,14 @@ def impl_testscript_5(inst):
     assert inst.teardown.action[0].operation.encodeRequestUrl is True
     assert (
         inst.teardown.action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.teardown.action[0].operation.targetId == "fixture-patient-create"
     assert inst.teardown.action[0].operation.type.code == "delete"
     assert (
         inst.teardown.action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert inst.test[0].action[0].operation.description == (
@@ -1221,15 +1280,15 @@ def impl_testscript_5(inst):
     assert inst.test[0].action[0].operation.encodeRequestUrl is False
     assert (
         inst.test[0].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[0].operation.responseId == "fixture-patient-read"
     assert inst.test[0].action[0].operation.targetId == "fixture-patient-create"
     assert inst.test[0].action[0].operation.type.code == "read"
     assert (
         inst.test[0].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -1257,7 +1316,7 @@ def impl_testscript_5(inst):
     )
     assert (
         inst.test[0].action[3].assert_fhir.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[3].assert_fhir.stopTestOnFail is False
     assert inst.test[0].action[3].assert_fhir.warningOnly is False
@@ -1338,35 +1397,37 @@ def impl_testscript_5(inst):
     assert inst.title == "TestScript Example"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/TestScript/testscript-example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/TestScript/testscript-example"}
         ).valueUri
     )
     assert inst.useContext[0].code.code == "focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "positive"
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/variant-state"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/variant-state"}
         ).valueUri
     )
     assert inst.useContext[1].code.code == "program"
     assert (
         inst.useContext[1].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[1].valueRange.low.code == "a"
     assert (
         inst.useContext[1].valueRange.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.useContext[1].valueRange.low.unit == "year"
     assert float(inst.useContext[1].valueRange.low.value) == float(2018)
@@ -1400,7 +1461,12 @@ def impl_testscript_6(inst):
     assert inst.contact[0].telecom[0].use == "work"
     assert inst.contact[0].telecom[0].value == "support@HL7.org"
     assert inst.copyright == "© HL7.org 2011+"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-01-18").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-18"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "TestScript example resource with ported Sprinkler basic read"
         " tests R001, R002, R003, R004. The read tests will utilize "
@@ -1411,14 +1477,18 @@ def impl_testscript_6(inst):
     assert inst.id == "testscript-example-readtest"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.12.2"
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert inst.jurisdiction[0].coding[0].display == "United States of America (the)"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert (
         inst.metadata.capability[0].capabilities
@@ -1427,8 +1497,8 @@ def impl_testscript_6(inst):
     assert inst.metadata.capability[0].description == "Patient Read Operation"
     assert (
         inst.metadata.capability[0].link[0]
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/http.html#read"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/http.html#read"}
         ).valueUri
     )
     assert inst.metadata.capability[0].required is True
@@ -1440,7 +1510,9 @@ def impl_testscript_6(inst):
     )
     assert (
         inst.metadata.link[0].url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/patient.html").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/patient.html"}
+        ).valueUri
     )
     assert inst.name == "TestScript Example Read Test"
     assert inst.profile[0] == "http://hl7.org/fhir/StructureDefinition/Patient"
@@ -1450,15 +1522,15 @@ def impl_testscript_6(inst):
     assert inst.scope[0].conformance.coding[0].code == "optional"
     assert (
         inst.scope[0].conformance.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/testscript-scope-conformance-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/testscript-scope-conformance-codes"}
         ).valueUri
     )
     assert inst.scope[0].phase.coding[0].code == "unit"
     assert (
         inst.scope[0].phase.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/testscript-scope-phase-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/testscript-scope-phase-codes"}
         ).valueUri
     )
     assert inst.status == "draft"
@@ -1472,13 +1544,13 @@ def impl_testscript_6(inst):
     assert inst.test[0].action[0].operation.params == "/${KnownPatientResourceId}"
     assert (
         inst.test[0].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[0].operation.type.code == "read"
     assert (
         inst.test[0].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -1510,7 +1582,7 @@ def impl_testscript_6(inst):
     )
     assert (
         inst.test[0].action[4].assert_fhir.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[0].action[4].assert_fhir.stopTestOnFail is False
     assert inst.test[0].action[4].assert_fhir.warningOnly is False
@@ -1528,13 +1600,13 @@ def impl_testscript_6(inst):
     assert inst.test[1].action[0].operation.params == "/1"
     assert (
         inst.test[1].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[1].action[0].operation.type.code == "read"
     assert (
         inst.test[1].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -1560,13 +1632,13 @@ def impl_testscript_6(inst):
     assert inst.test[2].action[0].operation.params == "/${NonExistsPatientResourceId}"
     assert (
         inst.test[2].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[2].action[0].operation.type.code == "read"
     assert (
         inst.test[2].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -1591,13 +1663,13 @@ def impl_testscript_6(inst):
     assert inst.test[3].action[0].operation.params == "/ID-may-not-contain-CAPITALS"
     assert (
         inst.test[3].action[0].operation.resource
-        == ExternalValidatorModel(valueUri="Patient").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Patient"}).valueUri
     )
     assert inst.test[3].action[0].operation.type.code == "read"
     assert (
         inst.test[3].action[0].operation.type.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/restful-interaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/restful-interaction"}
         ).valueUri
     )
     assert (
@@ -1616,8 +1688,8 @@ def impl_testscript_6(inst):
     assert inst.text.status == "generated"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/TestScript/testscript-example-readtest"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/TestScript/testscript-example-readtest"}
         ).valueUri
     )
     assert inst.variable[0].defaultValue == "example"

@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import nutritionintake
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_nutritionintake_1(inst):
@@ -15,7 +15,9 @@ def impl_nutritionintake_1(inst):
     assert inst.consumedItem[0].amount.code == "%"
     assert (
         inst.consumedItem[0].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.consumedItem[0].amount.unit == "percent"
     assert float(inst.consumedItem[0].amount.value) == float(100)
@@ -24,7 +26,9 @@ def impl_nutritionintake_1(inst):
     assert inst.consumedItem[1].amount.code == "%"
     assert (
         inst.consumedItem[1].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.consumedItem[1].amount.unit == "percent"
     assert float(inst.consumedItem[1].amount.value) == float(100)
@@ -36,7 +40,9 @@ def impl_nutritionintake_1(inst):
     assert inst.consumedItem[2].amount.code == "%"
     assert (
         inst.consumedItem[2].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.consumedItem[2].amount.unit == "percent"
     assert float(inst.consumedItem[2].amount.value) == float(50)
@@ -48,7 +54,9 @@ def impl_nutritionintake_1(inst):
     assert inst.consumedItem[3].amount.code == "%"
     assert (
         inst.consumedItem[3].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.consumedItem[3].amount.unit == "percent"
     assert float(inst.consumedItem[3].amount.value) == float(50)
@@ -57,7 +65,9 @@ def impl_nutritionintake_1(inst):
     assert inst.consumedItem[4].amount.code == "%"
     assert (
         inst.consumedItem[4].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.consumedItem[4].amount.unit == "percent"
     assert float(inst.consumedItem[4].amount.value) == float(100)
@@ -67,13 +77,17 @@ def impl_nutritionintake_1(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "1144223344"
     assert inst.ingredientLabel[0].amount.code == "kcal"
     assert (
         inst.ingredientLabel[0].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredientLabel[0].amount.unit == "kilocalorie"
     assert float(inst.ingredientLabel[0].amount.value) == float(313)
@@ -81,7 +95,9 @@ def impl_nutritionintake_1(inst):
     assert inst.ingredientLabel[1].amount.code == "g"
     assert (
         inst.ingredientLabel[1].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredientLabel[1].amount.unit == "grams"
     assert float(inst.ingredientLabel[1].amount.value) == float(10.4)
@@ -89,7 +105,9 @@ def impl_nutritionintake_1(inst):
     assert inst.ingredientLabel[2].amount.code == "g"
     assert (
         inst.ingredientLabel[2].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredientLabel[2].amount.unit == "grams"
     assert float(inst.ingredientLabel[2].amount.value) == float(18.0)
@@ -97,7 +115,9 @@ def impl_nutritionintake_1(inst):
     assert inst.ingredientLabel[3].amount.code == "g"
     assert (
         inst.ingredientLabel[3].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredientLabel[3].amount.unit == "grams"
     assert float(inst.ingredientLabel[3].amount.value) == float(26.47)
@@ -105,7 +125,9 @@ def impl_nutritionintake_1(inst):
     assert inst.ingredientLabel[4].amount.code == "mg"
     assert (
         inst.ingredientLabel[4].amount.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.ingredientLabel[4].amount.unit == "Milligrams"
     assert float(inst.ingredientLabel[4].amount.value) == float(770)
@@ -114,14 +136,14 @@ def impl_nutritionintake_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
         inst.occurrenceDateTime
-        == ExternalValidatorModel(
-            valueDateTime="2019-08-02T12:45:18+04:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-08-02T12:45:18+04:00"}
         ).valueDateTime
     )
     assert inst.reportedReference.reference == "PractitionerRole/example"

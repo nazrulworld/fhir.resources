@@ -6,7 +6,7 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import element, fhirtypes
 
@@ -21,9 +21,9 @@ class CodeableReference(element.Element):
     concept defined in a terminology or ontology (by class).
     """
 
-    resource_type = Field("CodeableReference", const=True)
+    __resource_type__ = "CodeableReference"
 
-    concept: fhirtypes.CodeableConceptType = Field(
+    concept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="concept",
         title="Reference to a concept (by class)",
@@ -31,11 +31,12 @@ class CodeableReference(element.Element):
             "A reference to a concept - e.g. the information is identified by its "
             "general class to the degree of precision found in the terminology."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reference: fhirtypes.ReferenceType = Field(
+    reference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="reference",
         title="Reference to a resource (by instance)",
@@ -43,8 +44,9 @@ class CodeableReference(element.Element):
             "A reference to a resource the provides exact details about the "
             "information being referenced."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

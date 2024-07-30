@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import healthcareservice
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_healthcareservice_1(inst):
@@ -17,11 +17,11 @@ def impl_healthcareservice_1(inst):
     assert inst.availability[0].availableTime[0].daysOfWeek[0] == "wed"
     assert (
         inst.availability[0].availableTime[1].availableEndTime
-        == ExternalValidatorModel(valueTime="05:30:00").valueTime
+        == ExternalValidatorModel.model_validate({"valueTime": "05:30:00"}).valueTime
     )
     assert (
         inst.availability[0].availableTime[1].availableStartTime
-        == ExternalValidatorModel(valueTime="08:30:00").valueTime
+        == ExternalValidatorModel.model_validate({"valueTime": "08:30:00"}).valueTime
     )
     assert inst.availability[0].availableTime[1].daysOfWeek[0] == "mon"
     assert inst.availability[0].availableTime[1].daysOfWeek[1] == "tue"
@@ -29,11 +29,11 @@ def impl_healthcareservice_1(inst):
     assert inst.availability[0].availableTime[1].daysOfWeek[3] == "fri"
     assert (
         inst.availability[0].availableTime[2].availableEndTime
-        == ExternalValidatorModel(valueTime="04:30:00").valueTime
+        == ExternalValidatorModel.model_validate({"valueTime": "04:30:00"}).valueTime
     )
     assert (
         inst.availability[0].availableTime[2].availableStartTime
-        == ExternalValidatorModel(valueTime="09:30:00").valueTime
+        == ExternalValidatorModel.model_validate({"valueTime": "09:30:00"}).valueTime
     )
     assert inst.availability[0].availableTime[2].daysOfWeek[0] == "sat"
     assert inst.availability[0].availableTime[2].daysOfWeek[1] == "fri"
@@ -43,27 +43,35 @@ def impl_healthcareservice_1(inst):
     )
     assert (
         inst.availability[0].notAvailableTime[0].during.end
-        == ExternalValidatorModel(valueDateTime="2015-12-26").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-12-26"}
+        ).valueDateTime
     )
     assert (
         inst.availability[0].notAvailableTime[0].during.start
-        == ExternalValidatorModel(valueDateTime="2015-12-25").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-12-25"}
+        ).valueDateTime
     )
     assert inst.availability[0].notAvailableTime[1].description == "New Years Day"
     assert (
         inst.availability[0].notAvailableTime[1].during.end
-        == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-01-01"}
+        ).valueDateTime
     )
     assert (
         inst.availability[0].notAvailableTime[1].during.start
-        == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2016-01-01"}
+        ).valueDateTime
     )
     assert inst.category[0].coding[0].code == "8"
     assert inst.category[0].coding[0].display == "Counselling"
     assert (
         inst.category[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-category"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/service-category"}
         ).valueUri
     )
     assert inst.category[0].text == "Counselling"
@@ -90,7 +98,9 @@ def impl_healthcareservice_1(inst):
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://example.org/shared-ids").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/shared-ids"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "HS-12"
     assert inst.location[0].reference == "Location/1"
@@ -98,8 +108,8 @@ def impl_healthcareservice_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.name == "Consulting psychologists and/or psychology services"
@@ -118,28 +128,36 @@ def impl_healthcareservice_1(inst):
     assert inst.serviceProvisionCode[0].coding[0].display == "Fees apply"
     assert (
         inst.serviceProvisionCode[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/service-provision-conditions"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/service-provision-conditions"
+            }
         ).valueUri
     )
     assert inst.specialty[0].coding[0].code == "47505003"
     assert inst.specialty[0].coding[0].display == "Posttraumatic stress disorder"
     assert (
         inst.specialty[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.type[0].coding[0].code == "394913002"
     assert inst.type[0].coding[0].display == "Psychotherapy"
     assert (
         inst.type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
     assert inst.type[1].coding[0].code == "394587001"
     assert inst.type[1].coding[0].display == "Psychiatry"
     assert (
         inst.type[1].coding[0].system
-        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://snomed.info/sct"}
+        ).valueUri
     )
 
 

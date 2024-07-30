@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Provenance(domainresource.DomainResource):
@@ -33,7 +33,7 @@ class Provenance(domainresource.DomainResource):
 
     __resource_type__ = "Provenance"
 
-    activity: fhirtypes.CodeableConceptType = Field(
+    activity: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="activity",
         title="Activity that occurred",
@@ -47,7 +47,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(
+    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(  # type: ignore
         ...,
         alias="agent",
         title="Actor involved",
@@ -60,7 +60,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    authorization: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    authorization: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="authorization",
         title="Authorization (purposeOfUse) related to the event",
@@ -73,7 +73,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Workflow authorization within which this event occurred",
@@ -96,7 +96,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title=(
@@ -116,7 +116,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    entity: typing.List[fhirtypes.ProvenanceEntityType] = Field(
+    entity: typing.List[fhirtypes.ProvenanceEntityType] = Field(  # type: ignore
         None,
         alias="entity",
         title="An entity used in this activity",
@@ -126,7 +126,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(
+    location: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="location",
         title="Where the activity occurred, if relevant",
@@ -138,7 +138,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    occurredDateTime: fhirtypes.DateTimeType = Field(
+    occurredDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="occurredDateTime",
         title="When the activity occurred",
@@ -150,13 +150,13 @@ class Provenance(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurredDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    occurredDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_occurredDateTime",
         title="Extension field for ``occurredDateTime``.",
     )
 
-    occurredPeriod: fhirtypes.PeriodType = Field(
+    occurredPeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="occurredPeriod",
         title="When the activity occurred",
@@ -169,7 +169,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="patient",
         title=(
@@ -188,7 +188,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    policy: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
+    policy: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
         None,
         alias="policy",
         title="Policy or plan the activity was defined by",
@@ -201,11 +201,11 @@ class Provenance(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    policy__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_policy", title="Extension field for ``policy``.")
+    policy__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_policy", title="Extension field for ``policy``."
+    )
 
-    recorded: fhirtypes.InstantType = Field(
+    recorded: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="recorded",
         title="When the activity was recorded / updated",
@@ -214,11 +214,11 @@ class Provenance(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    signature: typing.List[fhirtypes.SignatureType] = Field(
+    signature: typing.List[fhirtypes.SignatureType] = Field(  # type: ignore
         None,
         alias="signature",
         title="Signature on target",
@@ -231,7 +231,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    target: typing.List[fhirtypes.ReferenceType] = Field(
+    target: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         ...,
         alias="target",
         title="Target Reference(s) (usually version specific)",
@@ -296,9 +296,6 @@ class Provenance(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class ProvenanceAgent(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -311,7 +308,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
     __resource_type__ = "ProvenanceAgent"
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(
+    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="The agent that delegated",
@@ -332,7 +329,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    role: typing.List[fhirtypes.CodeableConceptType] = Field(
+    role: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="role",
         title="What the agents role was",
@@ -345,7 +342,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="How the agent participated",
@@ -355,7 +352,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    who: fhirtypes.ReferenceType = Field(
+    who: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="who",
         title="The agent that participated in the event",
@@ -402,7 +399,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
 
     __resource_type__ = "ProvenanceEntity"
 
-    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(
+    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(  # type: ignore
         None,
         alias="agent",
         title="Entity is attributed to this agent",
@@ -417,7 +414,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeType = Field(
+    role: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="role",
         title="revision | quotation | source | instantiates | removal",
@@ -436,11 +433,11 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             ],
         },
     )
-    role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_role", title="Extension field for ``role``."
     )
 
-    what: fhirtypes.ReferenceType = Field(
+    what: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="what",
         title="Identity of entity",

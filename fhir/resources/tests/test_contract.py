@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import contract
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_contract_1(inst):
@@ -21,7 +21,10 @@ def impl_contract_1(inst):
     )
     assert inst.id == "pcd-example-notOrg"
     assert (
-        inst.issued == ExternalValidatorModel(valueDateTime="2015-11-18").valueDateTime
+        inst.issued
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-11-18"}
+        ).valueDateTime
     )
     assert (
         inst.legal[0].contentAttachment.title
@@ -31,16 +34,16 @@ def impl_contract_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.subType[0].coding[0].code == "Opt-In"
     assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
     assert (
         inst.subType[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"}
         ).valueUri
     )
     assert inst.subject[0].display == "P. van de Heuvel"
@@ -57,15 +60,17 @@ def impl_contract_1(inst):
     )
     assert (
         inst.term[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/consent-term-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/consent-term-type-codes"}
         ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "57016-8"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
 
 
@@ -90,26 +95,32 @@ def test_contract_1(base_settings):
 def impl_contract_2(inst):
     assert (
         inst.applies.start
-        == ExternalValidatorModel(valueDateTime="2017-01-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-01-01"}
+        ).valueDateTime
     )
     assert inst.id == "INS-101"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://xyz-insurance.com/forms").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://xyz-insurance.com/forms"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "YCSCWLN(01-2017)"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.subject[0].reference == "Patient/1"
     assert (
         inst.term[0].asset[0].period[0].start
-        == ExternalValidatorModel(valueDateTime="2017-06-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-06-01"}
+        ).valueDateTime
     )
     assert inst.term[0].asset[0].subtype[0].text == "sample"
     assert (
@@ -119,11 +130,15 @@ def impl_contract_2(inst):
     assert inst.term[0].asset[0].type[0].coding[0].display == "RicardianContract"
     assert (
         inst.term[0].asset[0].type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.term[0].asset[0].valuedItem[0].effectiveTime
-        == ExternalValidatorModel(valueDateTime="1995").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "1995"}
+        ).valueDateTime
     )
     assert (
         inst.term[0].asset[0].valuedItem[0].entityCodeableConcept.text == "Ford Bobcat"
@@ -131,8 +146,8 @@ def impl_contract_2(inst):
     assert float(inst.term[0].asset[0].valuedItem[0].factor) == float(1.0)
     assert (
         inst.term[0].asset[0].valuedItem[0].identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://somewhere.motor-vehicle.com/vin"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://somewhere.motor-vehicle.com/vin"}
         ).valueUri
     )
     assert inst.term[0].asset[0].valuedItem[0].identifier.value == "XXSVT34-7665t952236"
@@ -167,8 +182,8 @@ def impl_contract_2(inst):
     assert inst.type.coding[0].display == "Health Insurance"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contract-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/contract-type"}
         ).valueUri
     )
 
@@ -194,22 +209,24 @@ def test_contract_2(base_settings):
 def impl_contract_3(inst):
     assert (
         inst.applies.start
-        == ExternalValidatorModel(
-            valueDateTime="2013-11-01T21:18:27-04:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-11-01T21:18:27-04:00"}
         ).valueDateTime
     )
     assert inst.contentDerivative.coding[0].code == "registration"
     assert (
         inst.contentDerivative.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contract-content-derivative"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/contract-content-derivative"
+            }
         ).valueUri
     )
     assert inst.id == "C-2121"
     assert (
         inst.issued
-        == ExternalValidatorModel(
-            valueDateTime="2013-11-01T21:18:27-04:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-11-01T21:18:27-04:00"}
         ).valueDateTime
     )
     assert inst.legal[0].contentAttachment.contentType == "application/pdf"
@@ -220,22 +237,22 @@ def impl_contract_3(inst):
     )
     assert (
         inst.legal[0].contentAttachment.url
-        == ExternalValidatorModel(
-            valueUrl="http://org.mihin.ecms/ConsentDirective-2121"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://org.mihin.ecms/ConsentDirective-2121"}
         ).valueUrl
     )
     assert (
         inst.meta.lastUpdated
-        == ExternalValidatorModel(
-            valueInstant="2016-07-19T18:18:42.108-04:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2016-07-19T18:18:42.108-04:00"}
         ).valueInstant
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.meta.versionId == "1"
@@ -244,34 +261,38 @@ def impl_contract_3(inst):
     assert inst.signer[0].signature[0].type[0].code == "1.2.840.10065.1.12.1.1"
     assert (
         inst.signer[0].signature[0].type[0].system
-        == ExternalValidatorModel(valueUri="urn:iso-astm:E1762-95:2013").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso-astm:E1762-95:2013"}
+        ).valueUri
     )
     assert (
         inst.signer[0].signature[0].when
-        == ExternalValidatorModel(valueInstant="2017-02-08T10:57:34+01:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2017-02-08T10:57:34+01:00"}
+        ).valueInstant
     )
     assert inst.signer[0].signature[0].who.reference == "Patient/f201"
     assert inst.signer[0].type.code == "SELF"
     assert (
         inst.signer[0].type.system
-        == ExternalValidatorModel(
-            valueUri="http://mdhhs.org/fhir/consent-signer-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://mdhhs.org/fhir/consent-signer-type"}
         ).valueUri
     )
     assert inst.status == "executed"
     assert inst.subType[0].coding[0].code == "hcd"
     assert (
         inst.subType[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/consentcategorycodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/consentcategorycodes"}
         ).valueUri
     )
     assert inst.subject[0].reference == "Patient/f201"
     assert inst.term[0].action[0].intent.coding[0].code == "HPRGRP"
     assert (
         inst.term[0].action[0].intent.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.term[0].action[0].status.text == "Sample"
@@ -286,8 +307,8 @@ def impl_contract_3(inst):
     assert inst.term[0].action[0].subject[0].role.coding[0].display == "Recipient"
     assert (
         inst.term[0].action[0].subject[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://mdhhs.org/fhir/consent-actor-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://mdhhs.org/fhir/consent-actor-type"}
         ).valueUri
     )
     assert (
@@ -303,8 +324,8 @@ def impl_contract_3(inst):
     assert inst.term[0].action[0].subject[1].role.coding[0].display == "Sender"
     assert (
         inst.term[0].action[0].subject[1].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://mdhhs.org/fhir/consent-actor-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://mdhhs.org/fhir/consent-actor-type"}
         ).valueUri
     )
     assert (
@@ -314,43 +335,43 @@ def impl_contract_3(inst):
     assert inst.term[0].action[0].type.coding[0].code == "action-a"
     assert (
         inst.term[0].action[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contractaction"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/contractaction"}
         ).valueUri
     )
     assert (
         inst.term[0].asset[0].period[0].end
-        == ExternalValidatorModel(
-            valueDateTime="2019-11-01T21:18:27-04:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-11-01T21:18:27-04:00"}
         ).valueDateTime
     )
     assert (
         inst.term[0].asset[0].period[0].start
-        == ExternalValidatorModel(
-            valueDateTime="2013-11-01T21:18:27-04:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2013-11-01T21:18:27-04:00"}
         ).valueDateTime
     )
     assert inst.term[0].offer.decision.coding[0].code == "OPTIN"
     assert (
         inst.term[0].offer.decision.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActCode"}
         ).valueUri
     )
     assert inst.term[0].offer.text == "Can't refuse"
     assert inst.term[0].offer.type.coding[0].code == "statutory"
     assert (
         inst.term[0].offer.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contracttermtypecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/contracttermtypecodes"}
         ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "OPTIN"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://mdhhs.org/fhir/consentdirective-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://mdhhs.org/fhir/consentdirective-type"}
         ).valueUri
     )
     assert inst.type.text == "Opt-in consent directive"
@@ -385,7 +406,10 @@ def impl_contract_4(inst):
     )
     assert inst.id == "pcd-example-notLabs"
     assert (
-        inst.issued == ExternalValidatorModel(valueDateTime="2014-08-17").valueDateTime
+        inst.issued
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-17"}
+        ).valueDateTime
     )
     assert (
         inst.legal[0].contentAttachment.title
@@ -395,16 +419,16 @@ def impl_contract_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.subType[0].coding[0].code == "Opt-In"
     assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
     assert (
         inst.subType[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"}
         ).valueUri
     )
     assert inst.subject[0].display == "P. van de Heuvel"
@@ -413,13 +437,15 @@ def impl_contract_4(inst):
     assert inst.term[0].group[0].subType.coding[0].code == "ServiceRequest"
     assert (
         inst.term[0].group[0].subType.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.term[0].group[0].type.coding[0].code == "withhold-object-type"
     assert (
         inst.term[0].group[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/consent-term-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/consent-term-type-codes"}
         ).valueUri
     )
     assert (
@@ -428,13 +454,15 @@ def impl_contract_4(inst):
     assert inst.term[0].group[1].subType.coding[0].code == "DiagnosticReport"
     assert (
         inst.term[0].group[1].subType.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
     assert inst.term[0].group[1].type.coding[0].code == "withhold-object-type"
     assert (
         inst.term[0].group[1].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/consent-term-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/consent-term-type-codes"}
         ).valueUri
     )
     assert inst.term[0].offer.text == "sample"
@@ -442,7 +470,9 @@ def impl_contract_4(inst):
     assert inst.type.coding[0].code == "57016-8"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
 
 
@@ -475,7 +505,10 @@ def impl_contract_5(inst):
     )
     assert inst.id == "pcd-example-notThem"
     assert (
-        inst.issued == ExternalValidatorModel(valueDateTime="2015-11-18").valueDateTime
+        inst.issued
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-11-18"}
+        ).valueDateTime
     )
     assert (
         inst.legal[0].contentAttachment.title
@@ -485,34 +518,40 @@ def impl_contract_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.signer[0].party.reference == "Patient/f001"
     assert inst.signer[0].signature[0].type[0].code == "1.2.840.10065.1.12.1.1"
     assert (
         inst.signer[0].signature[0].type[0].system
-        == ExternalValidatorModel(valueUri="urn:iso-astm:E1762-95:2013").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso-astm:E1762-95:2013"}
+        ).valueUri
     )
     assert (
         inst.signer[0].signature[0].when
-        == ExternalValidatorModel(valueInstant="2013-06-08T10:57:34-07:00").valueInstant
+        == ExternalValidatorModel.model_validate(
+            {"valueInstant": "2013-06-08T10:57:34-07:00"}
+        ).valueInstant
     )
     assert inst.signer[0].signature[0].who.reference == "Patient/f001"
     assert inst.signer[0].type.code == "COVPTY"
     assert (
         inst.signer[0].type.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
+            }
         ).valueUri
     )
     assert inst.subType[0].coding[0].code == "Opt-In"
     assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
     assert (
         inst.subType[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"}
         ).valueUri
     )
     assert inst.subject[0].display == "P. van de Heuvel"
@@ -530,15 +569,17 @@ def impl_contract_5(inst):
     )
     assert (
         inst.term[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/consent-term-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/consent-term-type-codes"}
         ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "57016-8"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
 
 
@@ -571,7 +612,10 @@ def impl_contract_6(inst):
     )
     assert inst.id == "pcd-example-notAuthor"
     assert (
-        inst.issued == ExternalValidatorModel(valueDateTime="2015-11-18").valueDateTime
+        inst.issued
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-11-18"}
+        ).valueDateTime
     )
     assert (
         inst.legal[0].contentAttachment.title
@@ -581,16 +625,16 @@ def impl_contract_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.subType[0].coding[0].code == "Opt-In"
     assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
     assert (
         inst.subType[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"}
         ).valueUri
     )
     assert inst.subject[0].display == "P. van de Heuvel"
@@ -607,15 +651,17 @@ def impl_contract_6(inst):
     )
     assert (
         inst.term[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/consent-term-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/consent-term-type-codes"}
         ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "57016-8"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
 
 
@@ -641,34 +687,38 @@ def impl_contract_7(inst):
     assert inst.id == "C-123"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/contract").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/contract"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "12347"
     assert inst.legallyBindingAttachment.contentType == "application/pdf"
     assert (
         inst.legallyBindingAttachment.url
-        == ExternalValidatorModel(
-            valueUrl="http://www.aws3.com/storage/doc.pdf"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://www.aws3.com/storage/doc.pdf"}
         ).valueUrl
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.rule[0].contentAttachment.contentType == "application/txt"
     assert (
         inst.rule[0].contentAttachment.url
-        == ExternalValidatorModel(
-            valueUrl="http://www.rfc-editor.org/bcp/bcp13.txt"
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://www.rfc-editor.org/bcp/bcp13.txt"}
         ).valueUrl
     )
     assert (
         inst.term[0].asset[0].period[0].start
-        == ExternalValidatorModel(valueDateTime="2017-06-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-06-01"}
+        ).valueDateTime
     )
     assert inst.term[0].asset[0].subtype[0].text == "sample"
     assert (
@@ -678,11 +728,15 @@ def impl_contract_7(inst):
     assert inst.term[0].asset[0].type[0].coding[0].display == "RicardianContract"
     assert (
         inst.term[0].asset[0].type[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert (
         inst.term[0].asset[0].valuedItem[0].effectiveTime
-        == ExternalValidatorModel(valueDateTime="1995").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "1995"}
+        ).valueDateTime
     )
     assert (
         inst.term[0].asset[0].valuedItem[0].entityCodeableConcept.text == "Ford Bobcat"
@@ -690,8 +744,8 @@ def impl_contract_7(inst):
     assert float(inst.term[0].asset[0].valuedItem[0].factor) == float(1.0)
     assert (
         inst.term[0].asset[0].valuedItem[0].identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://somewhere.motor-vehicle.com/vin"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://somewhere.motor-vehicle.com/vin"}
         ).valueUri
     )
     assert inst.term[0].asset[0].valuedItem[0].identifier.value == "XXSVT34-7665t952236"
@@ -738,7 +792,10 @@ def impl_contract_8(inst):
     )
     assert inst.id == "pcd-example-notThis"
     assert (
-        inst.issued == ExternalValidatorModel(valueDateTime="2015-11-18").valueDateTime
+        inst.issued
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-11-18"}
+        ).valueDateTime
     )
     assert (
         inst.legal[0].contentAttachment.title
@@ -748,34 +805,38 @@ def impl_contract_8(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.subType[0].coding[0].code == "Opt-In"
     assert inst.subType[0].coding[0].display == "Default Authorization with exceptions."
     assert (
         inst.subType[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.infoway-inforoute.ca.org/Consent-subtype-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.infoway-inforoute.ca.org/Consent-subtype-codes"}
         ).valueUri
     )
     assert inst.subject[0].display == "P. van de Heuvel"
     assert inst.subject[0].reference == "Patient/f001"
     assert (
         inst.term[0].applies.start
-        == ExternalValidatorModel(valueDateTime="2015-11-18").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-11-18"}
+        ).valueDateTime
     )
     assert (
         inst.term[0].identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/term-items"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/term-items"}
         ).valueUri
     )
     assert inst.term[0].identifier.value == "3347689"
     assert (
         inst.term[0].issued
-        == ExternalValidatorModel(valueDateTime="2015-11-01").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-11-01"}
+        ).valueDateTime
     )
     assert inst.term[0].offer.text == (
         "Withhold this order and any results or related objects from " "any provider."
@@ -788,15 +849,17 @@ def impl_contract_8(inst):
     )
     assert (
         inst.term[0].type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/consent-term-type-codes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/consent-term-type-codes"}
         ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "57016-8"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://loinc.org"}
+        ).valueUri
     )
 
 

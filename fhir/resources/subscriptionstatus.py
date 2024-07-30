@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class SubscriptionStatus(domainresource.DomainResource):
@@ -25,7 +25,7 @@ class SubscriptionStatus(domainresource.DomainResource):
 
     __resource_type__ = "SubscriptionStatus"
 
-    error: typing.List[fhirtypes.CodeableConceptType] = Field(
+    error: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="error",
         title="List of errors on the subscription",
@@ -38,7 +38,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         },
     )
 
-    eventsSinceSubscriptionStart: fhirtypes.Integer64Type = Field(
+    eventsSinceSubscriptionStart: fhirtypes.Integer64Type = Field(  # type: ignore
         None,
         alias="eventsSinceSubscriptionStart",
         title="Events since the Subscription was created",
@@ -52,15 +52,13 @@ class SubscriptionStatus(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    eventsSinceSubscriptionStart__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    eventsSinceSubscriptionStart__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_eventsSinceSubscriptionStart",
         title="Extension field for ``eventsSinceSubscriptionStart``.",
     )
 
-    notificationEvent: typing.List[
-        fhirtypes.SubscriptionStatusNotificationEventType
-    ] = Field(
+    notificationEvent: typing.List[fhirtypes.SubscriptionStatusNotificationEventType] = Field(  # type: ignore
         None,
         alias="notificationEvent",
         title="Detailed information about any events relevant to this notification",
@@ -73,7 +71,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="requested | active | error | off | entered-in-error",
@@ -88,11 +86,11 @@ class SubscriptionStatus(domainresource.DomainResource):
             "enum_values": ["requested", "active", "error", "off", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subscription: fhirtypes.ReferenceType = Field(
+    subscription: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="subscription",
         title="Reference to the Subscription responsible for this notification",
@@ -104,7 +102,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         },
     )
 
-    topic: fhirtypes.CanonicalType = Field(
+    topic: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="topic",
         title="Reference to the SubscriptionTopic this notification relates to",
@@ -118,11 +116,11 @@ class SubscriptionStatus(domainresource.DomainResource):
             "enum_reference_types": ["SubscriptionTopic"],
         },
     )
-    topic__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    topic__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_topic", title="Extension field for ``topic``."
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -143,7 +141,7 @@ class SubscriptionStatus(domainresource.DomainResource):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -183,9 +181,6 @@ class SubscriptionStatus(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -198,7 +193,7 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
 
     __resource_type__ = "SubscriptionStatusNotificationEvent"
 
-    additionalContext: typing.List[fhirtypes.ReferenceType] = Field(
+    additionalContext: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="additionalContext",
         title="References related to the focus resource and/or context of this event",
@@ -215,7 +210,7 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
         },
     )
 
-    eventNumber: fhirtypes.Integer64Type = Field(
+    eventNumber: fhirtypes.Integer64Type = Field(  # type: ignore
         None,
         alias="eventNumber",
         title="Sequencing index of this event",
@@ -228,11 +223,11 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    eventNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    eventNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_eventNumber", title="Extension field for ``eventNumber``."
     )
 
-    focus: fhirtypes.ReferenceType = Field(
+    focus: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="focus",
         title="Reference to the primary resource or information of this event",
@@ -248,7 +243,7 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
         },
     )
 
-    timestamp: fhirtypes.InstantType = Field(
+    timestamp: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="timestamp",
         title="The instant this event occurred",
@@ -257,7 +252,7 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    timestamp__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    timestamp__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_timestamp", title="Extension field for ``timestamp``."
     )
 

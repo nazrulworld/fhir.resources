@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -23,9 +23,9 @@ class DeviceComponent(domainresource.DomainResource):
     related component of a medical device.
     """
 
-    resource_type = Field("DeviceComponent", const=True)
+    __resource_type__ = "DeviceComponent"
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         ...,
         alias="identifier",
         title="Instance id assigned by the software stack",
@@ -33,11 +33,12 @@ class DeviceComponent(domainresource.DomainResource):
             "The locally assigned unique identification by the software. For "
             "example: handle ID."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    languageCode: fhirtypes.CodeableConceptType = Field(
+    languageCode: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="languageCode",
         title=(
@@ -49,11 +50,12 @@ class DeviceComponent(domainresource.DomainResource):
             "device. This language code will follow the IETF language tag. Example:"
             " en-US."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastSystemChange: fhirtypes.Instant = Field(
+    lastSystemChange: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="lastSystemChange",
         title="Recent system change timestamp",
@@ -61,16 +63,17 @@ class DeviceComponent(domainresource.DomainResource):
             "The timestamp for the most recent system change which includes device "
             "configuration or setting change."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_lastSystemChange",
         title="Extension field for ``lastSystemChange``.",
     )
 
-    measurementPrinciple: fhirtypes.Code = Field(
+    measurementPrinciple: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="measurementPrinciple",
         title=(
@@ -81,31 +84,32 @@ class DeviceComponent(domainresource.DomainResource):
             "The physical principle of the measurement. For example: thermal, "
             "chemical, acoustical, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "other",
-            "chemical",
-            "electrical",
-            "impedance",
-            "nuclear",
-            "optical",
-            "thermal",
-            "biological",
-            "mechanical",
-            "acoustical",
-            "manual+",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "other",
+                "chemical",
+                "electrical",
+                "impedance",
+                "nuclear",
+                "optical",
+                "thermal",
+                "biological",
+                "mechanical",
+                "acoustical",
+                "manual+",
+            ],
+        },
     )
-    measurementPrinciple__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    measurementPrinciple__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_measurementPrinciple",
         title="Extension field for ``measurementPrinciple``.",
     )
 
-    operationalStatus: typing.List[fhirtypes.CodeableConceptType] = Field(
+    operationalStatus: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="operationalStatus",
         title=(
@@ -116,11 +120,12 @@ class DeviceComponent(domainresource.DomainResource):
             "The current operational status of the device. For example: On, Off, "
             "Standby, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    parameterGroup: fhirtypes.CodeableConceptType = Field(
+    parameterGroup: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="parameterGroup",
         title="Current supported parameter group",
@@ -128,11 +133,12 @@ class DeviceComponent(domainresource.DomainResource):
             "The parameter group supported by the current device component that is "
             "based on some nomenclature, e.g. cardiovascular."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    parent: fhirtypes.ReferenceType = Field(
+    parent: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="parent",
         title="Parent resource link",
@@ -140,15 +146,14 @@ class DeviceComponent(domainresource.DomainResource):
             "The link to the parent resource. For example: Channel is linked to its"
             " VMD parent."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DeviceComponent"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DeviceComponent"],
+        },
     )
 
-    productionSpecification: typing.List[
-        fhirtypes.DeviceComponentProductionSpecificationType
-    ] = Field(
+    productionSpecification: typing.List[fhirtypes.DeviceComponentProductionSpecificationType] = Field(  # type: ignore
         None,
         alias="productionSpecification",
         title="Specification details such as Component Revisions, or Serial Numbers",
@@ -156,11 +161,12 @@ class DeviceComponent(domainresource.DomainResource):
             "The production specification such as component revision, serial "
             "number, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    source: fhirtypes.ReferenceType = Field(
+    source: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="source",
         title="Top-level device resource link",
@@ -168,13 +174,14 @@ class DeviceComponent(domainresource.DomainResource):
             "The link to the source Device that contains administrative device "
             "information such as manufacture, serial number, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="What kind of component it is",
@@ -182,8 +189,9 @@ class DeviceComponent(domainresource.DomainResource):
             "The component type as defined in the object-oriented or metric "
             "nomenclature partition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -224,9 +232,9 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     etc.
     """
 
-    resource_type = Field("DeviceComponentProductionSpecification", const=True)
+    __resource_type__ = "DeviceComponentProductionSpecification"
 
-    componentId: fhirtypes.IdentifierType = Field(
+    componentId: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="componentId",
         title="Internal component unique identification",
@@ -236,23 +244,25 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
             "11073-10101 has a partition for private OID semantic that the "
             "manufacturer can make use of."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    productionSpec: fhirtypes.String = Field(
+    productionSpec: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="productionSpec",
         title="A printable string defining the component",
         description="The printable string defining the component.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_productionSpec", title="Extension field for ``productionSpec``."
     )
 
-    specType: fhirtypes.CodeableConceptType = Field(
+    specType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="specType",
         title=(
@@ -263,8 +273,9 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
             "The specification type, such as, serial number, part number, hardware "
             "revision, software revision, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import implementationguide
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_implementationguide_1(inst):
@@ -18,7 +18,12 @@ def impl_implementationguide_1(inst):
     assert inst.contact[1].telecom[0].system == "url"
     assert inst.contact[1].telecom[0].value == "http://hl7.org/fhir"
     assert inst.copyright == "Published by ONC under the standard FHIR license (CC0)"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2015-01-01").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-01-01"}
+        ).valueDateTime
+    )
     assert (
         inst.definition.grouping[0].description
         == "Base package (not broken up into multiple packages)"
@@ -27,20 +32,22 @@ def impl_implementationguide_1(inst):
     assert inst.definition.page.generation == "html"
     assert (
         inst.definition.page.name
-        == ExternalValidatorModel(valueUrl="patient-example.html").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "patient-example.html"}
+        ).valueUrl
     )
     assert inst.definition.page.page[0].generation == "html"
     assert (
         inst.definition.page.page[0].name
-        == ExternalValidatorModel(valueUrl="list.html").valueUrl
+        == ExternalValidatorModel.model_validate({"valueUrl": "list.html"}).valueUrl
     )
     assert inst.definition.page.page[0].title == "Value Set Page"
     assert inst.definition.page.title == "Example Patient Page"
     assert inst.definition.parameter[0].code.code == "apply"
     assert (
         inst.definition.parameter[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/guide-parameter-code"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/guide-parameter-code"}
         ).valueUri
     )
     assert inst.definition.parameter[0].value == "version"
@@ -66,7 +73,9 @@ def impl_implementationguide_1(inst):
     assert inst.jurisdiction[0].coding[0].code == "US"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:iso:std:iso:3166"}
+        ).valueUri
     )
     assert inst.license == "CC0-1.0"
     assert inst.manifest.image[0] == "fhir.png"
@@ -78,7 +87,9 @@ def impl_implementationguide_1(inst):
     assert inst.manifest.page[0].title == "Test Patient Example"
     assert (
         inst.manifest.rendering
-        == ExternalValidatorModel(valueUrl="http://hl7.org/fhir/us/daf").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "http://hl7.org/fhir/us/daf"}
+        ).valueUrl
     )
     assert (
         inst.manifest.resource[0].profile[0]
@@ -87,7 +98,9 @@ def impl_implementationguide_1(inst):
     assert inst.manifest.resource[0].reference.reference == "Patient/test"
     assert (
         inst.manifest.resource[0].relativePath
-        == ExternalValidatorModel(valueUrl="patient-example.html").valueUrl
+        == ExternalValidatorModel.model_validate(
+            {"valueUrl": "patient-example.html"}
+        ).valueUrl
     )
     assert inst.name == "DataAccessFrameworkDAF"
     assert inst.packageId == "hl7.fhir.us.daf"
@@ -97,7 +110,9 @@ def impl_implementationguide_1(inst):
     assert inst.title == "Data Access Framework (DAF)"
     assert (
         inst.url
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/us/daf").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/us/daf"}
+        ).valueUri
     )
     assert inst.version == "0"
 

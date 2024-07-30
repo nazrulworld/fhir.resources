@@ -23,7 +23,7 @@ class CodeableReference(datatype.DataType):
 
     __resource_type__ = "CodeableReference"
 
-    concept: fhirtypes.CodeableConceptType = Field(
+    concept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="concept",
         title="Reference to a concept (by class)",
@@ -36,7 +36,7 @@ class CodeableReference(datatype.DataType):
         },
     )
 
-    reference: fhirtypes.ReferenceType = Field(
+    reference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="reference",
         title="Reference to a resource (by instance)",

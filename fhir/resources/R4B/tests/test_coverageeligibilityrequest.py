@@ -6,17 +6,23 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
-
-from .. import fhirtypes  # noqa: F401
 from .. import coverageeligibilityrequest
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_coverageeligibilityrequest_1(inst):
-    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
+    assert (
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
+    )
     assert inst.id == "52345"
     assert (
-        inst.identifier[0].system == "http://happyvalley.com/coverageelegibilityrequest"
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/coverageelegibilityrequest"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "52345"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
@@ -25,7 +31,10 @@ def impl_coverageeligibilityrequest_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.patient.reference == "Patient/pat1"
     assert inst.priority.coding[0].code == "normal"
@@ -46,15 +55,15 @@ def test_coverageeligibilityrequest_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "coverageeligibilityrequest-example.json"
     )
-    inst = coverageeligibilityrequest.CoverageEligibilityRequest.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = coverageeligibilityrequest.CoverageEligibilityRequest.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CoverageEligibilityRequest" == inst.resource_type
+    assert "CoverageEligibilityRequest" == inst.get_resource_type()
 
     impl_coverageeligibilityrequest_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CoverageEligibilityRequest" == data["resourceType"]
 
     inst2 = coverageeligibilityrequest.CoverageEligibilityRequest(**data)
@@ -62,14 +71,32 @@ def test_coverageeligibilityrequest_1(base_settings):
 
 
 def impl_coverageeligibilityrequest_2(inst):
-    assert inst.created == fhirtypes.DateTime.validate("2014-08-16")
-    assert inst.enterer.identifier.system == "http://happyvalleyclinic.com/staff"
+    assert (
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
+    )
+    assert (
+        inst.enterer.identifier.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalleyclinic.com/staff"}
+        ).valueUri
+    )
     assert inst.enterer.identifier.value == "14"
-    assert inst.facility.identifier.system == "http://statecliniclicensor.com/clinicid"
+    assert (
+        inst.facility.identifier.system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://statecliniclicensor.com/clinicid"}
+        ).valueUri
+    )
     assert inst.facility.identifier.value == "G35B9"
     assert inst.id == "52346"
     assert (
-        inst.identifier[0].system == "http://happyvalley.com/coverageelegibilityrequest"
+        inst.identifier[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/coverageelegibilityrequest"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "52346"
     assert inst.insurance[0].businessArrangement == "NB8742"
@@ -79,19 +106,27 @@ def impl_coverageeligibilityrequest_2(inst):
     assert inst.item[0].category.coding[0].display == "Maternity"
     assert (
         inst.item[0].category.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-benefitcategory"}
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
+        ).valueUri
     )
     assert inst.patient.reference == "Patient/pat1"
     assert inst.priority.coding[0].code == "normal"
     assert inst.provider.reference == "Organization/1"
     assert inst.purpose[0] == "validation"
     assert inst.purpose[1] == "benefits"
-    assert inst.servicedDate == fhirtypes.Date.validate("2014-09-17")
+    assert (
+        inst.servicedDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-09-17"}).valueDate
+    )
     assert inst.status == "active"
     assert inst.text.div == (
         '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
@@ -107,15 +142,15 @@ def test_coverageeligibilityrequest_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "coverageeligibilityrequest-example-2.json"
     )
-    inst = coverageeligibilityrequest.CoverageEligibilityRequest.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = coverageeligibilityrequest.CoverageEligibilityRequest.model_validate_json(
+        filename.read_bytes()
     )
-    assert "CoverageEligibilityRequest" == inst.resource_type
+    assert "CoverageEligibilityRequest" == inst.get_resource_type()
 
     impl_coverageeligibilityrequest_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CoverageEligibilityRequest" == data["resourceType"]
 
     inst2 = coverageeligibilityrequest.CoverageEligibilityRequest(**data)

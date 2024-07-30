@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class RelatedPerson(domainresource.DomainResource):
@@ -27,7 +27,7 @@ class RelatedPerson(domainresource.DomainResource):
 
     __resource_type__ = "RelatedPerson"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this related person's record is in active use",
@@ -36,11 +36,11 @@ class RelatedPerson(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
         None,
         alias="address",
         title="Address where the related person can be contacted or visited",
@@ -50,7 +50,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType = Field(
+    birthDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="birthDate",
         title="The date on which the related person was born",
@@ -59,11 +59,11 @@ class RelatedPerson(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: typing.List[fhirtypes.RelatedPersonCommunicationType] = Field(
+    communication: typing.List[fhirtypes.RelatedPersonCommunicationType] = Field(  # type: ignore
         None,
         alias="communication",
         title=(
@@ -76,7 +76,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    gender: fhirtypes.CodeType = Field(
+    gender: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -91,11 +91,11 @@ class RelatedPerson(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="A human identifier for this person",
@@ -105,7 +105,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the person",
@@ -115,7 +115,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(
+    patient: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="patient",
         title="The patient this person is related to",
@@ -127,7 +127,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Period of time that this relationship is considered valid",
@@ -140,7 +140,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="photo",
         title="Image of the person",
@@ -150,7 +150,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    relationship: typing.List[fhirtypes.CodeableConceptType] = Field(
+    relationship: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="relationship",
         title="The relationship of the related person to the patient",
@@ -163,7 +163,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the person",
@@ -206,9 +206,6 @@ class RelatedPerson(domainresource.DomainResource):
         ]
 
 
-from . import backboneelement
-
-
 class RelatedPersonCommunication(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -220,7 +217,7 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
 
     __resource_type__ = "RelatedPersonCommunication"
 
-    language: fhirtypes.CodeableConceptType = Field(
+    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="language",
         title=(
@@ -238,7 +235,7 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
         },
     )
 
-    preferred: bool = Field(
+    preferred: bool = Field(  # type: ignore
         None,
         alias="preferred",
         title="Language preference indicator",
@@ -250,7 +247,7 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
 

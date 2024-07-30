@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceAssociation(domainresource.DomainResource):
@@ -23,7 +23,7 @@ class DeviceAssociation(domainresource.DomainResource):
 
     __resource_type__ = "DeviceAssociation"
 
-    bodyStructure: fhirtypes.ReferenceType = Field(
+    bodyStructure: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="bodyStructure",
         title="Current anatomical location of the device in/on subject",
@@ -35,7 +35,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Describes the relationship between the device and subject",
@@ -45,7 +45,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    device: fhirtypes.ReferenceType = Field(
+    device: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="device",
         title="Reference to the devices associated with the patient or group",
@@ -57,7 +57,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Instance identifier",
@@ -67,7 +67,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    operation: typing.List[fhirtypes.DeviceAssociationOperationType] = Field(
+    operation: typing.List[fhirtypes.DeviceAssociationOperationType] = Field(  # type: ignore
         None,
         alias="operation",
         title=(
@@ -80,7 +80,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Begin and end dates and times for the device association",
@@ -90,7 +90,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="status",
         title="implanted | explanted | attached | entered-in-error | unknown",
@@ -100,7 +100,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    statusReason: typing.List[fhirtypes.CodeableConceptType] = Field(
+    statusReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="statusReason",
         title="The reasons given for the current association status",
@@ -110,7 +110,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title=(
@@ -158,9 +158,6 @@ class DeviceAssociation(domainresource.DomainResource):
         ]
 
 
-from . import backboneelement
-
-
 class DeviceAssociationOperation(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -171,7 +168,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
 
     __resource_type__ = "DeviceAssociationOperation"
 
-    operator: typing.List[fhirtypes.ReferenceType] = Field(
+    operator: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="operator",
         title="The individual performing the action enabled by the device",
@@ -183,7 +180,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Begin and end dates and times for the device's operation",
@@ -193,7 +190,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="status",
         title="Device operational condition",

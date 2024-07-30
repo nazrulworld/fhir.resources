@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class TestReport(domainresource.DomainResource):
@@ -24,7 +24,7 @@ class TestReport(domainresource.DomainResource):
 
     __resource_type__ = "TestReport"
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="External identifier",
@@ -37,7 +37,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    issued: fhirtypes.DateTimeType = Field(
+    issued: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="issued",
         title="When the TestScript was executed and this TestReport was generated",
@@ -46,11 +46,11 @@ class TestReport(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Informal name of the executed TestReport",
@@ -59,11 +59,11 @@ class TestReport(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    participant: typing.List[fhirtypes.TestReportParticipantType] = Field(
+    participant: typing.List[fhirtypes.TestReportParticipantType] = Field(  # type: ignore
         None,
         alias="participant",
         title=(
@@ -76,7 +76,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    result: fhirtypes.CodeType = Field(
+    result: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="result",
         title="pass | fail | pending",
@@ -89,11 +89,11 @@ class TestReport(domainresource.DomainResource):
             "enum_values": ["pass", "fail", "pending"],
         },
     )
-    result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_result", title="Extension field for ``result``."
     )
 
-    score: fhirtypes.DecimalType = Field(
+    score: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="score",
         title=(
@@ -105,11 +105,11 @@ class TestReport(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    score__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    score__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_score", title="Extension field for ``score``."
     )
 
-    setup: fhirtypes.TestReportSetupType = Field(
+    setup: fhirtypes.TestReportSetupType = Field(  # type: ignore
         None,
         alias="setup",
         title=(
@@ -122,7 +122,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="completed | in-progress | waiting | stopped | entered-in-error",
@@ -141,11 +141,11 @@ class TestReport(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    teardown: fhirtypes.TestReportTeardownType = Field(
+    teardown: fhirtypes.TestReportTeardownType = Field(  # type: ignore
         None,
         alias="teardown",
         title="The results of running the series of required clean up steps",
@@ -158,7 +158,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    test: typing.List[fhirtypes.TestReportTestType] = Field(
+    test: typing.List[fhirtypes.TestReportTestType] = Field(  # type: ignore
         None,
         alias="test",
         title="A test executed from the test script",
@@ -168,7 +168,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    testScript: fhirtypes.CanonicalType = Field(
+    testScript: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="testScript",
         title=(
@@ -186,11 +186,11 @@ class TestReport(domainresource.DomainResource):
             "enum_reference_types": ["TestScript"],
         },
     )
-    testScript__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    testScript__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_testScript", title="Extension field for ``testScript``."
     )
 
-    tester: fhirtypes.StringType = Field(
+    tester: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="tester",
         title="Name of the tester producing this report (Organization or individual)",
@@ -199,7 +199,7 @@ class TestReport(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    tester__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    tester__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_tester", title="Extension field for ``tester``."
     )
 
@@ -248,9 +248,6 @@ class TestReport(domainresource.DomainResource):
         return required_fields
 
 
-from . import backboneelement
-
-
 class TestReportParticipant(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -262,7 +259,7 @@ class TestReportParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportParticipant"
 
-    display: fhirtypes.StringType = Field(
+    display: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="display",
         title="The display name of the participant",
@@ -271,11 +268,11 @@ class TestReportParticipant(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="test-engine | client | server",
@@ -288,11 +285,11 @@ class TestReportParticipant(backboneelement.BackboneElement):
             "enum_values": ["test-engine", "client", "server"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    uri: fhirtypes.UriType = Field(
+    uri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="uri",
         title="The uri of the participant. An absolute URL is preferred",
@@ -302,7 +299,7 @@ class TestReportParticipant(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_uri", title="Extension field for ``uri``."
     )
 
@@ -337,7 +334,7 @@ class TestReportSetup(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetup"
 
-    action: typing.List[fhirtypes.TestReportSetupActionType] = Field(
+    action: typing.List[fhirtypes.TestReportSetupActionType] = Field(  # type: ignore
         ...,
         alias="action",
         title="A setup operation or assert that was executed",
@@ -367,7 +364,7 @@ class TestReportSetupAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetupAction"
 
-    assert_fhir: fhirtypes.TestReportSetupActionAssertType = Field(
+    assert_fhir: fhirtypes.TestReportSetupActionAssertType = Field(  # type: ignore
         None,
         alias="assert",
         title="The assertion to perform",
@@ -377,7 +374,7 @@ class TestReportSetupAction(backboneelement.BackboneElement):
         },
     )
 
-    operation: fhirtypes.TestReportSetupActionOperationType = Field(
+    operation: fhirtypes.TestReportSetupActionOperationType = Field(  # type: ignore
         None,
         alias="operation",
         title="The operation to perform",
@@ -407,7 +404,7 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetupActionAssert"
 
-    detail: fhirtypes.StringType = Field(
+    detail: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="detail",
         title="A link to further details on the result",
@@ -416,11 +413,11 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_detail", title="Extension field for ``detail``."
     )
 
-    message: fhirtypes.MarkdownType = Field(
+    message: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="message",
         title="A message associated with the result",
@@ -429,13 +426,11 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_message", title="Extension field for ``message``."
     )
 
-    requirement: typing.List[
-        fhirtypes.TestReportSetupActionAssertRequirementType
-    ] = Field(
+    requirement: typing.List[fhirtypes.TestReportSetupActionAssertRequirementType] = Field(  # type: ignore
         None,
         alias="requirement",
         title="Links or references to the testing requirements",
@@ -448,7 +443,7 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
         },
     )
 
-    result: fhirtypes.CodeType = Field(
+    result: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="result",
         title="pass | skip | fail | warning | error",
@@ -461,7 +456,7 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
             "enum_values": ["pass", "skip", "fail", "warning", "error"],
         },
     )
-    result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_result", title="Extension field for ``result``."
     )
 
@@ -505,7 +500,7 @@ class TestReportSetupActionAssertRequirement(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetupActionAssertRequirement"
 
-    linkCanonical: fhirtypes.CanonicalType = Field(
+    linkCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="linkCanonical",
         title="Link or reference to the testing requirement",
@@ -522,11 +517,11 @@ class TestReportSetupActionAssertRequirement(backboneelement.BackboneElement):
             "enum_reference_types": ["Requirements"],
         },
     )
-    linkCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    linkCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_linkCanonical", title="Extension field for ``linkCanonical``."
     )
 
-    linkUri: fhirtypes.UriType = Field(
+    linkUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="linkUri",
         title="Link or reference to the testing requirement",
@@ -541,7 +536,7 @@ class TestReportSetupActionAssertRequirement(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    linkUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    linkUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_linkUri", title="Extension field for ``linkUri``."
     )
 
@@ -581,7 +576,7 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetupActionOperation"
 
-    detail: fhirtypes.UriType = Field(
+    detail: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="detail",
         title="A link to further details on the result",
@@ -590,11 +585,11 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_detail", title="Extension field for ``detail``."
     )
 
-    message: fhirtypes.MarkdownType = Field(
+    message: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="message",
         title="A message associated with the result",
@@ -603,11 +598,11 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_message", title="Extension field for ``message``."
     )
 
-    result: fhirtypes.CodeType = Field(
+    result: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="result",
         title="pass | skip | fail | warning | error",
@@ -620,7 +615,7 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
             "enum_values": ["pass", "skip", "fail", "warning", "error"],
         },
     )
-    result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_result", title="Extension field for ``result``."
     )
 
@@ -656,7 +651,7 @@ class TestReportTeardown(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportTeardown"
 
-    action: typing.List[fhirtypes.TestReportTeardownActionType] = Field(
+    action: typing.List[fhirtypes.TestReportTeardownActionType] = Field(  # type: ignore
         ...,
         alias="action",
         title="One or more teardown operations performed",
@@ -686,7 +681,7 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportTeardownAction"
 
-    operation: fhirtypes.TestReportSetupActionOperationType = Field(
+    operation: fhirtypes.TestReportSetupActionOperationType = Field(  # type: ignore
         ...,
         alias="operation",
         title="The teardown operation performed",
@@ -715,7 +710,7 @@ class TestReportTest(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportTest"
 
-    action: typing.List[fhirtypes.TestReportTestActionType] = Field(
+    action: typing.List[fhirtypes.TestReportTestActionType] = Field(  # type: ignore
         ...,
         alias="action",
         title="A test operation or assert that was performed",
@@ -725,7 +720,7 @@ class TestReportTest(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.StringType = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title="Tracking/reporting short description of the test",
@@ -737,11 +732,11 @@ class TestReportTest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Tracking/logging name of this test",
@@ -753,7 +748,7 @@ class TestReportTest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
@@ -777,7 +772,7 @@ class TestReportTestAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportTestAction"
 
-    assert_fhir: fhirtypes.TestReportSetupActionAssertType = Field(
+    assert_fhir: fhirtypes.TestReportSetupActionAssertType = Field(  # type: ignore
         None,
         alias="assert",
         title="The assertion performed",
@@ -787,7 +782,7 @@ class TestReportTestAction(backboneelement.BackboneElement):
         },
     )
 
-    operation: fhirtypes.TestReportSetupActionOperationType = Field(
+    operation: fhirtypes.TestReportSetupActionOperationType = Field(  # type: ignore
         None,
         alias="operation",
         title="The operation performed",

@@ -26,7 +26,7 @@ class GuidanceResponse(domainresource.DomainResource):
 
     __resource_type__ = "GuidanceResponse"
 
-    dataRequirement: typing.List[fhirtypes.DataRequirementType] = Field(
+    dataRequirement: typing.List[fhirtypes.DataRequirementType] = Field(  # type: ignore
         None,
         alias="dataRequirement",
         title="Additional required data",
@@ -42,7 +42,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(
+    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter during which the response was returned",
@@ -57,7 +57,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    evaluationMessage: fhirtypes.ReferenceType = Field(
+    evaluationMessage: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="evaluationMessage",
         title="Messages resulting from the evaluation of the artifact or artifacts",
@@ -74,7 +74,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -87,7 +87,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    moduleCanonical: fhirtypes.CanonicalType = Field(
+    moduleCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="moduleCanonical",
         title="What guidance was requested",
@@ -102,11 +102,11 @@ class GuidanceResponse(domainresource.DomainResource):
             "one_of_many_required": True,
         },
     )
-    moduleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    moduleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_moduleCanonical", title="Extension field for ``moduleCanonical``."
     )
 
-    moduleCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    moduleCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="moduleCodeableConcept",
         title="What guidance was requested",
@@ -122,7 +122,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    moduleUri: fhirtypes.UriType = Field(
+    moduleUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="moduleUri",
         title="What guidance was requested",
@@ -137,11 +137,11 @@ class GuidanceResponse(domainresource.DomainResource):
             "one_of_many_required": True,
         },
     )
-    moduleUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    moduleUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_moduleUri", title="Extension field for ``moduleUri``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Additional notes about the response",
@@ -154,7 +154,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType = Field(
+    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="When the guidance response was processed",
@@ -163,13 +163,13 @@ class GuidanceResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    outputParameters: fhirtypes.ReferenceType = Field(
+    outputParameters: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="outputParameters",
         title="The output parameters of the evaluation, if any",
@@ -188,7 +188,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    performer: fhirtypes.ReferenceType = Field(
+    performer: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="performer",
         title="Device returning the guidance",
@@ -200,7 +200,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="reason",
         title="Why guidance is needed",
@@ -217,7 +217,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    requestIdentifier: fhirtypes.IdentifierType = Field(
+    requestIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="requestIdentifier",
         title="The identifier of the request associated with this response, if any",
@@ -232,7 +232,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    result: typing.List[fhirtypes.ReferenceType] = Field(
+    result: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="result",
         title="Proposed actions, if any",
@@ -262,7 +262,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -295,11 +295,11 @@ class GuidanceResponse(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Patient the request was performed for",

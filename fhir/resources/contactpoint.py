@@ -23,7 +23,7 @@ class ContactPoint(datatype.DataType):
 
     __resource_type__ = "ContactPoint"
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period when the contact point was/is in use",
@@ -33,7 +33,7 @@ class ContactPoint(datatype.DataType):
         },
     )
 
-    rank: fhirtypes.PositiveIntType = Field(
+    rank: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="rank",
         title="Specify preferred order of use (1 = highest)",
@@ -46,11 +46,11 @@ class ContactPoint(datatype.DataType):
             "element_property": True,
         },
     )
-    rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_rank", title="Extension field for ``rank``."
     )
 
-    system: fhirtypes.CodeType = Field(
+    system: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="system",
         title="phone | fax | email | pager | url | sms | other",
@@ -65,11 +65,11 @@ class ContactPoint(datatype.DataType):
             "enum_values": ["phone", "fax", "email", "pager", "url", "sms", "other"],
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    use: fhirtypes.CodeType = Field(
+    use: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="use",
         title="home | work | temp | old | mobile - purpose of this contact point",
@@ -81,11 +81,11 @@ class ContactPoint(datatype.DataType):
             "enum_values": ["home", "work", "temp", "old", "mobile"],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_use", title="Extension field for ``use``."
     )
 
-    value: fhirtypes.StringType = Field(
+    value: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="value",
         title="The actual contact point details",
@@ -97,7 +97,7 @@ class ContactPoint(datatype.DataType):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

@@ -7,56 +7,66 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import claim
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_claim_1(inst):
     assert (
-        inst.accident.date == ExternalValidatorModel(valueDate="2014-07-09").valueDate
+        inst.accident.date
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-07-09"}).valueDate
     )
     assert inst.accident.locationAddress.text == "Grouse Mountain Ski Hill"
     assert inst.accident.type.coding[0].code == "SPT"
     assert inst.accident.type.coding[0].display == "Sporting Accident"
     assert (
         inst.accident.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActIncidentCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActIncidentCode"}
         ).valueUri
     )
     assert (
         inst.billablePeriod.end
-        == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert (
         inst.billablePeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-08-15").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-15"}
+        ).valueDateTime
     )
     assert inst.careTeam[0].provider.reference == "Practitioner/example"
     assert inst.careTeam[0].responsible is True
     assert inst.careTeam[0].role.coding[0].code == "primary"
     assert (
         inst.careTeam[0].role.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/claim-careteamrole"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/claim-careteamrole"}
         ).valueUri
     )
     assert inst.careTeam[0].sequence == 1
     assert inst.careTeam[0].specialty.coding[0].code == "physician"
     assert (
         inst.careTeam[0].specialty.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/provider-qualification"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/provider-qualification"}
         ).valueUri
     )
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.diagnosisRelatedGroup.coding[0].code == "400"
     assert inst.diagnosisRelatedGroup.coding[0].display == "Head trauma - concussion"
     assert (
         inst.diagnosisRelatedGroup.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup"
+            }
         ).valueUri
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "654456"
@@ -64,28 +74,30 @@ def impl_claim_1(inst):
     assert inst.diagnosis[0].type[0].coding[0].code == "admitting"
     assert (
         inst.diagnosis[0].type[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"}
         ).valueUri
     )
     assert (
         inst.enterer.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://jurisdiction.org/facilities/HOSP1234/users"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://jurisdiction.org/facilities/HOSP1234/users"}
         ).valueUri
     )
     assert inst.enterer.identifier.value == "UC1234"
     assert (
         inst.facility.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://jurisdiction.org/facilities"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://jurisdiction.org/facilities"}
         ).valueUri
     )
     assert inst.facility.identifier.value == "HOSP1234"
     assert inst.id == "960151"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happyhospital.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyhospital.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "96123451"
     assert inst.insurance[0].businessArrangement == "BA987123"
@@ -100,14 +112,14 @@ def impl_claim_1(inst):
     assert inst.item[0].productOrService.coding[0].code == "exam"
     assert (
         inst.item[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ex-serviceproduct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ex-serviceproduct"}
         ).valueUri
     )
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(125.0)
@@ -115,8 +127,8 @@ def impl_claim_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/1"
@@ -124,41 +136,55 @@ def impl_claim_1(inst):
     assert inst.priority.coding[0].code == "normal"
     assert (
         inst.provider.identifier.system
-        == ExternalValidatorModel(valueUri="http://npid.org/providerid").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://npid.org/providerid"}
+        ).valueUri
     )
     assert inst.provider.identifier.value == "NJ12345"
     assert inst.status == "active"
     assert inst.supportingInfo[0].category.coding[0].code == "employmentimpacted"
     assert (
         inst.supportingInfo[0].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+            }
         ).valueUri
     )
     assert inst.supportingInfo[0].sequence == 1
     assert (
         inst.supportingInfo[0].timingPeriod.end
-        == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert (
         inst.supportingInfo[0].timingPeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.supportingInfo[1].category.coding[0].code == "hospitalized"
     assert (
         inst.supportingInfo[1].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+            }
         ).valueUri
     )
     assert inst.supportingInfo[1].sequence == 2
     assert (
         inst.supportingInfo[1].timingPeriod.end
-        == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert (
         inst.supportingInfo[1].timingPeriod.start
-        == ExternalValidatorModel(valueDateTime="2014-08-15").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-15"}
+        ).valueDateTime
     )
     assert inst.text.div == (
         '<div xmlns="http://www.w3.org/1999/xhtml">A human-readable'
@@ -170,8 +196,8 @@ def impl_claim_1(inst):
     assert inst.type.coding[0].code == "institutional"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"
@@ -201,14 +227,19 @@ def impl_claim_2(inst):
     assert inst.careTeam[0].provider.reference == "Practitioner/example"
     assert inst.careTeam[0].sequence == 1
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "654456"
     assert inst.diagnosis[0].sequence == 1
     assert inst.id == "860150"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happypdocs.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happypdocs.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "8612345"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
@@ -221,14 +252,14 @@ def impl_claim_2(inst):
     assert inst.item[0].productOrService.coding[0].code == "exam"
     assert (
         inst.item[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ex-serviceproduct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ex-serviceproduct"}
         ).valueUri
     )
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(75.0)
@@ -236,8 +267,8 @@ def impl_claim_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/1"
@@ -253,8 +284,8 @@ def impl_claim_2(inst):
     assert inst.type.coding[0].code == "professional"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"
@@ -282,21 +313,28 @@ def impl_claim_3(inst):
     assert inst.careTeam[0].provider.reference == "Practitioner/example"
     assert inst.careTeam[0].sequence == 1
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "123456"
     assert inst.diagnosis[0].sequence == 1
     assert inst.id == "100150"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "12345"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
     assert inst.insurance[0].focal is True
     assert (
         inst.insurance[0].identifier.system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.insurance[0].identifier.value == "12345"
     assert inst.insurance[0].sequence == 1
@@ -308,7 +346,7 @@ def impl_claim_3(inst):
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(135.57)
@@ -316,8 +354,8 @@ def impl_claim_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/1"
@@ -333,8 +371,8 @@ def impl_claim_3(inst):
     assert inst.type.coding[0].code == "oral"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"
@@ -362,14 +400,19 @@ def impl_claim_4(inst):
     assert inst.careTeam[0].provider.reference == "Practitioner/example"
     assert inst.careTeam[0].sequence == 1
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "654321"
     assert inst.diagnosis[0].sequence == 1
     assert inst.id == "660150"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happysight.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happysight.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "6612345"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
@@ -382,14 +425,14 @@ def impl_claim_4(inst):
     assert inst.item[0].productOrService.coding[0].code == "exam"
     assert (
         inst.item[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/ex-visionservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/ex-visionservice"}
         ).valueUri
     )
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(80.0)
@@ -397,8 +440,8 @@ def impl_claim_4(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/1"
@@ -414,8 +457,8 @@ def impl_claim_4(inst):
     assert inst.type.coding[0].code == "vision"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"
@@ -445,14 +488,19 @@ def impl_claim_5(inst):
     assert inst.contained[0].id == "device-frame"
     assert inst.contained[1].id == "device-lens"
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "654321"
     assert inst.diagnosis[0].sequence == 1
     assert inst.id == "660152"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happysight.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happysight.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "6612347"
     assert inst.insurance[0].claimResponse.reference == "ClaimResponse/R3500"
@@ -470,24 +518,24 @@ def impl_claim_5(inst):
     assert inst.item[0].category.coding[0].display == "Vision Coverage"
     assert (
         inst.item[0].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/benefit-subcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/benefit-subcategory"}
         ).valueUri
     )
     assert inst.item[0].detail[0].category.coding[0].code == "F6"
     assert inst.item[0].detail[0].category.coding[0].display == "Vision Coverage"
     assert (
         inst.item[0].detail[0].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/benefit-subcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/benefit-subcategory"}
         ).valueUri
     )
     assert float(inst.item[0].detail[0].factor) == float(1.1)
     assert inst.item[0].detail[0].modifier[0].coding[0].code == "rooh"
     assert (
         inst.item[0].detail[0].modifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/modifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/modifiers"}
         ).valueUri
     )
     assert inst.item[0].detail[0].net.currency == "USD"
@@ -495,16 +543,16 @@ def impl_claim_5(inst):
     assert inst.item[0].detail[0].productOrService.coding[0].code == "frame"
     assert (
         inst.item[0].detail[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/ex-visionservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/ex-visionservice"}
         ).valueUri
     )
     assert inst.item[0].detail[0].revenue.coding[0].code == "0010"
     assert inst.item[0].detail[0].revenue.coding[0].display == "Vision Clinic"
     assert (
         inst.item[0].detail[0].revenue.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-revenue-center"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-revenue-center"}
         ).valueUri
     )
     assert inst.item[0].detail[0].sequence == 1
@@ -515,8 +563,8 @@ def impl_claim_5(inst):
     assert inst.item[0].detail[1].category.coding[0].display == "Vision Coverage"
     assert (
         inst.item[0].detail[1].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/benefit-subcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/benefit-subcategory"}
         ).valueUri
     )
     assert inst.item[0].detail[1].net.currency == "USD"
@@ -524,15 +572,15 @@ def impl_claim_5(inst):
     assert inst.item[0].detail[1].productOrService.coding[0].code == "lens"
     assert (
         inst.item[0].detail[1].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/ex-visionservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/ex-visionservice"}
         ).valueUri
     )
     assert inst.item[0].detail[1].programCode[0].coding[0].code == "none"
     assert (
         inst.item[0].detail[1].programCode[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-programcode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-programcode"}
         ).valueUri
     )
     assert float(inst.item[0].detail[1].quantity.value) == float(2)
@@ -540,8 +588,8 @@ def impl_claim_5(inst):
     assert inst.item[0].detail[1].revenue.coding[0].display == "Vision Clinic"
     assert (
         inst.item[0].detail[1].revenue.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-revenue-center"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-revenue-center"}
         ).valueUri
     )
     assert inst.item[0].detail[1].sequence == 2
@@ -552,16 +600,16 @@ def impl_claim_5(inst):
     )
     assert (
         inst.item[0].detail[1].subDetail[0].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/benefit-subcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/benefit-subcategory"}
         ).valueUri
     )
     assert float(inst.item[0].detail[1].subDetail[0].factor) == float(1.1)
     assert inst.item[0].detail[1].subDetail[0].modifier[0].coding[0].code == "rooh"
     assert (
         inst.item[0].detail[1].subDetail[0].modifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/modifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/modifiers"}
         ).valueUri
     )
     assert inst.item[0].detail[1].subDetail[0].net.currency == "USD"
@@ -569,15 +617,15 @@ def impl_claim_5(inst):
     assert inst.item[0].detail[1].subDetail[0].productOrService.coding[0].code == "lens"
     assert (
         inst.item[0].detail[1].subDetail[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/ex-visionservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/ex-visionservice"}
         ).valueUri
     )
     assert inst.item[0].detail[1].subDetail[0].programCode[0].coding[0].code == "none"
     assert (
         inst.item[0].detail[1].subDetail[0].programCode[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-programcode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-programcode"}
         ).valueUri
     )
     assert float(inst.item[0].detail[1].subDetail[0].quantity.value) == float(2)
@@ -587,8 +635,8 @@ def impl_claim_5(inst):
     )
     assert (
         inst.item[0].detail[1].subDetail[0].revenue.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-revenue-center"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-revenue-center"}
         ).valueUri
     )
     assert inst.item[0].detail[1].subDetail[0].sequence == 1
@@ -602,16 +650,16 @@ def impl_claim_5(inst):
     )
     assert (
         inst.item[0].detail[1].subDetail[1].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/benefit-subcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/benefit-subcategory"}
         ).valueUri
     )
     assert float(inst.item[0].detail[1].subDetail[1].factor) == float(1.1)
     assert inst.item[0].detail[1].subDetail[1].modifier[0].coding[0].code == "rooh"
     assert (
         inst.item[0].detail[1].subDetail[1].modifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/modifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/modifiers"}
         ).valueUri
     )
     assert inst.item[0].detail[1].subDetail[1].net.currency == "USD"
@@ -622,8 +670,8 @@ def impl_claim_5(inst):
     )
     assert (
         inst.item[0].detail[1].subDetail[1].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/ex-visionservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/ex-visionservice"}
         ).valueUri
     )
     assert float(inst.item[0].detail[1].subDetail[1].quantity.value) == float(2)
@@ -633,8 +681,8 @@ def impl_claim_5(inst):
     )
     assert (
         inst.item[0].detail[1].subDetail[1].revenue.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-revenue-center"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-revenue-center"}
         ).valueUri
     )
     assert inst.item[0].detail[1].subDetail[1].sequence == 2
@@ -647,16 +695,16 @@ def impl_claim_5(inst):
     )
     assert (
         inst.item[0].detail[1].subDetail[2].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/benefit-subcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/benefit-subcategory"}
         ).valueUri
     )
     assert float(inst.item[0].detail[1].subDetail[2].factor) == float(1.1)
     assert inst.item[0].detail[1].subDetail[2].modifier[0].coding[0].code == "rooh"
     assert (
         inst.item[0].detail[1].subDetail[2].modifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/modifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/modifiers"}
         ).valueUri
     )
     assert inst.item[0].detail[1].subDetail[2].net.currency == "USD"
@@ -667,8 +715,8 @@ def impl_claim_5(inst):
     )
     assert (
         inst.item[0].detail[1].subDetail[2].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/ex-visionservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/ex-visionservice"}
         ).valueUri
     )
     assert float(inst.item[0].detail[1].subDetail[2].quantity.value) == float(2)
@@ -678,8 +726,8 @@ def impl_claim_5(inst):
     )
     assert (
         inst.item[0].detail[1].subDetail[2].revenue.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-revenue-center"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-revenue-center"}
         ).valueUri
     )
     assert inst.item[0].detail[1].subDetail[2].sequence == 3
@@ -691,8 +739,8 @@ def impl_claim_5(inst):
     assert inst.item[0].detail[2].category.coding[0].display == "Vision Coverage"
     assert (
         inst.item[0].detail[2].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/benefit-subcategory"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/benefit-subcategory"}
         ).valueUri
     )
     assert float(inst.item[0].detail[2].factor) == float(0.07)
@@ -701,16 +749,16 @@ def impl_claim_5(inst):
     assert inst.item[0].detail[2].productOrService.coding[0].code == "fst"
     assert (
         inst.item[0].detail[2].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/ex-visionservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/ex-visionservice"}
         ).valueUri
     )
     assert inst.item[0].detail[2].revenue.coding[0].code == "0010"
     assert inst.item[0].detail[2].revenue.coding[0].display == "Vision Clinic"
     assert (
         inst.item[0].detail[2].revenue.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-revenue-center"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-revenue-center"}
         ).valueUri
     )
     assert inst.item[0].detail[2].sequence == 3
@@ -719,8 +767,8 @@ def impl_claim_5(inst):
     assert inst.item[0].modifier[0].coding[0].code == "rooh"
     assert (
         inst.item[0].modifier[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/modifiers"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/modifiers"}
         ).valueUri
     )
     assert inst.item[0].net.currency == "USD"
@@ -728,29 +776,29 @@ def impl_claim_5(inst):
     assert inst.item[0].productOrService.coding[0].code == "glasses"
     assert (
         inst.item[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/ex-visionservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/ex-visionservice"}
         ).valueUri
     )
     assert inst.item[0].programCode[0].coding[0].code == "none"
     assert (
         inst.item[0].programCode[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-programcode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-programcode"}
         ).valueUri
     )
     assert inst.item[0].revenue.coding[0].code == "0010"
     assert inst.item[0].revenue.coding[0].display == "Vision Clinic"
     assert (
         inst.item[0].revenue.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-revenue-center"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-revenue-center"}
         ).valueUri
     )
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(235.4)
@@ -758,8 +806,8 @@ def impl_claim_5(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/1"
@@ -776,8 +824,8 @@ def impl_claim_5(inst):
     assert inst.type.coding[0].code == "vision"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"
@@ -807,28 +855,33 @@ def impl_claim_6(inst):
     assert inst.careTeam[0].provider.reference == "Practitioner/example"
     assert inst.careTeam[0].sequence == 1
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "654456"
     assert inst.diagnosis[0].sequence == 1
     assert (
         inst.enterer.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://jurisdiction.org/facilities/HOSP1234/users"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://jurisdiction.org/facilities/HOSP1234/users"}
         ).valueUri
     )
     assert inst.enterer.identifier.value == "UC1234"
     assert (
         inst.facility.identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://jurisdiction.org/facilities"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://jurisdiction.org/facilities"}
         ).valueUri
     )
     assert inst.facility.identifier.value == "HOSP1234"
     assert inst.id == "960150"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happyhospital.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyhospital.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "9612345"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
@@ -842,14 +895,14 @@ def impl_claim_6(inst):
     assert inst.item[0].productOrService.coding[0].code == "exam"
     assert (
         inst.item[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ex-serviceproduct"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ex-serviceproduct"}
         ).valueUri
     )
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(125.0)
@@ -857,8 +910,8 @@ def impl_claim_6(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/1"
@@ -866,7 +919,9 @@ def impl_claim_6(inst):
     assert inst.priority.coding[0].code == "normal"
     assert (
         inst.procedure[0].date
-        == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.procedure[0].procedureCodeableConcept.coding[0].code == "SDI9901"
     assert (
@@ -881,8 +936,8 @@ def impl_claim_6(inst):
     assert inst.subType.coding[0].code == "emergency"
     assert (
         inst.subType.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/ex-claimsubtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/ex-claimsubtype"}
         ).valueUri
     )
     assert inst.text.div == (
@@ -895,8 +950,8 @@ def impl_claim_6(inst):
     assert inst.type.coding[0].code == "institutional"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"
@@ -929,14 +984,19 @@ def impl_claim_7(inst):
     assert inst.contained[3].id == "patient-1"
     assert inst.contained[4].id == "coverage-1"
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "123456"
     assert inst.diagnosis[0].sequence == 1
     assert inst.id == "100152"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "12347"
     assert inst.insurance[0].coverage.reference == "#coverage-1"
@@ -950,7 +1010,7 @@ def impl_claim_7(inst):
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(135.57)
@@ -958,8 +1018,8 @@ def impl_claim_7(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "#patient-1"
@@ -975,8 +1035,8 @@ def impl_claim_7(inst):
     assert inst.type.coding[0].code == "oral"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"
@@ -1004,14 +1064,19 @@ def impl_claim_8(inst):
     assert inst.careTeam[0].provider.reference == "Practitioner/example"
     assert inst.careTeam[0].sequence == 1
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2014-08-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2014-08-16"}
+        ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "654456"
     assert inst.diagnosis[0].sequence == 1
     assert inst.id == "760151"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happypharma.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happypharma.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "7612345"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
@@ -1024,8 +1089,8 @@ def impl_claim_8(inst):
     assert inst.item[0].detail[0].productOrService.coding[0].code == "drugcost"
     assert (
         inst.item[0].detail[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ex-pharmaservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ex-pharmaservice"}
         ).valueUri
     )
     assert inst.item[0].detail[0].sequence == 1
@@ -1034,8 +1099,8 @@ def impl_claim_8(inst):
     assert inst.item[0].detail[1].productOrService.coding[0].code == "markup"
     assert (
         inst.item[0].detail[1].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ex-pharmaservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ex-pharmaservice"}
         ).valueUri
     )
     assert inst.item[0].detail[1].sequence == 2
@@ -1044,8 +1109,8 @@ def impl_claim_8(inst):
     assert inst.item[0].detail[2].productOrService.coding[0].code == "dispensefee"
     assert (
         inst.item[0].detail[2].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/ex-pharmaservice"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/ex-pharmaservice"}
         ).valueUri
     )
     assert inst.item[0].detail[2].sequence == 3
@@ -1060,15 +1125,15 @@ def impl_claim_8(inst):
     )
     assert (
         inst.item[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://www.nlm.nih.gov/research/umls/rxnorm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.nlm.nih.gov/research/umls/rxnorm"}
         ).valueUri
     )
     assert inst.item[0].quantity.code == "TAB"
     assert (
         inst.item[0].quantity.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"}
         ).valueUri
     )
     assert inst.item[0].quantity.unit == "TAB"
@@ -1076,14 +1141,14 @@ def impl_claim_8(inst):
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert (
@@ -1102,8 +1167,8 @@ def impl_claim_8(inst):
     assert inst.supportingInfo[0].code.coding[0].code == "new"
     assert (
         inst.supportingInfo[0].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/pharmacy-refill"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/pharmacy-refill"}
         ).valueUri
     )
     assert inst.supportingInfo[0].sequence == 1
@@ -1111,8 +1176,8 @@ def impl_claim_8(inst):
     assert inst.supportingInfo[1].code.coding[0].code == "refillsremaining"
     assert (
         inst.supportingInfo[1].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/pharmacy-information"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/pharmacy-information"}
         ).valueUri
     )
     assert inst.supportingInfo[1].sequence == 2
@@ -1121,8 +1186,8 @@ def impl_claim_8(inst):
     assert inst.supportingInfo[2].code.coding[0].code == "dayssupply"
     assert (
         inst.supportingInfo[2].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/CodeSystem/pharmacy-information"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/CodeSystem/pharmacy-information"}
         ).valueUri
     )
     assert inst.supportingInfo[2].sequence == 3
@@ -1137,8 +1202,8 @@ def impl_claim_8(inst):
     assert inst.type.coding[0].code == "pharmacy"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"
@@ -1168,19 +1233,26 @@ def impl_claim_9(inst):
     assert inst.careTeam[0].provider.reference == "Practitioner/example"
     assert inst.careTeam[0].sequence == 1
     assert (
-        inst.created == ExternalValidatorModel(valueDateTime="2015-03-16").valueDateTime
+        inst.created
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-03-16"}
+        ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "K07.3"
     assert (
         inst.diagnosis[0].diagnosisCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/icd-10").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/icd-10"}
+        ).valueUri
     )
     assert inst.diagnosis[0].sequence == 1
     assert inst.fundsReserve.coding[0].code == "provider"
     assert inst.id == "100153"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="http://happyvalley.com/claim").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://happyvalley.com/claim"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "12355"
     assert inst.insurance[0].coverage.reference == "Coverage/9876B1"
@@ -1193,8 +1265,8 @@ def impl_claim_9(inst):
     assert inst.item[0].detail[0].productOrService.coding[0].code == "ORTHOEXAM"
     assert (
         inst.item[0].detail[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert inst.item[0].detail[0].sequence == 1
@@ -1205,8 +1277,8 @@ def impl_claim_9(inst):
     assert inst.item[0].detail[1].productOrService.coding[0].code == "ORTHODIAG"
     assert (
         inst.item[0].detail[1].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert inst.item[0].detail[1].sequence == 2
@@ -1217,8 +1289,8 @@ def impl_claim_9(inst):
     assert inst.item[0].detail[2].productOrService.coding[0].code == "ORTHOINITIAL"
     assert (
         inst.item[0].detail[2].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert inst.item[0].detail[2].sequence == 3
@@ -1227,8 +1299,8 @@ def impl_claim_9(inst):
     assert inst.item[0].detail[3].productOrService.coding[0].code == "ORTHOMONTHS"
     assert (
         inst.item[0].detail[3].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert float(inst.item[0].detail[3].quantity.value) == float(24)
@@ -1238,8 +1310,8 @@ def impl_claim_9(inst):
     assert inst.item[0].detail[4].productOrService.coding[0].code == "ORTHOPERIODIC"
     assert (
         inst.item[0].detail[4].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert float(inst.item[0].detail[4].quantity.value) == float(24)
@@ -1252,29 +1324,29 @@ def impl_claim_9(inst):
     assert inst.item[0].productOrService.coding[0].code == "ORTHPLAN"
     assert (
         inst.item[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2015-05-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2015-05-16"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(9000.0)
     assert inst.item[1].bodySite[0].site[0].concept.coding[0].code == "21"
     assert (
         inst.item[1].bodySite[0].site[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fdi.org/fhir/oraltoothcodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fdi.org/fhir/oraltoothcodes"}
         ).valueUri
     )
     assert inst.item[1].bodySite[0].subSite[0].coding[0].code == "L"
     assert (
         inst.item[1].bodySite[0].subSite[0].coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fdi.org/fhir/oralsurfacecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fdi.org/fhir/oralsurfacecodes"}
         ).valueUri
     )
     assert inst.item[1].careTeamSequence[0] == 1
@@ -1283,22 +1355,22 @@ def impl_claim_9(inst):
     assert inst.item[1].productOrService.coding[0].code == "21211"
     assert (
         inst.item[1].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert inst.item[1].sequence == 2
     assert (
         inst.item[1].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[1].unitPrice.currency == "USD"
     assert float(inst.item[1].unitPrice.value) == float(105.0)
     assert inst.item[2].bodySite[0].site[0].concept.coding[0].code == "36"
     assert (
         inst.item[2].bodySite[0].site[0].concept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://fdi.org/fhir/oraltoothcodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://fdi.org/fhir/oraltoothcodes"}
         ).valueUri
     )
     assert inst.item[2].careTeamSequence[0] == 1
@@ -1307,8 +1379,8 @@ def impl_claim_9(inst):
     assert inst.item[2].detail[0].productOrService.coding[0].code == "27211"
     assert (
         inst.item[2].detail[0].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert inst.item[2].detail[0].sequence == 1
@@ -1319,8 +1391,8 @@ def impl_claim_9(inst):
     assert inst.item[2].detail[1].productOrService.coding[0].code == "lab"
     assert (
         inst.item[2].detail[1].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert inst.item[2].detail[1].sequence == 2
@@ -1331,14 +1403,14 @@ def impl_claim_9(inst):
     assert inst.item[2].productOrService.coding[0].code == "27211"
     assert (
         inst.item[2].productOrService.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://example.org/fhir/oralservicecodes"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/fhir/oralservicecodes"}
         ).valueUri
     )
     assert inst.item[2].sequence == 3
     assert (
         inst.item[2].servicedDate
-        == ExternalValidatorModel(valueDate="2014-08-16").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2014-08-16"}).valueDate
     )
     assert inst.item[2].unitPrice.currency == "USD"
     assert float(inst.item[2].unitPrice.value) == float(1100.0)
@@ -1346,8 +1418,8 @@ def impl_claim_9(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "Patient/1"
@@ -1363,8 +1435,8 @@ def impl_claim_9(inst):
     assert inst.type.coding[0].code == "oral"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "preauthorization"
@@ -1395,8 +1467,8 @@ def impl_claim_10(inst):
     assert inst.contained[1].id == "coverage-1"
     assert (
         inst.created
-        == ExternalValidatorModel(
-            valueDateTime="2015-10-16T00:00:00-07:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-10-16T00:00:00-07:00"}
         ).valueDateTime
     )
     assert inst.diagnosis[0].diagnosisCodeableConcept.coding[0].code == "M96.1"
@@ -1406,7 +1478,9 @@ def impl_claim_10(inst):
     )
     assert (
         inst.diagnosis[0].diagnosisCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/icd-10-cm").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/icd-10-cm"}
+        ).valueUri
     )
     assert inst.diagnosis[0].sequence == 1
     assert inst.diagnosis[1].diagnosisCodeableConcept.coding[0].code == "G89.4"
@@ -1416,7 +1490,9 @@ def impl_claim_10(inst):
     )
     assert (
         inst.diagnosis[1].diagnosisCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/icd-10-cm").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/icd-10-cm"}
+        ).valueUri
     )
     assert inst.diagnosis[1].sequence == 2
     assert inst.diagnosis[2].diagnosisCodeableConcept.coding[0].code == "M53.88"
@@ -1425,7 +1501,9 @@ def impl_claim_10(inst):
     )
     assert (
         inst.diagnosis[2].diagnosisCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/icd-10-cm").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/icd-10-cm"}
+        ).valueUri
     )
     assert inst.diagnosis[2].sequence == 3
     assert inst.diagnosis[3].diagnosisCodeableConcept.coding[0].code == "M47.816"
@@ -1434,14 +1512,16 @@ def impl_claim_10(inst):
     )
     assert (
         inst.diagnosis[3].diagnosisCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/icd-10-cm").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/sid/icd-10-cm"}
+        ).valueUri
     )
     assert inst.diagnosis[3].sequence == 4
     assert inst.id == "MED-00050"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="http://CedarArmsMedicalCenter.com/claim"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://CedarArmsMedicalCenter.com/claim"}
         ).valueUri
     )
     assert inst.identifier[0].value == "MED-00050"
@@ -1449,8 +1529,8 @@ def impl_claim_10(inst):
     assert inst.insurance[0].focal is True
     assert (
         inst.insurance[0].identifier.system
-        == ExternalValidatorModel(
-            valueUri="http://CedarArmsMedicalCenter.com/claim"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://CedarArmsMedicalCenter.com/claim"}
         ).valueUri
     )
     assert inst.insurance[0].identifier.value == "MED-00050"
@@ -1458,7 +1538,9 @@ def impl_claim_10(inst):
     assert inst.insurer.display == "Humana Inc."
     assert (
         inst.insurer.identifier.system
-        == ExternalValidatorModel(valueUri="http://www.bindb.com/bin").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.bindb.com/bin"}
+        ).valueUri
     )
     assert inst.insurer.identifier.value == "123456"
     assert inst.item[0].careTeamSequence[0] == 1
@@ -1472,8 +1554,10 @@ def impl_claim_10(inst):
     )
     assert (
         inst.item[0].locationCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.cms.gov/medicare/coding/place-of-service-codes/place_of_service_code_set.html"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "https://www.cms.gov/medicare/coding/place-of-service-codes/place_of_service_code_set.html"
+            }
         ).valueUri
     )
     assert inst.item[0].net.currency == "USD"
@@ -1485,12 +1569,14 @@ def impl_claim_10(inst):
     )
     assert (
         inst.item[0].productOrService.coding[0].system
-        == ExternalValidatorModel(valueUri="http://www.ama-assn.org/go/cpt").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://www.ama-assn.org/go/cpt"}
+        ).valueUri
     )
     assert inst.item[0].sequence == 1
     assert (
         inst.item[0].servicedDate
-        == ExternalValidatorModel(valueDate="2015-10-13").valueDate
+        == ExternalValidatorModel.model_validate({"valueDate": "2015-10-13"}).valueDate
     )
     assert inst.item[0].unitPrice.currency == "USD"
     assert float(inst.item[0].unitPrice.value) == float(12500.0)
@@ -1498,8 +1584,8 @@ def impl_claim_10(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.patient.reference == "#patient-1"
@@ -1507,8 +1593,8 @@ def impl_claim_10(inst):
     assert inst.payee.type.coding[0].code == "provider"
     assert (
         inst.payee.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/payeetype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/payeetype"}
         ).valueUri
     )
     assert inst.priority.coding[0].code == "normal"
@@ -1517,35 +1603,39 @@ def impl_claim_10(inst):
     assert inst.subType.coding[0].code == "831"
     assert (
         inst.subType.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.cms.gov/codes/billtype"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.cms.gov/codes/billtype"}
         ).valueUri
     )
     assert inst.supportingInfo[0].category.coding[0].code == "hospitalized"
     assert (
         inst.supportingInfo[0].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+            }
         ).valueUri
     )
     assert inst.supportingInfo[0].sequence == 1
     assert (
         inst.supportingInfo[0].timingPeriod.end
-        == ExternalValidatorModel(
-            valueDateTime="2015-10-05T00:00:00-07:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-10-05T00:00:00-07:00"}
         ).valueDateTime
     )
     assert (
         inst.supportingInfo[0].timingPeriod.start
-        == ExternalValidatorModel(
-            valueDateTime="2015-10-01T00:00:00-07:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2015-10-01T00:00:00-07:00"}
         ).valueDateTime
     )
     assert inst.supportingInfo[1].category.coding[0].code == "discharge"
     assert (
         inst.supportingInfo[1].category.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "http://terminology.hl7.org/CodeSystem/claiminformationcategory"
+            }
         ).valueUri
     )
     assert inst.supportingInfo[1].code.coding[0].code == "01"
@@ -1555,8 +1645,10 @@ def impl_claim_10(inst):
     )
     assert (
         inst.supportingInfo[1].code.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNMattersArticles/downloads/SE0801.pdf"
+        == ExternalValidatorModel.model_validate(
+            {
+                "valueUri": "https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNMattersArticles/downloads/SE0801.pdf"
+            }
         ).valueUri
     )
     assert inst.supportingInfo[1].sequence == 2
@@ -1570,8 +1662,8 @@ def impl_claim_10(inst):
     assert inst.type.coding[0].code == "institutional"
     assert (
         inst.type.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/claim-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/claim-type"}
         ).valueUri
     )
     assert inst.use == "claim"

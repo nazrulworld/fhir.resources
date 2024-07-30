@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class CareTeam(domainresource.DomainResource):
@@ -25,7 +25,7 @@ class CareTeam(domainresource.DomainResource):
 
     __resource_type__ = "CareTeam"
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="category",
         title="Type of team",
@@ -39,7 +39,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this team",
@@ -53,7 +53,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: typing.List[fhirtypes.ReferenceType] = Field(
+    managingOrganization: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title="Organization responsible for the care team",
@@ -65,7 +65,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name of the team, such as crisis assessment team",
@@ -77,11 +77,11 @@ class CareTeam(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about the CareTeam",
@@ -91,7 +91,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    participant: typing.List[fhirtypes.CareTeamParticipantType] = Field(
+    participant: typing.List[fhirtypes.CareTeamParticipantType] = Field(  # type: ignore
         None,
         alias="participant",
         title="Members of the team",
@@ -104,7 +104,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title="Time period team covers",
@@ -117,7 +117,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(
+    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
         None,
         alias="reason",
         title="Why the care team exists",
@@ -129,7 +129,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="proposed | active | suspended | inactive | entered-in-error",
@@ -147,11 +147,11 @@ class CareTeam(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(
+    subject: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="subject",
         title="Who care team is for",
@@ -166,7 +166,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the care team (that applies to all members)",
@@ -208,9 +208,6 @@ class CareTeam(domainresource.DomainResource):
         ]
 
 
-from . import backboneelement
-
-
 class CareTeamParticipant(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -223,7 +220,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "CareTeamParticipant"
 
-    coveragePeriod: fhirtypes.PeriodType = Field(
+    coveragePeriod: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="coveragePeriod",
         title="When the member is generally available within this care team",
@@ -236,7 +233,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    coverageTiming: fhirtypes.TimingType = Field(
+    coverageTiming: fhirtypes.TimingType = Field(  # type: ignore
         None,
         alias="coverageTiming",
         title="When the member is generally available within this care team",
@@ -249,7 +246,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    member: fhirtypes.ReferenceType = Field(
+    member: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="member",
         title="Who is involved",
@@ -271,7 +268,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(
+    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="Organization of the practitioner",
@@ -283,7 +280,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(
+    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="role",
         title="Type of involvement",

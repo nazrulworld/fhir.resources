@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -23,27 +23,29 @@ class Contract(domainresource.DomainResource):
     exchange of information or other matters.
     """
 
-    resource_type = Field("Contract", const=True)
+    __resource_type__ = "Contract"
 
-    action: typing.List[fhirtypes.CodeableConceptType] = Field(
+    action: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="action",
         title="Action stipulated by this Contract",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    actionReason: typing.List[fhirtypes.CodeableConceptType] = Field(
+    actionReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="actionReason",
         title="Rationale for the stiplulated action",
         description="Reason for action stipulated by this Contract.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    agent: typing.List[fhirtypes.ContractAgentType] = Field(
+    agent: typing.List[fhirtypes.ContractAgentType] = Field(  # type: ignore
         None,
         alias="agent",
         title="Entity being ascribed responsibility",
@@ -51,20 +53,22 @@ class Contract(domainresource.DomainResource):
             "An actor taking a role in an activity for which it can be assigned "
             "some degree of responsibility for the activity taking place."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    applies: fhirtypes.PeriodType = Field(
+    applies: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="applies",
         title="Effective time",
         description="Relevant time or time-period when this Contract is applicable.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    authority: typing.List[fhirtypes.ReferenceType] = Field(
+    authority: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="authority",
         title="Authority under which this Contract has standing",
@@ -74,13 +78,14 @@ class Contract(domainresource.DomainResource):
             "some form of collective action such as the promulgation, "
             "administration and enforcement of contracts and policies."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    bindingAttachment: fhirtypes.AttachmentType = Field(
+    bindingAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="bindingAttachment",
         title="Binding Contract",
@@ -90,14 +95,15 @@ class Contract(domainresource.DomainResource):
             'truth" and which would be the basis for legal action related to '
             "enforcement of this Contract."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e binding[x]
-        one_of_many="binding",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e binding[x]
+            "one_of_many": "binding",
+            "one_of_many_required": False,
+        },
     )
 
-    bindingReference: fhirtypes.ReferenceType = Field(
+    bindingReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="bindingReference",
         title="Binding Contract",
@@ -107,20 +113,21 @@ class Contract(domainresource.DomainResource):
             'truth" and which would be the basis for legal action related to '
             "enforcement of this Contract."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e binding[x]
-        one_of_many="binding",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Composition",
-            "DocumentReference",
-            "QuestionnaireResponse",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e binding[x]
+            "one_of_many": "binding",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Composition",
+                "DocumentReference",
+                "QuestionnaireResponse",
+            ],
+        },
     )
 
-    contentDerivative: fhirtypes.CodeableConceptType = Field(
+    contentDerivative: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="contentDerivative",
         title="Content derived from the basal information",
@@ -128,11 +135,12 @@ class Contract(domainresource.DomainResource):
             "The minimal content derived from the basal information source at a "
             "specific stage in its lifecycle."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    decisionType: fhirtypes.CodeableConceptType = Field(
+    decisionType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="decisionType",
         title="Decision by Grantor",
@@ -140,11 +148,12 @@ class Contract(domainresource.DomainResource):
             "The type of decision made by a grantor with respect to an offer made "
             "by a grantee."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    domain: typing.List[fhirtypes.ReferenceType] = Field(
+    domain: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="domain",
         title="Domain in which this Contract applies",
@@ -154,13 +163,14 @@ class Contract(domainresource.DomainResource):
             " processes or procedures for managing rights, actions, or behaviors of"
             " parties or principals relative to resources."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    friendly: typing.List[fhirtypes.ContractFriendlyType] = Field(
+    friendly: typing.List[fhirtypes.ContractFriendlyType] = Field(  # type: ignore
         None,
         alias="friendly",
         title="Contract Friendly Language",
@@ -173,41 +183,45 @@ class Contract(domainresource.DomainResource):
             "or signing the Contract understand the roles, actions, obligations, "
             "responsibilities, and implication of the agreement."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Contract number",
         description="Unique identifier for this Contract.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    issued: fhirtypes.DateTime = Field(
+    issued: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="issued",
         title="When this Contract was issued",
         description="When this  Contract was issued.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    legal: typing.List[fhirtypes.ContractLegalType] = Field(
+    legal: typing.List[fhirtypes.ContractLegalType] = Field(  # type: ignore
         None,
         alias="legal",
         title="Contract Legal Language",
         description="List of Legal expressions or representations of this Contract.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    rule: typing.List[fhirtypes.ContractRuleType] = Field(
+    rule: typing.List[fhirtypes.ContractRuleType] = Field(  # type: ignore
         None,
         alias="rule",
         title="Computable Contract Language",
@@ -215,11 +229,12 @@ class Contract(domainresource.DomainResource):
             "List of Computable Policy Rule Language Representations of this "
             "Contract."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    securityLabel: typing.List[fhirtypes.CodingType] = Field(
+    securityLabel: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="securityLabel",
         title="Security Labels that define affected resources",
@@ -228,11 +243,12 @@ class Contract(domainresource.DomainResource):
             " this consent. If more than one label is specified, all resources must"
             " have all the specified labels."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    signer: typing.List[fhirtypes.ContractSignerType] = Field(
+    signer: typing.List[fhirtypes.ContractSignerType] = Field(  # type: ignore
         None,
         alias="signer",
         title="Contract Signatory",
@@ -242,11 +258,12 @@ class Contract(domainresource.DomainResource):
             "organization bound by the contract, and any ancillary parties, which "
             "facilitate the execution of the contract such as a notary or witness."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -255,33 +272,34 @@ class Contract(domainresource.DomainResource):
             "renewed | revoked | resolved | terminated"
         ),
         description="The status of the resource instance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "amended",
-            "appended",
-            "cancelled",
-            "disputed",
-            "entered-in-error",
-            "executable",
-            "executed",
-            "negotiable",
-            "offered",
-            "policy",
-            "rejected",
-            "renewed",
-            "revoked",
-            "resolved",
-            "terminated",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "amended",
+                "appended",
+                "cancelled",
+                "disputed",
+                "entered-in-error",
+                "executable",
+                "executed",
+                "negotiable",
+                "offered",
+                "policy",
+                "rejected",
+                "renewed",
+                "revoked",
+                "resolved",
+                "terminated",
+            ],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subType: typing.List[fhirtypes.CodeableConceptType] = Field(
+    subType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="subType",
         title="Subtype within the context of type",
@@ -290,11 +308,12 @@ class Contract(domainresource.DomainResource):
             " contract such as auto insurance, home owner  insurance, prenupial "
             "agreement, Advanced-Directive, or privacy consent."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    subject: typing.List[fhirtypes.ReferenceType] = Field(
+    subject: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="subject",
         title="Contract Target Entity",
@@ -302,13 +321,14 @@ class Contract(domainresource.DomainResource):
             "The target entity impacted by or of interest to parties to the "
             "agreement."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    term: typing.List[fhirtypes.ContractTermType] = Field(
+    term: typing.List[fhirtypes.ContractTermType] = Field(  # type: ignore
         None,
         alias="term",
         title="Contract Term List",
@@ -316,22 +336,24 @@ class Contract(domainresource.DomainResource):
             "One or more Contract Provisions, which may be related and conveyed as "
             "a group, and may contain nested groups."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    topic: typing.List[fhirtypes.ReferenceType] = Field(
+    topic: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="topic",
         title="Context of the Contract",
         description="The matter of concern in the context of this agreement.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type or form",
@@ -340,17 +362,19 @@ class Contract(domainresource.DomainResource):
             "will, power of attorny, Privacy or Security policy , trust framework "
             "agreement, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valuedItem: typing.List[fhirtypes.ContractValuedItemType] = Field(
+    valuedItem: typing.List[fhirtypes.ContractValuedItemType] = Field(  # type: ignore
         None,
         alias="valuedItem",
         title="Contract Valued Item List",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -396,10 +420,7 @@ class Contract(domainresource.DomainResource):
             "rule",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1013(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -413,26 +434,7 @@ class Contract(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"binding": ["bindingAttachment", "bindingReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ContractAgent(backboneelement.BackboneElement):
@@ -445,36 +447,38 @@ class ContractAgent(backboneelement.BackboneElement):
     degree of responsibility for the activity taking place.
     """
 
-    resource_type = Field("ContractAgent", const=True)
+    __resource_type__ = "ContractAgent"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="actor",
         title="Contract Agent Type",
         description="Who or what parties are assigned roles in this Contract.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Contract",
-            "Device",
-            "Group",
-            "Location",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "RelatedPerson",
-            "Substance",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Contract",
+                "Device",
+                "Group",
+                "Location",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "RelatedPerson",
+                "Substance",
+            ],
+        },
     )
 
-    role: typing.List[fhirtypes.CodeableConceptType] = Field(
+    role: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="role",
         title="Role type of the agent",
         description="Role type of agent assigned roles in this Contract.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -501,9 +505,9 @@ class ContractFriendly(backboneelement.BackboneElement):
     implication of the agreement.
     """
 
-    resource_type = Field("ContractFriendly", const=True)
+    __resource_type__ = "ContractFriendly"
 
-    contentAttachment: fhirtypes.AttachmentType = Field(
+    contentAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="contentAttachment",
         title="Easily comprehended representation of this Contract",
@@ -512,14 +516,15 @@ class ContractFriendly(backboneelement.BackboneElement):
             "representation intended to enhance comprehension and ensure "
             "understandability."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+        },
     )
 
-    contentReference: fhirtypes.ReferenceType = Field(
+    contentReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="contentReference",
         title="Easily comprehended representation of this Contract",
@@ -528,17 +533,18 @@ class ContractFriendly(backboneelement.BackboneElement):
             "representation intended to enhance comprehension and ensure "
             "understandability."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Composition",
-            "DocumentReference",
-            "QuestionnaireResponse",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Composition",
+                "DocumentReference",
+                "QuestionnaireResponse",
+            ],
+        },
     )
 
     @classmethod
@@ -557,10 +563,7 @@ class ContractFriendly(backboneelement.BackboneElement):
             "contentReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1847(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -574,26 +577,7 @@ class ContractFriendly(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"content": ["contentAttachment", "contentReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ContractLegal(backboneelement.BackboneElement):
@@ -605,36 +589,38 @@ class ContractLegal(backboneelement.BackboneElement):
     List of Legal expressions or representations of this Contract.
     """
 
-    resource_type = Field("ContractLegal", const=True)
+    __resource_type__ = "ContractLegal"
 
-    contentAttachment: fhirtypes.AttachmentType = Field(
+    contentAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="contentAttachment",
         title="Contract Legal Text",
         description="Contract legal text in human renderable form.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+        },
     )
 
-    contentReference: fhirtypes.ReferenceType = Field(
+    contentReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="contentReference",
         title="Contract Legal Text",
         description="Contract legal text in human renderable form.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Composition",
-            "DocumentReference",
-            "QuestionnaireResponse",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Composition",
+                "DocumentReference",
+                "QuestionnaireResponse",
+            ],
+        },
     )
 
     @classmethod
@@ -653,10 +639,7 @@ class ContractLegal(backboneelement.BackboneElement):
             "contentReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1490(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -670,26 +653,7 @@ class ContractLegal(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"content": ["contentAttachment", "contentReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ContractRule(backboneelement.BackboneElement):
@@ -701,9 +665,9 @@ class ContractRule(backboneelement.BackboneElement):
     List of Computable Policy Rule Language Representations of this Contract.
     """
 
-    resource_type = Field("ContractRule", const=True)
+    __resource_type__ = "ContractRule"
 
-    contentAttachment: fhirtypes.AttachmentType = Field(
+    contentAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="contentAttachment",
         title="Computable Contract Rules",
@@ -711,14 +675,15 @@ class ContractRule(backboneelement.BackboneElement):
             "Computable Contract conveyed using a policy rule language (e.g. XACML,"
             " DKAL, SecPal)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+        },
     )
 
-    contentReference: fhirtypes.ReferenceType = Field(
+    contentReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="contentReference",
         title="Computable Contract Rules",
@@ -726,13 +691,14 @@ class ContractRule(backboneelement.BackboneElement):
             "Computable Contract conveyed using a policy rule language (e.g. XACML,"
             " DKAL, SecPal)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
     @classmethod
@@ -749,10 +715,7 @@ class ContractRule(backboneelement.BackboneElement):
             "contentReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1406(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -766,26 +729,7 @@ class ContractRule(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"content": ["contentAttachment", "contentReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ContractSigner(backboneelement.BackboneElement):
@@ -800,40 +744,43 @@ class ContractSigner(backboneelement.BackboneElement):
     facilitate the execution of the contract such as a notary or witness.
     """
 
-    resource_type = Field("ContractSigner", const=True)
+    __resource_type__ = "ContractSigner"
 
-    party: fhirtypes.ReferenceType = Field(
+    party: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="party",
         title="Contract Signatory Party",
         description="Party which is a signator to this Contract.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "RelatedPerson",
+            ],
+        },
     )
 
-    signature: typing.List[fhirtypes.SignatureType] = Field(
+    signature: typing.List[fhirtypes.SignatureType] = Field(  # type: ignore
         ...,
         alias="signature",
         title="Contract Documentation Signature",
         description="Legally binding Contract DSIG signature contents in Base64.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodingType = Field(
+    type: fhirtypes.CodingType = Field(  # type: ignore
         ...,
         alias="type",
         title="Contract Signatory Role",
         description="Role of this Contract signer, e.g. notary, grantee.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -855,29 +802,31 @@ class ContractTerm(backboneelement.BackboneElement):
     group, and may contain nested groups.
     """
 
-    resource_type = Field("ContractTerm", const=True)
+    __resource_type__ = "ContractTerm"
 
-    action: typing.List[fhirtypes.CodeableConceptType] = Field(
+    action: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="action",
         title="Contract Term Activity",
         description="Action stipulated by this Contract Provision.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    actionReason: typing.List[fhirtypes.CodeableConceptType] = Field(
+    actionReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="actionReason",
         title="Purpose for the Contract Term Action",
         description=(
             "Reason or purpose for the action stipulated by this Contract " "Provision."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    agent: typing.List[fhirtypes.ContractTermAgentType] = Field(
+    agent: typing.List[fhirtypes.ContractTermAgentType] = Field(  # type: ignore
         None,
         alias="agent",
         title="Contract Term Agent List",
@@ -885,11 +834,12 @@ class ContractTerm(backboneelement.BackboneElement):
             "An actor taking a role in an activity for which it can be assigned "
             "some degree of responsibility for the activity taking place."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    applies: fhirtypes.PeriodType = Field(
+    applies: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="applies",
         title="Contract Term Effective Time",
@@ -897,41 +847,45 @@ class ContractTerm(backboneelement.BackboneElement):
             "Relevant time or time-period when this Contract Provision is "
             "applicable."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    group: typing.List[fhirtypes.ContractTermType] = Field(
+    group: typing.List[fhirtypes.ContractTermType] = Field(  # type: ignore
         None,
         alias="group",
         title="Nested Contract Term Group",
         description="Nested group of Contract Provisions.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Contract Term Number",
         description="Unique identifier for this particular Contract Provision.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    issued: fhirtypes.DateTime = Field(
+    issued: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="issued",
         title="Contract Term Issue Date Time",
         description="When this Contract Provision was issued.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    securityLabel: typing.List[fhirtypes.CodingType] = Field(
+    securityLabel: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
         None,
         alias="securityLabel",
         title="Security Labels that define affected terms",
@@ -939,11 +893,12 @@ class ContractTerm(backboneelement.BackboneElement):
             "A set of security labels that define which terms are controlled by "
             "this condition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    subType: fhirtypes.CodeableConceptType = Field(
+    subType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="subType",
         title="Contract Term Type specific classification",
@@ -951,36 +906,39 @@ class ContractTerm(backboneelement.BackboneElement):
             "Subtype of this Contract Provision, e.g. life time maximum payment for"
             " a contract term for specific valued item, e.g. disability payment."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    text: fhirtypes.String = Field(
+    text: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="text",
         title="Human readable Contract term text",
         description="Human readable form of this Contract Provision.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    topic: typing.List[fhirtypes.ReferenceType] = Field(
+    topic: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="topic",
         title="Context of the Contract term",
         description=(
             "The matter of concern in the context of this provision of the " "agrement."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Contract Term Type or Form",
@@ -988,17 +946,19 @@ class ContractTerm(backboneelement.BackboneElement):
             "Type of Contract Provision such as specific requirements, purposes for"
             " actions, obligations, prohibitions, e.g. life time maximum benefit."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valuedItem: typing.List[fhirtypes.ContractTermValuedItemType] = Field(
+    valuedItem: typing.List[fhirtypes.ContractTermValuedItemType] = Field(  # type: ignore
         None,
         alias="valuedItem",
         title="Contract Term Valued Item List",
         description="Contract Provision Valued Item List.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1037,30 +997,31 @@ class ContractTermAgent(backboneelement.BackboneElement):
     degree of responsibility for the activity taking place.
     """
 
-    resource_type = Field("ContractTermAgent", const=True)
+    __resource_type__ = "ContractTermAgent"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="actor",
         title="Contract Term Agent Subject",
         description="The agent assigned a role in this Contract Provision.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Contract",
-            "Device",
-            "Group",
-            "Location",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "RelatedPerson",
-            "Substance",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Contract",
+                "Device",
+                "Group",
+                "Location",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "RelatedPerson",
+                "Substance",
+            ],
+        },
     )
 
-    role: typing.List[fhirtypes.CodeableConceptType] = Field(
+    role: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="role",
         title="Type of the Contract Term Agent",
@@ -1068,8 +1029,9 @@ class ContractTermAgent(backboneelement.BackboneElement):
             "Role played by the agent assigned this role in the execution of this "
             "Contract Provision."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1090,9 +1052,9 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     Contract Provision Valued Item List.
     """
 
-    resource_type = Field("ContractTermValuedItem", const=True)
+    __resource_type__ = "ContractTermValuedItem"
 
-    effectiveTime: fhirtypes.DateTime = Field(
+    effectiveTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="effectiveTime",
         title="Contract Term Valued Item Effective Tiem",
@@ -1100,40 +1062,43 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
             "Indicates the time during which this Contract Term ValuedItem "
             "information is effective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_effectiveTime", title="Extension field for ``effectiveTime``."
     )
 
-    entityCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    entityCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="entityCodeableConcept",
         title="Contract Term Valued Item Type",
         description="Specific type of Contract Provision Valued Item that may be priced.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e entity[x]
-        one_of_many="entity",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e entity[x]
+            "one_of_many": "entity",
+            "one_of_many_required": False,
+        },
     )
 
-    entityReference: fhirtypes.ReferenceType = Field(
+    entityReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="entityReference",
         title="Contract Term Valued Item Type",
         description="Specific type of Contract Provision Valued Item that may be priced.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e entity[x]
-        one_of_many="entity",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e entity[x]
+            "one_of_many": "entity",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    factor: fhirtypes.Decimal = Field(
+    factor: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="factor",
         title="Contract Term Valued Item Price Scaling Factor",
@@ -1143,23 +1108,25 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
             "concept of a Factor allows for a discount or surcharge multiplier to "
             "be applied to a monetary amount."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Contract Term Valued Item Number",
         description="Identifies a Contract Provision Valued Item instance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    net: fhirtypes.MoneyType = Field(
+    net: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="net",
         title="Total Contract Term Valued Item Value",
@@ -1170,11 +1137,12 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
             " Amount. Quantity, factor and points are assumed to be 1 if not "
             "supplied."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    points: fhirtypes.Decimal = Field(
+    points: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="points",
         title="Contract Term Valued Item Difficulty Scaling Factor",
@@ -1185,14 +1153,15 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
             "point values for a Contract ProvisionValued Item, such that a monetary"
             " amount can be assigned to each point."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_points", title="Extension field for ``points``."
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="Contract Term Valued Item Count",
@@ -1201,17 +1170,19 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
             "measured or counted, and quantifies the countable or measurable "
             "Contract Term Valued Item instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(
+    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Contract Term Valued Item fee, charge, or cost",
         description="A Contract Provision Valued Item unit valuation measure.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1235,10 +1206,7 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
             "net",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2422(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1252,26 +1220,7 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"entity": ["entityCodeableConcept", "entityReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ContractValuedItem(backboneelement.BackboneElement):
@@ -1282,9 +1231,9 @@ class ContractValuedItem(backboneelement.BackboneElement):
     Contract Valued Item List.
     """
 
-    resource_type = Field("ContractValuedItem", const=True)
+    __resource_type__ = "ContractValuedItem"
 
-    effectiveTime: fhirtypes.DateTime = Field(
+    effectiveTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="effectiveTime",
         title="Contract Valued Item Effective Tiem",
@@ -1292,40 +1241,43 @@ class ContractValuedItem(backboneelement.BackboneElement):
             "Indicates the time during which this Contract ValuedItem information "
             "is effective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_effectiveTime", title="Extension field for ``effectiveTime``."
     )
 
-    entityCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    entityCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="entityCodeableConcept",
         title="Contract Valued Item Type",
         description="Specific type of Contract Valued Item that may be priced.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e entity[x]
-        one_of_many="entity",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e entity[x]
+            "one_of_many": "entity",
+            "one_of_many_required": False,
+        },
     )
 
-    entityReference: fhirtypes.ReferenceType = Field(
+    entityReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="entityReference",
         title="Contract Valued Item Type",
         description="Specific type of Contract Valued Item that may be priced.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e entity[x]
-        one_of_many="entity",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e entity[x]
+            "one_of_many": "entity",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    factor: fhirtypes.Decimal = Field(
+    factor: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="factor",
         title="Contract Valued Item Price Scaling Factor",
@@ -1335,23 +1287,25 @@ class ContractValuedItem(backboneelement.BackboneElement):
             "Factor allows for a discount or surcharge multiplier to be applied to "
             "a monetary amount."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Contract Valued Item Number",
         description="Identifies a Contract Valued Item instance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    net: fhirtypes.MoneyType = Field(
+    net: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="net",
         title="Total Contract Valued Item Value",
@@ -1361,11 +1315,12 @@ class ContractValuedItem(backboneelement.BackboneElement):
             "(Cost per Point) * factor Number  * points = net Amount. Quantity, "
             "factor and points are assumed to be 1 if not supplied."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    points: fhirtypes.Decimal = Field(
+    points: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="points",
         title="Contract Valued Item Difficulty Scaling Factor",
@@ -1376,14 +1331,15 @@ class ContractValuedItem(backboneelement.BackboneElement):
             "values for a Contract Valued Item, such that a monetary amount can be "
             "assigned to each point."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_points", title="Extension field for ``points``."
     )
 
-    quantity: fhirtypes.QuantityType = Field(
+    quantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of Contract Valued Items",
@@ -1392,17 +1348,19 @@ class ContractValuedItem(backboneelement.BackboneElement):
             "counted, and quantifies the countable or measurable Contract Valued "
             "Item instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(
+    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Contract Valued Item fee, charge, or cost",
         description="A Contract Valued Item unit valuation measure.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1426,10 +1384,7 @@ class ContractValuedItem(backboneelement.BackboneElement):
             "net",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2014(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1443,23 +1398,4 @@ class ContractValuedItem(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"entity": ["entityCodeableConcept", "entityReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

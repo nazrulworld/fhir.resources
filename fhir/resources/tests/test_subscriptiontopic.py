@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import subscriptiontopic
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_subscriptiontopic_1(inst):
@@ -20,7 +20,7 @@ def impl_subscriptiontopic_1(inst):
     assert inst.canFilterBy[0].modifier[1] == "not-in"
     assert (
         inst.canFilterBy[0].resource
-        == ExternalValidatorModel(valueUri="Encounter").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
     )
     assert inst.description == "Example admission topic"
     assert (
@@ -34,20 +34,22 @@ def impl_subscriptiontopic_1(inst):
     )
     assert (
         inst.eventTrigger[0].event.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v2-0003"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v2-0003"}
         ).valueUri
     )
     assert (
         inst.eventTrigger[0].resource
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/Encounter"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/Encounter"}
         ).valueUri
     )
     assert inst.id == "admission"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:uuid:915c2040-b0a8-4935-adf8-94d6e1a74052"
     assert inst.notificationShape[0].include[0] == "Encounter:patient"
@@ -59,7 +61,7 @@ def impl_subscriptiontopic_1(inst):
     assert inst.notificationShape[0].include[6] == "Encounter:location"
     assert (
         inst.notificationShape[0].resource
-        == ExternalValidatorModel(valueUri="Encounter").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
     )
     assert (
         inst.resourceTrigger[0].description
@@ -75,8 +77,8 @@ def impl_subscriptiontopic_1(inst):
     assert inst.resourceTrigger[0].queryCriteria.resultForDelete == "test-fails"
     assert (
         inst.resourceTrigger[0].resource
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/Encounter"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/Encounter"}
         ).valueUri
     )
     assert inst.resourceTrigger[0].supportedInteraction[0] == "create"
@@ -86,8 +88,8 @@ def impl_subscriptiontopic_1(inst):
     assert inst.title == "admission"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/FHIR/R5/SubscriptionTopic/admission"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/FHIR/R5/SubscriptionTopic/admission"}
         ).valueUri
     )
 
@@ -122,7 +124,7 @@ def impl_subscriptiontopic_2(inst):
     assert inst.canFilterBy[0].filterParameter == "subject"
     assert (
         inst.canFilterBy[0].resource
-        == ExternalValidatorModel(valueUri="Encounter").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
     )
     assert inst.canFilterBy[1].description == (
         "Filter based on the group membership of the subject of an " "encounter."
@@ -130,7 +132,7 @@ def impl_subscriptiontopic_2(inst):
     assert inst.canFilterBy[1].filterParameter == "_in"
     assert (
         inst.canFilterBy[1].resource
-        == ExternalValidatorModel(valueUri="Encounter").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
     )
     assert inst.canFilterBy[2].comparator[0] == "gt"
     assert inst.canFilterBy[2].comparator[1] == "lt"
@@ -142,7 +144,7 @@ def impl_subscriptiontopic_2(inst):
     assert inst.canFilterBy[2].filterParameter == "length"
     assert (
         inst.canFilterBy[2].resource
-        == ExternalValidatorModel(valueUri="Encounter").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
     )
     assert (
         inst.canFilterBy[3].description
@@ -154,14 +156,21 @@ def impl_subscriptiontopic_2(inst):
     assert inst.canFilterBy[3].modifier[2] == "identifier"
     assert (
         inst.canFilterBy[3].resource
-        == ExternalValidatorModel(valueUri="Encounter").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
     )
-    assert inst.date == ExternalValidatorModel(valueDateTime="2019-01-01").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2019-01-01"}
+        ).valueDateTime
+    )
     assert inst.description == "Example topic for completed encounters"
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "urn:ietf:rfc:3986"}
+        ).valueUri
     )
     assert inst.identifier[0].value == "urn:uuid:1caa02ba-051b-4602-8856-65921748ae76"
     assert (
@@ -175,7 +184,7 @@ def impl_subscriptiontopic_2(inst):
     assert inst.notificationShape[0].include[6] == "Encounter:location"
     assert (
         inst.notificationShape[0].resource
-        == ExternalValidatorModel(valueUri="Encounter").valueUri
+        == ExternalValidatorModel.model_validate({"valueUri": "Encounter"}).valueUri
     )
     assert inst.resourceTrigger[0].description == "An Encounter has been completed"
     assert inst.resourceTrigger[0].fhirPathCriteria == (
@@ -189,8 +198,8 @@ def impl_subscriptiontopic_2(inst):
     assert inst.resourceTrigger[0].queryCriteria.resultForDelete == "test-fails"
     assert (
         inst.resourceTrigger[0].resource
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/StructureDefinition/Encounter"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/StructureDefinition/Encounter"}
         ).valueUri
     )
     assert inst.resourceTrigger[0].supportedInteraction[0] == "update"
@@ -199,8 +208,8 @@ def impl_subscriptiontopic_2(inst):
     assert inst.title == "example"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://example.org/FHIR/R5/SubscriptionTopic/example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://example.org/FHIR/R5/SubscriptionTopic/example"}
         ).valueUri
     )
     assert inst.version == "1.0.0-beta.1"

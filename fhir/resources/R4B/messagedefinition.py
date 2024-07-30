@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -27,11 +25,9 @@ class MessageDefinition(domainresource.DomainResource):
     content to be transmitted and what response(s), if any, are permitted.
     """
 
-    resource_type = Field("MessageDefinition", const=True)
+    __resource_type__ = "MessageDefinition"
 
-    allowedResponse: typing.List[
-        fhirtypes.MessageDefinitionAllowedResponseType
-    ] = Field(
+    allowedResponse: typing.List[fhirtypes.MessageDefinitionAllowedResponseType] = Field(  # type: ignore
         None,
         alias="allowedResponse",
         title="Responses to this message",
@@ -39,11 +35,12 @@ class MessageDefinition(domainresource.DomainResource):
             "Indicates what types of messages may be sent as an application-level "
             "response to this message."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    base: fhirtypes.Canonical = Field(
+    base: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="base",
         title="Definition this one is based on",
@@ -51,31 +48,33 @@ class MessageDefinition(domainresource.DomainResource):
             "The MessageDefinition that is the basis for the contents of this "
             "resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MessageDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MessageDefinition"],
+        },
     )
-    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_base", title="Extension field for ``base``."
     )
 
-    category: fhirtypes.Code = Field(
+    category: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="category",
         title="consequence | currency | notification",
         description="The impact of the content of the message.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["consequence", "currency", "notification"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["consequence", "currency", "notification"],
+        },
     )
-    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_category", title="Extension field for ``category``."
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -83,11 +82,12 @@ class MessageDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -96,14 +96,15 @@ class MessageDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the message definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -113,15 +114,16 @@ class MessageDefinition(domainresource.DomainResource):
             "it must change if the status code changes. In addition, it should "
             "change when the substantive content of the message definition changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the message definition",
@@ -129,41 +131,44 @@ class MessageDefinition(domainresource.DomainResource):
             "A free text natural language description of the message definition "
             "from a consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    eventCoding: fhirtypes.CodingType = Field(
+    eventCoding: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="eventCoding",
         title="Event code  or link to the EventDefinition",
         description="Event code or link to the EventDefinition.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e event[x]
-        one_of_many="event",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e event[x]
+            "one_of_many": "event",
+            "one_of_many_required": True,
+        },
     )
 
-    eventUri: fhirtypes.Uri = Field(
+    eventUri: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="eventUri",
         title="Event code  or link to the EventDefinition",
         description="Event code or link to the EventDefinition.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e event[x]
-        one_of_many="event",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e event[x]
+            "one_of_many": "event",
+            "one_of_many_required": True,
+        },
     )
-    eventUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    eventUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_eventUri", title="Extension field for ``eventUri``."
     )
 
-    experimental: bool = Field(
+    experimental: bool = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -172,14 +177,15 @@ class MessageDefinition(domainresource.DomainResource):
             "for testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    focus: typing.List[fhirtypes.MessageDefinitionFocusType] = Field(
+    focus: typing.List[fhirtypes.MessageDefinitionFocusType] = Field(  # type: ignore
         None,
         alias="focus",
         title="Resource(s) that are the subject of the event",
@@ -188,11 +194,12 @@ class MessageDefinition(domainresource.DomainResource):
             " event.  For example, the Encounter for an admit message or two "
             "Account records for a merge."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    graph: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    graph: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="graph",
         title="Canonical reference to a GraphDefinition",
@@ -203,16 +210,17 @@ class MessageDefinition(domainresource.DomainResource):
             "building the document. The GraphDefinition can also specify profiles "
             "that apply to the various resources."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["GraphDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["GraphDefinition"],
+        },
     )
-    graph__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_graph", title="Extension field for ``graph``.")
+    graph__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_graph", title="Extension field for ``graph``."
+    )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Primary key for the message definition on a given server",
@@ -221,11 +229,12 @@ class MessageDefinition(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for message definition (if applicable)",
@@ -233,11 +242,12 @@ class MessageDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the message definition is "
             "intended to be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this message definition (computer friendly)",
@@ -246,14 +256,15 @@ class MessageDefinition(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    parent: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    parent: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="parent",
         title="Protocol/workflow this is part of",
@@ -261,16 +272,17 @@ class MessageDefinition(domainresource.DomainResource):
             "Identifies a protocol or workflow that this MessageDefinition "
             "represents a step in."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
+        },
     )
-    parent__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_parent", title="Extension field for ``parent``.")
+    parent__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_parent", title="Extension field for ``parent``."
+    )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -278,14 +290,15 @@ class MessageDefinition(domainresource.DomainResource):
             "The name of the organization or individual that published the message "
             "definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.Markdown = Field(
+    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this message definition is defined",
@@ -293,28 +306,30 @@ class MessageDefinition(domainresource.DomainResource):
             "Explanation of why this message definition is needed and why it has "
             "been designed as it has."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    replaces: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    replaces: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
         None,
         alias="replaces",
         title="Takes the place of",
         description="A MessageDefinition that is superseded by this definition.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MessageDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MessageDefinition"],
+        },
     )
-    replaces__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_replaces", title="Extension field for ``replaces``.")
+    replaces__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_replaces", title="Extension field for ``replaces``."
+    )
 
-    responseRequired: fhirtypes.Code = Field(
+    responseRequired: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="responseRequired",
         title="always | on-error | never | on-success",
@@ -322,19 +337,20 @@ class MessageDefinition(domainresource.DomainResource):
             "Declare at a message definition level whether a response is required "
             "or only upon error or success, or never."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["always", "on-error", "never", "on-success"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["always", "on-error", "never", "on-success"],
+        },
     )
-    responseRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    responseRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_responseRequired",
         title="Extension field for ``responseRequired``.",
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -342,30 +358,32 @@ class MessageDefinition(domainresource.DomainResource):
             "The status of this message definition. Enables tracking the life-cycle"
             " of the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this message definition (human friendly)",
         description="A short, descriptive, user-friendly title for the message definition.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(  # type: ignore
         None,
         alias="url",
         title="Business Identifier for a given MessageDefinition",
@@ -374,14 +392,15 @@ class MessageDefinition(domainresource.DomainResource):
             "MessageDefinition and *is* expected to be consistent from server to "
             "server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -392,11 +411,12 @@ class MessageDefinition(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate message definition instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the message definition",
@@ -409,10 +429,11 @@ class MessageDefinition(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -458,10 +479,7 @@ class MessageDefinition(domainresource.DomainResource):
             "graph",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1929(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -470,57 +488,9 @@ class MessageDefinition(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("date", "date__ext"), ("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1929(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -534,26 +504,7 @@ class MessageDefinition(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"event": ["eventCoding", "eventUri"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
@@ -566,9 +517,9 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
     response to this message.
     """
 
-    resource_type = Field("MessageDefinitionAllowedResponse", const=True)
+    __resource_type__ = "MessageDefinitionAllowedResponse"
 
-    message: fhirtypes.Canonical = Field(
+    message: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="message",
         title="Reference to allowed message definition response",
@@ -576,17 +527,18 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
             "A reference to the message definition that must be adhered to by this "
             "supported response."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MessageDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MessageDefinition"],
+        },
     )
-    message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_message", title="Extension field for ``message``."
     )
 
-    situation: fhirtypes.Markdown = Field(
+    situation: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="situation",
         title="When should this response be used",
@@ -594,10 +546,11 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
             "Provides a description of the circumstances in which this response "
             "should be used (as opposed to one of the alternative responses)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    situation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    situation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_situation", title="Extension field for ``situation``."
     )
 
@@ -609,10 +562,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "message", "situation"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3479(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -621,52 +571,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("message", "message__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class MessageDefinitionFocus(backboneelement.BackboneElement):
@@ -680,22 +585,23 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
     records for a merge.
     """
 
-    resource_type = Field("MessageDefinitionFocus", const=True)
+    __resource_type__ = "MessageDefinitionFocus"
 
-    code: fhirtypes.Code = Field(
+    code: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="code",
         title="Type of resource",
         description="The kind of resource that must be the focus for this message.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    max: fhirtypes.String = Field(
+    max: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="max",
         title="Maximum number of focuses of this type",
@@ -704,14 +610,15 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "pointed to by a message in order for it to be valid against this "
             "MessageDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.UnsignedInt = Field(
+    min: fhirtypes.UnsignedIntType = Field(  # type: ignore
         None,
         alias="min",
         title="Minimum number of focuses of this type",
@@ -720,15 +627,16 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "pointed to by a message in order for it to be valid against this "
             "MessageDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    profile: fhirtypes.Canonical = Field(
+    profile: fhirtypes.CanonicalType = Field(  # type: ignore
         None,
         alias="profile",
         title="Profile that must be adhered to by focus",
@@ -736,12 +644,13 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "A profile that reflects constraints for the focal resource (and "
             "potentially for related resources)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition"],
+        },
     )
-    profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_profile", title="Extension field for ``profile``."
     )
 
@@ -753,10 +662,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "code", "profile", "min", "max"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2446(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -765,49 +671,4 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("code", "code__ext"), ("min", "min__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

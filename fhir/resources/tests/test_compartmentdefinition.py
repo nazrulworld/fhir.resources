@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import compartmentdefinition
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_compartmentdefinition_1(inst):
@@ -15,7 +15,12 @@ def impl_compartmentdefinition_1(inst):
     assert inst.contact[0].name == "[string]"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == ExternalValidatorModel(valueDateTime="2017-02-24").valueDateTime
+    assert (
+        inst.date
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2017-02-24"}
+        ).valueDateTime
+    )
     assert inst.description == (
         "The set of resources associated with a particular Device "
         "(example with Communication and CommunicationRequest "
@@ -49,21 +54,23 @@ def impl_compartmentdefinition_1(inst):
     assert inst.title == "E X A M P L E"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CompartmentDefinition/example"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CompartmentDefinition/example"}
         ).valueUri
     )
     assert inst.useContext[0].code.code == "focus"
     assert (
         inst.useContext[0].code.system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/usage-context-type"}
         ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "Device"
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/fhir-types"}
+        ).valueUri
     )
 
 
@@ -93,8 +100,8 @@ def impl_compartmentdefinition_2(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is True
@@ -120,8 +127,8 @@ def impl_compartmentdefinition_2(inst):
     assert inst.text.status == "extensions"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CompartmentDefinition/relatedPerson"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CompartmentDefinition/relatedPerson"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -155,8 +162,8 @@ def impl_compartmentdefinition_3(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is True
@@ -185,8 +192,8 @@ def impl_compartmentdefinition_3(inst):
     assert inst.text.status == "extensions"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CompartmentDefinition/patient"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CompartmentDefinition/patient"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -218,8 +225,8 @@ def impl_compartmentdefinition_4(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is True
@@ -247,8 +254,8 @@ def impl_compartmentdefinition_4(inst):
     assert inst.text.status == "extensions"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CompartmentDefinition/practitioner"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CompartmentDefinition/practitioner"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -282,8 +289,8 @@ def impl_compartmentdefinition_5(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.experimental is True
@@ -305,8 +312,8 @@ def impl_compartmentdefinition_5(inst):
     assert inst.text.status == "extensions"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CompartmentDefinition/encounter"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CompartmentDefinition/encounter"}
         ).valueUri
     )
     assert inst.version == "5.0.0"
@@ -340,8 +347,8 @@ def impl_compartmentdefinition_6(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert (
         inst.date
-        == ExternalValidatorModel(
-            valueDateTime="2023-03-26T15:21:02+11:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2023-03-26T15:21:02+11:00"}
         ).valueDateTime
     )
     assert inst.description == (
@@ -373,8 +380,8 @@ def impl_compartmentdefinition_6(inst):
     assert inst.text.status == "extensions"
     assert (
         inst.url
-        == ExternalValidatorModel(
-            valueUri="http://hl7.org/fhir/CompartmentDefinition/device"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://hl7.org/fhir/CompartmentDefinition/device"}
         ).valueUri
     )
     assert inst.version == "5.0.0"

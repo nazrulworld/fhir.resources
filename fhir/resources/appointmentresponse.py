@@ -24,7 +24,7 @@ class AppointmentResponse(domainresource.DomainResource):
 
     __resource_type__ = "AppointmentResponse"
 
-    actor: fhirtypes.ReferenceType = Field(
+    actor: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="actor",
         title="Person(s), Location, HealthcareService, or Device",
@@ -48,7 +48,7 @@ class AppointmentResponse(domainresource.DomainResource):
         },
     )
 
-    appointment: fhirtypes.ReferenceType = Field(
+    appointment: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="appointment",
         title="Appointment this response relates to",
@@ -60,7 +60,7 @@ class AppointmentResponse(domainresource.DomainResource):
         },
     )
 
-    comment: fhirtypes.MarkdownType = Field(
+    comment: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="comment",
         title="Additional comments",
@@ -69,11 +69,11 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    end: fhirtypes.InstantType = Field(
+    end: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="end",
         title="Time from appointment, or requested new end time",
@@ -86,11 +86,11 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_end", title="Extension field for ``end``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this item",
@@ -105,7 +105,7 @@ class AppointmentResponse(domainresource.DomainResource):
         },
     )
 
-    occurrenceDate: fhirtypes.DateType = Field(
+    occurrenceDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="occurrenceDate",
         title="Original date within a recurring request",
@@ -119,11 +119,11 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    occurrenceDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    occurrenceDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_occurrenceDate", title="Extension field for ``occurrenceDate``."
     )
 
-    participantStatus: fhirtypes.CodeType = Field(
+    participantStatus: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="participantStatus",
         title="accepted | declined | tentative | needs-action | entered-in-error",
@@ -148,13 +148,13 @@ class AppointmentResponse(domainresource.DomainResource):
             ],
         },
     )
-    participantStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    participantStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_participantStatus",
         title="Extension field for ``participantStatus``.",
     )
 
-    participantType: typing.List[fhirtypes.CodeableConceptType] = Field(
+    participantType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="participantType",
         title="Role of participant in the appointment",
@@ -164,7 +164,7 @@ class AppointmentResponse(domainresource.DomainResource):
         },
     )
 
-    proposedNewTime: bool = Field(
+    proposedNewTime: bool = Field(  # type: ignore
         None,
         alias="proposedNewTime",
         title="Indicator for a counter proposal",
@@ -177,11 +177,11 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    proposedNewTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    proposedNewTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_proposedNewTime", title="Extension field for ``proposedNewTime``."
     )
 
-    recurrenceId: fhirtypes.PositiveIntType = Field(
+    recurrenceId: fhirtypes.PositiveIntType = Field(  # type: ignore
         None,
         alias="recurrenceId",
         title="The recurrence ID of the specific recurring request",
@@ -193,11 +193,11 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    recurrenceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    recurrenceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_recurrenceId", title="Extension field for ``recurrenceId``."
     )
 
-    recurring: bool = Field(
+    recurring: bool = Field(  # type: ignore
         None,
         alias="recurring",
         title="This response is for all occurrences in a recurring request",
@@ -209,11 +209,11 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    recurring__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    recurring__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_recurring", title="Extension field for ``recurring``."
     )
 
-    start: fhirtypes.InstantType = Field(
+    start: fhirtypes.InstantType = Field(  # type: ignore
         None,
         alias="start",
         title="Time from appointment, or requested new start time",
@@ -225,7 +225,7 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_start", title="Extension field for ``start``."
     )
 

@@ -8,9 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,18 +24,19 @@ class Location(domainresource.DomainResource):
     accommodated.
     """
 
-    resource_type = Field("Location", const=True)
+    __resource_type__ = "Location"
 
-    address: fhirtypes.AddressType = Field(
+    address: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="address",
         title="Physical location",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    alias: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
         None,
         alias="alias",
         title=(
@@ -45,14 +44,15 @@ class Location(domainresource.DomainResource):
             "as in the past"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    alias__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_alias", title="Extension field for ``alias``.")
+    alias__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+        None, alias="_alias", title="Extension field for ``alias``."
+    )
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="description",
         title=(
@@ -63,14 +63,15 @@ class Location(domainresource.DomainResource):
             "Description of the Location, which helps in finding or referencing the"
             " place."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -78,22 +79,24 @@ class Location(domainresource.DomainResource):
             "location"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Endpoint"],
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique code or number identifying the location to its users",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    managingOrganization: fhirtypes.ReferenceType = Field(
+    managingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title="Organization responsible for provisioning and upkeep",
@@ -101,13 +104,14 @@ class Location(domainresource.DomainResource):
             "The organization responsible for the provisioning and upkeep of the "
             "location."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    mode: fhirtypes.Code = Field(
+    mode: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="mode",
         title="instance | kind",
@@ -115,29 +119,31 @@ class Location(domainresource.DomainResource):
             "Indicates whether a resource instance represents a specific location "
             "or a class of locations."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["instance", "kind"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["instance", "kind"],
+        },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Name of the location as used by humans",
         description="Name of the location as used by humans. Does not need to be unique.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    operationalStatus: fhirtypes.CodingType = Field(
+    operationalStatus: fhirtypes.CodingType = Field(  # type: ignore
         None,
         alias="operationalStatus",
         title="The Operational status of the location (typically only for a bed/room)",
@@ -147,31 +153,34 @@ class Location(domainresource.DomainResource):
             "unit/dialisys chair). This typically covers concepts such as "
             "contamination, housekeeping and other activities\u00a0like maintenance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    partOf: fhirtypes.ReferenceType = Field(
+    partOf: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="partOf",
         title="Another Location this one is physically part of",
         description="Another Location which this Location is physically part of.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    physicalType: fhirtypes.CodeableConceptType = Field(
+    physicalType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="physicalType",
         title="Physical form of the location",
         description="Physical form of the location, e.g. building, room, vehicle, road.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    position: fhirtypes.LocationPositionType = Field(
+    position: fhirtypes.LocationPositionType = Field(  # type: ignore
         None,
         alias="position",
         title="The absolute geographic location",
@@ -179,11 +188,12 @@ class Location(domainresource.DomainResource):
             "The absolute geographic location of the Location, expressed using the "
             "WGS84 datum (This is the same co-ordinate system used in KML)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="status",
         title="active | suspended | inactive",
@@ -192,17 +202,18 @@ class Location(domainresource.DomainResource):
             "not the current value which may be covered by the operationStatus, or "
             "by a schedule/slots if they are configured for the location."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "suspended", "inactive"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "suspended", "inactive"],
+        },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="Contact details of the location",
@@ -211,17 +222,19 @@ class Location(domainresource.DomainResource):
             "location. This can include phone numbers, fax numbers, mobile numbers,"
             " email addresses and web sites."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type of function performed",
         description="Indicates the type of function performed at the location.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -267,9 +280,9 @@ class LocationPosition(backboneelement.BackboneElement):
     datum (This is the same co-ordinate system used in KML).
     """
 
-    resource_type = Field("LocationPosition", const=True)
+    __resource_type__ = "LocationPosition"
 
-    altitude: fhirtypes.Decimal = Field(
+    altitude: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="altitude",
         title="Altitude with WGS84 datum",
@@ -277,14 +290,15 @@ class LocationPosition(backboneelement.BackboneElement):
             "Altitude. The value domain and the interpretation are the same as for "
             "the text of the altitude element in KML (see notes below)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    altitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    altitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_altitude", title="Extension field for ``altitude``."
     )
 
-    latitude: fhirtypes.Decimal = Field(
+    latitude: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="latitude",
         title="Latitude with WGS84 datum",
@@ -292,15 +306,16 @@ class LocationPosition(backboneelement.BackboneElement):
             "Latitude. The value domain and the interpretation are the same as for "
             "the text of the latitude element in KML (see notes below)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    latitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    latitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_latitude", title="Extension field for ``latitude``."
     )
 
-    longitude: fhirtypes.Decimal = Field(
+    longitude: fhirtypes.DecimalType = Field(  # type: ignore
         None,
         alias="longitude",
         title="Longitude with WGS84 datum",
@@ -308,11 +323,12 @@ class LocationPosition(backboneelement.BackboneElement):
             "Longitude. The value domain and the interpretation are the same as for"
             " the text of the longitude element in KML (see notes below)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    longitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    longitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_longitude", title="Extension field for ``longitude``."
     )
 
@@ -331,10 +347,7 @@ class LocationPosition(backboneelement.BackboneElement):
             "altitude",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1864(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -346,49 +359,4 @@ class LocationPosition(backboneelement.BackboneElement):
             ("latitude", "latitude__ext"),
             ("longitude", "longitude__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

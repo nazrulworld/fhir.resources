@@ -7,29 +7,29 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import biologicallyderivedproduct
-from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
+from .fixtures import ExternalValidatorModel  # noqa: F401
 
 
 def impl_biologicallyderivedproduct_1(inst):
     assert (
         inst.biologicalSourceEvent.system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/DonationIdentificationNumber"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/DonationIdentificationNumber"}
         ).valueUri
     )
     assert inst.biologicalSourceEvent.value == "A999921123456"
     assert inst.division == "A00000"
     assert (
         inst.expirationDate
-        == ExternalValidatorModel(
-            valueDateTime="2021-08-02T23:59:00-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2021-08-02T23:59:00-05:00"}
         ).valueDateTime
     )
     assert inst.id == "example"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/MPHOUniqueIdentifier"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/MPHOUniqueIdentifier"}
         ).valueUri
     )
     assert inst.identifier[0].value == "A9999E0398A999921123456A00000"
@@ -37,8 +37,8 @@ def impl_biologicallyderivedproduct_1(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.processingFacility[0].reference == "Organization/A9999"
@@ -49,8 +49,8 @@ def impl_biologicallyderivedproduct_1(inst):
     assert inst.property[0].valueCodeableConcept.coding[0].display == "A RhD Positive"
     assert (
         inst.property[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/ABORhD"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/ABORhD"}
         ).valueUri
     )
     assert inst.property[1].type.coding[0].code == "Donor"
@@ -58,19 +58,23 @@ def impl_biologicallyderivedproduct_1(inst):
     assert inst.property[1].valueCodeableConcept.coding[0].display == "Volunteer"
     assert (
         inst.property[1].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/CollectionType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/CollectionType"}
         ).valueUri
     )
     assert (
         inst.storageTempRequirements.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.storageTempRequirements.high.unit == "degrees C"
     assert float(inst.storageTempRequirements.high.value) == float(6)
     assert (
         inst.storageTempRequirements.low.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.storageTempRequirements.low.unit == "degrees C"
     assert float(inst.storageTempRequirements.low.value) == float(1)
@@ -107,8 +111,8 @@ def impl_biologicallyderivedproduct_2(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.request[0].display == "Service Request for HCT Collection"
@@ -145,8 +149,8 @@ def test_biologicallyderivedproduct_2(base_settings):
 def impl_biologicallyderivedproduct_3(inst):
     assert (
         inst.biologicalSourceEvent.system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/DonationIdentificationNumber"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/DonationIdentificationNumber"}
         ).valueUri
     )
     assert inst.biologicalSourceEvent.value == "W000022000687"
@@ -155,15 +159,15 @@ def impl_biologicallyderivedproduct_3(inst):
     assert inst.division == "A00000"
     assert (
         inst.expirationDate
-        == ExternalValidatorModel(
-            valueDateTime="2028-08-02T23:59:00-05:00"
+        == ExternalValidatorModel.model_validate(
+            {"valueDateTime": "2028-08-02T23:59:00-05:00"}
         ).valueDateTime
     )
     assert inst.id == "autologousHCT"
     assert (
         inst.identifier[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/SingleEuropeanCode"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/SingleEuropeanCode"}
         ).valueUri
     )
     assert inst.identifier[0].value == "PL001499Z549917123456 A00T041600320171231"
@@ -171,8 +175,8 @@ def impl_biologicallyderivedproduct_3(inst):
     assert inst.meta.tag[0].display == "test health data"
     assert (
         inst.meta.tag[0].system
-        == ExternalValidatorModel(
-            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"}
         ).valueUri
     )
     assert inst.processingFacility[0].reference == "Organization/Example"
@@ -184,8 +188,8 @@ def impl_biologicallyderivedproduct_3(inst):
     assert inst.property[0].valueCodeableConcept.coding[0].display == "A RhD Positive"
     assert (
         inst.property[0].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/ABORhD"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/ABORhD"}
         ).valueUri
     )
     assert inst.property[1].type.coding[0].code == "CollectionType"
@@ -196,21 +200,25 @@ def impl_biologicallyderivedproduct_3(inst):
     )
     assert (
         inst.property[1].valueCodeableConcept.coding[0].system
-        == ExternalValidatorModel(
-            valueUri="https://www.isbt128.org/uri/CollectionType"
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://www.isbt128.org/uri/CollectionType"}
         ).valueUri
     )
     assert inst.property[2].type.coding[0].code == "BagVolume"
     assert (
         inst.property[2].valueQuantity.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.property[2].valueQuantity.unit == "mL"
     assert float(inst.property[2].valueQuantity.value) == float(50)
     assert inst.property[3].type.coding[0].code == "74838-4"
     assert (
         inst.property[3].valueQuantity.system
-        == ExternalValidatorModel(valueUri="https://ucum.org/").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "https://ucum.org/"}
+        ).valueUri
     )
     assert inst.property[3].valueQuantity.unit == "10*6/mL"
     assert float(inst.property[3].valueQuantity.value) == float(2.6)
@@ -221,7 +229,9 @@ def impl_biologicallyderivedproduct_3(inst):
     )
     assert (
         inst.storageTempRequirements.high.system
-        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
+        == ExternalValidatorModel.model_validate(
+            {"valueUri": "http://unitsofmeasure.org"}
+        ).valueUri
     )
     assert inst.storageTempRequirements.high.unit == "degrees C"
     assert float(inst.storageTempRequirements.high.value) == float(-120)

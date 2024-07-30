@@ -25,7 +25,7 @@ class BackboneElement(element.Element):
 
     __resource_type__ = "BackboneElement"
 
-    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(
+    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
         None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored even if unrecognized",

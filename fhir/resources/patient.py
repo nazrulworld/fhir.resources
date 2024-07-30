@@ -10,7 +10,7 @@ import typing
 
 from pydantic import Field
 
-from . import domainresource, fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
 
 class Patient(domainresource.DomainResource):
@@ -25,7 +25,7 @@ class Patient(domainresource.DomainResource):
 
     __resource_type__ = "Patient"
 
-    active: bool = Field(
+    active: bool = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this patient's record is in active use",
@@ -41,11 +41,11 @@ class Patient(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
         None,
         alias="address",
         title="An address for the individual",
@@ -55,7 +55,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType = Field(
+    birthDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="birthDate",
         title="The date of birth for the individual",
@@ -64,11 +64,11 @@ class Patient(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: typing.List[fhirtypes.PatientCommunicationType] = Field(
+    communication: typing.List[fhirtypes.PatientCommunicationType] = Field(  # type: ignore
         None,
         alias="communication",
         title=(
@@ -81,7 +81,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.PatientContactType] = Field(
+    contact: typing.List[fhirtypes.PatientContactType] = Field(  # type: ignore
         None,
         alias="contact",
         title="A contact party (e.g. guardian, partner, friend) for the patient",
@@ -91,7 +91,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    deceasedBoolean: bool = Field(
+    deceasedBoolean: bool = Field(  # type: ignore
         None,
         alias="deceasedBoolean",
         title="Indicates if the individual is deceased or not",
@@ -103,11 +103,11 @@ class Patient(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
     )
 
-    deceasedDateTime: fhirtypes.DateTimeType = Field(
+    deceasedDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="deceasedDateTime",
         title="Indicates if the individual is deceased or not",
@@ -119,13 +119,13 @@ class Patient(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_deceasedDateTime",
         title="Extension field for ``deceasedDateTime``.",
     )
 
-    gender: fhirtypes.CodeType = Field(
+    gender: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -140,11 +140,11 @@ class Patient(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    generalPractitioner: typing.List[fhirtypes.ReferenceType] = Field(
+    generalPractitioner: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="generalPractitioner",
         title="Patient's nominated primary care provider",
@@ -160,7 +160,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="An identifier for this patient",
@@ -170,7 +170,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    link: typing.List[fhirtypes.PatientLinkType] = Field(
+    link: typing.List[fhirtypes.PatientLinkType] = Field(  # type: ignore
         None,
         alias="link",
         title=(
@@ -183,7 +183,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType = Field(
+    managingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title="Organization that is the custodian of the patient record",
@@ -195,7 +195,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    maritalStatus: fhirtypes.CodeableConceptType = Field(
+    maritalStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="maritalStatus",
         title="Marital (civil) status of a patient",
@@ -205,7 +205,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    multipleBirthBoolean: bool = Field(
+    multipleBirthBoolean: bool = Field(  # type: ignore
         None,
         alias="multipleBirthBoolean",
         title="Whether patient is part of a multiple birth",
@@ -220,13 +220,13 @@ class Patient(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    multipleBirthBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    multipleBirthBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_multipleBirthBoolean",
         title="Extension field for ``multipleBirthBoolean``.",
     )
 
-    multipleBirthInteger: fhirtypes.IntegerType = Field(
+    multipleBirthInteger: fhirtypes.IntegerType = Field(  # type: ignore
         None,
         alias="multipleBirthInteger",
         title="Whether patient is part of a multiple birth",
@@ -241,13 +241,13 @@ class Patient(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    multipleBirthInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    multipleBirthInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_multipleBirthInteger",
         title="Extension field for ``multipleBirthInteger``.",
     )
 
-    name: typing.List[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the patient",
@@ -257,7 +257,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
         None,
         alias="photo",
         title="Image of the patient",
@@ -267,7 +267,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the individual",
@@ -335,9 +335,6 @@ class Patient(domainresource.DomainResource):
         return one_of_many_fields
 
 
-from . import backboneelement
-
-
 class PatientCommunication(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -349,7 +346,7 @@ class PatientCommunication(backboneelement.BackboneElement):
 
     __resource_type__ = "PatientCommunication"
 
-    language: fhirtypes.CodeableConceptType = Field(
+    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="language",
         title=(
@@ -367,7 +364,7 @@ class PatientCommunication(backboneelement.BackboneElement):
         },
     )
 
-    preferred: bool = Field(
+    preferred: bool = Field(  # type: ignore
         None,
         alias="preferred",
         title="Language preference indicator",
@@ -379,7 +376,7 @@ class PatientCommunication(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
@@ -402,7 +399,7 @@ class PatientContact(backboneelement.BackboneElement):
 
     __resource_type__ = "PatientContact"
 
-    address: fhirtypes.AddressType = Field(
+    address: fhirtypes.AddressType = Field(  # type: ignore
         None,
         alias="address",
         title="Address for the contact person",
@@ -412,7 +409,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    gender: fhirtypes.CodeType = Field(
+    gender: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -427,11 +424,11 @@ class PatientContact(backboneelement.BackboneElement):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    name: fhirtypes.HumanNameType = Field(
+    name: fhirtypes.HumanNameType = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the contact person",
@@ -441,7 +438,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    organization: fhirtypes.ReferenceType = Field(
+    organization: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="organization",
         title="Organization that is associated with the contact",
@@ -456,7 +453,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(
+    period: fhirtypes.PeriodType = Field(  # type: ignore
         None,
         alias="period",
         title=(
@@ -469,7 +466,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    relationship: typing.List[fhirtypes.CodeableConceptType] = Field(
+    relationship: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="relationship",
         title="The kind of relationship",
@@ -482,7 +479,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the person",
@@ -526,7 +523,7 @@ class PatientLink(backboneelement.BackboneElement):
 
     __resource_type__ = "PatientLink"
 
-    other: fhirtypes.ReferenceType = Field(
+    other: fhirtypes.ReferenceType = Field(  # type: ignore
         ...,
         alias="other",
         title="The other patient or related person resource that the link refers to",
@@ -541,7 +538,7 @@ class PatientLink(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType = Field(
+    type: fhirtypes.CodeType = Field(  # type: ignore
         None,
         alias="type",
         title="replaced-by | replaces | refer | seealso",
@@ -557,7 +554,7 @@ class PatientLink(backboneelement.BackboneElement):
             "enum_values": ["replaced-by", "replaces", "refer", "seealso"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 

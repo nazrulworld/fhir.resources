@@ -8,9 +8,7 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -24,9 +22,9 @@ class SubstanceDefinition(domainresource.DomainResource):
     is used for prescribing.
     """
 
-    resource_type = Field("SubstanceDefinition", const=True)
+    __resource_type__ = "SubstanceDefinition"
 
-    classification: typing.List[fhirtypes.CodeableConceptType] = Field(
+    classification: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="classification",
         title=(
@@ -40,41 +38,45 @@ class SubstanceDefinition(domainresource.DomainResource):
             "polymer (linear or branch chain) or type of impurity (process related "
             "or contaminant)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    code: typing.List[fhirtypes.SubstanceDefinitionCodeType] = Field(
+    code: typing.List[fhirtypes.SubstanceDefinitionCodeType] = Field(  # type: ignore
         None,
         alias="code",
         title="Codes associated with the substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(  # type: ignore
         None,
         alias="description",
         title="Textual description of the substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    domain: fhirtypes.CodeableConceptType = Field(
+    domain: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="domain",
         title="If the substance applies to human or veterinary use",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    grade: typing.List[fhirtypes.CodeableConceptType] = Field(
+    grade: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="grade",
         title=(
@@ -85,31 +87,34 @@ class SubstanceDefinition(domainresource.DomainResource):
             "The quality standard, established benchmark, to which substance "
             "complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier by which this substance is known",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    informationSource: typing.List[fhirtypes.ReferenceType] = Field(
+    informationSource: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="informationSource",
         title="Supporting literature",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Citation"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Citation"],
+        },
     )
 
-    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
+    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="manufacturer",
         title="The entity that creates, makes, produces or fabricates the substance",
@@ -118,24 +123,24 @@ class SubstanceDefinition(domainresource.DomainResource):
             "This is a set of potential manufacturers but is not necessarily "
             "comprehensive."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    moiety: typing.List[fhirtypes.SubstanceDefinitionMoietyType] = Field(
+    moiety: typing.List[fhirtypes.SubstanceDefinitionMoietyType] = Field(  # type: ignore
         None,
         alias="moiety",
         title="Moiety, for structural modifications",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    molecularWeight: typing.List[
-        fhirtypes.SubstanceDefinitionMolecularWeightType
-    ] = Field(
+    molecularWeight: typing.List[fhirtypes.SubstanceDefinitionMolecularWeightType] = Field(  # type: ignore
         None,
         alias="molecularWeight",
         title="The molecular weight or weight range",
@@ -143,38 +148,42 @@ class SubstanceDefinition(domainresource.DomainResource):
             "The molecular weight or weight range (for proteins, polymers or "
             "nucleic acids)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: typing.List[fhirtypes.SubstanceDefinitionNameType] = Field(
+    name: typing.List[fhirtypes.SubstanceDefinitionNameType] = Field(  # type: ignore
         None,
         alias="name",
         title="Names applicable to this substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Textual comment about the substance's catalogue or registry record",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    property: typing.List[fhirtypes.SubstanceDefinitionPropertyType] = Field(
+    property: typing.List[fhirtypes.SubstanceDefinitionPropertyType] = Field(  # type: ignore
         None,
         alias="property",
         title="General specifications for this substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    relationship: typing.List[fhirtypes.SubstanceDefinitionRelationshipType] = Field(
+    relationship: typing.List[fhirtypes.SubstanceDefinitionRelationshipType] = Field(  # type: ignore
         None,
         alias="relationship",
         title="A link between this substance and another",
@@ -182,38 +191,42 @@ class SubstanceDefinition(domainresource.DomainResource):
             "A link between this substance and another, with details of the "
             "relationship."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sourceMaterial: fhirtypes.SubstanceDefinitionSourceMaterialType = Field(
+    sourceMaterial: fhirtypes.SubstanceDefinitionSourceMaterialType = Field(  # type: ignore
         None,
         alias="sourceMaterial",
         title="Material or taxonomic/anatomical source",
         description="Material or taxonomic/anatomical source for the substance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title="Status of substance within the catalogue e.g. active, retired",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    structure: fhirtypes.SubstanceDefinitionStructureType = Field(
+    structure: fhirtypes.SubstanceDefinitionStructureType = Field(  # type: ignore
         None,
         alias="structure",
         title="Structural information",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    supplier: typing.List[fhirtypes.ReferenceType] = Field(
+    supplier: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="supplier",
         title=(
@@ -224,21 +237,23 @@ class SubstanceDefinition(domainresource.DomainResource):
             "An entity that is the source for the substance. It may be different "
             "from the manufacturer. Supplier is synonymous to a distributor."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="version",
         title="A business level version identifier of the substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -287,47 +302,51 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
     Codes associated with the substance.
     """
 
-    resource_type = Field("SubstanceDefinitionCode", const=True)
+    __resource_type__ = "SubstanceDefinitionCode"
 
-    code: fhirtypes.CodeableConceptType = Field(
+    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="code",
         title="The specific code",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
         None,
         alias="note",
         title="Any comment can be provided in this field",
         description="Any comment can be provided in this field, if necessary.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    source: typing.List[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="source",
         title="Supporting literature",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title="Status of the code assignment, for example 'provisional', 'approved'",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    statusDate: fhirtypes.DateTime = Field(
+    statusDate: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="statusDate",
         title="The date at which the code status was changed",
@@ -335,10 +354,11 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
             "The date at which the code status was changed as part of the "
             "terminology maintenance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
@@ -368,45 +388,48 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
     Moiety, for structural modifications.
     """
 
-    resource_type = Field("SubstanceDefinitionMoiety", const=True)
+    __resource_type__ = "SubstanceDefinitionMoiety"
 
-    amountQuantity: fhirtypes.QuantityType = Field(
+    amountQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="amountQuantity",
         title="Quantitative value for this moiety",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e amount[x]
-        one_of_many="amount",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e amount[x]
+            "one_of_many": "amount",
+            "one_of_many_required": False,
+        },
     )
 
-    amountString: fhirtypes.String = Field(
+    amountString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="amountString",
         title="Quantitative value for this moiety",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e amount[x]
-        one_of_many="amount",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e amount[x]
+            "one_of_many": "amount",
+            "one_of_many_required": False,
+        },
     )
-    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_amountString", title="Extension field for ``amountString``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(
+    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier by which this moiety substance is known",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    measurementType: fhirtypes.CodeableConceptType = Field(
+    measurementType: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="measurementType",
         title="The measurement type of the quantitative value",
@@ -416,11 +439,12 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
             " necessary to indicate whether the amount refers to, for example, a "
             "mole ratio or weight ratio."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    molecularFormula: fhirtypes.String = Field(
+    molecularFormula: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="molecularFormula",
         title="Molecular formula for this moiety (e.g. with the Hill system)",
@@ -428,52 +452,57 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
             "Molecular formula for this moiety of this substance, typically using "
             "the Hill system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_molecularFormula",
         title="Extension field for ``molecularFormula``.",
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="Textual name for this moiety substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    opticalActivity: fhirtypes.CodeableConceptType = Field(
+    opticalActivity: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="opticalActivity",
         title="Optical activity type",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(
+    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="role",
         title="Role that the moiety is playing",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    stereochemistry: fhirtypes.CodeableConceptType = Field(
+    stereochemistry: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="stereochemistry",
         title="Stereochemistry type",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -497,10 +526,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
             "measurementType",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2804(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -514,26 +540,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"amount": ["amountQuantity", "amountString"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
@@ -546,9 +553,9 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
     acids).
     """
 
-    resource_type = Field("SubstanceDefinitionMolecularWeight", const=True)
+    __resource_type__ = "SubstanceDefinitionMolecularWeight"
 
-    amount: fhirtypes.QuantityType = Field(
+    amount: fhirtypes.QuantityType = Field(  # type: ignore
         ...,
         alias="amount",
         title="Used to capture quantitative values for a variety of elements",
@@ -558,20 +565,22 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
             " single definite value for a given element is given, it would be "
             "captured in this field."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    method: fhirtypes.CodeableConceptType = Field(
+    method: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="method",
         title="The method by which the weight was determined",
         description="The method by which the molecular weight was determined.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Type of molecular weight e.g. exact, average, weight average",
@@ -579,8 +588,9 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
             "Type of molecular weight such as exact, average (also known as. number"
             " average), weight average."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -600,9 +610,9 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
     Names applicable to this substance.
     """
 
-    resource_type = Field("SubstanceDefinitionName", const=True)
+    __resource_type__ = "SubstanceDefinitionName"
 
-    domain: typing.List[fhirtypes.CodeableConceptType] = Field(
+    domain: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="domain",
         title=(
@@ -613,109 +623,120 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
             "The use context of this name for example if there is a different name "
             "a drug active ingredient as opposed to a food colour additive."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="The jurisdiction where this name applies",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    language: typing.List[fhirtypes.CodeableConceptType] = Field(
+    language: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="language",
         title="Human language that the name is written in",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="name",
         title="The actual name",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    official: typing.List[fhirtypes.SubstanceDefinitionNameOfficialType] = Field(
+    official: typing.List[fhirtypes.SubstanceDefinitionNameOfficialType] = Field(  # type: ignore
         None,
         alias="official",
         title="Details of the official nature of this name",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    preferred: bool = Field(
+    preferred: bool = Field(  # type: ignore
         None,
         alias="preferred",
         title="If this is the preferred name for this substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
-    source: typing.List[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="source",
         title="Supporting literature",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title="The status of the name e.g. 'current', 'proposed'",
         description="The status of the name, for example 'current', 'proposed'.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    synonym: typing.List[fhirtypes.SubstanceDefinitionNameType] = Field(
+    synonym: typing.List[fhirtypes.SubstanceDefinitionNameType] = Field(  # type: ignore
         None,
         alias="synonym",
         title=(
             "A synonym of this particular name, by which the substance is also " "known"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    translation: typing.List[fhirtypes.SubstanceDefinitionNameType] = Field(
+    translation: typing.List[fhirtypes.SubstanceDefinitionNameType] = Field(  # type: ignore
         None,
         alias="translation",
         title="A translation for this name into another human language",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="Name type e.g. 'systematic',  'scientific, 'brand'",
         description="Name type, for example 'systematic',  'scientific, 'brand'.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -741,10 +762,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
             "source",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2538(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -753,52 +771,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("name", "name__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
@@ -809,30 +782,32 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
     Details of the official nature of this name.
     """
 
-    resource_type = Field("SubstanceDefinitionNameOfficial", const=True)
+    __resource_type__ = "SubstanceDefinitionNameOfficial"
 
-    authority: fhirtypes.CodeableConceptType = Field(
+    authority: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="authority",
         title="Which authority uses this official name",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(  # type: ignore
         None,
         alias="date",
         title="Date of official name change",
         description="Date of the official name change.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    status: fhirtypes.CodeableConceptType = Field(
+    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="status",
         title="The status of the official name, for example 'draft', 'active'",
@@ -840,8 +815,9 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
             "The status of the official name, for example 'draft', 'active', "
             "'retired'."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -861,81 +837,87 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
     General specifications for this substance.
     """
 
-    resource_type = Field("SubstanceDefinitionProperty", const=True)
+    __resource_type__ = "SubstanceDefinitionProperty"
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title="A code expressing the type of property",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(
+    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="A value for the property",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueBoolean: bool = Field(
+    valueBoolean: bool = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="A value for the property",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="A value for the property",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueDate: fhirtypes.Date = Field(
+    valueDate: fhirtypes.DateType = Field(  # type: ignore
         None,
         alias="valueDate",
         title="A value for the property",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(
+    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="A value for the property",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
     @classmethod
@@ -956,10 +938,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
             "valueAttachment",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3042(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -981,26 +960,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
                 "valueQuantity",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
@@ -1013,9 +973,9 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
     relationship.
     """
 
-    resource_type = Field("SubstanceDefinitionRelationship", const=True)
+    __resource_type__ = "SubstanceDefinitionRelationship"
 
-    amountQuantity: fhirtypes.QuantityType = Field(
+    amountQuantity: fhirtypes.QuantityType = Field(  # type: ignore
         None,
         alias="amountQuantity",
         title=(
@@ -1027,14 +987,15 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "the salt of a substance has some percentage of the active substance in"
             " relation to some other."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e amount[x]
-        one_of_many="amount",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e amount[x]
+            "one_of_many": "amount",
+            "one_of_many_required": False,
+        },
     )
 
-    amountRatio: fhirtypes.RatioType = Field(
+    amountRatio: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="amountRatio",
         title=(
@@ -1046,14 +1007,15 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "the salt of a substance has some percentage of the active substance in"
             " relation to some other."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e amount[x]
-        one_of_many="amount",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e amount[x]
+            "one_of_many": "amount",
+            "one_of_many_required": False,
+        },
     )
 
-    amountString: fhirtypes.String = Field(
+    amountString: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="amountString",
         title=(
@@ -1065,17 +1027,18 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "the salt of a substance has some percentage of the active substance in"
             " relation to some other."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e amount[x]
-        one_of_many="amount",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e amount[x]
+            "one_of_many": "amount",
+            "one_of_many_required": False,
+        },
     )
-    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_amountString", title="Extension field for ``amountString``."
     )
 
-    comparator: fhirtypes.CodeableConceptType = Field(
+    comparator: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="comparator",
         title=(
@@ -1083,11 +1046,12 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             '"less than"'
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    isDefining: bool = Field(
+    isDefining: bool = Field(  # type: ignore
         None,
         alias="isDefining",
         title=(
@@ -1100,34 +1064,37 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "substance, this is a defining relationship for that enzyme, out of "
             "several possible substance relationships."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_isDefining", title="Extension field for ``isDefining``."
     )
 
-    ratioHighLimitAmount: fhirtypes.RatioType = Field(
+    ratioHighLimitAmount: fhirtypes.RatioType = Field(  # type: ignore
         None,
         alias="ratioHighLimitAmount",
         title="For use when the numeric has an uncertain range",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    source: typing.List[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="source",
         title="Supporting literature",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
-    substanceDefinitionCodeableConcept: fhirtypes.CodeableConceptType = Field(
+    substanceDefinitionCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="substanceDefinitionCodeableConcept",
         title=(
@@ -1138,14 +1105,15 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "A pointer to another substance, as a resource or just a "
             "representational code."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e substanceDefinition[x]
-        one_of_many="substanceDefinition",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e substanceDefinition[x]
+            "one_of_many": "substanceDefinition",
+            "one_of_many_required": False,
+        },
     )
 
-    substanceDefinitionReference: fhirtypes.ReferenceType = Field(
+    substanceDefinitionReference: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="substanceDefinitionReference",
         title=(
@@ -1156,16 +1124,17 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "A pointer to another substance, as a resource or just a "
             "representational code."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e substanceDefinition[x]
-        one_of_many="substanceDefinition",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["SubstanceDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e substanceDefinition[x]
+            "one_of_many": "substanceDefinition",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["SubstanceDefinition"],
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         ...,
         alias="type",
         title='For example "salt to parent", "active moiety"',
@@ -1173,8 +1142,9 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             'For example "salt to parent", "active moiety", "starting material", '
             '"polymorph", "impurity of".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1199,10 +1169,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "source",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3430(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1222,26 +1189,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
                 "substanceDefinitionReference",
             ],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
@@ -1253,18 +1201,19 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
     Material or taxonomic/anatomical source for the substance.
     """
 
-    resource_type = Field("SubstanceDefinitionSourceMaterial", const=True)
+    __resource_type__ = "SubstanceDefinitionSourceMaterial"
 
-    countryOfOrigin: typing.List[fhirtypes.CodeableConceptType] = Field(
+    countryOfOrigin: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="countryOfOrigin",
         title="The country or countries where the material is harvested",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    genus: fhirtypes.CodeableConceptType = Field(
+    genus: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="genus",
         title=(
@@ -1275,20 +1224,22 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
             "The genus of an organism, typically referring to the Latin epithet of "
             "the genus element of the plant/animal scientific name."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    part: fhirtypes.CodeableConceptType = Field(
+    part: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="part",
         title="An anatomical origin of the source material within an organism",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    species: fhirtypes.CodeableConceptType = Field(
+    species: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="species",
         title=(
@@ -1299,11 +1250,12 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
             "The species of an organism, typically referring to the Latin epithet "
             "of the species of the plant/animal."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -1314,8 +1266,9 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
             "A classification that provides the origin of the raw material. "
             "Example: cat hair would be an Animal source type."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1344,23 +1297,24 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
     Structural information.
     """
 
-    resource_type = Field("SubstanceDefinitionStructure", const=True)
+    __resource_type__ = "SubstanceDefinitionStructure"
 
-    molecularFormula: fhirtypes.String = Field(
+    molecularFormula: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="molecularFormula",
         title="Molecular formula (e.g. using the Hill system)",
         description="Molecular formula of this substance, typically using the Hill system.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_molecularFormula",
         title="Extension field for ``molecularFormula``.",
     )
 
-    molecularFormulaByMoiety: fhirtypes.String = Field(
+    molecularFormulaByMoiety: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="molecularFormulaByMoiety",
         title="Specified per moiety according to the Hill system",
@@ -1368,16 +1322,17 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
             "Specified per moiety according to the Hill system, i.e. first C, then "
             "H, then alphabetical, each moiety separated by a dot."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    molecularFormulaByMoiety__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    molecularFormulaByMoiety__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None,
         alias="_molecularFormulaByMoiety",
         title="Extension field for ``molecularFormulaByMoiety``.",
     )
 
-    molecularWeight: fhirtypes.SubstanceDefinitionMolecularWeightType = Field(
+    molecularWeight: fhirtypes.SubstanceDefinitionMolecularWeightType = Field(  # type: ignore
         None,
         alias="molecularWeight",
         title="The molecular weight or weight range",
@@ -1385,51 +1340,54 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
             "The molecular weight or weight range (for proteins, polymers or "
             "nucleic acids)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    opticalActivity: fhirtypes.CodeableConceptType = Field(
+    opticalActivity: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="opticalActivity",
         title="Optical activity type",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    representation: typing.List[
-        fhirtypes.SubstanceDefinitionStructureRepresentationType
-    ] = Field(
+    representation: typing.List[fhirtypes.SubstanceDefinitionStructureRepresentationType] = Field(  # type: ignore
         None,
         alias="representation",
         title="A depiction of the structure or characterization of the substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sourceDocument: typing.List[fhirtypes.ReferenceType] = Field(
+    sourceDocument: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
         None,
         alias="sourceDocument",
         title="Source of information for the structure",
         description="The source of information about the structure.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
-    stereochemistry: fhirtypes.CodeableConceptType = Field(
+    stereochemistry: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="stereochemistry",
         title="Stereochemistry type",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    technique: typing.List[fhirtypes.CodeableConceptType] = Field(
+    technique: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
         None,
         alias="technique",
         title="The method used to find the structure e.g. X-ray, NMR",
@@ -1438,8 +1396,9 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
             "drug substance. Examples: X-ray, HPLC, NMR, Peptide mapping, Ligand "
             "binding assay."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1471,9 +1430,9 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
     A depiction of the structure or characterization of the substance.
     """
 
-    resource_type = Field("SubstanceDefinitionStructureRepresentation", const=True)
+    __resource_type__ = "SubstanceDefinitionStructureRepresentation"
 
-    document: fhirtypes.ReferenceType = Field(
+    document: fhirtypes.ReferenceType = Field(  # type: ignore
         None,
         alias="document",
         title=(
@@ -1485,13 +1444,14 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
             "characterization e.g. a molecular structure graphic of the substance, "
             "a JCAMP or AnIML file."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
-    format: fhirtypes.CodeableConceptType = Field(
+    format: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="format",
         title=(
@@ -1503,11 +1463,12 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
             "SDF, PDB, mmCIF. The logical content type rather than the physical "
             "file format of a document."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    representation: fhirtypes.String = Field(
+    representation: fhirtypes.StringType = Field(  # type: ignore
         None,
         alias="representation",
         title=(
@@ -1515,20 +1476,22 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
             "a standard format"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
-    representation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+    representation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
         None, alias="_representation", title="Extension field for ``representation``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
         None,
         alias="type",
         title="The kind of structural representation (e.g. full, partial)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

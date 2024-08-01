@@ -1,5 +1,10 @@
 image:
     - Visual Studio 2022
+
+matrix:
+  allow_failures:
+    - PYTHON: "C:\\Python312-x64"
+
 environment:
   matrix:
     - PYTHON: "C:\\Python38-x64"

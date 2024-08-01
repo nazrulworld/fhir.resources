@@ -37,7 +37,7 @@ It uses a modular approach, with a set of "resources" that represent different t
 These resources can be combined and extended as needed to support a wide range of healthcare use cases.
 
 
-This "fhir.resources" package is powered by pydantic_ so faster in performance and optionally ``orjson`` support has been included as a performance booster!
+This "fhir.resources" package is powered by pydantic_ V2, so it become faster in performance.
 Obviously it is written in modern python and has data validation built-in.
 It provides tools and classes for all of the `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ defined in the FHIR specification,
 and allows you to create and manipulate FHIR resources in Python. You can then use these resources to build FHIR-based APIs or to work with FHIR data in other ways.
@@ -49,7 +49,7 @@ and allows you to create and manipulate FHIR resources in Python. You can then u
 * Previous release of FHIR® Resources are available.
 * Free software: BSD license
 
-**Experimental XML and YAML serialization and deserialization supports. See [Advanced Usages] section!**
+**Experimental XML and YAML serialization and deserialization supports. See [Advanced Usages] section!** [currently not available]
 
 FHIR® Version Info
 ------------------
@@ -84,13 +84,13 @@ Usages
     ...     "address": [{"country": "Switzerland"}]
     ... }
     >>> org = Organization(**data)
-    >>> org.resource_type == "Organization"
+    >>> org.get_resource_type() == "Organization"
     True
     >>> isinstance(org.address[0], Address)
     True
     >>> org.address[0].country == "Switzerland"
     True
-    >>> org.dict()['active'] is True
+    >>> org.model_dump()['active'] is True
     True
 
 **Example: 2**: This example creates a new Organization resource from json string::
@@ -103,7 +103,7 @@ Usages
     ...     "name": "Acme Corporation",
     ...     "address": [{"country": "Switzerland"}]
     ... }'''
-    >>> org = Organization.parse_raw(json_str)
+    >>> org = Organization.model_dump_json(json_str)
     >>> isinstance(org.address[0], Address)
     True
     >>> org.address[0].country == "Switzerland"
@@ -125,7 +125,7 @@ Usages
     ...      ],
     ...     "birthDate": "1985-06-12"
     ... }
-    >>> pat = Patient.parse_obj(json_obj)
+    >>> pat = Patient.model_validate(json_obj)
     >>> isinstance(pat.name[0], HumanName)
     True
     >>> pat.birthDate == date(year=1985, month=6, day=12)
@@ -140,8 +140,8 @@ Usages
     >>> import os
     >>> import pathlib
     >>> filename = pathlib.Path("foo/bar.json")
-    >>> pat = Patient.parse_file(filename)
-    >>> pat.resource_type == "Patient"
+    >>> pat = Patient.model_validate_json(filename.read_bytes())
+    >>> pat.get_resource_type() == "Patient"
     True
 
 
@@ -156,35 +156,20 @@ Usages
     ...     "address": [{"country": "Switzerland"}]
     ... }
 
-    >>> org = Organization.construct()
+    >>> org = Organization.model_construct()
     >>> org.id = "f001"
     >>> org.active = True
     >>> org.name = "Acme Corporation"
     >>> org.address = list()
-    >>> address = Address.construct()
+    >>> address = Address.model_construct()
     >>> address.country = "Switzerland"
     >>> org.address.append(address)
-    >>> org.dict() == json_obj
+    >>> org.model_dump() == json_obj
     True
 
 .. note::
-    Please note that due to the way the validation works, you will run into issues if you are using ``construct()`` to create
+    Please note that due to the way the validation works, you will run into issues if you are using ``model_construct()`` to create
     resources that have more than one mandatory field. See `this comment in issue#56 <https://github.com/nazrulworld/fhir.resources/issues/56#issuecomment-784520234>`_ for details.
-
-**Example: 4**: This example creates a new Organization resource using Resource Factory Function::
-
-    >>> from fhir.resources import construct_fhir_element
-    >>> json_dict = {"resourceType": "Organization",
-    ...     "id": "mmanu",
-    ...     "active": True,
-    ...     "name": "Acme Corporation",
-    ...     "address": [{"country": "Switzerland"}]
-    ... }
-    >>> org = construct_fhir_element('Organization', json_dict)
-    >>> org.address[0].country == "Switzerland"
-    True
-    >>> org.dict()['active'] is True
-    True
 
 
 **Example: 5**: Auto validation while providing wrong datatype::
@@ -296,10 +281,10 @@ Examples::
     ...  ]
     ... }"""
     >>> from fhir.resources.observation import Observation
-    >>> obj = Observation.parse_raw(observation_str)
-    >>> "fhir_comments" in obj.json()
+    >>> obj = Observation.model_validate_json(observation_str)
+    >>> "fhir_comments" in obj.model_dump_json()
     >>> # Test comments filtering
-    >>> "fhir_comments" not in obj.json(exclude_comments=True)
+    >>> "fhir_comments" not in obj.model_dump_json(exclude_comments=True)
 
 
 Special Case: Missing data
@@ -391,12 +376,13 @@ Example (required ``intent`` element is missing but still valid because of exten
     ...    }
     ... }"""
     >>> from fhir.resources.medicationrequest import MedicationRequest
-    >>> obj = MedicationRequest.parse_raw(json_str)
-    >>> "intent" not in obj.dict()
+    >>> obj = MedicationRequest.model_validate_json(json_str)
+    >>> "intent" not in obj.model_dump()
 
 
 Custom Validators
 ~~~~~~~~~~~~~~~~~
+**This feature is not available**
 
 ``fhir.resources`` is providing the extensive API to create and attach custom validator into any model. See more `about root validator <https://pydantic-docs.helpmanual.io/usage/validators/#root-validators>`_
 Some convention you have to follow though, while creating a root validator.
@@ -468,7 +454,7 @@ Example: Gender Enum::
     def validate_gender(cls, values: Dict):
         if not values:
             return values
-        enums = cls.__fields__["gender"].field_info.extra["enum_values"]
+        enums = cls.model_fields["gender"].json_schema_extra["enum_values"]
         if "gender" in values and values["gender"] not in enums:
             raise ValueError("write your message")
         return values
@@ -479,15 +465,9 @@ Example: Gender Enum::
 Reference Validator
 ~~~~~~~~~~~~~~~~~~~
 
-``fhir.resources`` is also providing enum like list of permitted resource types through field property ``enum_reference_types``.
-You can get that list by following above (Enum) approaches  ``resource_types = cls.__fields__["managingOrganization"].field_info.extra["enum_reference_types"]``
+``fhir.resources`` is also providing enum like list of permitted resource types through json_schema_extra ``enum_reference_types``.
+You can get that list by following above (Enum) approaches  ``resource_types = cls.model_fields["managingOrganization"].json_schema_extra["enum_reference_types"]``
 
-
-Usages of orjson
-~~~~~~~~~~~~~~~~
-
-orjson_ is one of the fastest Python library for JSON and is more correct than the standard json library (according to their docs).
-Good news is that ``fhir.resource`` has an extensive support for orjson_ and it's too easy to enable it automatically. What you need to do, just make orjson_ as your project dependency!
 
 
 pydantic_ Field Type Support
@@ -501,19 +481,23 @@ The module ``fhirtypes.py`` contains all fhir resources related types and should
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 There are a lots of discussion here here i.) https://bit.ly/360HksL ii.) https://bit.ly/3o1fZgl about the length of ``Resource.Id``'s value.
 Based on those discussions, we recommend that keep your ``Resource.Id`` size within 64 letters (for the seek of intercompatibility with third party system), but we are also providing freedom
-about the length of Id, in respect with others opinion that 64 chr length is not sufficient. ``fhirtypes.Id.configure_constraints()``
-is offering to customize as your own requirement.
+about the length of Id, in respect with others opinion that 64 chr length is not sufficient, so default length is now 255.
+But it is offering to customize as your own requirement by doing a monkey patch.
 
 Examples::
-    >>> from fhir.resources.fhirtypes import Id
-    >>> Id.configure_constraints(min_length=16, max_length=128)
+    # ``patch.py``
+    >>> import importlib
+    >>> from fhir_core import constraints
+    >>> from fhir_core import types as ftypes
+    >>> constraints.TYPES_ID_MAX_LENGTH = 64
+    >>> importlib.reload(ftypes)
 
 Note: when you will change that behaviour, that would impact into your whole project.
 
 
 XML Supports
 ~~~~~~~~~~~~
-
+**This feature is currently not available**
 Along side with JSON string export, it is possible to export as XML string!
 Before using this feature, make sure associated dependent library is installed. Use ``fhir.resources[xml]`` or ``fhir.resources[all]`` as
 your project requirements.
@@ -594,6 +578,7 @@ Example-3 Import from file::
 
 YAML Supports
 ~~~~~~~~~~~~~
+**This feature is not currently not available**
 Although there is no official support for YAML documented in FHIR specification, but as an experimental feature, we add this support.
 Now it is possible export/import YAML strings.
 Before using this feature, make sure associated dependent library is installed. Use ``fhir.resources[yaml]`` or ``fhir.resources[all]`` as
@@ -685,8 +670,12 @@ we in real life scenario, is it unavoidable sometimes.
 Examples::
     Place this code inside your __init__.py module or any place, just to make sure that this fragment of codes is runtime executed.
 
-    >>> from fhir.resources.fhirtypes import String
-    >>> String.configure_empty_str(allow=True)
+    # ``__init__.py``
+    >>> import importlib
+    >>> from fhir_core import constraints
+    >>> from fhir_core import types as ftypes
+    >>> constraints.TYPES_STRING_ALLOW_EMPTY_STR = True
+    >>> importlib.reload(ftypes)
 
 
 

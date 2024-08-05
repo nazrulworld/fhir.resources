@@ -30,6 +30,8 @@ FHIR® Resources (R5, R4B, STU3)
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
         :alt: HL7® FHIR®
 
+***Beware! This is a beta release, so you should be careful using it in production. The sole purpose of this public beta is to get feedback.**
+
 FHIR_ (Fast Healthcare Interoperability Resources) is a specification for exchanging healthcare information electronically.
 It is designed to facilitate the exchange of data between different healthcare systems and applications, and is commonly used to build APIs (Application Programming Interfaces) for healthcare data.
 It is based on modern web technologies, and is designed to be easy to use and implement.
@@ -671,7 +673,7 @@ we in real life scenario, is it unavoidable sometimes.
 Examples::
     Place this code inside your __init__.py module or any place, just to make sure that this fragment of codes is runtime executed.
 
-    # ``__init__.py``
+    >>> # ``__init__.py``
     >>> import importlib
     >>> from fhir_core import constraints
     >>> from fhir_core import types as ftypes

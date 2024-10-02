@@ -2,7 +2,7 @@
 History
 =======
 
-8.0.0b2 (unreleased)
+8.0.0b2 (2024-10-02)
 --------------------
 
 - `Issue #164 <https://github.com/nazrulworld/fhir.resources/issues/164>`_ ``get_fhir_model_class`` is now available and can be imported from base package. For example ``from fhir.resources import get_fhir_model_class`` or ``from fhir.resources.STU3 import get_fhir_model_class``

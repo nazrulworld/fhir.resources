@@ -709,6 +709,10 @@ Replacements and/or new functions.
 - ``FHIRAbstractModel::model_validate_xml`` parse XML string to FHIRAbstractModel.
 
 
+Breaking: removed attributes and/or functions/methods.
+
+- The attribute ``resource_type`` has been removed from base FHIR class. For example no more ``Resource.resource_type`` attribute. Now you have to use Resource.get_resource_type() instead. Although "resource_type" key is available when you will serialize as json or python dict.
+
 Migration (from ``6.X.X`` to ``7.0.X``)
 ---------------------------------------
 

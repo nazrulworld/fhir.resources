@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ResearchDefinition
 Release: R4B
@@ -27,7 +28,7 @@ class ResearchDefinition(domainresource.DomainResource):
 
     __resource_type__ = "ResearchDefinition"
 
-    approvalDate: fhirtypes.DateType = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="approvalDate",
         title="When the research definition was approved by publisher",
@@ -40,11 +41,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who authored the content",
@@ -57,7 +58,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    comment: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    comment: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="comment",
         title="Used for footnotes or explanatory notes",
@@ -69,11 +70,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    comment__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -86,7 +87,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -99,11 +100,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -118,11 +119,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the research definition",
@@ -134,11 +135,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="editor",
         title="Who edited the content",
@@ -151,7 +152,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="When the research definition is expected to be used",
@@ -164,7 +165,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="endorser",
         title="Who endorsed the content",
@@ -177,7 +178,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    experimental: bool = Field(  # type: ignore
+    experimental: bool | None = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -190,11 +191,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    exposure: fhirtypes.ReferenceType = Field(  # type: ignore
+    exposure: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="exposure",
         title="What exposure?",
@@ -209,7 +210,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    exposureAlternative: fhirtypes.ReferenceType = Field(  # type: ignore
+    exposureAlternative: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="exposureAlternative",
         title="What alternative exposure state?",
@@ -224,7 +225,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the research definition",
@@ -238,7 +239,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for research definition (if applicable)",
@@ -251,7 +252,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="lastReviewDate",
         title="When the research definition was last reviewed",
@@ -264,11 +265,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    library: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    library: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="library",
         title="Logic used by the ResearchDefinition",
@@ -282,11 +283,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "enum_reference_types": ["Library"],
         },
     )
-    library__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    library__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_library", title="Extension field for ``library``."
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this research definition (computer friendly)",
@@ -299,11 +300,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    outcome: fhirtypes.ReferenceType = Field(  # type: ignore
+    outcome: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="outcome",
         title="What outcome?",
@@ -333,7 +334,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -345,11 +346,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this research definition is defined",
@@ -361,11 +362,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
         None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc.",
@@ -378,7 +379,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="reviewer",
         title="Who reviewed the content",
@@ -391,7 +392,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    shortTitle: fhirtypes.StringType = Field(  # type: ignore
+    shortTitle: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="shortTitle",
         title="Title for use in informal contexts",
@@ -403,11 +404,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_shortTitle", title="Extension field for ``shortTitle``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -423,11 +424,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    subjectCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="subjectCodeableConcept",
         title=(
@@ -447,7 +448,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    subjectReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    subjectReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subjectReference",
         title=(
@@ -469,7 +470,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    subtitle: fhirtypes.StringType = Field(  # type: ignore
+    subtitle: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="subtitle",
         title="Subordinate title of the ResearchDefinition",
@@ -481,11 +482,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
-    title: fhirtypes.StringType = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this research definition (human friendly)",
@@ -494,11 +495,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="topic",
         title=(
@@ -515,7 +516,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -535,11 +536,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    usage: fhirtypes.StringType = Field(  # type: ignore
+    usage: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="usage",
         title="Describes the clinical usage of the ResearchDefinition",
@@ -551,11 +552,11 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_usage", title="Extension field for ``usage``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -571,7 +572,7 @@ class ResearchDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the research definition",
@@ -593,7 +594,7 @@ class ResearchDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 

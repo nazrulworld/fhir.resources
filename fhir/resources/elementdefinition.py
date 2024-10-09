@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ElementDefinition
 Release: R5
@@ -25,7 +26,7 @@ class ElementDefinition(backbonetype.BackboneType):
 
     __resource_type__ = "ElementDefinition"
 
-    alias: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    alias: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="alias",
         title="Other names",
@@ -34,11 +35,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    alias__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    alias__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_alias", title="Extension field for ``alias``."
     )
 
-    base: fhirtypes.ElementDefinitionBaseType = Field(  # type: ignore
+    base: fhirtypes.ElementDefinitionBaseType | None = Field(  # type: ignore
         None,
         alias="base",
         title="Base definition information for tools",
@@ -57,7 +58,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    binding: fhirtypes.ElementDefinitionBindingType = Field(  # type: ignore
+    binding: fhirtypes.ElementDefinitionBindingType | None = Field(  # type: ignore
         None,
         alias="binding",
         title="ValueSet details if this is coded",
@@ -70,7 +71,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    code: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
         None,
         alias="code",
         title="Corresponding codes in terminologies",
@@ -83,7 +84,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    comment: fhirtypes.MarkdownType = Field(  # type: ignore
+    comment: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="comment",
         title="Comments about the use of this element",
@@ -97,11 +98,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    condition: typing.List[typing.Optional[fhirtypes.IdType]] = Field(  # type: ignore
+    condition: typing.List[fhirtypes.IdType | None] | None = Field(  # type: ignore
         None,
         alias="condition",
         title="Reference to invariant about presence",
@@ -113,11 +114,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    condition__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    condition__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_condition", title="Extension field for ``condition``."
     )
 
-    constraint: typing.List[fhirtypes.ElementDefinitionConstraintType] = Field(  # type: ignore
+    constraint: typing.List[fhirtypes.ElementDefinitionConstraintType] | None = Field(  # type: ignore
         None,
         alias="constraint",
         title="Condition that must evaluate to true",
@@ -130,7 +131,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    contentReference: fhirtypes.UriType = Field(  # type: ignore
+    contentReference: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="contentReference",
         title="Reference to definition of content for the element",
@@ -145,13 +146,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    contentReference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    contentReference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_contentReference",
         title="Extension field for ``contentReference``.",
     )
 
-    defaultValueAddress: fhirtypes.AddressType = Field(  # type: ignore
+    defaultValueAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="defaultValueAddress",
         title="Specified value if missing from instance",
@@ -167,7 +168,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueAge: fhirtypes.AgeType = Field(  # type: ignore
+    defaultValueAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="defaultValueAge",
         title="Specified value if missing from instance",
@@ -183,7 +184,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
+    defaultValueAnnotation: fhirtypes.AnnotationType | None = Field(  # type: ignore
         None,
         alias="defaultValueAnnotation",
         title="Specified value if missing from instance",
@@ -199,7 +200,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    defaultValueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="defaultValueAttachment",
         title="Specified value if missing from instance",
@@ -215,7 +216,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueAvailability: fhirtypes.AvailabilityType = Field(  # type: ignore
+    defaultValueAvailability: fhirtypes.AvailabilityType | None = Field(  # type: ignore
         None,
         alias="defaultValueAvailability",
         title="Specified value if missing from instance",
@@ -231,7 +232,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    defaultValueBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="defaultValueBase64Binary",
         title="Specified value if missing from instance",
@@ -246,13 +247,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueBase64Binary",
         title="Extension field for ``defaultValueBase64Binary``.",
     )
 
-    defaultValueBoolean: bool = Field(  # type: ignore
+    defaultValueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="defaultValueBoolean",
         title="Specified value if missing from instance",
@@ -267,13 +268,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueBoolean",
         title="Extension field for ``defaultValueBoolean``.",
     )
 
-    defaultValueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
+    defaultValueCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="defaultValueCanonical",
         title="Specified value if missing from instance",
@@ -288,13 +289,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueCanonical",
         title="Extension field for ``defaultValueCanonical``.",
     )
 
-    defaultValueCode: fhirtypes.CodeType = Field(  # type: ignore
+    defaultValueCode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="defaultValueCode",
         title="Specified value if missing from instance",
@@ -309,13 +310,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueCode",
         title="Extension field for ``defaultValueCode``.",
     )
 
-    defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    defaultValueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="defaultValueCodeableConcept",
         title="Specified value if missing from instance",
@@ -331,7 +332,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    defaultValueCodeableReference: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="defaultValueCodeableReference",
         title="Specified value if missing from instance",
@@ -347,7 +348,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueCoding: fhirtypes.CodingType = Field(  # type: ignore
+    defaultValueCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="defaultValueCoding",
         title="Specified value if missing from instance",
@@ -363,7 +364,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
+    defaultValueContactDetail: fhirtypes.ContactDetailType | None = Field(  # type: ignore
         None,
         alias="defaultValueContactDetail",
         title="Specified value if missing from instance",
@@ -379,7 +380,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
+    defaultValueContactPoint: fhirtypes.ContactPointType | None = Field(  # type: ignore
         None,
         alias="defaultValueContactPoint",
         title="Specified value if missing from instance",
@@ -395,7 +396,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueCount: fhirtypes.CountType = Field(  # type: ignore
+    defaultValueCount: fhirtypes.CountType | None = Field(  # type: ignore
         None,
         alias="defaultValueCount",
         title="Specified value if missing from instance",
@@ -411,7 +412,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
+    defaultValueDataRequirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
         None,
         alias="defaultValueDataRequirement",
         title="Specified value if missing from instance",
@@ -427,7 +428,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueDate: fhirtypes.DateType = Field(  # type: ignore
+    defaultValueDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="defaultValueDate",
         title="Specified value if missing from instance",
@@ -442,13 +443,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueDate",
         title="Extension field for ``defaultValueDate``.",
     )
 
-    defaultValueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    defaultValueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="defaultValueDateTime",
         title="Specified value if missing from instance",
@@ -463,13 +464,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueDateTime",
         title="Extension field for ``defaultValueDateTime``.",
     )
 
-    defaultValueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    defaultValueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="defaultValueDecimal",
         title="Specified value if missing from instance",
@@ -484,13 +485,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueDecimal",
         title="Extension field for ``defaultValueDecimal``.",
     )
 
-    defaultValueDistance: fhirtypes.DistanceType = Field(  # type: ignore
+    defaultValueDistance: fhirtypes.DistanceType | None = Field(  # type: ignore
         None,
         alias="defaultValueDistance",
         title="Specified value if missing from instance",
@@ -506,7 +507,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueDosage: fhirtypes.DosageType = Field(  # type: ignore
+    defaultValueDosage: fhirtypes.DosageType | None = Field(  # type: ignore
         None,
         alias="defaultValueDosage",
         title="Specified value if missing from instance",
@@ -522,7 +523,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueDuration: fhirtypes.DurationType = Field(  # type: ignore
+    defaultValueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="defaultValueDuration",
         title="Specified value if missing from instance",
@@ -538,7 +539,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueExpression: fhirtypes.ExpressionType = Field(  # type: ignore
+    defaultValueExpression: fhirtypes.ExpressionType | None = Field(  # type: ignore
         None,
         alias="defaultValueExpression",
         title="Specified value if missing from instance",
@@ -554,7 +555,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueExtendedContactDetail: fhirtypes.ExtendedContactDetailType = Field(  # type: ignore
+    defaultValueExtendedContactDetail: fhirtypes.ExtendedContactDetailType | None = Field(  # type: ignore
         None,
         alias="defaultValueExtendedContactDetail",
         title="Specified value if missing from instance",
@@ -570,7 +571,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
+    defaultValueHumanName: fhirtypes.HumanNameType | None = Field(  # type: ignore
         None,
         alias="defaultValueHumanName",
         title="Specified value if missing from instance",
@@ -586,7 +587,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueId: fhirtypes.IdType = Field(  # type: ignore
+    defaultValueId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="defaultValueId",
         title="Specified value if missing from instance",
@@ -601,11 +602,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_defaultValueId", title="Extension field for ``defaultValueId``."
     )
 
-    defaultValueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    defaultValueIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="defaultValueIdentifier",
         title="Specified value if missing from instance",
@@ -621,7 +622,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueInstant: fhirtypes.InstantType = Field(  # type: ignore
+    defaultValueInstant: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="defaultValueInstant",
         title="Specified value if missing from instance",
@@ -636,13 +637,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueInstant",
         title="Extension field for ``defaultValueInstant``.",
     )
 
-    defaultValueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    defaultValueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="defaultValueInteger",
         title="Specified value if missing from instance",
@@ -657,13 +658,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueInteger",
         title="Extension field for ``defaultValueInteger``.",
     )
 
-    defaultValueInteger64: fhirtypes.Integer64Type = Field(  # type: ignore
+    defaultValueInteger64: fhirtypes.Integer64Type | None = Field(  # type: ignore
         None,
         alias="defaultValueInteger64",
         title="Specified value if missing from instance",
@@ -678,13 +679,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueInteger64",
         title="Extension field for ``defaultValueInteger64``.",
     )
 
-    defaultValueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
+    defaultValueMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="defaultValueMarkdown",
         title="Specified value if missing from instance",
@@ -699,13 +700,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueMarkdown",
         title="Extension field for ``defaultValueMarkdown``.",
     )
 
-    defaultValueMeta: fhirtypes.MetaType = Field(  # type: ignore
+    defaultValueMeta: fhirtypes.MetaType | None = Field(  # type: ignore
         None,
         alias="defaultValueMeta",
         title="Specified value if missing from instance",
@@ -721,7 +722,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    defaultValueMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="defaultValueMoney",
         title="Specified value if missing from instance",
@@ -737,7 +738,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueOid: fhirtypes.OidType = Field(  # type: ignore
+    defaultValueOid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="defaultValueOid",
         title="Specified value if missing from instance",
@@ -752,11 +753,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_defaultValueOid", title="Extension field for ``defaultValueOid``."
     )
 
-    defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
+    defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType | None = Field(  # type: ignore
         None,
         alias="defaultValueParameterDefinition",
         title="Specified value if missing from instance",
@@ -772,7 +773,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    defaultValuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="defaultValuePeriod",
         title="Specified value if missing from instance",
@@ -788,7 +789,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    defaultValuePositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="defaultValuePositiveInt",
         title="Specified value if missing from instance",
@@ -803,13 +804,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValuePositiveInt",
         title="Extension field for ``defaultValuePositiveInt``.",
     )
 
-    defaultValueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    defaultValueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="defaultValueQuantity",
         title="Specified value if missing from instance",
@@ -825,7 +826,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueRange: fhirtypes.RangeType = Field(  # type: ignore
+    defaultValueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="defaultValueRange",
         title="Specified value if missing from instance",
@@ -841,7 +842,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueRatio: fhirtypes.RatioType = Field(  # type: ignore
+    defaultValueRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="defaultValueRatio",
         title="Specified value if missing from instance",
@@ -857,7 +858,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
+    defaultValueRatioRange: fhirtypes.RatioRangeType | None = Field(  # type: ignore
         None,
         alias="defaultValueRatioRange",
         title="Specified value if missing from instance",
@@ -873,7 +874,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    defaultValueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="defaultValueReference",
         title="Specified value if missing from instance",
@@ -889,7 +890,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
+    defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType | None = Field(  # type: ignore
         None,
         alias="defaultValueRelatedArtifact",
         title="Specified value if missing from instance",
@@ -905,7 +906,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
+    defaultValueSampledData: fhirtypes.SampledDataType | None = Field(  # type: ignore
         None,
         alias="defaultValueSampledData",
         title="Specified value if missing from instance",
@@ -921,7 +922,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueSignature: fhirtypes.SignatureType = Field(  # type: ignore
+    defaultValueSignature: fhirtypes.SignatureType | None = Field(  # type: ignore
         None,
         alias="defaultValueSignature",
         title="Specified value if missing from instance",
@@ -937,7 +938,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueString: fhirtypes.StringType = Field(  # type: ignore
+    defaultValueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="defaultValueString",
         title="Specified value if missing from instance",
@@ -952,13 +953,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueString",
         title="Extension field for ``defaultValueString``.",
     )
 
-    defaultValueTime: fhirtypes.TimeType = Field(  # type: ignore
+    defaultValueTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="defaultValueTime",
         title="Specified value if missing from instance",
@@ -973,13 +974,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueTime",
         title="Extension field for ``defaultValueTime``.",
     )
 
-    defaultValueTiming: fhirtypes.TimingType = Field(  # type: ignore
+    defaultValueTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="defaultValueTiming",
         title="Specified value if missing from instance",
@@ -995,7 +996,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
+    defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType | None = Field(  # type: ignore
         None,
         alias="defaultValueTriggerDefinition",
         title="Specified value if missing from instance",
@@ -1011,7 +1012,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    defaultValueUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="defaultValueUnsignedInt",
         title="Specified value if missing from instance",
@@ -1026,13 +1027,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueUnsignedInt",
         title="Extension field for ``defaultValueUnsignedInt``.",
     )
 
-    defaultValueUri: fhirtypes.UriType = Field(  # type: ignore
+    defaultValueUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="defaultValueUri",
         title="Specified value if missing from instance",
@@ -1047,11 +1048,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_defaultValueUri", title="Extension field for ``defaultValueUri``."
     )
 
-    defaultValueUrl: fhirtypes.UrlType = Field(  # type: ignore
+    defaultValueUrl: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="defaultValueUrl",
         title="Specified value if missing from instance",
@@ -1066,11 +1067,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_defaultValueUrl", title="Extension field for ``defaultValueUrl``."
     )
 
-    defaultValueUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
+    defaultValueUsageContext: fhirtypes.UsageContextType | None = Field(  # type: ignore
         None,
         alias="defaultValueUsageContext",
         title="Specified value if missing from instance",
@@ -1086,7 +1087,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    defaultValueUuid: fhirtypes.UuidType = Field(  # type: ignore
+    defaultValueUuid: fhirtypes.UuidType | None = Field(  # type: ignore
         None,
         alias="defaultValueUuid",
         title="Specified value if missing from instance",
@@ -1101,13 +1102,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueUuid",
         title="Extension field for ``defaultValueUuid``.",
     )
 
-    definition: fhirtypes.MarkdownType = Field(  # type: ignore
+    definition: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="definition",
         title="Full formal definition as narrative text",
@@ -1123,11 +1124,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    example: typing.List[fhirtypes.ElementDefinitionExampleType] = Field(  # type: ignore
+    example: typing.List[fhirtypes.ElementDefinitionExampleType] | None = Field(  # type: ignore
         None,
         alias="example",
         title="Example value (as defined for type)",
@@ -1140,7 +1141,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedAddress: fhirtypes.AddressType = Field(  # type: ignore
+    fixedAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="fixedAddress",
         title="Value must be exactly this",
@@ -1159,7 +1160,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedAge: fhirtypes.AgeType = Field(  # type: ignore
+    fixedAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="fixedAge",
         title="Value must be exactly this",
@@ -1178,7 +1179,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
+    fixedAnnotation: fhirtypes.AnnotationType | None = Field(  # type: ignore
         None,
         alias="fixedAnnotation",
         title="Value must be exactly this",
@@ -1197,7 +1198,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    fixedAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="fixedAttachment",
         title="Value must be exactly this",
@@ -1216,7 +1217,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedAvailability: fhirtypes.AvailabilityType = Field(  # type: ignore
+    fixedAvailability: fhirtypes.AvailabilityType | None = Field(  # type: ignore
         None,
         alias="fixedAvailability",
         title="Value must be exactly this",
@@ -1235,7 +1236,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    fixedBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="fixedBase64Binary",
         title="Value must be exactly this",
@@ -1253,13 +1254,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_fixedBase64Binary",
         title="Extension field for ``fixedBase64Binary``.",
     )
 
-    fixedBoolean: bool = Field(  # type: ignore
+    fixedBoolean: bool | None = Field(  # type: ignore
         None,
         alias="fixedBoolean",
         title="Value must be exactly this",
@@ -1277,11 +1278,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedBoolean", title="Extension field for ``fixedBoolean``."
     )
 
-    fixedCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
+    fixedCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="fixedCanonical",
         title="Value must be exactly this",
@@ -1299,11 +1300,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedCanonical", title="Extension field for ``fixedCanonical``."
     )
 
-    fixedCode: fhirtypes.CodeType = Field(  # type: ignore
+    fixedCode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="fixedCode",
         title="Value must be exactly this",
@@ -1321,11 +1322,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedCode", title="Extension field for ``fixedCode``."
     )
 
-    fixedCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    fixedCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="fixedCodeableConcept",
         title="Value must be exactly this",
@@ -1344,7 +1345,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    fixedCodeableReference: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="fixedCodeableReference",
         title="Value must be exactly this",
@@ -1363,7 +1364,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedCoding: fhirtypes.CodingType = Field(  # type: ignore
+    fixedCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="fixedCoding",
         title="Value must be exactly this",
@@ -1382,7 +1383,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
+    fixedContactDetail: fhirtypes.ContactDetailType | None = Field(  # type: ignore
         None,
         alias="fixedContactDetail",
         title="Value must be exactly this",
@@ -1401,7 +1402,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
+    fixedContactPoint: fhirtypes.ContactPointType | None = Field(  # type: ignore
         None,
         alias="fixedContactPoint",
         title="Value must be exactly this",
@@ -1420,7 +1421,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedCount: fhirtypes.CountType = Field(  # type: ignore
+    fixedCount: fhirtypes.CountType | None = Field(  # type: ignore
         None,
         alias="fixedCount",
         title="Value must be exactly this",
@@ -1439,7 +1440,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
+    fixedDataRequirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
         None,
         alias="fixedDataRequirement",
         title="Value must be exactly this",
@@ -1458,7 +1459,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedDate: fhirtypes.DateType = Field(  # type: ignore
+    fixedDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="fixedDate",
         title="Value must be exactly this",
@@ -1476,11 +1477,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedDate", title="Extension field for ``fixedDate``."
     )
 
-    fixedDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    fixedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="fixedDateTime",
         title="Value must be exactly this",
@@ -1498,11 +1499,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedDateTime", title="Extension field for ``fixedDateTime``."
     )
 
-    fixedDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    fixedDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="fixedDecimal",
         title="Value must be exactly this",
@@ -1520,11 +1521,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedDecimal", title="Extension field for ``fixedDecimal``."
     )
 
-    fixedDistance: fhirtypes.DistanceType = Field(  # type: ignore
+    fixedDistance: fhirtypes.DistanceType | None = Field(  # type: ignore
         None,
         alias="fixedDistance",
         title="Value must be exactly this",
@@ -1543,7 +1544,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedDosage: fhirtypes.DosageType = Field(  # type: ignore
+    fixedDosage: fhirtypes.DosageType | None = Field(  # type: ignore
         None,
         alias="fixedDosage",
         title="Value must be exactly this",
@@ -1562,7 +1563,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedDuration: fhirtypes.DurationType = Field(  # type: ignore
+    fixedDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="fixedDuration",
         title="Value must be exactly this",
@@ -1581,7 +1582,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedExpression: fhirtypes.ExpressionType = Field(  # type: ignore
+    fixedExpression: fhirtypes.ExpressionType | None = Field(  # type: ignore
         None,
         alias="fixedExpression",
         title="Value must be exactly this",
@@ -1600,7 +1601,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedExtendedContactDetail: fhirtypes.ExtendedContactDetailType = Field(  # type: ignore
+    fixedExtendedContactDetail: fhirtypes.ExtendedContactDetailType | None = Field(  # type: ignore
         None,
         alias="fixedExtendedContactDetail",
         title="Value must be exactly this",
@@ -1619,7 +1620,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
+    fixedHumanName: fhirtypes.HumanNameType | None = Field(  # type: ignore
         None,
         alias="fixedHumanName",
         title="Value must be exactly this",
@@ -1638,7 +1639,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedId: fhirtypes.IdType = Field(  # type: ignore
+    fixedId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="fixedId",
         title="Value must be exactly this",
@@ -1656,11 +1657,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedId", title="Extension field for ``fixedId``."
     )
 
-    fixedIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    fixedIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="fixedIdentifier",
         title="Value must be exactly this",
@@ -1679,7 +1680,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedInstant: fhirtypes.InstantType = Field(  # type: ignore
+    fixedInstant: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="fixedInstant",
         title="Value must be exactly this",
@@ -1697,11 +1698,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedInstant", title="Extension field for ``fixedInstant``."
     )
 
-    fixedInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    fixedInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="fixedInteger",
         title="Value must be exactly this",
@@ -1719,11 +1720,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedInteger", title="Extension field for ``fixedInteger``."
     )
 
-    fixedInteger64: fhirtypes.Integer64Type = Field(  # type: ignore
+    fixedInteger64: fhirtypes.Integer64Type | None = Field(  # type: ignore
         None,
         alias="fixedInteger64",
         title="Value must be exactly this",
@@ -1741,11 +1742,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedInteger64", title="Extension field for ``fixedInteger64``."
     )
 
-    fixedMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
+    fixedMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="fixedMarkdown",
         title="Value must be exactly this",
@@ -1763,11 +1764,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedMarkdown", title="Extension field for ``fixedMarkdown``."
     )
 
-    fixedMeta: fhirtypes.MetaType = Field(  # type: ignore
+    fixedMeta: fhirtypes.MetaType | None = Field(  # type: ignore
         None,
         alias="fixedMeta",
         title="Value must be exactly this",
@@ -1786,7 +1787,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    fixedMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="fixedMoney",
         title="Value must be exactly this",
@@ -1805,7 +1806,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedOid: fhirtypes.OidType = Field(  # type: ignore
+    fixedOid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="fixedOid",
         title="Value must be exactly this",
@@ -1823,11 +1824,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedOid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedOid", title="Extension field for ``fixedOid``."
     )
 
-    fixedParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
+    fixedParameterDefinition: fhirtypes.ParameterDefinitionType | None = Field(  # type: ignore
         None,
         alias="fixedParameterDefinition",
         title="Value must be exactly this",
@@ -1846,7 +1847,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    fixedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="fixedPeriod",
         title="Value must be exactly this",
@@ -1865,7 +1866,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedPositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    fixedPositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="fixedPositiveInt",
         title="Value must be exactly this",
@@ -1883,13 +1884,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_fixedPositiveInt",
         title="Extension field for ``fixedPositiveInt``.",
     )
 
-    fixedQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    fixedQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="fixedQuantity",
         title="Value must be exactly this",
@@ -1908,7 +1909,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedRange: fhirtypes.RangeType = Field(  # type: ignore
+    fixedRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="fixedRange",
         title="Value must be exactly this",
@@ -1927,7 +1928,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedRatio: fhirtypes.RatioType = Field(  # type: ignore
+    fixedRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="fixedRatio",
         title="Value must be exactly this",
@@ -1946,7 +1947,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
+    fixedRatioRange: fhirtypes.RatioRangeType | None = Field(  # type: ignore
         None,
         alias="fixedRatioRange",
         title="Value must be exactly this",
@@ -1965,7 +1966,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    fixedReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="fixedReference",
         title="Value must be exactly this",
@@ -1984,7 +1985,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
+    fixedRelatedArtifact: fhirtypes.RelatedArtifactType | None = Field(  # type: ignore
         None,
         alias="fixedRelatedArtifact",
         title="Value must be exactly this",
@@ -2003,7 +2004,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
+    fixedSampledData: fhirtypes.SampledDataType | None = Field(  # type: ignore
         None,
         alias="fixedSampledData",
         title="Value must be exactly this",
@@ -2022,7 +2023,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedSignature: fhirtypes.SignatureType = Field(  # type: ignore
+    fixedSignature: fhirtypes.SignatureType | None = Field(  # type: ignore
         None,
         alias="fixedSignature",
         title="Value must be exactly this",
@@ -2041,7 +2042,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedString: fhirtypes.StringType = Field(  # type: ignore
+    fixedString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="fixedString",
         title="Value must be exactly this",
@@ -2059,11 +2060,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedString", title="Extension field for ``fixedString``."
     )
 
-    fixedTime: fhirtypes.TimeType = Field(  # type: ignore
+    fixedTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="fixedTime",
         title="Value must be exactly this",
@@ -2081,11 +2082,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedTime", title="Extension field for ``fixedTime``."
     )
 
-    fixedTiming: fhirtypes.TimingType = Field(  # type: ignore
+    fixedTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="fixedTiming",
         title="Value must be exactly this",
@@ -2104,7 +2105,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
+    fixedTriggerDefinition: fhirtypes.TriggerDefinitionType | None = Field(  # type: ignore
         None,
         alias="fixedTriggerDefinition",
         title="Value must be exactly this",
@@ -2123,7 +2124,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    fixedUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="fixedUnsignedInt",
         title="Value must be exactly this",
@@ -2141,13 +2142,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_fixedUnsignedInt",
         title="Extension field for ``fixedUnsignedInt``.",
     )
 
-    fixedUri: fhirtypes.UriType = Field(  # type: ignore
+    fixedUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="fixedUri",
         title="Value must be exactly this",
@@ -2165,11 +2166,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedUri", title="Extension field for ``fixedUri``."
     )
 
-    fixedUrl: fhirtypes.UrlType = Field(  # type: ignore
+    fixedUrl: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="fixedUrl",
         title="Value must be exactly this",
@@ -2187,11 +2188,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedUrl", title="Extension field for ``fixedUrl``."
     )
 
-    fixedUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
+    fixedUsageContext: fhirtypes.UsageContextType | None = Field(  # type: ignore
         None,
         alias="fixedUsageContext",
         title="Value must be exactly this",
@@ -2210,7 +2211,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    fixedUuid: fhirtypes.UuidType = Field(  # type: ignore
+    fixedUuid: fhirtypes.UuidType | None = Field(  # type: ignore
         None,
         alias="fixedUuid",
         title="Value must be exactly this",
@@ -2228,11 +2229,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    fixedUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fixedUuid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fixedUuid", title="Extension field for ``fixedUuid``."
     )
 
-    isModifier: bool = Field(  # type: ignore
+    isModifier: bool | None = Field(  # type: ignore
         None,
         alias="isModifier",
         title="If this modifies the meaning of other elements",
@@ -2251,11 +2252,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    isModifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    isModifier__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_isModifier", title="Extension field for ``isModifier``."
     )
 
-    isModifierReason: fhirtypes.StringType = Field(  # type: ignore
+    isModifierReason: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="isModifierReason",
         title="Reason that this element is marked as a modifier",
@@ -2267,13 +2268,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    isModifierReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    isModifierReason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_isModifierReason",
         title="Extension field for ``isModifierReason``.",
     )
 
-    isSummary: bool = Field(  # type: ignore
+    isSummary: bool | None = Field(  # type: ignore
         None,
         alias="isSummary",
         title="Include when _summary = true?",
@@ -2285,11 +2286,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    isSummary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    isSummary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_isSummary", title="Extension field for ``isSummary``."
     )
 
-    label: fhirtypes.StringType = Field(  # type: ignore
+    label: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="label",
         title="Name for element to display with or prompt for element",
@@ -2302,11 +2303,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_label", title="Extension field for ``label``."
     )
 
-    mapping: typing.List[fhirtypes.ElementDefinitionMappingType] = Field(  # type: ignore
+    mapping: typing.List[fhirtypes.ElementDefinitionMappingType] | None = Field(  # type: ignore
         None,
         alias="mapping",
         title="Map element to another set of definitions",
@@ -2319,7 +2320,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    max: fhirtypes.StringType = Field(  # type: ignore
+    max: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="max",
         title="Maximum Cardinality (a number or *)",
@@ -2331,11 +2332,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    maxLength: fhirtypes.IntegerType = Field(  # type: ignore
+    maxLength: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="maxLength",
         title="Max length for string type data",
@@ -2353,11 +2354,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_maxLength", title="Extension field for ``maxLength``."
     )
 
-    maxValueDate: fhirtypes.DateType = Field(  # type: ignore
+    maxValueDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="maxValueDate",
         title="Maximum Allowed Value (for some types)",
@@ -2373,11 +2374,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_maxValueDate", title="Extension field for ``maxValueDate``."
     )
 
-    maxValueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    maxValueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="maxValueDateTime",
         title="Maximum Allowed Value (for some types)",
@@ -2393,13 +2394,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_maxValueDateTime",
         title="Extension field for ``maxValueDateTime``.",
     )
 
-    maxValueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    maxValueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="maxValueDecimal",
         title="Maximum Allowed Value (for some types)",
@@ -2415,11 +2416,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_maxValueDecimal", title="Extension field for ``maxValueDecimal``."
     )
 
-    maxValueInstant: fhirtypes.InstantType = Field(  # type: ignore
+    maxValueInstant: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="maxValueInstant",
         title="Maximum Allowed Value (for some types)",
@@ -2435,11 +2436,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_maxValueInstant", title="Extension field for ``maxValueInstant``."
     )
 
-    maxValueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    maxValueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="maxValueInteger",
         title="Maximum Allowed Value (for some types)",
@@ -2455,11 +2456,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_maxValueInteger", title="Extension field for ``maxValueInteger``."
     )
 
-    maxValueInteger64: fhirtypes.Integer64Type = Field(  # type: ignore
+    maxValueInteger64: fhirtypes.Integer64Type | None = Field(  # type: ignore
         None,
         alias="maxValueInteger64",
         title="Maximum Allowed Value (for some types)",
@@ -2475,13 +2476,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_maxValueInteger64",
         title="Extension field for ``maxValueInteger64``.",
     )
 
-    maxValuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    maxValuePositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="maxValuePositiveInt",
         title="Maximum Allowed Value (for some types)",
@@ -2497,13 +2498,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_maxValuePositiveInt",
         title="Extension field for ``maxValuePositiveInt``.",
     )
 
-    maxValueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    maxValueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="maxValueQuantity",
         title="Maximum Allowed Value (for some types)",
@@ -2520,7 +2521,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    maxValueTime: fhirtypes.TimeType = Field(  # type: ignore
+    maxValueTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="maxValueTime",
         title="Maximum Allowed Value (for some types)",
@@ -2536,11 +2537,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_maxValueTime", title="Extension field for ``maxValueTime``."
     )
 
-    maxValueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    maxValueUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="maxValueUnsignedInt",
         title="Maximum Allowed Value (for some types)",
@@ -2556,13 +2557,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    maxValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maxValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_maxValueUnsignedInt",
         title="Extension field for ``maxValueUnsignedInt``.",
     )
 
-    meaningWhenMissing: fhirtypes.MarkdownType = Field(  # type: ignore
+    meaningWhenMissing: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="meaningWhenMissing",
         title="Implicit meaning when this element is missing",
@@ -2574,13 +2575,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    meaningWhenMissing__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    meaningWhenMissing__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_meaningWhenMissing",
         title="Extension field for ``meaningWhenMissing``.",
     )
 
-    min: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    min: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="min",
         title="Minimum Cardinality",
@@ -2589,11 +2590,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    minValueDate: fhirtypes.DateType = Field(  # type: ignore
+    minValueDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="minValueDate",
         title="Minimum Allowed Value (for some types)",
@@ -2609,11 +2610,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_minValueDate", title="Extension field for ``minValueDate``."
     )
 
-    minValueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    minValueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="minValueDateTime",
         title="Minimum Allowed Value (for some types)",
@@ -2629,13 +2630,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_minValueDateTime",
         title="Extension field for ``minValueDateTime``.",
     )
 
-    minValueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    minValueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="minValueDecimal",
         title="Minimum Allowed Value (for some types)",
@@ -2651,11 +2652,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_minValueDecimal", title="Extension field for ``minValueDecimal``."
     )
 
-    minValueInstant: fhirtypes.InstantType = Field(  # type: ignore
+    minValueInstant: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="minValueInstant",
         title="Minimum Allowed Value (for some types)",
@@ -2671,11 +2672,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_minValueInstant", title="Extension field for ``minValueInstant``."
     )
 
-    minValueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    minValueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="minValueInteger",
         title="Minimum Allowed Value (for some types)",
@@ -2691,11 +2692,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_minValueInteger", title="Extension field for ``minValueInteger``."
     )
 
-    minValueInteger64: fhirtypes.Integer64Type = Field(  # type: ignore
+    minValueInteger64: fhirtypes.Integer64Type | None = Field(  # type: ignore
         None,
         alias="minValueInteger64",
         title="Minimum Allowed Value (for some types)",
@@ -2711,13 +2712,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_minValueInteger64",
         title="Extension field for ``minValueInteger64``.",
     )
 
-    minValuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    minValuePositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="minValuePositiveInt",
         title="Minimum Allowed Value (for some types)",
@@ -2733,13 +2734,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_minValuePositiveInt",
         title="Extension field for ``minValuePositiveInt``.",
     )
 
-    minValueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    minValueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="minValueQuantity",
         title="Minimum Allowed Value (for some types)",
@@ -2756,7 +2757,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    minValueTime: fhirtypes.TimeType = Field(  # type: ignore
+    minValueTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="minValueTime",
         title="Minimum Allowed Value (for some types)",
@@ -2772,11 +2773,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_minValueTime", title="Extension field for ``minValueTime``."
     )
 
-    minValueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    minValueUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="minValueUnsignedInt",
         title="Minimum Allowed Value (for some types)",
@@ -2792,13 +2793,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    minValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_minValueUnsignedInt",
         title="Extension field for ``minValueUnsignedInt``.",
     )
 
-    mustHaveValue: bool = Field(  # type: ignore
+    mustHaveValue: bool | None = Field(  # type: ignore
         None,
         alias="mustHaveValue",
         title=(
@@ -2813,11 +2814,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    mustHaveValue__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    mustHaveValue__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_mustHaveValue", title="Extension field for ``mustHaveValue``."
     )
 
-    mustSupport: bool = Field(  # type: ignore
+    mustSupport: bool | None = Field(  # type: ignore
         None,
         alias="mustSupport",
         title="If the element must be supported (discouraged - see obligations)",
@@ -2833,11 +2834,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    mustSupport__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    mustSupport__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_mustSupport", title="Extension field for ``mustSupport``."
     )
 
-    orderMeaning: fhirtypes.StringType = Field(  # type: ignore
+    orderMeaning: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="orderMeaning",
         title="What the order of the elements means",
@@ -2850,11 +2851,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    orderMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    orderMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_orderMeaning", title="Extension field for ``orderMeaning``."
     )
 
-    path: fhirtypes.StringType = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="path",
         title="Path of the element in the hierarchy of elements",
@@ -2868,11 +2869,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_required": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_path", title="Extension field for ``path``."
     )
 
-    patternAddress: fhirtypes.AddressType = Field(  # type: ignore
+    patternAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="patternAddress",
         title="Value must have at least these property values",
@@ -2906,7 +2907,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternAge: fhirtypes.AgeType = Field(  # type: ignore
+    patternAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="patternAge",
         title="Value must have at least these property values",
@@ -2940,7 +2941,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
+    patternAnnotation: fhirtypes.AnnotationType | None = Field(  # type: ignore
         None,
         alias="patternAnnotation",
         title="Value must have at least these property values",
@@ -2974,7 +2975,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    patternAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="patternAttachment",
         title="Value must have at least these property values",
@@ -3008,7 +3009,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternAvailability: fhirtypes.AvailabilityType = Field(  # type: ignore
+    patternAvailability: fhirtypes.AvailabilityType | None = Field(  # type: ignore
         None,
         alias="patternAvailability",
         title="Value must have at least these property values",
@@ -3042,7 +3043,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    patternBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="patternBase64Binary",
         title="Value must have at least these property values",
@@ -3075,13 +3076,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_patternBase64Binary",
         title="Extension field for ``patternBase64Binary``.",
     )
 
-    patternBoolean: bool = Field(  # type: ignore
+    patternBoolean: bool | None = Field(  # type: ignore
         None,
         alias="patternBoolean",
         title="Value must have at least these property values",
@@ -3114,11 +3115,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternBoolean", title="Extension field for ``patternBoolean``."
     )
 
-    patternCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
+    patternCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="patternCanonical",
         title="Value must have at least these property values",
@@ -3151,13 +3152,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_patternCanonical",
         title="Extension field for ``patternCanonical``.",
     )
 
-    patternCode: fhirtypes.CodeType = Field(  # type: ignore
+    patternCode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="patternCode",
         title="Value must have at least these property values",
@@ -3190,11 +3191,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternCode", title="Extension field for ``patternCode``."
     )
 
-    patternCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    patternCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="patternCodeableConcept",
         title="Value must have at least these property values",
@@ -3228,7 +3229,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    patternCodeableReference: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="patternCodeableReference",
         title="Value must have at least these property values",
@@ -3262,7 +3263,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternCoding: fhirtypes.CodingType = Field(  # type: ignore
+    patternCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="patternCoding",
         title="Value must have at least these property values",
@@ -3296,7 +3297,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
+    patternContactDetail: fhirtypes.ContactDetailType | None = Field(  # type: ignore
         None,
         alias="patternContactDetail",
         title="Value must have at least these property values",
@@ -3330,7 +3331,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
+    patternContactPoint: fhirtypes.ContactPointType | None = Field(  # type: ignore
         None,
         alias="patternContactPoint",
         title="Value must have at least these property values",
@@ -3364,7 +3365,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternCount: fhirtypes.CountType = Field(  # type: ignore
+    patternCount: fhirtypes.CountType | None = Field(  # type: ignore
         None,
         alias="patternCount",
         title="Value must have at least these property values",
@@ -3398,7 +3399,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
+    patternDataRequirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
         None,
         alias="patternDataRequirement",
         title="Value must have at least these property values",
@@ -3432,7 +3433,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternDate: fhirtypes.DateType = Field(  # type: ignore
+    patternDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="patternDate",
         title="Value must have at least these property values",
@@ -3465,11 +3466,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternDate", title="Extension field for ``patternDate``."
     )
 
-    patternDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    patternDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="patternDateTime",
         title="Value must have at least these property values",
@@ -3502,11 +3503,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternDateTime", title="Extension field for ``patternDateTime``."
     )
 
-    patternDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    patternDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="patternDecimal",
         title="Value must have at least these property values",
@@ -3539,11 +3540,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternDecimal", title="Extension field for ``patternDecimal``."
     )
 
-    patternDistance: fhirtypes.DistanceType = Field(  # type: ignore
+    patternDistance: fhirtypes.DistanceType | None = Field(  # type: ignore
         None,
         alias="patternDistance",
         title="Value must have at least these property values",
@@ -3577,7 +3578,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternDosage: fhirtypes.DosageType = Field(  # type: ignore
+    patternDosage: fhirtypes.DosageType | None = Field(  # type: ignore
         None,
         alias="patternDosage",
         title="Value must have at least these property values",
@@ -3611,7 +3612,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternDuration: fhirtypes.DurationType = Field(  # type: ignore
+    patternDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="patternDuration",
         title="Value must have at least these property values",
@@ -3645,7 +3646,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternExpression: fhirtypes.ExpressionType = Field(  # type: ignore
+    patternExpression: fhirtypes.ExpressionType | None = Field(  # type: ignore
         None,
         alias="patternExpression",
         title="Value must have at least these property values",
@@ -3679,7 +3680,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternExtendedContactDetail: fhirtypes.ExtendedContactDetailType = Field(  # type: ignore
+    patternExtendedContactDetail: fhirtypes.ExtendedContactDetailType | None = Field(  # type: ignore
         None,
         alias="patternExtendedContactDetail",
         title="Value must have at least these property values",
@@ -3713,7 +3714,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
+    patternHumanName: fhirtypes.HumanNameType | None = Field(  # type: ignore
         None,
         alias="patternHumanName",
         title="Value must have at least these property values",
@@ -3747,7 +3748,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternId: fhirtypes.IdType = Field(  # type: ignore
+    patternId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="patternId",
         title="Value must have at least these property values",
@@ -3780,11 +3781,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternId", title="Extension field for ``patternId``."
     )
 
-    patternIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    patternIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="patternIdentifier",
         title="Value must have at least these property values",
@@ -3818,7 +3819,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternInstant: fhirtypes.InstantType = Field(  # type: ignore
+    patternInstant: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="patternInstant",
         title="Value must have at least these property values",
@@ -3851,11 +3852,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternInstant", title="Extension field for ``patternInstant``."
     )
 
-    patternInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    patternInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="patternInteger",
         title="Value must have at least these property values",
@@ -3888,11 +3889,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternInteger", title="Extension field for ``patternInteger``."
     )
 
-    patternInteger64: fhirtypes.Integer64Type = Field(  # type: ignore
+    patternInteger64: fhirtypes.Integer64Type | None = Field(  # type: ignore
         None,
         alias="patternInteger64",
         title="Value must have at least these property values",
@@ -3925,13 +3926,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_patternInteger64",
         title="Extension field for ``patternInteger64``.",
     )
 
-    patternMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
+    patternMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="patternMarkdown",
         title="Value must have at least these property values",
@@ -3964,11 +3965,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternMarkdown", title="Extension field for ``patternMarkdown``."
     )
 
-    patternMeta: fhirtypes.MetaType = Field(  # type: ignore
+    patternMeta: fhirtypes.MetaType | None = Field(  # type: ignore
         None,
         alias="patternMeta",
         title="Value must have at least these property values",
@@ -4002,7 +4003,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    patternMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="patternMoney",
         title="Value must have at least these property values",
@@ -4036,7 +4037,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternOid: fhirtypes.OidType = Field(  # type: ignore
+    patternOid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="patternOid",
         title="Value must have at least these property values",
@@ -4069,11 +4070,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternOid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternOid", title="Extension field for ``patternOid``."
     )
 
-    patternParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
+    patternParameterDefinition: fhirtypes.ParameterDefinitionType | None = Field(  # type: ignore
         None,
         alias="patternParameterDefinition",
         title="Value must have at least these property values",
@@ -4107,7 +4108,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    patternPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="patternPeriod",
         title="Value must have at least these property values",
@@ -4141,7 +4142,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternPositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    patternPositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="patternPositiveInt",
         title="Value must have at least these property values",
@@ -4174,13 +4175,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_patternPositiveInt",
         title="Extension field for ``patternPositiveInt``.",
     )
 
-    patternQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    patternQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="patternQuantity",
         title="Value must have at least these property values",
@@ -4214,7 +4215,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternRange: fhirtypes.RangeType = Field(  # type: ignore
+    patternRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="patternRange",
         title="Value must have at least these property values",
@@ -4248,7 +4249,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternRatio: fhirtypes.RatioType = Field(  # type: ignore
+    patternRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="patternRatio",
         title="Value must have at least these property values",
@@ -4282,7 +4283,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
+    patternRatioRange: fhirtypes.RatioRangeType | None = Field(  # type: ignore
         None,
         alias="patternRatioRange",
         title="Value must have at least these property values",
@@ -4316,7 +4317,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    patternReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="patternReference",
         title="Value must have at least these property values",
@@ -4350,7 +4351,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
+    patternRelatedArtifact: fhirtypes.RelatedArtifactType | None = Field(  # type: ignore
         None,
         alias="patternRelatedArtifact",
         title="Value must have at least these property values",
@@ -4384,7 +4385,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
+    patternSampledData: fhirtypes.SampledDataType | None = Field(  # type: ignore
         None,
         alias="patternSampledData",
         title="Value must have at least these property values",
@@ -4418,7 +4419,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternSignature: fhirtypes.SignatureType = Field(  # type: ignore
+    patternSignature: fhirtypes.SignatureType | None = Field(  # type: ignore
         None,
         alias="patternSignature",
         title="Value must have at least these property values",
@@ -4452,7 +4453,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternString: fhirtypes.StringType = Field(  # type: ignore
+    patternString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="patternString",
         title="Value must have at least these property values",
@@ -4485,11 +4486,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternString", title="Extension field for ``patternString``."
     )
 
-    patternTime: fhirtypes.TimeType = Field(  # type: ignore
+    patternTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="patternTime",
         title="Value must have at least these property values",
@@ -4522,11 +4523,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternTime", title="Extension field for ``patternTime``."
     )
 
-    patternTiming: fhirtypes.TimingType = Field(  # type: ignore
+    patternTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="patternTiming",
         title="Value must have at least these property values",
@@ -4560,7 +4561,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
+    patternTriggerDefinition: fhirtypes.TriggerDefinitionType | None = Field(  # type: ignore
         None,
         alias="patternTriggerDefinition",
         title="Value must have at least these property values",
@@ -4594,7 +4595,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    patternUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="patternUnsignedInt",
         title="Value must have at least these property values",
@@ -4627,13 +4628,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_patternUnsignedInt",
         title="Extension field for ``patternUnsignedInt``.",
     )
 
-    patternUri: fhirtypes.UriType = Field(  # type: ignore
+    patternUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="patternUri",
         title="Value must have at least these property values",
@@ -4666,11 +4667,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternUri", title="Extension field for ``patternUri``."
     )
 
-    patternUrl: fhirtypes.UrlType = Field(  # type: ignore
+    patternUrl: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="patternUrl",
         title="Value must have at least these property values",
@@ -4703,11 +4704,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternUrl", title="Extension field for ``patternUrl``."
     )
 
-    patternUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
+    patternUsageContext: fhirtypes.UsageContextType | None = Field(  # type: ignore
         None,
         alias="patternUsageContext",
         title="Value must have at least these property values",
@@ -4741,7 +4742,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    patternUuid: fhirtypes.UuidType = Field(  # type: ignore
+    patternUuid: fhirtypes.UuidType | None = Field(  # type: ignore
         None,
         alias="patternUuid",
         title="Value must have at least these property values",
@@ -4774,11 +4775,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    patternUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patternUuid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_patternUuid", title="Extension field for ``patternUuid``."
     )
 
-    representation: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
+    representation: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
         None,
         alias="representation",
         title="xmlAttr | xmlText | typeAttr | cdaText | xhtml",
@@ -4795,11 +4796,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "enum_values": ["xmlAttr", "xmlText", "typeAttr", "cdaText", "xhtml"],
         },
     )
-    representation__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    representation__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_representation", title="Extension field for ``representation``."
     )
 
-    requirements: fhirtypes.MarkdownType = Field(  # type: ignore
+    requirements: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="requirements",
         title="Why this resource has been created",
@@ -4813,11 +4814,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_requirements", title="Extension field for ``requirements``."
     )
 
-    short: fhirtypes.StringType = Field(  # type: ignore
+    short: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="short",
         title="Concise definition for space-constrained presentation",
@@ -4829,11 +4830,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    short__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    short__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_short", title="Extension field for ``short``."
     )
 
-    sliceIsConstraining: bool = Field(  # type: ignore
+    sliceIsConstraining: bool | None = Field(  # type: ignore
         None,
         alias="sliceIsConstraining",
         title=(
@@ -4851,13 +4852,13 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    sliceIsConstraining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sliceIsConstraining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_sliceIsConstraining",
         title="Extension field for ``sliceIsConstraining``.",
     )
 
-    sliceName: fhirtypes.StringType = Field(  # type: ignore
+    sliceName: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="sliceName",
         title="Name for this particular element (in a set of slices)",
@@ -4871,11 +4872,11 @@ class ElementDefinition(backbonetype.BackboneType):
             "element_property": True,
         },
     )
-    sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sliceName", title="Extension field for ``sliceName``."
     )
 
-    slicing: fhirtypes.ElementDefinitionSlicingType = Field(  # type: ignore
+    slicing: fhirtypes.ElementDefinitionSlicingType | None = Field(  # type: ignore
         None,
         alias="slicing",
         title="This element is sliced - slices follow",
@@ -4894,7 +4895,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    type: typing.List[fhirtypes.ElementDefinitionTypeType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.ElementDefinitionTypeType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Data type and Profile for this element",
@@ -4907,7 +4908,7 @@ class ElementDefinition(backbonetype.BackboneType):
         },
     )
 
-    valueAlternatives: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    valueAlternatives: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="valueAlternatives",
         title="Extensions that are allowed to replace a primitive value",
@@ -4921,7 +4922,7 @@ class ElementDefinition(backbonetype.BackboneType):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    valueAlternatives__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    valueAlternatives__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_valueAlternatives",
         title="Extension field for ``valueAlternatives``.",
@@ -5391,7 +5392,7 @@ class ElementDefinitionBase(element.Element):
 
     __resource_type__ = "ElementDefinitionBase"
 
-    max: fhirtypes.StringType = Field(  # type: ignore
+    max: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="max",
         title="Max cardinality of the base element",
@@ -5401,11 +5402,11 @@ class ElementDefinitionBase(element.Element):
             "element_required": True,
         },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    min: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="min",
         title="Min cardinality of the base element",
@@ -5415,11 +5416,11 @@ class ElementDefinitionBase(element.Element):
             "element_required": True,
         },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    path: fhirtypes.StringType = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="path",
         title="Path that identifies the base element",
@@ -5435,7 +5436,7 @@ class ElementDefinitionBase(element.Element):
             "element_required": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_path", title="Extension field for ``path``."
     )
 
@@ -5475,7 +5476,7 @@ class ElementDefinitionBinding(element.Element):
 
     __resource_type__ = "ElementDefinitionBinding"
 
-    additional: typing.List[fhirtypes.ElementDefinitionBindingAdditionalType] = Field(  # type: ignore
+    additional: typing.List[fhirtypes.ElementDefinitionBindingAdditionalType] | None = Field(  # type: ignore
         None,
         alias="additional",
         title="Additional Bindings - more rules about the binding",
@@ -5489,7 +5490,7 @@ class ElementDefinitionBinding(element.Element):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Intended use of codes in the bound value set",
@@ -5498,11 +5499,11 @@ class ElementDefinitionBinding(element.Element):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    strength: fhirtypes.CodeType = Field(  # type: ignore
+    strength: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="strength",
         title="required | extensible | preferred | example",
@@ -5519,11 +5520,11 @@ class ElementDefinitionBinding(element.Element):
             "enum_values": ["required", "extensible", "preferred", "example"],
         },
     )
-    strength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    strength__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_strength", title="Extension field for ``strength``."
     )
 
-    valueSet: fhirtypes.CanonicalType = Field(  # type: ignore
+    valueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="valueSet",
         title="Source of value set",
@@ -5537,7 +5538,7 @@ class ElementDefinitionBinding(element.Element):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
@@ -5574,7 +5575,7 @@ class ElementDefinitionBindingAdditional(element.Element):
 
     __resource_type__ = "ElementDefinitionBindingAdditional"
 
-    any: bool = Field(  # type: ignore
+    any: bool | None = Field(  # type: ignore
         None,
         alias="any",
         title="Whether binding can applies to all repeats, or just one",
@@ -5586,11 +5587,11 @@ class ElementDefinitionBindingAdditional(element.Element):
             "element_property": True,
         },
     )
-    any__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    any__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_any", title="Extension field for ``any``."
     )
 
-    documentation: fhirtypes.MarkdownType = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="documentation",
         title="Documentation of the purpose of use of the binding",
@@ -5602,11 +5603,11 @@ class ElementDefinitionBindingAdditional(element.Element):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    purpose: fhirtypes.CodeType = Field(  # type: ignore
+    purpose: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="purpose",
         title=(
@@ -5633,11 +5634,11 @@ class ElementDefinitionBindingAdditional(element.Element):
             ],
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    shortDoco: fhirtypes.StringType = Field(  # type: ignore
+    shortDoco: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="shortDoco",
         title="Concise documentation - for summary tables",
@@ -5646,11 +5647,11 @@ class ElementDefinitionBindingAdditional(element.Element):
             "element_property": True,
         },
     )
-    shortDoco__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    shortDoco__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_shortDoco", title="Extension field for ``shortDoco``."
     )
 
-    usage: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
+    usage: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
         None,
         alias="usage",
         title="Qualifies the usage - jurisdiction, gender, workflow status etc.",
@@ -5666,7 +5667,7 @@ class ElementDefinitionBindingAdditional(element.Element):
         },
     )
 
-    valueSet: fhirtypes.CanonicalType = Field(  # type: ignore
+    valueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="valueSet",
         title="The value set for the additional binding",
@@ -5678,7 +5679,7 @@ class ElementDefinitionBindingAdditional(element.Element):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
@@ -5723,7 +5724,7 @@ class ElementDefinitionConstraint(element.Element):
 
     __resource_type__ = "ElementDefinitionConstraint"
 
-    expression: fhirtypes.StringType = Field(  # type: ignore
+    expression: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="expression",
         title="FHIRPath expression of constraint",
@@ -5735,11 +5736,11 @@ class ElementDefinitionConstraint(element.Element):
             "element_property": True,
         },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    human: fhirtypes.StringType = Field(  # type: ignore
+    human: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="human",
         title="Human description of constraint",
@@ -5752,11 +5753,11 @@ class ElementDefinitionConstraint(element.Element):
             "element_required": True,
         },
     )
-    human__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    human__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_human", title="Extension field for ``human``."
     )
 
-    key: fhirtypes.IdType = Field(  # type: ignore
+    key: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="key",
         title="Target of 'condition' reference above",
@@ -5770,11 +5771,11 @@ class ElementDefinitionConstraint(element.Element):
             "element_required": True,
         },
     )
-    key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    key__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_key", title="Extension field for ``key``."
     )
 
-    requirements: fhirtypes.MarkdownType = Field(  # type: ignore
+    requirements: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="requirements",
         title="Why this constraint is necessary or appropriate",
@@ -5783,11 +5784,11 @@ class ElementDefinitionConstraint(element.Element):
             "element_property": True,
         },
     )
-    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_requirements", title="Extension field for ``requirements``."
     )
 
-    severity: fhirtypes.CodeType = Field(  # type: ignore
+    severity: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="severity",
         title="error | warning",
@@ -5803,11 +5804,11 @@ class ElementDefinitionConstraint(element.Element):
             "enum_values": ["error", "warning"],
         },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_severity", title="Extension field for ``severity``."
     )
 
-    source: fhirtypes.CanonicalType = Field(  # type: ignore
+    source: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="source",
         title="Reference to original source of constraint",
@@ -5821,11 +5822,11 @@ class ElementDefinitionConstraint(element.Element):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    suppress: bool = Field(  # type: ignore
+    suppress: bool | None = Field(  # type: ignore
         None,
         alias="suppress",
         title="Suppress warning or hint in profile",
@@ -5837,7 +5838,7 @@ class ElementDefinitionConstraint(element.Element):
             "element_property": True,
         },
     )
-    suppress__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    suppress__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_suppress", title="Extension field for ``suppress``."
     )
 
@@ -5887,7 +5888,7 @@ class ElementDefinitionExample(element.Element):
 
     __resource_type__ = "ElementDefinitionExample"
 
-    label: fhirtypes.StringType = Field(  # type: ignore
+    label: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="label",
         title="Describes the purpose of this example",
@@ -5897,11 +5898,11 @@ class ElementDefinitionExample(element.Element):
             "element_required": True,
         },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_label", title="Extension field for ``label``."
     )
 
-    valueAddress: fhirtypes.AddressType = Field(  # type: ignore
+    valueAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="valueAddress",
         title="Value of Example (one of allowed types)",
@@ -5917,7 +5918,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueAge: fhirtypes.AgeType = Field(  # type: ignore
+    valueAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="valueAge",
         title="Value of Example (one of allowed types)",
@@ -5933,7 +5934,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
+    valueAnnotation: fhirtypes.AnnotationType | None = Field(  # type: ignore
         None,
         alias="valueAnnotation",
         title="Value of Example (one of allowed types)",
@@ -5949,7 +5950,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="Value of Example (one of allowed types)",
@@ -5965,7 +5966,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueAvailability: fhirtypes.AvailabilityType = Field(  # type: ignore
+    valueAvailability: fhirtypes.AvailabilityType | None = Field(  # type: ignore
         None,
         alias="valueAvailability",
         title="Value of Example (one of allowed types)",
@@ -5981,7 +5982,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    valueBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="valueBase64Binary",
         title="Value of Example (one of allowed types)",
@@ -5996,13 +5997,13 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_valueBase64Binary",
         title="Extension field for ``valueBase64Binary``.",
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Value of Example (one of allowed types)",
@@ -6017,11 +6018,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
+    valueCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="valueCanonical",
         title="Value of Example (one of allowed types)",
@@ -6036,11 +6037,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueCanonical", title="Extension field for ``valueCanonical``."
     )
 
-    valueCode: fhirtypes.CodeType = Field(  # type: ignore
+    valueCode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="valueCode",
         title="Value of Example (one of allowed types)",
@@ -6055,11 +6056,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Value of Example (one of allowed types)",
@@ -6075,7 +6076,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    valueCodeableReference: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="valueCodeableReference",
         title="Value of Example (one of allowed types)",
@@ -6091,7 +6092,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
+    valueCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Value of Example (one of allowed types)",
@@ -6107,7 +6108,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
+    valueContactDetail: fhirtypes.ContactDetailType | None = Field(  # type: ignore
         None,
         alias="valueContactDetail",
         title="Value of Example (one of allowed types)",
@@ -6123,7 +6124,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
+    valueContactPoint: fhirtypes.ContactPointType | None = Field(  # type: ignore
         None,
         alias="valueContactPoint",
         title="Value of Example (one of allowed types)",
@@ -6139,7 +6140,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueCount: fhirtypes.CountType = Field(  # type: ignore
+    valueCount: fhirtypes.CountType | None = Field(  # type: ignore
         None,
         alias="valueCount",
         title="Value of Example (one of allowed types)",
@@ -6155,7 +6156,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
+    valueDataRequirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
         None,
         alias="valueDataRequirement",
         title="Value of Example (one of allowed types)",
@@ -6171,7 +6172,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueDate: fhirtypes.DateType = Field(  # type: ignore
+    valueDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="valueDate",
         title="Value of Example (one of allowed types)",
@@ -6186,11 +6187,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="Value of Example (one of allowed types)",
@@ -6205,11 +6206,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    valueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="Value of Example (one of allowed types)",
@@ -6224,11 +6225,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueDistance: fhirtypes.DistanceType = Field(  # type: ignore
+    valueDistance: fhirtypes.DistanceType | None = Field(  # type: ignore
         None,
         alias="valueDistance",
         title="Value of Example (one of allowed types)",
@@ -6244,7 +6245,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueDosage: fhirtypes.DosageType = Field(  # type: ignore
+    valueDosage: fhirtypes.DosageType | None = Field(  # type: ignore
         None,
         alias="valueDosage",
         title="Value of Example (one of allowed types)",
@@ -6260,7 +6261,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueDuration: fhirtypes.DurationType = Field(  # type: ignore
+    valueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="valueDuration",
         title="Value of Example (one of allowed types)",
@@ -6276,7 +6277,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueExpression: fhirtypes.ExpressionType = Field(  # type: ignore
+    valueExpression: fhirtypes.ExpressionType | None = Field(  # type: ignore
         None,
         alias="valueExpression",
         title="Value of Example (one of allowed types)",
@@ -6292,7 +6293,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueExtendedContactDetail: fhirtypes.ExtendedContactDetailType = Field(  # type: ignore
+    valueExtendedContactDetail: fhirtypes.ExtendedContactDetailType | None = Field(  # type: ignore
         None,
         alias="valueExtendedContactDetail",
         title="Value of Example (one of allowed types)",
@@ -6308,7 +6309,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
+    valueHumanName: fhirtypes.HumanNameType | None = Field(  # type: ignore
         None,
         alias="valueHumanName",
         title="Value of Example (one of allowed types)",
@@ -6324,7 +6325,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueId: fhirtypes.IdType = Field(  # type: ignore
+    valueId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="valueId",
         title="Value of Example (one of allowed types)",
@@ -6339,11 +6340,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
-    valueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    valueIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="valueIdentifier",
         title="Value of Example (one of allowed types)",
@@ -6359,7 +6360,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueInstant: fhirtypes.InstantType = Field(  # type: ignore
+    valueInstant: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="valueInstant",
         title="Value of Example (one of allowed types)",
@@ -6374,11 +6375,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueInstant", title="Extension field for ``valueInstant``."
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Value of Example (one of allowed types)",
@@ -6393,11 +6394,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueInteger64: fhirtypes.Integer64Type = Field(  # type: ignore
+    valueInteger64: fhirtypes.Integer64Type | None = Field(  # type: ignore
         None,
         alias="valueInteger64",
         title="Value of Example (one of allowed types)",
@@ -6412,11 +6413,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueInteger64", title="Extension field for ``valueInteger64``."
     )
 
-    valueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
+    valueMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="valueMarkdown",
         title="Value of Example (one of allowed types)",
@@ -6431,11 +6432,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
-    valueMeta: fhirtypes.MetaType = Field(  # type: ignore
+    valueMeta: fhirtypes.MetaType | None = Field(  # type: ignore
         None,
         alias="valueMeta",
         title="Value of Example (one of allowed types)",
@@ -6451,7 +6452,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    valueMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="valueMoney",
         title="Value of Example (one of allowed types)",
@@ -6467,7 +6468,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueOid: fhirtypes.OidType = Field(  # type: ignore
+    valueOid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="valueOid",
         title="Value of Example (one of allowed types)",
@@ -6482,11 +6483,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueOid", title="Extension field for ``valueOid``."
     )
 
-    valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
+    valueParameterDefinition: fhirtypes.ParameterDefinitionType | None = Field(  # type: ignore
         None,
         alias="valueParameterDefinition",
         title="Value of Example (one of allowed types)",
@@ -6502,7 +6503,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    valuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="valuePeriod",
         title="Value of Example (one of allowed types)",
@@ -6518,7 +6519,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    valuePositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="valuePositiveInt",
         title="Value of Example (one of allowed types)",
@@ -6533,13 +6534,13 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_valuePositiveInt",
         title="Extension field for ``valuePositiveInt``.",
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Value of Example (one of allowed types)",
@@ -6555,7 +6556,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Value of Example (one of allowed types)",
@@ -6571,7 +6572,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueRatio: fhirtypes.RatioType = Field(  # type: ignore
+    valueRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="valueRatio",
         title="Value of Example (one of allowed types)",
@@ -6587,7 +6588,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
+    valueRatioRange: fhirtypes.RatioRangeType | None = Field(  # type: ignore
         None,
         alias="valueRatioRange",
         title="Value of Example (one of allowed types)",
@@ -6603,7 +6604,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Value of Example (one of allowed types)",
@@ -6619,7 +6620,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
+    valueRelatedArtifact: fhirtypes.RelatedArtifactType | None = Field(  # type: ignore
         None,
         alias="valueRelatedArtifact",
         title="Value of Example (one of allowed types)",
@@ -6635,7 +6636,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
+    valueSampledData: fhirtypes.SampledDataType | None = Field(  # type: ignore
         None,
         alias="valueSampledData",
         title="Value of Example (one of allowed types)",
@@ -6651,7 +6652,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueSignature: fhirtypes.SignatureType = Field(  # type: ignore
+    valueSignature: fhirtypes.SignatureType | None = Field(  # type: ignore
         None,
         alias="valueSignature",
         title="Value of Example (one of allowed types)",
@@ -6667,7 +6668,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueString: fhirtypes.StringType = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="valueString",
         title="Value of Example (one of allowed types)",
@@ -6682,11 +6683,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
-    valueTime: fhirtypes.TimeType = Field(  # type: ignore
+    valueTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="valueTime",
         title="Value of Example (one of allowed types)",
@@ -6701,11 +6702,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
-    valueTiming: fhirtypes.TimingType = Field(  # type: ignore
+    valueTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="valueTiming",
         title="Value of Example (one of allowed types)",
@@ -6721,7 +6722,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
+    valueTriggerDefinition: fhirtypes.TriggerDefinitionType | None = Field(  # type: ignore
         None,
         alias="valueTriggerDefinition",
         title="Value of Example (one of allowed types)",
@@ -6737,7 +6738,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    valueUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="valueUnsignedInt",
         title="Value of Example (one of allowed types)",
@@ -6752,13 +6753,13 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_valueUnsignedInt",
         title="Extension field for ``valueUnsignedInt``.",
     )
 
-    valueUri: fhirtypes.UriType = Field(  # type: ignore
+    valueUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="valueUri",
         title="Value of Example (one of allowed types)",
@@ -6773,11 +6774,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
-    valueUrl: fhirtypes.UrlType = Field(  # type: ignore
+    valueUrl: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="valueUrl",
         title="Value of Example (one of allowed types)",
@@ -6792,11 +6793,11 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueUrl", title="Extension field for ``valueUrl``."
     )
 
-    valueUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
+    valueUsageContext: fhirtypes.UsageContextType | None = Field(  # type: ignore
         None,
         alias="valueUsageContext",
         title="Value of Example (one of allowed types)",
@@ -6812,7 +6813,7 @@ class ElementDefinitionExample(element.Element):
         },
     )
 
-    valueUuid: fhirtypes.UuidType = Field(  # type: ignore
+    valueUuid: fhirtypes.UuidType | None = Field(  # type: ignore
         None,
         alias="valueUuid",
         title="Value of Example (one of allowed types)",
@@ -6827,7 +6828,7 @@ class ElementDefinitionExample(element.Element):
             "one_of_many_required": True,
         },
     )
-    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 
@@ -6994,7 +6995,7 @@ class ElementDefinitionMapping(element.Element):
 
     __resource_type__ = "ElementDefinitionMapping"
 
-    comment: fhirtypes.MarkdownType = Field(  # type: ignore
+    comment: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="comment",
         title="Comments about the mapping or its use",
@@ -7003,11 +7004,11 @@ class ElementDefinitionMapping(element.Element):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    identity: fhirtypes.IdType = Field(  # type: ignore
+    identity: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="identity",
         title="Reference to mapping declaration",
@@ -7017,11 +7018,11 @@ class ElementDefinitionMapping(element.Element):
             "element_required": True,
         },
     )
-    identity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    identity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_identity", title="Extension field for ``identity``."
     )
 
-    language: fhirtypes.CodeType = Field(  # type: ignore
+    language: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="language",
         title="Computable language of mapping",
@@ -7030,11 +7031,11 @@ class ElementDefinitionMapping(element.Element):
             "element_property": True,
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    map: fhirtypes.StringType = Field(  # type: ignore
+    map: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="map",
         title="Details of the mapping",
@@ -7047,7 +7048,7 @@ class ElementDefinitionMapping(element.Element):
             "element_required": True,
         },
     )
-    map__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    map__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_map", title="Extension field for ``map``."
     )
 
@@ -7088,7 +7089,7 @@ class ElementDefinitionSlicing(element.Element):
 
     __resource_type__ = "ElementDefinitionSlicing"
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Text description of how slicing works (or not)",
@@ -7102,11 +7103,11 @@ class ElementDefinitionSlicing(element.Element):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    discriminator: typing.List[fhirtypes.ElementDefinitionSlicingDiscriminatorType] = Field(  # type: ignore
+    discriminator: typing.List[fhirtypes.ElementDefinitionSlicingDiscriminatorType] | None = Field(  # type: ignore
         None,
         alias="discriminator",
         title="Element values that are used to distinguish the slices",
@@ -7122,7 +7123,7 @@ class ElementDefinitionSlicing(element.Element):
         },
     )
 
-    ordered: bool = Field(  # type: ignore
+    ordered: bool | None = Field(  # type: ignore
         None,
         alias="ordered",
         title="If elements must be in same order as slices",
@@ -7134,11 +7135,11 @@ class ElementDefinitionSlicing(element.Element):
             "element_property": True,
         },
     )
-    ordered__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    ordered__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_ordered", title="Extension field for ``ordered``."
     )
 
-    rules: fhirtypes.CodeType = Field(  # type: ignore
+    rules: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="rules",
         title="closed | open | openAtEnd",
@@ -7155,7 +7156,7 @@ class ElementDefinitionSlicing(element.Element):
             "enum_values": ["closed", "open", "openAtEnd"],
         },
     )
-    rules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    rules__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_rules", title="Extension field for ``rules``."
     )
 
@@ -7194,7 +7195,7 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
 
     __resource_type__ = "ElementDefinitionSlicingDiscriminator"
 
-    path: fhirtypes.StringType = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="path",
         title="Path to element value",
@@ -7208,11 +7209,11 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
             "element_required": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_path", title="Extension field for ``path``."
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title="value | exists | type | profile | position",
@@ -7225,7 +7226,7 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
             "enum_values": ["value", "exists", "type", "profile", "position"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -7261,7 +7262,7 @@ class ElementDefinitionType(element.Element):
 
     __resource_type__ = "ElementDefinitionType"
 
-    aggregation: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
+    aggregation: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
         None,
         alias="aggregation",
         title="contained | referenced | bundled - how aggregated",
@@ -7277,11 +7278,11 @@ class ElementDefinitionType(element.Element):
             "enum_values": ["contained", "referenced", "bundled"],
         },
     )
-    aggregation__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    aggregation__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_aggregation", title="Extension field for ``aggregation``."
     )
 
-    code: fhirtypes.UriType = Field(  # type: ignore
+    code: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Data type or Resource (reference to definition)",
@@ -7297,11 +7298,11 @@ class ElementDefinitionType(element.Element):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    profile: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    profile: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="profile",
         title="Profiles (StructureDefinition or IG) - one must apply",
@@ -7320,11 +7321,11 @@ class ElementDefinitionType(element.Element):
             "enum_reference_types": ["StructureDefinition", "ImplementationGuide"],
         },
     )
-    profile__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    profile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    targetProfile: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    targetProfile: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="targetProfile",
         title=(
@@ -7348,11 +7349,11 @@ class ElementDefinitionType(element.Element):
             "enum_reference_types": ["StructureDefinition", "ImplementationGuide"],
         },
     )
-    targetProfile__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    targetProfile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_targetProfile", title="Extension field for ``targetProfile``."
     )
 
-    versioning: fhirtypes.CodeType = Field(  # type: ignore
+    versioning: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="versioning",
         title="either | independent | specific",
@@ -7367,7 +7368,7 @@ class ElementDefinitionType(element.Element):
             "enum_values": ["either", "independent", "specific"],
         },
     )
-    versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    versioning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_versioning", title="Extension field for ``versioning``."
     )
 

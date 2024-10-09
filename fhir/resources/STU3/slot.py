@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Slot
 Release: STU3
@@ -23,7 +24,7 @@ class Slot(domainresource.DomainResource):
 
     __resource_type__ = "Slot"
 
-    appointmentType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    appointmentType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="appointmentType",
         title=(
@@ -36,7 +37,7 @@ class Slot(domainresource.DomainResource):
         },
     )
 
-    comment: fhirtypes.StringType = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="comment",
         title=(
@@ -48,11 +49,11 @@ class Slot(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    end: fhirtypes.InstantType = Field(  # type: ignore
+    end: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="end",
         title="Date/Time that the slot is to conclude",
@@ -62,11 +63,11 @@ class Slot(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_end", title="Extension field for ``end``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this item",
@@ -76,7 +77,7 @@ class Slot(domainresource.DomainResource):
         },
     )
 
-    overbooked: bool = Field(  # type: ignore
+    overbooked: bool | None = Field(  # type: ignore
         None,
         alias="overbooked",
         title=(
@@ -88,7 +89,7 @@ class Slot(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    overbooked__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    overbooked__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_overbooked", title="Extension field for ``overbooked``."
     )
 
@@ -107,7 +108,7 @@ class Slot(domainresource.DomainResource):
         },
     )
 
-    serviceCategory: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    serviceCategory: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="serviceCategory",
         title=(
@@ -120,7 +121,7 @@ class Slot(domainresource.DomainResource):
         },
     )
 
-    serviceType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    serviceType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="serviceType",
         title=(
@@ -135,7 +136,7 @@ class Slot(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialty",
         title=(
@@ -148,7 +149,7 @@ class Slot(domainresource.DomainResource):
         },
     )
 
-    start: fhirtypes.InstantType = Field(  # type: ignore
+    start: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="start",
         title="Date/Time that the slot is to begin",
@@ -158,11 +159,11 @@ class Slot(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_start", title="Extension field for ``start``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="busy | free | busy-unavailable | busy-tentative | entered-in-error",
@@ -181,7 +182,7 @@ class Slot(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 

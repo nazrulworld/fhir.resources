@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/BodySite
 Release: STU3
@@ -26,7 +27,7 @@ class BodySite(domainresource.DomainResource):
 
     __resource_type__ = "BodySite"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this body site record is in active use",
@@ -35,11 +36,11 @@ class BodySite(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Named anatomical location",
@@ -49,7 +50,7 @@ class BodySite(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Anatomical location description",
@@ -58,11 +59,11 @@ class BodySite(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Bodysite identifier",
@@ -72,7 +73,7 @@ class BodySite(domainresource.DomainResource):
         },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
+    image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
         None,
         alias="image",
         title="Attached images",
@@ -94,7 +95,7 @@ class BodySite(domainresource.DomainResource):
         },
     )
 
-    qualifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    qualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="qualifier",
         title="Modification to location code",

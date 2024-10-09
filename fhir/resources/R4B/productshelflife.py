@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ProductShelfLife
 Release: R4B
@@ -24,7 +25,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
 
     __resource_type__ = "ProductShelfLife"
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique identifier for the packaged Medicinal Product",
@@ -50,7 +51,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
         },
     )
 
-    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialPrecautionsForStorage",
         title=(

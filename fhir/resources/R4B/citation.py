@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Citation
 Release: R4B
@@ -29,7 +30,7 @@ class Citation(domainresource.DomainResource):
 
     __resource_type__ = "Citation"
 
-    approvalDate: fhirtypes.DateType = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="approvalDate",
         title="When the citation was approved by publisher",
@@ -42,11 +43,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who authored the Citation",
@@ -56,7 +57,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    citedArtifact: fhirtypes.CitationCitedArtifactType = Field(  # type: ignore
+    citedArtifact: fhirtypes.CitationCitedArtifactType | None = Field(  # type: ignore
         None,
         alias="citedArtifact",
         title="The article or artifact being described",
@@ -66,7 +67,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    classification: typing.List[fhirtypes.CitationClassificationType] = Field(  # type: ignore
+    classification: typing.List[fhirtypes.CitationClassificationType] | None = Field(  # type: ignore
         None,
         alias="classification",
         title="The assignment to an organizing scheme",
@@ -76,7 +77,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher of the Citation Resource",
@@ -89,7 +90,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="copyright",
         title=(
@@ -101,11 +102,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    currentState: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    currentState: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="currentState",
         title="The status of the citation",
@@ -115,7 +116,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -129,11 +130,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the citation",
@@ -145,11 +146,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="editor",
         title="Who edited the Citation",
@@ -159,7 +160,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="When the citation is expected to be used",
@@ -172,7 +173,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="endorser",
         title="Who endorsed the Citation",
@@ -182,7 +183,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    experimental: bool = Field(  # type: ignore
+    experimental: bool | None = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -195,11 +196,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier for the Citation resource itself",
@@ -213,7 +214,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for citation (if applicable)",
@@ -226,7 +227,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="lastReviewDate",
         title="When the citation was last reviewed",
@@ -239,11 +240,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this citation (computer friendly)",
@@ -256,11 +257,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Used for general notes and annotations not coded elsewhere",
@@ -270,7 +271,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="publisher",
         title=(
@@ -284,11 +285,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this citation is defined",
@@ -300,11 +301,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatesTo: typing.List[fhirtypes.CitationRelatesToType] = Field(  # type: ignore
+    relatesTo: typing.List[fhirtypes.CitationRelatesToType] | None = Field(  # type: ignore
         None,
         alias="relatesTo",
         title="Artifact related to the Citation Resource",
@@ -314,7 +315,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="reviewer",
         title="Who reviewed the Citation",
@@ -324,7 +325,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -340,11 +341,11 @@ class Citation(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusDate: typing.List[fhirtypes.CitationStatusDateType] = Field(  # type: ignore
+    statusDate: typing.List[fhirtypes.CitationStatusDateType] | None = Field(  # type: ignore
         None,
         alias="statusDate",
         title="An effective date or period for a status of the citation",
@@ -354,7 +355,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    summary: typing.List[fhirtypes.CitationSummaryType] = Field(  # type: ignore
+    summary: typing.List[fhirtypes.CitationSummaryType] | None = Field(  # type: ignore
         None,
         alias="summary",
         title="A human-readable display of the citation",
@@ -364,7 +365,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this citation (human friendly)",
@@ -373,11 +374,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -397,11 +398,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the Citation Resource content is intended to support",
@@ -417,7 +418,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the citation",
@@ -434,7 +435,7 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -506,7 +507,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifact"
 
-    abstract: typing.List[fhirtypes.CitationCitedArtifactAbstractType] = Field(  # type: ignore
+    abstract: typing.List[fhirtypes.CitationCitedArtifactAbstractType] | None = Field(  # type: ignore
         None,
         alias="abstract",
         title="Summary of the article or artifact",
@@ -516,7 +517,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    classification: typing.List[fhirtypes.CitationCitedArtifactClassificationType] = Field(  # type: ignore
+    classification: typing.List[fhirtypes.CitationCitedArtifactClassificationType] | None = Field(  # type: ignore
         None,
         alias="classification",
         title="The assignment to an organizing scheme",
@@ -526,7 +527,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    contributorship: fhirtypes.CitationCitedArtifactContributorshipType = Field(  # type: ignore
+    contributorship: fhirtypes.CitationCitedArtifactContributorshipType | None = Field(  # type: ignore
         None,
         alias="contributorship",
         title="Attribution of authors and other contributors",
@@ -539,7 +540,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    currentState: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    currentState: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="currentState",
         title="The status of the cited artifact",
@@ -549,7 +550,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    dateAccessed: fhirtypes.DateTimeType = Field(  # type: ignore
+    dateAccessed: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="dateAccessed",
         title="When the cited artifact was accessed",
@@ -558,11 +559,11 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    dateAccessed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    dateAccessed__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_dateAccessed", title="Extension field for ``dateAccessed``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="May include DOI, PMID, PMCID, etc.",
@@ -576,7 +577,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Any additional information or content for the article or artifact",
@@ -586,7 +587,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    part: fhirtypes.CitationCitedArtifactPartType = Field(  # type: ignore
+    part: fhirtypes.CitationCitedArtifactPartType | None = Field(  # type: ignore
         None,
         alias="part",
         title="The component of the article or artifact",
@@ -596,7 +597,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    publicationForm: typing.List[fhirtypes.CitationCitedArtifactPublicationFormType] = Field(  # type: ignore
+    publicationForm: typing.List[fhirtypes.CitationCitedArtifactPublicationFormType] | None = Field(  # type: ignore
         None,
         alias="publicationForm",
         title=(
@@ -609,7 +610,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    relatedIdentifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    relatedIdentifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="relatedIdentifier",
         title="May include trial registry identifiers",
@@ -622,7 +623,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    relatesTo: typing.List[fhirtypes.CitationCitedArtifactRelatesToType] = Field(  # type: ignore
+    relatesTo: typing.List[fhirtypes.CitationCitedArtifactRelatesToType] | None = Field(  # type: ignore
         None,
         alias="relatesTo",
         title="The artifact related to the cited artifact",
@@ -632,7 +633,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    statusDate: typing.List[fhirtypes.CitationCitedArtifactStatusDateType] = Field(  # type: ignore
+    statusDate: typing.List[fhirtypes.CitationCitedArtifactStatusDateType] | None = Field(  # type: ignore
         None,
         alias="statusDate",
         title="An effective date or period for a status of the cited artifact",
@@ -642,7 +643,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    title: typing.List[fhirtypes.CitationCitedArtifactTitleType] = Field(  # type: ignore
+    title: typing.List[fhirtypes.CitationCitedArtifactTitleType] | None = Field(  # type: ignore
         None,
         alias="title",
         title="The title details of the article or artifact",
@@ -652,7 +653,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    version: fhirtypes.CitationCitedArtifactVersionType = Field(  # type: ignore
+    version: fhirtypes.CitationCitedArtifactVersionType | None = Field(  # type: ignore
         None,
         alias="version",
         title="The defined version of the cited artifact",
@@ -662,7 +663,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    webLocation: typing.List[fhirtypes.CitationCitedArtifactWebLocationType] = Field(  # type: ignore
+    webLocation: typing.List[fhirtypes.CitationCitedArtifactWebLocationType] | None = Field(  # type: ignore
         None,
         alias="webLocation",
         title="Used for any URL for the article or artifact cited",
@@ -710,7 +711,7 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactAbstract"
 
-    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="copyright",
         title="Copyright notice for the abstract",
@@ -719,11 +720,11 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    language: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="language",
         title="Used to express the specific language",
@@ -733,7 +734,7 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
         },
     )
 
-    text: fhirtypes.MarkdownType = Field(  # type: ignore
+    text: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="text",
         title="Abstract content",
@@ -743,11 +744,11 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="The kind of abstract",
@@ -795,7 +796,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactClassification"
 
-    classifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="classifier",
         title="The specific classification value",
@@ -805,7 +806,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="The kind of classifier (e.g. publication type, keyword)",
@@ -815,7 +816,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
         },
     )
 
-    whoClassified: fhirtypes.CitationCitedArtifactClassificationWhoClassifiedType = Field(  # type: ignore
+    whoClassified: fhirtypes.CitationCitedArtifactClassificationWhoClassifiedType | None = Field(  # type: ignore
         None,
         alias="whoClassified",
         title="Provenance and copyright of classification",
@@ -851,7 +852,7 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
 
     __resource_type__ = "CitationCitedArtifactClassificationWhoClassified"
 
-    classifierCopyright: fhirtypes.StringType = Field(  # type: ignore
+    classifierCopyright: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="classifierCopyright",
         title="Rights management statement for the classification",
@@ -860,13 +861,13 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
             "element_property": True,
         },
     )
-    classifierCopyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    classifierCopyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_classifierCopyright",
         title="Extension field for ``classifierCopyright``.",
     )
 
-    freeToShare: bool = Field(  # type: ignore
+    freeToShare: bool | None = Field(  # type: ignore
         None,
         alias="freeToShare",
         title="Acceptable to re-use the classification",
@@ -875,11 +876,11 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
             "element_property": True,
         },
     )
-    freeToShare__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    freeToShare__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_freeToShare", title="Extension field for ``freeToShare``."
     )
 
-    organization: fhirtypes.ReferenceType = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="organization",
         title="Organization who created the classification",
@@ -891,7 +892,7 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         },
     )
 
-    person: fhirtypes.ReferenceType = Field(  # type: ignore
+    person: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="person",
         title="Person who created the classification",
@@ -903,7 +904,7 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         },
     )
 
-    publisher: fhirtypes.ReferenceType = Field(  # type: ignore
+    publisher: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="publisher",
         title=(
@@ -948,7 +949,7 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactContributorship"
 
-    complete: bool = Field(  # type: ignore
+    complete: bool | None = Field(  # type: ignore
         None,
         alias="complete",
         title="Indicates if the list includes all authors and/or contributors",
@@ -957,11 +958,11 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    complete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    complete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_complete", title="Extension field for ``complete``."
     )
 
-    entry: typing.List[fhirtypes.CitationCitedArtifactContributorshipEntryType] = Field(  # type: ignore
+    entry: typing.List[fhirtypes.CitationCitedArtifactContributorshipEntryType] | None = Field(  # type: ignore
         None,
         alias="entry",
         title="An individual entity named in the list",
@@ -971,7 +972,7 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
         },
     )
 
-    summary: typing.List[fhirtypes.CitationCitedArtifactContributorshipSummaryType] = Field(  # type: ignore
+    summary: typing.List[fhirtypes.CitationCitedArtifactContributorshipSummaryType] | None = Field(  # type: ignore
         None,
         alias="summary",
         title=(
@@ -1004,7 +1005,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
 
     __resource_type__ = "CitationCitedArtifactContributorshipEntry"
 
-    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
+    address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
         None,
         alias="address",
         title="Physical mailing address",
@@ -1014,7 +1015,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    affiliationInfo: typing.List[fhirtypes.CitationCitedArtifactContributorshipEntryAffiliationInfoType] = Field(  # type: ignore
+    affiliationInfo: typing.List[fhirtypes.CitationCitedArtifactContributorshipEntryAffiliationInfoType] | None = Field(  # type: ignore
         None,
         alias="affiliationInfo",
         title="Organizational affiliation",
@@ -1024,7 +1025,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    collectiveName: fhirtypes.StringType = Field(  # type: ignore
+    collectiveName: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="collectiveName",
         title="Used for collective or corporate name as an author",
@@ -1033,11 +1034,11 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
             "element_property": True,
         },
     )
-    collectiveName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    collectiveName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_collectiveName", title="Extension field for ``collectiveName``."
     )
 
-    contributionInstance: typing.List[fhirtypes.CitationCitedArtifactContributorshipEntryContributionInstanceType] = Field(  # type: ignore
+    contributionInstance: typing.List[fhirtypes.CitationCitedArtifactContributorshipEntryContributionInstanceType] | None = Field(  # type: ignore
         None,
         alias="contributionInstance",
         title="Contributions with accounting for time or number",
@@ -1047,7 +1048,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    contributionType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    contributionType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="contributionType",
         title="The specific contribution",
@@ -1060,7 +1061,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    correspondingContact: bool = Field(  # type: ignore
+    correspondingContact: bool | None = Field(  # type: ignore
         None,
         alias="correspondingContact",
         title=(
@@ -1072,13 +1073,13 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
             "element_property": True,
         },
     )
-    correspondingContact__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    correspondingContact__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_correspondingContact",
         title="Extension field for ``correspondingContact``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Author identifier, eg ORCID",
@@ -1088,7 +1089,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    initials: fhirtypes.StringType = Field(  # type: ignore
+    initials: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="initials",
         title="Initials for forename",
@@ -1097,11 +1098,11 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
             "element_property": True,
         },
     )
-    initials__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    initials__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_initials", title="Extension field for ``initials``."
     )
 
-    listOrder: fhirtypes.PositiveIntType = Field(  # type: ignore
+    listOrder: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="listOrder",
         title="Used to code order of authors",
@@ -1110,11 +1111,11 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
             "element_property": True,
         },
     )
-    listOrder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    listOrder__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_listOrder", title="Extension field for ``listOrder``."
     )
 
-    name: fhirtypes.HumanNameType = Field(  # type: ignore
+    name: fhirtypes.HumanNameType | None = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the person",
@@ -1124,7 +1125,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="role",
         title="The role of the contributor (e.g. author, editor, reviewer)",
@@ -1134,7 +1135,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="Email or telephone contact methods for the author or contributor",
@@ -1182,7 +1183,7 @@ class CitationCitedArtifactContributorshipEntryAffiliationInfo(
 
     __resource_type__ = "CitationCitedArtifactContributorshipEntryAffiliationInfo"
 
-    affiliation: fhirtypes.StringType = Field(  # type: ignore
+    affiliation: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="affiliation",
         title="Display for the organization",
@@ -1191,11 +1192,11 @@ class CitationCitedArtifactContributorshipEntryAffiliationInfo(
             "element_property": True,
         },
     )
-    affiliation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    affiliation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_affiliation", title="Extension field for ``affiliation``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier for the organization",
@@ -1205,7 +1206,7 @@ class CitationCitedArtifactContributorshipEntryAffiliationInfo(
         },
     )
 
-    role: fhirtypes.StringType = Field(  # type: ignore
+    role: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="role",
         title="Role within the organization, such as professional title",
@@ -1214,7 +1215,7 @@ class CitationCitedArtifactContributorshipEntryAffiliationInfo(
             "element_property": True,
         },
     )
-    role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    role__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_role", title="Extension field for ``role``."
     )
 
@@ -1246,7 +1247,7 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
 
     __resource_type__ = "CitationCitedArtifactContributorshipEntryContributionInstance"
 
-    time: fhirtypes.DateTimeType = Field(  # type: ignore
+    time: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="time",
         title="The time that the contribution was made",
@@ -1255,7 +1256,7 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
             "element_property": True,
         },
     )
-    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_time", title="Extension field for ``time``."
     )
 
@@ -1289,7 +1290,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
 
     __resource_type__ = "CitationCitedArtifactContributorshipSummary"
 
-    source: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    source: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="source",
         title="Used to code the producer or rule for creating the display string",
@@ -1299,7 +1300,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         },
     )
 
-    style: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    style: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="style",
         title="The format for the display string",
@@ -1309,7 +1310,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Either authorList or contributorshipStatement",
@@ -1322,7 +1323,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         },
     )
 
-    value: fhirtypes.MarkdownType = Field(  # type: ignore
+    value: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="value",
         title=(
@@ -1335,7 +1336,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 
@@ -1377,7 +1378,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactPart"
 
-    baseCitation: fhirtypes.ReferenceType = Field(  # type: ignore
+    baseCitation: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="baseCitation",
         title="The citation for the full article or artifact",
@@ -1389,7 +1390,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="The kind of component",
@@ -1399,7 +1400,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
         },
     )
 
-    value: fhirtypes.StringType = Field(  # type: ignore
+    value: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="value",
         title="The specification of the component",
@@ -1408,7 +1409,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 
@@ -1432,7 +1433,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactPublicationForm"
 
-    accessionNumber: fhirtypes.StringType = Field(  # type: ignore
+    accessionNumber: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="accessionNumber",
         title="Entry number or identifier for inclusion in a database",
@@ -1441,11 +1442,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    accessionNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    accessionNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_accessionNumber", title="Extension field for ``accessionNumber``."
     )
 
-    articleDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    articleDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="articleDate",
         title=(
@@ -1461,11 +1462,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    articleDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    articleDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_articleDate", title="Extension field for ``articleDate``."
     )
 
-    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="copyright",
         title="Copyright notice for the full article or artifact",
@@ -1474,11 +1475,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    firstPage: fhirtypes.StringType = Field(  # type: ignore
+    firstPage: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="firstPage",
         title="Used for isolated representation of first page",
@@ -1487,11 +1488,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    firstPage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    firstPage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_firstPage", title="Extension field for ``firstPage``."
     )
 
-    language: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    language: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="language",
         title="Language in which this form of the article is published",
@@ -1501,7 +1502,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
         },
     )
 
-    lastPage: fhirtypes.StringType = Field(  # type: ignore
+    lastPage: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="lastPage",
         title="Used for isolated representation of last page",
@@ -1510,11 +1511,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    lastPage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastPage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lastPage", title="Extension field for ``lastPage``."
     )
 
-    lastRevisionDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    lastRevisionDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="lastRevisionDate",
         title="The date the article was last revised or updated in the database",
@@ -1523,13 +1524,13 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    lastRevisionDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastRevisionDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_lastRevisionDate",
         title="Extension field for ``lastRevisionDate``.",
     )
 
-    pageCount: fhirtypes.StringType = Field(  # type: ignore
+    pageCount: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="pageCount",
         title="Number of pages or screens",
@@ -1538,11 +1539,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    pageCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    pageCount__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_pageCount", title="Extension field for ``pageCount``."
     )
 
-    pageString: fhirtypes.StringType = Field(  # type: ignore
+    pageString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="pageString",
         title="Used for full display of pagination",
@@ -1551,11 +1552,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    pageString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    pageString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_pageString", title="Extension field for ``pageString``."
     )
 
-    periodicRelease: fhirtypes.CitationCitedArtifactPublicationFormPeriodicReleaseType = Field(  # type: ignore
+    periodicRelease: fhirtypes.CitationCitedArtifactPublicationFormPeriodicReleaseType | None = Field(  # type: ignore
         None,
         alias="periodicRelease",
         title="The specific issue in which the cited article resides",
@@ -1565,7 +1566,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
         },
     )
 
-    publishedIn: fhirtypes.CitationCitedArtifactPublicationFormPublishedInType = Field(  # type: ignore
+    publishedIn: fhirtypes.CitationCitedArtifactPublicationFormPublishedInType | None = Field(  # type: ignore
         None,
         alias="publishedIn",
         title="The collection the cited article or artifact is published in",
@@ -1611,7 +1612,7 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
 
     __resource_type__ = "CitationCitedArtifactPublicationFormPeriodicRelease"
 
-    citedMedium: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    citedMedium: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="citedMedium",
         title="Internet or Print",
@@ -1624,7 +1625,7 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
         },
     )
 
-    dateOfPublication: fhirtypes.CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicationType = Field(  # type: ignore
+    dateOfPublication: fhirtypes.CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicationType | None = Field(  # type: ignore
         None,
         alias="dateOfPublication",
         title="Defining the date on which the issue of the journal was published",
@@ -1634,7 +1635,7 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
         },
     )
 
-    issue: fhirtypes.StringType = Field(  # type: ignore
+    issue: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="issue",
         title="Issue, part or supplement of journal in which the article is published",
@@ -1643,11 +1644,11 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
             "element_property": True,
         },
     )
-    issue__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    issue__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_issue", title="Extension field for ``issue``."
     )
 
-    volume: fhirtypes.StringType = Field(  # type: ignore
+    volume: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="volume",
         title="Volume number of journal in which the article is published",
@@ -1656,7 +1657,7 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
             "element_property": True,
         },
     )
-    volume__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    volume__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_volume", title="Extension field for ``volume``."
     )
 
@@ -1691,7 +1692,7 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
         "CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication"
     )
 
-    date: fhirtypes.DateType = Field(  # type: ignore
+    date: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Date on which the issue of the journal was published",
@@ -1700,11 +1701,11 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    day: fhirtypes.StringType = Field(  # type: ignore
+    day: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="day",
         title="Day on which the issue of the journal was published",
@@ -1713,11 +1714,11 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
             "element_property": True,
         },
     )
-    day__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    day__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_day", title="Extension field for ``day``."
     )
 
-    month: fhirtypes.StringType = Field(  # type: ignore
+    month: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="month",
         title="Month on which the issue of the journal was published",
@@ -1726,11 +1727,11 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
             "element_property": True,
         },
     )
-    month__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    month__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_month", title="Extension field for ``month``."
     )
 
-    season: fhirtypes.StringType = Field(  # type: ignore
+    season: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="season",
         title="Season on which the issue of the journal was published",
@@ -1739,11 +1740,11 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
             "element_property": True,
         },
     )
-    season__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    season__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_season", title="Extension field for ``season``."
     )
 
-    text: fhirtypes.StringType = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="text",
         title=(
@@ -1755,11 +1756,11 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
             "element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    year: fhirtypes.StringType = Field(  # type: ignore
+    year: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="year",
         title="Year on which the issue of the journal was published",
@@ -1768,7 +1769,7 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
             "element_property": True,
         },
     )
-    year__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    year__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_year", title="Extension field for ``year``."
     )
 
@@ -1801,7 +1802,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
 
     __resource_type__ = "CitationCitedArtifactPublicationFormPublishedIn"
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title=(
@@ -1814,7 +1815,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         },
     )
 
-    publisher: fhirtypes.ReferenceType = Field(  # type: ignore
+    publisher: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher",
@@ -1826,7 +1827,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         },
     )
 
-    publisherLocation: fhirtypes.StringType = Field(  # type: ignore
+    publisherLocation: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="publisherLocation",
         title="Geographic location of the publisher",
@@ -1835,13 +1836,13 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
             "element_property": True,
         },
     )
-    publisherLocation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    publisherLocation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_publisherLocation",
         title="Extension field for ``publisherLocation``.",
     )
 
-    title: fhirtypes.StringType = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="title",
         title="Name of the database or title of the book or journal",
@@ -1850,11 +1851,11 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of container (e.g. Periodical, database, or book)",
@@ -1902,7 +1903,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    targetAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="targetAttachment",
         title="The article or artifact that the cited artifact is related to",
@@ -1915,7 +1916,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetClassifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    targetClassifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="targetClassifier",
         title="The clasification of the related artifact",
@@ -1925,7 +1926,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    targetIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="targetIdentifier",
         title="The article or artifact that the cited artifact is related to",
@@ -1938,7 +1939,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    targetReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="targetReference",
         title="The article or artifact that the cited artifact is related to",
@@ -1953,7 +1954,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetUri: fhirtypes.UriType = Field(  # type: ignore
+    targetUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="targetUri",
         title="The article or artifact that the cited artifact is related to",
@@ -1965,7 +1966,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    targetUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    targetUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_targetUri", title="Extension field for ``targetUri``."
     )
 
@@ -2031,7 +2032,7 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
         },
     )
 
-    actual: bool = Field(  # type: ignore
+    actual: bool | None = Field(  # type: ignore
         None,
         alias="actual",
         title="Either occurred or expected",
@@ -2040,7 +2041,7 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    actual__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    actual__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_actual", title="Extension field for ``actual``."
     )
 
@@ -2073,7 +2074,7 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactTitle"
 
-    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    language: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="language",
         title="Used to express the specific language",
@@ -2083,7 +2084,7 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
         },
     )
 
-    text: fhirtypes.MarkdownType = Field(  # type: ignore
+    text: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="text",
         title="The title of the article or artifact",
@@ -2093,11 +2094,11 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="The kind of title",
@@ -2137,7 +2138,7 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactVersion"
 
-    baseCitation: fhirtypes.ReferenceType = Field(  # type: ignore
+    baseCitation: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="baseCitation",
         title="Citation for the main version of the cited artifact",
@@ -2149,7 +2150,7 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
         },
     )
 
-    value: fhirtypes.StringType = Field(  # type: ignore
+    value: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="value",
         title="The version number or other version identifier",
@@ -2159,7 +2160,7 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 
@@ -2193,7 +2194,7 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactWebLocation"
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Code the reason for different URLs, e.g. abstract and full-text",
@@ -2203,7 +2204,7 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
         },
     )
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title="The specific URL",
@@ -2212,7 +2213,7 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
@@ -2235,7 +2236,7 @@ class CitationClassification(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationClassification"
 
-    classifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="classifier",
         title="The specific classification value",
@@ -2245,7 +2246,7 @@ class CitationClassification(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="The kind of classifier (e.g. publication type, keyword)",
@@ -2284,7 +2285,7 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    targetAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="targetAttachment",
         title="The article or artifact that the Citation Resource is related to",
@@ -2297,7 +2298,7 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetClassifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    targetClassifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="targetClassifier",
         title="The clasification of the related artifact",
@@ -2307,7 +2308,7 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    targetIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="targetIdentifier",
         title="The article or artifact that the Citation Resource is related to",
@@ -2320,7 +2321,7 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    targetReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="targetReference",
         title="The article or artifact that the Citation Resource is related to",
@@ -2335,7 +2336,7 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetUri: fhirtypes.UriType = Field(  # type: ignore
+    targetUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="targetUri",
         title="The article or artifact that the Citation Resource is related to",
@@ -2347,7 +2348,7 @@ class CitationRelatesTo(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    targetUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    targetUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_targetUri", title="Extension field for ``targetUri``."
     )
 
@@ -2413,7 +2414,7 @@ class CitationStatusDate(backboneelement.BackboneElement):
         },
     )
 
-    actual: bool = Field(  # type: ignore
+    actual: bool | None = Field(  # type: ignore
         None,
         alias="actual",
         title="Either occurred or expected",
@@ -2422,7 +2423,7 @@ class CitationStatusDate(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    actual__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    actual__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_actual", title="Extension field for ``actual``."
     )
 
@@ -2455,7 +2456,7 @@ class CitationSummary(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationSummary"
 
-    style: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    style: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="style",
         title="Format for display of the citation",
@@ -2465,7 +2466,7 @@ class CitationSummary(backboneelement.BackboneElement):
         },
     )
 
-    text: fhirtypes.MarkdownType = Field(  # type: ignore
+    text: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="text",
         title="The human-readable display of the citation",
@@ -2475,7 +2476,7 @@ class CitationSummary(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 

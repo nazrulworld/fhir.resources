@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProductDispense
 Release: R5
@@ -27,7 +28,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
 
     __resource_type__ = "BiologicallyDerivedProductDispense"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="The order or request that this dispense is fulfilling",
@@ -42,7 +43,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    destination: fhirtypes.ReferenceType = Field(  # type: ignore
+    destination: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="destination",
         title="Where the product was dispatched to",
@@ -57,7 +58,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this dispense",
@@ -71,7 +72,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="location",
         title="Where the dispense occurred",
@@ -83,7 +84,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    matchStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    matchStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="matchStatus",
         title="Indicates the type of matching associated with the dispense",
@@ -93,7 +94,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Additional notes",
@@ -103,7 +104,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    originRelationshipType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    originRelationshipType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="originRelationshipType",
         title="Relationship between the donor and intended recipient",
@@ -116,7 +117,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="partOf",
         title="Short description",
@@ -143,7 +144,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    performer: typing.List[fhirtypes.BiologicallyDerivedProductDispensePerformerType] = Field(  # type: ignore
+    performer: typing.List[fhirtypes.BiologicallyDerivedProductDispensePerformerType] | None = Field(  # type: ignore
         None,
         alias="performer",
         title="Indicates who or what performed an action",
@@ -153,7 +154,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    preparedDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    preparedDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="preparedDate",
         title="When product was selected/matched",
@@ -162,7 +163,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    preparedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    preparedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_preparedDate", title="Extension field for ``preparedDate``."
     )
 
@@ -181,7 +182,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Amount dispensed",
@@ -195,7 +196,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -220,11 +221,11 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    usageInstruction: fhirtypes.StringType = Field(  # type: ignore
+    usageInstruction: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="usageInstruction",
         title="Specific instructions for use",
@@ -233,13 +234,13 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    usageInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    usageInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_usageInstruction",
         title="Extension field for ``usageInstruction``.",
     )
 
-    whenHandedOver: fhirtypes.DateTimeType = Field(  # type: ignore
+    whenHandedOver: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="whenHandedOver",
         title="When the product was dispatched",
@@ -248,7 +249,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    whenHandedOver__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    whenHandedOver__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_whenHandedOver", title="Extension field for ``whenHandedOver``."
     )
 
@@ -319,7 +320,7 @@ class BiologicallyDerivedProductDispensePerformer(backboneelement.BackboneElemen
         },
     )
 
-    function: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="function",
         title="Identifies the function of the performer during the dispense",

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit
 Release: R5
@@ -26,7 +27,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
     __resource_type__ = "ExplanationOfBenefit"
 
-    accident: fhirtypes.ExplanationOfBenefitAccidentType = Field(  # type: ignore
+    accident: fhirtypes.ExplanationOfBenefitAccidentType | None = Field(  # type: ignore
         None,
         alias="accident",
         title="Details of the event",
@@ -39,7 +40,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    addItem: typing.List[fhirtypes.ExplanationOfBenefitAddItemType] = Field(  # type: ignore
+    addItem: typing.List[fhirtypes.ExplanationOfBenefitAddItemType] | None = Field(  # type: ignore
         None,
         alias="addItem",
         title="Insurer added line items",
@@ -52,7 +53,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(  # type: ignore
+    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] | None = Field(  # type: ignore
         None,
         alias="adjudication",
         title="Header-level adjudication",
@@ -65,7 +66,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    benefitBalance: typing.List[fhirtypes.ExplanationOfBenefitBenefitBalanceType] = Field(  # type: ignore
+    benefitBalance: typing.List[fhirtypes.ExplanationOfBenefitBenefitBalanceType] | None = Field(  # type: ignore
         None,
         alias="benefitBalance",
         title="Balance by Benefit Category",
@@ -75,7 +76,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    benefitPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    benefitPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="benefitPeriod",
         title="When the benefits are applicable",
@@ -85,7 +86,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    billablePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    billablePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="billablePeriod",
         title="Relevant time frame for the claim",
@@ -95,7 +96,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    careTeam: typing.List[fhirtypes.ExplanationOfBenefitCareTeamType] = Field(  # type: ignore
+    careTeam: typing.List[fhirtypes.ExplanationOfBenefitCareTeamType] | None = Field(  # type: ignore
         None,
         alias="careTeam",
         title="Care Team members",
@@ -105,7 +106,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    claim: fhirtypes.ReferenceType = Field(  # type: ignore
+    claim: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="claim",
         title="Claim reference",
@@ -120,7 +121,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    claimResponse: fhirtypes.ReferenceType = Field(  # type: ignore
+    claimResponse: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="claimResponse",
         title="Claim response reference",
@@ -135,7 +136,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="created",
         title="Response creation date",
@@ -145,11 +146,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    decision: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    decision: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="decision",
         title="Result of the adjudication",
@@ -162,7 +163,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    diagnosis: typing.List[fhirtypes.ExplanationOfBenefitDiagnosisType] = Field(  # type: ignore
+    diagnosis: typing.List[fhirtypes.ExplanationOfBenefitDiagnosisType] | None = Field(  # type: ignore
         None,
         alias="diagnosis",
         title="Pertinent diagnosis information",
@@ -172,7 +173,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    diagnosisRelatedGroup: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    diagnosisRelatedGroup: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="diagnosisRelatedGroup",
         title="Package billing code",
@@ -186,7 +187,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    disposition: fhirtypes.StringType = Field(  # type: ignore
+    disposition: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="disposition",
         title="Disposition Message",
@@ -195,11 +196,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
-    encounter: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    encounter: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounters associated with the listed treatments",
@@ -211,7 +212,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    enterer: fhirtypes.ReferenceType = Field(  # type: ignore
+    enterer: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="enterer",
         title="Author of the claim",
@@ -230,7 +231,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    event: typing.List[fhirtypes.ExplanationOfBenefitEventType] = Field(  # type: ignore
+    event: typing.List[fhirtypes.ExplanationOfBenefitEventType] | None = Field(  # type: ignore
         None,
         alias="event",
         title="Event information",
@@ -240,7 +241,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    facility: fhirtypes.ReferenceType = Field(  # type: ignore
+    facility: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="facility",
         title="Servicing Facility",
@@ -252,7 +253,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    form: fhirtypes.AttachmentType = Field(  # type: ignore
+    form: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="form",
         title="Printed reference or actual form",
@@ -265,7 +266,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    formCode: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    formCode: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="formCode",
         title="Printed form identifier",
@@ -275,7 +276,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    fundsReserve: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    fundsReserve: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="fundsReserve",
         title="Funds reserved status",
@@ -288,7 +289,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    fundsReserveRequested: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    fundsReserveRequested: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="fundsReserveRequested",
         title="For whom to reserve funds",
@@ -301,7 +302,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for the resource",
@@ -311,7 +312,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    insurance: typing.List[fhirtypes.ExplanationOfBenefitInsuranceType] = Field(  # type: ignore
+    insurance: typing.List[fhirtypes.ExplanationOfBenefitInsuranceType] | None = Field(  # type: ignore
         None,
         alias="insurance",
         title="Patient insurance information",
@@ -324,7 +325,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    insurer: fhirtypes.ReferenceType = Field(  # type: ignore
+    insurer: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="insurer",
         title="Party responsible for reimbursement",
@@ -339,7 +340,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    item: typing.List[fhirtypes.ExplanationOfBenefitItemType] = Field(  # type: ignore
+    item: typing.List[fhirtypes.ExplanationOfBenefitItemType] | None = Field(  # type: ignore
         None,
         alias="item",
         title="Product or service provided",
@@ -352,7 +353,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    originalPrescription: fhirtypes.ReferenceType = Field(  # type: ignore
+    originalPrescription: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="originalPrescription",
         title="Original prescription if superceded by fulfiller",
@@ -368,7 +369,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    outcome: fhirtypes.CodeType = Field(  # type: ignore
+    outcome: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="outcome",
         title="queued | complete | error | partial",
@@ -384,7 +385,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
             "enum_values": ["queued", "complete", "error", "partial"],
         },
     )
-    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_outcome", title="Extension field for ``outcome``."
     )
 
@@ -404,7 +405,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    patientPaid: fhirtypes.MoneyType = Field(  # type: ignore
+    patientPaid: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="patientPaid",
         title="Paid by the patient",
@@ -418,7 +419,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    payee: fhirtypes.ExplanationOfBenefitPayeeType = Field(  # type: ignore
+    payee: fhirtypes.ExplanationOfBenefitPayeeType | None = Field(  # type: ignore
         None,
         alias="payee",
         title="Recipient of benefits payable",
@@ -431,7 +432,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    payment: fhirtypes.ExplanationOfBenefitPaymentType = Field(  # type: ignore
+    payment: fhirtypes.ExplanationOfBenefitPaymentType | None = Field(  # type: ignore
         None,
         alias="payment",
         title="Payment Details",
@@ -441,7 +442,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    preAuthRef: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    preAuthRef: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="preAuthRef",
         title="Preauthorization reference",
@@ -453,11 +454,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    preAuthRef__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    preAuthRef__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
     )
 
-    preAuthRefPeriod: typing.List[fhirtypes.PeriodType] = Field(  # type: ignore
+    preAuthRefPeriod: typing.List[fhirtypes.PeriodType] | None = Field(  # type: ignore
         None,
         alias="preAuthRefPeriod",
         title="Preauthorization in-effect period",
@@ -470,7 +471,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    precedence: fhirtypes.PositiveIntType = Field(  # type: ignore
+    precedence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="precedence",
         title="Precedence (primary, secondary, etc.)",
@@ -482,11 +483,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    precedence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    precedence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_precedence", title="Extension field for ``precedence``."
     )
 
-    prescription: fhirtypes.ReferenceType = Field(  # type: ignore
+    prescription: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="prescription",
         title="Prescription authorizing services or products",
@@ -503,7 +504,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    priority: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="priority",
         title="Desired processing urgency",
@@ -516,7 +517,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    procedure: typing.List[fhirtypes.ExplanationOfBenefitProcedureType] = Field(  # type: ignore
+    procedure: typing.List[fhirtypes.ExplanationOfBenefitProcedureType] | None = Field(  # type: ignore
         None,
         alias="procedure",
         title="Clinical procedures performed",
@@ -529,7 +530,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    processNote: typing.List[fhirtypes.ExplanationOfBenefitProcessNoteType] = Field(  # type: ignore
+    processNote: typing.List[fhirtypes.ExplanationOfBenefitProcessNoteType] | None = Field(  # type: ignore
         None,
         alias="processNote",
         title="Note concerning adjudication",
@@ -542,7 +543,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    provider: fhirtypes.ReferenceType = Field(  # type: ignore
+    provider: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="provider",
         title="Party responsible for the claim",
@@ -561,7 +562,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    referral: fhirtypes.ReferenceType = Field(  # type: ignore
+    referral: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="referral",
         title="Treatment Referral",
@@ -579,7 +580,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    related: typing.List[fhirtypes.ExplanationOfBenefitRelatedType] = Field(  # type: ignore
+    related: typing.List[fhirtypes.ExplanationOfBenefitRelatedType] | None = Field(  # type: ignore
         None,
         alias="related",
         title="Prior or corollary claims",
@@ -592,7 +593,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -605,11 +606,11 @@ class ExplanationOfBenefit(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    subType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="subType",
         title="More granular claim type",
@@ -623,7 +624,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    supportingInfo: typing.List[fhirtypes.ExplanationOfBenefitSupportingInfoType] = Field(  # type: ignore
+    supportingInfo: typing.List[fhirtypes.ExplanationOfBenefitSupportingInfoType] | None = Field(  # type: ignore
         None,
         alias="supportingInfo",
         title="Supporting information",
@@ -636,7 +637,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    total: typing.List[fhirtypes.ExplanationOfBenefitTotalType] = Field(  # type: ignore
+    total: typing.List[fhirtypes.ExplanationOfBenefitTotalType] | None = Field(  # type: ignore
         None,
         alias="total",
         title="Adjudication totals",
@@ -646,7 +647,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    traceNumber: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    traceNumber: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="traceNumber",
         title="Number for tracking",
@@ -672,7 +673,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         },
     )
 
-    use: fhirtypes.CodeType = Field(  # type: ignore
+    use: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="use",
         title="claim | preauthorization | predetermination",
@@ -698,7 +699,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
             "enum_values": ["claim", "preauthorization", "predetermination"],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_use", title="Extension field for ``use``."
     )
 
@@ -797,7 +798,7 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitAccident"
 
-    date: fhirtypes.DateType = Field(  # type: ignore
+    date: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="date",
         title="When the incident occurred",
@@ -809,11 +810,11 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    locationAddress: fhirtypes.AddressType = Field(  # type: ignore
+    locationAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="locationAddress",
         title="Where the event occurred",
@@ -826,7 +827,7 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
         },
     )
 
-    locationReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    locationReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="locationReference",
         title="Where the event occurred",
@@ -841,7 +842,7 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="The nature of the accident",
@@ -900,7 +901,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitAddItem"
 
-    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(  # type: ignore
+    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] | None = Field(  # type: ignore
         None,
         alias="adjudication",
         title="Added items adjudication",
@@ -910,7 +911,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    bodySite: typing.List[fhirtypes.ExplanationOfBenefitAddItemBodySiteType] = Field(  # type: ignore
+    bodySite: typing.List[fhirtypes.ExplanationOfBenefitAddItemBodySiteType] | None = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Anatomical location",
@@ -920,7 +921,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    detail: typing.List[fhirtypes.ExplanationOfBenefitAddItemDetailType] = Field(  # type: ignore
+    detail: typing.List[fhirtypes.ExplanationOfBenefitAddItemDetailType] | None = Field(  # type: ignore
         None,
         alias="detail",
         title="Insurer added line items",
@@ -930,7 +931,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    detailSequence: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    detailSequence: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="detailSequence",
         title="Detail sequence number",
@@ -942,11 +943,11 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    detailSequence__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    detailSequence__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_detailSequence", title="Extension field for ``detailSequence``."
     )
 
-    factor: fhirtypes.DecimalType = Field(  # type: ignore
+    factor: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -960,11 +961,11 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    itemSequence: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    itemSequence: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="itemSequence",
         title="Item sequence number",
@@ -973,11 +974,11 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    itemSequence__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    itemSequence__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_itemSequence", title="Extension field for ``itemSequence``."
     )
 
-    locationAddress: fhirtypes.AddressType = Field(  # type: ignore
+    locationAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="locationAddress",
         title="Place of service or where product was supplied",
@@ -990,7 +991,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    locationCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    locationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="locationCodeableConcept",
         title="Place of service or where product was supplied",
@@ -1003,7 +1004,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    locationReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    locationReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="locationReference",
         title="Place of service or where product was supplied",
@@ -1018,7 +1019,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    modifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -1031,7 +1032,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    net: fhirtypes.MoneyType = Field(  # type: ignore
+    net: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="net",
         title="Total item cost",
@@ -1044,7 +1045,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    noteNumber: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    noteNumber: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -1056,11 +1057,11 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    noteNumber__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    noteNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_noteNumber", title="Extension field for ``noteNumber``."
     )
 
-    patientPaid: fhirtypes.MoneyType = Field(  # type: ignore
+    patientPaid: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="patientPaid",
         title="Paid by the patient",
@@ -1074,7 +1075,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    productOrService: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrService: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrService",
         title="Billing, service, product, or drug code",
@@ -1091,7 +1092,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    productOrServiceEnd: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrServiceEnd: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrServiceEnd",
         title="End of a range of codes",
@@ -1108,7 +1109,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    programCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="programCode",
         title="Program the product or service is provided under",
@@ -1118,7 +1119,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    provider: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    provider: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="provider",
         title="Authorized providers",
@@ -1137,7 +1138,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of products or services",
@@ -1147,7 +1148,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    request: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    request: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="request",
         title="Request or Referral for Service",
@@ -1166,7 +1167,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    revenue: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -1179,7 +1180,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType = Field(  # type: ignore
+    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType | None = Field(  # type: ignore
         None,
         alias="reviewOutcome",
         title="Additem level adjudication results",
@@ -1192,7 +1193,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    servicedDate: fhirtypes.DateType = Field(  # type: ignore
+    servicedDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="servicedDate",
         title="Date or dates of service or product delivery",
@@ -1207,11 +1208,11 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_servicedDate", title="Extension field for ``servicedDate``."
     )
 
-    servicedPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    servicedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="servicedPeriod",
         title="Date or dates of service or product delivery",
@@ -1227,7 +1228,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    subDetailSequence: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    subDetailSequence: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="subDetailSequence",
         title="Subdetail sequence number",
@@ -1239,13 +1240,13 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subDetailSequence__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    subDetailSequence__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_subDetailSequence",
         title="Extension field for ``subDetailSequence``.",
     )
 
-    tax: fhirtypes.MoneyType = Field(  # type: ignore
+    tax: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="tax",
         title="Total tax",
@@ -1255,7 +1256,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    traceNumber: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    traceNumber: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="traceNumber",
         title="Number for tracking",
@@ -1268,7 +1269,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
+    unitPrice: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per item",
@@ -1368,7 +1369,7 @@ class ExplanationOfBenefitAddItemBodySite(backboneelement.BackboneElement):
         },
     )
 
-    subSite: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    subSite: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="subSite",
         title="Sub-location",
@@ -1401,7 +1402,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitAddItemDetail"
 
-    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(  # type: ignore
+    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] | None = Field(  # type: ignore
         None,
         alias="adjudication",
         title="Added items adjudication",
@@ -1411,7 +1412,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    factor: fhirtypes.DecimalType = Field(  # type: ignore
+    factor: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -1425,11 +1426,11 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    modifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -1442,7 +1443,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    net: fhirtypes.MoneyType = Field(  # type: ignore
+    net: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="net",
         title="Total item cost",
@@ -1455,7 +1456,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    noteNumber: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    noteNumber: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -1467,11 +1468,11 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    noteNumber__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    noteNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_noteNumber", title="Extension field for ``noteNumber``."
     )
 
-    patientPaid: fhirtypes.MoneyType = Field(  # type: ignore
+    patientPaid: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="patientPaid",
         title="Paid by the patient",
@@ -1485,7 +1486,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    productOrService: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrService: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrService",
         title="Billing, service, product, or drug code",
@@ -1502,7 +1503,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    productOrServiceEnd: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrServiceEnd: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrServiceEnd",
         title="End of a range of codes",
@@ -1519,7 +1520,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of products or services",
@@ -1529,7 +1530,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    revenue: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -1542,7 +1543,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType = Field(  # type: ignore
+    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType | None = Field(  # type: ignore
         None,
         alias="reviewOutcome",
         title="Additem detail level adjudication results",
@@ -1555,7 +1556,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    subDetail: typing.List[fhirtypes.ExplanationOfBenefitAddItemDetailSubDetailType] = Field(  # type: ignore
+    subDetail: typing.List[fhirtypes.ExplanationOfBenefitAddItemDetailSubDetailType] | None = Field(  # type: ignore
         None,
         alias="subDetail",
         title="Insurer added line items",
@@ -1565,7 +1566,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    tax: fhirtypes.MoneyType = Field(  # type: ignore
+    tax: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="tax",
         title="Total tax",
@@ -1575,7 +1576,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    traceNumber: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    traceNumber: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="traceNumber",
         title="Number for tracking",
@@ -1588,7 +1589,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
+    unitPrice: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per item",
@@ -1641,7 +1642,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
 
     __resource_type__ = "ExplanationOfBenefitAddItemDetailSubDetail"
 
-    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(  # type: ignore
+    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] | None = Field(  # type: ignore
         None,
         alias="adjudication",
         title="Added items adjudication",
@@ -1651,7 +1652,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    factor: fhirtypes.DecimalType = Field(  # type: ignore
+    factor: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -1665,11 +1666,11 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
             "element_property": True,
         },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    modifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -1682,7 +1683,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    net: fhirtypes.MoneyType = Field(  # type: ignore
+    net: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="net",
         title="Total item cost",
@@ -1695,7 +1696,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    noteNumber: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    noteNumber: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -1707,11 +1708,11 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
             "element_property": True,
         },
     )
-    noteNumber__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    noteNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_noteNumber", title="Extension field for ``noteNumber``."
     )
 
-    patientPaid: fhirtypes.MoneyType = Field(  # type: ignore
+    patientPaid: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="patientPaid",
         title="Paid by the patient",
@@ -1725,7 +1726,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    productOrService: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrService: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrService",
         title="Billing, service, product, or drug code",
@@ -1742,7 +1743,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    productOrServiceEnd: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrServiceEnd: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrServiceEnd",
         title="End of a range of codes",
@@ -1759,7 +1760,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of products or services",
@@ -1769,7 +1770,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    revenue: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -1782,7 +1783,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType = Field(  # type: ignore
+    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType | None = Field(  # type: ignore
         None,
         alias="reviewOutcome",
         title="Additem subdetail level adjudication results",
@@ -1795,7 +1796,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    tax: fhirtypes.MoneyType = Field(  # type: ignore
+    tax: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="tax",
         title="Total tax",
@@ -1805,7 +1806,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    traceNumber: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    traceNumber: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="traceNumber",
         title="Number for tracking",
@@ -1818,7 +1819,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
+    unitPrice: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per item",
@@ -1882,7 +1883,7 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Description of the benefit or services covered",
@@ -1891,11 +1892,11 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    excluded: bool = Field(  # type: ignore
+    excluded: bool | None = Field(  # type: ignore
         None,
         alias="excluded",
         title="Excluded from the plan",
@@ -1908,11 +1909,11 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    excluded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    excluded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_excluded", title="Extension field for ``excluded``."
     )
 
-    financial: typing.List[fhirtypes.ExplanationOfBenefitBenefitBalanceFinancialType] = Field(  # type: ignore
+    financial: typing.List[fhirtypes.ExplanationOfBenefitBenefitBalanceFinancialType] | None = Field(  # type: ignore
         None,
         alias="financial",
         title="Benefit Summary",
@@ -1922,7 +1923,7 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Short name for the benefit",
@@ -1931,11 +1932,11 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    network: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    network: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="network",
         title="In or out of network",
@@ -1948,7 +1949,7 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
         },
     )
 
-    term: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    term: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="term",
         title="Annual or lifetime",
@@ -1961,7 +1962,7 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
         },
     )
 
-    unit: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    unit: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="unit",
         title="Individual or family",
@@ -2003,7 +2004,7 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
 
     __resource_type__ = "ExplanationOfBenefitBenefitBalanceFinancial"
 
-    allowedMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    allowedMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="allowedMoney",
         title="Benefits allowed",
@@ -2016,7 +2017,7 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
         },
     )
 
-    allowedString: fhirtypes.StringType = Field(  # type: ignore
+    allowedString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="allowedString",
         title="Benefits allowed",
@@ -2028,11 +2029,11 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
             "one_of_many_required": False,
         },
     )
-    allowedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    allowedString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_allowedString", title="Extension field for ``allowedString``."
     )
 
-    allowedUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    allowedUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="allowedUnsignedInt",
         title="Benefits allowed",
@@ -2044,7 +2045,7 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
             "one_of_many_required": False,
         },
     )
-    allowedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    allowedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_allowedUnsignedInt",
         title="Extension field for ``allowedUnsignedInt``.",
@@ -2060,7 +2061,7 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
         },
     )
 
-    usedMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    usedMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="usedMoney",
         title="Benefits used",
@@ -2073,7 +2074,7 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
         },
     )
 
-    usedUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    usedUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="usedUnsignedInt",
         title="Benefits used",
@@ -2085,7 +2086,7 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
             "one_of_many_required": False,
         },
     )
-    usedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    usedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_usedUnsignedInt", title="Extension field for ``usedUnsignedInt``."
     )
 
@@ -2154,7 +2155,7 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
         },
     )
 
-    responsible: bool = Field(  # type: ignore
+    responsible: bool | None = Field(  # type: ignore
         None,
         alias="responsible",
         title="Indicator of the lead practitioner",
@@ -2166,11 +2167,11 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    responsible__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    responsible__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_responsible", title="Extension field for ``responsible``."
     )
 
-    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="role",
         title="Function within the team",
@@ -2183,7 +2184,7 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
+    sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title="Order of care team",
@@ -2193,11 +2194,11 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    specialty: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    specialty: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="specialty",
         title="Practitioner or provider specialization",
@@ -2250,7 +2251,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitDiagnosis"
 
-    diagnosisCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    diagnosisCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="diagnosisCodeableConcept",
         title="Nature of illness or problem",
@@ -2266,7 +2267,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
         },
     )
 
-    diagnosisReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    diagnosisReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="diagnosisReference",
         title="Nature of illness or problem",
@@ -2284,7 +2285,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
         },
     )
 
-    onAdmission: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    onAdmission: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="onAdmission",
         title="Present on admission",
@@ -2297,7 +2298,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
+    sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title="Diagnosis instance identifier",
@@ -2307,11 +2308,11 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Timing or nature of the diagnosis",
@@ -2389,7 +2390,7 @@ class ExplanationOfBenefitEvent(backboneelement.BackboneElement):
         },
     )
 
-    whenDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    whenDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="whenDateTime",
         title="Occurance date or period",
@@ -2404,11 +2405,11 @@ class ExplanationOfBenefitEvent(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    whenDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    whenDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_whenDateTime", title="Extension field for ``whenDateTime``."
     )
 
-    whenPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    whenPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="whenPeriod",
         title="Occurance date or period",
@@ -2485,7 +2486,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
         },
     )
 
-    focal: bool = Field(  # type: ignore
+    focal: bool | None = Field(  # type: ignore
         None,
         alias="focal",
         title="Coverage to be used for adjudication",
@@ -2498,11 +2499,11 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    focal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_focal", title="Extension field for ``focal``."
     )
 
-    preAuthRef: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    preAuthRef: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="preAuthRef",
         title="Prior authorization reference number",
@@ -2515,7 +2516,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preAuthRef__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    preAuthRef__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
     )
 
@@ -2558,7 +2559,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitItem"
 
-    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(  # type: ignore
+    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] | None = Field(  # type: ignore
         None,
         alias="adjudication",
         title="Adjudication details",
@@ -2572,7 +2573,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    bodySite: typing.List[fhirtypes.ExplanationOfBenefitItemBodySiteType] = Field(  # type: ignore
+    bodySite: typing.List[fhirtypes.ExplanationOfBenefitItemBodySiteType] | None = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Anatomical location",
@@ -2582,7 +2583,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    careTeamSequence: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    careTeamSequence: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="careTeamSequence",
         title="Applicable care team members",
@@ -2591,13 +2592,13 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    careTeamSequence__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    careTeamSequence__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_careTeamSequence",
         title="Extension field for ``careTeamSequence``.",
     )
 
-    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="category",
         title="Benefit classification",
@@ -2610,7 +2611,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    detail: typing.List[fhirtypes.ExplanationOfBenefitItemDetailType] = Field(  # type: ignore
+    detail: typing.List[fhirtypes.ExplanationOfBenefitItemDetailType] | None = Field(  # type: ignore
         None,
         alias="detail",
         title="Additional items",
@@ -2620,7 +2621,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    diagnosisSequence: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    diagnosisSequence: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="diagnosisSequence",
         title="Applicable diagnoses",
@@ -2629,13 +2630,13 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    diagnosisSequence__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    diagnosisSequence__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_diagnosisSequence",
         title="Extension field for ``diagnosisSequence``.",
     )
 
-    encounter: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    encounter: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounters associated with the listed treatments",
@@ -2647,7 +2648,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    factor: fhirtypes.DecimalType = Field(  # type: ignore
+    factor: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -2661,11 +2662,11 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    informationSequence: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    informationSequence: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="informationSequence",
         title="Applicable exception and supporting information",
@@ -2677,13 +2678,13 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    informationSequence__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    informationSequence__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_informationSequence",
         title="Extension field for ``informationSequence``.",
     )
 
-    locationAddress: fhirtypes.AddressType = Field(  # type: ignore
+    locationAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="locationAddress",
         title="Place of service or where product was supplied",
@@ -2696,7 +2697,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    locationCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    locationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="locationCodeableConcept",
         title="Place of service or where product was supplied",
@@ -2709,7 +2710,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    locationReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    locationReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="locationReference",
         title="Place of service or where product was supplied",
@@ -2724,7 +2725,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    modifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="modifier",
         title="Product or service billing modifiers",
@@ -2737,7 +2738,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    net: fhirtypes.MoneyType = Field(  # type: ignore
+    net: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="net",
         title="Total item cost",
@@ -2750,7 +2751,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    noteNumber: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    noteNumber: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -2762,11 +2763,11 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    noteNumber__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    noteNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_noteNumber", title="Extension field for ``noteNumber``."
     )
 
-    patientPaid: fhirtypes.MoneyType = Field(  # type: ignore
+    patientPaid: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="patientPaid",
         title="Paid by the patient",
@@ -2780,7 +2781,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    procedureSequence: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    procedureSequence: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="procedureSequence",
         title="Applicable procedures",
@@ -2789,13 +2790,13 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    procedureSequence__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    procedureSequence__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_procedureSequence",
         title="Extension field for ``procedureSequence``.",
     )
 
-    productOrService: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrService: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrService",
         title="Billing, service, product, or drug code",
@@ -2812,7 +2813,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    productOrServiceEnd: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrServiceEnd: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrServiceEnd",
         title="End of a range of codes",
@@ -2829,7 +2830,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    programCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="programCode",
         title="Program the product or service is provided under",
@@ -2839,7 +2840,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of products or services",
@@ -2849,7 +2850,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    request: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    request: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="request",
         title="Request or Referral for Service",
@@ -2868,7 +2869,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    revenue: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -2881,7 +2882,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType = Field(  # type: ignore
+    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType | None = Field(  # type: ignore
         None,
         alias="reviewOutcome",
         title="Adjudication results",
@@ -2894,7 +2895,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
+    sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title="Item instance identifier",
@@ -2904,11 +2905,11 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    servicedDate: fhirtypes.DateType = Field(  # type: ignore
+    servicedDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="servicedDate",
         title="Date or dates of service or product delivery",
@@ -2923,11 +2924,11 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_servicedDate", title="Extension field for ``servicedDate``."
     )
 
-    servicedPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    servicedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="servicedPeriod",
         title="Date or dates of service or product delivery",
@@ -2943,7 +2944,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    tax: fhirtypes.MoneyType = Field(  # type: ignore
+    tax: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="tax",
         title="Total tax",
@@ -2953,7 +2954,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    traceNumber: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    traceNumber: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="traceNumber",
         title="Number for tracking",
@@ -2966,7 +2967,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    udi: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    udi: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="udi",
         title="Unique device identifier",
@@ -2978,7 +2979,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
+    unitPrice: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per item",
@@ -3083,7 +3084,7 @@ class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitItemAdjudication"
 
-    amount: fhirtypes.MoneyType = Field(  # type: ignore
+    amount: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="amount",
         title="Monetary amount",
@@ -3110,7 +3111,7 @@ class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Non-monitary value",
@@ -3123,7 +3124,7 @@ class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
         },
     )
 
-    reason: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    reason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="reason",
         title="Explanation of adjudication outcome",
@@ -3176,7 +3177,7 @@ class ExplanationOfBenefitItemBodySite(backboneelement.BackboneElement):
         },
     )
 
-    subSite: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    subSite: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="subSite",
         title="Sub-location",
@@ -3209,7 +3210,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitItemDetail"
 
-    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(  # type: ignore
+    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] | None = Field(  # type: ignore
         None,
         alias="adjudication",
         title="Detail level adjudication details",
@@ -3219,7 +3220,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="category",
         title="Benefit classification",
@@ -3232,7 +3233,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    factor: fhirtypes.DecimalType = Field(  # type: ignore
+    factor: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -3246,11 +3247,11 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    modifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -3263,7 +3264,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    net: fhirtypes.MoneyType = Field(  # type: ignore
+    net: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="net",
         title="Total item cost",
@@ -3276,7 +3277,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    noteNumber: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    noteNumber: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -3288,11 +3289,11 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    noteNumber__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    noteNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_noteNumber", title="Extension field for ``noteNumber``."
     )
 
-    patientPaid: fhirtypes.MoneyType = Field(  # type: ignore
+    patientPaid: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="patientPaid",
         title="Paid by the patient",
@@ -3306,7 +3307,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    productOrService: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrService: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrService",
         title="Billing, service, product, or drug code",
@@ -3323,7 +3324,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    productOrServiceEnd: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrServiceEnd: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrServiceEnd",
         title="End of a range of codes",
@@ -3340,7 +3341,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    programCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="programCode",
         title="Program the product or service is provided under",
@@ -3350,7 +3351,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of products or services",
@@ -3360,7 +3361,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    revenue: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -3373,7 +3374,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType = Field(  # type: ignore
+    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType | None = Field(  # type: ignore
         None,
         alias="reviewOutcome",
         title="Detail level adjudication results",
@@ -3386,7 +3387,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
+    sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title="Product or service provided",
@@ -3399,11 +3400,11 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    subDetail: typing.List[fhirtypes.ExplanationOfBenefitItemDetailSubDetailType] = Field(  # type: ignore
+    subDetail: typing.List[fhirtypes.ExplanationOfBenefitItemDetailSubDetailType] | None = Field(  # type: ignore
         None,
         alias="subDetail",
         title="Additional items",
@@ -3413,7 +3414,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    tax: fhirtypes.MoneyType = Field(  # type: ignore
+    tax: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="tax",
         title="Total tax",
@@ -3423,7 +3424,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    traceNumber: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    traceNumber: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="traceNumber",
         title="Number for tracking",
@@ -3436,7 +3437,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    udi: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    udi: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="udi",
         title="Unique device identifier",
@@ -3448,7 +3449,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
+    unitPrice: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per item",
@@ -3516,7 +3517,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitItemDetailSubDetail"
 
-    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] = Field(  # type: ignore
+    adjudication: typing.List[fhirtypes.ExplanationOfBenefitItemAdjudicationType] | None = Field(  # type: ignore
         None,
         alias="adjudication",
         title="Subdetail level adjudication details",
@@ -3526,7 +3527,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="category",
         title="Benefit classification",
@@ -3539,7 +3540,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    factor: fhirtypes.DecimalType = Field(  # type: ignore
+    factor: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="factor",
         title="Price scaling factor",
@@ -3553,11 +3554,11 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    modifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -3570,7 +3571,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    net: fhirtypes.MoneyType = Field(  # type: ignore
+    net: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="net",
         title="Total item cost",
@@ -3583,7 +3584,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    noteNumber: typing.List[typing.Optional[fhirtypes.PositiveIntType]] = Field(  # type: ignore
+    noteNumber: typing.List[fhirtypes.PositiveIntType | None] | None = Field(  # type: ignore
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -3595,11 +3596,11 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    noteNumber__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    noteNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_noteNumber", title="Extension field for ``noteNumber``."
     )
 
-    patientPaid: fhirtypes.MoneyType = Field(  # type: ignore
+    patientPaid: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="patientPaid",
         title="Paid by the patient",
@@ -3613,7 +3614,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    productOrService: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrService: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrService",
         title="Billing, service, product, or drug code",
@@ -3630,7 +3631,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    productOrServiceEnd: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrServiceEnd: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrServiceEnd",
         title="End of a range of codes",
@@ -3647,7 +3648,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    programCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="programCode",
         title="Program the product or service is provided under",
@@ -3657,7 +3658,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Count of products or services",
@@ -3667,7 +3668,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    revenue: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    revenue: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="revenue",
         title="Revenue or cost center code",
@@ -3680,7 +3681,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType = Field(  # type: ignore
+    reviewOutcome: fhirtypes.ExplanationOfBenefitItemReviewOutcomeType | None = Field(  # type: ignore
         None,
         alias="reviewOutcome",
         title="Subdetail level adjudication results",
@@ -3693,7 +3694,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
+    sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title="Product or service provided",
@@ -3706,11 +3707,11 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    tax: fhirtypes.MoneyType = Field(  # type: ignore
+    tax: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="tax",
         title="Total tax",
@@ -3720,7 +3721,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    traceNumber: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    traceNumber: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="traceNumber",
         title="Number for tracking",
@@ -3733,7 +3734,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    udi: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    udi: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="udi",
         title="Unique device identifier",
@@ -3745,7 +3746,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         },
     )
 
-    unitPrice: fhirtypes.MoneyType = Field(  # type: ignore
+    unitPrice: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="unitPrice",
         title="Fee, charge or cost per item",
@@ -3813,7 +3814,7 @@ class ExplanationOfBenefitItemReviewOutcome(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitItemReviewOutcome"
 
-    decision: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    decision: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="decision",
         title="Result of the adjudication",
@@ -3826,7 +3827,7 @@ class ExplanationOfBenefitItemReviewOutcome(backboneelement.BackboneElement):
         },
     )
 
-    preAuthPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    preAuthPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="preAuthPeriod",
         title="Preauthorization reference effective period",
@@ -3836,7 +3837,7 @@ class ExplanationOfBenefitItemReviewOutcome(backboneelement.BackboneElement):
         },
     )
 
-    preAuthRef: fhirtypes.StringType = Field(  # type: ignore
+    preAuthRef: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="preAuthRef",
         title="Preauthorization reference",
@@ -3848,11 +3849,11 @@ class ExplanationOfBenefitItemReviewOutcome(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preAuthRef__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    preAuthRef__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
     )
 
-    reason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reason",
         title="Reason for result of the adjudication",
@@ -3894,7 +3895,7 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitPayee"
 
-    party: fhirtypes.ReferenceType = Field(  # type: ignore
+    party: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="party",
         title="Recipient reference",
@@ -3915,7 +3916,7 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Category of recipient",
@@ -3945,7 +3946,7 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitPayment"
 
-    adjustment: fhirtypes.MoneyType = Field(  # type: ignore
+    adjustment: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="adjustment",
         title="Payment adjustment for non-claim issues",
@@ -3958,7 +3959,7 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
         },
     )
 
-    adjustmentReason: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    adjustmentReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="adjustmentReason",
         title="Explanation for the variance",
@@ -3968,7 +3969,7 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
         },
     )
 
-    amount: fhirtypes.MoneyType = Field(  # type: ignore
+    amount: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="amount",
         title="Payable amount after adjustment",
@@ -3978,7 +3979,7 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
         },
     )
 
-    date: fhirtypes.DateType = Field(  # type: ignore
+    date: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Expected date of payment",
@@ -3990,11 +3991,11 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for the payment",
@@ -4004,7 +4005,7 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Partial or complete payment",
@@ -4048,7 +4049,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitProcedure"
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="When the procedure was performed",
@@ -4057,11 +4058,11 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    procedureCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    procedureCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="procedureCodeableConcept",
         title="Specific clinical procedure",
@@ -4077,7 +4078,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         },
     )
 
-    procedureReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    procedureReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="procedureReference",
         title="Specific clinical procedure",
@@ -4095,7 +4096,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
+    sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title="Procedure instance identifier",
@@ -4105,11 +4106,11 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Category of Procedure",
@@ -4119,7 +4120,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         },
     )
 
-    udi: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    udi: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="udi",
         title="Unique device identifier",
@@ -4191,7 +4192,7 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitProcessNote"
 
-    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    language: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="language",
         title="Language of the text",
@@ -4201,7 +4202,7 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
         },
     )
 
-    number: fhirtypes.PositiveIntType = Field(  # type: ignore
+    number: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="number",
         title="Note instance identifier",
@@ -4210,11 +4211,11 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_number", title="Extension field for ``number``."
     )
 
-    text: fhirtypes.StringType = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="text",
         title="Note explanatory text",
@@ -4223,11 +4224,11 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Note purpose",
@@ -4266,7 +4267,7 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
 
     __resource_type__ = "ExplanationOfBenefitRelated"
 
-    claim: fhirtypes.ReferenceType = Field(  # type: ignore
+    claim: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="claim",
         title="Reference to the related claim",
@@ -4278,7 +4279,7 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
         },
     )
 
-    reference: fhirtypes.IdentifierType = Field(  # type: ignore
+    reference: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="reference",
         title="File or case reference",
@@ -4291,7 +4292,7 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
         },
     )
 
-    relationship: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    relationship: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="relationship",
         title="How the reference claim is related",
@@ -4342,7 +4343,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Type of information",
@@ -4356,7 +4357,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         },
     )
 
-    reason: fhirtypes.CodingType = Field(  # type: ignore
+    reason: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="reason",
         title="Explanation for the information",
@@ -4369,7 +4370,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.PositiveIntType = Field(  # type: ignore
+    sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title="Information instance identifier",
@@ -4379,11 +4380,11 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    timingDate: fhirtypes.DateType = Field(  # type: ignore
+    timingDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="timingDate",
         title="When it occurred",
@@ -4395,11 +4396,11 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    timingDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    timingDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_timingDate", title="Extension field for ``timingDate``."
     )
 
-    timingPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    timingPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="timingPeriod",
         title="When it occurred",
@@ -4412,7 +4413,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="Data to be provided",
@@ -4429,7 +4430,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Data to be provided",
@@ -4445,11 +4446,11 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    valueIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="valueIdentifier",
         title="Data to be provided",
@@ -4466,7 +4467,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Data to be provided",
@@ -4483,7 +4484,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Data to be provided",
@@ -4502,7 +4503,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         },
     )
 
-    valueString: fhirtypes.StringType = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="valueString",
         title="Data to be provided",
@@ -4518,7 +4519,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 

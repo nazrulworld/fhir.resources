@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/TriggerDefinition
 Release: STU3
@@ -24,7 +25,7 @@ class TriggerDefinition(element.Element):
 
     __resource_type__ = "TriggerDefinition"
 
-    eventData: fhirtypes.DataRequirementType = Field(  # type: ignore
+    eventData: fhirtypes.DataRequirementType | None = Field(  # type: ignore
         None,
         alias="eventData",
         title="Triggering data of the event",
@@ -34,7 +35,7 @@ class TriggerDefinition(element.Element):
         },
     )
 
-    eventName: fhirtypes.StringType = Field(  # type: ignore
+    eventName: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="eventName",
         title="Triggering event name",
@@ -43,11 +44,11 @@ class TriggerDefinition(element.Element):
             "element_property": True,
         },
     )
-    eventName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    eventName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_eventName", title="Extension field for ``eventName``."
     )
 
-    eventTimingDate: fhirtypes.DateType = Field(  # type: ignore
+    eventTimingDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="eventTimingDate",
         title="Timing of the event",
@@ -59,11 +60,11 @@ class TriggerDefinition(element.Element):
             "one_of_many_required": False,
         },
     )
-    eventTimingDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    eventTimingDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_eventTimingDate", title="Extension field for ``eventTimingDate``."
     )
 
-    eventTimingDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    eventTimingDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="eventTimingDateTime",
         title="Timing of the event",
@@ -75,13 +76,13 @@ class TriggerDefinition(element.Element):
             "one_of_many_required": False,
         },
     )
-    eventTimingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    eventTimingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_eventTimingDateTime",
         title="Extension field for ``eventTimingDateTime``.",
     )
 
-    eventTimingReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    eventTimingReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="eventTimingReference",
         title="Timing of the event",
@@ -96,7 +97,7 @@ class TriggerDefinition(element.Element):
         },
     )
 
-    eventTimingTiming: fhirtypes.TimingType = Field(  # type: ignore
+    eventTimingTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="eventTimingTiming",
         title="Timing of the event",
@@ -109,7 +110,7 @@ class TriggerDefinition(element.Element):
         },
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -133,7 +134,7 @@ class TriggerDefinition(element.Element):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 

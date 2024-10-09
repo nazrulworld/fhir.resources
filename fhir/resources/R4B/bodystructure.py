@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/BodyStructure
 Release: R4B
@@ -26,7 +27,7 @@ class BodyStructure(domainresource.DomainResource):
 
     __resource_type__ = "BodyStructure"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this record is in active use",
@@ -35,11 +36,11 @@ class BodyStructure(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Text description",
@@ -48,11 +49,11 @@ class BodyStructure(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Bodystructure identifier",
@@ -62,7 +63,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
+    image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
         None,
         alias="image",
         title="Attached images",
@@ -72,7 +73,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    location: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    location: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="location",
         title="Body site",
@@ -85,7 +86,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    locationQualifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    locationQualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="locationQualifier",
         title="Body site modifier",
@@ -98,7 +99,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    morphology: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    morphology: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="morphology",
         title="Kind of Structure",

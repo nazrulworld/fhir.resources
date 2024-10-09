@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/HealthcareService
 Release: STU3
@@ -23,7 +24,7 @@ class HealthcareService(domainresource.DomainResource):
 
     __resource_type__ = "HealthcareService"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this healthcareservice is in active use",
@@ -32,11 +33,11 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    appointmentRequired: bool = Field(  # type: ignore
+    appointmentRequired: bool | None = Field(  # type: ignore
         None,
         alias="appointmentRequired",
         title="If an appointment is required for access to this service",
@@ -50,13 +51,13 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    appointmentRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    appointmentRequired__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_appointmentRequired",
         title="Extension field for ``appointmentRequired``.",
     )
 
-    availabilityExceptions: fhirtypes.StringType = Field(  # type: ignore
+    availabilityExceptions: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="availabilityExceptions",
         title="Description of availability exceptions",
@@ -70,13 +71,13 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_availabilityExceptions",
         title="Extension field for ``availabilityExceptions``.",
     )
 
-    availableTime: typing.List[fhirtypes.HealthcareServiceAvailableTimeType] = Field(  # type: ignore
+    availableTime: typing.List[fhirtypes.HealthcareServiceAvailableTimeType] | None = Field(  # type: ignore
         None,
         alias="availableTime",
         title="Times the Service Site is available",
@@ -86,7 +87,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="category",
         title="Broad category of service being performed or delivered",
@@ -96,7 +97,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    characteristic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    characteristic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="characteristic",
         title="Collection of characteristics (attributes)",
@@ -106,7 +107,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    comment: fhirtypes.StringType = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="comment",
         title=(
@@ -121,11 +122,11 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    coverageArea: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    coverageArea: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="coverageArea",
         title="Location(s) service is inteded for/available to",
@@ -140,7 +141,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    eligibility: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    eligibility: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="eligibility",
         title="Specific eligibility requirements required to use the service",
@@ -153,7 +154,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    eligibilityNote: fhirtypes.StringType = Field(  # type: ignore
+    eligibilityNote: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="eligibilityNote",
         title="Describes the eligibility conditions for the service",
@@ -162,11 +163,11 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    eligibilityNote__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    eligibilityNote__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_eligibilityNote", title="Extension field for ``eligibilityNote``."
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -184,7 +185,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    extraDetails: fhirtypes.StringType = Field(  # type: ignore
+    extraDetails: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="extraDetails",
         title=(
@@ -196,11 +197,11 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    extraDetails__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    extraDetails__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_extraDetails", title="Extension field for ``extraDetails``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External identifiers for this item",
@@ -210,7 +211,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    location: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="location",
         title="Location(s) where service may be provided",
@@ -222,7 +223,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Description of service as presented to a consumer while searching",
@@ -234,11 +235,11 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    notAvailable: typing.List[fhirtypes.HealthcareServiceNotAvailableType] = Field(  # type: ignore
+    notAvailable: typing.List[fhirtypes.HealthcareServiceNotAvailableType] | None = Field(  # type: ignore
         None,
         alias="notAvailable",
         title="Not available during this time due to provided reason",
@@ -251,7 +252,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    photo: fhirtypes.AttachmentType = Field(  # type: ignore
+    photo: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="photo",
         title="Facilitates quick identification of the service",
@@ -265,7 +266,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    programName: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    programName: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="programName",
         title="Program Names that categorize the service",
@@ -274,11 +275,11 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    programName__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    programName__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_programName", title="Extension field for ``programName``."
     )
 
-    providedBy: fhirtypes.ReferenceType = Field(  # type: ignore
+    providedBy: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="providedBy",
         title="Organization that provides this service",
@@ -290,7 +291,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    referralMethod: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    referralMethod: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="referralMethod",
         title="Ways that the service accepts referrals",
@@ -303,7 +304,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    serviceProvisionCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    serviceProvisionCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="serviceProvisionCode",
         title="Conditions under which service is available/offered",
@@ -316,7 +317,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialty",
         title="Specialties handled by the HealthcareService",
@@ -329,7 +330,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="Contacts related to the healthcare service",
@@ -339,7 +340,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Type of service that may be delivered or performed",
@@ -402,7 +403,7 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
 
     __resource_type__ = "HealthcareServiceAvailableTime"
 
-    allDay: bool = Field(  # type: ignore
+    allDay: bool | None = Field(  # type: ignore
         None,
         alias="allDay",
         title="Always available? e.g. 24 hour service",
@@ -414,11 +415,11 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    allDay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_allDay", title="Extension field for ``allDay``."
     )
 
-    availableEndTime: fhirtypes.TimeType = Field(  # type: ignore
+    availableEndTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="availableEndTime",
         title="Closing time of day (ignored if allDay = true)",
@@ -430,13 +431,13 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_availableEndTime",
         title="Extension field for ``availableEndTime``.",
     )
 
-    availableStartTime: fhirtypes.TimeType = Field(  # type: ignore
+    availableStartTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="availableStartTime",
         title="Opening time of day (ignored if allDay = true)",
@@ -448,13 +449,13 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_availableStartTime",
         title="Extension field for ``availableStartTime``.",
     )
 
-    daysOfWeek: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
+    daysOfWeek: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
         None,
         alias="daysOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
@@ -469,7 +470,7 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
             "enum_values": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
         },
     )
-    daysOfWeek__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    daysOfWeek__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``."
     )
 
@@ -502,7 +503,7 @@ class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
 
     __resource_type__ = "HealthcareServiceNotAvailable"
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Reason presented to the user explaining why time not available",
@@ -515,11 +516,11 @@ class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    during: fhirtypes.PeriodType = Field(  # type: ignore
+    during: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="during",
         title="Service not availablefrom this date",

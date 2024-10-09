@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Endpoint
 Release: R5
@@ -28,7 +29,7 @@ class Endpoint(domainresource.DomainResource):
 
     __resource_type__ = "Endpoint"
 
-    address: fhirtypes.UrlType = Field(  # type: ignore
+    address: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="address",
         title="The technical base address for connecting to this endpoint",
@@ -38,7 +39,7 @@ class Endpoint(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_address", title="Extension field for ``address``."
     )
 
@@ -56,7 +57,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for source (e.g. troubleshooting)",
@@ -69,7 +70,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title=(
@@ -85,11 +86,11 @@ class Endpoint(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    environmentType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    environmentType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="environmentType",
         title="The type of environment(s) exposed at this endpoint",
@@ -102,7 +103,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    header: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    header: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="header",
         title="Usage depends on the channel type",
@@ -111,11 +112,11 @@ class Endpoint(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    header__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    header__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_header", title="Extension field for ``header``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifies this endpoint across multiple systems",
@@ -128,7 +129,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
+    managingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title=(
@@ -147,7 +148,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="A name that this endpoint can be identified by",
@@ -156,11 +157,11 @@ class Endpoint(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    payload: typing.List[fhirtypes.EndpointPayloadType] = Field(  # type: ignore
+    payload: typing.List[fhirtypes.EndpointPayloadType] | None = Field(  # type: ignore
         None,
         alias="payload",
         title="Set of payloads that are provided by this endpoint",
@@ -170,7 +171,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Interval the endpoint is expected to be operational",
@@ -180,7 +181,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | suspended | error | off | entered-in-error | test",
@@ -203,7 +204,7 @@ class Endpoint(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -259,7 +260,7 @@ class EndpointPayload(backboneelement.BackboneElement):
 
     __resource_type__ = "EndpointPayload"
 
-    mimeType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
+    mimeType: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
         None,
         alias="mimeType",
         title=(
@@ -276,11 +277,11 @@ class EndpointPayload(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    mimeType__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    mimeType__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_mimeType", title="Extension field for ``mimeType``."
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title=(

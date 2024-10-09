@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ParameterDefinition
 Release: STU3
@@ -27,7 +28,7 @@ class ParameterDefinition(element.Element):
 
     __resource_type__ = "ParameterDefinition"
 
-    documentation: fhirtypes.StringType = Field(  # type: ignore
+    documentation: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="documentation",
         title="A brief description of the parameter",
@@ -39,11 +40,11 @@ class ParameterDefinition(element.Element):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    max: fhirtypes.StringType = Field(  # type: ignore
+    max: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="max",
         title="Maximum cardinality (a number of *)",
@@ -55,11 +56,11 @@ class ParameterDefinition(element.Element):
             "element_property": True,
         },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.IntegerType = Field(  # type: ignore
+    min: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="min",
         title="Minimum cardinality",
@@ -71,11 +72,11 @@ class ParameterDefinition(element.Element):
             "element_property": True,
         },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    name: fhirtypes.CodeType = Field(  # type: ignore
+    name: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name used to access the parameter value",
@@ -87,11 +88,11 @@ class ParameterDefinition(element.Element):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    profile: fhirtypes.ReferenceType = Field(  # type: ignore
+    profile: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="profile",
         title="What profile the value is expected to be",
@@ -106,7 +107,7 @@ class ParameterDefinition(element.Element):
         },
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title="What type of value",
@@ -116,11 +117,11 @@ class ParameterDefinition(element.Element):
             "element_required": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    use: fhirtypes.CodeType = Field(  # type: ignore
+    use: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="use",
         title="in | out",
@@ -133,7 +134,7 @@ class ParameterDefinition(element.Element):
             "enum_values": ["in", "out"],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_use", title="Extension field for ``use``."
     )
 

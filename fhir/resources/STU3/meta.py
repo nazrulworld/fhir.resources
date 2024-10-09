@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Meta
 Release: STU3
@@ -26,7 +27,7 @@ class Meta(element.Element):
 
     __resource_type__ = "Meta"
 
-    lastUpdated: fhirtypes.InstantType = Field(  # type: ignore
+    lastUpdated: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="lastUpdated",
         title="When the resource version last changed",
@@ -35,11 +36,11 @@ class Meta(element.Element):
             "element_property": True,
         },
     )
-    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
     )
 
-    profile: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
+    profile: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
         None,
         alias="profile",
         title="Profiles this resource claims to conform to",
@@ -53,11 +54,11 @@ class Meta(element.Element):
             "element_property": True,
         },
     )
-    profile__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    profile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    security: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
+    security: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
         None,
         alias="security",
         title="Security Labels applied to this resource",
@@ -70,7 +71,7 @@ class Meta(element.Element):
         },
     )
 
-    tag: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
+    tag: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
         None,
         alias="tag",
         title="Tags applied to this resource",
@@ -85,7 +86,7 @@ class Meta(element.Element):
         },
     )
 
-    versionId: fhirtypes.IdType = Field(  # type: ignore
+    versionId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="versionId",
         title="Version specific identifier",
@@ -98,7 +99,7 @@ class Meta(element.Element):
             "element_property": True,
         },
     )
-    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_versionId", title="Extension field for ``versionId``."
     )
 

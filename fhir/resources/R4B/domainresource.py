@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DomainResource
 Release: R4B
@@ -24,7 +25,7 @@ class DomainResource(resource.Resource):
 
     __resource_type__ = "DomainResource"
 
-    contained: typing.List[fhirtypes.ResourceType] = Field(  # type: ignore
+    contained: typing.List[fhirtypes.ResourceType] | None = Field(  # type: ignore
         None,
         alias="contained",
         title="Contained, inline Resources",
@@ -38,7 +39,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    extension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
+    extension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
         None,
         alias="extension",
         title="Additional content defined by implementations",
@@ -55,7 +56,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
+    modifierExtension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
         None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored",
@@ -79,7 +80,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    text: fhirtypes.NarrativeType = Field(  # type: ignore
+    text: fhirtypes.NarrativeType | None = Field(  # type: ignore
         None,
         alias="text",
         title="Text summary of the resource, for human interpretation",

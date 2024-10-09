@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/PractitionerRole
 Release: R5
@@ -25,7 +26,7 @@ class PractitionerRole(domainresource.DomainResource):
 
     __resource_type__ = "PractitionerRole"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this practitioner role record is in active use",
@@ -38,11 +39,11 @@ class PractitionerRole(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    availability: typing.List[fhirtypes.AvailabilityType] = Field(  # type: ignore
+    availability: typing.List[fhirtypes.AvailabilityType] | None = Field(  # type: ignore
         None,
         alias="availability",
         title=(
@@ -58,7 +59,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    characteristic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    characteristic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="characteristic",
         title="Collection of characteristics (attributes)",
@@ -68,7 +69,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="code",
         title="Roles which this practitioner may perform",
@@ -81,7 +82,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    communication: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    communication: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="communication",
         title=(
@@ -99,7 +100,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ExtendedContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ExtendedContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Official contact details relating to this PractitionerRole",
@@ -113,7 +114,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Endpoints for interacting with the practitioner in this role",
@@ -129,7 +130,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    healthcareService: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    healthcareService: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="healthcareService",
         title="Healthcare services provided for this role's Organization/Location(s)",
@@ -144,7 +145,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifiers for a role/location",
@@ -154,7 +155,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    location: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="location",
         title="Location(s) where the practitioner provides care",
@@ -166,7 +167,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    organization: fhirtypes.ReferenceType = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="organization",
         title="Organization where the roles are available",
@@ -178,7 +179,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title=(
@@ -194,7 +195,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    practitioner: fhirtypes.ReferenceType = Field(  # type: ignore
+    practitioner: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="practitioner",
         title="Practitioner that provides services for the organization",
@@ -209,7 +210,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialty",
         title="Specific specialty of the practitioner",

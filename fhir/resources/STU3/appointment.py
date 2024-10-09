@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Appointment
 Release: STU3
@@ -25,7 +26,7 @@ class Appointment(domainresource.DomainResource):
 
     __resource_type__ = "Appointment"
 
-    appointmentType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    appointmentType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="appointmentType",
         title=(
@@ -38,7 +39,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    comment: fhirtypes.StringType = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="comment",
         title="Additional comments",
@@ -47,11 +48,11 @@ class Appointment(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    created: fhirtypes.DateTimeType = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="created",
         title="The date that this appointment was initially created",
@@ -65,11 +66,11 @@ class Appointment(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Shown on a subject line in a meeting request, or appointment list",
@@ -82,11 +83,11 @@ class Appointment(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    end: fhirtypes.InstantType = Field(  # type: ignore
+    end: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="end",
         title="When appointment is to conclude",
@@ -95,11 +96,11 @@ class Appointment(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_end", title="Extension field for ``end``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this item",
@@ -114,7 +115,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    incomingReferral: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    incomingReferral: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="incomingReferral",
         title=(
@@ -132,7 +133,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    indication: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    indication: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="indication",
         title="Reason the appointment is to takes place (resource)",
@@ -150,7 +151,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    minutesDuration: fhirtypes.PositiveIntType = Field(  # type: ignore
+    minutesDuration: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="minutesDuration",
         title="Can be less than start/end (e.g. estimate)",
@@ -164,7 +165,7 @@ class Appointment(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    minutesDuration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    minutesDuration__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_minutesDuration", title="Extension field for ``minutesDuration``."
     )
 
@@ -178,7 +179,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    priority: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="priority",
         title="Used to make informed decisions if needing to re-prioritize",
@@ -191,11 +192,11 @@ class Appointment(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reason",
         title="Reason this appointment is scheduled",
@@ -208,7 +209,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    requestedPeriod: typing.List[fhirtypes.PeriodType] = Field(  # type: ignore
+    requestedPeriod: typing.List[fhirtypes.PeriodType] | None = Field(  # type: ignore
         None,
         alias="requestedPeriod",
         title=(
@@ -227,7 +228,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    serviceCategory: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    serviceCategory: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="serviceCategory",
         title=(
@@ -240,7 +241,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    serviceType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    serviceType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="serviceType",
         title="The specific service that is to be performed during this appointment",
@@ -250,7 +251,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    slot: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    slot: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="slot",
         title="The slots that this appointment is filling",
@@ -265,7 +266,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialty",
         title=(
@@ -278,7 +279,7 @@ class Appointment(domainresource.DomainResource):
         },
     )
 
-    start: fhirtypes.InstantType = Field(  # type: ignore
+    start: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="start",
         title="When appointment is to take place",
@@ -287,11 +288,11 @@ class Appointment(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_start", title="Extension field for ``start``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -320,11 +321,11 @@ class Appointment(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    supportingInformation: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="supportingInformation",
         title="Additional information to support the appointment",
@@ -399,7 +400,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "AppointmentParticipant"
 
-    actor: fhirtypes.ReferenceType = Field(  # type: ignore
+    actor: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="actor",
         title="Person, Location/HealthcareService or Device",
@@ -421,7 +422,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         },
     )
 
-    required: fhirtypes.CodeType = Field(  # type: ignore
+    required: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="required",
         title="required | optional | information-only",
@@ -437,11 +438,11 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "enum_values": ["required", "optional", "information-only"],
         },
     )
-    required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    required__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_required", title="Extension field for ``required``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="accepted | declined | tentative | needs-action",
@@ -454,11 +455,11 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "enum_values": ["accepted", "declined", "tentative", "needs-action"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Role of participant in the appointment",

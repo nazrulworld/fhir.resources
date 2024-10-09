@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DetectedIssue
 Release: STU3
@@ -27,7 +28,7 @@ class DetectedIssue(domainresource.DomainResource):
 
     __resource_type__ = "DetectedIssue"
 
-    author: fhirtypes.ReferenceType = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="author",
         title="The provider or device that identified the issue",
@@ -43,7 +44,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="category",
         title="Issue Category, e.g. drug-drug, duplicate therapy, etc.",
@@ -53,7 +54,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="When identified",
@@ -64,11 +65,11 @@ class DetectedIssue(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    detail: fhirtypes.StringType = Field(  # type: ignore
+    detail: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="detail",
         title="Description and context",
@@ -77,11 +78,11 @@ class DetectedIssue(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    detail__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_detail", title="Extension field for ``detail``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique id for the detected issue",
@@ -91,7 +92,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    implicated: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    implicated: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="implicated",
         title="Problem resource",
@@ -106,7 +107,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] = Field(  # type: ignore
+    mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] | None = Field(  # type: ignore
         None,
         alias="mitigation",
         title="Step taken to address",
@@ -121,7 +122,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="patient",
         title="Associated patient",
@@ -136,7 +137,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    reference: fhirtypes.UriType = Field(  # type: ignore
+    reference: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="reference",
         title="Authority for issue",
@@ -148,11 +149,11 @@ class DetectedIssue(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_reference", title="Extension field for ``reference``."
     )
 
-    severity: fhirtypes.CodeType = Field(  # type: ignore
+    severity: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="severity",
         title="high | moderate | low",
@@ -167,11 +168,11 @@ class DetectedIssue(domainresource.DomainResource):
             "enum_values": ["high", "moderate", "low"],
         },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_severity", title="Extension field for ``severity``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="registered | preliminary | final | amended +",
@@ -184,7 +185,7 @@ class DetectedIssue(domainresource.DomainResource):
             "enum_values": ["registered", "preliminary", "final", "amended", "+"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -255,7 +256,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         },
     )
 
-    author: fhirtypes.ReferenceType = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who is committing?",
@@ -270,7 +271,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Date committed",
@@ -279,7 +280,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 

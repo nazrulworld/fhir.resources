@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Population
 Release: R4B
@@ -25,7 +26,7 @@ class Population(backboneelement.BackboneElement):
 
     __resource_type__ = "Population"
 
-    ageCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    ageCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="ageCodeableConcept",
         title="The age of the specific population",
@@ -38,7 +39,7 @@ class Population(backboneelement.BackboneElement):
         },
     )
 
-    ageRange: fhirtypes.RangeType = Field(  # type: ignore
+    ageRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="ageRange",
         title="The age of the specific population",
@@ -51,7 +52,7 @@ class Population(backboneelement.BackboneElement):
         },
     )
 
-    gender: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    gender: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="gender",
         title="The gender of the specific population",
@@ -61,7 +62,7 @@ class Population(backboneelement.BackboneElement):
         },
     )
 
-    physiologicalCondition: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    physiologicalCondition: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="physiologicalCondition",
         title=(
@@ -74,7 +75,7 @@ class Population(backboneelement.BackboneElement):
         },
     )
 
-    race: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    race: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="race",
         title="Race of the specific population",

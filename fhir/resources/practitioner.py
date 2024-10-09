@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Practitioner
 Release: R5
@@ -26,7 +27,7 @@ class Practitioner(domainresource.DomainResource):
 
     __resource_type__ = "Practitioner"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this practitioner's record is in active use",
@@ -35,11 +36,11 @@ class Practitioner(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
+    address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
         None,
         alias="address",
         title=(
@@ -56,7 +57,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType = Field(  # type: ignore
+    birthDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="birthDate",
         title="The date  on which the practitioner was born",
@@ -65,11 +66,11 @@ class Practitioner(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: typing.List[fhirtypes.PractitionerCommunicationType] = Field(  # type: ignore
+    communication: typing.List[fhirtypes.PractitionerCommunicationType] | None = Field(  # type: ignore
         None,
         alias="communication",
         title="A language which may be used to communicate with the practitioner",
@@ -85,7 +86,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    deceasedBoolean: bool = Field(  # type: ignore
+    deceasedBoolean: bool | None = Field(  # type: ignore
         None,
         alias="deceasedBoolean",
         title="Indicates if the practitioner is deceased or not",
@@ -97,11 +98,11 @@ class Practitioner(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
     )
 
-    deceasedDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    deceasedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="deceasedDateTime",
         title="Indicates if the practitioner is deceased or not",
@@ -113,13 +114,13 @@ class Practitioner(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_deceasedDateTime",
         title="Extension field for ``deceasedDateTime``.",
     )
 
-    gender: fhirtypes.CodeType = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -134,11 +135,11 @@ class Practitioner(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="An identifier for the person as this agent",
@@ -148,7 +149,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] = Field(  # type: ignore
+    name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
         None,
         alias="name",
         title="The name(s) associated with the practitioner",
@@ -158,7 +159,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
+    photo: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
         None,
         alias="photo",
         title="Image of the person",
@@ -168,7 +169,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    qualification: typing.List[fhirtypes.PractitionerQualificationType] = Field(  # type: ignore
+    qualification: typing.List[fhirtypes.PractitionerQualificationType] | None = Field(  # type: ignore
         None,
         alias="qualification",
         title=(
@@ -188,7 +189,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the practitioner (that apply to all roles)",
@@ -278,7 +279,7 @@ class PractitionerCommunication(backboneelement.BackboneElement):
         },
     )
 
-    preferred: bool = Field(  # type: ignore
+    preferred: bool | None = Field(  # type: ignore
         None,
         alias="preferred",
         title="Language preference indicator",
@@ -290,7 +291,7 @@ class PractitionerCommunication(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
@@ -331,7 +332,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="An identifier for this qualification for the practitioner",
@@ -341,7 +342,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         },
     )
 
-    issuer: fhirtypes.ReferenceType = Field(  # type: ignore
+    issuer: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="issuer",
         title="Organization that regulates and issues the qualification",
@@ -353,7 +354,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Period during which the qualification is valid",

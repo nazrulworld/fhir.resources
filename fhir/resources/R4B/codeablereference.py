@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CodeableReference
 Release: R4B
@@ -23,7 +24,7 @@ class CodeableReference(element.Element):
 
     __resource_type__ = "CodeableReference"
 
-    concept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    concept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="concept",
         title="Reference to a concept (by class)",
@@ -36,7 +37,7 @@ class CodeableReference(element.Element):
         },
     )
 
-    reference: fhirtypes.ReferenceType = Field(  # type: ignore
+    reference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="reference",
         title="Reference to a resource (by instance)",

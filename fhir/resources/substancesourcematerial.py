@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SubstanceSourceMaterial
 Release: R5
@@ -36,7 +37,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
 
     __resource_type__ = "SubstanceSourceMaterial"
 
-    countryOfOrigin: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    countryOfOrigin: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="countryOfOrigin",
         title=(
@@ -52,7 +53,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    developmentStage: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    developmentStage: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="developmentStage",
         title=(
@@ -66,7 +67,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    fractionDescription: typing.List[fhirtypes.SubstanceSourceMaterialFractionDescriptionType] = Field(  # type: ignore
+    fractionDescription: typing.List[fhirtypes.SubstanceSourceMaterialFractionDescriptionType] | None = Field(  # type: ignore
         None,
         alias="fractionDescription",
         title=(
@@ -86,7 +87,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    geographicalLocation: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    geographicalLocation: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="geographicalLocation",
         title=(
@@ -98,13 +99,13 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    geographicalLocation__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    geographicalLocation__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_geographicalLocation",
         title="Extension field for ``geographicalLocation``.",
     )
 
-    organism: fhirtypes.SubstanceSourceMaterialOrganismType = Field(  # type: ignore
+    organism: fhirtypes.SubstanceSourceMaterialOrganismType | None = Field(  # type: ignore
         None,
         alias="organism",
         title=(
@@ -119,7 +120,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    organismId: fhirtypes.IdentifierType = Field(  # type: ignore
+    organismId: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="organismId",
         title=(
@@ -132,7 +133,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    organismName: fhirtypes.StringType = Field(  # type: ignore
+    organismName: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="organismName",
         title=(
@@ -144,11 +145,11 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    organismName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    organismName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_organismName", title="Extension field for ``organismName``."
     )
 
-    parentSubstanceId: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    parentSubstanceId: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="parentSubstanceId",
         title=(
@@ -162,7 +163,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    parentSubstanceName: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    parentSubstanceName: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="parentSubstanceName",
         title="The parent substance of the Herbal Drug, or Herbal preparation",
@@ -171,13 +172,13 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    parentSubstanceName__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    parentSubstanceName__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_parentSubstanceName",
         title="Extension field for ``parentSubstanceName``.",
     )
 
-    partDescription: typing.List[fhirtypes.SubstanceSourceMaterialPartDescriptionType] = Field(  # type: ignore
+    partDescription: typing.List[fhirtypes.SubstanceSourceMaterialPartDescriptionType] | None = Field(  # type: ignore
         None,
         alias="partDescription",
         title="To do",
@@ -187,7 +188,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    sourceMaterialClass: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    sourceMaterialClass: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="sourceMaterialClass",
         title=(
@@ -200,7 +201,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    sourceMaterialState: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    sourceMaterialState: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="sourceMaterialState",
         title="The state of the source material when extracted",
@@ -210,7 +211,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         },
     )
 
-    sourceMaterialType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    sourceMaterialType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="sourceMaterialType",
         title=(
@@ -273,7 +274,7 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
 
     __resource_type__ = "SubstanceSourceMaterialFractionDescription"
 
-    fraction: fhirtypes.StringType = Field(  # type: ignore
+    fraction: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="fraction",
         title=(
@@ -285,11 +286,11 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
             "element_property": True,
         },
     )
-    fraction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fraction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fraction", title="Extension field for ``fraction``."
     )
 
-    materialType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    materialType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="materialType",
         title=(
@@ -325,7 +326,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceSourceMaterialOrganism"
 
-    author: typing.List[fhirtypes.SubstanceSourceMaterialOrganismAuthorType] = Field(  # type: ignore
+    author: typing.List[fhirtypes.SubstanceSourceMaterialOrganismAuthorType] | None = Field(  # type: ignore
         None,
         alias="author",
         title="4.9.13.6.1 Author type (Conditional)",
@@ -335,7 +336,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         },
     )
 
-    family: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    family: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="family",
         title="The family of an organism shall be specified",
@@ -345,7 +346,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         },
     )
 
-    genus: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    genus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="genus",
         title=(
@@ -359,7 +360,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         },
     )
 
-    hybrid: fhirtypes.SubstanceSourceMaterialOrganismHybridType = Field(  # type: ignore
+    hybrid: fhirtypes.SubstanceSourceMaterialOrganismHybridType | None = Field(  # type: ignore
         None,
         alias="hybrid",
         title="4.9.13.8.1 Hybrid species maternal organism ID (Optional)",
@@ -369,7 +370,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         },
     )
 
-    intraspecificDescription: fhirtypes.StringType = Field(  # type: ignore
+    intraspecificDescription: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="intraspecificDescription",
         title=(
@@ -383,13 +384,13 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    intraspecificDescription__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    intraspecificDescription__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_intraspecificDescription",
         title="Extension field for ``intraspecificDescription``.",
     )
 
-    intraspecificType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    intraspecificType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="intraspecificType",
         title="The Intraspecific type of an organism shall be specified",
@@ -399,7 +400,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         },
     )
 
-    organismGeneral: fhirtypes.SubstanceSourceMaterialOrganismOrganismGeneralType = Field(  # type: ignore
+    organismGeneral: fhirtypes.SubstanceSourceMaterialOrganismOrganismGeneralType | None = Field(  # type: ignore
         None,
         alias="organismGeneral",
         title="4.9.13.7.1 Kingdom (Conditional)",
@@ -409,7 +410,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         },
     )
 
-    species: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    species: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="species",
         title=(
@@ -454,7 +455,7 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceSourceMaterialOrganismAuthor"
 
-    authorDescription: fhirtypes.StringType = Field(  # type: ignore
+    authorDescription: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="authorDescription",
         title=(
@@ -468,13 +469,13 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    authorDescription__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authorDescription__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_authorDescription",
         title="Extension field for ``authorDescription``.",
     )
 
-    authorType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    authorType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="authorType",
         title=(
@@ -515,7 +516,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceSourceMaterialOrganismHybrid"
 
-    hybridType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    hybridType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="hybridType",
         title="The hybrid type of an organism shall be specified",
@@ -525,7 +526,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         },
     )
 
-    maternalOrganismId: fhirtypes.StringType = Field(  # type: ignore
+    maternalOrganismId: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="maternalOrganismId",
         title=(
@@ -539,13 +540,13 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    maternalOrganismId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maternalOrganismId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_maternalOrganismId",
         title="Extension field for ``maternalOrganismId``.",
     )
 
-    maternalOrganismName: fhirtypes.StringType = Field(  # type: ignore
+    maternalOrganismName: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="maternalOrganismName",
         title=(
@@ -559,13 +560,13 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    maternalOrganismName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    maternalOrganismName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_maternalOrganismName",
         title="Extension field for ``maternalOrganismName``.",
     )
 
-    paternalOrganismId: fhirtypes.StringType = Field(  # type: ignore
+    paternalOrganismId: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="paternalOrganismId",
         title=(
@@ -577,13 +578,13 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    paternalOrganismId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    paternalOrganismId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_paternalOrganismId",
         title="Extension field for ``paternalOrganismId``.",
     )
 
-    paternalOrganismName: fhirtypes.StringType = Field(  # type: ignore
+    paternalOrganismName: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="paternalOrganismName",
         title=(
@@ -595,7 +596,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    paternalOrganismName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    paternalOrganismName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_paternalOrganismName",
         title="Extension field for ``paternalOrganismName``.",
@@ -629,7 +630,7 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
 
     __resource_type__ = "SubstanceSourceMaterialOrganismOrganismGeneral"
 
-    class_fhir: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    class_fhir: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="class",
         title="The class of an organism shall be specified",
@@ -639,7 +640,7 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         },
     )
 
-    kingdom: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    kingdom: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="kingdom",
         title="The kingdom of an organism shall be specified",
@@ -649,7 +650,7 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         },
     )
 
-    order: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    order: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="order",
         title="The order of an organism shall be specified,",
@@ -659,7 +660,7 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         },
     )
 
-    phylum: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    phylum: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="phylum",
         title="The phylum of an organism shall be specified",
@@ -696,7 +697,7 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceSourceMaterialPartDescription"
 
-    part: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    part: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="part",
         title="Entity of anatomical origin of source material within an organism",
@@ -706,7 +707,7 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
         },
     )
 
-    partLocation: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    partLocation: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="partLocation",
         title=(

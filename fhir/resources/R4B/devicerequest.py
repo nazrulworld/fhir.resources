@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DeviceRequest
 Release: R4B
@@ -26,7 +27,7 @@ class DeviceRequest(domainresource.DomainResource):
 
     __resource_type__ = "DeviceRequest"
 
-    authoredOn: fhirtypes.DateTimeType = Field(  # type: ignore
+    authoredOn: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="authoredOn",
         title="When recorded",
@@ -35,11 +36,11 @@ class DeviceRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="What request fulfills",
@@ -51,7 +52,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    codeCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    codeCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="codeCodeableConcept",
         title="Device requested",
@@ -64,7 +65,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    codeReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    codeReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="codeReference",
         title="Device requested",
@@ -79,7 +80,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter motivating request",
@@ -94,7 +95,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    groupIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    groupIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="groupIdentifier",
         title="Identifier of composite request",
@@ -104,7 +105,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Request identifier",
@@ -114,7 +115,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -129,13 +130,13 @@ class DeviceRequest(domainresource.DomainResource):
             "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
         },
     )
-    instantiatesCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    instantiatesCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
+    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -148,11 +149,11 @@ class DeviceRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    instantiatesUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    insurance: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    insurance: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="insurance",
         title="Associated insurance coverage",
@@ -168,7 +169,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    intent: fhirtypes.CodeType = Field(  # type: ignore
+    intent: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="intent",
         title=(
@@ -197,11 +198,11 @@ class DeviceRequest(domainresource.DomainResource):
             ],
         },
     )
-    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_intent", title="Extension field for ``intent``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Notes or comments",
@@ -216,7 +217,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="Desired time or schedule for use",
@@ -233,13 +234,13 @@ class DeviceRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="occurrencePeriod",
         title="Desired time or schedule for use",
@@ -257,7 +258,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceTiming: fhirtypes.TimingType = Field(  # type: ignore
+    occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="occurrenceTiming",
         title="Desired time or schedule for use",
@@ -275,7 +276,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    parameter: typing.List[fhirtypes.DeviceRequestParameterType] = Field(  # type: ignore
+    parameter: typing.List[fhirtypes.DeviceRequestParameterType] | None = Field(  # type: ignore
         None,
         alias="parameter",
         title="Device details",
@@ -288,7 +289,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    performer: fhirtypes.ReferenceType = Field(  # type: ignore
+    performer: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="performer",
         title="Requested Filler",
@@ -309,7 +310,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    performerType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    performerType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="performerType",
         title="Filler role",
@@ -319,7 +320,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    priorRequest: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    priorRequest: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="priorRequest",
         title="What request replaces",
@@ -334,7 +335,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -349,11 +350,11 @@ class DeviceRequest(domainresource.DomainResource):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Coded Reason for request",
@@ -363,7 +364,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Linked Reason for request",
@@ -380,7 +381,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    relevantHistory: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="relevantHistory",
         title="Request provenance",
@@ -392,7 +393,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    requester: fhirtypes.ReferenceType = Field(  # type: ignore
+    requester: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="requester",
         title="Who/what is requesting diagnostics",
@@ -412,7 +413,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -435,7 +436,7 @@ class DeviceRequest(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -451,7 +452,7 @@ class DeviceRequest(domainresource.DomainResource):
         },
     )
 
-    supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    supportingInfo: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="supportingInfo",
         title="Additional clinical information",
@@ -558,7 +559,7 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
 
     __resource_type__ = "DeviceRequestParameter"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Device detail",
@@ -568,7 +569,7 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Value of detail",
@@ -580,11 +581,11 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Value of detail",
@@ -597,7 +598,7 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Value of detail",
@@ -610,7 +611,7 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Value of detail",

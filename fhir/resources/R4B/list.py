@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/List
 Release: R4B
@@ -23,7 +24,7 @@ class List(domainresource.DomainResource):
 
     __resource_type__ = "List"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="What the purpose of this list is",
@@ -33,7 +34,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="When the list was prepared",
@@ -42,11 +43,11 @@ class List(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    emptyReason: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    emptyReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="emptyReason",
         title="Why list is empty",
@@ -56,7 +57,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="encounter",
         title="Context in which list created",
@@ -68,7 +69,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    entry: typing.List[fhirtypes.ListEntryType] = Field(  # type: ignore
+    entry: typing.List[fhirtypes.ListEntryType] | None = Field(  # type: ignore
         None,
         alias="entry",
         title="Entries in the list",
@@ -78,7 +79,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -91,7 +92,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    mode: fhirtypes.CodeType = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="mode",
         title="working | snapshot | changes",
@@ -110,11 +111,11 @@ class List(domainresource.DomainResource):
             "enum_values": ["working", "snapshot", "changes"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Comments about the list",
@@ -124,7 +125,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    orderedBy: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    orderedBy: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="orderedBy",
         title="What order the list has",
@@ -134,7 +135,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    source: fhirtypes.ReferenceType = Field(  # type: ignore
+    source: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="source",
         title="Who and/or what defined the list contents (aka Author)",
@@ -155,7 +156,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="current | retired | entered-in-error",
@@ -168,11 +169,11 @@ class List(domainresource.DomainResource):
             "enum_values": ["current", "retired", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="If all resources have the same subject",
@@ -187,7 +188,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="title",
         title="Descriptive name for the list",
@@ -196,7 +197,7 @@ class List(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
@@ -253,7 +254,7 @@ class ListEntry(backboneelement.BackboneElement):
 
     __resource_type__ = "ListEntry"
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="When item added to list",
@@ -262,11 +263,11 @@ class ListEntry(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    deleted: bool = Field(  # type: ignore
+    deleted: bool | None = Field(  # type: ignore
         None,
         alias="deleted",
         title="If this item is actually marked as deleted",
@@ -275,11 +276,11 @@ class ListEntry(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    deleted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deleted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_deleted", title="Extension field for ``deleted``."
     )
 
-    flag: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    flag: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="flag",
         title="Status/Workflow information about this item",

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Element
 Release: R5
@@ -24,7 +25,7 @@ class Element(base.Base):
 
     __resource_type__ = "Element"
 
-    extension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
+    extension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
         None,
         alias="extension",
         title="Additional content defined by implementations",
@@ -41,7 +42,7 @@ class Element(base.Base):
         },
     )
 
-    id: fhirtypes.StringType = Field(  # type: ignore
+    id: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="id",
         title="Unique id for inter-element referencing",

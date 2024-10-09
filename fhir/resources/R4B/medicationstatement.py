@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MedicationStatement
 Release: R4B
@@ -47,7 +48,7 @@ class MedicationStatement(domainresource.DomainResource):
 
     __resource_type__ = "MedicationStatement"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Fulfils plan, proposal or order",
@@ -62,7 +63,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="category",
         title="Type of medication usage",
@@ -75,7 +76,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    context: fhirtypes.ReferenceType = Field(  # type: ignore
+    context: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="context",
         title="Encounter / Episode associated with MedicationStatement",
@@ -90,7 +91,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    dateAsserted: fhirtypes.DateTimeType = Field(  # type: ignore
+    dateAsserted: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="dateAsserted",
         title="When the statement was asserted?",
@@ -102,11 +103,11 @@ class MedicationStatement(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_dateAsserted", title="Extension field for ``dateAsserted``."
     )
 
-    derivedFrom: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    derivedFrom: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="derivedFrom",
         title="Additional supporting information",
@@ -122,7 +123,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    dosage: typing.List[fhirtypes.DosageType] = Field(  # type: ignore
+    dosage: typing.List[fhirtypes.DosageType] | None = Field(  # type: ignore
         None,
         alias="dosage",
         title="Details of how medication is/was taken or should be taken",
@@ -132,7 +133,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    effectiveDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    effectiveDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="effectiveDateTime",
         title="The date/time or interval when the medication is/was/will be taken",
@@ -148,13 +149,13 @@ class MedicationStatement(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_effectiveDateTime",
         title="Extension field for ``effectiveDateTime``.",
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="The date/time or interval when the medication is/was/will be taken",
@@ -171,7 +172,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External identifier",
@@ -188,7 +189,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    informationSource: fhirtypes.ReferenceType = Field(  # type: ignore
+    informationSource: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="informationSource",
         title=(
@@ -214,7 +215,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    medicationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="medicationCodeableConcept",
         title="What medication was taken",
@@ -232,7 +233,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    medicationReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    medicationReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="medicationReference",
         title="What medication was taken",
@@ -252,7 +253,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Further information about the statement",
@@ -265,7 +266,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced event",
@@ -283,7 +284,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Reason for why the medication is being/was taken",
@@ -293,7 +294,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="reasonReference",
         title=(
@@ -308,7 +309,7 @@ class MedicationStatement(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -337,11 +338,11 @@ class MedicationStatement(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    statusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="statusReason",
         title="Reason for current status",

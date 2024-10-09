@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Range
 Release: R5
@@ -22,7 +23,7 @@ class Range(datatype.DataType):
 
     __resource_type__ = "Range"
 
-    high: fhirtypes.QuantityType = Field(  # type: ignore
+    high: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="high",
         title="High limit",
@@ -32,7 +33,7 @@ class Range(datatype.DataType):
         },
     )
 
-    low: fhirtypes.QuantityType = Field(  # type: ignore
+    low: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="low",
         title="Low limit",

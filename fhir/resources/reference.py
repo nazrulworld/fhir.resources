@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Reference
 Release: R5
@@ -21,7 +22,7 @@ class Reference(datatype.DataType):
 
     __resource_type__ = "Reference"
 
-    display: fhirtypes.StringType = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="display",
         title="Text alternative for the resource",
@@ -33,11 +34,11 @@ class Reference(datatype.DataType):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Logical reference, when literal reference is not known",
@@ -57,7 +58,7 @@ class Reference(datatype.DataType):
         },
     )
 
-    reference: fhirtypes.StringType = Field(  # type: ignore
+    reference: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="reference",
         title="Literal reference, Relative, internal or absolute URL",
@@ -74,11 +75,11 @@ class Reference(datatype.DataType):
             "element_property": True,
         },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_reference", title="Extension field for ``reference``."
     )
 
-    type: fhirtypes.UriType = Field(  # type: ignore
+    type: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -100,7 +101,7 @@ class Reference(datatype.DataType):
             "element_property": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 

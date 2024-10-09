@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Bundle
 Release: R5
@@ -24,7 +25,7 @@ class Bundle(resource.Resource):
 
     __resource_type__ = "Bundle"
 
-    entry: typing.List[fhirtypes.BundleEntryType] = Field(  # type: ignore
+    entry: typing.List[fhirtypes.BundleEntryType] | None = Field(  # type: ignore
         None,
         alias="entry",
         title="Entry in the bundle - will have a resource or information",
@@ -37,7 +38,7 @@ class Bundle(resource.Resource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Persistent identifier for the bundle",
@@ -50,7 +51,7 @@ class Bundle(resource.Resource):
         },
     )
 
-    issues: fhirtypes.ResourceType = Field(  # type: ignore
+    issues: fhirtypes.ResourceType | None = Field(  # type: ignore
         None,
         alias="issues",
         title="Issues with the Bundle",
@@ -63,7 +64,7 @@ class Bundle(resource.Resource):
         },
     )
 
-    link: typing.List[fhirtypes.BundleLinkType] = Field(  # type: ignore
+    link: typing.List[fhirtypes.BundleLinkType] | None = Field(  # type: ignore
         None,
         alias="link",
         title="Links related to this Bundle",
@@ -73,7 +74,7 @@ class Bundle(resource.Resource):
         },
     )
 
-    signature: fhirtypes.SignatureType = Field(  # type: ignore
+    signature: fhirtypes.SignatureType | None = Field(  # type: ignore
         None,
         alias="signature",
         title="Digital Signature",
@@ -83,7 +84,7 @@ class Bundle(resource.Resource):
         },
     )
 
-    timestamp: fhirtypes.InstantType = Field(  # type: ignore
+    timestamp: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="timestamp",
         title="When the bundle was assembled",
@@ -95,11 +96,11 @@ class Bundle(resource.Resource):
             "element_property": True,
         },
     )
-    timestamp__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    timestamp__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_timestamp", title="Extension field for ``timestamp``."
     )
 
-    total: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    total: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="total",
         title="If search, the total number of matches",
@@ -113,11 +114,11 @@ class Bundle(resource.Resource):
             "element_property": True,
         },
     )
-    total__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    total__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_total", title="Extension field for ``total``."
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -145,7 +146,7 @@ class Bundle(resource.Resource):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -194,7 +195,7 @@ class BundleEntry(backboneelement.BackboneElement):
 
     __resource_type__ = "BundleEntry"
 
-    fullUrl: fhirtypes.UriType = Field(  # type: ignore
+    fullUrl: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="fullUrl",
         title=(
@@ -219,11 +220,11 @@ class BundleEntry(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    fullUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    fullUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_fullUrl", title="Extension field for ``fullUrl``."
     )
 
-    link: typing.List[fhirtypes.BundleLinkType] = Field(  # type: ignore
+    link: typing.List[fhirtypes.BundleLinkType] | None = Field(  # type: ignore
         None,
         alias="link",
         title="Links related to this entry",
@@ -233,7 +234,7 @@ class BundleEntry(backboneelement.BackboneElement):
         },
     )
 
-    request: fhirtypes.BundleEntryRequestType = Field(  # type: ignore
+    request: fhirtypes.BundleEntryRequestType | None = Field(  # type: ignore
         None,
         alias="request",
         title="Additional execution information (transaction/batch/history)",
@@ -247,7 +248,7 @@ class BundleEntry(backboneelement.BackboneElement):
         },
     )
 
-    resource: fhirtypes.ResourceType = Field(  # type: ignore
+    resource: fhirtypes.ResourceType | None = Field(  # type: ignore
         None,
         alias="resource",
         title="A resource in the bundle",
@@ -262,7 +263,7 @@ class BundleEntry(backboneelement.BackboneElement):
         },
     )
 
-    response: fhirtypes.BundleEntryResponseType = Field(  # type: ignore
+    response: fhirtypes.BundleEntryResponseType | None = Field(  # type: ignore
         None,
         alias="response",
         title="Results of execution (transaction/batch/history)",
@@ -276,7 +277,7 @@ class BundleEntry(backboneelement.BackboneElement):
         },
     )
 
-    search: fhirtypes.BundleEntrySearchType = Field(  # type: ignore
+    search: fhirtypes.BundleEntrySearchType | None = Field(  # type: ignore
         None,
         alias="search",
         title="Search related information",
@@ -321,7 +322,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
 
     __resource_type__ = "BundleEntryRequest"
 
-    ifMatch: fhirtypes.StringType = Field(  # type: ignore
+    ifMatch: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="ifMatch",
         title="For managing update contention",
@@ -334,11 +335,11 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    ifMatch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    ifMatch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_ifMatch", title="Extension field for ``ifMatch``."
     )
 
-    ifModifiedSince: fhirtypes.InstantType = Field(  # type: ignore
+    ifModifiedSince: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="ifModifiedSince",
         title="For managing cache currency",
@@ -350,11 +351,11 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    ifModifiedSince__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    ifModifiedSince__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_ifModifiedSince", title="Extension field for ``ifModifiedSince``."
     )
 
-    ifNoneExist: fhirtypes.StringType = Field(  # type: ignore
+    ifNoneExist: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="ifNoneExist",
         title="For conditional creates",
@@ -368,11 +369,11 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    ifNoneExist__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    ifNoneExist__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_ifNoneExist", title="Extension field for ``ifNoneExist``."
     )
 
-    ifNoneMatch: fhirtypes.StringType = Field(  # type: ignore
+    ifNoneMatch: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="ifNoneMatch",
         title="For managing cache validation",
@@ -384,11 +385,11 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    ifNoneMatch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    ifNoneMatch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_ifNoneMatch", title="Extension field for ``ifNoneMatch``."
     )
 
-    method: fhirtypes.CodeType = Field(  # type: ignore
+    method: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="method",
         title="GET | HEAD | POST | PUT | DELETE | PATCH",
@@ -405,11 +406,11 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "enum_values": ["GET", "HEAD", "POST", "PUT", "DELETE", "PATCH"],
         },
     )
-    method__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    method__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_method", title="Extension field for ``method``."
     )
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title="URL for HTTP equivalent of this entry",
@@ -422,7 +423,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
@@ -469,7 +470,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
 
     __resource_type__ = "BundleEntryResponse"
 
-    etag: fhirtypes.StringType = Field(  # type: ignore
+    etag: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="etag",
         title="The Etag for the resource (if relevant)",
@@ -483,11 +484,11 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    etag__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    etag__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_etag", title="Extension field for ``etag``."
     )
 
-    lastModified: fhirtypes.InstantType = Field(  # type: ignore
+    lastModified: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="lastModified",
         title="Server's date time modified",
@@ -496,11 +497,11 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lastModified", title="Extension field for ``lastModified``."
     )
 
-    location: fhirtypes.UriType = Field(  # type: ignore
+    location: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="location",
         title="The location (if the operation returns a location)",
@@ -512,11 +513,11 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    location__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    location__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_location", title="Extension field for ``location``."
     )
 
-    outcome: fhirtypes.ResourceType = Field(  # type: ignore
+    outcome: fhirtypes.ResourceType | None = Field(  # type: ignore
         None,
         alias="outcome",
         title="OperationOutcome with hints and warnings (for batch/transaction)",
@@ -529,7 +530,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         },
     )
 
-    status: fhirtypes.StringType = Field(  # type: ignore
+    status: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="status",
         title="Status response code (text optional)",
@@ -543,7 +544,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -588,7 +589,7 @@ class BundleEntrySearch(backboneelement.BackboneElement):
 
     __resource_type__ = "BundleEntrySearch"
 
-    mode: fhirtypes.CodeType = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="mode",
         title="match | include - why this is in the result set",
@@ -604,11 +605,11 @@ class BundleEntrySearch(backboneelement.BackboneElement):
             "enum_values": ["match", "include"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    score: fhirtypes.DecimalType = Field(  # type: ignore
+    score: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="score",
         title="Search ranking (between 0 and 1)",
@@ -617,7 +618,7 @@ class BundleEntrySearch(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    score__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    score__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_score", title="Extension field for ``score``."
     )
 
@@ -641,7 +642,7 @@ class BundleLink(backboneelement.BackboneElement):
 
     __resource_type__ = "BundleLink"
 
-    relation: fhirtypes.CodeType = Field(  # type: ignore
+    relation: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="relation",
         title=(
@@ -660,11 +661,11 @@ class BundleLink(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    relation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    relation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_relation", title="Extension field for ``relation``."
     )
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title="Reference details for the link",
@@ -674,7 +675,7 @@ class BundleLink(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 

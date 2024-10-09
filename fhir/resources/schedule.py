@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Schedule
 Release: R5
@@ -24,7 +25,7 @@ class Schedule(domainresource.DomainResource):
 
     __resource_type__ = "Schedule"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this schedule is in active use",
@@ -36,7 +37,7 @@ class Schedule(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
@@ -64,7 +65,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    comment: fhirtypes.MarkdownType = Field(  # type: ignore
+    comment: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="comment",
         title="Comments on availability",
@@ -76,11 +77,11 @@ class Schedule(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this item",
@@ -90,7 +91,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Human-readable label",
@@ -102,11 +103,11 @@ class Schedule(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    planningHorizon: fhirtypes.PeriodType = Field(  # type: ignore
+    planningHorizon: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="planningHorizon",
         title="Period of time covered by schedule",
@@ -122,7 +123,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    serviceCategory: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    serviceCategory: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="serviceCategory",
         title="High-level category",
@@ -135,7 +136,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    serviceType: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
+    serviceType: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
         None,
         alias="serviceType",
         title="Specific service",
@@ -147,7 +148,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialty",
         title="Type of specialty needed",

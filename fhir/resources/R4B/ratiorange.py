@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RatioRange
 Release: R4B
@@ -22,7 +23,7 @@ class RatioRange(element.Element):
 
     __resource_type__ = "RatioRange"
 
-    denominator: fhirtypes.QuantityType = Field(  # type: ignore
+    denominator: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="denominator",
         title="Denominator value",
@@ -32,7 +33,7 @@ class RatioRange(element.Element):
         },
     )
 
-    highNumerator: fhirtypes.QuantityType = Field(  # type: ignore
+    highNumerator: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="highNumerator",
         title="High Numerator limit",
@@ -42,7 +43,7 @@ class RatioRange(element.Element):
         },
     )
 
-    lowNumerator: fhirtypes.QuantityType = Field(  # type: ignore
+    lowNumerator: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="lowNumerator",
         title="Low Numerator limit",

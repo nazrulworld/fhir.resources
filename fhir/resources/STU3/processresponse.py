@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ProcessResponse
 Release: STU3
@@ -25,7 +26,7 @@ class ProcessResponse(domainresource.DomainResource):
 
     __resource_type__ = "ProcessResponse"
 
-    communicationRequest: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    communicationRequest: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="communicationRequest",
         title="Request for additional information",
@@ -40,7 +41,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="created",
         title="Creation date",
@@ -52,11 +53,11 @@ class ProcessResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    disposition: fhirtypes.StringType = Field(  # type: ignore
+    disposition: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="disposition",
         title="Disposition Message",
@@ -65,11 +66,11 @@ class ProcessResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
-    error: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    error: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="error",
         title="Error code",
@@ -79,7 +80,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    form: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    form: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="form",
         title="Printed Form Identifier",
@@ -89,7 +90,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier",
@@ -99,7 +100,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    organization: fhirtypes.ReferenceType = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="organization",
         title="Authoring Organization",
@@ -111,7 +112,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    outcome: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    outcome: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="outcome",
         title="Processing outcome",
@@ -121,7 +122,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    processNote: typing.List[fhirtypes.ProcessResponseProcessNoteType] = Field(  # type: ignore
+    processNote: typing.List[fhirtypes.ProcessResponseProcessNoteType] | None = Field(  # type: ignore
         None,
         alias="processNote",
         title="Processing comments or additional requirements",
@@ -134,7 +135,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    request: fhirtypes.ReferenceType = Field(  # type: ignore
+    request: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="request",
         title="Request reference",
@@ -146,7 +147,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    requestOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
+    requestOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="requestOrganization",
         title="Responsible organization",
@@ -161,7 +162,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    requestProvider: fhirtypes.ReferenceType = Field(  # type: ignore
+    requestProvider: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="requestProvider",
         title="Responsible Practitioner",
@@ -176,7 +177,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -188,7 +189,7 @@ class ProcessResponse(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -235,7 +236,7 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
 
     __resource_type__ = "ProcessResponseProcessNote"
 
-    text: fhirtypes.StringType = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="text",
         title="Comment on the processing",
@@ -244,11 +245,11 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="display | print | printoper",

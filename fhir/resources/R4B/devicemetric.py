@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DeviceMetric
 Release: R4B
@@ -25,7 +26,7 @@ class DeviceMetric(domainresource.DomainResource):
 
     __resource_type__ = "DeviceMetric"
 
-    calibration: typing.List[fhirtypes.DeviceMetricCalibrationType] = Field(  # type: ignore
+    calibration: typing.List[fhirtypes.DeviceMetricCalibrationType] | None = Field(  # type: ignore
         None,
         alias="calibration",
         title=(
@@ -38,7 +39,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    category: fhirtypes.CodeType = Field(  # type: ignore
+    category: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="category",
         title="measurement | setting | calculation | unspecified",
@@ -55,11 +56,11 @@ class DeviceMetric(domainresource.DomainResource):
             "enum_values": ["measurement", "setting", "calculation", "unspecified"],
         },
     )
-    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_category", title="Extension field for ``category``."
     )
 
-    color: fhirtypes.CodeType = Field(  # type: ignore
+    color: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="color",
         title="black | red | green | yellow | blue | magenta | cyan | white",
@@ -86,11 +87,11 @@ class DeviceMetric(domainresource.DomainResource):
             ],
         },
     )
-    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    color__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_color", title="Extension field for ``color``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Instance identifier",
@@ -104,7 +105,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    measurementPeriod: fhirtypes.TimingType = Field(  # type: ignore
+    measurementPeriod: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="measurementPeriod",
         title="Describes the measurement repetition time",
@@ -124,7 +125,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    operationalStatus: fhirtypes.CodeType = Field(  # type: ignore
+    operationalStatus: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="operationalStatus",
         title="on | off | standby | entered-in-error",
@@ -139,13 +140,13 @@ class DeviceMetric(domainresource.DomainResource):
             "enum_values": ["on", "off", "standby", "entered-in-error"],
         },
     )
-    operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_operationalStatus",
         title="Extension field for ``operationalStatus``.",
     )
 
-    parent: fhirtypes.ReferenceType = Field(  # type: ignore
+    parent: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="parent",
         title="Describes the link to the parent Device",
@@ -164,7 +165,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    source: fhirtypes.ReferenceType = Field(  # type: ignore
+    source: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="source",
         title="Describes the link to the source Device",
@@ -193,7 +194,7 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
 
-    unit: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    unit: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="unit",
         title="Unit of Measure for the Metric",
@@ -256,7 +257,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
 
     __resource_type__ = "DeviceMetricCalibration"
 
-    state: fhirtypes.CodeType = Field(  # type: ignore
+    state: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="state",
         title="not-calibrated | calibration-required | calibrated | unspecified",
@@ -273,11 +274,11 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
             ],
         },
     )
-    state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    state__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_state", title="Extension field for ``state``."
     )
 
-    time: fhirtypes.InstantType = Field(  # type: ignore
+    time: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="time",
         title="Describes the time last calibration has been performed",
@@ -286,11 +287,11 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_time", title="Extension field for ``time``."
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title="unspecified | offset | gain | two-point",
@@ -302,7 +303,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
             "enum_values": ["unspecified", "offset", "gain", "two-point"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 

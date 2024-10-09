@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ObservationDefinition
 Release: R4B
@@ -25,7 +26,7 @@ class ObservationDefinition(domainresource.DomainResource):
 
     __resource_type__ = "ObservationDefinition"
 
-    abnormalCodedValueSet: fhirtypes.ReferenceType = Field(  # type: ignore
+    abnormalCodedValueSet: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="abnormalCodedValueSet",
         title=(
@@ -43,7 +44,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="Category of observation",
@@ -66,7 +67,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    criticalCodedValueSet: fhirtypes.ReferenceType = Field(  # type: ignore
+    criticalCodedValueSet: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="criticalCodedValueSet",
         title=(
@@ -84,7 +85,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this ObservationDefinition instance",
@@ -94,7 +95,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    method: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="method",
         title="Method used to produce the observation",
@@ -104,7 +105,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    multipleResultsAllowed: bool = Field(  # type: ignore
+    multipleResultsAllowed: bool | None = Field(  # type: ignore
         None,
         alias="multipleResultsAllowed",
         title="Multiple results allowed",
@@ -116,13 +117,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_multipleResultsAllowed",
         title="Extension field for ``multipleResultsAllowed``.",
     )
 
-    normalCodedValueSet: fhirtypes.ReferenceType = Field(  # type: ignore
+    normalCodedValueSet: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="normalCodedValueSet",
         title=(
@@ -140,7 +141,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    permittedDataType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
+    permittedDataType: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
         None,
         alias="permittedDataType",
         title=(
@@ -170,13 +171,13 @@ class ObservationDefinition(domainresource.DomainResource):
             ],
         },
     )
-    permittedDataType__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    permittedDataType__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_permittedDataType",
         title="Extension field for ``permittedDataType``.",
     )
 
-    preferredReportName: fhirtypes.StringType = Field(  # type: ignore
+    preferredReportName: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="preferredReportName",
         title="Preferred report name",
@@ -188,13 +189,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_preferredReportName",
         title="Extension field for ``preferredReportName``.",
     )
 
-    qualifiedInterval: typing.List[fhirtypes.ObservationDefinitionQualifiedIntervalType] = Field(  # type: ignore
+    qualifiedInterval: typing.List[fhirtypes.ObservationDefinitionQualifiedIntervalType] | None = Field(  # type: ignore
         None,
         alias="qualifiedInterval",
         title="Qualified range for continuous and ordinal observation results",
@@ -208,7 +209,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    quantitativeDetails: fhirtypes.ObservationDefinitionQuantitativeDetailsType = Field(  # type: ignore
+    quantitativeDetails: fhirtypes.ObservationDefinitionQuantitativeDetailsType | None = Field(  # type: ignore
         None,
         alias="quantitativeDetails",
         title="Characteristics of quantitative results",
@@ -218,7 +219,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    validCodedValueSet: fhirtypes.ReferenceType = Field(  # type: ignore
+    validCodedValueSet: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="validCodedValueSet",
         title=(
@@ -279,7 +280,7 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
 
     __resource_type__ = "ObservationDefinitionQualifiedInterval"
 
-    age: fhirtypes.RangeType = Field(  # type: ignore
+    age: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="age",
         title="Applicable age range, if relevant",
@@ -292,7 +293,7 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         },
     )
 
-    appliesTo: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    appliesTo: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="appliesTo",
         title="Targetted population of the range",
@@ -305,7 +306,7 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         },
     )
 
-    category: fhirtypes.CodeType = Field(  # type: ignore
+    category: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="category",
         title="reference | critical | absolute",
@@ -320,11 +321,11 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "enum_values": ["reference", "critical", "absolute"],
         },
     )
-    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_category", title="Extension field for ``category``."
     )
 
-    condition: fhirtypes.StringType = Field(  # type: ignore
+    condition: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="condition",
         title="Condition associated with the reference range",
@@ -333,11 +334,11 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    condition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_condition", title="Extension field for ``condition``."
     )
 
-    context: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    context: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="context",
         title="Range context qualifier",
@@ -350,7 +351,7 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         },
     )
 
-    gender: fhirtypes.CodeType = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -362,11 +363,11 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    gestationalAge: fhirtypes.RangeType = Field(  # type: ignore
+    gestationalAge: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="gestationalAge",
         title="Applicable gestational age range, if relevant",
@@ -379,7 +380,7 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         },
     )
 
-    range: fhirtypes.RangeType = Field(  # type: ignore
+    range: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="range",
         title="The interval itself, for continuous or ordinal observations",
@@ -424,7 +425,7 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
 
     __resource_type__ = "ObservationDefinitionQuantitativeDetails"
 
-    conversionFactor: fhirtypes.DecimalType = Field(  # type: ignore
+    conversionFactor: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="conversionFactor",
         title="SI to Customary unit conversion factor",
@@ -436,13 +437,13 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    conversionFactor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    conversionFactor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_conversionFactor",
         title="Extension field for ``conversionFactor``.",
     )
 
-    customaryUnit: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    customaryUnit: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="customaryUnit",
         title="Customary unit for quantitative results",
@@ -455,7 +456,7 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
         },
     )
 
-    decimalPrecision: fhirtypes.IntegerType = Field(  # type: ignore
+    decimalPrecision: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="decimalPrecision",
         title="Decimal precision of observation quantitative results",
@@ -467,13 +468,13 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    decimalPrecision__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    decimalPrecision__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_decimalPrecision",
         title="Extension field for ``decimalPrecision``.",
     )
 
-    unit: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    unit: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="unit",
         title="SI unit for quantitative results",

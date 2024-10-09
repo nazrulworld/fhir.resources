@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CodeableConcept
 Release: R4B
@@ -25,7 +26,7 @@ class CodeableConcept(element.Element):
 
     __resource_type__ = "CodeableConcept"
 
-    coding: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
+    coding: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
         None,
         alias="coding",
         title="Code defined by a terminology system",
@@ -35,7 +36,7 @@ class CodeableConcept(element.Element):
         },
     )
 
-    text: fhirtypes.StringType = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="text",
         title="Plain text representation of the concept",
@@ -48,7 +49,7 @@ class CodeableConcept(element.Element):
             "element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 

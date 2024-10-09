@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Person
 Release: R5
@@ -25,7 +26,7 @@ class Person(domainresource.DomainResource):
 
     __resource_type__ = "Person"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="This person's record is in active use",
@@ -34,11 +35,11 @@ class Person(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
+    address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
         None,
         alias="address",
         title="One or more addresses for the person",
@@ -48,7 +49,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType = Field(  # type: ignore
+    birthDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="birthDate",
         title="The date on which the person was born",
@@ -57,11 +58,11 @@ class Person(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: typing.List[fhirtypes.PersonCommunicationType] = Field(  # type: ignore
+    communication: typing.List[fhirtypes.PersonCommunicationType] | None = Field(  # type: ignore
         None,
         alias="communication",
         title=(
@@ -74,7 +75,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    deceasedBoolean: bool = Field(  # type: ignore
+    deceasedBoolean: bool | None = Field(  # type: ignore
         None,
         alias="deceasedBoolean",
         title="Indicates if the individual is deceased or not",
@@ -86,11 +87,11 @@ class Person(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
     )
 
-    deceasedDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    deceasedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="deceasedDateTime",
         title="Indicates if the individual is deceased or not",
@@ -102,13 +103,13 @@ class Person(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_deceasedDateTime",
         title="Extension field for ``deceasedDateTime``.",
     )
 
-    gender: fhirtypes.CodeType = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -120,11 +121,11 @@ class Person(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="A human identifier for this person",
@@ -134,7 +135,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    link: typing.List[fhirtypes.PersonLinkType] = Field(  # type: ignore
+    link: typing.List[fhirtypes.PersonLinkType] | None = Field(  # type: ignore
         None,
         alias="link",
         title="Link to a resource that concerns the same actual person",
@@ -144,7 +145,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
+    managingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title="The organization that is the custodian of the person record",
@@ -156,7 +157,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    maritalStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    maritalStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="maritalStatus",
         title="Marital (civil) status of a person",
@@ -166,7 +167,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] = Field(  # type: ignore
+    name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the person",
@@ -176,7 +177,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
+    photo: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
         None,
         alias="photo",
         title="Image of the person",
@@ -189,7 +190,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the person",
@@ -279,7 +280,7 @@ class PersonCommunication(backboneelement.BackboneElement):
         },
     )
 
-    preferred: bool = Field(  # type: ignore
+    preferred: bool | None = Field(  # type: ignore
         None,
         alias="preferred",
         title="Language preference indicator",
@@ -291,7 +292,7 @@ class PersonCommunication(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
@@ -314,7 +315,7 @@ class PersonLink(backboneelement.BackboneElement):
 
     __resource_type__ = "PersonLink"
 
-    assurance: fhirtypes.CodeType = Field(  # type: ignore
+    assurance: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="assurance",
         title="level1 | level2 | level3 | level4",
@@ -329,7 +330,7 @@ class PersonLink(backboneelement.BackboneElement):
             "enum_values": ["level1", "level2", "level3", "level4"],
         },
     )
-    assurance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    assurance__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_assurance", title="Extension field for ``assurance``."
     )
 

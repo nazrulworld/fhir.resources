@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/InventoryItem
 Release: R5
@@ -24,7 +25,7 @@ class InventoryItem(domainresource.DomainResource):
 
     __resource_type__ = "InventoryItem"
 
-    association: typing.List[fhirtypes.InventoryItemAssociationType] = Field(  # type: ignore
+    association: typing.List[fhirtypes.InventoryItemAssociationType] | None = Field(  # type: ignore
         None,
         alias="association",
         title="Association with other items or products",
@@ -34,7 +35,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    baseUnit: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    baseUnit: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="baseUnit",
         title=(
@@ -47,7 +48,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="Category or class of the item",
@@ -57,7 +58,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    characteristic: typing.List[fhirtypes.InventoryItemCharacteristicType] = Field(  # type: ignore
+    characteristic: typing.List[fhirtypes.InventoryItemCharacteristicType] | None = Field(  # type: ignore
         None,
         alias="characteristic",
         title="Characteristic of the item",
@@ -67,7 +68,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="code",
         title="Code designating the specific type of item",
@@ -77,7 +78,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.InventoryItemDescriptionType = Field(  # type: ignore
+    description: fhirtypes.InventoryItemDescriptionType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Descriptive characteristics of the item",
@@ -87,7 +88,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for the inventory item",
@@ -97,7 +98,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    instance: fhirtypes.InventoryItemInstanceType = Field(  # type: ignore
+    instance: fhirtypes.InventoryItemInstanceType | None = Field(  # type: ignore
         None,
         alias="instance",
         title="Instances or occurrences of the product",
@@ -107,7 +108,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    inventoryStatus: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    inventoryStatus: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="inventoryStatus",
         title="The usage status like recalled, in use, discarded",
@@ -121,7 +122,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.InventoryItemNameType] = Field(  # type: ignore
+    name: typing.List[fhirtypes.InventoryItemNameType] | None = Field(  # type: ignore
         None,
         alias="name",
         title=(
@@ -137,7 +138,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    netContent: fhirtypes.QuantityType = Field(  # type: ignore
+    netContent: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="netContent",
         title="Net content or amount present in the item",
@@ -147,7 +148,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    productReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    productReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="productReference",
         title="Link to a product resource used in clinical workflows",
@@ -164,7 +165,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    responsibleOrganization: typing.List[fhirtypes.InventoryItemResponsibleOrganizationType] = Field(  # type: ignore
+    responsibleOrganization: typing.List[fhirtypes.InventoryItemResponsibleOrganizationType] | None = Field(  # type: ignore
         None,
         alias="responsibleOrganization",
         title="Organization(s) responsible for the product",
@@ -174,7 +175,7 @@ class InventoryItem(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | inactive | entered-in-error | unknown",
@@ -187,7 +188,7 @@ class InventoryItem(domainresource.DomainResource):
             "enum_values": ["active", "inactive", "entered-in-error", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -332,7 +333,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueAddress: fhirtypes.AddressType = Field(  # type: ignore
+    valueAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="valueAddress",
         title="The value of the attribute",
@@ -345,7 +346,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
+    valueAnnotation: fhirtypes.AnnotationType | None = Field(  # type: ignore
         None,
         alias="valueAnnotation",
         title="The value of the attribute",
@@ -358,7 +359,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="The value of the attribute",
@@ -370,11 +371,11 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="The value of the attribute",
@@ -387,7 +388,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="The value of the attribute",
@@ -399,11 +400,11 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    valueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="The value of the attribute",
@@ -415,11 +416,11 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueDuration: fhirtypes.DurationType = Field(  # type: ignore
+    valueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="valueDuration",
         title="The value of the attribute",
@@ -432,7 +433,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="The value of the attribute",
@@ -444,11 +445,11 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="The value of the attribute",
@@ -461,7 +462,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="valueRange",
         title="The value of the attribute",
@@ -474,7 +475,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueRatio: fhirtypes.RatioType = Field(  # type: ignore
+    valueRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="valueRatio",
         title="The value of the attribute",
@@ -487,7 +488,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueString: fhirtypes.StringType = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="valueString",
         title="The value of the attribute",
@@ -499,11 +500,11 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
-    valueUrl: fhirtypes.UrlType = Field(  # type: ignore
+    valueUrl: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="valueUrl",
         title="The value of the attribute",
@@ -515,7 +516,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueUrl", title="Extension field for ``valueUrl``."
     )
 
@@ -589,7 +590,7 @@ class InventoryItemDescription(backboneelement.BackboneElement):
 
     __resource_type__ = "InventoryItemDescription"
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Textual description of the item",
@@ -598,11 +599,11 @@ class InventoryItemDescription(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    language: fhirtypes.CodeType = Field(  # type: ignore
+    language: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="language",
         title="The language that is used in the item description",
@@ -615,7 +616,7 @@ class InventoryItemDescription(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
@@ -638,7 +639,7 @@ class InventoryItemInstance(backboneelement.BackboneElement):
 
     __resource_type__ = "InventoryItemInstance"
 
-    expiry: fhirtypes.DateTimeType = Field(  # type: ignore
+    expiry: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="expiry",
         title="The expiry date or date and time for the product",
@@ -647,11 +648,11 @@ class InventoryItemInstance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expiry__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    expiry__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_expiry", title="Extension field for ``expiry``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="The identifier for the physical instance, typically a serial number",
@@ -661,7 +662,7 @@ class InventoryItemInstance(backboneelement.BackboneElement):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="location",
         title="The location that the item is associated with",
@@ -673,7 +674,7 @@ class InventoryItemInstance(backboneelement.BackboneElement):
         },
     )
 
-    lotNumber: fhirtypes.StringType = Field(  # type: ignore
+    lotNumber: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="lotNumber",
         title="The lot or batch number of the item",
@@ -682,11 +683,11 @@ class InventoryItemInstance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="The subject that the item is associated with",
@@ -729,7 +730,7 @@ class InventoryItemName(backboneelement.BackboneElement):
 
     __resource_type__ = "InventoryItemName"
 
-    language: fhirtypes.CodeType = Field(  # type: ignore
+    language: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="language",
         title="The language used to express the item name",
@@ -739,11 +740,11 @@ class InventoryItemName(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="The name or designation of the item",
@@ -753,7 +754,7 @@ class InventoryItemName(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 

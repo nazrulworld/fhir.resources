@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Substance
 Release: STU3
@@ -23,7 +24,7 @@ class Substance(domainresource.DomainResource):
 
     __resource_type__ = "Substance"
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="What class/type of substance this is",
@@ -46,7 +47,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Textual description of the substance, comments",
@@ -58,11 +59,11 @@ class Substance(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique identifier",
@@ -72,7 +73,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    ingredient: typing.List[fhirtypes.SubstanceIngredientType] = Field(  # type: ignore
+    ingredient: typing.List[fhirtypes.SubstanceIngredientType] | None = Field(  # type: ignore
         None,
         alias="ingredient",
         title="Composition information about the substance",
@@ -82,7 +83,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    instance: typing.List[fhirtypes.SubstanceInstanceType] = Field(  # type: ignore
+    instance: typing.List[fhirtypes.SubstanceInstanceType] | None = Field(  # type: ignore
         None,
         alias="instance",
         title="If this describes a specific package/container of the substance",
@@ -95,7 +96,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | inactive | entered-in-error",
@@ -107,7 +108,7 @@ class Substance(domainresource.DomainResource):
             "enum_values": ["active", "inactive", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -147,7 +148,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceIngredient"
 
-    quantity: fhirtypes.RatioType = Field(  # type: ignore
+    quantity: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Optional amount (concentration)",
@@ -157,7 +158,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         },
     )
 
-    substanceCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    substanceCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="substanceCodeableConcept",
         title="A component of the substance",
@@ -170,7 +171,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         },
     )
 
-    substanceReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    substanceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="substanceReference",
         title="A component of the substance",
@@ -231,7 +232,7 @@ class SubstanceInstance(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceInstance"
 
-    expiry: fhirtypes.DateTimeType = Field(  # type: ignore
+    expiry: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="expiry",
         title="When no longer valid to use",
@@ -243,11 +244,11 @@ class SubstanceInstance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expiry__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    expiry__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_expiry", title="Extension field for ``expiry``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier of the package/container",
@@ -260,7 +261,7 @@ class SubstanceInstance(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Amount of substance in the package",

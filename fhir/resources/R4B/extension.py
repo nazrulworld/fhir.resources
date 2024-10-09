@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Extension
 Release: R4B
@@ -24,7 +25,7 @@ class Extension(element.Element):
 
     __resource_type__ = "Extension"
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title="identifies the meaning of the extension",
@@ -38,7 +39,7 @@ class Extension(element.Element):
         },
     )
 
-    valueAddress: fhirtypes.AddressType = Field(  # type: ignore
+    valueAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="valueAddress",
         title="Value of extension",
@@ -54,7 +55,7 @@ class Extension(element.Element):
         },
     )
 
-    valueAge: fhirtypes.AgeType = Field(  # type: ignore
+    valueAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="valueAge",
         title="Value of extension",
@@ -70,7 +71,7 @@ class Extension(element.Element):
         },
     )
 
-    valueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
+    valueAnnotation: fhirtypes.AnnotationType | None = Field(  # type: ignore
         None,
         alias="valueAnnotation",
         title="Value of extension",
@@ -86,7 +87,7 @@ class Extension(element.Element):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="Value of extension",
@@ -102,7 +103,7 @@ class Extension(element.Element):
         },
     )
 
-    valueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    valueBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="valueBase64Binary",
         title="Value of extension",
@@ -118,7 +119,7 @@ class Extension(element.Element):
         },
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Value of extension",
@@ -134,7 +135,7 @@ class Extension(element.Element):
         },
     )
 
-    valueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
+    valueCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="valueCanonical",
         title="Value of extension",
@@ -150,7 +151,7 @@ class Extension(element.Element):
         },
     )
 
-    valueCode: fhirtypes.CodeType = Field(  # type: ignore
+    valueCode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="valueCode",
         title="Value of extension",
@@ -166,7 +167,7 @@ class Extension(element.Element):
         },
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Value of extension",
@@ -182,7 +183,7 @@ class Extension(element.Element):
         },
     )
 
-    valueCodeableReference: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    valueCodeableReference: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="valueCodeableReference",
         title="Value of extension",
@@ -198,7 +199,7 @@ class Extension(element.Element):
         },
     )
 
-    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
+    valueCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Value of extension",
@@ -214,7 +215,7 @@ class Extension(element.Element):
         },
     )
 
-    valueContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
+    valueContactDetail: fhirtypes.ContactDetailType | None = Field(  # type: ignore
         None,
         alias="valueContactDetail",
         title="Value of extension",
@@ -230,7 +231,7 @@ class Extension(element.Element):
         },
     )
 
-    valueContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
+    valueContactPoint: fhirtypes.ContactPointType | None = Field(  # type: ignore
         None,
         alias="valueContactPoint",
         title="Value of extension",
@@ -246,7 +247,7 @@ class Extension(element.Element):
         },
     )
 
-    valueContributor: fhirtypes.ContributorType = Field(  # type: ignore
+    valueContributor: fhirtypes.ContributorType | None = Field(  # type: ignore
         None,
         alias="valueContributor",
         title="Value of extension",
@@ -262,7 +263,7 @@ class Extension(element.Element):
         },
     )
 
-    valueCount: fhirtypes.CountType = Field(  # type: ignore
+    valueCount: fhirtypes.CountType | None = Field(  # type: ignore
         None,
         alias="valueCount",
         title="Value of extension",
@@ -278,7 +279,7 @@ class Extension(element.Element):
         },
     )
 
-    valueDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
+    valueDataRequirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
         None,
         alias="valueDataRequirement",
         title="Value of extension",
@@ -294,7 +295,7 @@ class Extension(element.Element):
         },
     )
 
-    valueDate: fhirtypes.DateType = Field(  # type: ignore
+    valueDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="valueDate",
         title="Value of extension",
@@ -310,7 +311,7 @@ class Extension(element.Element):
         },
     )
 
-    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="Value of extension",
@@ -326,7 +327,7 @@ class Extension(element.Element):
         },
     )
 
-    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    valueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="Value of extension",
@@ -342,7 +343,7 @@ class Extension(element.Element):
         },
     )
 
-    valueDistance: fhirtypes.DistanceType = Field(  # type: ignore
+    valueDistance: fhirtypes.DistanceType | None = Field(  # type: ignore
         None,
         alias="valueDistance",
         title="Value of extension",
@@ -358,7 +359,7 @@ class Extension(element.Element):
         },
     )
 
-    valueDosage: fhirtypes.DosageType = Field(  # type: ignore
+    valueDosage: fhirtypes.DosageType | None = Field(  # type: ignore
         None,
         alias="valueDosage",
         title="Value of extension",
@@ -374,7 +375,7 @@ class Extension(element.Element):
         },
     )
 
-    valueDuration: fhirtypes.DurationType = Field(  # type: ignore
+    valueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="valueDuration",
         title="Value of extension",
@@ -390,7 +391,7 @@ class Extension(element.Element):
         },
     )
 
-    valueExpression: fhirtypes.ExpressionType = Field(  # type: ignore
+    valueExpression: fhirtypes.ExpressionType | None = Field(  # type: ignore
         None,
         alias="valueExpression",
         title="Value of extension",
@@ -406,7 +407,7 @@ class Extension(element.Element):
         },
     )
 
-    valueHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
+    valueHumanName: fhirtypes.HumanNameType | None = Field(  # type: ignore
         None,
         alias="valueHumanName",
         title="Value of extension",
@@ -422,7 +423,7 @@ class Extension(element.Element):
         },
     )
 
-    valueId: fhirtypes.IdType = Field(  # type: ignore
+    valueId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="valueId",
         title="Value of extension",
@@ -438,7 +439,7 @@ class Extension(element.Element):
         },
     )
 
-    valueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    valueIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="valueIdentifier",
         title="Value of extension",
@@ -454,7 +455,7 @@ class Extension(element.Element):
         },
     )
 
-    valueInstant: fhirtypes.InstantType = Field(  # type: ignore
+    valueInstant: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="valueInstant",
         title="Value of extension",
@@ -470,7 +471,7 @@ class Extension(element.Element):
         },
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Value of extension",
@@ -486,7 +487,7 @@ class Extension(element.Element):
         },
     )
 
-    valueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
+    valueMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="valueMarkdown",
         title="Value of extension",
@@ -502,7 +503,7 @@ class Extension(element.Element):
         },
     )
 
-    valueMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    valueMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="valueMoney",
         title="Value of extension",
@@ -518,7 +519,7 @@ class Extension(element.Element):
         },
     )
 
-    valueOid: fhirtypes.OidType = Field(  # type: ignore
+    valueOid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="valueOid",
         title="Value of extension",
@@ -534,7 +535,7 @@ class Extension(element.Element):
         },
     )
 
-    valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
+    valueParameterDefinition: fhirtypes.ParameterDefinitionType | None = Field(  # type: ignore
         None,
         alias="valueParameterDefinition",
         title="Value of extension",
@@ -550,7 +551,7 @@ class Extension(element.Element):
         },
     )
 
-    valuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    valuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="valuePeriod",
         title="Value of extension",
@@ -566,7 +567,7 @@ class Extension(element.Element):
         },
     )
 
-    valuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    valuePositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="valuePositiveInt",
         title="Value of extension",
@@ -582,7 +583,7 @@ class Extension(element.Element):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Value of extension",
@@ -598,7 +599,7 @@ class Extension(element.Element):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Value of extension",
@@ -614,7 +615,7 @@ class Extension(element.Element):
         },
     )
 
-    valueRatio: fhirtypes.RatioType = Field(  # type: ignore
+    valueRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="valueRatio",
         title="Value of extension",
@@ -630,7 +631,7 @@ class Extension(element.Element):
         },
     )
 
-    valueRatioRange: fhirtypes.RatioRangeType = Field(  # type: ignore
+    valueRatioRange: fhirtypes.RatioRangeType | None = Field(  # type: ignore
         None,
         alias="valueRatioRange",
         title="Value of extension",
@@ -646,7 +647,7 @@ class Extension(element.Element):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Value of extension",
@@ -662,7 +663,7 @@ class Extension(element.Element):
         },
     )
 
-    valueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
+    valueRelatedArtifact: fhirtypes.RelatedArtifactType | None = Field(  # type: ignore
         None,
         alias="valueRelatedArtifact",
         title="Value of extension",
@@ -678,7 +679,7 @@ class Extension(element.Element):
         },
     )
 
-    valueSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
+    valueSampledData: fhirtypes.SampledDataType | None = Field(  # type: ignore
         None,
         alias="valueSampledData",
         title="Value of extension",
@@ -694,7 +695,7 @@ class Extension(element.Element):
         },
     )
 
-    valueSignature: fhirtypes.SignatureType = Field(  # type: ignore
+    valueSignature: fhirtypes.SignatureType | None = Field(  # type: ignore
         None,
         alias="valueSignature",
         title="Value of extension",
@@ -710,7 +711,7 @@ class Extension(element.Element):
         },
     )
 
-    valueString: fhirtypes.StringType = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="valueString",
         title="Value of extension",
@@ -726,7 +727,7 @@ class Extension(element.Element):
         },
     )
 
-    valueTime: fhirtypes.TimeType = Field(  # type: ignore
+    valueTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="valueTime",
         title="Value of extension",
@@ -742,7 +743,7 @@ class Extension(element.Element):
         },
     )
 
-    valueTiming: fhirtypes.TimingType = Field(  # type: ignore
+    valueTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="valueTiming",
         title="Value of extension",
@@ -758,7 +759,7 @@ class Extension(element.Element):
         },
     )
 
-    valueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
+    valueTriggerDefinition: fhirtypes.TriggerDefinitionType | None = Field(  # type: ignore
         None,
         alias="valueTriggerDefinition",
         title="Value of extension",
@@ -774,7 +775,7 @@ class Extension(element.Element):
         },
     )
 
-    valueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    valueUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="valueUnsignedInt",
         title="Value of extension",
@@ -790,7 +791,7 @@ class Extension(element.Element):
         },
     )
 
-    valueUri: fhirtypes.UriType = Field(  # type: ignore
+    valueUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="valueUri",
         title="Value of extension",
@@ -806,7 +807,7 @@ class Extension(element.Element):
         },
     )
 
-    valueUrl: fhirtypes.UrlType = Field(  # type: ignore
+    valueUrl: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="valueUrl",
         title="Value of extension",
@@ -822,7 +823,7 @@ class Extension(element.Element):
         },
     )
 
-    valueUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
+    valueUsageContext: fhirtypes.UsageContextType | None = Field(  # type: ignore
         None,
         alias="valueUsageContext",
         title="Value of extension",
@@ -838,7 +839,7 @@ class Extension(element.Element):
         },
     )
 
-    valueUuid: fhirtypes.UuidType = Field(  # type: ignore
+    valueUuid: fhirtypes.UuidType | None = Field(  # type: ignore
         None,
         alias="valueUuid",
         title="Value of extension",

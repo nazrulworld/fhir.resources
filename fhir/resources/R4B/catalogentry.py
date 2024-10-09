@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CatalogEntry
 Release: R4B
@@ -25,7 +26,7 @@ class CatalogEntry(domainresource.DomainResource):
 
     __resource_type__ = "CatalogEntry"
 
-    additionalCharacteristic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    additionalCharacteristic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="additionalCharacteristic",
         title="Additional characteristics of the catalog entry",
@@ -35,7 +36,7 @@ class CatalogEntry(domainresource.DomainResource):
         },
     )
 
-    additionalClassification: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    additionalClassification: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="additionalClassification",
         title="Additional classification of the catalog entry",
@@ -45,7 +46,7 @@ class CatalogEntry(domainresource.DomainResource):
         },
     )
 
-    additionalIdentifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    additionalIdentifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="additionalIdentifier",
         title=(
@@ -58,7 +59,7 @@ class CatalogEntry(domainresource.DomainResource):
         },
     )
 
-    classification: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    classification: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="classification",
         title="Classification (category or class) of the item entry",
@@ -68,7 +69,7 @@ class CatalogEntry(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique identifier of the catalog item",
@@ -81,7 +82,7 @@ class CatalogEntry(domainresource.DomainResource):
         },
     )
 
-    lastUpdated: fhirtypes.DateTimeType = Field(  # type: ignore
+    lastUpdated: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="lastUpdated",
         title="When was this catalog last updated",
@@ -93,11 +94,11 @@ class CatalogEntry(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
     )
 
-    orderable: bool = Field(  # type: ignore
+    orderable: bool | None = Field(  # type: ignore
         None,
         alias="orderable",
         title="Whether the entry represents an orderable item",
@@ -107,7 +108,7 @@ class CatalogEntry(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    orderable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    orderable__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_orderable", title="Extension field for ``orderable``."
     )
 
@@ -135,7 +136,7 @@ class CatalogEntry(domainresource.DomainResource):
         },
     )
 
-    relatedEntry: typing.List[fhirtypes.CatalogEntryRelatedEntryType] = Field(  # type: ignore
+    relatedEntry: typing.List[fhirtypes.CatalogEntryRelatedEntryType] | None = Field(  # type: ignore
         None,
         alias="relatedEntry",
         title="An item that this catalog entry is related to",
@@ -148,7 +149,7 @@ class CatalogEntry(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -163,11 +164,11 @@ class CatalogEntry(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="The type of item - medication, device, service, protocol or other",
@@ -177,7 +178,7 @@ class CatalogEntry(domainresource.DomainResource):
         },
     )
 
-    validTo: fhirtypes.DateTimeType = Field(  # type: ignore
+    validTo: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="validTo",
         title="The date until which this catalog entry is expected to be active",
@@ -186,11 +187,11 @@ class CatalogEntry(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    validTo__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    validTo__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_validTo", title="Extension field for ``validTo``."
     )
 
-    validityPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    validityPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="validityPeriod",
         title="The time period in which this catalog entry is expected to be active",
@@ -266,7 +267,7 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         },
     )
 
-    relationtype: fhirtypes.CodeType = Field(  # type: ignore
+    relationtype: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="relationtype",
         title="triggers | is-replaced-by",
@@ -282,7 +283,7 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
             "enum_values": ["triggers", "is-replaced-by"],
         },
     )
-    relationtype__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    relationtype__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_relationtype", title="Extension field for ``relationtype``."
     )
 

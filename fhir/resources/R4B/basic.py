@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Basic
 Release: R4B
@@ -26,7 +27,7 @@ class Basic(domainresource.DomainResource):
 
     __resource_type__ = "Basic"
 
-    author: fhirtypes.ReferenceType = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who created",
@@ -57,7 +58,7 @@ class Basic(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateType = Field(  # type: ignore
+    created: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="created",
         title="When created",
@@ -66,11 +67,11 @@ class Basic(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -83,7 +84,7 @@ class Basic(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="Identifies the focus of this resource",

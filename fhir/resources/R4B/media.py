@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Media
 Release: R4B
@@ -24,7 +25,7 @@ class Media(domainresource.DomainResource):
 
     __resource_type__ = "Media"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Procedure that caused this media to be created",
@@ -39,7 +40,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    bodySite: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    bodySite: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Observed body part",
@@ -65,7 +66,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    createdDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    createdDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="createdDateTime",
         title="When Media was collected",
@@ -77,11 +78,11 @@ class Media(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    createdDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    createdDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_createdDateTime", title="Extension field for ``createdDateTime``."
     )
 
-    createdPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    createdPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="createdPeriod",
         title="When Media was collected",
@@ -94,7 +95,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    device: fhirtypes.ReferenceType = Field(  # type: ignore
+    device: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="device",
         title="Observing Device",
@@ -106,7 +107,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    deviceName: fhirtypes.StringType = Field(  # type: ignore
+    deviceName: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="deviceName",
         title="Name of the device/manufacturer",
@@ -118,11 +119,11 @@ class Media(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    deviceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deviceName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_deviceName", title="Extension field for ``deviceName``."
     )
 
-    duration: fhirtypes.DecimalType = Field(  # type: ignore
+    duration: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="duration",
         title="Length in seconds (audio / video)",
@@ -131,11 +132,11 @@ class Media(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    duration__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_duration", title="Extension field for ``duration``."
     )
 
-    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter associated with media",
@@ -147,7 +148,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    frames: fhirtypes.PositiveIntType = Field(  # type: ignore
+    frames: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="frames",
         title="Number of frames if > 1 (photo)",
@@ -162,11 +163,11 @@ class Media(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    frames__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    frames__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_frames", title="Extension field for ``frames``."
     )
 
-    height: fhirtypes.PositiveIntType = Field(  # type: ignore
+    height: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="height",
         title="Height of the image in pixels (photo/video)",
@@ -175,11 +176,11 @@ class Media(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    height__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    height__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_height", title="Extension field for ``height``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier(s) for the image",
@@ -194,7 +195,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    issued: fhirtypes.InstantType = Field(  # type: ignore
+    issued: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="issued",
         title="Date/Time this version was made available",
@@ -206,11 +207,11 @@ class Media(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    modality: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    modality: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="modality",
         title="The type of acquisition equipment/process",
@@ -224,7 +225,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about the media",
@@ -237,7 +238,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    operator: fhirtypes.ReferenceType = Field(  # type: ignore
+    operator: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="operator",
         title="The person who generated the image",
@@ -257,7 +258,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced event",
@@ -269,7 +270,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Why was event performed?",
@@ -279,7 +280,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -304,11 +305,11 @@ class Media(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="Who/What this Media is a record of",
@@ -328,7 +329,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Classification of media as image, video, or audio",
@@ -341,7 +342,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    view: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    view: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="view",
         title="Imaging view, e.g. Lateral or Antero-posterior",
@@ -351,7 +352,7 @@ class Media(domainresource.DomainResource):
         },
     )
 
-    width: fhirtypes.PositiveIntType = Field(  # type: ignore
+    width: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="width",
         title="Width of the image in pixels (photo/video)",
@@ -360,7 +361,7 @@ class Media(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    width__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    width__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_width", title="Extension field for ``width``."
     )
 

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ClinicalUseDefinition
 Release: R5
@@ -24,7 +25,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
 
     __resource_type__ = "ClinicalUseDefinition"
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title=(
@@ -41,7 +42,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    contraindication: fhirtypes.ClinicalUseDefinitionContraindicationType = Field(  # type: ignore
+    contraindication: fhirtypes.ClinicalUseDefinitionContraindicationType | None = Field(  # type: ignore
         None,
         alias="contraindication",
         title="Specifics for when this is a contraindication",
@@ -51,7 +52,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this issue",
@@ -61,7 +62,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    indication: fhirtypes.ClinicalUseDefinitionIndicationType = Field(  # type: ignore
+    indication: fhirtypes.ClinicalUseDefinitionIndicationType | None = Field(  # type: ignore
         None,
         alias="indication",
         title="Specifics for when this is an indication",
@@ -71,7 +72,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    interaction: fhirtypes.ClinicalUseDefinitionInteractionType = Field(  # type: ignore
+    interaction: fhirtypes.ClinicalUseDefinitionInteractionType | None = Field(  # type: ignore
         None,
         alias="interaction",
         title="Specifics for when this is an interaction",
@@ -81,7 +82,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    library: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    library: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="library",
         title="Logic used by the clinical use definition",
@@ -92,11 +93,11 @@ class ClinicalUseDefinition(domainresource.DomainResource):
             "enum_reference_types": ["Library"],
         },
     )
-    library__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    library__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_library", title="Extension field for ``library``."
     )
 
-    population: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    population: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="population",
         title="The population group to which this applies",
@@ -108,7 +109,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="status",
         title="Whether this is a current issue or one that has been retired etc",
@@ -118,7 +119,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    subject: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    subject: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="subject",
         title=(
@@ -143,7 +144,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -165,11 +166,11 @@ class ClinicalUseDefinition(domainresource.DomainResource):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    undesirableEffect: fhirtypes.ClinicalUseDefinitionUndesirableEffectType = Field(  # type: ignore
+    undesirableEffect: fhirtypes.ClinicalUseDefinitionUndesirableEffectType | None = Field(  # type: ignore
         None,
         alias="undesirableEffect",
         title="A possible negative outcome from the use of this treatment",
@@ -182,7 +183,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         },
     )
 
-    warning: fhirtypes.ClinicalUseDefinitionWarningType = Field(  # type: ignore
+    warning: fhirtypes.ClinicalUseDefinitionWarningType | None = Field(  # type: ignore
         None,
         alias="warning",
         title=(
@@ -251,7 +252,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
 
     __resource_type__ = "ClinicalUseDefinitionContraindication"
 
-    applicability: fhirtypes.ExpressionType = Field(  # type: ignore
+    applicability: fhirtypes.ExpressionType | None = Field(  # type: ignore
         None,
         alias="applicability",
         title=(
@@ -265,7 +266,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         },
     )
 
-    comorbidity: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
+    comorbidity: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
         None,
         alias="comorbidity",
         title="A comorbidity (concurrent condition) or coinfection",
@@ -277,7 +278,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         },
     )
 
-    diseaseStatus: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    diseaseStatus: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="diseaseStatus",
         title="The status of the disease or symptom for the contraindication",
@@ -292,7 +293,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         },
     )
 
-    diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    diseaseSymptomProcedure: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="diseaseSymptomProcedure",
         title=(
@@ -307,7 +308,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         },
     )
 
-    indication: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    indication: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="indication",
         title="The indication which this is a contraidication for",
@@ -319,7 +320,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         },
     )
 
-    otherTherapy: typing.List[fhirtypes.ClinicalUseDefinitionContraindicationOtherTherapyType] = Field(  # type: ignore
+    otherTherapy: typing.List[fhirtypes.ClinicalUseDefinitionContraindicationOtherTherapyType] | None = Field(  # type: ignore
         None,
         alias="otherTherapy",
         title=(
@@ -431,7 +432,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
 
     __resource_type__ = "ClinicalUseDefinitionIndication"
 
-    applicability: fhirtypes.ExpressionType = Field(  # type: ignore
+    applicability: fhirtypes.ExpressionType | None = Field(  # type: ignore
         None,
         alias="applicability",
         title=(
@@ -445,7 +446,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         },
     )
 
-    comorbidity: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
+    comorbidity: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
         None,
         alias="comorbidity",
         title="A comorbidity or coinfection as part of the indication",
@@ -460,7 +461,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         },
     )
 
-    diseaseStatus: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    diseaseStatus: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="diseaseStatus",
         title="The status of the disease or symptom for the indication",
@@ -475,7 +476,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         },
     )
 
-    diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    diseaseSymptomProcedure: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="diseaseSymptomProcedure",
         title="The situation that is being documented as an indicaton for this item",
@@ -487,7 +488,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         },
     )
 
-    durationRange: fhirtypes.RangeType = Field(  # type: ignore
+    durationRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="durationRange",
         title="Timing or duration information",
@@ -505,7 +506,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         },
     )
 
-    durationString: fhirtypes.StringType = Field(  # type: ignore
+    durationString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="durationString",
         title="Timing or duration information",
@@ -522,11 +523,11 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    durationString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    durationString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_durationString", title="Extension field for ``durationString``."
     )
 
-    intendedEffect: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    intendedEffect: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="intendedEffect",
         title="The intended effect, aim or strategy to be achieved",
@@ -538,7 +539,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         },
     )
 
-    otherTherapy: typing.List[fhirtypes.ClinicalUseDefinitionContraindicationOtherTherapyType] = Field(  # type: ignore
+    otherTherapy: typing.List[fhirtypes.ClinicalUseDefinitionContraindicationOtherTherapyType] | None = Field(  # type: ignore
         None,
         alias="otherTherapy",
         title=(
@@ -554,7 +555,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         },
     )
 
-    undesirableEffect: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    undesirableEffect: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="undesirableEffect",
         title=(
@@ -620,7 +621,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
 
     __resource_type__ = "ClinicalUseDefinitionInteraction"
 
-    effect: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    effect: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="effect",
         title=(
@@ -635,7 +636,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         },
     )
 
-    incidence: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    incidence: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="incidence",
         title="The incidence of the interaction, e.g. theoretical, observed",
@@ -645,7 +646,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         },
     )
 
-    interactant: typing.List[fhirtypes.ClinicalUseDefinitionInteractionInteractantType] = Field(  # type: ignore
+    interactant: typing.List[fhirtypes.ClinicalUseDefinitionInteractionInteractantType] | None = Field(  # type: ignore
         None,
         alias="interactant",
         title=(
@@ -661,7 +662,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         },
     )
 
-    management: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    management: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="management",
         title="Actions for managing the interaction",
@@ -671,7 +672,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -718,7 +719,7 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
 
     __resource_type__ = "ClinicalUseDefinitionInteractionInteractant"
 
-    itemCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="itemCodeableConcept",
         title=(
@@ -737,7 +738,7 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
         },
     )
 
-    itemReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="itemReference",
         title=(
@@ -808,7 +809,7 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
 
     __resource_type__ = "ClinicalUseDefinitionUndesirableEffect"
 
-    classification: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    classification: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="classification",
         title="High level classification of the effect",
@@ -818,7 +819,7 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
         },
     )
 
-    frequencyOfOccurrence: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    frequencyOfOccurrence: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="frequencyOfOccurrence",
         title="How often the effect is seen",
@@ -828,7 +829,7 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
         },
     )
 
-    symptomConditionEffect: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    symptomConditionEffect: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
         None,
         alias="symptomConditionEffect",
         title="The situation in which the undesirable effect may manifest",
@@ -871,7 +872,7 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
 
     __resource_type__ = "ClinicalUseDefinitionWarning"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="A coded or unformatted textual definition of this warning",
@@ -881,7 +882,7 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="A textual definition of this warning, with formatting",
@@ -890,7 +891,7 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 

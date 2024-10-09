@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ServiceRequest
 Release: R4B
@@ -25,7 +26,7 @@ class ServiceRequest(domainresource.DomainResource):
 
     __resource_type__ = "ServiceRequest"
 
-    asNeededBoolean: bool = Field(  # type: ignore
+    asNeededBoolean: bool | None = Field(  # type: ignore
         None,
         alias="asNeededBoolean",
         title="Preconditions for service",
@@ -40,11 +41,11 @@ class ServiceRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
     )
 
-    asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    asNeededCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="asNeededCodeableConcept",
         title="Preconditions for service",
@@ -60,7 +61,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    authoredOn: fhirtypes.DateTimeType = Field(  # type: ignore
+    authoredOn: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="authoredOn",
         title="Date request signed",
@@ -69,11 +70,11 @@ class ServiceRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="What request fulfills",
@@ -85,7 +86,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    bodySite: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Location on Body",
@@ -98,7 +99,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="Classification of service",
@@ -111,7 +112,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="What is being requested/ordered",
@@ -125,7 +126,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    doNotPerform: bool = Field(  # type: ignore
+    doNotPerform: bool | None = Field(  # type: ignore
         None,
         alias="doNotPerform",
         title="True if service/procedure should not be performed",
@@ -137,11 +138,11 @@ class ServiceRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
     )
 
-    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="encounter",
         title="Encounter in which the request was created",
@@ -156,7 +157,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifiers assigned to this order",
@@ -169,7 +170,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -184,13 +185,13 @@ class ServiceRequest(domainresource.DomainResource):
             "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
         },
     )
-    instantiatesCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    instantiatesCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
+    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -203,11 +204,11 @@ class ServiceRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    instantiatesUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    insurance: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    insurance: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="insurance",
         title="Associated insurance coverage",
@@ -223,7 +224,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    intent: fhirtypes.CodeType = Field(  # type: ignore
+    intent: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="intent",
         title=(
@@ -252,11 +253,11 @@ class ServiceRequest(domainresource.DomainResource):
             ],
         },
     )
-    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_intent", title="Extension field for ``intent``."
     )
 
-    locationCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    locationCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="locationCode",
         title="Requested location",
@@ -269,7 +270,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    locationReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    locationReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="locationReference",
         title="Requested location",
@@ -284,7 +285,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Comments",
@@ -297,7 +298,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="When service should occur",
@@ -309,13 +310,13 @@ class ServiceRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="occurrencePeriod",
         title="When service should occur",
@@ -328,7 +329,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceTiming: fhirtypes.TimingType = Field(  # type: ignore
+    occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="occurrenceTiming",
         title="When service should occur",
@@ -341,7 +342,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    orderDetail: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    orderDetail: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="orderDetail",
         title="Additional order information",
@@ -357,7 +358,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    patientInstruction: fhirtypes.StringType = Field(  # type: ignore
+    patientInstruction: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="patientInstruction",
         title="Patient or consumer-oriented instructions",
@@ -366,13 +367,13 @@ class ServiceRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_patientInstruction",
         title="Extension field for ``patientInstruction``.",
     )
 
-    performer: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    performer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="performer",
         title="Requested performer",
@@ -396,7 +397,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    performerType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    performerType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="performerType",
         title="Performer role",
@@ -406,7 +407,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -421,11 +422,11 @@ class ServiceRequest(domainresource.DomainResource):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    quantityQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantityQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantityQuantity",
         title="Service amount",
@@ -442,7 +443,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    quantityRange: fhirtypes.RangeType = Field(  # type: ignore
+    quantityRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="quantityRange",
         title="Service amount",
@@ -459,7 +460,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    quantityRatio: fhirtypes.RatioType = Field(  # type: ignore
+    quantityRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="quantityRatio",
         title="Service amount",
@@ -476,7 +477,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Explanation/Justification for procedure or service",
@@ -491,7 +492,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Explanation/Justification for service or service",
@@ -512,7 +513,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    relevantHistory: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="relevantHistory",
         title="Request provenance",
@@ -524,7 +525,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    replaces: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="replaces",
         title="What request replaces",
@@ -539,7 +540,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    requester: fhirtypes.ReferenceType = Field(  # type: ignore
+    requester: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="requester",
         title="Who/what is requesting service",
@@ -561,7 +562,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    requisition: fhirtypes.IdentifierType = Field(  # type: ignore
+    requisition: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="requisition",
         title="Composite Request ID",
@@ -575,7 +576,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    specimen: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    specimen: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="specimen",
         title="Procedure Samples",
@@ -587,7 +588,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -611,7 +612,7 @@ class ServiceRequest(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -632,7 +633,7 @@ class ServiceRequest(domainresource.DomainResource):
         },
     )
 
-    supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    supportingInfo: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="supportingInfo",
         title="Additional clinical information",

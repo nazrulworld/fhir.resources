@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ResearchSubject
 Release: R5
@@ -26,7 +27,7 @@ class ResearchSubject(domainresource.DomainResource):
 
     __resource_type__ = "ResearchSubject"
 
-    actualComparisonGroup: fhirtypes.IdType = Field(  # type: ignore
+    actualComparisonGroup: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="actualComparisonGroup",
         title="What path was followed",
@@ -38,13 +39,13 @@ class ResearchSubject(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    actualComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    actualComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_actualComparisonGroup",
         title="Extension field for ``actualComparisonGroup``.",
     )
 
-    assignedComparisonGroup: fhirtypes.IdType = Field(  # type: ignore
+    assignedComparisonGroup: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="assignedComparisonGroup",
         title="What path should be followed",
@@ -56,13 +57,13 @@ class ResearchSubject(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    assignedComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    assignedComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_assignedComparisonGroup",
         title="Extension field for ``assignedComparisonGroup``.",
     )
 
-    consent: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    consent: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="consent",
         title="Agreement to participate in study",
@@ -77,7 +78,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for research subject in a study",
@@ -87,7 +88,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Start and end of participation",
@@ -99,7 +100,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    progress: typing.List[fhirtypes.ResearchSubjectProgressType] = Field(  # type: ignore
+    progress: typing.List[fhirtypes.ResearchSubjectProgressType] | None = Field(  # type: ignore
         None,
         alias="progress",
         title="Subject status",
@@ -112,7 +113,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -125,7 +126,7 @@ class ResearchSubject(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -213,7 +214,7 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
 
     __resource_type__ = "ResearchSubjectProgress"
 
-    endDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    endDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="endDate",
         title="State change date",
@@ -222,11 +223,11 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    endDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    endDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_endDate", title="Extension field for ``endDate``."
     )
 
-    milestone: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    milestone: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="milestone",
         title="SignedUp | Screened | Randomized",
@@ -236,7 +237,7 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
         },
     )
 
-    reason: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    reason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="reason",
         title="State change reason",
@@ -249,7 +250,7 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
         },
     )
 
-    startDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    startDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="startDate",
         title="State change date",
@@ -258,11 +259,11 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_startDate", title="Extension field for ``startDate``."
     )
 
-    subjectState: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    subjectState: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="subjectState",
         title=(
@@ -276,7 +277,7 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="state | milestone",

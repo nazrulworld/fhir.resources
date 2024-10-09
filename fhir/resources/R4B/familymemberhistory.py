@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory
 Release: R4B
@@ -25,7 +26,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
     __resource_type__ = "FamilyMemberHistory"
 
-    ageAge: fhirtypes.AgeType = Field(  # type: ignore
+    ageAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="ageAge",
         title="(approximate) age",
@@ -41,7 +42,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    ageRange: fhirtypes.RangeType = Field(  # type: ignore
+    ageRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="ageRange",
         title="(approximate) age",
@@ -57,7 +58,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    ageString: fhirtypes.StringType = Field(  # type: ignore
+    ageString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="ageString",
         title="(approximate) age",
@@ -72,11 +73,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    ageString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    ageString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_ageString", title="Extension field for ``ageString``."
     )
 
-    bornDate: fhirtypes.DateType = Field(  # type: ignore
+    bornDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="bornDate",
         title="(approximate) date of birth",
@@ -88,11 +89,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    bornDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    bornDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_bornDate", title="Extension field for ``bornDate``."
     )
 
-    bornPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    bornPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="bornPeriod",
         title="(approximate) date of birth",
@@ -105,7 +106,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    bornString: fhirtypes.StringType = Field(  # type: ignore
+    bornString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="bornString",
         title="(approximate) date of birth",
@@ -117,11 +118,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    bornString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    bornString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_bornString", title="Extension field for ``bornString``."
     )
 
-    condition: typing.List[fhirtypes.FamilyMemberHistoryConditionType] = Field(  # type: ignore
+    condition: typing.List[fhirtypes.FamilyMemberHistoryConditionType] | None = Field(  # type: ignore
         None,
         alias="condition",
         title="Condition that the related person had",
@@ -136,7 +137,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    dataAbsentReason: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    dataAbsentReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="dataAbsentReason",
         title="subject-unknown | withheld | unable-to-obtain | deferred",
@@ -146,7 +147,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="When history was recorded or last updated",
@@ -158,11 +159,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    deceasedAge: fhirtypes.AgeType = Field(  # type: ignore
+    deceasedAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="deceasedAge",
         title="Dead? How old/when?",
@@ -178,7 +179,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    deceasedBoolean: bool = Field(  # type: ignore
+    deceasedBoolean: bool | None = Field(  # type: ignore
         None,
         alias="deceasedBoolean",
         title="Dead? How old/when?",
@@ -193,11 +194,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
     )
 
-    deceasedDate: fhirtypes.DateType = Field(  # type: ignore
+    deceasedDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="deceasedDate",
         title="Dead? How old/when?",
@@ -212,11 +213,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deceasedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_deceasedDate", title="Extension field for ``deceasedDate``."
     )
 
-    deceasedRange: fhirtypes.RangeType = Field(  # type: ignore
+    deceasedRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="deceasedRange",
         title="Dead? How old/when?",
@@ -232,7 +233,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    deceasedString: fhirtypes.StringType = Field(  # type: ignore
+    deceasedString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="deceasedString",
         title="Dead? How old/when?",
@@ -247,11 +248,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    deceasedString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_deceasedString", title="Extension field for ``deceasedString``."
     )
 
-    estimatedAge: bool = Field(  # type: ignore
+    estimatedAge: bool | None = Field(  # type: ignore
         None,
         alias="estimatedAge",
         title="Age is estimated?",
@@ -260,11 +261,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    estimatedAge__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    estimatedAge__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_estimatedAge", title="Extension field for ``estimatedAge``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Id(s) for this record",
@@ -278,7 +279,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -299,13 +300,13 @@ class FamilyMemberHistory(domainresource.DomainResource):
             ],
         },
     )
-    instantiatesCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    instantiatesCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
+    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -318,11 +319,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    instantiatesUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="The family member described",
@@ -334,11 +335,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="General note about related person",
@@ -364,7 +365,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Why was family member history performed?",
@@ -377,7 +378,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Why was family member history performed?",
@@ -412,7 +413,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    sex: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    sex: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="sex",
         title="male | female | other | unknown",
@@ -422,7 +423,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="partial | completed | entered-in-error | health-unknown",
@@ -443,7 +444,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -557,7 +558,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         },
     )
 
-    contributedToDeath: bool = Field(  # type: ignore
+    contributedToDeath: bool | None = Field(  # type: ignore
         None,
         alias="contributedToDeath",
         title="Whether the condition contributed to the cause of death",
@@ -569,13 +570,13 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    contributedToDeath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    contributedToDeath__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_contributedToDeath",
         title="Extension field for ``contributedToDeath``.",
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Extra information about condition",
@@ -588,7 +589,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         },
     )
 
-    onsetAge: fhirtypes.AgeType = Field(  # type: ignore
+    onsetAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="onsetAge",
         title="When condition first manifested",
@@ -605,7 +606,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         },
     )
 
-    onsetPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    onsetPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="onsetPeriod",
         title="When condition first manifested",
@@ -622,7 +623,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         },
     )
 
-    onsetRange: fhirtypes.RangeType = Field(  # type: ignore
+    onsetRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="onsetRange",
         title="When condition first manifested",
@@ -639,7 +640,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         },
     )
 
-    onsetString: fhirtypes.StringType = Field(  # type: ignore
+    onsetString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="onsetString",
         title="When condition first manifested",
@@ -655,11 +656,11 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
-    outcome: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    outcome: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="outcome",
         title="deceased | permanent disability | etc.",

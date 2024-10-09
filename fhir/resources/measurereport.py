@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MeasureReport
 Release: R5
@@ -26,7 +27,7 @@ class MeasureReport(domainresource.DomainResource):
 
     __resource_type__ = "MeasureReport"
 
-    dataUpdateType: fhirtypes.CodeType = Field(  # type: ignore
+    dataUpdateType: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="dataUpdateType",
         title="incremental | snapshot",
@@ -45,11 +46,11 @@ class MeasureReport(domainresource.DomainResource):
             "enum_values": ["incremental", "snapshot"],
         },
     )
-    dataUpdateType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    dataUpdateType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_dataUpdateType", title="Extension field for ``dataUpdateType``."
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="When the measure was calculated",
@@ -58,11 +59,11 @@ class MeasureReport(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    evaluatedResource: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    evaluatedResource: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="evaluatedResource",
         title="What data was used to calculate the measure score",
@@ -79,7 +80,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    group: typing.List[fhirtypes.MeasureReportGroupType] = Field(  # type: ignore
+    group: typing.List[fhirtypes.MeasureReportGroupType] | None = Field(  # type: ignore
         None,
         alias="group",
         title="Measure results for each group",
@@ -92,7 +93,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the MeasureReport",
@@ -106,7 +107,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    improvementNotation: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    improvementNotation: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="improvementNotation",
         title="increase | decrease",
@@ -119,7 +120,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    inputParameters: fhirtypes.ReferenceType = Field(  # type: ignore
+    inputParameters: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="inputParameters",
         title="What parameters were provided to the report",
@@ -135,7 +136,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="location",
         title="Where the reported data is from",
@@ -147,7 +148,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    measure: fhirtypes.CanonicalType = Field(  # type: ignore
+    measure: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="measure",
         title="What measure was calculated",
@@ -158,7 +159,7 @@ class MeasureReport(domainresource.DomainResource):
             "enum_reference_types": ["Measure"],
         },
     )
-    measure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    measure__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_measure", title="Extension field for ``measure``."
     )
 
@@ -172,7 +173,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    reporter: fhirtypes.ReferenceType = Field(  # type: ignore
+    reporter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="reporter",
         title="Who is reporting the data",
@@ -189,7 +190,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    reportingVendor: fhirtypes.ReferenceType = Field(  # type: ignore
+    reportingVendor: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="reportingVendor",
         title="What vendor prepared the data",
@@ -207,7 +208,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    scoring: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    scoring: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="scoring",
         title="What scoring method (e.g. proportion, ratio, continuous-variable)",
@@ -223,7 +224,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="complete | pending | error",
@@ -239,11 +240,11 @@ class MeasureReport(domainresource.DomainResource):
             "enum_values": ["complete", "pending", "error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="What individual(s) the report is for",
@@ -269,7 +270,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    supplementalData: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    supplementalData: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="supplementalData",
         title="Additional information collected for the report",
@@ -287,7 +288,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title="individual | subject-list | summary | data-exchange",
@@ -308,7 +309,7 @@ class MeasureReport(domainresource.DomainResource):
             "enum_values": ["individual", "subject-list", "summary", "data-exchange"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -370,7 +371,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
 
     __resource_type__ = "MeasureReportGroup"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Meaning of the group",
@@ -383,7 +384,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    linkId: fhirtypes.StringType = Field(  # type: ignore
+    linkId: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="linkId",
         title="Pointer to specific group from Measure",
@@ -395,11 +396,11 @@ class MeasureReportGroup(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    measureScoreCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    measureScoreCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="measureScoreCodeableConcept",
         title="What score this group achieved",
@@ -416,7 +417,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    measureScoreDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    measureScoreDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="measureScoreDateTime",
         title="What score this group achieved",
@@ -432,13 +433,13 @@ class MeasureReportGroup(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    measureScoreDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    measureScoreDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_measureScoreDateTime",
         title="Extension field for ``measureScoreDateTime``.",
     )
 
-    measureScoreDuration: fhirtypes.DurationType = Field(  # type: ignore
+    measureScoreDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="measureScoreDuration",
         title="What score this group achieved",
@@ -455,7 +456,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    measureScorePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    measureScorePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="measureScorePeriod",
         title="What score this group achieved",
@@ -472,7 +473,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    measureScoreQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    measureScoreQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="measureScoreQuantity",
         title="What score this group achieved",
@@ -489,7 +490,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    measureScoreRange: fhirtypes.RangeType = Field(  # type: ignore
+    measureScoreRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="measureScoreRange",
         title="What score this group achieved",
@@ -506,7 +507,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    population: typing.List[fhirtypes.MeasureReportGroupPopulationType] = Field(  # type: ignore
+    population: typing.List[fhirtypes.MeasureReportGroupPopulationType] | None = Field(  # type: ignore
         None,
         alias="population",
         title="The populations in the group",
@@ -519,7 +520,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    stratifier: typing.List[fhirtypes.MeasureReportGroupStratifierType] = Field(  # type: ignore
+    stratifier: typing.List[fhirtypes.MeasureReportGroupStratifierType] | None = Field(  # type: ignore
         None,
         alias="stratifier",
         title="Stratification results",
@@ -532,7 +533,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="What individual(s) the report is for",
@@ -619,7 +620,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
 
     __resource_type__ = "MeasureReportGroupPopulation"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -633,7 +634,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         },
     )
 
-    count: fhirtypes.IntegerType = Field(  # type: ignore
+    count: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="count",
         title="Size of the population",
@@ -642,11 +643,11 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_count", title="Extension field for ``count``."
     )
 
-    linkId: fhirtypes.StringType = Field(  # type: ignore
+    linkId: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="linkId",
         title="Pointer to specific population from Measure",
@@ -658,11 +659,11 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    subjectReport: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    subjectReport: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="subjectReport",
         title="For subject-list reports, a subject result in this population",
@@ -677,7 +678,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         },
     )
 
-    subjectResults: fhirtypes.ReferenceType = Field(  # type: ignore
+    subjectResults: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subjectResults",
         title="For subject-list reports, the subject results in this population",
@@ -692,7 +693,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         },
     )
 
-    subjects: fhirtypes.ReferenceType = Field(  # type: ignore
+    subjects: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subjects",
         title="What individual(s) in the population",
@@ -737,7 +738,7 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
 
     __resource_type__ = "MeasureReportGroupStratifier"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="What stratifier of the group",
@@ -747,7 +748,7 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
         },
     )
 
-    linkId: fhirtypes.StringType = Field(  # type: ignore
+    linkId: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="linkId",
         title="Pointer to specific stratifier from Measure",
@@ -759,11 +760,11 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    stratum: typing.List[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(  # type: ignore
+    stratum: typing.List[fhirtypes.MeasureReportGroupStratifierStratumType] | None = Field(  # type: ignore
         None,
         alias="stratum",
         title=(
@@ -803,7 +804,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
 
     __resource_type__ = "MeasureReportGroupStratifierStratum"
 
-    component: typing.List[fhirtypes.MeasureReportGroupStratifierStratumComponentType] = Field(  # type: ignore
+    component: typing.List[fhirtypes.MeasureReportGroupStratifierStratumComponentType] | None = Field(  # type: ignore
         None,
         alias="component",
         title="Stratifier component values",
@@ -813,7 +814,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    measureScoreCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    measureScoreCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="measureScoreCodeableConcept",
         title="What score this stratum achieved",
@@ -830,7 +831,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    measureScoreDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    measureScoreDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="measureScoreDateTime",
         title="What score this stratum achieved",
@@ -846,13 +847,13 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    measureScoreDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    measureScoreDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_measureScoreDateTime",
         title="Extension field for ``measureScoreDateTime``.",
     )
 
-    measureScoreDuration: fhirtypes.DurationType = Field(  # type: ignore
+    measureScoreDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="measureScoreDuration",
         title="What score this stratum achieved",
@@ -869,7 +870,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    measureScorePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    measureScorePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="measureScorePeriod",
         title="What score this stratum achieved",
@@ -886,7 +887,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    measureScoreQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    measureScoreQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="measureScoreQuantity",
         title="What score this stratum achieved",
@@ -903,7 +904,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    measureScoreRange: fhirtypes.RangeType = Field(  # type: ignore
+    measureScoreRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="measureScoreRange",
         title="What score this stratum achieved",
@@ -920,7 +921,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    population: typing.List[fhirtypes.MeasureReportGroupStratifierStratumPopulationType] = Field(  # type: ignore
+    population: typing.List[fhirtypes.MeasureReportGroupStratifierStratumPopulationType] | None = Field(  # type: ignore
         None,
         alias="population",
         title="Population results in this stratum",
@@ -933,7 +934,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="The stratum value, e.g. male",
@@ -949,11 +950,11 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="The stratum value, e.g. male",
@@ -970,7 +971,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="The stratum value, e.g. male",
@@ -987,7 +988,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="valueRange",
         title="The stratum value, e.g. male",
@@ -1004,7 +1005,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="valueReference",
         title="The stratum value, e.g. male",
@@ -1100,7 +1101,7 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
         },
     )
 
-    linkId: fhirtypes.StringType = Field(  # type: ignore
+    linkId: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="linkId",
         title="Pointer to specific stratifier component from Measure",
@@ -1112,11 +1113,11 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
             "element_property": True,
         },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="The stratum component value, e.g. male",
@@ -1128,11 +1129,11 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="The stratum component value, e.g. male",
@@ -1145,7 +1146,7 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="The stratum component value, e.g. male",
@@ -1158,7 +1159,7 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="valueRange",
         title="The stratum component value, e.g. male",
@@ -1171,7 +1172,7 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="valueReference",
         title="The stratum component value, e.g. male",
@@ -1240,7 +1241,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
 
     __resource_type__ = "MeasureReportGroupStratifierStratumPopulation"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -1254,7 +1255,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         },
     )
 
-    count: fhirtypes.IntegerType = Field(  # type: ignore
+    count: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="count",
         title="Size of the population",
@@ -1263,11 +1264,11 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
             "element_property": True,
         },
     )
-    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_count", title="Extension field for ``count``."
     )
 
-    linkId: fhirtypes.StringType = Field(  # type: ignore
+    linkId: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="linkId",
         title="Pointer to specific population from Measure",
@@ -1279,11 +1280,11 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
             "element_property": True,
         },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    subjectReport: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    subjectReport: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="subjectReport",
         title="For subject-list reports, a subject result in this population",
@@ -1298,7 +1299,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         },
     )
 
-    subjectResults: fhirtypes.ReferenceType = Field(  # type: ignore
+    subjectResults: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subjectResults",
         title="For subject-list reports, the subject results in this population",
@@ -1313,7 +1314,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         },
     )
 
-    subjects: fhirtypes.ReferenceType = Field(  # type: ignore
+    subjects: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subjects",
         title="What individual(s) in the population",

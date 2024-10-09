@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/AuditEvent
 Release: R5
@@ -25,7 +26,7 @@ class AuditEvent(domainresource.DomainResource):
 
     __resource_type__ = "AuditEvent"
 
-    action: fhirtypes.CodeType = Field(  # type: ignore
+    action: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="action",
         title="Type of action performed during the event",
@@ -37,7 +38,7 @@ class AuditEvent(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    action__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    action__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_action", title="Extension field for ``action``."
     )
 
@@ -53,7 +54,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    authorization: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    authorization: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="authorization",
         title="Authorization related to the event",
@@ -66,7 +67,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Workflow authorization within which this event occurred",
@@ -89,7 +90,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="Type/identifier of event",
@@ -109,7 +110,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="encounter",
         title=(
@@ -129,7 +130,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    entity: typing.List[fhirtypes.AuditEventEntityType] = Field(  # type: ignore
+    entity: typing.List[fhirtypes.AuditEventEntityType] | None = Field(  # type: ignore
         None,
         alias="entity",
         title="Data or objects used",
@@ -139,7 +140,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    occurredDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    occurredDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="occurredDateTime",
         title="When the activity occurred",
@@ -151,13 +152,13 @@ class AuditEvent(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurredDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    occurredDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_occurredDateTime",
         title="Extension field for ``occurredDateTime``.",
     )
 
-    occurredPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    occurredPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="occurredPeriod",
         title="When the activity occurred",
@@ -170,7 +171,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    outcome: fhirtypes.AuditEventOutcomeType = Field(  # type: ignore
+    outcome: fhirtypes.AuditEventOutcomeType | None = Field(  # type: ignore
         None,
         alias="outcome",
         title="Whether the event succeeded or failed",
@@ -183,7 +184,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="patient",
         title=(
@@ -202,7 +203,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    recorded: fhirtypes.InstantType = Field(  # type: ignore
+    recorded: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="recorded",
         title="Time when the event was recorded",
@@ -212,11 +213,11 @@ class AuditEvent(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    severity: fhirtypes.CodeType = Field(  # type: ignore
+    severity: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="severity",
         title=(
@@ -243,7 +244,7 @@ class AuditEvent(domainresource.DomainResource):
             ],
         },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_severity", title="Extension field for ``severity``."
     )
 
@@ -328,7 +329,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
     __resource_type__ = "AuditEventAgent"
 
-    authorization: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    authorization: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="authorization",
         title="Allowable authorization for this agent",
@@ -341,7 +342,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="location",
         title="The agent location when the event occurred",
@@ -356,7 +357,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    networkReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    networkReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="networkReference",
         title="This agent network location for the activity",
@@ -375,7 +376,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    networkString: fhirtypes.StringType = Field(  # type: ignore
+    networkString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="networkString",
         title="This agent network location for the activity",
@@ -391,11 +392,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    networkString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    networkString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_networkString", title="Extension field for ``networkString``."
     )
 
-    networkUri: fhirtypes.UriType = Field(  # type: ignore
+    networkUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="networkUri",
         title="This agent network location for the activity",
@@ -411,11 +412,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    networkUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    networkUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_networkUri", title="Extension field for ``networkUri``."
     )
 
-    policy: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
+    policy: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
         None,
         alias="policy",
         title="Policy that authorized the agent participation in the event",
@@ -429,11 +430,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    policy__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    policy__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_policy", title="Extension field for ``policy``."
     )
 
-    requestor: bool = Field(  # type: ignore
+    requestor: bool | None = Field(  # type: ignore
         None,
         alias="requestor",
         title="Whether user is initiator",
@@ -445,11 +446,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    requestor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    requestor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_requestor", title="Extension field for ``requestor``."
     )
 
-    role: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    role: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="role",
         title="Agent role in the event",
@@ -462,7 +463,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="How agent participated",
@@ -544,7 +545,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
 
     __resource_type__ = "AuditEventEntity"
 
-    agent: typing.List[fhirtypes.AuditEventAgentType] = Field(  # type: ignore
+    agent: typing.List[fhirtypes.AuditEventAgentType] | None = Field(  # type: ignore
         None,
         alias="agent",
         title="Entity is attributed to this agent",
@@ -561,7 +562,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    detail: typing.List[fhirtypes.AuditEventEntityDetailType] = Field(  # type: ignore
+    detail: typing.List[fhirtypes.AuditEventEntityDetailType] | None = Field(  # type: ignore
         None,
         alias="detail",
         title="Additional Information about the entity",
@@ -574,7 +575,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    query: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    query: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="query",
         title="Query parameters",
@@ -583,11 +584,11 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    query__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    query__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_query", title="Extension field for ``query``."
     )
 
-    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="role",
         title="What role the entity played",
@@ -600,7 +601,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    securityLabel: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    securityLabel: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="securityLabel",
         title="Security labels on the entity",
@@ -610,7 +611,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    what: fhirtypes.ReferenceType = Field(  # type: ignore
+    what: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="what",
         title="Specific instance of resource",
@@ -665,7 +666,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         },
     )
 
-    valueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    valueBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="valueBase64Binary",
         title="Property value",
@@ -677,13 +678,13 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_valueBase64Binary",
         title="Extension field for ``valueBase64Binary``.",
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Property value",
@@ -695,11 +696,11 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Property value",
@@ -712,7 +713,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         },
     )
 
-    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="Property value",
@@ -724,11 +725,11 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Property value",
@@ -740,11 +741,11 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    valuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="valuePeriod",
         title="Property value",
@@ -757,7 +758,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Property value",
@@ -770,7 +771,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Property value",
@@ -783,7 +784,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         },
     )
 
-    valueRatio: fhirtypes.RatioType = Field(  # type: ignore
+    valueRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="valueRatio",
         title="Property value",
@@ -796,7 +797,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         },
     )
 
-    valueString: fhirtypes.StringType = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="valueString",
         title="Property value",
@@ -808,11 +809,11 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
-    valueTime: fhirtypes.TimeType = Field(  # type: ignore
+    valueTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="valueTime",
         title="Property value",
@@ -824,7 +825,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
@@ -905,7 +906,7 @@ class AuditEventOutcome(backboneelement.BackboneElement):
         },
     )
 
-    detail: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    detail: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="detail",
         title="Additional outcome detail",
@@ -958,7 +959,7 @@ class AuditEventSource(backboneelement.BackboneElement):
         },
     )
 
-    site: fhirtypes.ReferenceType = Field(  # type: ignore
+    site: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="site",
         title="Logical source location within the enterprise",
@@ -974,7 +975,7 @@ class AuditEventSource(backboneelement.BackboneElement):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="The type of source where event originated",

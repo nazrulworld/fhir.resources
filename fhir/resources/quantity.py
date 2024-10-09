@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SimpleQuantity
 Release: R5
@@ -24,7 +25,7 @@ class Quantity(datatype.DataType):
 
     __resource_type__ = "Quantity"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Coded form of the unit",
@@ -36,11 +37,11 @@ class Quantity(datatype.DataType):
             "element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    comparator: fhirtypes.CodeType = Field(  # type: ignore
+    comparator: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="comparator",
         title="< | <= | >= | > | ad - how to understand the value",
@@ -54,11 +55,11 @@ class Quantity(datatype.DataType):
             "element_property": True,
         },
     )
-    comparator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    comparator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_comparator", title="Extension field for ``comparator``."
     )
 
-    system: fhirtypes.UriType = Field(  # type: ignore
+    system: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="system",
         title="System that defines coded unit form",
@@ -70,11 +71,11 @@ class Quantity(datatype.DataType):
             "element_property": True,
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    unit: fhirtypes.StringType = Field(  # type: ignore
+    unit: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="unit",
         title="Unit representation",
@@ -83,11 +84,11 @@ class Quantity(datatype.DataType):
             "element_property": True,
         },
     )
-    unit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    unit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_unit", title="Extension field for ``unit``."
     )
 
-    value: fhirtypes.DecimalType = Field(  # type: ignore
+    value: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="value",
         title="Numerical value (with implicit precision)",
@@ -99,7 +100,7 @@ class Quantity(datatype.DataType):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

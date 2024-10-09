@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Medication
 Release: R4B
@@ -26,7 +27,7 @@ class Medication(domainresource.DomainResource):
 
     __resource_type__ = "Medication"
 
-    amount: fhirtypes.RatioType = Field(  # type: ignore
+    amount: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="amount",
         title="Amount of drug in package",
@@ -42,7 +43,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    batch: fhirtypes.MedicationBatchType = Field(  # type: ignore
+    batch: fhirtypes.MedicationBatchType | None = Field(  # type: ignore
         None,
         alias="batch",
         title="Details about packaged medications",
@@ -52,7 +53,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Codes that identify this medication",
@@ -68,7 +69,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    form: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    form: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="form",
         title="powder | tablets | capsule +",
@@ -78,7 +79,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier for this medication",
@@ -88,7 +89,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    ingredient: typing.List[fhirtypes.MedicationIngredientType] = Field(  # type: ignore
+    ingredient: typing.List[fhirtypes.MedicationIngredientType] | None = Field(  # type: ignore
         None,
         alias="ingredient",
         title="Active or inactive ingredient",
@@ -98,7 +99,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    manufacturer: fhirtypes.ReferenceType = Field(  # type: ignore
+    manufacturer: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="manufacturer",
         title="Manufacturer of the item",
@@ -114,7 +115,7 @@ class Medication(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | inactive | entered-in-error",
@@ -126,7 +127,7 @@ class Medication(domainresource.DomainResource):
             "enum_values": ["active", "inactive", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -167,7 +168,7 @@ class MedicationBatch(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicationBatch"
 
-    expirationDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    expirationDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="expirationDate",
         title="When batch will expire",
@@ -176,11 +177,11 @@ class MedicationBatch(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_expirationDate", title="Extension field for ``expirationDate``."
     )
 
-    lotNumber: fhirtypes.StringType = Field(  # type: ignore
+    lotNumber: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="lotNumber",
         title="Identifier assigned to batch",
@@ -189,7 +190,7 @@ class MedicationBatch(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
@@ -213,7 +214,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicationIngredient"
 
-    isActive: bool = Field(  # type: ignore
+    isActive: bool | None = Field(  # type: ignore
         None,
         alias="isActive",
         title="Active ingredient indicator",
@@ -225,11 +226,11 @@ class MedicationIngredient(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    isActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    isActive__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_isActive", title="Extension field for ``isActive``."
     )
 
-    itemCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="itemCodeableConcept",
         title="The actual ingredient or content",
@@ -245,7 +246,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
         },
     )
 
-    itemReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="itemReference",
         title="The actual ingredient or content",
@@ -263,7 +264,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
         },
     )
 
-    strength: fhirtypes.RatioType = Field(  # type: ignore
+    strength: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="strength",
         title="Quantity of ingredient present",

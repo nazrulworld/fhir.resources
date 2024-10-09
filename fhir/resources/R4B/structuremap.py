@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/StructureMap
 Release: R4B
@@ -24,7 +25,7 @@ class StructureMap(domainresource.DomainResource):
 
     __resource_type__ = "StructureMap"
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -37,7 +38,7 @@ class StructureMap(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -50,11 +51,11 @@ class StructureMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -68,11 +69,11 @@ class StructureMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the structure map",
@@ -84,11 +85,11 @@ class StructureMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    experimental: bool = Field(  # type: ignore
+    experimental: bool | None = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -101,7 +102,7 @@ class StructureMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
@@ -118,7 +119,7 @@ class StructureMap(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the structure map",
@@ -132,7 +133,7 @@ class StructureMap(domainresource.DomainResource):
         },
     )
 
-    import_fhir: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    import_fhir: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="import",
         title="Other maps used by this map (canonical URLs)",
@@ -143,11 +144,11 @@ class StructureMap(domainresource.DomainResource):
             "enum_reference_types": ["StructureMap"],
         },
     )
-    import__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    import__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_import", title="Extension field for ``import_fhir``."
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for structure map (if applicable)",
@@ -160,7 +161,7 @@ class StructureMap(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this structure map (computer friendly)",
@@ -174,11 +175,11 @@ class StructureMap(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.StringType = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -190,11 +191,11 @@ class StructureMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this structure map is defined",
@@ -206,11 +207,11 @@ class StructureMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -226,11 +227,11 @@ class StructureMap(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    structure: typing.List[fhirtypes.StructureMapStructureType] = Field(  # type: ignore
+    structure: typing.List[fhirtypes.StructureMapStructureType] | None = Field(  # type: ignore
         None,
         alias="structure",
         title="Structure Definition used by this map",
@@ -244,7 +245,7 @@ class StructureMap(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this structure map (human friendly)",
@@ -253,11 +254,11 @@ class StructureMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -278,11 +279,11 @@ class StructureMap(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -298,7 +299,7 @@ class StructureMap(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the structure map",
@@ -315,7 +316,7 @@ class StructureMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
@@ -382,7 +383,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureMapGroup"
 
-    documentation: fhirtypes.StringType = Field(  # type: ignore
+    documentation: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="documentation",
         title="Additional description/explanation for group",
@@ -394,11 +395,11 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    extends: fhirtypes.IdType = Field(  # type: ignore
+    extends: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="extends",
         title="Another group that this group adds rules to",
@@ -407,7 +408,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    extends__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    extends__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_extends", title="Extension field for ``extends``."
     )
 
@@ -424,7 +425,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.IdType = Field(  # type: ignore
+    name: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Human-readable label",
@@ -434,7 +435,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
@@ -448,7 +449,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         },
     )
 
-    typeMode: fhirtypes.CodeType = Field(  # type: ignore
+    typeMode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="typeMode",
         title="none | types | type-and-types",
@@ -464,7 +465,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "enum_values": ["none", "types", "type-and-types"],
         },
     )
-    typeMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    typeMode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_typeMode", title="Extension field for ``typeMode``."
     )
 
@@ -510,7 +511,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureMapGroupInput"
 
-    documentation: fhirtypes.StringType = Field(  # type: ignore
+    documentation: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="documentation",
         title="Documentation for this instance of data",
@@ -519,11 +520,11 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    mode: fhirtypes.CodeType = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="mode",
         title="source | target",
@@ -536,11 +537,11 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
             "enum_values": ["source", "target"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    name: fhirtypes.IdType = Field(  # type: ignore
+    name: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this instance of data",
@@ -550,11 +551,11 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    type: fhirtypes.StringType = Field(  # type: ignore
+    type: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Type for this instance of data",
@@ -563,7 +564,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
@@ -605,7 +606,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureMapGroupRule"
 
-    dependent: typing.List[fhirtypes.StructureMapGroupRuleDependentType] = Field(  # type: ignore
+    dependent: typing.List[fhirtypes.StructureMapGroupRuleDependentType] | None = Field(  # type: ignore
         None,
         alias="dependent",
         title="Which other rules to apply in the context of this rule",
@@ -615,7 +616,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         },
     )
 
-    documentation: fhirtypes.StringType = Field(  # type: ignore
+    documentation: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="documentation",
         title="Documentation for this instance of data",
@@ -624,11 +625,11 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    name: fhirtypes.IdType = Field(  # type: ignore
+    name: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name of the rule for internal references",
@@ -638,11 +639,11 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    rule: typing.List[fhirtypes.StructureMapGroupRuleType] = Field(  # type: ignore
+    rule: typing.List[fhirtypes.StructureMapGroupRuleType] | None = Field(  # type: ignore
         None,
         alias="rule",
         title="Rules contained in this rule",
@@ -662,7 +663,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         },
     )
 
-    target: typing.List[fhirtypes.StructureMapGroupRuleTargetType] = Field(  # type: ignore
+    target: typing.List[fhirtypes.StructureMapGroupRuleTargetType] | None = Field(  # type: ignore
         None,
         alias="target",
         title="Content to create because of this mapping rule",
@@ -712,7 +713,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureMapGroupRuleDependent"
 
-    name: fhirtypes.IdType = Field(  # type: ignore
+    name: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name of a rule or group to apply",
@@ -722,11 +723,11 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    variable: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    variable: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="variable",
         title="Variable to pass to the rule or group",
@@ -736,7 +737,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    variable__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    variable__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_variable", title="Extension field for ``variable``."
     )
 
@@ -770,7 +771,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureMapGroupRuleSource"
 
-    check: fhirtypes.StringType = Field(  # type: ignore
+    check: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="check",
         title=(
@@ -782,11 +783,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    check__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    check__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_check", title="Extension field for ``check``."
     )
 
-    condition: fhirtypes.StringType = Field(  # type: ignore
+    condition: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="condition",
         title="FHIRPath expression  - must be true or the rule does not apply",
@@ -795,11 +796,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    condition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_condition", title="Extension field for ``condition``."
     )
 
-    context: fhirtypes.IdType = Field(  # type: ignore
+    context: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="context",
         title="Type or variable this rule applies to",
@@ -809,11 +810,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    context__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_context", title="Extension field for ``context``."
     )
 
-    defaultValueAddress: fhirtypes.AddressType = Field(  # type: ignore
+    defaultValueAddress: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="defaultValueAddress",
         title="Default value if no value exists",
@@ -826,7 +827,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueAge: fhirtypes.AgeType = Field(  # type: ignore
+    defaultValueAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="defaultValueAge",
         title="Default value if no value exists",
@@ -839,7 +840,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueAnnotation: fhirtypes.AnnotationType = Field(  # type: ignore
+    defaultValueAnnotation: fhirtypes.AnnotationType | None = Field(  # type: ignore
         None,
         alias="defaultValueAnnotation",
         title="Default value if no value exists",
@@ -852,7 +853,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    defaultValueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="defaultValueAttachment",
         title="Default value if no value exists",
@@ -865,7 +866,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueBase64Binary: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    defaultValueBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="defaultValueBase64Binary",
         title="Default value if no value exists",
@@ -877,13 +878,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueBase64Binary",
         title="Extension field for ``defaultValueBase64Binary``.",
     )
 
-    defaultValueBoolean: bool = Field(  # type: ignore
+    defaultValueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="defaultValueBoolean",
         title="Default value if no value exists",
@@ -895,13 +896,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueBoolean",
         title="Extension field for ``defaultValueBoolean``.",
     )
 
-    defaultValueCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
+    defaultValueCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="defaultValueCanonical",
         title="Default value if no value exists",
@@ -913,13 +914,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueCanonical",
         title="Extension field for ``defaultValueCanonical``.",
     )
 
-    defaultValueCode: fhirtypes.CodeType = Field(  # type: ignore
+    defaultValueCode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="defaultValueCode",
         title="Default value if no value exists",
@@ -931,13 +932,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueCode",
         title="Extension field for ``defaultValueCode``.",
     )
 
-    defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    defaultValueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="defaultValueCodeableConcept",
         title="Default value if no value exists",
@@ -950,7 +951,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueCoding: fhirtypes.CodingType = Field(  # type: ignore
+    defaultValueCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="defaultValueCoding",
         title="Default value if no value exists",
@@ -963,7 +964,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueContactDetail: fhirtypes.ContactDetailType = Field(  # type: ignore
+    defaultValueContactDetail: fhirtypes.ContactDetailType | None = Field(  # type: ignore
         None,
         alias="defaultValueContactDetail",
         title="Default value if no value exists",
@@ -976,7 +977,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueContactPoint: fhirtypes.ContactPointType = Field(  # type: ignore
+    defaultValueContactPoint: fhirtypes.ContactPointType | None = Field(  # type: ignore
         None,
         alias="defaultValueContactPoint",
         title="Default value if no value exists",
@@ -989,7 +990,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueContributor: fhirtypes.ContributorType = Field(  # type: ignore
+    defaultValueContributor: fhirtypes.ContributorType | None = Field(  # type: ignore
         None,
         alias="defaultValueContributor",
         title="Default value if no value exists",
@@ -1002,7 +1003,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueCount: fhirtypes.CountType = Field(  # type: ignore
+    defaultValueCount: fhirtypes.CountType | None = Field(  # type: ignore
         None,
         alias="defaultValueCount",
         title="Default value if no value exists",
@@ -1015,7 +1016,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueDataRequirement: fhirtypes.DataRequirementType = Field(  # type: ignore
+    defaultValueDataRequirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
         None,
         alias="defaultValueDataRequirement",
         title="Default value if no value exists",
@@ -1028,7 +1029,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueDate: fhirtypes.DateType = Field(  # type: ignore
+    defaultValueDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="defaultValueDate",
         title="Default value if no value exists",
@@ -1040,13 +1041,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueDate",
         title="Extension field for ``defaultValueDate``.",
     )
 
-    defaultValueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    defaultValueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="defaultValueDateTime",
         title="Default value if no value exists",
@@ -1058,13 +1059,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueDateTime",
         title="Extension field for ``defaultValueDateTime``.",
     )
 
-    defaultValueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    defaultValueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="defaultValueDecimal",
         title="Default value if no value exists",
@@ -1076,13 +1077,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueDecimal",
         title="Extension field for ``defaultValueDecimal``.",
     )
 
-    defaultValueDistance: fhirtypes.DistanceType = Field(  # type: ignore
+    defaultValueDistance: fhirtypes.DistanceType | None = Field(  # type: ignore
         None,
         alias="defaultValueDistance",
         title="Default value if no value exists",
@@ -1095,7 +1096,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueDosage: fhirtypes.DosageType = Field(  # type: ignore
+    defaultValueDosage: fhirtypes.DosageType | None = Field(  # type: ignore
         None,
         alias="defaultValueDosage",
         title="Default value if no value exists",
@@ -1108,7 +1109,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueDuration: fhirtypes.DurationType = Field(  # type: ignore
+    defaultValueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="defaultValueDuration",
         title="Default value if no value exists",
@@ -1121,7 +1122,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueExpression: fhirtypes.ExpressionType = Field(  # type: ignore
+    defaultValueExpression: fhirtypes.ExpressionType | None = Field(  # type: ignore
         None,
         alias="defaultValueExpression",
         title="Default value if no value exists",
@@ -1134,7 +1135,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueHumanName: fhirtypes.HumanNameType = Field(  # type: ignore
+    defaultValueHumanName: fhirtypes.HumanNameType | None = Field(  # type: ignore
         None,
         alias="defaultValueHumanName",
         title="Default value if no value exists",
@@ -1147,7 +1148,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueId: fhirtypes.IdType = Field(  # type: ignore
+    defaultValueId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="defaultValueId",
         title="Default value if no value exists",
@@ -1159,11 +1160,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_defaultValueId", title="Extension field for ``defaultValueId``."
     )
 
-    defaultValueIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    defaultValueIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="defaultValueIdentifier",
         title="Default value if no value exists",
@@ -1176,7 +1177,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueInstant: fhirtypes.InstantType = Field(  # type: ignore
+    defaultValueInstant: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="defaultValueInstant",
         title="Default value if no value exists",
@@ -1188,13 +1189,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueInstant",
         title="Extension field for ``defaultValueInstant``.",
     )
 
-    defaultValueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    defaultValueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="defaultValueInteger",
         title="Default value if no value exists",
@@ -1206,13 +1207,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueInteger",
         title="Extension field for ``defaultValueInteger``.",
     )
 
-    defaultValueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
+    defaultValueMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="defaultValueMarkdown",
         title="Default value if no value exists",
@@ -1224,13 +1225,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueMarkdown",
         title="Extension field for ``defaultValueMarkdown``.",
     )
 
-    defaultValueMeta: fhirtypes.MetaType = Field(  # type: ignore
+    defaultValueMeta: fhirtypes.MetaType | None = Field(  # type: ignore
         None,
         alias="defaultValueMeta",
         title="Default value if no value exists",
@@ -1243,7 +1244,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    defaultValueMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="defaultValueMoney",
         title="Default value if no value exists",
@@ -1256,7 +1257,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueOid: fhirtypes.OidType = Field(  # type: ignore
+    defaultValueOid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="defaultValueOid",
         title="Default value if no value exists",
@@ -1268,11 +1269,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_defaultValueOid", title="Extension field for ``defaultValueOid``."
     )
 
-    defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(  # type: ignore
+    defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType | None = Field(  # type: ignore
         None,
         alias="defaultValueParameterDefinition",
         title="Default value if no value exists",
@@ -1285,7 +1286,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValuePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    defaultValuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="defaultValuePeriod",
         title="Default value if no value exists",
@@ -1298,7 +1299,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValuePositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    defaultValuePositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="defaultValuePositiveInt",
         title="Default value if no value exists",
@@ -1310,13 +1311,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValuePositiveInt",
         title="Extension field for ``defaultValuePositiveInt``.",
     )
 
-    defaultValueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    defaultValueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="defaultValueQuantity",
         title="Default value if no value exists",
@@ -1329,7 +1330,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueRange: fhirtypes.RangeType = Field(  # type: ignore
+    defaultValueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="defaultValueRange",
         title="Default value if no value exists",
@@ -1342,7 +1343,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueRatio: fhirtypes.RatioType = Field(  # type: ignore
+    defaultValueRatio: fhirtypes.RatioType | None = Field(  # type: ignore
         None,
         alias="defaultValueRatio",
         title="Default value if no value exists",
@@ -1355,7 +1356,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    defaultValueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="defaultValueReference",
         title="Default value if no value exists",
@@ -1368,7 +1369,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(  # type: ignore
+    defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType | None = Field(  # type: ignore
         None,
         alias="defaultValueRelatedArtifact",
         title="Default value if no value exists",
@@ -1381,7 +1382,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueSampledData: fhirtypes.SampledDataType = Field(  # type: ignore
+    defaultValueSampledData: fhirtypes.SampledDataType | None = Field(  # type: ignore
         None,
         alias="defaultValueSampledData",
         title="Default value if no value exists",
@@ -1394,7 +1395,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueSignature: fhirtypes.SignatureType = Field(  # type: ignore
+    defaultValueSignature: fhirtypes.SignatureType | None = Field(  # type: ignore
         None,
         alias="defaultValueSignature",
         title="Default value if no value exists",
@@ -1407,7 +1408,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueString: fhirtypes.StringType = Field(  # type: ignore
+    defaultValueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="defaultValueString",
         title="Default value if no value exists",
@@ -1419,13 +1420,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueString",
         title="Extension field for ``defaultValueString``.",
     )
 
-    defaultValueTime: fhirtypes.TimeType = Field(  # type: ignore
+    defaultValueTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="defaultValueTime",
         title="Default value if no value exists",
@@ -1437,13 +1438,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueTime",
         title="Extension field for ``defaultValueTime``.",
     )
 
-    defaultValueTiming: fhirtypes.TimingType = Field(  # type: ignore
+    defaultValueTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="defaultValueTiming",
         title="Default value if no value exists",
@@ -1456,7 +1457,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(  # type: ignore
+    defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType | None = Field(  # type: ignore
         None,
         alias="defaultValueTriggerDefinition",
         title="Default value if no value exists",
@@ -1469,7 +1470,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    defaultValueUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="defaultValueUnsignedInt",
         title="Default value if no value exists",
@@ -1481,13 +1482,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueUnsignedInt",
         title="Extension field for ``defaultValueUnsignedInt``.",
     )
 
-    defaultValueUri: fhirtypes.UriType = Field(  # type: ignore
+    defaultValueUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="defaultValueUri",
         title="Default value if no value exists",
@@ -1499,11 +1500,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_defaultValueUri", title="Extension field for ``defaultValueUri``."
     )
 
-    defaultValueUrl: fhirtypes.UrlType = Field(  # type: ignore
+    defaultValueUrl: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="defaultValueUrl",
         title="Default value if no value exists",
@@ -1515,11 +1516,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_defaultValueUrl", title="Extension field for ``defaultValueUrl``."
     )
 
-    defaultValueUsageContext: fhirtypes.UsageContextType = Field(  # type: ignore
+    defaultValueUsageContext: fhirtypes.UsageContextType | None = Field(  # type: ignore
         None,
         alias="defaultValueUsageContext",
         title="Default value if no value exists",
@@ -1532,7 +1533,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         },
     )
 
-    defaultValueUuid: fhirtypes.UuidType = Field(  # type: ignore
+    defaultValueUuid: fhirtypes.UuidType | None = Field(  # type: ignore
         None,
         alias="defaultValueUuid",
         title="Default value if no value exists",
@@ -1544,13 +1545,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_defaultValueUuid",
         title="Extension field for ``defaultValueUuid``.",
     )
 
-    element: fhirtypes.StringType = Field(  # type: ignore
+    element: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="element",
         title="Optional field for this source",
@@ -1559,11 +1560,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    element__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_element", title="Extension field for ``element``."
     )
 
-    listMode: fhirtypes.CodeType = Field(  # type: ignore
+    listMode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="listMode",
         title="first | not_first | last | not_last | only_one",
@@ -1575,11 +1576,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "enum_values": ["first", "not_first", "last", "not_last", "only_one"],
         },
     )
-    listMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    listMode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_listMode", title="Extension field for ``listMode``."
     )
 
-    logMessage: fhirtypes.StringType = Field(  # type: ignore
+    logMessage: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="logMessage",
         title="Message to put in log if source exists (FHIRPath)",
@@ -1591,11 +1592,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    logMessage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    logMessage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_logMessage", title="Extension field for ``logMessage``."
     )
 
-    max: fhirtypes.StringType = Field(  # type: ignore
+    max: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="max",
         title="Specified maximum cardinality (number or *)",
@@ -1608,11 +1609,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.IntegerType = Field(  # type: ignore
+    min: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="min",
         title="Specified minimum cardinality",
@@ -1624,11 +1625,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    type: fhirtypes.StringType = Field(  # type: ignore
+    type: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Rule only applies if source has this type",
@@ -1640,11 +1641,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    variable: fhirtypes.IdType = Field(  # type: ignore
+    variable: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="variable",
         title="Named context for field, if a field is specified",
@@ -1653,7 +1654,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    variable__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_variable", title="Extension field for ``variable``."
     )
 
@@ -1820,7 +1821,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureMapGroupRuleTarget"
 
-    context: fhirtypes.IdType = Field(  # type: ignore
+    context: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="context",
         title="Type or variable this rule applies to",
@@ -1829,11 +1830,11 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    context__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_context", title="Extension field for ``context``."
     )
 
-    contextType: fhirtypes.CodeType = Field(  # type: ignore
+    contextType: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="contextType",
         title="type | variable",
@@ -1845,11 +1846,11 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
             "enum_values": ["type", "variable"],
         },
     )
-    contextType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    contextType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_contextType", title="Extension field for ``contextType``."
     )
 
-    element: fhirtypes.StringType = Field(  # type: ignore
+    element: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="element",
         title="Field to create in the context",
@@ -1858,11 +1859,11 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    element__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_element", title="Extension field for ``element``."
     )
 
-    listMode: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
+    listMode: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
         None,
         alias="listMode",
         title="first | share | last | collate",
@@ -1874,11 +1875,11 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
             "enum_values": ["first", "share", "last", "collate"],
         },
     )
-    listMode__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    listMode__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_listMode", title="Extension field for ``listMode``."
     )
 
-    listRuleId: fhirtypes.IdType = Field(  # type: ignore
+    listRuleId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="listRuleId",
         title="Internal rule reference for shared list items",
@@ -1887,11 +1888,11 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    listRuleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    listRuleId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_listRuleId", title="Extension field for ``listRuleId``."
     )
 
-    parameter: typing.List[fhirtypes.StructureMapGroupRuleTargetParameterType] = Field(  # type: ignore
+    parameter: typing.List[fhirtypes.StructureMapGroupRuleTargetParameterType] | None = Field(  # type: ignore
         None,
         alias="parameter",
         title="Parameters to the transform",
@@ -1901,7 +1902,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         },
     )
 
-    transform: fhirtypes.CodeType = Field(  # type: ignore
+    transform: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="transform",
         title="create | copy +",
@@ -1913,11 +1914,11 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
             "enum_values": ["create", "copy", "+"],
         },
     )
-    transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    transform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_transform", title="Extension field for ``transform``."
     )
 
-    variable: fhirtypes.IdType = Field(  # type: ignore
+    variable: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="variable",
         title="Named context for field, if desired, and a field is specified",
@@ -1926,7 +1927,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    variable__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_variable", title="Extension field for ``variable``."
     )
 
@@ -1961,7 +1962,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureMapGroupRuleTargetParameter"
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Parameter value - variable or literal",
@@ -1973,11 +1974,11 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    valueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="Parameter value - variable or literal",
@@ -1989,11 +1990,11 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueId: fhirtypes.IdType = Field(  # type: ignore
+    valueId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="valueId",
         title="Parameter value - variable or literal",
@@ -2005,11 +2006,11 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Parameter value - variable or literal",
@@ -2021,11 +2022,11 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueString: fhirtypes.StringType = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="valueString",
         title="Parameter value - variable or literal",
@@ -2037,7 +2038,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
@@ -2095,7 +2096,7 @@ class StructureMapStructure(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureMapStructure"
 
-    alias: fhirtypes.StringType = Field(  # type: ignore
+    alias: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="alias",
         title="Name for type in this map",
@@ -2104,11 +2105,11 @@ class StructureMapStructure(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    alias__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    alias__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_alias", title="Extension field for ``alias``."
     )
 
-    documentation: fhirtypes.StringType = Field(  # type: ignore
+    documentation: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="documentation",
         title="Documentation on use of structure",
@@ -2117,11 +2118,11 @@ class StructureMapStructure(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    mode: fhirtypes.CodeType = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="mode",
         title="source | queried | target | produced",
@@ -2134,11 +2135,11 @@ class StructureMapStructure(backboneelement.BackboneElement):
             "enum_values": ["source", "queried", "target", "produced"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    url: fhirtypes.CanonicalType = Field(  # type: ignore
+    url: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="url",
         title="Canonical reference to structure definition",
@@ -2150,7 +2151,7 @@ class StructureMapStructure(backboneelement.BackboneElement):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 

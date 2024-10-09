@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Annotation
 Release: R5
@@ -25,7 +26,7 @@ class Annotation(datatype.DataType):
 
     __resource_type__ = "Annotation"
 
-    authorReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    authorReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="authorReference",
         title="Individual responsible for the annotation",
@@ -46,7 +47,7 @@ class Annotation(datatype.DataType):
         },
     )
 
-    authorString: fhirtypes.StringType = Field(  # type: ignore
+    authorString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="authorString",
         title="Individual responsible for the annotation",
@@ -58,11 +59,11 @@ class Annotation(datatype.DataType):
             "one_of_many_required": False,
         },
     )
-    authorString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authorString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_authorString", title="Extension field for ``authorString``."
     )
 
-    text: fhirtypes.MarkdownType = Field(  # type: ignore
+    text: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="text",
         title="The annotation  - text content (as markdown)",
@@ -72,11 +73,11 @@ class Annotation(datatype.DataType):
             "element_required": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    time: fhirtypes.DateTimeType = Field(  # type: ignore
+    time: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="time",
         title="When the annotation was made",
@@ -85,7 +86,7 @@ class Annotation(datatype.DataType):
             "element_property": True,
         },
     )
-    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_time", title="Extension field for ``time``."
     )
 

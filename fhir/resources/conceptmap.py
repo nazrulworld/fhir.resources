@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ConceptMap
 Release: R5
@@ -26,7 +27,7 @@ class ConceptMap(domainresource.DomainResource):
 
     __resource_type__ = "ConceptMap"
 
-    additionalAttribute: typing.List[fhirtypes.ConceptMapAdditionalAttributeType] = Field(  # type: ignore
+    additionalAttribute: typing.List[fhirtypes.ConceptMapAdditionalAttributeType] | None = Field(  # type: ignore
         None,
         alias="additionalAttribute",
         title=(
@@ -44,7 +45,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    approvalDate: fhirtypes.DateType = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="approvalDate",
         title="When the ConceptMap was approved by publisher",
@@ -57,11 +58,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who authored the ConceptMap",
@@ -74,7 +75,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -87,7 +88,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -100,11 +101,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType = Field(  # type: ignore
+    copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -118,11 +119,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Date last changed",
@@ -137,11 +138,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Natural language description of the concept map",
@@ -153,11 +154,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="editor",
         title="Who edited the ConceptMap",
@@ -170,7 +171,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="effectivePeriod",
         title="When the ConceptMap is expected to be used",
@@ -183,7 +184,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="endorser",
         title="Who endorsed the ConceptMap",
@@ -197,7 +198,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    experimental: bool = Field(  # type: ignore
+    experimental: bool | None = Field(  # type: ignore
         None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -210,11 +211,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    group: typing.List[fhirtypes.ConceptMapGroupType] = Field(  # type: ignore
+    group: typing.List[fhirtypes.ConceptMapGroupType] | None = Field(  # type: ignore
         None,
         alias="group",
         title="Same source and target systems",
@@ -224,7 +225,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Additional identifier for the concept map",
@@ -238,7 +239,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for concept map (if applicable)",
@@ -251,7 +252,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="lastReviewDate",
         title="When the ConceptMap was last reviewed by the publisher",
@@ -264,11 +265,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name for this concept map (computer friendly)",
@@ -281,11 +282,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    property: typing.List[fhirtypes.ConceptMapPropertyType] = Field(  # type: ignore
+    property: typing.List[fhirtypes.ConceptMapPropertyType] | None = Field(  # type: ignore
         None,
         alias="property",
         title="Additional properties of the mapping",
@@ -298,7 +299,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -310,11 +311,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="purpose",
         title="Why this concept map is defined",
@@ -326,11 +327,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
         None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc",
@@ -344,7 +345,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="reviewer",
         title="Who reviewed the ConceptMap",
@@ -357,7 +358,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    sourceScopeCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
+    sourceScopeCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="sourceScopeCanonical",
         title="The source value set that contains the concepts that are being mapped",
@@ -376,13 +377,13 @@ class ConceptMap(domainresource.DomainResource):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    sourceScopeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sourceScopeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_sourceScopeCanonical",
         title="Extension field for ``sourceScopeCanonical``.",
     )
 
-    sourceScopeUri: fhirtypes.UriType = Field(  # type: ignore
+    sourceScopeUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="sourceScopeUri",
         title="The source value set that contains the concepts that are being mapped",
@@ -399,11 +400,11 @@ class ConceptMap(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    sourceScopeUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sourceScopeUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sourceScopeUri", title="Extension field for ``sourceScopeUri``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -419,11 +420,11 @@ class ConceptMap(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    targetScopeCanonical: fhirtypes.CanonicalType = Field(  # type: ignore
+    targetScopeCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="targetScopeCanonical",
         title="The target value set which provides context for the mappings",
@@ -442,13 +443,13 @@ class ConceptMap(domainresource.DomainResource):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    targetScopeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    targetScopeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_targetScopeCanonical",
         title="Extension field for ``targetScopeCanonical``.",
     )
 
-    targetScopeUri: fhirtypes.UriType = Field(  # type: ignore
+    targetScopeUri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="targetScopeUri",
         title="The target value set which provides context for the mappings",
@@ -465,11 +466,11 @@ class ConceptMap(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    targetScopeUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    targetScopeUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_targetScopeUri", title="Extension field for ``targetScopeUri``."
     )
 
-    title: fhirtypes.StringType = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this concept map (human friendly)",
@@ -478,11 +479,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
@@ -496,7 +497,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -516,11 +517,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -536,7 +537,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="version",
         title="Business version of the concept map",
@@ -553,11 +554,11 @@ class ConceptMap(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType = Field(  # type: ignore
+    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -573,7 +574,7 @@ class ConceptMap(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType = Field(  # type: ignore
+    versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -588,7 +589,7 @@ class ConceptMap(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
@@ -692,7 +693,7 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
 
     __resource_type__ = "ConceptMapAdditionalAttribute"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Identifies this additional attribute through this resource",
@@ -707,11 +708,11 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title=(
@@ -728,11 +729,11 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title="code | Coding | string | boolean | Quantity",
@@ -748,11 +749,11 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
             "enum_values": ["code", "Coding", "string", "boolean", "Quantity"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    uri: fhirtypes.UriType = Field(  # type: ignore
+    uri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="uri",
         title="Formal identifier for the data element referred to in this attribte",
@@ -765,7 +766,7 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_uri", title="Extension field for ``uri``."
     )
 
@@ -821,7 +822,7 @@ class ConceptMapGroup(backboneelement.BackboneElement):
         },
     )
 
-    source: fhirtypes.CanonicalType = Field(  # type: ignore
+    source: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="source",
         title="Source system where concepts to be mapped are defined",
@@ -835,11 +836,11 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "enum_reference_types": ["CodeSystem"],
         },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    target: fhirtypes.CanonicalType = Field(  # type: ignore
+    target: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="target",
         title="Target system that the concepts are to be mapped to",
@@ -853,11 +854,11 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "enum_reference_types": ["CodeSystem"],
         },
     )
-    target__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    target__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_target", title="Extension field for ``target``."
     )
 
-    unmapped: fhirtypes.ConceptMapGroupUnmappedType = Field(  # type: ignore
+    unmapped: fhirtypes.ConceptMapGroupUnmappedType | None = Field(  # type: ignore
         None,
         alias="unmapped",
         title=(
@@ -905,7 +906,7 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
 
     __resource_type__ = "ConceptMapGroupElement"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Identifies element being mapped",
@@ -914,11 +915,11 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    display: fhirtypes.StringType = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="display",
         title="Display for the code",
@@ -930,11 +931,11 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    noMap: bool = Field(  # type: ignore
+    noMap: bool | None = Field(  # type: ignore
         None,
         alias="noMap",
         title="No mapping to a target concept for this source concept",
@@ -946,11 +947,11 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    noMap__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    noMap__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_noMap", title="Extension field for ``noMap``."
     )
 
-    target: typing.List[fhirtypes.ConceptMapGroupElementTargetType] = Field(  # type: ignore
+    target: typing.List[fhirtypes.ConceptMapGroupElementTargetType] | None = Field(  # type: ignore
         None,
         alias="target",
         title="Concept in target system for element",
@@ -960,7 +961,7 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
         },
     )
 
-    valueSet: fhirtypes.CanonicalType = Field(  # type: ignore
+    valueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="valueSet",
         title="Identifies the set of concepts being mapped",
@@ -974,7 +975,7 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
@@ -1007,7 +1008,7 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
 
     __resource_type__ = "ConceptMapGroupElementTarget"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Code that identifies the target element",
@@ -1016,11 +1017,11 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    comment: fhirtypes.StringType = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="comment",
         title="Description of status/issues in mapping",
@@ -1032,11 +1033,11 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    dependsOn: typing.List[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(  # type: ignore
+    dependsOn: typing.List[fhirtypes.ConceptMapGroupElementTargetDependsOnType] | None = Field(  # type: ignore
         None,
         alias="dependsOn",
         title="Other properties required for this mapping",
@@ -1050,7 +1051,7 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         },
     )
 
-    display: fhirtypes.StringType = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="display",
         title="Display for the code",
@@ -1062,11 +1063,11 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    product: typing.List[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(  # type: ignore
+    product: typing.List[fhirtypes.ConceptMapGroupElementTargetDependsOnType] | None = Field(  # type: ignore
         None,
         alias="product",
         title="Other data elements that this mapping also produces",
@@ -1079,7 +1080,7 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         },
     )
 
-    property: typing.List[fhirtypes.ConceptMapGroupElementTargetPropertyType] = Field(  # type: ignore
+    property: typing.List[fhirtypes.ConceptMapGroupElementTargetPropertyType] | None = Field(  # type: ignore
         None,
         alias="property",
         title="Property value for the source -> target mapping",
@@ -1089,7 +1090,7 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         },
     )
 
-    relationship: fhirtypes.CodeType = Field(  # type: ignore
+    relationship: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="relationship",
         title=(
@@ -1115,11 +1116,11 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             ],
         },
     )
-    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_relationship", title="Extension field for ``relationship``."
     )
 
-    valueSet: fhirtypes.CanonicalType = Field(  # type: ignore
+    valueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="valueSet",
         title="Identifies the set of target concepts",
@@ -1136,7 +1137,7 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
@@ -1185,7 +1186,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
 
     __resource_type__ = "ConceptMapGroupElementTargetDependsOn"
 
-    attribute: fhirtypes.CodeType = Field(  # type: ignore
+    attribute: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="attribute",
         title=(
@@ -1201,11 +1202,11 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    attribute__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    attribute__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_attribute", title="Extension field for ``attribute``."
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Value of the referenced data element",
@@ -1217,11 +1218,11 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCode: fhirtypes.CodeType = Field(  # type: ignore
+    valueCode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="valueCode",
         title="Value of the referenced data element",
@@ -1233,11 +1234,11 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
-    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
+    valueCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Value of the referenced data element",
@@ -1250,7 +1251,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Value of the referenced data element",
@@ -1263,7 +1264,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         },
     )
 
-    valueSet: fhirtypes.CanonicalType = Field(  # type: ignore
+    valueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="valueSet",
         title="The mapping depends on a data element with a value from this value set",
@@ -1277,11 +1278,11 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
-    valueString: fhirtypes.StringType = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="valueString",
         title="Value of the referenced data element",
@@ -1293,7 +1294,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
@@ -1363,7 +1364,7 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
 
     __resource_type__ = "ConceptMapGroupElementTargetProperty"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Reference to ConceptMap.property.code",
@@ -1373,11 +1374,11 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Value of the property for this concept",
@@ -1393,11 +1394,11 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCode: fhirtypes.CodeType = Field(  # type: ignore
+    valueCode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="valueCode",
         title="Value of the property for this concept",
@@ -1413,11 +1414,11 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
-    valueCoding: fhirtypes.CodingType = Field(  # type: ignore
+    valueCoding: fhirtypes.CodingType | None = Field(  # type: ignore
         None,
         alias="valueCoding",
         title="Value of the property for this concept",
@@ -1434,7 +1435,7 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="valueDateTime",
         title="Value of the property for this concept",
@@ -1450,11 +1451,11 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueDecimal: fhirtypes.DecimalType = Field(  # type: ignore
+    valueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="valueDecimal",
         title="Value of the property for this concept",
@@ -1470,11 +1471,11 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
-    valueInteger: fhirtypes.IntegerType = Field(  # type: ignore
+    valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="valueInteger",
         title="Value of the property for this concept",
@@ -1490,11 +1491,11 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
-    valueString: fhirtypes.StringType = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="valueString",
         title="Value of the property for this concept",
@@ -1510,7 +1511,7 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
@@ -1587,7 +1588,7 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
 
     __resource_type__ = "ConceptMapGroupUnmapped"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Fixed code when mode = fixed",
@@ -1599,11 +1600,11 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    display: fhirtypes.StringType = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="display",
         title="Display for the code",
@@ -1615,11 +1616,11 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    mode: fhirtypes.CodeType = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="mode",
         title="use-source-code | fixed | other-map",
@@ -1640,11 +1641,11 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "enum_values": ["use-source-code", "fixed", "other-map"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    otherMap: fhirtypes.CanonicalType = Field(  # type: ignore
+    otherMap: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="otherMap",
         title=(
@@ -1662,11 +1663,11 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "enum_reference_types": ["ConceptMap"],
         },
     )
-    otherMap__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    otherMap__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_otherMap", title="Extension field for ``otherMap``."
     )
 
-    relationship: fhirtypes.CodeType = Field(  # type: ignore
+    relationship: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="relationship",
         title=(
@@ -1691,11 +1692,11 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             ],
         },
     )
-    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_relationship", title="Extension field for ``relationship``."
     )
 
-    valueSet: fhirtypes.CanonicalType = Field(  # type: ignore
+    valueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="valueSet",
         title="Fixed code set when mode = fixed",
@@ -1709,7 +1710,7 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
@@ -1755,7 +1756,7 @@ class ConceptMapProperty(backboneelement.BackboneElement):
 
     __resource_type__ = "ConceptMapProperty"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -1772,11 +1773,11 @@ class ConceptMapProperty(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Why the property is defined, and/or what it conveys",
@@ -1788,11 +1789,11 @@ class ConceptMapProperty(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    system: fhirtypes.CanonicalType = Field(  # type: ignore
+    system: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="system",
         title="The CodeSystem from which code values come",
@@ -1806,11 +1807,11 @@ class ConceptMapProperty(backboneelement.BackboneElement):
             "enum_reference_types": ["CodeSystem"],
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Coding | string | integer | boolean | dateTime | decimal | code",
@@ -1831,11 +1832,11 @@ class ConceptMapProperty(backboneelement.BackboneElement):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    uri: fhirtypes.UriType = Field(  # type: ignore
+    uri: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="uri",
         title="Formal identifier for the property",
@@ -1844,7 +1845,7 @@ class ConceptMapProperty(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_uri", title="Extension field for ``uri``."
     )
 

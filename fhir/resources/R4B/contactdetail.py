@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ContactDetail
 Release: R4B
@@ -24,7 +25,7 @@ class ContactDetail(element.Element):
 
     __resource_type__ = "ContactDetail"
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name of an individual to contact",
@@ -33,11 +34,11 @@ class ContactDetail(element.Element):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="Contact details for individual or organization",

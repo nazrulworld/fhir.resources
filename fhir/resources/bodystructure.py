@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/BodyStructure
 Release: R5
@@ -26,7 +27,7 @@ class BodyStructure(domainresource.DomainResource):
 
     __resource_type__ = "BodyStructure"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this record is in active use",
@@ -35,11 +36,11 @@ class BodyStructure(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Text description",
@@ -48,11 +49,11 @@ class BodyStructure(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    excludedStructure: typing.List[fhirtypes.BodyStructureIncludedStructureType] = Field(  # type: ignore
+    excludedStructure: typing.List[fhirtypes.BodyStructureIncludedStructureType] | None = Field(  # type: ignore
         None,
         alias="excludedStructure",
         title="Excluded anatomic locations(s)",
@@ -65,7 +66,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Bodystructure identifier",
@@ -75,7 +76,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] = Field(  # type: ignore
+    image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
         None,
         alias="image",
         title="Attached images",
@@ -98,7 +99,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    morphology: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    morphology: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="morphology",
         title="Kind of Structure",
@@ -162,7 +163,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
 
     __resource_type__ = "BodyStructureIncludedStructure"
 
-    bodyLandmarkOrientation: typing.List[fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationType] = Field(  # type: ignore
+    bodyLandmarkOrientation: typing.List[fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationType] | None = Field(  # type: ignore
         None,
         alias="bodyLandmarkOrientation",
         title="Landmark relative location",
@@ -175,7 +176,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         },
     )
 
-    laterality: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    laterality: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="laterality",
         title="Code that represents the included structure laterality",
@@ -185,7 +186,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         },
     )
 
-    qualifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    qualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="qualifier",
         title="Code that represents the included structure qualifier",
@@ -195,7 +196,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         },
     )
 
-    spatialReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    spatialReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="spatialReference",
         title="Cartesian reference for structure",
@@ -249,7 +250,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
 
     __resource_type__ = "BodyStructureIncludedStructureBodyLandmarkOrientation"
 
-    clockFacePosition: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    clockFacePosition: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="clockFacePosition",
         title="Clockface orientation",
@@ -262,7 +263,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
         },
     )
 
-    distanceFromLandmark: typing.List[fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmarkType] = Field(  # type: ignore
+    distanceFromLandmark: typing.List[fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmarkType] | None = Field(  # type: ignore
         None,
         alias="distanceFromLandmark",
         title="Landmark relative location",
@@ -275,7 +276,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
         },
     )
 
-    landmarkDescription: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    landmarkDescription: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="landmarkDescription",
         title="Body ]andmark description",
@@ -288,7 +289,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
         },
     )
 
-    surfaceOrientation: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    surfaceOrientation: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="surfaceOrientation",
         title="Relative landmark surface orientation",
@@ -331,7 +332,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
         "BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark"
     )
 
-    device: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
+    device: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
         None,
         alias="device",
         title="Measurement device",
@@ -343,7 +344,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
         },
     )
 
-    value: typing.List[fhirtypes.QuantityType] = Field(  # type: ignore
+    value: typing.List[fhirtypes.QuantityType] | None = Field(  # type: ignore
         None,
         alias="value",
         title="Measured distance from body landmark",

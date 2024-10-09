@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ExtendedContactDetail
 Release: R5
@@ -25,7 +26,7 @@ class ExtendedContactDetail(datatype.DataType):
 
     __resource_type__ = "ExtendedContactDetail"
 
-    address: fhirtypes.AddressType = Field(  # type: ignore
+    address: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="address",
         title="Address for the contact",
@@ -35,7 +36,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] = Field(  # type: ignore
+    name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name of an individual to contact",
@@ -48,7 +49,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    organization: fhirtypes.ReferenceType = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="organization",
         title="This contact detail is handled/monitored by a specific organization",
@@ -64,7 +65,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Period that this contact was valid for usage",
@@ -74,7 +75,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    purpose: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    purpose: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="purpose",
         title="The type of contact",
@@ -84,7 +85,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="Contact details (e.g.phone/fax/url)",

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/OperationOutcome
 Release: STU3
@@ -68,7 +69,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
 
     __resource_type__ = "OperationOutcomeIssue"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Error or warning code",
@@ -83,11 +84,11 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    details: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    details: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="details",
         title="Additional details about the error",
@@ -100,7 +101,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         },
     )
 
-    diagnostics: fhirtypes.StringType = Field(  # type: ignore
+    diagnostics: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="diagnostics",
         title="Additional diagnostic information about the issue",
@@ -113,11 +114,11 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    diagnostics__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    diagnostics__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_diagnostics", title="Extension field for ``diagnostics``."
     )
 
-    expression: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    expression: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="expression",
         title="FHIRPath of element(s) related to issue",
@@ -130,11 +131,11 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expression__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    expression__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    location: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    location: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="location",
         title="Path of element(s) related to issue",
@@ -148,11 +149,11 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    location__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    location__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_location", title="Extension field for ``location``."
     )
 
-    severity: fhirtypes.CodeType = Field(  # type: ignore
+    severity: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="severity",
         title="fatal | error | warning | information",
@@ -168,7 +169,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "enum_values": ["fatal", "error", "warning", "information"],
         },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_severity", title="Extension field for ``severity``."
     )
 

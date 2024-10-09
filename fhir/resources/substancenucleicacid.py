@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SubstanceNucleicAcid
 Release: R5
@@ -26,7 +27,7 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
 
     __resource_type__ = "SubstanceNucleicAcid"
 
-    areaOfHybridisation: fhirtypes.StringType = Field(  # type: ignore
+    areaOfHybridisation: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="areaOfHybridisation",
         title=(
@@ -41,13 +42,13 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    areaOfHybridisation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    areaOfHybridisation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_areaOfHybridisation",
         title="Extension field for ``areaOfHybridisation``.",
     )
 
-    numberOfSubunits: fhirtypes.IntegerType = Field(  # type: ignore
+    numberOfSubunits: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="numberOfSubunits",
         title=(
@@ -62,13 +63,13 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_numberOfSubunits",
         title="Extension field for ``numberOfSubunits``.",
     )
 
-    oligoNucleotideType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    oligoNucleotideType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="oligoNucleotideType",
         title="(TBC)",
@@ -78,7 +79,7 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         },
     )
 
-    sequenceType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    sequenceType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="sequenceType",
         title=(
@@ -91,7 +92,7 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         },
     )
 
-    subunit: typing.List[fhirtypes.SubstanceNucleicAcidSubunitType] = Field(  # type: ignore
+    subunit: typing.List[fhirtypes.SubstanceNucleicAcidSubunitType] | None = Field(  # type: ignore
         None,
         alias="subunit",
         title=(
@@ -140,7 +141,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceNucleicAcidSubunit"
 
-    fivePrime: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    fivePrime: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="fivePrime",
         title=(
@@ -155,7 +156,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         },
     )
 
-    length: fhirtypes.IntegerType = Field(  # type: ignore
+    length: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="length",
         title="The length of the sequence shall be captured",
@@ -164,11 +165,11 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    length__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    length__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_length", title="Extension field for ``length``."
     )
 
-    linkage: typing.List[fhirtypes.SubstanceNucleicAcidSubunitLinkageType] = Field(  # type: ignore
+    linkage: typing.List[fhirtypes.SubstanceNucleicAcidSubunitLinkageType] | None = Field(  # type: ignore
         None,
         alias="linkage",
         title="The linkages between sugar residues will also be captured",
@@ -178,7 +179,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.StringType = Field(  # type: ignore
+    sequence: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title=(
@@ -191,11 +192,11 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    sequenceAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    sequenceAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="sequenceAttachment",
         title="(TBC)",
@@ -205,7 +206,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         },
     )
 
-    subunit: fhirtypes.IntegerType = Field(  # type: ignore
+    subunit: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="subunit",
         title=(
@@ -219,11 +220,11 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subunit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subunit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subunit", title="Extension field for ``subunit``."
     )
 
-    sugar: typing.List[fhirtypes.SubstanceNucleicAcidSubunitSugarType] = Field(  # type: ignore
+    sugar: typing.List[fhirtypes.SubstanceNucleicAcidSubunitSugarType] | None = Field(  # type: ignore
         None,
         alias="sugar",
         title="5.3.6.8.1 Sugar ID (Mandatory)",
@@ -233,7 +234,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         },
     )
 
-    threePrime: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    threePrime: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="threePrime",
         title=(
@@ -279,7 +280,7 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceNucleicAcidSubunitLinkage"
 
-    connectivity: fhirtypes.StringType = Field(  # type: ignore
+    connectivity: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="connectivity",
         title=(
@@ -295,11 +296,11 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    connectivity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    connectivity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_connectivity", title="Extension field for ``connectivity``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Each linkage will be registered as a fragment and have an ID",
@@ -309,7 +310,7 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title=(
@@ -321,11 +322,11 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    residueSite: fhirtypes.StringType = Field(  # type: ignore
+    residueSite: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="residueSite",
         title="Residues shall be captured as described in 5.3.6.8.3",
@@ -334,7 +335,7 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_residueSite", title="Extension field for ``residueSite``."
     )
 
@@ -365,7 +366,7 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceNucleicAcidSubunitSugar"
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title=(
@@ -378,7 +379,7 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title=(
@@ -390,11 +391,11 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    residueSite: fhirtypes.StringType = Field(  # type: ignore
+    residueSite: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="residueSite",
         title=(
@@ -407,7 +408,7 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_residueSite", title="Extension field for ``residueSite``."
     )
 

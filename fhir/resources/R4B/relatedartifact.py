@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RelatedArtifact
 Release: R4B
@@ -25,7 +26,7 @@ class RelatedArtifact(element.Element):
 
     __resource_type__ = "RelatedArtifact"
 
-    citation: fhirtypes.MarkdownType = Field(  # type: ignore
+    citation: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="citation",
         title="Bibliographic citation for the artifact",
@@ -37,11 +38,11 @@ class RelatedArtifact(element.Element):
             "element_property": True,
         },
     )
-    citation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_citation", title="Extension field for ``citation``."
     )
 
-    display: fhirtypes.StringType = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="display",
         title="Brief description of the related artifact",
@@ -53,11 +54,11 @@ class RelatedArtifact(element.Element):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    document: fhirtypes.AttachmentType = Field(  # type: ignore
+    document: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="document",
         title="What document is being referenced",
@@ -70,7 +71,7 @@ class RelatedArtifact(element.Element):
         },
     )
 
-    label: fhirtypes.StringType = Field(  # type: ignore
+    label: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="label",
         title="Short label",
@@ -82,11 +83,11 @@ class RelatedArtifact(element.Element):
             "element_property": True,
         },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_label", title="Extension field for ``label``."
     )
 
-    resource: fhirtypes.CanonicalType = Field(  # type: ignore
+    resource: fhirtypes.CanonicalType | None = Field(  # type: ignore
         None,
         alias="resource",
         title="What resource is being referenced",
@@ -100,11 +101,11 @@ class RelatedArtifact(element.Element):
             "enum_reference_types": ["Resource"],
         },
     )
-    resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_resource", title="Extension field for ``resource``."
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title=(
@@ -129,11 +130,11 @@ class RelatedArtifact(element.Element):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    url: fhirtypes.UrlType = Field(  # type: ignore
+    url: fhirtypes.UrlType | None = Field(  # type: ignore
         None,
         alias="url",
         title="Where the artifact can be accessed",
@@ -145,7 +146,7 @@ class RelatedArtifact(element.Element):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ProductShelfLife
 Release: R5
@@ -24,7 +25,7 @@ class ProductShelfLife(backbonetype.BackboneType):
 
     __resource_type__ = "ProductShelfLife"
 
-    periodDuration: fhirtypes.DurationType = Field(  # type: ignore
+    periodDuration: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="periodDuration",
         title=(
@@ -43,7 +44,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         },
     )
 
-    periodString: fhirtypes.StringType = Field(  # type: ignore
+    periodString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="periodString",
         title=(
@@ -61,11 +62,11 @@ class ProductShelfLife(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    periodString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    periodString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_periodString", title="Extension field for ``periodString``."
     )
 
-    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialPrecautionsForStorage",
         title=(
@@ -79,7 +80,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title=(

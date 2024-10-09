@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Linkage
 Release: STU3
@@ -25,7 +26,7 @@ class Linkage(domainresource.DomainResource):
 
     __resource_type__ = "Linkage"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this linkage assertion is active or not",
@@ -37,11 +38,11 @@ class Linkage(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    author: fhirtypes.ReferenceType = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who is responsible for linkages",
@@ -115,7 +116,7 @@ class LinkageItem(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="type",
         title="source | alternate | historical",
@@ -131,7 +132,7 @@ class LinkageItem(backboneelement.BackboneElement):
             "enum_values": ["source", "alternate", "historical"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_type", title="Extension field for ``type``."
     )
 

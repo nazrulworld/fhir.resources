@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Organization
 Release: STU3
@@ -27,7 +28,7 @@ class Organization(domainresource.DomainResource):
 
     __resource_type__ = "Organization"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether the organization's record is still in active use",
@@ -36,11 +37,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] = Field(  # type: ignore
+    address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
         None,
         alias="address",
         title="An address for the organization",
@@ -50,7 +51,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    alias: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    alias: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="alias",
         title=(
@@ -62,11 +63,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    alias__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    alias__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_alias", title="Extension field for ``alias``."
     )
 
-    contact: typing.List[fhirtypes.OrganizationContactType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.OrganizationContactType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact for the organization for a certain purpose",
@@ -76,7 +77,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -91,7 +92,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifies this organization  across multiple systems",
@@ -104,7 +105,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name used for the organization",
@@ -113,11 +114,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    partOf: fhirtypes.ReferenceType = Field(  # type: ignore
+    partOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="partOf",
         title="The organization of which this organization forms a part",
@@ -129,7 +130,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the organization",
@@ -139,7 +140,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of organization",
@@ -187,7 +188,7 @@ class OrganizationContact(backboneelement.BackboneElement):
 
     __resource_type__ = "OrganizationContact"
 
-    address: fhirtypes.AddressType = Field(  # type: ignore
+    address: fhirtypes.AddressType | None = Field(  # type: ignore
         None,
         alias="address",
         title="Visiting or postal addresses for the contact",
@@ -197,7 +198,7 @@ class OrganizationContact(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.HumanNameType = Field(  # type: ignore
+    name: fhirtypes.HumanNameType | None = Field(  # type: ignore
         None,
         alias="name",
         title="A name associated with the contact",
@@ -207,7 +208,7 @@ class OrganizationContact(backboneelement.BackboneElement):
         },
     )
 
-    purpose: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    purpose: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="purpose",
         title="The type of contact",
@@ -217,7 +218,7 @@ class OrganizationContact(backboneelement.BackboneElement):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="Contact details (telephone, email, etc.)  for a contact",

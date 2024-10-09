@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/EnrollmentResponse
 Release: R4B
@@ -25,7 +26,7 @@ class EnrollmentResponse(domainresource.DomainResource):
 
     __resource_type__ = "EnrollmentResponse"
 
-    created: fhirtypes.DateTimeType = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="created",
         title="Creation date",
@@ -37,11 +38,11 @@ class EnrollmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    disposition: fhirtypes.StringType = Field(  # type: ignore
+    disposition: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="disposition",
         title="Disposition Message",
@@ -50,11 +51,11 @@ class EnrollmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier",
@@ -64,7 +65,7 @@ class EnrollmentResponse(domainresource.DomainResource):
         },
     )
 
-    organization: fhirtypes.ReferenceType = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="organization",
         title="Insurer",
@@ -76,7 +77,7 @@ class EnrollmentResponse(domainresource.DomainResource):
         },
     )
 
-    outcome: fhirtypes.CodeType = Field(  # type: ignore
+    outcome: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="outcome",
         title="queued | complete | error | partial",
@@ -88,11 +89,11 @@ class EnrollmentResponse(domainresource.DomainResource):
             "enum_values": ["queued", "complete", "error", "partial"],
         },
     )
-    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_outcome", title="Extension field for ``outcome``."
     )
 
-    request: fhirtypes.ReferenceType = Field(  # type: ignore
+    request: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="request",
         title="Claim reference",
@@ -104,7 +105,7 @@ class EnrollmentResponse(domainresource.DomainResource):
         },
     )
 
-    requestProvider: fhirtypes.ReferenceType = Field(  # type: ignore
+    requestProvider: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="requestProvider",
         title="Responsible practitioner",
@@ -123,7 +124,7 @@ class EnrollmentResponse(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -135,7 +136,7 @@ class EnrollmentResponse(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 

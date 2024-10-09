@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ManufacturedItemDefinition
 Release: R5
@@ -24,7 +25,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
 
     __resource_type__ = "ManufacturedItemDefinition"
 
-    component: typing.List[fhirtypes.ManufacturedItemDefinitionComponentType] = Field(  # type: ignore
+    component: typing.List[fhirtypes.ManufacturedItemDefinitionComponentType] | None = Field(  # type: ignore
         None,
         alias="component",
         title=(
@@ -38,7 +39,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique identifier",
@@ -48,7 +49,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         },
     )
 
-    ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    ingredient: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="ingredient",
         title=(
@@ -78,7 +79,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         },
     )
 
-    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    manufacturer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="manufacturer",
         title="Manufacturer of the item, one of several possible",
@@ -90,7 +91,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         },
     )
 
-    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(  # type: ignore
+    marketingStatus: typing.List[fhirtypes.MarketingStatusType] | None = Field(  # type: ignore
         None,
         alias="marketingStatus",
         title=(
@@ -103,7 +104,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="A descriptive name applied to this item",
@@ -112,11 +113,11 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    property: typing.List[fhirtypes.ManufacturedItemDefinitionPropertyType] = Field(  # type: ignore
+    property: typing.List[fhirtypes.ManufacturedItemDefinitionPropertyType] | None = Field(  # type: ignore
         None,
         alias="property",
         title="General characteristics of this item",
@@ -126,7 +127,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -142,11 +143,11 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    unitOfPresentation: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    unitOfPresentation: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="unitOfPresentation",
         title="The \u201creal-world\u201d units in which the quantity of the item is described",
@@ -209,7 +210,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
 
     __resource_type__ = "ManufacturedItemDefinitionComponent"
 
-    amount: typing.List[fhirtypes.QuantityType] = Field(  # type: ignore
+    amount: typing.List[fhirtypes.QuantityType] | None = Field(  # type: ignore
         None,
         alias="amount",
         title=(
@@ -222,7 +223,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         },
     )
 
-    component: typing.List[fhirtypes.ManufacturedItemDefinitionComponentType] = Field(  # type: ignore
+    component: typing.List[fhirtypes.ManufacturedItemDefinitionComponentType] | None = Field(  # type: ignore
         None,
         alias="component",
         title="A component that this component contains or is made from",
@@ -232,7 +233,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         },
     )
 
-    constituent: typing.List[fhirtypes.ManufacturedItemDefinitionComponentConstituentType] = Field(  # type: ignore
+    constituent: typing.List[fhirtypes.ManufacturedItemDefinitionComponentConstituentType] | None = Field(  # type: ignore
         None,
         alias="constituent",
         title=(
@@ -248,7 +249,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         },
     )
 
-    function: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    function: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="function",
         title=(
@@ -261,7 +262,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         },
     )
 
-    property: typing.List[fhirtypes.ManufacturedItemDefinitionPropertyType] = Field(  # type: ignore
+    property: typing.List[fhirtypes.ManufacturedItemDefinitionPropertyType] | None = Field(  # type: ignore
         None,
         alias="property",
         title="General characteristics of this component",
@@ -313,7 +314,7 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
 
     __resource_type__ = "ManufacturedItemDefinitionComponentConstituent"
 
-    amount: typing.List[fhirtypes.QuantityType] = Field(  # type: ignore
+    amount: typing.List[fhirtypes.QuantityType] | None = Field(  # type: ignore
         None,
         alias="amount",
         title=(
@@ -326,7 +327,7 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
         },
     )
 
-    function: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    function: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="function",
         title="The function of this constituent within the component e.g. binder",
@@ -336,7 +337,7 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
         },
     )
 
-    hasIngredient: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
+    hasIngredient: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
         None,
         alias="hasIngredient",
         title="The ingredient that is the constituent of the given component",
@@ -348,7 +349,7 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
         },
     )
 
-    location: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    location: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="location",
         title=(
@@ -403,7 +404,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="valueAttachment",
         title="A value for the characteristic",
@@ -416,7 +417,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="A value for the characteristic",
@@ -428,11 +429,11 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="A value for the characteristic",
@@ -445,7 +446,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueDate: fhirtypes.DateType = Field(  # type: ignore
+    valueDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="valueDate",
         title="A value for the characteristic",
@@ -457,11 +458,11 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
+    valueMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="valueMarkdown",
         title="A value for the characteristic",
@@ -473,11 +474,11 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="A value for the characteristic",
@@ -490,7 +491,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="valueReference",
         title="A value for the characteristic",

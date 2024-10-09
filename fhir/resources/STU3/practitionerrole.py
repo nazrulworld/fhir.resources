@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/PractitionerRole
 Release: STU3
@@ -25,7 +26,7 @@ class PractitionerRole(domainresource.DomainResource):
 
     __resource_type__ = "PractitionerRole"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this practitioner's record is in active use",
@@ -34,11 +35,11 @@ class PractitionerRole(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    availabilityExceptions: fhirtypes.StringType = Field(  # type: ignore
+    availabilityExceptions: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="availabilityExceptions",
         title="Description of availability exceptions",
@@ -52,13 +53,13 @@ class PractitionerRole(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_availabilityExceptions",
         title="Extension field for ``availabilityExceptions``.",
     )
 
-    availableTime: typing.List[fhirtypes.PractitionerRoleAvailableTimeType] = Field(  # type: ignore
+    availableTime: typing.List[fhirtypes.PractitionerRoleAvailableTimeType] | None = Field(  # type: ignore
         None,
         alias="availableTime",
         title="Times the Service Site is available",
@@ -68,7 +69,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="code",
         title="Roles which this practitioner may perform",
@@ -81,7 +82,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -96,7 +97,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    healthcareService: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    healthcareService: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="healthcareService",
         title=(
@@ -111,7 +112,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifiers that are specific to a role/location",
@@ -121,7 +122,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    location: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="location",
         title="The location(s) at which this practitioner provides care",
@@ -133,7 +134,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    notAvailable: typing.List[fhirtypes.PractitionerRoleNotAvailableType] = Field(  # type: ignore
+    notAvailable: typing.List[fhirtypes.PractitionerRoleNotAvailableType] | None = Field(  # type: ignore
         None,
         alias="notAvailable",
         title="Not available during this time due to provided reason",
@@ -146,7 +147,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    organization: fhirtypes.ReferenceType = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="organization",
         title="Organization where the roles are available",
@@ -158,7 +159,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title=(
@@ -174,7 +175,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    practitioner: fhirtypes.ReferenceType = Field(  # type: ignore
+    practitioner: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="practitioner",
         title=(
@@ -189,7 +190,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialty",
         title="Specific specialty of the practitioner",
@@ -199,7 +200,7 @@ class PractitionerRole(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="Contact details that are specific to the role/location/service",
@@ -252,7 +253,7 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
 
     __resource_type__ = "PractitionerRoleAvailableTime"
 
-    allDay: bool = Field(  # type: ignore
+    allDay: bool | None = Field(  # type: ignore
         None,
         alias="allDay",
         title="Always available? e.g. 24 hour service",
@@ -264,11 +265,11 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    allDay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_allDay", title="Extension field for ``allDay``."
     )
 
-    availableEndTime: fhirtypes.TimeType = Field(  # type: ignore
+    availableEndTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="availableEndTime",
         title="Closing time of day (ignored if allDay = true)",
@@ -280,13 +281,13 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_availableEndTime",
         title="Extension field for ``availableEndTime``.",
     )
 
-    availableStartTime: fhirtypes.TimeType = Field(  # type: ignore
+    availableStartTime: fhirtypes.TimeType | None = Field(  # type: ignore
         None,
         alias="availableStartTime",
         title="Opening time of day (ignored if allDay = true)",
@@ -298,13 +299,13 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_availableStartTime",
         title="Extension field for ``availableStartTime``.",
     )
 
-    daysOfWeek: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
+    daysOfWeek: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
         None,
         alias="daysOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
@@ -319,7 +320,7 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "enum_values": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
         },
     )
-    daysOfWeek__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    daysOfWeek__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``."
     )
 
@@ -352,7 +353,7 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
 
     __resource_type__ = "PractitionerRoleNotAvailable"
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Reason presented to the user explaining why time not available",
@@ -365,11 +366,11 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    during: fhirtypes.PeriodType = Field(  # type: ignore
+    during: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="during",
         title="Service not availablefrom this date",

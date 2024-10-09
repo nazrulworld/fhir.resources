@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DeviceAssociation
 Release: R5
@@ -23,7 +24,7 @@ class DeviceAssociation(domainresource.DomainResource):
 
     __resource_type__ = "DeviceAssociation"
 
-    bodyStructure: fhirtypes.ReferenceType = Field(  # type: ignore
+    bodyStructure: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="bodyStructure",
         title="Current anatomical location of the device in/on subject",
@@ -35,7 +36,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="Describes the relationship between the device and subject",
@@ -57,7 +58,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Instance identifier",
@@ -67,7 +68,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    operation: typing.List[fhirtypes.DeviceAssociationOperationType] = Field(  # type: ignore
+    operation: typing.List[fhirtypes.DeviceAssociationOperationType] | None = Field(  # type: ignore
         None,
         alias="operation",
         title=(
@@ -80,7 +81,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Begin and end dates and times for the device association",
@@ -100,7 +101,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    statusReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    statusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="statusReason",
         title="The reasons given for the current association status",
@@ -110,7 +111,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title=(
@@ -168,7 +169,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
 
     __resource_type__ = "DeviceAssociationOperation"
 
-    operator: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    operator: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="operator",
         title="The individual performing the action enabled by the device",
@@ -180,7 +181,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Begin and end dates and times for the device's operation",

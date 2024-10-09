@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Coverage
 Release: STU3
@@ -25,7 +26,7 @@ class Coverage(domainresource.DomainResource):
 
     __resource_type__ = "Coverage"
 
-    beneficiary: fhirtypes.ReferenceType = Field(  # type: ignore
+    beneficiary: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="beneficiary",
         title="Plan Beneficiary",
@@ -40,7 +41,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    contract: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    contract: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="contract",
         title="Contract details",
@@ -52,7 +53,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    dependent: fhirtypes.StringType = Field(  # type: ignore
+    dependent: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="dependent",
         title="Dependent number",
@@ -61,11 +62,11 @@ class Coverage(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    dependent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    dependent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_dependent", title="Extension field for ``dependent``."
     )
 
-    grouping: fhirtypes.CoverageGroupingType = Field(  # type: ignore
+    grouping: fhirtypes.CoverageGroupingType | None = Field(  # type: ignore
         None,
         alias="grouping",
         title="Additional coverage classifications",
@@ -78,7 +79,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="The primary coverage ID",
@@ -93,7 +94,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    network: fhirtypes.StringType = Field(  # type: ignore
+    network: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="network",
         title="Insurer network",
@@ -107,11 +108,11 @@ class Coverage(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    network__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    network__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_network", title="Extension field for ``network``."
     )
 
-    order: fhirtypes.PositiveIntType = Field(  # type: ignore
+    order: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="order",
         title="Relative order of the coverage",
@@ -125,11 +126,11 @@ class Coverage(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    order__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_order", title="Extension field for ``order``."
     )
 
-    payor: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    payor: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="payor",
         title="Identifier for the plan or agreement issuer",
@@ -146,7 +147,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Coverage start and end dates",
@@ -160,7 +161,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    policyHolder: fhirtypes.ReferenceType = Field(  # type: ignore
+    policyHolder: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="policyHolder",
         title="Owner of the policy",
@@ -175,7 +176,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    relationship: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    relationship: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="relationship",
         title="Beneficiary relationship to the Subscriber",
@@ -185,7 +186,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    sequence: fhirtypes.StringType = Field(  # type: ignore
+    sequence: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="sequence",
         title="The plan instance or sequence counter",
@@ -197,11 +198,11 @@ class Coverage(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -213,11 +214,11 @@ class Coverage(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subscriber: fhirtypes.ReferenceType = Field(  # type: ignore
+    subscriber: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subscriber",
         title="Subscriber to the policy",
@@ -233,7 +234,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    subscriberId: fhirtypes.StringType = Field(  # type: ignore
+    subscriberId: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="subscriberId",
         title="ID assigned to the Subscriber",
@@ -242,11 +243,11 @@ class Coverage(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subscriberId", title="Extension field for ``subscriberId``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Type of coverage such as medical or accident",
@@ -306,7 +307,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
 
     __resource_type__ = "CoverageGrouping"
 
-    classDisplay: fhirtypes.StringType = Field(  # type: ignore
+    classDisplay: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="classDisplay",
         title="Display text for the class",
@@ -315,11 +316,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    classDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    classDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_classDisplay", title="Extension field for ``classDisplay``."
     )
 
-    class_fhir: fhirtypes.StringType = Field(  # type: ignore
+    class_fhir: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="class",
         title="An identifier for the class",
@@ -332,11 +333,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    class__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    class__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_class", title="Extension field for ``class_fhir``."
     )
 
-    group: fhirtypes.StringType = Field(  # type: ignore
+    group: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="group",
         title="An identifier for the group",
@@ -349,11 +350,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    group__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    group__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_group", title="Extension field for ``group``."
     )
 
-    groupDisplay: fhirtypes.StringType = Field(  # type: ignore
+    groupDisplay: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="groupDisplay",
         title="Display text for an identifier for the group",
@@ -362,11 +363,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    groupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    groupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_groupDisplay", title="Extension field for ``groupDisplay``."
     )
 
-    plan: fhirtypes.StringType = Field(  # type: ignore
+    plan: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="plan",
         title="An identifier for the plan",
@@ -380,11 +381,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    plan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    plan__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_plan", title="Extension field for ``plan``."
     )
 
-    planDisplay: fhirtypes.StringType = Field(  # type: ignore
+    planDisplay: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="planDisplay",
         title="Display text for the plan",
@@ -393,11 +394,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    planDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    planDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_planDisplay", title="Extension field for ``planDisplay``."
     )
 
-    subClass: fhirtypes.StringType = Field(  # type: ignore
+    subClass: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="subClass",
         title="An identifier for the subsection of the class",
@@ -410,11 +411,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subClass__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subClass", title="Extension field for ``subClass``."
     )
 
-    subClassDisplay: fhirtypes.StringType = Field(  # type: ignore
+    subClassDisplay: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="subClassDisplay",
         title="Display text for the subsection of the subclass",
@@ -423,11 +424,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subClassDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subClassDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subClassDisplay", title="Extension field for ``subClassDisplay``."
     )
 
-    subGroup: fhirtypes.StringType = Field(  # type: ignore
+    subGroup: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="subGroup",
         title="An identifier for the subsection of the group",
@@ -440,11 +441,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subGroup__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subGroup", title="Extension field for ``subGroup``."
     )
 
-    subGroupDisplay: fhirtypes.StringType = Field(  # type: ignore
+    subGroupDisplay: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="subGroupDisplay",
         title="Display text for the subsection of the group",
@@ -453,11 +454,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subGroupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subGroupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subGroupDisplay", title="Extension field for ``subGroupDisplay``."
     )
 
-    subPlan: fhirtypes.StringType = Field(  # type: ignore
+    subPlan: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="subPlan",
         title="An identifier for the subsection of the plan",
@@ -470,11 +471,11 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subPlan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subPlan__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subPlan", title="Extension field for ``subPlan``."
     )
 
-    subPlanDisplay: fhirtypes.StringType = Field(  # type: ignore
+    subPlanDisplay: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="subPlanDisplay",
         title="Display text for the subsection of the plan",
@@ -483,7 +484,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_subPlanDisplay", title="Extension field for ``subPlanDisplay``."
     )
 

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
 Release: R4B
@@ -25,7 +26,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
 
     __resource_type__ = "ImmunizationRecommendation"
 
-    authority: fhirtypes.ReferenceType = Field(  # type: ignore
+    authority: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="authority",
         title="Who is responsible for protocol",
@@ -37,7 +38,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Date recommendation(s) created",
@@ -47,11 +48,11 @@ class ImmunizationRecommendation(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -127,7 +128,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
 
     __resource_type__ = "ImmunizationRecommendationRecommendation"
 
-    contraindicatedVaccineCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    contraindicatedVaccineCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="contraindicatedVaccineCode",
         title="Vaccine which is contraindicated to fulfill the recommendation",
@@ -137,7 +138,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         },
     )
 
-    dateCriterion: typing.List[fhirtypes.ImmunizationRecommendationRecommendationDateCriterionType] = Field(  # type: ignore
+    dateCriterion: typing.List[fhirtypes.ImmunizationRecommendationRecommendationDateCriterionType] | None = Field(  # type: ignore
         None,
         alias="dateCriterion",
         title="Dates governing proposed immunization",
@@ -150,7 +151,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Protocol details",
@@ -162,11 +163,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    doseNumberPositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    doseNumberPositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="doseNumberPositiveInt",
         title="Recommended dose number within series",
@@ -181,13 +182,13 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_doseNumberPositiveInt",
         title="Extension field for ``doseNumberPositiveInt``.",
     )
 
-    doseNumberString: fhirtypes.StringType = Field(  # type: ignore
+    doseNumberString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="doseNumberString",
         title="Recommended dose number within series",
@@ -202,13 +203,13 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_doseNumberString",
         title="Extension field for ``doseNumberString``.",
     )
 
-    forecastReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    forecastReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="forecastReason",
         title="Vaccine administration status reason",
@@ -231,7 +232,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         },
     )
 
-    series: fhirtypes.StringType = Field(  # type: ignore
+    series: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="series",
         title="Name of vaccination series",
@@ -243,11 +244,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    series__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_series", title="Extension field for ``series``."
     )
 
-    seriesDosesPositiveInt: fhirtypes.PositiveIntType = Field(  # type: ignore
+    seriesDosesPositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="seriesDosesPositiveInt",
         title="Recommended number of doses for immunity",
@@ -259,13 +260,13 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_seriesDosesPositiveInt",
         title="Extension field for ``seriesDosesPositiveInt``.",
     )
 
-    seriesDosesString: fhirtypes.StringType = Field(  # type: ignore
+    seriesDosesString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="seriesDosesString",
         title="Recommended number of doses for immunity",
@@ -277,13 +278,13 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_seriesDosesString",
         title="Extension field for ``seriesDosesString``.",
     )
 
-    supportingImmunization: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    supportingImmunization: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="supportingImmunization",
         title="Past immunizations supporting recommendation",
@@ -298,7 +299,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         },
     )
 
-    supportingPatientInformation: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    supportingPatientInformation: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="supportingPatientInformation",
         title="Patient observations supporting recommendation",
@@ -314,7 +315,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         },
     )
 
-    targetDisease: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    targetDisease: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="targetDisease",
         title="Disease to be immunized against",
@@ -324,7 +325,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         },
     )
 
-    vaccineCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    vaccineCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="vaccineCode",
         title="Vaccine  or vaccine group recommendation applies to",
@@ -407,7 +408,7 @@ class ImmunizationRecommendationRecommendationDateCriterion(
         },
     )
 
-    value: fhirtypes.DateTimeType = Field(  # type: ignore
+    value: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="value",
         title="Recommended date",
@@ -417,7 +418,7 @@ class ImmunizationRecommendationRecommendationDateCriterion(
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

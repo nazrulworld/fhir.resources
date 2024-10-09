@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Coding
 Release: STU3
@@ -21,7 +22,7 @@ class Coding(element.Element):
 
     __resource_type__ = "Coding"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Symbol in syntax defined by the system",
@@ -34,11 +35,11 @@ class Coding(element.Element):
             "element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    display: fhirtypes.StringType = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="display",
         title="Representation defined by the system",
@@ -50,11 +51,11 @@ class Coding(element.Element):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_display", title="Extension field for ``display``."
     )
 
-    system: fhirtypes.UriType = Field(  # type: ignore
+    system: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="system",
         title="Identity of the terminology system",
@@ -66,11 +67,11 @@ class Coding(element.Element):
             "element_property": True,
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    userSelected: bool = Field(  # type: ignore
+    userSelected: bool | None = Field(  # type: ignore
         None,
         alias="userSelected",
         title="If this coding was chosen directly by the user",
@@ -82,11 +83,11 @@ class Coding(element.Element):
             "element_property": True,
         },
     )
-    userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_userSelected", title="Extension field for ``userSelected``."
     )
 
-    version: fhirtypes.StringType = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="version",
         title="Version of the system - if relevant",
@@ -101,7 +102,7 @@ class Coding(element.Element):
             "element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_version", title="Extension field for ``version``."
     )
 

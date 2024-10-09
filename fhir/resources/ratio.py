@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Ratio
 Release: R5
@@ -23,7 +24,7 @@ class Ratio(datatype.DataType):
 
     __resource_type__ = "Ratio"
 
-    denominator: fhirtypes.QuantityType = Field(  # type: ignore
+    denominator: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="denominator",
         title="Denominator value",
@@ -33,7 +34,7 @@ class Ratio(datatype.DataType):
         },
     )
 
-    numerator: fhirtypes.QuantityType = Field(  # type: ignore
+    numerator: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="numerator",
         title="Numerator value",

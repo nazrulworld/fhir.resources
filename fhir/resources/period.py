@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Period
 Release: R5
@@ -22,7 +23,7 @@ class Period(datatype.DataType):
 
     __resource_type__ = "Period"
 
-    end: fhirtypes.DateTimeType = Field(  # type: ignore
+    end: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="end",
         title="End time with inclusive boundary, if not ongoing",
@@ -36,11 +37,11 @@ class Period(datatype.DataType):
             "element_property": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_end", title="Extension field for ``end``."
     )
 
-    start: fhirtypes.DateTimeType = Field(  # type: ignore
+    start: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="start",
         title="Starting time with inclusive boundary",
@@ -49,7 +50,7 @@ class Period(datatype.DataType):
             "element_property": True,
         },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_start", title="Extension field for ``start``."
     )
 

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Account
 Release: R4B
@@ -26,7 +27,7 @@ class Account(domainresource.DomainResource):
 
     __resource_type__ = "Account"
 
-    coverage: typing.List[fhirtypes.AccountCoverageType] = Field(  # type: ignore
+    coverage: typing.List[fhirtypes.AccountCoverageType] | None = Field(  # type: ignore
         None,
         alias="coverage",
         title=(
@@ -39,7 +40,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Explanation of purpose/use",
@@ -51,11 +52,11 @@ class Account(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    guarantor: typing.List[fhirtypes.AccountGuarantorType] = Field(  # type: ignore
+    guarantor: typing.List[fhirtypes.AccountGuarantorType] | None = Field(  # type: ignore
         None,
         alias="guarantor",
         title="The parties ultimately responsible for balancing the Account",
@@ -68,7 +69,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Account number",
@@ -81,7 +82,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Human-readable label",
@@ -92,11 +93,11 @@ class Account(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    owner: fhirtypes.ReferenceType = Field(  # type: ignore
+    owner: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="owner",
         title="Entity managing the Account",
@@ -111,7 +112,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    partOf: fhirtypes.ReferenceType = Field(  # type: ignore
+    partOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="partOf",
         title="Reference to a parent Account",
@@ -123,7 +124,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    servicePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    servicePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="servicePeriod",
         title="Transaction window",
@@ -133,7 +134,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | inactive | entered-in-error | on-hold | unknown",
@@ -152,11 +153,11 @@ class Account(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    subject: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="subject",
         title="The entity that caused the expenses",
@@ -181,7 +182,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="E.g. patient, expense, depreciation",
@@ -262,7 +263,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         },
     )
 
-    priority: fhirtypes.PositiveIntType = Field(  # type: ignore
+    priority: fhirtypes.PositiveIntType | None = Field(  # type: ignore
         None,
         alias="priority",
         title="The priority of the coverage in the context of this account",
@@ -271,7 +272,7 @@ class AccountCoverage(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
@@ -296,7 +297,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
 
     __resource_type__ = "AccountGuarantor"
 
-    onHold: bool = Field(  # type: ignore
+    onHold: bool | None = Field(  # type: ignore
         None,
         alias="onHold",
         title="Credit or other hold applied",
@@ -308,7 +309,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    onHold__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    onHold__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_onHold", title="Extension field for ``onHold``."
     )
 
@@ -324,7 +325,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Guarantee account during",

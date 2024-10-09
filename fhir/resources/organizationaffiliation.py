@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/OrganizationAffiliation
 Release: R5
@@ -24,7 +25,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
 
     __resource_type__ = "OrganizationAffiliation"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether this organization affiliation record is in active use",
@@ -33,11 +34,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="code",
         title="Definition of the role the participatingOrganization plays",
@@ -50,7 +51,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ExtendedContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ExtendedContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title=(
@@ -66,7 +67,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -80,7 +81,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    healthcareService: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    healthcareService: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="healthcareService",
         title="Healthcare services provided through the role",
@@ -92,7 +93,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifiers that are specific to this role",
@@ -102,7 +103,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    location: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="location",
         title="The location(s) at which the role occurs",
@@ -114,7 +115,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    network: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    network: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="network",
         title=(
@@ -129,7 +130,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    organization: fhirtypes.ReferenceType = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="organization",
         title="Organization where the role is available",
@@ -144,7 +145,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    participatingOrganization: fhirtypes.ReferenceType = Field(  # type: ignore
+    participatingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="participatingOrganization",
         title=(
@@ -163,7 +164,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title=(
@@ -176,7 +177,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="specialty",
         title=(

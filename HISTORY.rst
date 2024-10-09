@@ -5,7 +5,8 @@ History
 8.0.0b3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Minimum version of ``fhir-core`` package have been updated.
+- All of fhir resources are regenerated for to comply with the optionality of fhir model's field. Issue https://github.com/nazrulworld/fhir.resources/issues/164
 
 
 8.0.0b2 (2024-10-02)

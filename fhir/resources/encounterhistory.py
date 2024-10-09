@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/EncounterHistory
 Release: R5
@@ -26,7 +27,7 @@ class EncounterHistory(domainresource.DomainResource):
 
     __resource_type__ = "EncounterHistory"
 
-    actualPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    actualPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="actualPeriod",
         title=(
@@ -57,7 +58,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="encounter",
         title="The Encounter associated with this set of historic values",
@@ -69,7 +70,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifier(s) by which this encounter is known",
@@ -79,7 +80,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    length: fhirtypes.DurationType = Field(  # type: ignore
+    length: fhirtypes.DurationType | None = Field(  # type: ignore
         None,
         alias="length",
         title="Actual quantity of time the encounter lasted (less time absent)",
@@ -93,7 +94,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.EncounterHistoryLocationType] = Field(  # type: ignore
+    location: typing.List[fhirtypes.EncounterHistoryLocationType] | None = Field(  # type: ignore
         None,
         alias="location",
         title="Location of the patient at this point in the encounter",
@@ -107,7 +108,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    plannedEndDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    plannedEndDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="plannedEndDate",
         title="The planned end date/time (or discharge date) of the encounter",
@@ -116,11 +117,11 @@ class EncounterHistory(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    plannedEndDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    plannedEndDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_plannedEndDate", title="Extension field for ``plannedEndDate``."
     )
 
-    plannedStartDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    plannedStartDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="plannedStartDate",
         title="The planned start date/time (or admission date) of the encounter",
@@ -129,13 +130,13 @@ class EncounterHistory(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    plannedStartDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    plannedStartDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_plannedStartDate",
         title="Extension field for ``plannedStartDate``.",
     )
 
-    serviceType: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
+    serviceType: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
         None,
         alias="serviceType",
         title="Specific type of service",
@@ -150,7 +151,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -176,11 +177,11 @@ class EncounterHistory(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="The patient or group related to this encounter",
@@ -196,7 +197,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    subjectStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    subjectStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="subjectStatus",
         title="The current status of the subject in relation to the Encounter",
@@ -210,7 +211,7 @@ class EncounterHistory(domainresource.DomainResource):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Specific type of encounter",
@@ -278,7 +279,7 @@ class EncounterHistoryLocation(backboneelement.BackboneElement):
 
     __resource_type__ = "EncounterHistoryLocation"
 
-    form: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    form: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="form",
         title=(

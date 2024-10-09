@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Narrative
 Release: R4B
@@ -26,7 +27,7 @@ class Narrative(element.Element):
 
     __resource_type__ = "Narrative"
 
-    div: fhirtypes.XhtmlType = Field(  # type: ignore
+    div: fhirtypes.XhtmlType | None = Field(  # type: ignore
         None,
         alias="div",
         title="Limited xhtml content",
@@ -36,11 +37,11 @@ class Narrative(element.Element):
             "element_required": True,
         },
     )
-    div__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    div__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_div", title="Extension field for ``div``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="generated | extensions | additional | empty",
@@ -57,7 +58,7 @@ class Narrative(element.Element):
             "enum_values": ["generated", "extensions", "additional", "empty"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 

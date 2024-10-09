@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CareTeam
 Release: R5
@@ -25,7 +26,7 @@ class CareTeam(domainresource.DomainResource):
 
     __resource_type__ = "CareTeam"
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="Type of team",
@@ -39,7 +40,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this team",
@@ -53,7 +54,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    managingOrganization: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="managingOrganization",
         title="Organization responsible for the care team",
@@ -65,7 +66,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name of the team, such as crisis assessment team",
@@ -77,11 +78,11 @@ class CareTeam(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about the CareTeam",
@@ -91,7 +92,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    participant: typing.List[fhirtypes.CareTeamParticipantType] = Field(  # type: ignore
+    participant: typing.List[fhirtypes.CareTeamParticipantType] | None = Field(  # type: ignore
         None,
         alias="participant",
         title="Members of the team",
@@ -104,7 +105,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Time period team covers",
@@ -117,7 +118,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
         None,
         alias="reason",
         title="Why the care team exists",
@@ -129,7 +130,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="proposed | active | suspended | inactive | entered-in-error",
@@ -147,11 +148,11 @@ class CareTeam(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="Who care team is for",
@@ -166,7 +167,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
         None,
         alias="telecom",
         title="A contact detail for the care team (that applies to all members)",
@@ -220,7 +221,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "CareTeamParticipant"
 
-    coveragePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    coveragePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="coveragePeriod",
         title="When the member is generally available within this care team",
@@ -233,7 +234,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    coverageTiming: fhirtypes.TimingType = Field(  # type: ignore
+    coverageTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="coverageTiming",
         title="When the member is generally available within this care team",
@@ -246,7 +247,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    member: fhirtypes.ReferenceType = Field(  # type: ignore
+    member: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="member",
         title="Who is involved",
@@ -268,7 +269,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="Organization of the practitioner",
@@ -280,7 +281,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="role",
         title="Type of involvement",

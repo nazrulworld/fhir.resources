@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CoverageEligibilityResponse
 Release: R5
@@ -25,7 +26,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
 
     __resource_type__ = "CoverageEligibilityResponse"
 
-    created: fhirtypes.DateTimeType = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="created",
         title="Response creation date",
@@ -35,11 +36,11 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    disposition: fhirtypes.StringType = Field(  # type: ignore
+    disposition: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="disposition",
         title="Disposition Message",
@@ -48,11 +49,11 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
-    error: typing.List[fhirtypes.CoverageEligibilityResponseErrorType] = Field(  # type: ignore
+    error: typing.List[fhirtypes.CoverageEligibilityResponseErrorType] | None = Field(  # type: ignore
         None,
         alias="error",
         title="Processing errors",
@@ -62,7 +63,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    event: typing.List[fhirtypes.CoverageEligibilityResponseEventType] = Field(  # type: ignore
+    event: typing.List[fhirtypes.CoverageEligibilityResponseEventType] | None = Field(  # type: ignore
         None,
         alias="event",
         title="Event information",
@@ -72,7 +73,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    form: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    form: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="form",
         title="Printed form identifier",
@@ -82,7 +83,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for coverage eligiblity request",
@@ -92,7 +93,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    insurance: typing.List[fhirtypes.CoverageEligibilityResponseInsuranceType] = Field(  # type: ignore
+    insurance: typing.List[fhirtypes.CoverageEligibilityResponseInsuranceType] | None = Field(  # type: ignore
         None,
         alias="insurance",
         title="Patient insurance information",
@@ -120,7 +121,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    outcome: fhirtypes.CodeType = Field(  # type: ignore
+    outcome: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="outcome",
         title="queued | complete | error | partial",
@@ -133,7 +134,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "enum_values": ["queued", "complete", "error", "partial"],
         },
     )
-    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_outcome", title="Extension field for ``outcome``."
     )
 
@@ -152,7 +153,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    preAuthRef: fhirtypes.StringType = Field(  # type: ignore
+    preAuthRef: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="preAuthRef",
         title="Preauthorization reference",
@@ -164,11 +165,11 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    preAuthRef__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    preAuthRef__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
     )
 
-    purpose: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(  # type: ignore
+    purpose: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
         None,
         alias="purpose",
         title="auth-requirements | benefits | discovery | validation",
@@ -187,7 +188,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "enum_values": ["auth-requirements", "benefits", "discovery", "validation"],
         },
     )
-    purpose__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    purpose__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
@@ -203,7 +204,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    requestor: fhirtypes.ReferenceType = Field(  # type: ignore
+    requestor: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="requestor",
         title="Party responsible for the request",
@@ -219,7 +220,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    servicedDate: fhirtypes.DateType = Field(  # type: ignore
+    servicedDate: fhirtypes.DateType | None = Field(  # type: ignore
         None,
         alias="servicedDate",
         title="Estimated date or dates of service",
@@ -234,11 +235,11 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_servicedDate", title="Extension field for ``servicedDate``."
     )
 
-    servicedPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    servicedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="servicedPeriod",
         title="Estimated date or dates of service",
@@ -254,7 +255,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -267,7 +268,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -362,7 +363,7 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
         },
     )
 
-    expression: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    expression: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="expression",
         title="FHIRPath of element(s) related to issue",
@@ -376,7 +377,7 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expression__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    expression__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_expression", title="Extension field for ``expression``."
     )
 
@@ -410,7 +411,7 @@ class CoverageEligibilityResponseEvent(backboneelement.BackboneElement):
         },
     )
 
-    whenDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    whenDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="whenDateTime",
         title="Occurance date or period",
@@ -425,11 +426,11 @@ class CoverageEligibilityResponseEvent(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    whenDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    whenDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_whenDateTime", title="Extension field for ``whenDateTime``."
     )
 
-    whenPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    whenPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="whenPeriod",
         title="Occurance date or period",
@@ -489,7 +490,7 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
 
     __resource_type__ = "CoverageEligibilityResponseInsurance"
 
-    benefitPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    benefitPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="benefitPeriod",
         title="When the benefits are applicable",
@@ -516,7 +517,7 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
         },
     )
 
-    inforce: bool = Field(  # type: ignore
+    inforce: bool | None = Field(  # type: ignore
         None,
         alias="inforce",
         title="Coverage inforce indicator",
@@ -529,11 +530,11 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    inforce__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    inforce__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_inforce", title="Extension field for ``inforce``."
     )
 
-    item: typing.List[fhirtypes.CoverageEligibilityResponseInsuranceItemType] = Field(  # type: ignore
+    item: typing.List[fhirtypes.CoverageEligibilityResponseInsuranceItemType] | None = Field(  # type: ignore
         None,
         alias="item",
         title="Benefits and authorization details",
@@ -575,7 +576,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
 
     __resource_type__ = "CoverageEligibilityResponseInsuranceItem"
 
-    authorizationRequired: bool = Field(  # type: ignore
+    authorizationRequired: bool | None = Field(  # type: ignore
         None,
         alias="authorizationRequired",
         title="Authorization required flag",
@@ -587,13 +588,13 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    authorizationRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authorizationRequired__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_authorizationRequired",
         title="Extension field for ``authorizationRequired``.",
     )
 
-    authorizationSupporting: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    authorizationSupporting: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="authorizationSupporting",
         title="Type of required supporting materials",
@@ -606,7 +607,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         },
     )
 
-    authorizationUrl: fhirtypes.UriType = Field(  # type: ignore
+    authorizationUrl: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="authorizationUrl",
         title="Preauthorization requirements endpoint",
@@ -618,13 +619,13 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    authorizationUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authorizationUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_authorizationUrl",
         title="Extension field for ``authorizationUrl``.",
     )
 
-    benefit: typing.List[fhirtypes.CoverageEligibilityResponseInsuranceItemBenefitType] = Field(  # type: ignore
+    benefit: typing.List[fhirtypes.CoverageEligibilityResponseInsuranceItemBenefitType] | None = Field(  # type: ignore
         None,
         alias="benefit",
         title="Benefit Summary",
@@ -634,7 +635,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         },
     )
 
-    category: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="category",
         title="Benefit classification",
@@ -647,7 +648,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Description of the benefit or services covered",
@@ -656,11 +657,11 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    excluded: bool = Field(  # type: ignore
+    excluded: bool | None = Field(  # type: ignore
         None,
         alias="excluded",
         title="Excluded from the plan",
@@ -673,11 +674,11 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    excluded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    excluded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_excluded", title="Extension field for ``excluded``."
     )
 
-    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    modifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="modifier",
         title="Product or service billing modifiers",
@@ -690,7 +691,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Short name for the benefit",
@@ -699,11 +700,11 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    network: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    network: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="network",
         title="In or out of network",
@@ -716,7 +717,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         },
     )
 
-    productOrService: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    productOrService: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="productOrService",
         title="Billing, service, product, or drug code",
@@ -729,7 +730,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         },
     )
 
-    provider: fhirtypes.ReferenceType = Field(  # type: ignore
+    provider: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="provider",
         title="Performing practitioner",
@@ -744,7 +745,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         },
     )
 
-    term: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    term: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="term",
         title="Annual or lifetime",
@@ -757,7 +758,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         },
     )
 
-    unit: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    unit: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="unit",
         title="Individual or family",
@@ -805,7 +806,7 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
 
     __resource_type__ = "CoverageEligibilityResponseInsuranceItemBenefit"
 
-    allowedMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    allowedMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="allowedMoney",
         title="Benefits allowed",
@@ -818,7 +819,7 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
         },
     )
 
-    allowedString: fhirtypes.StringType = Field(  # type: ignore
+    allowedString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="allowedString",
         title="Benefits allowed",
@@ -830,11 +831,11 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
             "one_of_many_required": False,
         },
     )
-    allowedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    allowedString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_allowedString", title="Extension field for ``allowedString``."
     )
 
-    allowedUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    allowedUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="allowedUnsignedInt",
         title="Benefits allowed",
@@ -846,7 +847,7 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
             "one_of_many_required": False,
         },
     )
-    allowedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    allowedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_allowedUnsignedInt",
         title="Extension field for ``allowedUnsignedInt``.",
@@ -862,7 +863,7 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
         },
     )
 
-    usedMoney: fhirtypes.MoneyType = Field(  # type: ignore
+    usedMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
         None,
         alias="usedMoney",
         title="Benefits used",
@@ -875,7 +876,7 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
         },
     )
 
-    usedString: fhirtypes.StringType = Field(  # type: ignore
+    usedString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="usedString",
         title="Benefits used",
@@ -887,11 +888,11 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
             "one_of_many_required": False,
         },
     )
-    usedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    usedString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_usedString", title="Extension field for ``usedString``."
     )
 
-    usedUnsignedInt: fhirtypes.UnsignedIntType = Field(  # type: ignore
+    usedUnsignedInt: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
         None,
         alias="usedUnsignedInt",
         title="Benefits used",
@@ -903,7 +904,7 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
             "one_of_many_required": False,
         },
     )
-    usedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    usedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_usedUnsignedInt", title="Extension field for ``usedUnsignedInt``."
     )
 

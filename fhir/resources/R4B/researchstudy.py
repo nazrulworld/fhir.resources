@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ResearchStudy
 Release: R4B
@@ -29,7 +30,7 @@ class ResearchStudy(domainresource.DomainResource):
 
     __resource_type__ = "ResearchStudy"
 
-    arm: typing.List[fhirtypes.ResearchStudyArmType] = Field(  # type: ignore
+    arm: typing.List[fhirtypes.ResearchStudyArmType] | None = Field(  # type: ignore
         None,
         alias="arm",
         title="Defined path through the study for a subject",
@@ -43,7 +44,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="Classifications for the study",
@@ -57,7 +58,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    condition: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    condition: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="condition",
         title="Condition being studied",
@@ -72,7 +73,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the study",
@@ -85,7 +86,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="What this is study doing",
@@ -94,11 +95,11 @@ class ResearchStudy(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    enrollment: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    enrollment: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="enrollment",
         title="Inclusion & exclusion criteria",
@@ -114,7 +115,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    focus: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    focus: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="focus",
         title="Drugs, devices, etc. under study",
@@ -128,7 +129,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for study",
@@ -141,7 +142,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    keyword: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    keyword: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="keyword",
         title="Used to search for the study",
@@ -151,7 +152,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    location: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="location",
         title="Geographic region(s) for study",
@@ -164,7 +165,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about the study",
@@ -177,7 +178,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    objective: typing.List[fhirtypes.ResearchStudyObjectiveType] = Field(  # type: ignore
+    objective: typing.List[fhirtypes.ResearchStudyObjectiveType] | None = Field(  # type: ignore
         None,
         alias="objective",
         title="A goal for the study",
@@ -191,7 +192,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of larger study",
@@ -206,7 +207,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="When the study began and ended",
@@ -219,7 +220,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    phase: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    phase: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="phase",
         title=(
@@ -235,7 +236,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    primaryPurposeType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    primaryPurposeType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="primaryPurposeType",
         title=(
@@ -251,7 +252,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    principalInvestigator: fhirtypes.ReferenceType = Field(  # type: ignore
+    principalInvestigator: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="principalInvestigator",
         title="Researcher who oversees multiple aspects of the study",
@@ -268,7 +269,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    protocol: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    protocol: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="protocol",
         title="Steps followed in executing study",
@@ -283,7 +284,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    reasonStopped: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    reasonStopped: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="reasonStopped",
         title=(
@@ -299,7 +300,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
         None,
         alias="relatedArtifact",
         title="References and dependencies",
@@ -309,7 +310,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    site: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    site: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="site",
         title="Facility where study activities are conducted",
@@ -321,7 +322,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    sponsor: fhirtypes.ReferenceType = Field(  # type: ignore
+    sponsor: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="sponsor",
         title="Organization that initiates and is legally responsible for the study",
@@ -336,7 +337,7 @@ class ResearchStudy(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -366,11 +367,11 @@ class ResearchStudy(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.StringType = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="title",
         title="Name for this study",
@@ -379,7 +380,7 @@ class ResearchStudy(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
@@ -449,7 +450,7 @@ class ResearchStudyArm(backboneelement.BackboneElement):
 
     __resource_type__ = "ResearchStudyArm"
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Short explanation of study path",
@@ -461,11 +462,11 @@ class ResearchStudyArm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Label for study arm",
@@ -475,11 +476,11 @@ class ResearchStudyArm(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Categorization of study arm",
@@ -524,7 +525,7 @@ class ResearchStudyObjective(backboneelement.BackboneElement):
 
     __resource_type__ = "ResearchStudyObjective"
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Label for the objective",
@@ -533,11 +534,11 @@ class ResearchStudyObjective(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="primary | secondary | exploratory",

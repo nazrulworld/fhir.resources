@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ReferralRequest
 Release: STU3
@@ -26,7 +27,7 @@ class ReferralRequest(domainresource.DomainResource):
 
     __resource_type__ = "ReferralRequest"
 
-    authoredOn: fhirtypes.DateTimeType = Field(  # type: ignore
+    authoredOn: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="authoredOn",
         title="Date of creation/activation",
@@ -38,11 +39,11 @@ class ReferralRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Request fulfilled by this request",
@@ -57,7 +58,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    context: fhirtypes.ReferenceType = Field(  # type: ignore
+    context: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="context",
         title="Originating encounter",
@@ -72,7 +73,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    definition: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    definition: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="definition",
         title="Instantiates protocol or definition",
@@ -87,7 +88,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="A textual description of the referral",
@@ -100,11 +101,11 @@ class ReferralRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    groupIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    groupIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="groupIdentifier",
         title="Composite request this is part of",
@@ -117,7 +118,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -130,7 +131,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    intent: fhirtypes.CodeType = Field(  # type: ignore
+    intent: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="intent",
         title="proposal | plan | order",
@@ -146,11 +147,11 @@ class ReferralRequest(domainresource.DomainResource):
             "enum_values": ["proposal", "plan", "order"],
         },
     )
-    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_intent", title="Extension field for ``intent``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Comments made about referral request",
@@ -160,7 +161,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="When the service(s) requested in the referral should occur",
@@ -175,13 +176,13 @@ class ReferralRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="occurrencePeriod",
         title="When the service(s) requested in the referral should occur",
@@ -197,7 +198,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="priority",
         title="Urgency of referral / transfer of care request",
@@ -209,11 +210,11 @@ class ReferralRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Reason for referral / transfer of care request",
@@ -227,7 +228,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Why is service needed?",
@@ -239,7 +240,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    recipient: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    recipient: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="recipient",
         title="Receiver of referral / transfer of care request",
@@ -258,7 +259,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    relevantHistory: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="relevantHistory",
         title="Key events in history of request",
@@ -275,7 +276,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    replaces: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="replaces",
         title="Request(s) replaced by this request",
@@ -290,7 +291,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    requester: fhirtypes.ReferralRequestRequesterType = Field(  # type: ignore
+    requester: fhirtypes.ReferralRequestRequesterType | None = Field(  # type: ignore
         None,
         alias="requester",
         title="Who/what is requesting service",
@@ -303,7 +304,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    serviceRequested: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    serviceRequested: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="serviceRequested",
         title="Actions requested as part of the referral",
@@ -316,7 +317,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    specialty: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    specialty: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="specialty",
         title="The clinical specialty (discipline) that the referral is requested for",
@@ -330,7 +331,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title=(
@@ -357,7 +358,7 @@ class ReferralRequest(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -376,7 +377,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    supportingInfo: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="supportingInfo",
         title="Additonal information to support referral or transfer of care request",
@@ -395,7 +396,7 @@ class ReferralRequest(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Referral/Transition of care request type",
@@ -507,7 +508,7 @@ class ReferralRequestRequester(backboneelement.BackboneElement):
         },
     )
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="Organization agent is acting for",

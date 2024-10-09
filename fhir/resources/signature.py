@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Signature
 Release: R5
@@ -28,7 +29,7 @@ class Signature(datatype.DataType):
 
     __resource_type__ = "Signature"
 
-    data: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    data: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="data",
         title="The actual signature content (XML DigSig. JWS, picture, etc.)",
@@ -40,11 +41,11 @@ class Signature(datatype.DataType):
             "element_property": True,
         },
     )
-    data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    data__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_data", title="Extension field for ``data``."
     )
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="The party represented",
@@ -66,7 +67,7 @@ class Signature(datatype.DataType):
         },
     )
 
-    sigFormat: fhirtypes.CodeType = Field(  # type: ignore
+    sigFormat: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="sigFormat",
         title="The technical format of the signature",
@@ -80,11 +81,11 @@ class Signature(datatype.DataType):
             "element_property": True,
         },
     )
-    sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sigFormat", title="Extension field for ``sigFormat``."
     )
 
-    targetFormat: fhirtypes.CodeType = Field(  # type: ignore
+    targetFormat: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="targetFormat",
         title="The technical format of the signed resources",
@@ -96,11 +97,11 @@ class Signature(datatype.DataType):
             "element_property": True,
         },
     )
-    targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_targetFormat", title="Extension field for ``targetFormat``."
     )
 
-    type: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Indication of the reason the entity signed the object(s)",
@@ -115,7 +116,7 @@ class Signature(datatype.DataType):
         },
     )
 
-    when: fhirtypes.InstantType = Field(  # type: ignore
+    when: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="when",
         title="When the signature was created",
@@ -124,11 +125,11 @@ class Signature(datatype.DataType):
             "element_property": True,
         },
     )
-    when__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    when__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_when", title="Extension field for ``when``."
     )
 
-    who: fhirtypes.ReferenceType = Field(  # type: ignore
+    who: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="who",
         title="Who signed",

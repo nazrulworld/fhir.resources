@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Provenance
 Release: R4B
@@ -33,7 +34,7 @@ class Provenance(domainresource.DomainResource):
 
     __resource_type__ = "Provenance"
 
-    activity: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    activity: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="activity",
         title="Activity that occurred",
@@ -60,7 +61,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    entity: typing.List[fhirtypes.ProvenanceEntityType] = Field(  # type: ignore
+    entity: typing.List[fhirtypes.ProvenanceEntityType] | None = Field(  # type: ignore
         None,
         alias="entity",
         title="An entity used in this activity",
@@ -70,7 +71,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    location: fhirtypes.ReferenceType = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="location",
         title="Where the activity occurred, if relevant",
@@ -82,7 +83,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    occurredDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    occurredDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="occurredDateTime",
         title="When the activity occurred",
@@ -94,13 +95,13 @@ class Provenance(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurredDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    occurredDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_occurredDateTime",
         title="Extension field for ``occurredDateTime``.",
     )
 
-    occurredPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    occurredPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="occurredPeriod",
         title="When the activity occurred",
@@ -113,7 +114,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    policy: typing.List[typing.Optional[fhirtypes.UriType]] = Field(  # type: ignore
+    policy: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
         None,
         alias="policy",
         title="Policy or plan the activity was defined by",
@@ -126,11 +127,11 @@ class Provenance(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    policy__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    policy__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_policy", title="Extension field for ``policy``."
     )
 
-    reason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reason",
         title="Reason the activity is occurring",
@@ -140,7 +141,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    recorded: fhirtypes.InstantType = Field(  # type: ignore
+    recorded: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="recorded",
         title="When the activity was recorded / updated",
@@ -150,11 +151,11 @@ class Provenance(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    signature: typing.List[fhirtypes.SignatureType] = Field(  # type: ignore
+    signature: typing.List[fhirtypes.SignatureType] | None = Field(  # type: ignore
         None,
         alias="signature",
         title="Signature on target",
@@ -252,7 +253,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
     __resource_type__ = "ProvenanceAgent"
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="Who the agent is representing",
@@ -271,7 +272,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    role: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    role: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="role",
         title="What the agents role was",
@@ -284,7 +285,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="How the agent participated",
@@ -340,7 +341,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
 
     __resource_type__ = "ProvenanceEntity"
 
-    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(  # type: ignore
+    agent: typing.List[fhirtypes.ProvenanceAgentType] | None = Field(  # type: ignore
         None,
         alias="agent",
         title="Entity is attributed to this agent",
@@ -355,7 +356,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeType = Field(  # type: ignore
+    role: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="role",
         title="derivation | revision | quotation | source | removal",
@@ -368,7 +369,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             "enum_values": ["derivation", "revision", "quotation", "source", "removal"],
         },
     )
-    role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    role__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_role", title="Extension field for ``role``."
     )
 

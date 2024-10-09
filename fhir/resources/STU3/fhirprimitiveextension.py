@@ -1,3 +1,5 @@
+from __future__ import annotations as _annotations
+
 import typing
 
 from fhir_core import fhirabstractmodel
@@ -16,7 +18,7 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
 
     __resource_type__ = "FHIRPrimitiveExtension"
 
-    id: fhirtypes.StringType = Field(
+    id: typing.Optional[fhirtypes.StringType] = Field(
         None,
         alias="id",
         title="Type `String`",
@@ -25,7 +27,7 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
         json_schema_extra={"element_property": False},
     )
 
-    extension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
+    extension: typing.Optional[typing.List[fhirtypes.ExtensionType]] = Field(  # type: ignore
         None,
         alias="extension",
         title="List of `Extension` items (represented as `dict` in JSON)",

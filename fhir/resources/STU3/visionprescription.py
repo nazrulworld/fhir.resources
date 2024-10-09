@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/VisionPrescription
 Release: STU3
@@ -25,7 +26,7 @@ class VisionPrescription(domainresource.DomainResource):
 
     __resource_type__ = "VisionPrescription"
 
-    dateWritten: fhirtypes.DateTimeType = Field(  # type: ignore
+    dateWritten: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="dateWritten",
         title="When prescription was authorized",
@@ -34,11 +35,11 @@ class VisionPrescription(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_dateWritten", title="Extension field for ``dateWritten``."
     )
 
-    dispense: typing.List[fhirtypes.VisionPrescriptionDispenseType] = Field(  # type: ignore
+    dispense: typing.List[fhirtypes.VisionPrescriptionDispenseType] | None = Field(  # type: ignore
         None,
         alias="dispense",
         title="Vision supply authorization",
@@ -48,7 +49,7 @@ class VisionPrescription(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="encounter",
         title="Created during encounter / admission / stay",
@@ -63,7 +64,7 @@ class VisionPrescription(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -76,7 +77,7 @@ class VisionPrescription(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="patient",
         title="Who prescription is for",
@@ -91,7 +92,7 @@ class VisionPrescription(domainresource.DomainResource):
         },
     )
 
-    prescriber: fhirtypes.ReferenceType = Field(  # type: ignore
+    prescriber: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="prescriber",
         title="Who authorizes the vision product",
@@ -106,7 +107,7 @@ class VisionPrescription(domainresource.DomainResource):
         },
     )
 
-    reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    reasonCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="reasonCodeableConcept",
         title="Reason or indication for writing the prescription",
@@ -119,7 +120,7 @@ class VisionPrescription(domainresource.DomainResource):
         },
     )
 
-    reasonReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    reasonReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Reason or indication for writing the prescription",
@@ -134,7 +135,7 @@ class VisionPrescription(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -146,7 +147,7 @@ class VisionPrescription(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -204,7 +205,7 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
 
     __resource_type__ = "VisionPrescriptionDispense"
 
-    add: fhirtypes.DecimalType = Field(  # type: ignore
+    add: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="add",
         title="Lens add",
@@ -216,11 +217,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    add__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    add__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_add", title="Extension field for ``add``."
     )
 
-    axis: fhirtypes.IntegerType = Field(  # type: ignore
+    axis: fhirtypes.IntegerType | None = Field(  # type: ignore
         None,
         alias="axis",
         title="Lens axis",
@@ -229,11 +230,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    axis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    axis__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_axis", title="Extension field for ``axis``."
     )
 
-    backCurve: fhirtypes.DecimalType = Field(  # type: ignore
+    backCurve: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="backCurve",
         title="Contact lens back curvature",
@@ -242,11 +243,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_backCurve", title="Extension field for ``backCurve``."
     )
 
-    base: fhirtypes.CodeType = Field(  # type: ignore
+    base: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="base",
         title="up | down | in | out",
@@ -258,11 +259,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "enum_values": ["up", "down", "in", "out"],
         },
     )
-    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    base__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_base", title="Extension field for ``base``."
     )
 
-    brand: fhirtypes.StringType = Field(  # type: ignore
+    brand: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="brand",
         title="Brand required",
@@ -271,11 +272,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    brand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    brand__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_brand", title="Extension field for ``brand``."
     )
 
-    color: fhirtypes.StringType = Field(  # type: ignore
+    color: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="color",
         title="Color required",
@@ -284,11 +285,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    color__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_color", title="Extension field for ``color``."
     )
 
-    cylinder: fhirtypes.DecimalType = Field(  # type: ignore
+    cylinder: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="cylinder",
         title="Lens cylinder",
@@ -297,11 +298,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_cylinder", title="Extension field for ``cylinder``."
     )
 
-    diameter: fhirtypes.DecimalType = Field(  # type: ignore
+    diameter: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="diameter",
         title="Contact lens diameter",
@@ -310,11 +311,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    diameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    diameter__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_diameter", title="Extension field for ``diameter``."
     )
 
-    duration: fhirtypes.QuantityType = Field(  # type: ignore
+    duration: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="duration",
         title="Lens wear duration",
@@ -324,7 +325,7 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
         },
     )
 
-    eye: fhirtypes.CodeType = Field(  # type: ignore
+    eye: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="eye",
         title="right | left",
@@ -336,11 +337,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "enum_values": ["right", "left"],
         },
     )
-    eye__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    eye__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_eye", title="Extension field for ``eye``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Notes for coatings",
@@ -350,7 +351,7 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
         },
     )
 
-    power: fhirtypes.DecimalType = Field(  # type: ignore
+    power: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="power",
         title="Contact lens power",
@@ -359,11 +360,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    power__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    power__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_power", title="Extension field for ``power``."
     )
 
-    prism: fhirtypes.DecimalType = Field(  # type: ignore
+    prism: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="prism",
         title="Lens prism",
@@ -372,11 +373,11 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    prism__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    prism__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_prism", title="Extension field for ``prism``."
     )
 
-    product: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    product: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="product",
         title="Product to be supplied",
@@ -389,7 +390,7 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
         },
     )
 
-    sphere: fhirtypes.DecimalType = Field(  # type: ignore
+    sphere: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="sphere",
         title="Lens sphere",
@@ -398,7 +399,7 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sphere__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sphere", title="Extension field for ``sphere``."
     )
 

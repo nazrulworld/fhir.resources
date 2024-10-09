@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Binary
 Release: STU3
@@ -25,7 +26,7 @@ class Binary(resource.Resource):
 
     __resource_type__ = "Binary"
 
-    content: fhirtypes.Base64BinaryType = Field(  # type: ignore
+    content: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
         None,
         alias="content",
         title="The actual content",
@@ -35,11 +36,11 @@ class Binary(resource.Resource):
             "element_required": True,
         },
     )
-    content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    content__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_content", title="Extension field for ``content``."
     )
 
-    contentType: fhirtypes.CodeType = Field(  # type: ignore
+    contentType: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="contentType",
         title="MimeType of the binary content",
@@ -52,11 +53,11 @@ class Binary(resource.Resource):
             "element_required": True,
         },
     )
-    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
-    securityContext: fhirtypes.ReferenceType = Field(  # type: ignore
+    securityContext: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="securityContext",
         title="Access Control Management",

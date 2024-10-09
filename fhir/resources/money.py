@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Money
 Release: R5
@@ -21,7 +22,7 @@ class Money(datatype.DataType):
 
     __resource_type__ = "Money"
 
-    currency: fhirtypes.CodeType = Field(  # type: ignore
+    currency: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="currency",
         title="ISO 4217 Currency Code",
@@ -30,11 +31,11 @@ class Money(datatype.DataType):
             "element_property": True,
         },
     )
-    currency__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    currency__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_currency", title="Extension field for ``currency``."
     )
 
-    value: fhirtypes.DecimalType = Field(  # type: ignore
+    value: fhirtypes.DecimalType | None = Field(  # type: ignore
         None,
         alias="value",
         title="Numerical value (with implicit precision)",
@@ -43,7 +44,7 @@ class Money(datatype.DataType):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

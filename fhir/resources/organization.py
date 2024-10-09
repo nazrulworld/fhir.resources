@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Organization
 Release: R5
@@ -27,7 +28,7 @@ class Organization(domainresource.DomainResource):
 
     __resource_type__ = "Organization"
 
-    active: bool = Field(  # type: ignore
+    active: bool | None = Field(  # type: ignore
         None,
         alias="active",
         title="Whether the organization's record is still in active use",
@@ -36,11 +37,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    alias: typing.List[typing.Optional[fhirtypes.StringType]] = Field(  # type: ignore
+    alias: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
         None,
         alias="alias",
         title=(
@@ -52,11 +53,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    alias__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    alias__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_alias", title="Extension field for ``alias``."
     )
 
-    contact: typing.List[fhirtypes.ExtendedContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ExtendedContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Official contact details for the Organization",
@@ -70,7 +71,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title=(
@@ -86,11 +87,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="endpoint",
         title=(
@@ -105,7 +106,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifies this organization  across multiple systems",
@@ -118,7 +119,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="name",
         title="Name used for the organization",
@@ -127,11 +128,11 @@ class Organization(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    partOf: fhirtypes.ReferenceType = Field(  # type: ignore
+    partOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="partOf",
         title="The organization of which this organization forms a part",
@@ -143,7 +144,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    qualification: typing.List[fhirtypes.OrganizationQualificationType] = Field(  # type: ignore
+    qualification: typing.List[fhirtypes.OrganizationQualificationType] | None = Field(  # type: ignore
         None,
         alias="qualification",
         title=(
@@ -162,7 +163,7 @@ class Organization(domainresource.DomainResource):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of organization",
@@ -227,7 +228,7 @@ class OrganizationQualification(backboneelement.BackboneElement):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="An identifier for this qualification for the organization",
@@ -237,7 +238,7 @@ class OrganizationQualification(backboneelement.BackboneElement):
         },
     )
 
-    issuer: fhirtypes.ReferenceType = Field(  # type: ignore
+    issuer: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="issuer",
         title="Organization that regulates and issues the qualification",
@@ -249,7 +250,7 @@ class OrganizationQualification(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Period during which the qualification is valid",

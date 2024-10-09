@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ImagingManifest
 Release: STU3
@@ -25,7 +26,7 @@ class ImagingManifest(domainresource.DomainResource):
 
     __resource_type__ = "ImagingManifest"
 
-    author: fhirtypes.ReferenceType = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="author",
         title="Author (human or machine)",
@@ -49,7 +50,7 @@ class ImagingManifest(domainresource.DomainResource):
         },
     )
 
-    authoringTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    authoringTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="authoringTime",
         title="Time when the selection of instances was made",
@@ -63,11 +64,11 @@ class ImagingManifest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    authoringTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authoringTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_authoringTime", title="Extension field for ``authoringTime``."
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Description text",
@@ -84,11 +85,11 @@ class ImagingManifest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="SOP Instance UID",
@@ -165,7 +166,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingManifestStudy"
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Study access service endpoint",
@@ -183,7 +184,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         },
     )
 
-    imagingStudy: fhirtypes.ReferenceType = Field(  # type: ignore
+    imagingStudy: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="imagingStudy",
         title="Reference to ImagingStudy",
@@ -208,7 +209,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         },
     )
 
-    uid: fhirtypes.OidType = Field(  # type: ignore
+    uid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="uid",
         title="Study instance UID",
@@ -218,7 +219,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
@@ -262,7 +263,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingManifestStudySeries"
 
-    endpoint: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="endpoint",
         title="Series access endpoint",
@@ -289,7 +290,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    uid: fhirtypes.OidType = Field(  # type: ignore
+    uid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="uid",
         title="Series instance UID",
@@ -299,7 +300,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
@@ -334,7 +335,7 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingManifestStudySeriesInstance"
 
-    sopClass: fhirtypes.OidType = Field(  # type: ignore
+    sopClass: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="sopClass",
         title="SOP class UID of instance",
@@ -344,11 +345,11 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_sopClass", title="Extension field for ``sopClass``."
     )
 
-    uid: fhirtypes.OidType = Field(  # type: ignore
+    uid: fhirtypes.OidType | None = Field(  # type: ignore
         None,
         alias="uid",
         title="Selected instance UID",
@@ -358,7 +359,7 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_uid", title="Extension field for ``uid``."
     )
 

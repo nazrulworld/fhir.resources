@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DocumentManifest
 Release: STU3
@@ -25,7 +26,7 @@ class DocumentManifest(domainresource.DomainResource):
 
     __resource_type__ = "DocumentManifest"
 
-    author: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    author: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who and/or what authored the manifest",
@@ -56,7 +57,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="created",
         title="When this document manifest created",
@@ -69,11 +70,11 @@ class DocumentManifest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    description: fhirtypes.StringType = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Human-readable description (title)",
@@ -85,11 +86,11 @@ class DocumentManifest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Other identifiers for the manifest",
@@ -102,7 +103,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    masterIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    masterIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="masterIdentifier",
         title="Unique Identifier for the set of documents",
@@ -115,7 +116,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    recipient: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    recipient: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="recipient",
         title="Intended to get notified about this set of documents",
@@ -135,7 +136,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    related: typing.List[fhirtypes.DocumentManifestRelatedType] = Field(  # type: ignore
+    related: typing.List[fhirtypes.DocumentManifestRelatedType] | None = Field(  # type: ignore
         None,
         alias="related",
         title="Related things",
@@ -145,7 +146,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    source: fhirtypes.UriType = Field(  # type: ignore
+    source: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="source",
         title="The source system/application/software",
@@ -157,11 +158,11 @@ class DocumentManifest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="current | superseded | entered-in-error",
@@ -174,11 +175,11 @@ class DocumentManifest(domainresource.DomainResource):
             "enum_values": ["current", "superseded", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="subject",
         title="The subject of the set of documents",
@@ -197,7 +198,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of document set",
@@ -264,7 +265,7 @@ class DocumentManifestContent(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentManifestContent"
 
-    pAttachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    pAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
         None,
         alias="pAttachment",
         title="Contents of this set of documents",
@@ -282,7 +283,7 @@ class DocumentManifestContent(backboneelement.BackboneElement):
         },
     )
 
-    pReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    pReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="pReference",
         title="Contents of this set of documents",
@@ -338,7 +339,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentManifestRelated"
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifiers of things that are related",
@@ -351,7 +352,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
         },
     )
 
-    ref: fhirtypes.ReferenceType = Field(  # type: ignore
+    ref: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="ref",
         title="Related Resource",

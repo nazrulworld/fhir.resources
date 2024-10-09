@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ProcedureRequest
 Release: STU3
@@ -25,7 +26,7 @@ class ProcedureRequest(domainresource.DomainResource):
 
     __resource_type__ = "ProcedureRequest"
 
-    asNeededBoolean: bool = Field(  # type: ignore
+    asNeededBoolean: bool | None = Field(  # type: ignore
         None,
         alias="asNeededBoolean",
         title="Preconditions for procedure or diagnostic",
@@ -40,11 +41,11 @@ class ProcedureRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
     )
 
-    asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    asNeededCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="asNeededCodeableConcept",
         title="Preconditions for procedure or diagnostic",
@@ -60,7 +61,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    authoredOn: fhirtypes.DateTimeType = Field(  # type: ignore
+    authoredOn: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="authoredOn",
         title="Date request signed",
@@ -69,11 +70,11 @@ class ProcedureRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="What request fulfills",
@@ -85,7 +86,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    bodySite: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Location on Body",
@@ -98,7 +99,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="Classification of procedure",
@@ -124,7 +125,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    context: fhirtypes.ReferenceType = Field(  # type: ignore
+    context: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="context",
         title="Encounter or Episode during which request was created",
@@ -139,7 +140,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    definition: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    definition: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="definition",
         title="Protocol or definition",
@@ -151,7 +152,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    doNotPerform: bool = Field(  # type: ignore
+    doNotPerform: bool | None = Field(  # type: ignore
         None,
         alias="doNotPerform",
         title="True if procedure should not be performed",
@@ -163,11 +164,11 @@ class ProcedureRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Identifiers assigned to this order",
@@ -180,7 +181,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    intent: fhirtypes.CodeType = Field(  # type: ignore
+    intent: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="intent",
         title="proposal | plan | order +",
@@ -196,11 +197,11 @@ class ProcedureRequest(domainresource.DomainResource):
             "enum_values": ["proposal", "plan", "order", "+"],
         },
     )
-    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_intent", title="Extension field for ``intent``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Comments",
@@ -214,7 +215,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="When procedure should occur",
@@ -226,13 +227,13 @@ class ProcedureRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="occurrencePeriod",
         title="When procedure should occur",
@@ -245,7 +246,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceTiming: fhirtypes.TimingType = Field(  # type: ignore
+    occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="occurrenceTiming",
         title="When procedure should occur",
@@ -258,7 +259,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    performer: fhirtypes.ReferenceType = Field(  # type: ignore
+    performer: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="performer",
         title="Requested perfomer",
@@ -280,7 +281,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    performerType: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    performerType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="performerType",
         title="Performer role",
@@ -290,7 +291,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -305,11 +306,11 @@ class ProcedureRequest(domainresource.DomainResource):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="reasonCode",
         title="Explanation/Justification for test",
@@ -324,7 +325,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="reasonReference",
         title="Explanation/Justification for test",
@@ -340,7 +341,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    relevantHistory: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="relevantHistory",
         title="Request provenance",
@@ -352,7 +353,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    replaces: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="replaces",
         title="What request replaces",
@@ -367,7 +368,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    requester: fhirtypes.ProcedureRequestRequesterType = Field(  # type: ignore
+    requester: fhirtypes.ProcedureRequestRequesterType | None = Field(  # type: ignore
         None,
         alias="requester",
         title="Who/what is requesting procedure or diagnostic",
@@ -380,7 +381,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    requisition: fhirtypes.IdentifierType = Field(  # type: ignore
+    requisition: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="requisition",
         title="Composite Request ID",
@@ -394,7 +395,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    specimen: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    specimen: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="specimen",
         title="Procedure Samples",
@@ -406,7 +407,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | suspended | completed | entered-in-error | cancelled",
@@ -426,7 +427,7 @@ class ProcedureRequest(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -447,7 +448,7 @@ class ProcedureRequest(domainresource.DomainResource):
         },
     )
 
-    supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    supportingInfo: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="supportingInfo",
         title="Additional clinical information",
@@ -573,7 +574,7 @@ class ProcedureRequestRequester(backboneelement.BackboneElement):
         },
     )
 
-    onBehalfOf: fhirtypes.ReferenceType = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="onBehalfOf",
         title="Organization agent is acting for",

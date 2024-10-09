@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Condition
 Release: STU3
@@ -25,7 +26,7 @@ class Condition(domainresource.DomainResource):
 
     __resource_type__ = "Condition"
 
-    abatementAge: fhirtypes.AgeType = Field(  # type: ignore
+    abatementAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="abatementAge",
         title="If/when in resolution/remission",
@@ -43,7 +44,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    abatementBoolean: bool = Field(  # type: ignore
+    abatementBoolean: bool | None = Field(  # type: ignore
         None,
         alias="abatementBoolean",
         title="If/when in resolution/remission",
@@ -60,13 +61,13 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    abatementBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    abatementBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_abatementBoolean",
         title="Extension field for ``abatementBoolean``.",
     )
 
-    abatementDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    abatementDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="abatementDateTime",
         title="If/when in resolution/remission",
@@ -83,13 +84,13 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_abatementDateTime",
         title="Extension field for ``abatementDateTime``.",
     )
 
-    abatementPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    abatementPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="abatementPeriod",
         title="If/when in resolution/remission",
@@ -107,7 +108,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    abatementRange: fhirtypes.RangeType = Field(  # type: ignore
+    abatementRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="abatementRange",
         title="If/when in resolution/remission",
@@ -125,7 +126,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    abatementString: fhirtypes.StringType = Field(  # type: ignore
+    abatementString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="abatementString",
         title="If/when in resolution/remission",
@@ -142,11 +143,11 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_abatementString", title="Extension field for ``abatementString``."
     )
 
-    assertedDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    assertedDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="assertedDate",
         title="Date record was believed accurate",
@@ -158,11 +159,11 @@ class Condition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_assertedDate", title="Extension field for ``assertedDate``."
     )
 
-    asserter: fhirtypes.ReferenceType = Field(  # type: ignore
+    asserter: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="asserter",
         title="Person who asserts this condition",
@@ -174,7 +175,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    bodySite: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="bodySite",
         title="Anatomical location, if relevant",
@@ -184,7 +185,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="category",
         title="problem-list-item | encounter-diagnosis",
@@ -194,7 +195,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    clinicalStatus: fhirtypes.CodeType = Field(  # type: ignore
+    clinicalStatus: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="clinicalStatus",
         title="active | recurrence | inactive | remission | resolved",
@@ -212,11 +213,11 @@ class Condition(domainresource.DomainResource):
             ],
         },
     )
-    clinicalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    clinicalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_clinicalStatus", title="Extension field for ``clinicalStatus``."
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="code",
         title="Identification of the condition, problem or diagnosis",
@@ -226,7 +227,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    context: fhirtypes.ReferenceType = Field(  # type: ignore
+    context: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="context",
         title="Encounter or episode when condition first asserted",
@@ -238,7 +239,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    evidence: typing.List[fhirtypes.ConditionEvidenceType] = Field(  # type: ignore
+    evidence: typing.List[fhirtypes.ConditionEvidenceType] | None = Field(  # type: ignore
         None,
         alias="evidence",
         title="Supporting evidence",
@@ -251,7 +252,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External Ids for this condition",
@@ -266,7 +267,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Additional information about the Condition",
@@ -280,7 +281,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    onsetAge: fhirtypes.AgeType = Field(  # type: ignore
+    onsetAge: fhirtypes.AgeType | None = Field(  # type: ignore
         None,
         alias="onsetAge",
         title="Estimated or actual date,  date-time, or age",
@@ -296,7 +297,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    onsetDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    onsetDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="onsetDateTime",
         title="Estimated or actual date,  date-time, or age",
@@ -311,11 +312,11 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_onsetDateTime", title="Extension field for ``onsetDateTime``."
     )
 
-    onsetPeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    onsetPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="onsetPeriod",
         title="Estimated or actual date,  date-time, or age",
@@ -331,7 +332,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    onsetRange: fhirtypes.RangeType = Field(  # type: ignore
+    onsetRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="onsetRange",
         title="Estimated or actual date,  date-time, or age",
@@ -347,7 +348,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    onsetString: fhirtypes.StringType = Field(  # type: ignore
+    onsetString: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="onsetString",
         title="Estimated or actual date,  date-time, or age",
@@ -362,11 +363,11 @@ class Condition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
-    severity: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    severity: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="severity",
         title="Subjective severity of condition",
@@ -379,7 +380,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    stage: fhirtypes.ConditionStageType = Field(  # type: ignore
+    stage: fhirtypes.ConditionStageType | None = Field(  # type: ignore
         None,
         alias="stage",
         title="Stage/grade, usually assessed formally",
@@ -407,7 +408,7 @@ class Condition(domainresource.DomainResource):
         },
     )
 
-    verificationStatus: fhirtypes.CodeType = Field(  # type: ignore
+    verificationStatus: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="verificationStatus",
         title=(
@@ -432,7 +433,7 @@ class Condition(domainresource.DomainResource):
             ],
         },
     )
-    verificationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    verificationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_verificationStatus",
         title="Extension field for ``verificationStatus``.",
@@ -525,7 +526,7 @@ class ConditionEvidence(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionEvidence"
 
-    code: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="code",
         title="Manifestation/symptom",
@@ -537,7 +538,7 @@ class ConditionEvidence(backboneelement.BackboneElement):
         },
     )
 
-    detail: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    detail: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="detail",
         title="Supporting information found elsewhere",
@@ -570,7 +571,7 @@ class ConditionStage(backboneelement.BackboneElement):
 
     __resource_type__ = "ConditionStage"
 
-    assessment: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    assessment: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="assessment",
         title="Formal record of assessment",
@@ -589,7 +590,7 @@ class ConditionStage(backboneelement.BackboneElement):
         },
     )
 
-    summary: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    summary: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="summary",
         title="Simple summary (disease specific)",

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/EvidenceReport
 Release: R4B
@@ -26,7 +27,7 @@ class EvidenceReport(domainresource.DomainResource):
 
     __resource_type__ = "EvidenceReport"
 
-    author: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who authored the content",
@@ -39,7 +40,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    citeAsMarkdown: fhirtypes.MarkdownType = Field(  # type: ignore
+    citeAsMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="citeAsMarkdown",
         title="Citation for this report",
@@ -51,11 +52,11 @@ class EvidenceReport(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    citeAsMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    citeAsMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_citeAsMarkdown", title="Extension field for ``citeAsMarkdown``."
     )
 
-    citeAsReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    citeAsReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="citeAsReference",
         title="Citation for this report",
@@ -70,7 +71,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -83,7 +84,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="editor",
         title="Who edited the content",
@@ -96,7 +97,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="endorser",
         title="Who endorsed the content",
@@ -109,7 +110,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Unique identifier for the evidence report",
@@ -123,7 +124,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Used for footnotes and annotations",
@@ -133,7 +134,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -145,11 +146,11 @@ class EvidenceReport(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
         None,
         alias="relatedArtifact",
         title="Link, description or reference to artifact associated with the report",
@@ -159,7 +160,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    relatedIdentifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    relatedIdentifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="relatedIdentifier",
         title=(
@@ -175,7 +176,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    relatesTo: typing.List[fhirtypes.EvidenceReportRelatesToType] = Field(  # type: ignore
+    relatesTo: typing.List[fhirtypes.EvidenceReportRelatesToType] | None = Field(  # type: ignore
         None,
         alias="relatesTo",
         title="Relationships to other compositions/documents",
@@ -188,7 +189,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
         None,
         alias="reviewer",
         title="Who reviewed the content",
@@ -201,7 +202,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    section: typing.List[fhirtypes.EvidenceReportSectionType] = Field(  # type: ignore
+    section: typing.List[fhirtypes.EvidenceReportSectionType] | None = Field(  # type: ignore
         None,
         alias="section",
         title="Composition is broken into sections",
@@ -211,7 +212,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -227,7 +228,7 @@ class EvidenceReport(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
@@ -244,7 +245,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Kind of report",
@@ -257,7 +258,7 @@ class EvidenceReport(domainresource.DomainResource):
         },
     )
 
-    url: fhirtypes.UriType = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="url",
         title=(
@@ -277,11 +278,11 @@ class EvidenceReport(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -373,7 +374,7 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
 
     __resource_type__ = "EvidenceReportRelatesTo"
 
-    code: fhirtypes.CodeType = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="code",
         title=(
@@ -401,11 +402,11 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
             ],
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_code", title="Extension field for ``code``."
     )
 
-    targetIdentifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    targetIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="targetIdentifier",
         title="Target of the relationship",
@@ -418,7 +419,7 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    targetReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    targetReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="targetReference",
         title="Target of the relationship",
@@ -487,7 +488,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
 
     __resource_type__ = "EvidenceReportSection"
 
-    author: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    author: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="author",
         title="Who and/or what authored the section",
@@ -502,7 +503,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    emptyReason: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    emptyReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="emptyReason",
         title="Why the section is empty",
@@ -515,7 +516,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    entryClassifier: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    entryClassifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="entryClassifier",
         title="Extensible classifiers as content",
@@ -525,7 +526,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    entryQuantity: typing.List[fhirtypes.QuantityType] = Field(  # type: ignore
+    entryQuantity: typing.List[fhirtypes.QuantityType] | None = Field(  # type: ignore
         None,
         alias="entryQuantity",
         title="Quantity as content",
@@ -535,7 +536,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    entryReference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    entryReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="entryReference",
         title="Reference to resources as content",
@@ -550,7 +551,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    focus: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    focus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="focus",
         title="Classification of section (recommended)",
@@ -563,7 +564,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    focusReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    focusReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="focusReference",
         title="Classification of section by Resource",
@@ -578,7 +579,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    mode: fhirtypes.CodeType = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="mode",
         title="working | snapshot | changes",
@@ -596,11 +597,11 @@ class EvidenceReportSection(backboneelement.BackboneElement):
             "enum_values": ["working", "snapshot", "changes"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    orderedBy: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    orderedBy: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="orderedBy",
         title="Order of section entries",
@@ -610,7 +611,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    section: typing.List[fhirtypes.EvidenceReportSectionType] = Field(  # type: ignore
+    section: typing.List[fhirtypes.EvidenceReportSectionType] | None = Field(  # type: ignore
         None,
         alias="section",
         title="Nested Section",
@@ -620,7 +621,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    text: fhirtypes.NarrativeType = Field(  # type: ignore
+    text: fhirtypes.NarrativeType | None = Field(  # type: ignore
         None,
         alias="text",
         title="Text summary of the section, for human interpretation",
@@ -636,7 +637,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         },
     )
 
-    title: fhirtypes.StringType = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="title",
         title="Label for section (e.g. for ToC)",
@@ -649,7 +650,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_title", title="Extension field for ``title``."
     )
 
@@ -690,7 +691,7 @@ class EvidenceReportSubject(backboneelement.BackboneElement):
 
     __resource_type__ = "EvidenceReportSubject"
 
-    characteristic: typing.List[fhirtypes.EvidenceReportSubjectCharacteristicType] = Field(  # type: ignore
+    characteristic: typing.List[fhirtypes.EvidenceReportSubjectCharacteristicType] | None = Field(  # type: ignore
         None,
         alias="characteristic",
         title="Characteristic",
@@ -700,7 +701,7 @@ class EvidenceReportSubject(backboneelement.BackboneElement):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
         None,
         alias="note",
         title="Footnotes and/or explanatory notes",
@@ -739,7 +740,7 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    exclude: bool = Field(  # type: ignore
+    exclude: bool | None = Field(  # type: ignore
         None,
         alias="exclude",
         title="Is used to express not the characteristic",
@@ -748,11 +749,11 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    exclude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    exclude__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_exclude", title="Extension field for ``exclude``."
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Timeframe for the characteristic",
@@ -762,7 +763,7 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool = Field(  # type: ignore
+    valueBoolean: bool | None = Field(  # type: ignore
         None,
         alias="valueBoolean",
         title="Characteristic value",
@@ -774,11 +775,11 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="valueCodeableConcept",
         title="Characteristic value",
@@ -791,7 +792,7 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="valueQuantity",
         title="Characteristic value",
@@ -804,7 +805,7 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueRange: fhirtypes.RangeType = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
         None,
         alias="valueRange",
         title="Characteristic value",
@@ -817,7 +818,7 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="valueReference",
         title="Characteristic value",

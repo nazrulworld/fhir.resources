@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ImmunizationEvaluation
 Release: R5
@@ -26,7 +27,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
 
     __resource_type__ = "ImmunizationEvaluation"
 
-    authority: fhirtypes.ReferenceType = Field(  # type: ignore
+    authority: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="authority",
         title="Who is responsible for publishing the recommendations",
@@ -38,7 +39,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="date",
         title="Date evaluation was performed",
@@ -50,11 +51,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
         None,
         alias="description",
         title="Evaluation notes",
@@ -63,11 +64,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    doseNumber: fhirtypes.StringType = Field(  # type: ignore
+    doseNumber: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="doseNumber",
         title="Dose number within series",
@@ -79,7 +80,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    doseNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    doseNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_doseNumber", title="Extension field for ``doseNumber``."
     )
 
@@ -96,7 +97,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
 
-    doseStatusReason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    doseStatusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
         None,
         alias="doseStatusReason",
         title="Reason why the doese is considered valid, invalid or some other status",
@@ -109,7 +110,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business identifier",
@@ -143,7 +144,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
 
-    series: fhirtypes.StringType = Field(  # type: ignore
+    series: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="series",
         title="Name of vaccine series",
@@ -155,11 +156,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    series__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_series", title="Extension field for ``series``."
     )
 
-    seriesDoses: fhirtypes.StringType = Field(  # type: ignore
+    seriesDoses: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="seriesDoses",
         title="Recommended number of doses for immunity",
@@ -171,11 +172,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    seriesDoses__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    seriesDoses__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_seriesDoses", title="Extension field for ``seriesDoses``."
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="completed | entered-in-error",
@@ -191,7 +192,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "enum_values": ["completed", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 

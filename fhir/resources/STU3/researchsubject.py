@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ResearchSubject
 Release: STU3
@@ -29,7 +30,7 @@ class ResearchSubject(domainresource.DomainResource):
 
     __resource_type__ = "ResearchSubject"
 
-    actualArm: fhirtypes.StringType = Field(  # type: ignore
+    actualArm: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="actualArm",
         title="What path was followed",
@@ -41,11 +42,11 @@ class ResearchSubject(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_actualArm", title="Extension field for ``actualArm``."
     )
 
-    assignedArm: fhirtypes.StringType = Field(  # type: ignore
+    assignedArm: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="assignedArm",
         title="What path should be followed",
@@ -57,11 +58,11 @@ class ResearchSubject(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_assignedArm", title="Extension field for ``assignedArm``."
     )
 
-    consent: fhirtypes.ReferenceType = Field(  # type: ignore
+    consent: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="consent",
         title="Agreement to participate in study",
@@ -76,7 +77,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="Business Identifier for research subject",
@@ -101,7 +102,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="period",
         title="Start and end of participation",
@@ -113,7 +114,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="candidate | enrolled | active | suspended | withdrawn | completed",
@@ -133,7 +134,7 @@ class ResearchSubject(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 

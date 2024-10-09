@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SupplyDelivery
 Release: STU3
@@ -24,7 +25,7 @@ class SupplyDelivery(domainresource.DomainResource):
 
     __resource_type__ = "SupplyDelivery"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="basedOn",
         title="Fulfills plan, proposal or order",
@@ -39,7 +40,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    destination: fhirtypes.ReferenceType = Field(  # type: ignore
+    destination: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="destination",
         title="Where the Supply was sent",
@@ -54,7 +55,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
         None,
         alias="identifier",
         title="External identifier",
@@ -67,7 +68,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="occurrenceDateTime",
         title="When event occurred",
@@ -79,13 +80,13 @@ class SupplyDelivery(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="occurrencePeriod",
         title="When event occurred",
@@ -98,7 +99,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    occurrenceTiming: fhirtypes.TimingType = Field(  # type: ignore
+    occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
         None,
         alias="occurrenceTiming",
         title="When event occurred",
@@ -111,7 +112,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="partOf",
         title="Part of referenced event",
@@ -123,7 +124,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="patient",
         title="Patient for whom the item is supplied",
@@ -138,7 +139,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    receiver: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    receiver: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
         None,
         alias="receiver",
         title="Who collected the Supply",
@@ -150,7 +151,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(  # type: ignore
         None,
         alias="status",
         title="in-progress | completed | abandoned | entered-in-error",
@@ -167,11 +168,11 @@ class SupplyDelivery(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    suppliedItem: fhirtypes.SupplyDeliverySuppliedItemType = Field(  # type: ignore
+    suppliedItem: fhirtypes.SupplyDeliverySuppliedItemType | None = Field(  # type: ignore
         None,
         alias="suppliedItem",
         title="The item that is delivered or supplied",
@@ -181,7 +182,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    supplier: fhirtypes.ReferenceType = Field(  # type: ignore
+    supplier: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="supplier",
         title="Dispenser",
@@ -196,7 +197,7 @@ class SupplyDelivery(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="type",
         title="Category of dispense event",
@@ -270,7 +271,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
 
     __resource_type__ = "SupplyDeliverySuppliedItem"
 
-    itemCodeableConcept: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="itemCodeableConcept",
         title="Medication, Substance, or Device supplied",
@@ -287,7 +288,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         },
     )
 
-    itemReference: fhirtypes.ReferenceType = Field(  # type: ignore
+    itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
         None,
         alias="itemReference",
         title="Medication, Substance, or Device supplied",
@@ -306,7 +307,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
         None,
         alias="quantity",
         title="Amount dispensed",

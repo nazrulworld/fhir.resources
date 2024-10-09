@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MarketingStatus
 Release: R4B
@@ -23,7 +24,7 @@ class MarketingStatus(backboneelement.BackboneElement):
 
     __resource_type__ = "MarketingStatus"
 
-    country: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    country: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="country",
         title=(
@@ -37,7 +38,7 @@ class MarketingStatus(backboneelement.BackboneElement):
         },
     )
 
-    dateRange: fhirtypes.PeriodType = Field(  # type: ignore
+    dateRange: fhirtypes.PeriodType | None = Field(  # type: ignore
         None,
         alias="dateRange",
         title=(
@@ -55,7 +56,7 @@ class MarketingStatus(backboneelement.BackboneElement):
         },
     )
 
-    jurisdiction: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    jurisdiction: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
         None,
         alias="jurisdiction",
         title=(
@@ -71,7 +72,7 @@ class MarketingStatus(backboneelement.BackboneElement):
         },
     )
 
-    restoreDate: fhirtypes.DateTimeType = Field(  # type: ignore
+    restoreDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
         None,
         alias="restoreDate",
         title=(
@@ -88,7 +89,7 @@ class MarketingStatus(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_restoreDate", title="Extension field for ``restoreDate``."
     )
 

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Meta
 Release: R5
@@ -26,7 +27,7 @@ class Meta(datatype.DataType):
 
     __resource_type__ = "Meta"
 
-    lastUpdated: fhirtypes.InstantType = Field(  # type: ignore
+    lastUpdated: fhirtypes.InstantType | None = Field(  # type: ignore
         None,
         alias="lastUpdated",
         title="When the resource version last changed",
@@ -35,11 +36,11 @@ class Meta(datatype.DataType):
             "element_property": True,
         },
     )
-    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
     )
 
-    profile: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(  # type: ignore
+    profile: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
         None,
         alias="profile",
         title="Profiles this resource claims to conform to",
@@ -56,11 +57,11 @@ class Meta(datatype.DataType):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    profile__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(  # type: ignore
+    profile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
         None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    security: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
+    security: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
         None,
         alias="security",
         title="Security Labels applied to this resource",
@@ -73,7 +74,7 @@ class Meta(datatype.DataType):
         },
     )
 
-    source: fhirtypes.UriType = Field(  # type: ignore
+    source: fhirtypes.UriType | None = Field(  # type: ignore
         None,
         alias="source",
         title="Identifies where the resource comes from",
@@ -88,11 +89,11 @@ class Meta(datatype.DataType):
             "element_property": True,
         },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    tag: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
+    tag: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
         None,
         alias="tag",
         title="Tags applied to this resource",
@@ -107,7 +108,7 @@ class Meta(datatype.DataType):
         },
     )
 
-    versionId: fhirtypes.IdType = Field(  # type: ignore
+    versionId: fhirtypes.IdType | None = Field(  # type: ignore
         None,
         alias="versionId",
         title="Version specific identifier",
@@ -120,7 +121,7 @@ class Meta(datatype.DataType):
             "element_property": True,
         },
     )
-    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_versionId", title="Extension field for ``versionId``."
     )
 

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/BackboneType
 Release: R5
@@ -25,7 +26,7 @@ class BackboneType(datatype.DataType):
 
     __resource_type__ = "BackboneType"
 
-    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(  # type: ignore
+    modifierExtension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
         None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored even if unrecognized",

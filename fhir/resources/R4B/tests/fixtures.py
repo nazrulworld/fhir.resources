@@ -22,9 +22,6 @@ from fhir_core.types import (
 )
 from pydantic import BaseModel, Field
 
-from tests import patch_r4b_test
-
-patch_r4b_test.apply()
 EXAMPLE_RESOURCES_URL = (
     "https://github.com/nazrulworld/hl7-archives/raw/"
     "0.4.0/FHIR/R4B/"

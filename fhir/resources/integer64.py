@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+from __future__ import annotations as _annotations
+
 """
 Profile: http://hl7.org/fhir/StructureDefinition/integer64
 Release: R5
@@ -22,7 +23,7 @@ class Integer64(primitivetype.PrimitiveType):
 
     __resource_type__ = "integer64"
 
-    value: fhirtypes.Integer64Type = Field(  # type: ignore
+    value: fhirtypes.Integer64Type | None = Field(  # type: ignore
         None,
         alias="value",
         title="Primitive value for integer64",
@@ -31,7 +32,7 @@ class Integer64(primitivetype.PrimitiveType):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
         None, alias="_value", title="Extension field for ``value``."
     )
 

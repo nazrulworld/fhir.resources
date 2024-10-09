@@ -2,7 +2,7 @@
 History
 =======
 
-8.0.0b3 (unreleased)
+8.0.0b3 (2024-10-10)
 --------------------
 
 - Minimum version of ``fhir-core`` package have been updated.

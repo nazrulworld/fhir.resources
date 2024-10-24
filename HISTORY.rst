@@ -5,7 +5,7 @@ History
 8.0.0b4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+-  `PR#160 <https://github.com/nazrulworld/fhir.resources/pull/160>`_ switch the type of Element.id from id to string for R4B [cybernop]
 
 
 8.0.0b3 (2024-10-10)

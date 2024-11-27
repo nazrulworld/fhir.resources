@@ -71,6 +71,10 @@ Installation
 Just a simple ``pip install fhir.resources`` or ``easy_install fhir.resources`` is enough. But if you want development
 version, just clone from https://github.com/nazrulworld/fhir.resources and ``pip install -e .[dev]``.
 
+Pydantic v2 & Base64Binary type
+
+ - Issue #168 https://github.com/nazrulworld/fhir.resources/issues/166
+ - https://github.com/pydantic/pydantic/pull/10486
 
 Usages
 ------

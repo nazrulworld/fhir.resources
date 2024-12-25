@@ -100,7 +100,7 @@ setup(
             "fhir-parser*",
             "fhir.resources.tests",
             "fhir.resources.STU3.tests",
-            "fhir.resources.DSTU2.tests",
+            "fhir.resources.R4B.tests",
         ],
     ),
     package_data={"fhir.resources": ["py.typed"]},

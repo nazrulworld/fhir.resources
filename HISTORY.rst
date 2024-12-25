@@ -2,11 +2,12 @@
 History
 =======
 
-8.0.0b5 (unreleased)
---------------------
+8.0.0 (unreleased)
+------------------
 
-- Nothing changed yet.
+- The minimum required version for ``fhir-core`` is ``1.0.0``, which obviously comes with new features and bug fixes. For example xml serialization/deserialization. `See changes log here <https://github.com/nazrulworld/fhir-core/blob/1.0.0/HISTORY.rst#100-2024-12-25>`_
 
+- Issue #168 https://github.com/nazrulworld/fhir.resources/issues/166
 
 8.0.0b4 (2024-10-24)
 --------------------

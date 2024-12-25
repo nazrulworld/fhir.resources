@@ -30,7 +30,6 @@ FHIR® Resources (R5, R4B, STU3)
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
         :alt: HL7® FHIR®
 
-***Beware! This is a beta release, so you should be careful using it in production. The sole purpose of this public beta is to get feedback.**
 
 FHIR_ (Fast Healthcare Interoperability Resources) is a specification for exchanging healthcare information electronically.
 It is designed to facilitate the exchange of data between different healthcare systems and applications, and is commonly used to build APIs (Application Programming Interfaces) for healthcare data.
@@ -51,7 +50,7 @@ and allows you to create and manipulate FHIR resources in Python. You can then u
 * Previous release of FHIR® Resources are available.
 * Free software: BSD license
 
-**Experimental XML and YAML serialization and deserialization supports. See [Advanced Usages] section!** [currently XML is not available]
+**Experimental XML and YAML serialization and deserialization supports. See [Advanced Usages] section!**
 
 FHIR® Version Info
 ------------------
@@ -68,13 +67,9 @@ From ``fhir.resources`` version 7.0.0; there is no FHIR ``R4`` instead of ``R4B`
 Installation
 ------------
 
-Just a simple ``pip install fhir.resources`` or ``easy_install fhir.resources`` is enough. But if you want development
+Just a simple ``pip install fhir.resources`` is enough. But if you want development
 version, just clone from https://github.com/nazrulworld/fhir.resources and ``pip install -e .[dev]``.
 
-Pydantic v2 & Base64Binary type
-
- - Issue #168 https://github.com/nazrulworld/fhir.resources/issues/166
- - https://github.com/pydantic/pydantic/pull/10486
 
 Usages
 ------
@@ -503,7 +498,6 @@ Note: when you will change that behaviour, that would impact into your whole pro
 
 XML Supports
 ~~~~~~~~~~~~
-**This feature is currently not available**
 Along side with JSON string export, it is possible to export as XML string!
 Before using this feature, make sure associated dependent library is installed. Use ``fhir.resources[xml]`` or ``fhir.resources[all]`` as
 your project requirements.
@@ -516,7 +510,7 @@ Example-1 Export::
     >>> from fhir.resources.patient import Patient
     >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons"}]}
     >>> patient_obj = Patient(**data)
-    >>> xml_str = patient_obj.xml(pretty_print=True)
+    >>> xml_str = patient_obj.model_dump_xml(pretty_print=True)
     >>> print(xml_str)
     <?xml version='1.0' encoding='utf-8'?>
     <Patient xmlns="http://hl7.org/fhir">
@@ -533,7 +527,7 @@ Example-2 Import from string::
     >>> from fhir.resources.patient import Patient
     >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons"}]}
     >>> patient_obj = Patient(**data)
-    >>> xml_str = patient_obj.xml(pretty_print=True)
+    >>> xml_str = patient_obj.model_dump_xml(pretty_print=True)
     >>> print(xml_str)
     >>> data = b"""<?xml version='1.0' encoding='utf-8'?>
     ... <Patient xmlns="http://hl7.org/fhir">
@@ -544,8 +538,8 @@ Example-2 Import from string::
     ...   <gender value="male"/>
     ...   <birthDate value="2000-09-18"/>
     ... </Patient>"""
-    >>> patient = Patient.parse_raw(data, content_type="text/xml")
-    >>> print(patient.json(indent=2))
+    >>> patient = Patient.model_validate_xml(data)
+    >>> print(patient.model_dump_json(indent=2))
     {
       "resourceType": "Patient",
       "active": true,
@@ -564,14 +558,16 @@ Example-2 Import from string::
 
     >>> with xml parser
     >>> import lxml
+    >>> from fhir_core.xml_utils import xml_loads
     >>> schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
     >>> xmlparser = lxml.etree.XMLParser(schema=schema)
-    >>> patient2 = Patient.parse_raw(data, content_type="text/xml", xmlparser=xmlparser)
+    >>> patient2 = xml_loads(Patient, data, xmlparser=xmlparser)
     >>> patient2 == patient
     True
 
 Example-3 Import from file::
-    >>> patient3 = Patient.parse_file("Patient.xml")
+    >>> import pathlib
+    >>> patient3 = Patient.model_validate_xml(pathlib.Path("Patient.xml").read_bytes())
     >>> patient3 == patient and patient3 == patient2
     True
 
@@ -705,7 +701,7 @@ Replacements and/or new functions.
 - From ``FHIRAbstractModel::dict`` to ``FHIRAbstractModel::model_dump``
 - From ``FHIRAbstractModel::json`` to ``FHIRAbstractModel::model_dump_json``
 - From ``FHIRAbstractModel::yaml`` to ``FHIRAbstractModel::model_dump_yaml``
-- From ``FHIRAbstractModel::xml`` to ``FHIRAbstractModel::model_dump_xml`` [coming soon]
+- From ``FHIRAbstractModel::xml`` to ``FHIRAbstractModel::model_dump_xml``
 - From ``FHIRAbstractModel::parse_obj`` to ``FHIRAbstractModel::model_validate``
 - From ``FHIRAbstractModel::parse_raw`` to ``FHIRAbstractModel::model_validate_json``
 - From ``FHIRAbstractModel::parse_file`` to no replacement, we suggest you use pathlib (see examples)

@@ -36,6 +36,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e asNeeded[x]
             "one_of_many": "asNeeded",
             "one_of_many_required": False,
@@ -55,6 +56,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e asNeeded[x]
             "one_of_many": "asNeeded",
             "one_of_many_required": False,
@@ -68,6 +70,7 @@ class ServiceRequest(domainresource.DomainResource):
         description="When the request transitioned to being actionable.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -81,6 +84,7 @@ class ServiceRequest(domainresource.DomainResource):
         description="Plan/proposal/order fulfilled by this request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CarePlan", "ServiceRequest", "MedicationRequest"],
         },
@@ -96,6 +100,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -109,6 +114,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["BodyStructure"],
         },
@@ -124,6 +130,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -138,6 +145,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
         },
@@ -153,6 +161,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -169,6 +178,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -191,6 +201,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -206,6 +217,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -220,6 +232,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
         },
@@ -241,6 +254,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -273,6 +287,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -293,6 +308,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -318,6 +334,7 @@ class ServiceRequest(domainresource.DomainResource):
         description="The date/time at which the requested service should occur.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -336,6 +353,7 @@ class ServiceRequest(domainresource.DomainResource):
         description="The date/time at which the requested service should occur.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -349,6 +367,7 @@ class ServiceRequest(domainresource.DomainResource):
         description="The date/time at which the requested service should occur.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -368,6 +387,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -391,6 +411,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -412,6 +433,7 @@ class ServiceRequest(domainresource.DomainResource):
         description="Desired type of performer for doing the requested service.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -425,6 +447,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["routine", "urgent", "asap", "stat"],
@@ -445,6 +468,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e quantity[x]
             "one_of_many": "quantity",
             "one_of_many_required": False,
@@ -462,6 +486,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e quantity[x]
             "one_of_many": "quantity",
             "one_of_many_required": False,
@@ -479,6 +504,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e quantity[x]
             "one_of_many": "quantity",
             "one_of_many_required": False,
@@ -497,6 +523,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Condition",
@@ -530,6 +557,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ServiceRequest"],
         },
@@ -545,6 +573,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -568,6 +597,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -578,6 +608,7 @@ class ServiceRequest(domainresource.DomainResource):
         description="One or more specimens that the laboratory procedure will use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Specimen"],
         },
@@ -593,6 +624,7 @@ class ServiceRequest(domainresource.DomainResource):
         description="The status of the order.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -623,6 +655,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group", "Location", "Device"],
         },
@@ -651,9 +684,9 @@ class ServiceRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ServiceRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ServiceRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -702,6 +735,51 @@ class ServiceRequest(domainresource.DomainResource):
             "note",
             "patientInstruction",
             "relevantHistory",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ServiceRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "replaces",
+            "requisition",
+            "status",
+            "intent",
+            "category",
+            "priority",
+            "doNotPerform",
+            "code",
+            "orderDetail",
+            "quantityQuantity",
+            "quantityRatio",
+            "quantityRange",
+            "subject",
+            "focus",
+            "encounter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "asNeededBoolean",
+            "asNeededCodeableConcept",
+            "authoredOn",
+            "requester",
+            "performerType",
+            "performer",
+            "location",
+            "reason",
+            "specimen",
+            "bodySite",
+            "bodyStructure",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -762,6 +840,7 @@ class ServiceRequestOrderDetail(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -788,11 +867,18 @@ class ServiceRequestOrderDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ServiceRequestOrderDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ServiceRequestOrderDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "parameterFocus", "parameter"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ServiceRequestOrderDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "parameter"]
 
 
 class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
@@ -816,6 +902,7 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -826,6 +913,7 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
         description="Indicates a value for the order detail.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -842,6 +930,7 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
         description="Indicates a value for the order detail.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -855,6 +944,7 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
         description="Indicates a value for the order detail.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -868,6 +958,7 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
         description="Indicates a value for the order detail.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -881,6 +972,7 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
         description="Indicates a value for the order detail.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -894,6 +986,7 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
         description="Indicates a value for the order detail.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -907,6 +1000,7 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
         description="Indicates a value for the order detail.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -918,13 +1012,30 @@ class ServiceRequestOrderDetailParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ServiceRequestOrderDetailParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ServiceRequestOrderDetailParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "code",
+            "valueQuantity",
+            "valueRatio",
+            "valueRange",
+            "valueBoolean",
+            "valueCodeableConcept",
+            "valueString",
+            "valuePeriod",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ServiceRequestOrderDetailParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "code",
             "valueQuantity",
@@ -981,6 +1092,7 @@ class ServiceRequestPatientInstruction(backboneelement.BackboneElement):
         description="Instructions in terms that are understood by the patient or consumer.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e instruction[x]
             "one_of_many": "instruction",
             "one_of_many_required": False,
@@ -999,6 +1111,7 @@ class ServiceRequestPatientInstruction(backboneelement.BackboneElement):
         description="Instructions in terms that are understood by the patient or consumer.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e instruction[x]
             "one_of_many": "instruction",
             "one_of_many_required": False,
@@ -1009,9 +1122,9 @@ class ServiceRequestPatientInstruction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ServiceRequestPatientInstruction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ServiceRequestPatientInstruction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1020,6 +1133,13 @@ class ServiceRequestPatientInstruction(backboneelement.BackboneElement):
             "instructionMarkdown",
             "instructionReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ServiceRequestPatientInstruction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "instructionMarkdown", "instructionReference"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

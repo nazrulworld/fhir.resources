@@ -59,6 +59,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -72,6 +73,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -123,6 +125,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -139,6 +142,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubscriptionTopic"],
         },
@@ -173,6 +177,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -183,6 +188,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         description="Event definition which can be used to trigger the SubscriptionTopic.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -197,6 +203,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -214,6 +221,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -224,6 +232,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         description="A jurisdiction in which the Topic is intended to be used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -255,6 +264,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -274,6 +284,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -290,6 +301,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -326,6 +338,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -336,6 +349,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         description="The current state of the SubscriptionTopic.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -356,6 +370,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -380,6 +395,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -398,6 +414,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -415,6 +432,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -431,6 +449,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -447,6 +466,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -460,9 +480,9 @@ class SubscriptionTopic(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionTopic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionTopic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -494,6 +514,38 @@ class SubscriptionTopic(domainresource.DomainResource):
             "copyrightLabel",
             "approvalDate",
             "lastReviewDate",
+            "effectivePeriod",
+            "resourceTrigger",
+            "eventTrigger",
+            "canFilterBy",
+            "notificationShape",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionTopic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "title",
+            "derivedFrom",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
             "effectivePeriod",
             "resourceTrigger",
             "eventTrigger",
@@ -568,6 +620,7 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         description="Description of how this filtering parameter is intended to be used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -586,6 +639,7 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     filterDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -609,6 +663,7 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -664,6 +719,7 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -672,9 +728,9 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionTopicCanFilterBy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionTopicCanFilterBy`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -686,6 +742,19 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
             "filterDefinition",
             "comparator",
             "modifier",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionTopicCanFilterBy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "description",
+            "resource",
+            "filterParameter",
+            "filterDefinition",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -723,6 +792,7 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -739,6 +809,7 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -760,6 +831,7 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -769,9 +841,9 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionTopicEventTrigger`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionTopicEventTrigger`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -781,6 +853,13 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
             "event",
             "resource",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionTopicEventTrigger`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "description", "event", "resource"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -820,6 +899,7 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     include__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -843,6 +923,7 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -863,6 +944,7 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     revInclude__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -871,9 +953,9 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionTopicNotificationShape`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionTopicNotificationShape`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -883,6 +965,13 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
             "include",
             "revInclude",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionTopicNotificationShape`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "resource", "include", "revInclude"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -922,6 +1011,7 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -938,6 +1028,7 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     fhirPathCriteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -956,6 +1047,7 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -977,6 +1069,7 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -996,6 +1089,7 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["create", "update", "delete"],
@@ -1009,13 +1103,27 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionTopicResourceTrigger`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionTopicResourceTrigger`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "description",
+            "resource",
+            "supportedInteraction",
+            "queryCriteria",
+            "fhirPathCriteria",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionTopicResourceTrigger`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "description",
             "resource",
@@ -1058,6 +1166,7 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     current__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1074,6 +1183,7 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     previous__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1093,6 +1203,7 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     requireBoth__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1111,6 +1222,7 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["test-passes", "test-fails"],
@@ -1132,6 +1244,7 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["test-passes", "test-fails"],
@@ -1143,13 +1256,27 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionTopicResourceTriggerQueryCriteria`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionTopicResourceTriggerQueryCriteria`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "previous",
+            "resultForCreate",
+            "current",
+            "resultForDelete",
+            "requireBoth",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionTopicResourceTriggerQueryCriteria`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "previous",
             "resultForCreate",

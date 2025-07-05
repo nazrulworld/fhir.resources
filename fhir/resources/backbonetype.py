@@ -47,13 +47,21 @@ class BackboneType(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BackboneType`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BackboneType`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BackboneType`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

@@ -35,6 +35,7 @@ class Quantity(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -53,6 +54,7 @@ class Quantity(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     comparator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -69,6 +71,7 @@ class Quantity(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -82,6 +85,7 @@ class Quantity(element.Element):
         description="A human-readable form of the unit.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     unit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -98,6 +102,7 @@ class Quantity(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -106,8 +111,15 @@ class Quantity(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Quantity`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Quantity`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Quantity`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["value", "comparator", "unit", "system", "code"]

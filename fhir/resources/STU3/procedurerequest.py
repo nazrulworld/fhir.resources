@@ -36,6 +36,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e asNeeded[x]
             "one_of_many": "asNeeded",
             "one_of_many_required": False,
@@ -55,6 +56,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e asNeeded[x]
             "one_of_many": "asNeeded",
             "one_of_many_required": False,
@@ -68,6 +70,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="When the request transitioned to being actionable.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -81,6 +84,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="Plan/proposal/order fulfilled by this request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -96,6 +100,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -109,6 +114,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -122,6 +128,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -135,6 +142,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter", "EpisodeOfCare"],
         },
@@ -147,6 +155,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="Protocol or definition followed by this request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
         },
@@ -162,6 +171,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -178,6 +188,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -191,6 +202,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -222,6 +234,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="The date/time at which the diagnostic testing should occur.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -240,6 +253,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="The date/time at which the diagnostic testing should occur.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -253,6 +267,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="The date/time at which the diagnostic testing should occur.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -269,6 +284,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -288,6 +304,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="Desired type of performer for doing the diagnostic testing.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -301,6 +318,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["routine", "urgent", "asap", "stat"],
@@ -322,6 +340,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -336,6 +355,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Condition", "Observation"],
         },
@@ -363,6 +383,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -378,6 +399,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -392,6 +414,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -402,6 +425,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="One or more specimens that the laboratory procedure will use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Specimen"],
         },
@@ -414,6 +438,7 @@ class ProcedureRequest(domainresource.DomainResource):
         description="The status of the order.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -443,6 +468,7 @@ class ProcedureRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group", "Location", "Device"],
         },
@@ -471,9 +497,9 @@ class ProcedureRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProcedureRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProcedureRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -513,6 +539,43 @@ class ProcedureRequest(domainresource.DomainResource):
             "bodySite",
             "note",
             "relevantHistory",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProcedureRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "definition",
+            "basedOn",
+            "replaces",
+            "requisition",
+            "status",
+            "intent",
+            "priority",
+            "doNotPerform",
+            "category",
+            "code",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "asNeededBoolean",
+            "asNeededCodeableConcept",
+            "authoredOn",
+            "requester",
+            "performerType",
+            "performer",
+            "reasonCode",
+            "reasonReference",
+            "specimen",
+            "bodySite",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -569,6 +632,7 @@ class ProcedureRequestRequester(backboneelement.BackboneElement):
         description="The device, practitioner or organization who initiated the request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device", "Practitioner", "Organization"],
         },
@@ -581,6 +645,7 @@ class ProcedureRequestRequester(backboneelement.BackboneElement):
         description="The organization the device or practitioner was acting on behalf of.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -588,8 +653,15 @@ class ProcedureRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProcedureRequestRequester`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProcedureRequestRequester`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProcedureRequestRequester`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "agent", "onBehalfOf"]

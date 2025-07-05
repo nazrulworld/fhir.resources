@@ -31,6 +31,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -44,6 +45,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -54,6 +56,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -64,14 +67,15 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceReferenceInformation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceReferenceInformation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -81,6 +85,22 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "comment",
+            "gene",
+            "geneElement",
+            "target",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceReferenceInformation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "comment",
             "gene",
@@ -106,6 +126,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -116,6 +137,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -126,6 +148,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -133,9 +156,9 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceReferenceInformationGene`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceReferenceInformationGene`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -145,6 +168,13 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
             "gene",
             "source",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceReferenceInformationGene`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "geneSequenceOrigin", "gene", "source"]
 
 
 class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
@@ -164,6 +194,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -174,6 +205,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -186,16 +218,24 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceReferenceInformationGeneElement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceReferenceInformationGeneElement`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "element", "source"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceReferenceInformationGeneElement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "element", "source"]
 
 
 class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
@@ -215,6 +255,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e amount[x]
             "one_of_many": "amount",
             "one_of_many_required": False,
@@ -228,6 +269,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e amount[x]
             "one_of_many": "amount",
             "one_of_many_required": False,
@@ -241,6 +283,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e amount[x]
             "one_of_many": "amount",
             "one_of_many_required": False,
@@ -257,6 +300,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -267,6 +311,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -277,6 +322,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -287,6 +333,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -297,6 +344,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -309,6 +357,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -319,18 +368,38 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceReferenceInformationTarget`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceReferenceInformationTarget`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "target",
+            "type",
+            "interaction",
+            "organism",
+            "organismType",
+            "amountQuantity",
+            "amountRange",
+            "amountString",
+            "amountType",
+            "source",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceReferenceInformationTarget`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "target",
             "type",

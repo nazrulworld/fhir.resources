@@ -182,6 +182,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -203,9 +204,9 @@ class PaymentReconciliation(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PaymentReconciliation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PaymentReconciliation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -231,6 +232,13 @@ class PaymentReconciliation(domainresource.DomainResource):
             "total",
             "processNote",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PaymentReconciliation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "status"]
 
 
 class PaymentReconciliationDetail(backboneelement.BackboneElement):
@@ -330,9 +338,9 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PaymentReconciliationDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PaymentReconciliationDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -346,6 +354,13 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
             "date",
             "amount",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PaymentReconciliationDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
@@ -384,8 +399,15 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PaymentReconciliationProcessNote`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PaymentReconciliationProcessNote`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "text"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PaymentReconciliationProcessNote`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

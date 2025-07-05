@@ -40,6 +40,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CarePlan",
@@ -61,6 +62,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -77,6 +79,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -95,6 +98,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Endpoint"],
         },
@@ -110,6 +114,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -120,6 +125,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="Who read the study and interpreted the images or other content.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "PractitionerRole"],
         },
@@ -132,6 +138,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="The principal physical location where the ImagingStudy was performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -148,6 +155,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -163,6 +171,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -178,6 +187,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -198,6 +208,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     numberOfSeries__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -211,6 +222,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="The code for the performed procedure type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -221,6 +233,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="The procedure which this ImagingStudy was part of.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Procedure"],
         },
@@ -236,6 +249,7 @@ class ImagingStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -246,6 +260,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="Indicates another resource whose existence justifies this Study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Condition",
@@ -264,6 +279,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="The requesting/referring physician.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "PractitionerRole"],
         },
@@ -276,6 +292,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="Each study has one or more series of images or other content.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -286,6 +303,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="Date and time the study started.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     started__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -299,6 +317,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="The current state of the ImagingStudy.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -322,6 +341,7 @@ class ImagingStudy(domainresource.DomainResource):
         description="The subject, typically a patient, of the imaging study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Device", "Group"],
         },
@@ -329,9 +349,9 @@ class ImagingStudy(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingStudy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingStudy`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -342,6 +362,37 @@ class ImagingStudy(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "status",
+            "modality",
+            "subject",
+            "encounter",
+            "started",
+            "basedOn",
+            "referrer",
+            "interpreter",
+            "endpoint",
+            "numberOfSeries",
+            "numberOfInstances",
+            "procedureReference",
+            "procedureCode",
+            "location",
+            "reasonCode",
+            "reasonReference",
+            "note",
+            "description",
+            "series",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingStudy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "status",
             "modality",
@@ -400,6 +451,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -410,6 +462,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         description="A description of the series.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -428,6 +481,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Endpoint"],
         },
@@ -458,6 +512,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -468,6 +523,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         description="The modality of this series sequence.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -478,6 +534,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         description="The numeric identifier of this series in the study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -496,6 +553,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -511,6 +569,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         description="Indicates who or what performed the series and how they were involved.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -521,6 +580,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         description="The specimen imaged, e.g., for whole slide imaging of a biopsy.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Specimen"],
         },
@@ -533,6 +593,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         description="The date and time the series was started.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     started__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -546,6 +607,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         description="The DICOM Series Instance UID for the series.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -555,9 +617,9 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingStudySeries`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingStudySeries`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -575,6 +637,26 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "started",
             "performer",
             "instance",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingStudySeries`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "uid",
+            "number",
+            "modality",
+            "description",
+            "numberOfInstances",
+            "endpoint",
+            "bodySite",
+            "laterality",
+            "specimen",
+            "started",
+            "performer",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -653,9 +735,9 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingStudySeriesInstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingStudySeriesInstance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -666,6 +748,13 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
             "number",
             "title",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingStudySeriesInstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -697,6 +786,7 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
         description="Indicates who or what performed the series.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -717,13 +807,21 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
         description="Distinguishes the type of involvement of the performer in the series.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingStudySeriesPerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingStudySeriesPerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingStudySeriesPerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "function", "actor"]

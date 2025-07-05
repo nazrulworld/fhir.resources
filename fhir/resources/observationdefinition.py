@@ -60,6 +60,7 @@ class ObservationDefinition(domainresource.DomainResource):
         description="A code that classifies the general type of observation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -73,6 +74,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -99,6 +101,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -150,6 +153,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -167,6 +171,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -188,6 +193,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     derivedFromUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -235,6 +241,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -249,6 +256,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -285,6 +293,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -298,6 +307,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -357,6 +367,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -373,6 +384,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -456,6 +468,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -512,6 +525,7 @@ class ObservationDefinition(domainresource.DomainResource):
         description="The current state of the ObservationDefinition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -532,6 +546,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -545,6 +560,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -569,6 +585,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -589,6 +606,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -607,6 +625,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -623,6 +642,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -639,6 +659,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -652,9 +673,9 @@ class ObservationDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ObservationDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ObservationDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -703,6 +724,39 @@ class ObservationDefinition(domainresource.DomainResource):
             "qualifiedValue",
             "hasMember",
             "component",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ObservationDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "effectivePeriod",
+            "derivedFromCanonical",
+            "derivedFromUri",
+            "subject",
+            "performerType",
+            "category",
+            "code",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -823,9 +877,9 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ObservationDefinitionComponent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ObservationDefinitionComponent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -836,6 +890,13 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
             "permittedUnit",
             "qualifiedValue",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ObservationDefinitionComponent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
@@ -1048,9 +1109,9 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ObservationDefinitionQualifiedValue`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ObservationDefinitionQualifiedValue`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1069,3 +1130,10 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "abnormalCodedValueSet",
             "criticalCodedValueSet",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ObservationDefinitionQualifiedValue`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

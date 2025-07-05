@@ -50,6 +50,7 @@ class Contract(domainresource.DomainResource):
         description="Relevant time or time-period when this Contract is applicable.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -178,6 +179,7 @@ class Contract(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -219,6 +221,7 @@ class Contract(domainresource.DomainResource):
         description="When this  Contract was issued.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -307,6 +310,7 @@ class Contract(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -396,6 +400,7 @@ class Contract(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -432,6 +437,7 @@ class Contract(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -445,6 +451,7 @@ class Contract(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -506,6 +513,7 @@ class Contract(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -559,6 +567,7 @@ class Contract(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -588,6 +597,7 @@ class Contract(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -596,9 +606,9 @@ class Contract(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Contract`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Contract`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -644,6 +654,27 @@ class Contract(domainresource.DomainResource):
             "rule",
             "legallyBindingAttachment",
             "legallyBindingReference",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Contract`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "version",
+            "status",
+            "issued",
+            "applies",
+            "subject",
+            "name",
+            "title",
+            "type",
+            "subType",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -798,9 +829,9 @@ class ContractContentDefinition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractContentDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractContentDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -813,6 +844,13 @@ class ContractContentDefinition(backboneelement.BackboneElement):
             "publicationStatus",
             "copyright",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractContentDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -885,9 +923,9 @@ class ContractFriendly(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractFriendly`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractFriendly`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -896,6 +934,13 @@ class ContractFriendly(backboneelement.BackboneElement):
             "contentAttachment",
             "contentReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractFriendly`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -959,9 +1004,9 @@ class ContractLegal(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractLegal`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractLegal`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -970,6 +1015,13 @@ class ContractLegal(backboneelement.BackboneElement):
             "contentAttachment",
             "contentReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractLegal`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1035,9 +1087,9 @@ class ContractRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractRule`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractRule`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1046,6 +1098,13 @@ class ContractRule(backboneelement.BackboneElement):
             "contentAttachment",
             "contentReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractRule`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1118,11 +1177,18 @@ class ContractSigner(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractSigner`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractSigner`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "party", "signature"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractSigner`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ContractTerm(backboneelement.BackboneElement):
@@ -1160,6 +1226,7 @@ class ContractTerm(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1190,6 +1257,7 @@ class ContractTerm(backboneelement.BackboneElement):
         description="Unique identifier for this particular Contract Provision.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1200,6 +1268,7 @@ class ContractTerm(backboneelement.BackboneElement):
         description="When this Contract Provision was issued.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1251,6 +1320,7 @@ class ContractTerm(backboneelement.BackboneElement):
         description="Statement of a provision in a policy or a contract.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1302,9 +1372,9 @@ class ContractTerm(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTerm`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTerm`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1324,6 +1394,13 @@ class ContractTerm(backboneelement.BackboneElement):
             "action",
             "group",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTerm`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "identifier", "issued", "applies", "text"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1710,9 +1787,9 @@ class ContractTermAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermAction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1742,6 +1819,13 @@ class ContractTermAction(backboneelement.BackboneElement):
             "note",
             "securityLabelNumber",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1804,11 +1888,18 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermActionSubject`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermActionSubject`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reference", "role"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermActionSubject`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ContractTermAsset(backboneelement.BackboneElement):
@@ -2003,9 +2094,9 @@ class ContractTermAsset(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermAsset`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermAsset`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2027,6 +2118,13 @@ class ContractTermAsset(backboneelement.BackboneElement):
             "securityLabelNumber",
             "valuedItem",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermAsset`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ContractTermAssetContext(backboneelement.BackboneElement):
@@ -2083,11 +2181,18 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermAssetContext`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermAssetContext`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reference", "code", "text"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermAssetContext`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ContractTermAssetValuedItem(backboneelement.BackboneElement):
@@ -2328,9 +2433,9 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermAssetValuedItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermAssetValuedItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2352,6 +2457,13 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "linkId",
             "securityLabelNumber",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermAssetValuedItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -2490,6 +2602,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -2510,9 +2623,9 @@ class ContractTermOffer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermOffer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermOffer`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2529,6 +2642,13 @@ class ContractTermOffer(backboneelement.BackboneElement):
             "linkId",
             "securityLabelNumber",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermOffer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "topic"]
 
 
 class ContractTermOfferAnswer(backboneelement.BackboneElement):
@@ -2785,9 +2905,9 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermOfferAnswer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermOfferAnswer`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2806,6 +2926,13 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "valueQuantity",
             "valueReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermOfferAnswer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -2881,11 +3008,18 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermOfferParty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermOfferParty`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reference", "role"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermOfferParty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ContractTermSecurityLabel(backboneelement.BackboneElement):
@@ -2957,9 +3091,9 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContractTermSecurityLabel`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContractTermSecurityLabel`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2970,3 +3104,10 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
             "category",
             "control",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContractTermSecurityLabel`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

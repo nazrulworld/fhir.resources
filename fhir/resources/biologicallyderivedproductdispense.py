@@ -38,6 +38,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ServiceRequest"],
         },
@@ -53,6 +54,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -69,6 +71,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -79,6 +82,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description="The physical location where the dispense was performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -91,6 +95,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -101,6 +106,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -114,6 +120,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -124,6 +131,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description="A larger event of which this particular event is a component.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["BiologicallyDerivedProductDispense"],
         },
@@ -139,6 +147,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -151,6 +160,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -161,6 +171,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description="When the product was selected/ matched.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     preparedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -177,6 +188,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["BiologicallyDerivedProduct"],
         },
@@ -193,6 +205,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -206,6 +219,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description="A code specifying the state of the dispense event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -232,6 +246,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     usageInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -247,6 +262,7 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
         description="When the product was dispatched for clinical use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     whenHandedOver__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -255,9 +271,9 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BiologicallyDerivedProductDispense`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BiologicallyDerivedProductDispense`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -267,6 +283,34 @@ class BiologicallyDerivedProductDispense(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "basedOn",
+            "partOf",
+            "status",
+            "originRelationshipType",
+            "product",
+            "patient",
+            "matchStatus",
+            "performer",
+            "location",
+            "quantity",
+            "preparedDate",
+            "whenHandedOver",
+            "destination",
+            "note",
+            "usageInstruction",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BiologicallyDerivedProductDispense`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "identifier",
             "basedOn",
@@ -315,6 +359,7 @@ class BiologicallyDerivedProductDispensePerformer(backboneelement.BackboneElemen
         description="Identifies the person responsible for the action.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner"],
         },
@@ -327,13 +372,21 @@ class BiologicallyDerivedProductDispensePerformer(backboneelement.BackboneElemen
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BiologicallyDerivedProductDispensePerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BiologicallyDerivedProductDispensePerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BiologicallyDerivedProductDispensePerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "function", "actor"]

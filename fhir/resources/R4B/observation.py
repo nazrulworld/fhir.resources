@@ -37,6 +37,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CarePlan",
@@ -82,6 +83,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -98,6 +100,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -125,6 +128,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "DocumentReference",
@@ -162,6 +166,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -186,6 +191,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -210,6 +216,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -229,6 +236,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -245,6 +253,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -271,6 +280,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -287,6 +297,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Observation",
@@ -303,6 +314,7 @@ class Observation(domainresource.DomainResource):
         description="A unique identifier assigned to this observation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -330,6 +342,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -366,6 +379,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "MedicationAdministration",
@@ -385,6 +399,7 @@ class Observation(domainresource.DomainResource):
         description='Who was responsible for asserting the observed value as "true".',
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -431,6 +446,7 @@ class Observation(domainresource.DomainResource):
         description="The status of the result value.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -454,6 +470,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -479,6 +496,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -498,6 +516,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -514,6 +533,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -533,6 +553,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -552,6 +573,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -568,6 +590,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -584,6 +607,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -600,6 +624,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -616,6 +641,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -632,6 +658,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -651,6 +678,7 @@ class Observation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -662,9 +690,9 @@ class Observation(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Observation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Observation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -709,6 +737,45 @@ class Observation(domainresource.DomainResource):
             "specimen",
             "device",
             "referenceRange",
+            "hasMember",
+            "derivedFrom",
+            "component",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Observation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "basedOn",
+            "partOf",
+            "status",
+            "code",
+            "subject",
+            "focus",
+            "encounter",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "effectiveTiming",
+            "effectiveInstant",
+            "issued",
+            "performer",
+            "valueQuantity",
+            "valueCodeableConcept",
+            "valueString",
+            "valueBoolean",
+            "valueInteger",
+            "valueRange",
+            "valueRatio",
+            "valueSampledData",
+            "valueTime",
+            "valueDateTime",
+            "valuePeriod",
             "hasMember",
             "derivedFrom",
             "component",
@@ -787,6 +854,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -839,6 +907,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -858,6 +927,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -874,6 +944,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -893,6 +964,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -912,6 +984,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -928,6 +1001,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -944,6 +1018,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -960,6 +1035,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -976,6 +1052,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -992,6 +1069,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -1011,6 +1089,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -1022,9 +1101,9 @@ class ObservationComponent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ObservationComponent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ObservationComponent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1045,6 +1124,27 @@ class ObservationComponent(backboneelement.BackboneElement):
             "dataAbsentReason",
             "interpretation",
             "referenceRange",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ObservationComponent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "code",
+            "valueQuantity",
+            "valueCodeableConcept",
+            "valueString",
+            "valueBoolean",
+            "valueInteger",
+            "valueRange",
+            "valueRatio",
+            "valueSampledData",
+            "valueTime",
+            "valueDateTime",
+            "valuePeriod",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -1185,9 +1285,9 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ObservationReferenceRange`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ObservationReferenceRange`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1200,3 +1300,10 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
             "age",
             "text",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ObservationReferenceRange`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

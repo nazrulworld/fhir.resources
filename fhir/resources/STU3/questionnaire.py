@@ -55,6 +55,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -68,6 +69,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -100,6 +102,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -132,6 +135,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -146,6 +150,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -163,6 +168,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -189,6 +195,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -220,6 +227,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -236,6 +244,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -268,6 +277,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -288,6 +298,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subjectType__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -301,6 +312,7 @@ class Questionnaire(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the questionnaire.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -321,6 +333,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -338,6 +351,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -356,6 +370,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -364,9 +379,9 @@ class Questionnaire(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Questionnaire`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Questionnaire`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -398,6 +413,32 @@ class Questionnaire(domainresource.DomainResource):
             "code",
             "subjectType",
             "item",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Questionnaire`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "effectivePeriod",
+            "useContext",
+            "jurisdiction",
+            "contact",
+            "code",
+            "subjectType",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -434,6 +475,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -471,6 +513,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -840,6 +883,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -878,9 +922,9 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``QuestionnaireItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``QuestionnaireItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -913,6 +957,13 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "initialReference",
             "item",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``QuestionnaireItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "text", "enableWhen"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1224,9 +1275,9 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``QuestionnaireItemEnableWhen`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``QuestionnaireItemEnableWhen`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1247,6 +1298,13 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "answerQuantity",
             "answerReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``QuestionnaireItemEnableWhen`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1381,9 +1439,9 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``QuestionnaireItemOption`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``QuestionnaireItemOption`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1395,6 +1453,13 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
             "valueString",
             "valueCoding",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``QuestionnaireItemOption`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

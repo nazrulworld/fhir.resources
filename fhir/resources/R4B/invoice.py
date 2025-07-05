@@ -61,6 +61,7 @@ class Invoice(domainresource.DomainResource):
         description="Date/time(s) of when this Invoice was posted.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -77,6 +78,7 @@ class Invoice(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -157,6 +159,7 @@ class Invoice(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization", "Patient", "RelatedPerson"],
         },
@@ -169,6 +172,7 @@ class Invoice(domainresource.DomainResource):
         description="The current state of the Invoice.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -195,6 +199,7 @@ class Invoice(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -207,6 +212,7 @@ class Invoice(domainresource.DomainResource):
         description="Invoice total, tax included.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -217,6 +223,7 @@ class Invoice(domainresource.DomainResource):
         description="Invoice total , taxes excluded.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -246,14 +253,15 @@ class Invoice(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Invoice`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Invoice`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -280,6 +288,25 @@ class Invoice(domainresource.DomainResource):
             "totalGross",
             "paymentTerms",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Invoice`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "type",
+            "subject",
+            "recipient",
+            "date",
+            "totalNet",
+            "totalGross",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -384,9 +411,9 @@ class InvoiceLineItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InvoiceLineItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InvoiceLineItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -397,6 +424,13 @@ class InvoiceLineItem(backboneelement.BackboneElement):
             "chargeItemCodeableConcept",
             "priceComponent",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InvoiceLineItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -498,9 +532,9 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InvoiceLineItemPriceComponent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InvoiceLineItemPriceComponent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -511,6 +545,13 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
             "factor",
             "amount",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InvoiceLineItemPriceComponent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -573,8 +614,15 @@ class InvoiceParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InvoiceParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InvoiceParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InvoiceParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

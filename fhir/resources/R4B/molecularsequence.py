@@ -40,6 +40,7 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -56,6 +57,7 @@ class MolecularSequence(domainresource.DomainResource):
         description="The method for sequencing, for example, chip information.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device"],
         },
@@ -71,6 +73,7 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -85,6 +88,7 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     observedSeq__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -98,6 +102,7 @@ class MolecularSequence(domainresource.DomainResource):
         description="The patient whose sequencing results are described by this resource.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -110,6 +115,7 @@ class MolecularSequence(domainresource.DomainResource):
         description="The organization or lab that should be responsible for this result.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -122,6 +128,7 @@ class MolecularSequence(domainresource.DomainResource):
         description="Pointer to next atomic sequence which at most contains one variant.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MolecularSequence"],
         },
@@ -139,6 +146,7 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -149,6 +157,7 @@ class MolecularSequence(domainresource.DomainResource):
         description="The number of copies of the sequence of interest. (RNASeq).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -165,6 +174,7 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     readCoverage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -181,6 +191,7 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -197,6 +208,7 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -207,6 +219,7 @@ class MolecularSequence(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Specimen"],
         },
@@ -219,6 +232,7 @@ class MolecularSequence(domainresource.DomainResource):
         description="Information about chromosome structure variation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -229,6 +243,7 @@ class MolecularSequence(domainresource.DomainResource):
         description="Amino Acid Sequence/ DNA Sequence / RNA Sequence.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["aa", "dna", "rna"],
@@ -251,14 +266,15 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequence`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequence`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -269,6 +285,33 @@ class MolecularSequence(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "type",
+            "coordinateSystem",
+            "patient",
+            "specimen",
+            "device",
+            "performer",
+            "quantity",
+            "referenceSeq",
+            "variant",
+            "observedSeq",
+            "quality",
+            "readCoverage",
+            "repository",
+            "pointer",
+            "structureVariant",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequence`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "type",
             "coordinateSystem",
@@ -324,6 +367,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -340,6 +384,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     fScore__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -360,6 +405,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     gtFP__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -373,6 +419,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         description="Which method is used to get sequence quality.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -383,6 +430,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         description="QUERY.TP / (QUERY.TP + QUERY.FP).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     precision__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -401,6 +449,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     queryFP__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -420,6 +469,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     queryTP__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -433,6 +483,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         description="TRUTH.TP / (TRUTH.TP + TRUTH.FN).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     recall__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -449,6 +500,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -463,6 +515,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -473,6 +526,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         description="Gold standard sequence used for comparing against.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -486,6 +540,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -505,6 +560,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     truthFN__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -524,6 +580,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     truthTP__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -537,6 +594,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         description="INDEL / SNP / Undefined variant.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -549,13 +607,37 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequenceQuality`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequenceQuality`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "standardSequence",
+            "start",
+            "end",
+            "score",
+            "method",
+            "truthTP",
+            "queryTP",
+            "truthFN",
+            "queryFP",
+            "gtFP",
+            "precision",
+            "recall",
+            "fScore",
+            "roc",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequenceQuality`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "standardSequence",
@@ -608,6 +690,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     fMeasure__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -624,6 +707,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     numFN__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -640,6 +724,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     numFP__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -656,6 +741,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     numTP__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -672,6 +758,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     precision__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -688,6 +775,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     score__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -704,6 +792,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     sensitivity__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -712,13 +801,29 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequenceQualityRoc`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequenceQualityRoc`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "score",
+            "numTP",
+            "numFP",
+            "numFN",
+            "precision",
+            "sensitivity",
+            "fMeasure",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequenceQualityRoc`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "score",
             "numTP",
@@ -754,6 +859,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -771,6 +877,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     genomeBuild__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -789,6 +896,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["sense", "antisense"],
@@ -810,6 +918,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -820,6 +929,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MolecularSequence"],
         },
@@ -832,6 +942,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         description='A string like "ACGT".',
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     referenceSeqString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -851,6 +962,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["watson", "crick"],
@@ -872,6 +984,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     windowEnd__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -889,6 +1002,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     windowStart__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -897,13 +1011,31 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequenceReferenceSeq`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequenceReferenceSeq`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "chromosome",
+            "genomeBuild",
+            "orientation",
+            "referenceSeqId",
+            "referenceSeqPointer",
+            "referenceSeqString",
+            "strand",
+            "windowStart",
+            "windowEnd",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequenceReferenceSeq`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "chromosome",
             "genomeBuild",
@@ -941,6 +1073,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     datasetId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -957,6 +1090,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -970,6 +1104,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         description="Id of the read in this external repository.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     readsetId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -986,6 +1121,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -1006,6 +1142,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1023,6 +1160,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     variantsetId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1031,13 +1169,28 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequenceRepository`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequenceRepository`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "url",
+            "name",
+            "datasetId",
+            "variantsetId",
+            "readsetId",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequenceRepository`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "url",
@@ -1080,6 +1233,7 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     exact__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1093,6 +1247,7 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1103,6 +1258,7 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         description="Length of the variant chromosome.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     length__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1116,6 +1272,7 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1126,14 +1283,15 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         description="Information about chromosome structure variation DNA change type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequenceStructureVariant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequenceStructureVariant`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1145,6 +1303,13 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
             "outer",
             "inner",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequenceStructureVariant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "variantType", "exact", "length", "outer", "inner"]
 
 
 class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
@@ -1169,6 +1334,7 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1185,6 +1351,7 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1193,11 +1360,18 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequenceStructureVariantInner`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequenceStructureVariantInner`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "start", "end"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequenceStructureVariantInner`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "start", "end"]
 
 
 class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
@@ -1222,6 +1396,7 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1238,6 +1413,7 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1246,11 +1422,18 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequenceStructureVariantOuter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequenceStructureVariantOuter`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "start", "end"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequenceStructureVariantOuter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "start", "end"]
 
 
 class MolecularSequenceVariant(backboneelement.BackboneElement):
@@ -1280,6 +1463,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     cigar__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1298,6 +1482,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1319,6 +1504,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     observedAllele__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1340,6 +1526,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     referenceAllele__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1357,6 +1544,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1370,6 +1558,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         description="A pointer to an Observation containing variant information.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Observation"],
         },
@@ -1377,13 +1566,28 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MolecularSequenceVariant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MolecularSequenceVariant`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "start",
+            "end",
+            "observedAllele",
+            "referenceAllele",
+            "cigar",
+            "variantPointer",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MolecularSequenceVariant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "start",
             "end",

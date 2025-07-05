@@ -79,6 +79,7 @@ class DomainResource(resource.Resource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -101,9 +102,9 @@ class DomainResource(resource.Resource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DomainResource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DomainResource`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -115,3 +116,10 @@ class DomainResource(resource.Resource):
             "extension",
             "modifierExtension",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DomainResource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "modifierExtension"]

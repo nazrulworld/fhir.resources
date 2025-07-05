@@ -34,16 +34,24 @@ class Parameters(resource.Resource):
         description="A parameter passed to or received from the operation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Parameters`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Parameters`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "meta", "implicitRules", "language", "parameter"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Parameters`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "parameter"]
 
 
 class ParametersParameter(backboneelement.BackboneElement):
@@ -64,6 +72,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="The name of the parameter (reference to the operation definition).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -78,6 +87,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="A named part of a multi-part parameter.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -88,6 +98,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a whole resource.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -98,6 +109,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -111,6 +123,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -124,6 +137,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -137,6 +151,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -150,6 +165,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -163,6 +179,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -181,6 +198,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -197,6 +215,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -213,6 +232,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -229,6 +249,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -242,6 +263,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -255,6 +277,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -268,6 +291,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -281,6 +305,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -294,6 +319,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -307,6 +333,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -320,6 +347,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -336,6 +364,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -352,6 +381,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -368,6 +398,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -381,6 +412,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -394,6 +426,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -407,6 +440,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -420,6 +454,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -433,6 +468,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -446,6 +482,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -462,6 +499,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -475,6 +513,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -491,6 +530,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -507,6 +547,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -523,6 +564,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -539,6 +581,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -552,6 +595,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -565,6 +609,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -581,6 +626,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -594,6 +640,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -607,6 +654,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -625,6 +673,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -638,6 +687,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -651,6 +701,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -664,6 +715,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -677,6 +729,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -690,6 +743,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -703,6 +757,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -716,6 +771,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -729,6 +785,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -745,6 +802,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -761,6 +819,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -774,6 +833,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -787,6 +847,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -805,6 +866,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -821,6 +883,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -837,6 +900,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -850,6 +914,7 @@ class ParametersParameter(backboneelement.BackboneElement):
         description="Conveys the content if the parameter is a data type.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -861,13 +926,79 @@ class ParametersParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ParametersParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ParametersParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "name",
+            "valueBase64Binary",
+            "valueBoolean",
+            "valueCanonical",
+            "valueCode",
+            "valueDate",
+            "valueDateTime",
+            "valueDecimal",
+            "valueId",
+            "valueInstant",
+            "valueInteger",
+            "valueInteger64",
+            "valueMarkdown",
+            "valueOid",
+            "valuePositiveInt",
+            "valueString",
+            "valueTime",
+            "valueUnsignedInt",
+            "valueUri",
+            "valueUrl",
+            "valueUuid",
+            "valueAddress",
+            "valueAge",
+            "valueAnnotation",
+            "valueAttachment",
+            "valueCodeableConcept",
+            "valueCodeableReference",
+            "valueCoding",
+            "valueContactPoint",
+            "valueCount",
+            "valueDistance",
+            "valueDuration",
+            "valueHumanName",
+            "valueIdentifier",
+            "valueMoney",
+            "valuePeriod",
+            "valueQuantity",
+            "valueRange",
+            "valueRatio",
+            "valueRatioRange",
+            "valueReference",
+            "valueSampledData",
+            "valueSignature",
+            "valueTiming",
+            "valueContactDetail",
+            "valueDataRequirement",
+            "valueExpression",
+            "valueParameterDefinition",
+            "valueRelatedArtifact",
+            "valueTriggerDefinition",
+            "valueUsageContext",
+            "valueAvailability",
+            "valueExtendedContactDetail",
+            "valueDosage",
+            "valueMeta",
+            "resource",
+            "part",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ParametersParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "name",
             "valueBase64Binary",

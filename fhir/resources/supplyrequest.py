@@ -34,6 +34,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -47,6 +48,7 @@ class SupplyRequest(domainresource.DomainResource):
         description="Plan/proposal/order fulfilled by this request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -62,6 +64,7 @@ class SupplyRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -120,6 +123,7 @@ class SupplyRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -134,6 +138,7 @@ class SupplyRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Medication",
@@ -154,6 +159,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -172,6 +178,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -185,6 +192,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -214,6 +222,7 @@ class SupplyRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["routine", "urgent", "asap", "stat"],
@@ -230,6 +239,7 @@ class SupplyRequest(domainresource.DomainResource):
         description="The amount that is being ordered of the indicated item.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -257,6 +267,7 @@ class SupplyRequest(domainresource.DomainResource):
         description="The device, practitioner, etc. who initiated the request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -277,6 +288,7 @@ class SupplyRequest(domainresource.DomainResource):
         description="Status of the supply request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["draft", "active", "suspended", "+"],
@@ -293,6 +305,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization", "HealthcareService"],
         },
@@ -300,9 +313,9 @@ class SupplyRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SupplyRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SupplyRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -331,6 +344,31 @@ class SupplyRequest(domainresource.DomainResource):
             "reason",
             "deliverFrom",
             "deliverTo",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SupplyRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "basedOn",
+            "category",
+            "priority",
+            "item",
+            "quantity",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "authoredOn",
+            "requester",
+            "supplier",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -431,9 +469,9 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SupplyRequestParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SupplyRequestParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -445,6 +483,13 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
             "valueRange",
             "valueBoolean",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SupplyRequestParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

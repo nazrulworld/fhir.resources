@@ -35,6 +35,7 @@ class Media(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ProcedureRequest"],
         },
@@ -50,6 +51,7 @@ class Media(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -76,6 +78,7 @@ class Media(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter", "EpisodeOfCare"],
         },
@@ -88,6 +91,7 @@ class Media(domainresource.DomainResource):
         description="The device used to collect the media.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device", "DeviceMetric"],
         },
@@ -100,6 +104,7 @@ class Media(domainresource.DomainResource):
         description="The duration of the recording in seconds - for audio and video.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     duration__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -119,6 +124,7 @@ class Media(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     frames__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -132,6 +138,7 @@ class Media(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     height__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -150,6 +157,7 @@ class Media(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -173,6 +181,7 @@ class Media(domainresource.DomainResource):
         description="The date and time(s) at which the media was collected.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -191,6 +200,7 @@ class Media(domainresource.DomainResource):
         description="The date and time(s) at which the media was collected.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -204,6 +214,7 @@ class Media(domainresource.DomainResource):
         description="The person who administered the collection of the image.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner"],
         },
@@ -216,6 +227,7 @@ class Media(domainresource.DomainResource):
         description="Describes why the event occurred in coded or textual form.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -226,6 +238,7 @@ class Media(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -248,6 +261,7 @@ class Media(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -261,6 +275,7 @@ class Media(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -278,6 +293,7 @@ class Media(domainresource.DomainResource):
         description="The name of the imaging view e.g. Lateral or Antero-posterior (AP).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -288,6 +304,7 @@ class Media(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     width__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -296,9 +313,9 @@ class Media(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Media`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Media`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -328,6 +345,34 @@ class Media(domainresource.DomainResource):
             "duration",
             "content",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Media`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "basedOn",
+            "type",
+            "subtype",
+            "view",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "operator",
+            "reasonCode",
+            "bodySite",
+            "device",
+            "height",
+            "width",
+            "frames",
+            "duration",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

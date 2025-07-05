@@ -34,6 +34,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -60,6 +61,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -74,6 +76,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -103,6 +106,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Schedule"],
         },
@@ -118,6 +122,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -133,6 +138,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -146,6 +152,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -156,6 +163,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -170,6 +178,7 @@ class Slot(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -188,9 +197,9 @@ class Slot(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Slot`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Slot`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -212,6 +221,26 @@ class Slot(domainresource.DomainResource):
             "end",
             "overbooked",
             "comment",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Slot`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "serviceCategory",
+            "serviceType",
+            "specialty",
+            "appointmentType",
+            "schedule",
+            "status",
+            "start",
+            "end",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

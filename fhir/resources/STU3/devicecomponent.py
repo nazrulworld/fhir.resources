@@ -36,6 +36,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -53,6 +54,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -66,6 +68,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -87,6 +90,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -123,6 +127,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -136,6 +141,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -149,6 +155,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DeviceComponent"],
         },
@@ -164,6 +171,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -177,6 +185,7 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device"],
         },
@@ -192,14 +201,15 @@ class DeviceComponent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceComponent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceComponent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -210,6 +220,27 @@ class DeviceComponent(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "type",
+            "lastSystemChange",
+            "source",
+            "parent",
+            "operationalStatus",
+            "parameterGroup",
+            "measurementPrinciple",
+            "productionSpecification",
+            "languageCode",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceComponent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "type",
             "lastSystemChange",
@@ -247,6 +278,7 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -257,6 +289,7 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         description="The printable string defining the component.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -276,14 +309,15 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceComponentProductionSpecification`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceComponentProductionSpecification`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -293,3 +327,10 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
             "componentId",
             "productionSpec",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceComponentProductionSpecification`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "specType", "componentId", "productionSpec"]

@@ -32,6 +32,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -51,6 +52,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -61,6 +63,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -71,6 +74,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -84,6 +88,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -100,6 +105,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -110,6 +116,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -120,6 +127,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Citation"],
         },
@@ -136,6 +144,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -148,6 +157,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -162,6 +172,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -172,6 +183,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -182,6 +194,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -192,6 +205,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubstanceNucleicAcid"],
         },
@@ -204,6 +218,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubstancePolymer"],
         },
@@ -216,6 +231,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -226,6 +242,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubstanceProtein"],
         },
@@ -238,6 +255,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubstanceReferenceInformation"],
         },
@@ -253,6 +271,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -263,6 +282,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description="Material or taxonomic/anatomical source for the substance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -273,6 +293,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -283,6 +304,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -299,6 +321,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -311,6 +334,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -319,9 +343,9 @@ class SubstanceDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -331,6 +355,42 @@ class SubstanceDefinition(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "version",
+            "status",
+            "classification",
+            "domain",
+            "grade",
+            "description",
+            "informationSource",
+            "note",
+            "manufacturer",
+            "supplier",
+            "moiety",
+            "characterization",
+            "property",
+            "referenceInformation",
+            "molecularWeight",
+            "structure",
+            "code",
+            "name",
+            "relationship",
+            "nucleicAcid",
+            "polymer",
+            "protein",
+            "sourceMaterial",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "identifier",
             "version",
@@ -379,6 +439,7 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -396,6 +457,7 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -409,6 +471,7 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -422,14 +485,15 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionCharacterization`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionCharacterization`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -440,6 +504,13 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
             "description",
             "file",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionCharacterization`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "technique", "form", "description", "file"]
 
 
 class SubstanceDefinitionCode(backboneelement.BackboneElement):
@@ -459,6 +530,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -469,6 +541,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         description="Any comment can be provided in this field, if necessary.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -479,6 +552,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -491,6 +565,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -504,6 +579,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -512,9 +588,9 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionCode`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionCode`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -526,6 +602,13 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
             "note",
             "source",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionCode`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "status", "statusDate", "note", "source"]
 
 
 class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
@@ -545,6 +628,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e amount[x]
             "one_of_many": "amount",
             "one_of_many_required": False,
@@ -558,6 +642,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e amount[x]
             "one_of_many": "amount",
             "one_of_many_required": False,
@@ -574,6 +659,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -589,6 +675,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -602,6 +689,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -617,6 +705,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -630,6 +719,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -640,6 +730,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -650,18 +741,37 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionMoiety`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionMoiety`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "role",
+            "identifier",
+            "name",
+            "stereochemistry",
+            "opticalActivity",
+            "molecularFormula",
+            "amountQuantity",
+            "amountString",
+            "measurementType",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionMoiety`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "role",
             "identifier",
@@ -716,6 +826,7 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -726,6 +837,7 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
         description="The method by which the molecular weight was determined.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -739,16 +851,24 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionMolecularWeight`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionMolecularWeight`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "method", "type", "amount"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionMolecularWeight`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "method", "type", "amount"]
 
 
 class SubstanceDefinitionName(backboneelement.BackboneElement):
@@ -774,6 +894,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -784,6 +905,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -794,6 +916,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -804,6 +927,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -818,6 +942,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -828,6 +953,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -841,6 +967,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -853,6 +980,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description="The status of the name, for example 'current', 'proposed'.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -865,6 +993,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -875,6 +1004,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -885,18 +1015,39 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         description="Name type, for example 'systematic',  'scientific, 'brand'.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionName`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionName`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "name",
+            "type",
+            "status",
+            "preferred",
+            "language",
+            "domain",
+            "jurisdiction",
+            "synonym",
+            "translation",
+            "official",
+            "source",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionName`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "name",
             "type",
@@ -940,6 +1091,7 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -950,6 +1102,7 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
         description="Date of the official name change.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -966,16 +1119,24 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionNameOfficial`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionNameOfficial`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "authority", "status", "date"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionNameOfficial`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "authority", "status", "date"]
 
 
 class SubstanceDefinitionProperty(backboneelement.BackboneElement):
@@ -995,6 +1156,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1005,6 +1167,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -1018,6 +1181,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -1034,6 +1198,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -1047,6 +1212,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -1063,6 +1229,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -1071,13 +1238,28 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueDate",
+            "valueBoolean",
+            "valueAttachment",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "valueCodeableConcept",
@@ -1138,6 +1320,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e amount[x]
             "one_of_many": "amount",
             "one_of_many_required": False,
@@ -1158,6 +1341,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e amount[x]
             "one_of_many": "amount",
             "one_of_many_required": False,
@@ -1178,6 +1362,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e amount[x]
             "one_of_many": "amount",
             "one_of_many_required": False,
@@ -1197,6 +1382,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1215,6 +1401,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1228,6 +1415,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1238,6 +1426,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -1256,6 +1445,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e substanceDefinition[x]
             "one_of_many": "substanceDefinition",
             "one_of_many_required": False,
@@ -1275,6 +1465,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e substanceDefinition[x]
             "one_of_many": "substanceDefinition",
             "one_of_many_required": False,
@@ -1293,18 +1484,38 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionRelationship`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionRelationship`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "substanceDefinitionReference",
+            "substanceDefinitionCodeableConcept",
+            "type",
+            "isDefining",
+            "amountQuantity",
+            "amountRatio",
+            "amountString",
+            "ratioHighLimitAmount",
+            "comparator",
+            "source",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionRelationship`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "substanceDefinitionReference",
             "substanceDefinitionCodeableConcept",
@@ -1359,6 +1570,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1375,6 +1587,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1385,6 +1598,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1401,6 +1615,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1417,18 +1632,33 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionSourceMaterial`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionSourceMaterial`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "genus",
+            "species",
+            "part",
+            "countryOfOrigin",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionSourceMaterial`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "genus",
@@ -1458,6 +1688,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1476,6 +1707,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     molecularFormulaByMoiety__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1494,6 +1726,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1504,6 +1737,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1514,6 +1748,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1524,6 +1759,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         description="The source of information about the structure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -1536,6 +1772,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1549,18 +1786,36 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionStructure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionStructure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "stereochemistry",
+            "opticalActivity",
+            "molecularFormula",
+            "molecularFormulaByMoiety",
+            "molecularWeight",
+            "technique",
+            "sourceDocument",
+            "representation",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionStructure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "stereochemistry",
             "opticalActivity",
@@ -1596,6 +1851,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -1615,6 +1871,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1625,6 +1882,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     representation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1638,14 +1896,15 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceDefinitionStructureRepresentation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceDefinitionStructureRepresentation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1656,3 +1915,10 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
             "format",
             "document",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionStructureRepresentation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "representation", "format", "document"]

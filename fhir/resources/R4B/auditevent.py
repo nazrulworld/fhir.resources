@@ -37,6 +37,7 @@ class AuditEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     action__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -72,6 +73,7 @@ class AuditEvent(domainresource.DomainResource):
         description="Indicates whether the event succeeded or failed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -85,6 +87,7 @@ class AuditEvent(domainresource.DomainResource):
         description="A free text description of the outcome of the event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     outcomeDesc__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -111,6 +114,7 @@ class AuditEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -121,6 +125,7 @@ class AuditEvent(domainresource.DomainResource):
         description="The time when the event was recorded.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -145,6 +150,7 @@ class AuditEvent(domainresource.DomainResource):
         description="Identifier for the category of event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -159,14 +165,15 @@ class AuditEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AuditEvent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AuditEvent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -188,6 +195,24 @@ class AuditEvent(domainresource.DomainResource):
             "agent",
             "source",
             "entity",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AuditEvent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "type",
+            "subtype",
+            "action",
+            "recorded",
+            "outcome",
+            "outcomeDesc",
+            "purposeOfEvent",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -323,6 +348,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -364,6 +390,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         description="Reference to who this agent is that was involved in the event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "PractitionerRole",
@@ -378,9 +405,9 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AuditEventAgent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AuditEventAgent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -398,6 +425,13 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "network",
             "purposeOfUse",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AuditEventAgent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "who", "requestor"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -457,11 +491,18 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AuditEventAgentNetwork`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AuditEventAgentNetwork`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "address", "type"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AuditEventAgentNetwork`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class AuditEventEntity(backboneelement.BackboneElement):
@@ -518,6 +559,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         description="A name of the entity in the audit event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -531,6 +573,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         description="The query parameters for a query-type entities.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     query__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -580,6 +623,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -587,9 +631,9 @@ class AuditEventEntity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AuditEventEntity`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AuditEventEntity`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -605,6 +649,13 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "query",
             "detail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AuditEventEntity`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "what", "name", "query"]
 
 
 class AuditEventEntityDetail(backboneelement.BackboneElement):
@@ -668,9 +719,9 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AuditEventEntityDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AuditEventEntityDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -680,6 +731,13 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "valueString",
             "valueBase64Binary",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AuditEventEntityDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -727,6 +785,7 @@ class AuditEventSource(backboneelement.BackboneElement):
         description="Identifier of the source where the event was detected.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "PractitionerRole",
@@ -768,8 +827,15 @@ class AuditEventSource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AuditEventSource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AuditEventSource`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "site", "observer", "type"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AuditEventSource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "observer"]

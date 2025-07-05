@@ -38,6 +38,7 @@ class UsageContext(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -51,6 +52,7 @@ class UsageContext(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -67,6 +69,7 @@ class UsageContext(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -83,6 +86,7 @@ class UsageContext(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -99,6 +103,7 @@ class UsageContext(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -117,13 +122,26 @@ class UsageContext(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``UsageContext`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``UsageContext`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "code",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueRange",
+            "valueReference",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``UsageContext`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "code",
             "valueCodeableConcept",
             "valueQuantity",

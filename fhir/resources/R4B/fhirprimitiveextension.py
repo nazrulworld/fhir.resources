@@ -32,7 +32,7 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
         alias="extension",
         title="List of `Extension` items (represented as `dict` in JSON)",
         description="Additional content defined by implementations",
-        # if property is element of this resource.
+        # if property is an element of this resource.
         json_schema_extra={"element_property": False},
     )
 
@@ -58,7 +58,7 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``FHIRPrimitiveExtension`` according specification,
+        """returning all element names from ``FHIRPrimitiveExtension`` according to specification,
         with preserving original sequence order.
         """
         return ["id", "extension"]

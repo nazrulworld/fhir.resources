@@ -39,6 +39,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -49,6 +50,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -59,6 +61,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -69,6 +72,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -79,6 +83,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -89,6 +94,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Group"],
         },
@@ -101,6 +107,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -111,6 +118,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "MedicinalProductDefinition",
@@ -134,6 +142,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -160,6 +169,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -178,14 +188,15 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalUseDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalUseDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -196,6 +207,28 @@ class ClinicalUseDefinition(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "type",
+            "category",
+            "subject",
+            "status",
+            "contraindication",
+            "indication",
+            "interaction",
+            "population",
+            "undesirableEffect",
+            "warning",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalUseDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "type",
             "category",
@@ -238,6 +271,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -253,6 +287,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -268,6 +303,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -280,6 +316,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ClinicalUseDefinition"],
         },
@@ -298,18 +335,33 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalUseDefinitionContraindication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalUseDefinitionContraindication`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "diseaseSymptomProcedure",
+            "diseaseStatus",
+            "comorbidity",
+            "indication",
+            "otherTherapy",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalUseDefinitionContraindication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "diseaseSymptomProcedure",
             "diseaseStatus",
@@ -347,6 +399,7 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -364,6 +417,7 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "MedicinalProductDefinition",
@@ -377,11 +431,18 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalUseDefinitionContraindicationOtherTherapy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalUseDefinitionContraindicationOtherTherapy`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "relationshipType", "therapy"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalUseDefinitionContraindicationOtherTherapy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "relationshipType", "therapy"]
 
 
 class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
@@ -404,6 +465,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -419,6 +481,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -431,6 +494,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -448,6 +512,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e duration[x]
             "one_of_many": "duration",
             "one_of_many_required": False,
@@ -466,6 +531,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e duration[x]
             "one_of_many": "duration",
             "one_of_many_required": False,
@@ -482,6 +548,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -500,6 +567,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -516,6 +584,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ClinicalUseDefinition"],
         },
@@ -523,13 +592,30 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalUseDefinitionIndication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalUseDefinitionIndication`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "diseaseSymptomProcedure",
+            "diseaseStatus",
+            "comorbidity",
+            "intendedEffect",
+            "durationRange",
+            "durationString",
+            "undesirableEffect",
+            "otherTherapy",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalUseDefinitionIndication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "diseaseSymptomProcedure",
             "diseaseStatus",
@@ -578,6 +664,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -590,6 +677,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -603,6 +691,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -613,6 +702,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -629,18 +719,33 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalUseDefinitionInteraction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalUseDefinitionInteraction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "interactant",
+            "type",
+            "effect",
+            "incidence",
+            "management",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalUseDefinitionInteraction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "interactant",
             "type",
@@ -667,6 +772,7 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -680,6 +786,7 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -695,9 +802,9 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalUseDefinitionInteractionInteractant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalUseDefinitionInteractionInteractant`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -706,6 +813,13 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
             "itemReference",
             "itemCodeableConcept",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalUseDefinitionInteractionInteractant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "itemReference", "itemCodeableConcept"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -743,6 +857,7 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -753,6 +868,7 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -763,6 +879,7 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ObservationDefinition"],
         },
@@ -770,13 +887,25 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalUseDefinitionUndesirableEffect`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalUseDefinitionUndesirableEffect`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "symptomConditionEffect",
+            "classification",
+            "frequencyOfOccurrence",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalUseDefinitionUndesirableEffect`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "symptomConditionEffect",
             "classification",
@@ -806,6 +935,7 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -816,6 +946,7 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -824,8 +955,15 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalUseDefinitionWarning`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalUseDefinitionWarning`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalUseDefinitionWarning`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "description", "code"]

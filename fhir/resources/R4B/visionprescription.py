@@ -33,6 +33,7 @@ class VisionPrescription(domainresource.DomainResource):
         description="The date this resource was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -47,6 +48,7 @@ class VisionPrescription(domainresource.DomainResource):
         description="The date (and perhaps time) when the prescription was written.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -90,6 +92,7 @@ class VisionPrescription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -103,6 +106,7 @@ class VisionPrescription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -118,6 +122,7 @@ class VisionPrescription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "PractitionerRole"],
         },
@@ -130,6 +135,7 @@ class VisionPrescription(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -142,9 +148,9 @@ class VisionPrescription(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VisionPrescription`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VisionPrescription`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -160,6 +166,23 @@ class VisionPrescription(domainresource.DomainResource):
             "created",
             "patient",
             "encounter",
+            "dateWritten",
+            "prescriber",
+            "lensSpecification",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VisionPrescription`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "created",
+            "patient",
             "dateWritten",
             "prescriber",
             "lensSpecification",
@@ -304,6 +327,7 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         description="The eye for which the lens specification applies.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -357,6 +381,7 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -375,9 +400,9 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VisionPrescriptionLensSpecification`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VisionPrescriptionLensSpecification`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -398,6 +423,13 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
             "brand",
             "note",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VisionPrescriptionLensSpecification`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "product", "eye"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -455,11 +487,18 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VisionPrescriptionLensSpecificationPrism`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VisionPrescriptionLensSpecificationPrism`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "amount", "base"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VisionPrescriptionLensSpecificationPrism`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

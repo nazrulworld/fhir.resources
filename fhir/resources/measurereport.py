@@ -41,6 +41,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["incremental", "snapshot"],
@@ -57,6 +58,7 @@ class MeasureReport(domainresource.DomainResource):
         description="The date this measure was calculated.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -104,6 +106,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -117,6 +120,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -155,6 +159,7 @@ class MeasureReport(domainresource.DomainResource):
         description="A reference to the Measure that was calculated to produce this report.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Measure"],
         },
@@ -170,6 +175,7 @@ class MeasureReport(domainresource.DomainResource):
         description="The reporting period for which the report was calculated.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -180,6 +186,7 @@ class MeasureReport(domainresource.DomainResource):
         description="The individual or organization that is reporting the data.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -221,6 +228,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -234,6 +242,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -254,6 +263,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CareTeam",
@@ -303,6 +313,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -315,9 +326,9 @@ class MeasureReport(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureReport`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureReport`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -345,6 +356,29 @@ class MeasureReport(domainresource.DomainResource):
             "group",
             "supplementalData",
             "evaluatedResource",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureReport`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "dataUpdateType",
+            "measure",
+            "subject",
+            "date",
+            "reporter",
+            "period",
+            "scoring",
+            "improvementNotation",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -381,6 +415,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -411,6 +446,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e measureScore[x]
             "one_of_many": "measureScore",
             "one_of_many_required": False,
@@ -428,6 +464,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e measureScore[x]
             "one_of_many": "measureScore",
             "one_of_many_required": False,
@@ -450,6 +487,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e measureScore[x]
             "one_of_many": "measureScore",
             "one_of_many_required": False,
@@ -467,6 +505,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e measureScore[x]
             "one_of_many": "measureScore",
             "one_of_many_required": False,
@@ -484,6 +523,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e measureScore[x]
             "one_of_many": "measureScore",
             "one_of_many_required": False,
@@ -501,6 +541,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e measureScore[x]
             "one_of_many": "measureScore",
             "one_of_many_required": False,
@@ -543,6 +584,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CareTeam",
@@ -561,9 +603,9 @@ class MeasureReportGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureReportGroup`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureReportGroup`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -580,6 +622,23 @@ class MeasureReportGroup(backboneelement.BackboneElement):
             "measureScoreRange",
             "measureScoreDuration",
             "stratifier",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureReportGroup`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "code",
+            "subject",
+            "measureScoreQuantity",
+            "measureScoreDateTime",
+            "measureScoreCodeableConcept",
+            "measureScorePeriod",
+            "measureScoreRange",
+            "measureScoreDuration",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -631,6 +690,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         description="The type of the population.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -709,9 +769,9 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureReportGroupPopulation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureReportGroupPopulation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -724,6 +784,13 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
             "subjectReport",
             "subjects",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupPopulation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code"]
 
 
 class MeasureReportGroupStratifier(backboneelement.BackboneElement):
@@ -783,11 +850,18 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureReportGroupStratifier`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureReportGroupStratifier`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "linkId", "code", "stratum"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupStratifier`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
@@ -1024,9 +1098,9 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureReportGroupStratifierStratum`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureReportGroupStratifierStratum`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1046,6 +1120,13 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "measureScoreRange",
             "measureScoreDuration",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupStratifierStratum`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1187,9 +1268,9 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureReportGroupStratifierStratumComponent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureReportGroupStratifierStratumComponent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1203,6 +1284,13 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
             "valueRange",
             "valueReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupStratifierStratumComponent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1330,9 +1418,9 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureReportGroupStratifierStratumPopulation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureReportGroupStratifierStratumPopulation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1345,3 +1433,10 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
             "subjectReport",
             "subjects",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupStratifierStratumPopulation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

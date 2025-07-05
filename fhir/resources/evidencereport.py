@@ -37,6 +37,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +82,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -107,6 +109,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -121,6 +124,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -144,6 +148,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -173,6 +178,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -222,6 +228,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -242,6 +249,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -276,6 +284,7 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -295,14 +304,15 @@ class EvidenceReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceReport`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceReport`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -332,6 +342,28 @@ class EvidenceReport(domainresource.DomainResource):
             "endorser",
             "relatesTo",
             "section",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceReport`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "status",
+            "useContext",
+            "identifier",
+            "relatedIdentifier",
+            "subject",
+            "publisher",
+            "contact",
+            "author",
+            "endorser",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -418,11 +450,18 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceReportRelatesTo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceReportRelatesTo`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "target"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceReportRelatesTo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -497,9 +536,9 @@ class EvidenceReportRelatesToTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceReportRelatesToTarget`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceReportRelatesToTarget`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -510,6 +549,13 @@ class EvidenceReportRelatesToTarget(backboneelement.BackboneElement):
             "display",
             "resource",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceReportRelatesToTarget`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceReportSection(backboneelement.BackboneElement):
@@ -699,9 +745,9 @@ class EvidenceReportSection(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceReportSection`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceReportSection`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -720,6 +766,13 @@ class EvidenceReportSection(backboneelement.BackboneElement):
             "emptyReason",
             "section",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceReportSection`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceReportSubject(backboneelement.BackboneElement):
@@ -756,11 +809,18 @@ class EvidenceReportSubject(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceReportSubject`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceReportSubject`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "characteristic", "note"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceReportSubject`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
@@ -878,9 +938,9 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceReportSubjectCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceReportSubjectCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -895,6 +955,13 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
             "exclude",
             "period",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceReportSubjectCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

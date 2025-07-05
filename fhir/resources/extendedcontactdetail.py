@@ -33,6 +33,7 @@ class ExtendedContactDetail(datatype.DataType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -46,6 +47,7 @@ class ExtendedContactDetail(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -60,6 +62,7 @@ class ExtendedContactDetail(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -72,6 +75,7 @@ class ExtendedContactDetail(datatype.DataType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -82,6 +86,7 @@ class ExtendedContactDetail(datatype.DataType):
         description="The purpose/type of contact.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -92,14 +97,15 @@ class ExtendedContactDetail(datatype.DataType):
         description="The contact details application for the purpose defined.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExtendedContactDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExtendedContactDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -111,3 +117,10 @@ class ExtendedContactDetail(datatype.DataType):
             "organization",
             "period",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExtendedContactDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["purpose", "name", "telecom", "address", "organization", "period"]

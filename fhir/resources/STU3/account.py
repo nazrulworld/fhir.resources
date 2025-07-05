@@ -38,6 +38,7 @@ class Account(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -64,6 +65,7 @@ class Account(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -77,6 +79,7 @@ class Account(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -103,6 +106,7 @@ class Account(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -115,6 +119,7 @@ class Account(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -131,6 +136,7 @@ class Account(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -146,6 +152,7 @@ class Account(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -156,6 +163,7 @@ class Account(domainresource.DomainResource):
         description="Indicates whether the account is presently used/usable or not.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "inactive", "entered-in-error"],
@@ -175,6 +183,7 @@ class Account(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -194,14 +203,15 @@ class Account(domainresource.DomainResource):
         description="Categorizes the account for reporting and searching purposes.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Account`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Account`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -224,6 +234,27 @@ class Account(domainresource.DomainResource):
             "owner",
             "description",
             "guarantor",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Account`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "type",
+            "name",
+            "subject",
+            "period",
+            "active",
+            "coverage",
+            "owner",
+            "description",
         ]
 
 
@@ -253,6 +284,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Coverage"],
         },
@@ -265,6 +297,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -273,11 +306,18 @@ class AccountCoverage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AccountCoverage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AccountCoverage`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "coverage", "priority"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AccountCoverage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "coverage", "priority"]
 
 
 class AccountGuarantor(backboneelement.BackboneElement):
@@ -334,8 +374,15 @@ class AccountGuarantor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AccountGuarantor`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AccountGuarantor`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "party", "onHold", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AccountGuarantor`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

@@ -51,6 +51,7 @@ class ObservationDefinition(domainresource.DomainResource):
         description="A code that classifies the general type of observation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -64,6 +65,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -92,6 +94,7 @@ class ObservationDefinition(domainresource.DomainResource):
         description="A unique identifier assigned to this ObservationDefinition artifact.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -239,9 +242,9 @@ class ObservationDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ObservationDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ObservationDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -266,6 +269,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "abnormalCodedValueSet",
             "criticalCodedValueSet",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ObservationDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "category", "code", "identifier"]
 
 
 class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
@@ -395,9 +405,9 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ObservationDefinitionQualifiedInterval`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ObservationDefinitionQualifiedInterval`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -412,6 +422,13 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "gestationalAge",
             "condition",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ObservationDefinitionQualifiedInterval`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
@@ -489,9 +506,9 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ObservationDefinitionQuantitativeDetails`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ObservationDefinitionQuantitativeDetails`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -502,3 +519,10 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "conversionFactor",
             "decimalPrecision",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ObservationDefinitionQuantitativeDetails`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

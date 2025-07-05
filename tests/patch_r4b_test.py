@@ -22,7 +22,8 @@ def SearchParameter_get_required_fields(self) -> typing.List[typing.Tuple[str, s
         ("name", "name__ext"),
         ("status", "status__ext"),
         ("type", "type__ext"),
-        ("url", "url__ext")]
+        ("url", "url__ext"),
+    ]
     return required_fields
 
 
@@ -37,13 +38,14 @@ def apply():
     # constraints.TYPES_ID_MAX_LENGTH = 64
     # importlib.reload(ftypes)
     from fhir.resources.R4B.searchparameter import SearchParameter
+
     # Id.max_length = 255
     # some example json file has ID value more than default 64 character
     # IdType.configure_constraints(min_length=1, max_length=128, regex=None)
-    #SearchParameter.model_fields['id'].metadata[0] = Id(max_length=128, pattern="")
-    #SearchParameter.__pydantic_core_schema__['schema']['schema']['fields']['id']['schema']['schema'].update({
+    # SearchParameter.model_fields['id'].metadata[0] = Id(max_length=128, pattern="")
+    # SearchParameter.__pydantic_core_schema__['schema']['schema']['fields']['id']['schema']['schema'].update({
     #    'max_length': 255
-    #})
+    # })
     # {'type': 'str', 'pattern': '^[A-Za-z0-9\\-.]+$', 'max_length': 64, 'min_length': 1, 'metadata': {}}
 
     SearchParameter.get_required_fields = SearchParameter_get_required_fields

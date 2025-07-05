@@ -32,6 +32,7 @@ class List(domainresource.DomainResource):
         description="This code defines the purpose of the list - why it was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -42,6 +43,7 @@ class List(domainresource.DomainResource):
         description="The date that the list was prepared.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -106,6 +108,7 @@ class List(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -147,6 +150,7 @@ class List(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "Patient", "Device"],
         },
@@ -159,6 +163,7 @@ class List(domainresource.DomainResource):
         description="Indicates the current state of this list.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -179,6 +184,7 @@ class List(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group", "Device", "Location"],
         },
@@ -191,6 +197,7 @@ class List(domainresource.DomainResource):
         description="A label for the list assigned by the author.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -199,9 +206,9 @@ class List(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``List`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``List`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -225,6 +232,24 @@ class List(domainresource.DomainResource):
             "note",
             "entry",
             "emptyReason",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``List`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "mode",
+            "title",
+            "code",
+            "subject",
+            "date",
+            "source",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -303,9 +328,9 @@ class ListEntry(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ListEntry`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ListEntry`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -316,3 +341,10 @@ class ListEntry(backboneelement.BackboneElement):
             "date",
             "item",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ListEntry`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

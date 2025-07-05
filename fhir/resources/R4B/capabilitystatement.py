@@ -38,6 +38,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -71,6 +72,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -104,6 +106,7 @@ class CapabilityStatement(domainresource.DomainResource):
         description="A document definition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -118,6 +121,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -135,6 +139,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -152,6 +157,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -173,6 +179,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -186,6 +193,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ImplementationGuide"],
         },
@@ -209,6 +217,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CapabilityStatement"],
         },
@@ -231,6 +240,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CapabilityStatement"],
         },
@@ -249,6 +259,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -264,6 +275,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -281,6 +293,7 @@ class CapabilityStatement(domainresource.DomainResource):
         description="A description of the messaging capabilities of the solution.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -295,6 +308,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -311,6 +325,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     patchFormat__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -327,6 +342,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -356,6 +372,7 @@ class CapabilityStatement(domainresource.DomainResource):
         description="A definition of the restful capabilities of the solution, if any.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -370,6 +387,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -383,6 +401,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -402,6 +421,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -427,6 +447,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -446,6 +467,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -464,6 +486,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -472,9 +495,9 @@ class CapabilityStatement(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -499,6 +522,40 @@ class CapabilityStatement(domainresource.DomainResource):
             "jurisdiction",
             "purpose",
             "copyright",
+            "kind",
+            "instantiates",
+            "imports",
+            "software",
+            "implementation",
+            "fhirVersion",
+            "format",
+            "patchFormat",
+            "implementationGuide",
+            "rest",
+            "messaging",
+            "document",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
             "kind",
             "instantiates",
             "imports",
@@ -569,6 +626,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -589,6 +647,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition"],
@@ -600,9 +659,9 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementDocument`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementDocument`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -612,6 +671,13 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
             "documentation",
             "profile",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementDocument`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "mode", "profile"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -648,6 +714,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -663,6 +730,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -680,6 +748,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -688,9 +757,9 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementImplementation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementImplementation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -700,6 +769,13 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
             "url",
             "custodian",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementImplementation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "description", "url", "custodian"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -782,14 +858,15 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementMessaging`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementMessaging`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -800,6 +877,13 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
             "documentation",
             "supportedMessage",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementMessaging`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "supportedMessage"]
 
 
 class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
@@ -846,11 +930,18 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementMessagingEndpoint`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementMessagingEndpoint`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "protocol", "address"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementMessagingEndpoint`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -886,6 +977,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MessageDefinition"],
@@ -905,6 +997,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -917,11 +1010,18 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementMessagingSupportedMessage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementMessagingSupportedMessage`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "mode", "definition"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementMessagingSupportedMessage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "mode", "definition"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1001,6 +1101,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -1021,6 +1122,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1034,6 +1136,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1062,14 +1165,15 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementRest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementRest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1084,6 +1188,13 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "operation",
             "compartment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "mode", "security", "resource", "operation"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1144,11 +1255,18 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementRestInteraction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementRestInteraction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "documentation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestInteraction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1280,6 +1398,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1295,6 +1414,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition"],
         },
@@ -1395,6 +1515,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition"],
         },
@@ -1412,6 +1533,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         description="A type of resource exposed via the restful interface.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1463,9 +1585,9 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementRestResource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementRestResource`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1489,6 +1611,13 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "searchParam",
             "operation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestResource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "profile", "supportedProfile", "operation"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1562,11 +1691,18 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementRestResourceInteraction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementRestResourceInteraction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "documentation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestResourceInteraction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1610,6 +1746,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["OperationDefinition"],
@@ -1647,6 +1784,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1656,9 +1794,9 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementRestResourceOperation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementRestResourceOperation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1668,6 +1806,13 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
             "definition",
             "documentation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestResourceOperation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "name", "definition"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1782,9 +1927,9 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementRestResourceSearchParam`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementRestResourceSearchParam`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1795,6 +1940,13 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             "type",
             "documentation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestResourceSearchParam`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1830,6 +1982,7 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     cors__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1856,14 +2009,15 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         description="Types of security services that are supported/required by the system.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementRestSecurity`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementRestSecurity`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1873,6 +2027,13 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
             "service",
             "description",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestSecurity`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "cors", "service"]
 
 
 class CapabilityStatementSoftware(backboneelement.BackboneElement):
@@ -1895,6 +2056,7 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
         description="Name the software is known by.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1909,6 +2071,7 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
         description="Date this version of the software was released.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     releaseDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1922,6 +2085,7 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
         description="The version identifier for the software covered by this statement.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1930,9 +2094,9 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CapabilityStatementSoftware`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CapabilityStatementSoftware`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1942,6 +2106,13 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
             "version",
             "releaseDate",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CapabilityStatementSoftware`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "name", "version", "releaseDate"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

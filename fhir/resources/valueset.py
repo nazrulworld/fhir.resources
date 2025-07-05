@@ -83,6 +83,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -131,6 +132,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -179,6 +181,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -221,6 +224,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -238,6 +242,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -254,6 +259,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     immutable__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -270,6 +276,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -301,6 +308,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -317,6 +325,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -391,6 +400,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -408,6 +418,7 @@ class ValueSet(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the value set.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -446,6 +457,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -465,6 +477,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -483,6 +496,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -499,6 +513,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -515,6 +530,7 @@ class ValueSet(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -528,9 +544,9 @@ class ValueSet(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSet`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSet`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -572,6 +588,34 @@ class ValueSet(domainresource.DomainResource):
             "compose",
             "expansion",
             "scope",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSet`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "immutable",
+            "effectivePeriod",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -645,6 +689,7 @@ class ValueSetCompose(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     inactive__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -658,6 +703,7 @@ class ValueSetCompose(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -673,6 +719,7 @@ class ValueSetCompose(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lockedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -700,9 +747,9 @@ class ValueSetCompose(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetCompose`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetCompose`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -714,6 +761,13 @@ class ValueSetCompose(backboneelement.BackboneElement):
             "exclude",
             "property",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetCompose`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "lockedDate", "inactive", "include"]
 
 
 class ValueSetComposeInclude(backboneelement.BackboneElement):
@@ -770,6 +824,7 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -783,6 +838,7 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -801,6 +857,7 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ValueSet"],
         },
@@ -819,6 +876,7 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -827,9 +885,9 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetComposeInclude`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetComposeInclude`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -842,6 +900,13 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
             "valueSet",
             "copyright",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetComposeInclude`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "system", "version", "filter", "valueSet"]
 
 
 class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
@@ -902,9 +967,9 @@ class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetComposeIncludeConcept`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetComposeIncludeConcept`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -914,6 +979,13 @@ class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
             "display",
             "designation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetComposeIncludeConcept`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -992,9 +1064,9 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetComposeIncludeConceptDesignation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetComposeIncludeConceptDesignation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1005,6 +1077,13 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
             "additionalUse",
             "value",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetComposeIncludeConceptDesignation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1042,6 +1121,7 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
         description="The kind of operation to perform as a part of the filter criteria.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -1074,6 +1154,7 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1095,6 +1176,7 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1104,11 +1186,18 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetComposeIncludeFilter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetComposeIncludeFilter`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "property", "op", "value"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetComposeIncludeFilter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "property", "op", "value"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1263,9 +1352,9 @@ class ValueSetExpansion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetExpansion`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetExpansion`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1280,6 +1369,13 @@ class ValueSetExpansion(backboneelement.BackboneElement):
             "property",
             "contains",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetExpansion`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1442,9 +1538,9 @@ class ValueSetExpansionContains(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetExpansionContains`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetExpansionContains`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1460,6 +1556,13 @@ class ValueSetExpansionContains(backboneelement.BackboneElement):
             "property",
             "contains",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetExpansionContains`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ValueSetExpansionContainsProperty(backboneelement.BackboneElement):
@@ -1608,9 +1711,9 @@ class ValueSetExpansionContainsProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetExpansionContainsProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetExpansionContainsProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1626,6 +1729,13 @@ class ValueSetExpansionContainsProperty(backboneelement.BackboneElement):
             "valueDecimal",
             "subProperty",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetExpansionContainsProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1801,9 +1911,9 @@ class ValueSetExpansionContainsPropertySubProperty(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetExpansionContainsPropertySubProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetExpansionContainsPropertySubProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1818,6 +1928,13 @@ class ValueSetExpansionContainsPropertySubProperty(backboneelement.BackboneEleme
             "valueDateTime",
             "valueDecimal",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetExpansionContainsPropertySubProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -2002,9 +2119,9 @@ class ValueSetExpansionParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetExpansionParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetExpansionParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2019,6 +2136,13 @@ class ValueSetExpansionParameter(backboneelement.BackboneElement):
             "valueCode",
             "valueDateTime",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetExpansionParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -2109,11 +2233,18 @@ class ValueSetExpansionProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetExpansionProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetExpansionProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "uri"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetExpansionProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -2170,9 +2301,9 @@ class ValueSetScope(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ValueSetScope`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ValueSetScope`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2181,3 +2312,10 @@ class ValueSetScope(backboneelement.BackboneElement):
             "inclusionCriteria",
             "exclusionCriteria",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ValueSetScope`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

@@ -34,6 +34,7 @@ class Attachment(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -47,6 +48,7 @@ class Attachment(element.Element):
         description="The date that the attachment was first created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     creation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -76,6 +78,7 @@ class Attachment(element.Element):
         description="The calculated hash of the data using SHA-1. Represented using base64.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     hash__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -92,6 +95,7 @@ class Attachment(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -108,6 +112,7 @@ class Attachment(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     size__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -121,6 +126,7 @@ class Attachment(element.Element):
         description="A label or set of text to display in place of the data.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -134,6 +140,7 @@ class Attachment(element.Element):
         description="A location where the data can be accessed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -142,9 +149,9 @@ class Attachment(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Attachment`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Attachment`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -158,3 +165,10 @@ class Attachment(element.Element):
             "title",
             "creation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Attachment`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["contentType", "language", "url", "size", "hash", "title", "creation"]

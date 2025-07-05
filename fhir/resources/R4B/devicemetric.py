@@ -36,6 +36,7 @@ class DeviceMetric(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -50,6 +51,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -73,6 +75,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -102,6 +105,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -122,6 +126,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -135,6 +140,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["on", "off", "standby", "entered-in-error"],
@@ -160,6 +166,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device"],
         },
@@ -176,6 +183,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device"],
         },
@@ -191,6 +199,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -204,14 +213,15 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceMetric`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceMetric`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -222,6 +232,27 @@ class DeviceMetric(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "type",
+            "unit",
+            "source",
+            "parent",
+            "operationalStatus",
+            "color",
+            "category",
+            "measurementPeriod",
+            "calibration",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceMetric`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "type",
             "unit",
@@ -264,6 +295,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         description="Describes the state of the calibration.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -285,6 +317,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -298,6 +331,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         description="Describes the type of the calibration method.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["unspecified", "offset", "gain", "two-point"],
@@ -309,8 +343,15 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceMetricCalibration`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceMetricCalibration`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "state", "time"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceMetricCalibration`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "state", "time"]

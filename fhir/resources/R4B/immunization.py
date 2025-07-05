@@ -113,6 +113,7 @@ class Immunization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     isSubpotent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -169,6 +170,7 @@ class Immunization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -179,6 +181,7 @@ class Immunization(domainresource.DomainResource):
         description="Date vaccine administered or was to be administered.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": True,
@@ -197,6 +200,7 @@ class Immunization(domainresource.DomainResource):
         description="Date vaccine administered or was to be administered.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": True,
@@ -215,6 +219,7 @@ class Immunization(domainresource.DomainResource):
         description="The patient who either received or did not receive the immunization.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -227,6 +232,7 @@ class Immunization(domainresource.DomainResource):
         description="Indicates who performed the immunization event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -241,6 +247,7 @@ class Immunization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     primarySource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -364,6 +371,7 @@ class Immunization(domainresource.DomainResource):
         description="Indicates the current status of the immunization event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -401,14 +409,15 @@ class Immunization(domainresource.DomainResource):
         description="Vaccine that was administered or was to be administered.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Immunization`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Immunization`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -448,6 +457,26 @@ class Immunization(domainresource.DomainResource):
             "fundingSource",
             "reaction",
             "protocolApplied",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Immunization`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "vaccineCode",
+            "patient",
+            "occurrenceDateTime",
+            "occurrenceString",
+            "primarySource",
+            "performer",
+            "note",
+            "isSubpotent",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -549,9 +578,9 @@ class ImmunizationEducation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationEducation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationEducation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -562,6 +591,13 @@ class ImmunizationEducation(backboneelement.BackboneElement):
             "publicationDate",
             "presentationDate",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationEducation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ImmunizationPerformer(backboneelement.BackboneElement):
@@ -582,6 +618,7 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
         description="The practitioner or organization who performed the action.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -601,16 +638,24 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationPerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationPerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationPerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "function", "actor"]
 
 
 class ImmunizationProtocolApplied(backboneelement.BackboneElement):
@@ -742,9 +787,9 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationProtocolApplied`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationProtocolApplied`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -758,6 +803,13 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
             "seriesDosesPositiveInt",
             "seriesDosesString",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationProtocolApplied`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -831,8 +883,15 @@ class ImmunizationReaction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationReaction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationReaction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "date", "detail", "reported"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationReaction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

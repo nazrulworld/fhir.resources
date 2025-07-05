@@ -40,6 +40,7 @@ class Medication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -66,6 +67,7 @@ class Medication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -86,6 +88,7 @@ class Medication(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -110,6 +113,7 @@ class Medication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -122,6 +126,7 @@ class Medication(domainresource.DomainResource):
         description="A code to indicate if the medication is in active use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "inactive", "entered-in-error"],
@@ -133,9 +138,9 @@ class Medication(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Medication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Medication`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -154,6 +159,22 @@ class Medication(domainresource.DomainResource):
             "amount",
             "ingredient",
             "batch",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Medication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "code",
+            "status",
+            "manufacturer",
+            "amount",
         ]
 
 
@@ -196,11 +217,18 @@ class MedicationBatch(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationBatch`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationBatch`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "lotNumber", "expirationDate"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationBatch`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationIngredient(backboneelement.BackboneElement):
@@ -280,9 +308,9 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationIngredient`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationIngredient`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -293,6 +321,13 @@ class MedicationIngredient(backboneelement.BackboneElement):
             "isActive",
             "strength",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationIngredient`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

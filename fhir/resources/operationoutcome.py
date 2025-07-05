@@ -36,14 +36,15 @@ class OperationOutcome(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``OperationOutcome`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``OperationOutcome`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -56,6 +57,13 @@ class OperationOutcome(domainresource.DomainResource):
             "modifierExtension",
             "issue",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``OperationOutcome`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "modifierExtension", "issue"]
 
 
 class OperationOutcomeIssue(backboneelement.BackboneElement):
@@ -82,6 +90,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -99,6 +108,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -109,6 +119,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     diagnostics__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -127,6 +138,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     expression__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -148,6 +160,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     location__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -164,6 +177,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -176,13 +190,28 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``OperationOutcomeIssue`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``OperationOutcomeIssue`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "severity",
+            "code",
+            "details",
+            "diagnostics",
+            "location",
+            "expression",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``OperationOutcomeIssue`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "severity",
             "code",

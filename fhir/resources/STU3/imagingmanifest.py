@@ -39,6 +39,7 @@ class ImagingManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -62,6 +63,7 @@ class ImagingManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authoringTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -83,6 +85,7 @@ class ImagingManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -99,6 +102,7 @@ class ImagingManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -112,6 +116,7 @@ class ImagingManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -127,14 +132,15 @@ class ImagingManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingManifest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingManifest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -145,6 +151,23 @@ class ImagingManifest(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "patient",
+            "authoringTime",
+            "author",
+            "description",
+            "study",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingManifest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "patient",
             "authoringTime",
@@ -179,6 +202,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Endpoint"],
         },
@@ -191,6 +215,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         description="Reference to the Imaging Study in FHIR form.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ImagingStudy"],
         },
@@ -206,6 +231,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -216,6 +242,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         description="Study instance UID of the SOP instances in the selection.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -225,9 +252,9 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingManifestStudy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingManifestStudy`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -238,6 +265,13 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
             "endpoint",
             "series",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingManifestStudy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "uid", "imagingStudy", "endpoint", "series"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -275,6 +309,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Endpoint"],
         },
@@ -287,6 +322,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         description="Identity and locating information of the selected DICOM SOP instances.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -297,6 +333,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         description="Series instance UID of the SOP instances in the selection.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -306,11 +343,18 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingManifestStudySeries`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingManifestStudySeries`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "uid", "endpoint", "instance"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingManifestStudySeries`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "uid", "endpoint", "instance"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -342,6 +386,7 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
         description="SOP class UID of the selected instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -356,6 +401,7 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
         description="SOP Instance UID of the selected instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -365,11 +411,18 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingManifestStudySeriesInstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingManifestStudySeriesInstance`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "sopClass", "uid"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingManifestStudySeriesInstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "sopClass", "uid"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

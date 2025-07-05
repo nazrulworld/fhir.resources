@@ -39,6 +39,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -56,6 +57,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     baseDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -72,6 +74,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -85,6 +88,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     context__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -101,6 +105,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     contextInvariant__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -119,6 +124,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["resource", "datatype", "extension"],
@@ -158,6 +164,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -171,6 +178,7 @@ class StructureDefinition(domainresource.DomainResource):
         description="How the type relates to the baseDefinition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["specialization", "constraint"],
@@ -220,6 +228,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -238,6 +247,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -255,6 +265,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -268,6 +279,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -281,6 +293,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -291,6 +304,7 @@ class StructureDefinition(domainresource.DomainResource):
         description="Defines the kind of structure that this definition is describing.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -322,6 +336,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -339,6 +354,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -384,6 +400,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -403,6 +420,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -423,6 +441,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -445,6 +464,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -463,6 +483,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -481,6 +502,7 @@ class StructureDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -489,9 +511,9 @@ class StructureDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -530,6 +552,39 @@ class StructureDefinition(domainresource.DomainResource):
             "derivation",
             "snapshot",
             "differential",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "keyword",
+            "fhirVersion",
+            "kind",
+            "abstract",
+            "contextType",
+            "context",
+            "contextInvariant",
+            "type",
+            "baseDefinition",
+            "derivation",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -575,11 +630,18 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureDefinitionDifferential`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureDefinitionDifferential`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "element"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureDefinitionDifferential`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class StructureDefinitionMapping(backboneelement.BackboneElement):
@@ -657,9 +719,9 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureDefinitionMapping`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureDefinitionMapping`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -670,6 +732,13 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
             "name",
             "comment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureDefinitionMapping`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -707,8 +776,15 @@ class StructureDefinitionSnapshot(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureDefinitionSnapshot`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureDefinitionSnapshot`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "element"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureDefinitionSnapshot`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

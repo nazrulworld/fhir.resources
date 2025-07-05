@@ -84,6 +84,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -98,6 +99,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -117,6 +119,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -167,6 +170,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -184,6 +188,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -197,6 +202,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -212,6 +218,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -229,6 +236,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         description="Whether the server supports lockedDate.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lockedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -246,6 +254,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -262,6 +271,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -295,6 +305,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -308,6 +319,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -328,6 +340,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -366,6 +379,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -386,6 +400,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -417,6 +432,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -425,9 +441,9 @@ class TerminologyCapabilities(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilities`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilities`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -462,6 +478,33 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "validateCode",
             "translation",
             "closure",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilities`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "copyright",
+            "kind",
+            "software",
+            "implementation",
+            "lockedDate",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -507,11 +550,18 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesClosure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesClosure`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "translation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesClosure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
@@ -570,11 +620,18 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesCodeSystem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesCodeSystem`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "uri", "version", "subsumption"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesCodeSystem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
@@ -598,6 +655,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -634,6 +692,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     isDefault__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -668,9 +727,9 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesCodeSystemVersion`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesCodeSystemVersion`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -683,6 +742,13 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
             "filter",
             "property",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesCodeSystemVersion`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "isDefault"]
 
 
 class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneElement):
@@ -725,11 +791,18 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesCodeSystemVersionFilter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesCodeSystemVersionFilter`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "op"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesCodeSystemVersionFilter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -818,9 +891,9 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesExpansion`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesExpansion`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -832,6 +905,13 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
             "parameter",
             "textFilter",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesExpansion`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement):
@@ -873,11 +953,18 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesExpansionParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesExpansionParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "documentation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesExpansionParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -914,6 +1001,7 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -928,6 +1016,7 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
         description="An absolute base URL for the implementation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -936,11 +1025,18 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesImplementation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesImplementation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "url"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesImplementation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "description", "url"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -974,6 +1070,7 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
         description="Name the software is known by.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -988,6 +1085,7 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
         description="The version identifier for the software covered by this statement.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -996,11 +1094,18 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesSoftware`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesSoftware`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "version"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesSoftware`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "name", "version"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1041,11 +1146,18 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesTranslation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesTranslation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "needsMap"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesTranslation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1086,11 +1198,18 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TerminologyCapabilitiesValidateCode`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TerminologyCapabilitiesValidateCode`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "translations"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesValidateCode`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

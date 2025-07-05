@@ -39,6 +39,7 @@ class DetectedIssue(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "Device"],
         },
@@ -51,6 +52,7 @@ class DetectedIssue(domainresource.DomainResource):
         description="Identifies the general type of issue identified.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -63,6 +65,7 @@ class DetectedIssue(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -89,6 +92,7 @@ class DetectedIssue(domainresource.DomainResource):
         description="Business identifier associated with the detected issue record.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -102,6 +106,7 @@ class DetectedIssue(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -132,6 +137,7 @@ class DetectedIssue(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -163,6 +169,7 @@ class DetectedIssue(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["high", "moderate", "low"],
@@ -179,6 +186,7 @@ class DetectedIssue(domainresource.DomainResource):
         description="Indicates the status of the detected issue.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -191,9 +199,9 @@ class DetectedIssue(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DetectedIssue`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DetectedIssue`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -215,6 +223,25 @@ class DetectedIssue(domainresource.DomainResource):
             "detail",
             "reference",
             "mitigation",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DetectedIssue`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "category",
+            "severity",
+            "patient",
+            "date",
+            "author",
+            "implicated",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -286,8 +313,15 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DetectedIssueMitigation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DetectedIssueMitigation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action", "date", "author"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DetectedIssueMitigation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

@@ -33,6 +33,7 @@ class PractitionerRole(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -82,6 +83,7 @@ class PractitionerRole(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -122,6 +124,7 @@ class PractitionerRole(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -132,6 +135,7 @@ class PractitionerRole(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -157,6 +161,7 @@ class PractitionerRole(domainresource.DomainResource):
         description="The organization where the Practitioner performs the roles associated.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -175,6 +180,7 @@ class PractitionerRole(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -188,6 +194,7 @@ class PractitionerRole(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner"],
         },
@@ -200,6 +207,7 @@ class PractitionerRole(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -210,14 +218,15 @@ class PractitionerRole(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PractitionerRole`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PractitionerRole`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -242,6 +251,26 @@ class PractitionerRole(domainresource.DomainResource):
             "notAvailable",
             "availabilityExceptions",
             "endpoint",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PractitionerRole`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "active",
+            "period",
+            "practitioner",
+            "organization",
+            "code",
+            "specialty",
+            "location",
+            "telecom",
         ]
 
 
@@ -330,9 +359,9 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PractitionerRoleAvailableTime`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PractitionerRoleAvailableTime`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -343,6 +372,13 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "availableStartTime",
             "availableEndTime",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PractitionerRoleAvailableTime`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
@@ -389,11 +425,18 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PractitionerRoleNotAvailable`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PractitionerRoleNotAvailable`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "during"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PractitionerRoleNotAvailable`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

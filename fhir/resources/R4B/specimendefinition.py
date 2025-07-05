@@ -32,6 +32,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         description="The action to be performed for collecting the specimen.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -42,6 +43,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         description="A business identifier associated with the kind of specimen.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -52,6 +54,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         description="Preparation of the patient for specimen collection.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -62,6 +65,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         description="Time aspect of specimen collection (duration or offset).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     timeAspect__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -75,6 +79,7 @@ class SpecimenDefinition(domainresource.DomainResource):
         description="The kind of material to be collected.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -93,9 +98,9 @@ class SpecimenDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SpecimenDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SpecimenDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -112,6 +117,22 @@ class SpecimenDefinition(domainresource.DomainResource):
             "timeAspect",
             "collection",
             "typeTested",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SpecimenDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "typeCollected",
+            "patientPreparation",
+            "timeAspect",
+            "collection",
         ]
 
 
@@ -233,9 +254,9 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SpecimenDefinitionTypeTested`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SpecimenDefinitionTypeTested`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -250,6 +271,13 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
             "rejectionCriterion",
             "handling",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SpecimenDefinitionTypeTested`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -388,9 +416,9 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SpecimenDefinitionTypeTestedContainer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SpecimenDefinitionTypeTestedContainer`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -406,6 +434,13 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
             "additive",
             "preparation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SpecimenDefinitionTypeTestedContainer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -474,9 +509,9 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SpecimenDefinitionTypeTestedContainerAdditive`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SpecimenDefinitionTypeTestedContainerAdditive`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -485,6 +520,13 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
             "additiveCodeableConcept",
             "additiveReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SpecimenDefinitionTypeTestedContainerAdditive`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -572,9 +614,9 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SpecimenDefinitionTypeTestedHandling`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SpecimenDefinitionTypeTestedHandling`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -585,3 +627,10 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
             "maxDuration",
             "instruction",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SpecimenDefinitionTypeTestedHandling`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

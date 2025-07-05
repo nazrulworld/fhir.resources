@@ -78,6 +78,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -112,6 +113,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -127,6 +129,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -143,6 +146,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -182,6 +186,7 @@ class EvidenceVariable(domainresource.DomainResource):
         description="Used for an outcome to classify.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["continuous", "dichotomous", "ordinal", "polychotomous"],
@@ -202,6 +207,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -216,6 +222,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -245,6 +252,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -287,6 +295,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -303,6 +312,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -336,6 +346,7 @@ class EvidenceVariable(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the evidence variable.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -360,6 +371,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -379,6 +391,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -402,6 +415,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -410,9 +424,9 @@ class EvidenceVariable(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceVariable`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceVariable`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -447,6 +461,31 @@ class EvidenceVariable(domainresource.DomainResource):
             "characteristic",
             "handling",
             "category",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceVariable`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "shortTitle",
+            "status",
+            "date",
+            "description",
+            "useContext",
+            "publisher",
+            "contact",
+            "characteristic",
+            "handling",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -527,9 +566,9 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceVariableCategory`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceVariableCategory`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -540,6 +579,13 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
             "valueQuantity",
             "valueRange",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceVariableCategory`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -584,6 +630,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e definition[x]
             "one_of_many": "definition",
             "one_of_many_required": True,
@@ -609,6 +656,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e definition[x]
             "one_of_many": "definition",
             "one_of_many_required": True,
@@ -627,6 +675,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e definition[x]
             "one_of_many": "definition",
             "one_of_many_required": True,
@@ -645,6 +694,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e definition[x]
             "one_of_many": "definition",
             "one_of_many_required": True,
@@ -751,9 +801,9 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceVariableCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceVariableCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -769,6 +819,19 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "exclude",
             "timeFromStart",
             "groupMeasure",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceVariableCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "definitionReference",
+            "definitionCanonical",
+            "definitionCodeableConcept",
+            "definitionExpression",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -858,9 +921,9 @@ class EvidenceVariableCharacteristicTimeFromStart(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceVariableCharacteristicTimeFromStart`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceVariableCharacteristicTimeFromStart`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -871,3 +934,10 @@ class EvidenceVariableCharacteristicTimeFromStart(backboneelement.BackboneElemen
             "range",
             "note",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceVariableCharacteristicTimeFromStart`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

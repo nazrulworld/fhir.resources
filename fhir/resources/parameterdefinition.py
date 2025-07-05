@@ -38,6 +38,7 @@ class ParameterDefinition(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -54,6 +55,7 @@ class ParameterDefinition(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -70,6 +72,7 @@ class ParameterDefinition(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -86,6 +89,7 @@ class ParameterDefinition(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -102,6 +106,7 @@ class ParameterDefinition(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition"],
         },
@@ -117,6 +122,7 @@ class ParameterDefinition(datatype.DataType):
         description="The type of the parameter.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -131,6 +137,7 @@ class ParameterDefinition(datatype.DataType):
         description="Whether the parameter is input or output for the module.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -143,9 +150,9 @@ class ParameterDefinition(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ParameterDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ParameterDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -158,6 +165,13 @@ class ParameterDefinition(datatype.DataType):
             "type",
             "profile",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ParameterDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["name", "use", "min", "max", "documentation", "type", "profile"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

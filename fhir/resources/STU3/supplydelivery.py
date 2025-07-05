@@ -35,6 +35,7 @@ class SupplyDelivery(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SupplyRequest"],
         },
@@ -75,6 +76,7 @@ class SupplyDelivery(domainresource.DomainResource):
         description="The date or time(s) the activity occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -93,6 +95,7 @@ class SupplyDelivery(domainresource.DomainResource):
         description="The date or time(s) the activity occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -106,6 +109,7 @@ class SupplyDelivery(domainresource.DomainResource):
         description="The date or time(s) the activity occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -119,6 +123,7 @@ class SupplyDelivery(domainresource.DomainResource):
         description="A larger event of which this particular event is a component or step.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SupplyDelivery", "Contract"],
         },
@@ -158,6 +163,7 @@ class SupplyDelivery(domainresource.DomainResource):
         description="A code specifying the state of the dispense event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -213,9 +219,9 @@ class SupplyDelivery(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SupplyDelivery`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SupplyDelivery`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -239,6 +245,23 @@ class SupplyDelivery(domainresource.DomainResource):
             "supplier",
             "destination",
             "receiver",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SupplyDelivery`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "basedOn",
+            "partOf",
+            "status",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -321,9 +344,9 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SupplyDeliverySuppliedItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SupplyDeliverySuppliedItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -335,6 +358,13 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
             "itemReference",
             "itemReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SupplyDeliverySuppliedItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

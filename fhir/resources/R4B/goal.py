@@ -41,6 +41,7 @@ class Goal(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -73,6 +74,7 @@ class Goal(domainresource.DomainResource):
         description="Indicates a category the goal falls within.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -87,6 +89,7 @@ class Goal(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -97,6 +100,7 @@ class Goal(domainresource.DomainResource):
         description="Indicates whose goal this is - patient goal, practitioner goal, etc.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -131,6 +135,7 @@ class Goal(domainresource.DomainResource):
         description="The state of the goal throughout its lifecycle.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -196,6 +201,7 @@ class Goal(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -206,6 +212,7 @@ class Goal(domainresource.DomainResource):
         description="The date or event after which the goal should begin being pursued.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e start[x]
             "one_of_many": "start",
             "one_of_many_required": False,
@@ -219,6 +226,7 @@ class Goal(domainresource.DomainResource):
         description="The date or event after which the goal should begin being pursued.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e start[x]
             "one_of_many": "start",
             "one_of_many_required": False,
@@ -238,6 +246,7 @@ class Goal(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -267,6 +276,7 @@ class Goal(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group", "Organization"],
         },
@@ -284,9 +294,9 @@ class Goal(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Goal`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Goal`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -314,6 +324,27 @@ class Goal(domainresource.DomainResource):
             "note",
             "outcomeCode",
             "outcomeReference",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Goal`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "lifecycleStatus",
+            "achievementStatus",
+            "category",
+            "priority",
+            "description",
+            "subject",
+            "startDate",
+            "startCodeableConcept",
+            "statusDate",
+            "expressedBy",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -370,6 +401,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e detail[x]
             "one_of_many": "detail",
             "one_of_many_required": False,
@@ -394,6 +426,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e detail[x]
             "one_of_many": "detail",
             "one_of_many_required": False,
@@ -415,6 +448,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e detail[x]
             "one_of_many": "detail",
             "one_of_many_required": False,
@@ -439,6 +473,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e detail[x]
             "one_of_many": "detail",
             "one_of_many_required": False,
@@ -460,6 +495,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e detail[x]
             "one_of_many": "detail",
             "one_of_many_required": False,
@@ -481,6 +517,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e detail[x]
             "one_of_many": "detail",
             "one_of_many_required": False,
@@ -502,6 +539,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e detail[x]
             "one_of_many": "detail",
             "one_of_many_required": False,
@@ -521,6 +559,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e due[x]
             "one_of_many": "due",
             "one_of_many_required": False,
@@ -540,6 +579,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e due[x]
             "one_of_many": "due",
             "one_of_many_required": False,
@@ -556,18 +596,38 @@ class GoalTarget(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GoalTarget`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GoalTarget`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "measure",
+            "detailQuantity",
+            "detailRange",
+            "detailCodeableConcept",
+            "detailString",
+            "detailBoolean",
+            "detailInteger",
+            "detailRatio",
+            "dueDate",
+            "dueDuration",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GoalTarget`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "measure",
             "detailQuantity",

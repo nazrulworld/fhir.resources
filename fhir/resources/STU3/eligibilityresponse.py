@@ -186,6 +186,7 @@ class EligibilityResponse(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -197,9 +198,9 @@ class EligibilityResponse(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EligibilityResponse`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EligibilityResponse`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -224,6 +225,13 @@ class EligibilityResponse(domainresource.DomainResource):
             "form",
             "error",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EligibilityResponse`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "status"]
 
 
 class EligibilityResponseError(backboneelement.BackboneElement):
@@ -252,11 +260,18 @@ class EligibilityResponseError(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EligibilityResponseError`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EligibilityResponseError`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EligibilityResponseError`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EligibilityResponseInsurance(backboneelement.BackboneElement):
@@ -307,9 +322,9 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EligibilityResponseInsurance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EligibilityResponseInsurance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -319,6 +334,13 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
             "contract",
             "benefitBalance",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EligibilityResponseInsurance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement):
@@ -443,9 +465,9 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EligibilityResponseInsuranceBenefitBalance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EligibilityResponseInsuranceBenefitBalance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -461,6 +483,13 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
             "term",
             "financial",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EligibilityResponseInsuranceBenefitBalance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EligibilityResponseInsuranceBenefitBalanceFinancial(
@@ -564,9 +593,9 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EligibilityResponseInsuranceBenefitBalanceFinancial`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EligibilityResponseInsuranceBenefitBalanceFinancial`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -579,6 +608,13 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
             "usedUnsignedInt",
             "usedMoney",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EligibilityResponseInsuranceBenefitBalanceFinancial`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

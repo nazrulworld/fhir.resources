@@ -51,6 +51,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Condition"],
         },
@@ -66,6 +67,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -86,6 +88,7 @@ class CarePlan(domainresource.DomainResource):
         description="A care plan that is fulfilled in whole or in part by this care plan.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CarePlan"],
         },
@@ -117,6 +120,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -153,6 +157,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -166,6 +171,7 @@ class CarePlan(domainresource.DomainResource):
         description="A description of the scope and nature of the plan.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -182,6 +188,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -210,6 +217,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -224,6 +232,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "PlanDefinition",
@@ -251,6 +260,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -267,6 +277,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -297,6 +308,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CarePlan"],
         },
@@ -312,6 +324,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -325,6 +338,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CarePlan"],
         },
@@ -343,6 +357,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -371,6 +386,7 @@ class CarePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -400,6 +416,7 @@ class CarePlan(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -408,9 +425,9 @@ class CarePlan(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CarePlan`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CarePlan`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -444,6 +461,34 @@ class CarePlan(domainresource.DomainResource):
             "goal",
             "activity",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CarePlan`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "replaces",
+            "partOf",
+            "status",
+            "intent",
+            "category",
+            "title",
+            "description",
+            "subject",
+            "encounter",
+            "period",
+            "created",
+            "author",
+            "addresses",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -554,9 +599,9 @@ class CarePlanActivity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CarePlanActivity`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CarePlanActivity`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -568,6 +613,13 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "reference",
             "detail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CarePlanActivity`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CarePlanActivityDetail(backboneelement.BackboneElement):
@@ -950,9 +1002,9 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CarePlanActivityDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CarePlanActivityDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -979,6 +1031,13 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "quantity",
             "description",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CarePlanActivityDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

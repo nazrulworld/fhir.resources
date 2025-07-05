@@ -142,6 +142,7 @@ class VisionPrescription(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -153,9 +154,9 @@ class VisionPrescription(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VisionPrescription`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VisionPrescription`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -176,6 +177,13 @@ class VisionPrescription(domainresource.DomainResource):
             "reasonReference",
             "dispense",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VisionPrescription`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "status"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -405,9 +413,9 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VisionPrescriptionDispense`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VisionPrescriptionDispense`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -429,3 +437,10 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
             "brand",
             "note",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VisionPrescriptionDispense`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

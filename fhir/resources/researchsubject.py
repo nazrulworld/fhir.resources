@@ -85,6 +85,7 @@ class ResearchSubject(domainresource.DomainResource):
         description="Identifiers assigned to this research subject for a study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -97,6 +98,7 @@ class ResearchSubject(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -120,6 +122,7 @@ class ResearchSubject(domainresource.DomainResource):
         description="The publication state of the resource (not of the subject).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -137,6 +140,7 @@ class ResearchSubject(domainresource.DomainResource):
         description="Reference to the study the subject is participating in.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ResearchStudy"],
         },
@@ -151,6 +155,7 @@ class ResearchSubject(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -166,9 +171,9 @@ class ResearchSubject(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchSubject`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchSubject`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -188,6 +193,23 @@ class ResearchSubject(domainresource.DomainResource):
             "assignedComparisonGroup",
             "actualComparisonGroup",
             "consent",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchSubject`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "period",
+            "study",
+            "subject",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -292,9 +314,9 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchSubjectProgress`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchSubjectProgress`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -307,3 +329,10 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
             "startDate",
             "endDate",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchSubjectProgress`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

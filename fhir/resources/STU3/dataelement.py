@@ -36,6 +36,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -68,6 +69,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -84,6 +86,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -98,6 +101,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -115,6 +119,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -128,6 +133,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -155,6 +161,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -171,6 +178,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -187,6 +195,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -207,6 +216,7 @@ class DataElement(domainresource.DomainResource):
         description="Identifies how precise the data element is in its definition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -230,6 +240,7 @@ class DataElement(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the data element.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -250,6 +261,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -267,6 +279,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -285,6 +298,7 @@ class DataElement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -293,9 +307,9 @@ class DataElement(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataElement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataElement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -321,6 +335,31 @@ class DataElement(domainresource.DomainResource):
             "copyright",
             "stringency",
             "mapping",
+            "element",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataElement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "name",
+            "title",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "stringency",
             "element",
         ]
 
@@ -412,9 +451,9 @@ class DataElementMapping(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataElementMapping`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataElementMapping`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -425,6 +464,13 @@ class DataElementMapping(backboneelement.BackboneElement):
             "name",
             "comment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataElementMapping`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

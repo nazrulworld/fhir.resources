@@ -39,6 +39,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CarePlan",
@@ -61,6 +62,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["BodyStructure"],
         },
@@ -73,6 +75,7 @@ class ImagingSelection(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -83,6 +86,7 @@ class ImagingSelection(domainresource.DomainResource):
         description="Reason for referencing the selected content.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -93,6 +97,7 @@ class ImagingSelection(domainresource.DomainResource):
         description="The imaging study from which the imaging selection is made.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ImagingStudy", "DocumentReference"],
         },
@@ -112,6 +117,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Endpoint"],
         },
@@ -135,6 +141,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ImagingSelection"],
         },
@@ -151,6 +158,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     frameOfReferenceUid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -166,6 +174,7 @@ class ImagingSelection(domainresource.DomainResource):
         description="A unique identifier assigned to this imaging selection.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -179,6 +188,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -189,6 +199,7 @@ class ImagingSelection(domainresource.DomainResource):
         description="The date and time this imaging selection was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -202,6 +213,7 @@ class ImagingSelection(domainresource.DomainResource):
         description="Selector of the instances \u2013 human or machine.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -215,6 +227,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     seriesNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -231,6 +244,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     seriesUid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -248,6 +262,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -268,6 +283,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     studyUid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -285,6 +301,7 @@ class ImagingSelection(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -303,9 +320,9 @@ class ImagingSelection(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingSelection`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingSelection`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -315,6 +332,35 @@ class ImagingSelection(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "subject",
+            "issued",
+            "performer",
+            "basedOn",
+            "category",
+            "code",
+            "studyUid",
+            "derivedFrom",
+            "endpoint",
+            "seriesUid",
+            "seriesNumber",
+            "frameOfReferenceUid",
+            "bodySite",
+            "focus",
+            "instance",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingSelection`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "identifier",
             "status",
@@ -394,6 +440,7 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
         description="The Instance Number for the selected DICOM instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -439,6 +486,7 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
         description="The SOP Instance UID for the selected DICOM instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -448,9 +496,9 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingSelectionInstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingSelectionInstance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -463,6 +511,13 @@ class ImagingSelectionInstance(backboneelement.BackboneElement):
             "imageRegion2D",
             "imageRegion3D",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingSelectionInstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "uid", "number"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -531,11 +586,18 @@ class ImagingSelectionInstanceImageRegion2D(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingSelectionInstanceImageRegion2D`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingSelectionInstanceImageRegion2D`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "regionType", "coordinate"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingSelectionInstanceImageRegion2D`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -609,11 +671,18 @@ class ImagingSelectionInstanceImageRegion3D(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingSelectionInstanceImageRegion3D`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingSelectionInstanceImageRegion3D`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "regionType", "coordinate"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingSelectionInstanceImageRegion3D`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -648,6 +717,7 @@ class ImagingSelectionPerformer(backboneelement.BackboneElement):
         description="Author \u2013 human or machine.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -669,13 +739,21 @@ class ImagingSelectionPerformer(backboneelement.BackboneElement):
         description="Distinguishes the type of involvement of the performer.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImagingSelectionPerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImagingSelectionPerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImagingSelectionPerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "function", "actor"]

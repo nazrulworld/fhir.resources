@@ -33,6 +33,7 @@ class Annotation(element.Element):
         description="The individual responsible for making the annotation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e author[x]
             "one_of_many": "author",
             "one_of_many_required": False,
@@ -53,6 +54,7 @@ class Annotation(element.Element):
         description="The individual responsible for making the annotation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e author[x]
             "one_of_many": "author",
             "one_of_many_required": False,
@@ -69,6 +71,7 @@ class Annotation(element.Element):
         description="The text of the annotation in markdown format.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -83,6 +86,7 @@ class Annotation(element.Element):
         description="Indicates when this particular annotation was made.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -91,11 +95,18 @@ class Annotation(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Annotation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Annotation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "authorReference", "authorString", "time", "text"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Annotation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["authorReference", "authorString", "time", "text"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

@@ -48,6 +48,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -100,6 +101,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -165,6 +167,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -182,6 +185,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -195,6 +199,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -209,6 +214,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -225,6 +231,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -273,6 +280,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -343,6 +351,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -362,6 +371,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -380,6 +390,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -396,6 +407,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -412,6 +424,7 @@ class TestPlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -425,9 +438,9 @@ class TestPlan(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestPlan`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestPlan`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -462,6 +475,31 @@ class TestPlan(domainresource.DomainResource):
             "dependency",
             "exitCriteria",
             "testCase",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestPlan`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -538,11 +576,18 @@ class TestPlanDependency(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestPlanDependency`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestPlanDependency`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "predecessor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestPlanDependency`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestPlanTestCase(backboneelement.BackboneElement):
@@ -634,9 +679,9 @@ class TestPlanTestCase(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestPlanTestCase`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestPlanTestCase`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -649,6 +694,13 @@ class TestPlanTestCase(backboneelement.BackboneElement):
             "testData",
             "assertion",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestPlanTestCase`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
@@ -701,11 +753,18 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestPlanTestCaseAssertion`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestPlanTestCaseAssertion`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "object", "result"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseAssertion`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestPlanTestCaseDependency(backboneelement.BackboneElement):
@@ -745,11 +804,18 @@ class TestPlanTestCaseDependency(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestPlanTestCaseDependency`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestPlanTestCaseDependency`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "predecessor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseDependency`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestPlanTestCaseTestData(backboneelement.BackboneElement):
@@ -819,9 +885,9 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestPlanTestCaseTestData`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestPlanTestCaseTestData`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -832,6 +898,13 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
             "sourceString",
             "sourceReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseTestData`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -888,11 +961,18 @@ class TestPlanTestCaseTestRun(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestPlanTestCaseTestRun`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestPlanTestCaseTestRun`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "narrative", "script"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseTestRun`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
@@ -953,9 +1033,9 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestPlanTestCaseTestRunScript`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestPlanTestCaseTestRunScript`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -965,6 +1045,13 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
             "sourceString",
             "sourceReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseTestRunScript`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

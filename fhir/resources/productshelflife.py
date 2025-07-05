@@ -38,6 +38,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e period[x]
             "one_of_many": "period",
             "one_of_many_required": False,
@@ -57,6 +58,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e period[x]
             "one_of_many": "period",
             "one_of_many_required": False,
@@ -77,6 +79,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -94,18 +97,32 @@ class ProductShelfLife(backbonetype.BackboneType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProductShelfLife`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProductShelfLife`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "periodDuration",
+            "periodString",
+            "specialPrecautionsForStorage",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProductShelfLife`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "periodDuration",

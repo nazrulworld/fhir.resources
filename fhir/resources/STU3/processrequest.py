@@ -210,6 +210,7 @@ class ProcessRequest(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -233,9 +234,9 @@ class ProcessRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProcessRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProcessRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -262,6 +263,13 @@ class ProcessRequest(domainresource.DomainResource):
             "exclude",
             "period",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProcessRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "status"]
 
 
 class ProcessRequestItem(backboneelement.BackboneElement):
@@ -292,11 +300,18 @@ class ProcessRequestItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProcessRequestItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProcessRequestItem`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "sequenceLinkId"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProcessRequestItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

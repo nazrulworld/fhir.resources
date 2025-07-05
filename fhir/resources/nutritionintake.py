@@ -44,6 +44,7 @@ class NutritionIntake(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["NutritionOrder", "CarePlan", "ServiceRequest"],
         },
@@ -56,6 +57,7 @@ class NutritionIntake(domainresource.DomainResource):
         description="Overall type of nutrition intake.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -92,6 +94,7 @@ class NutritionIntake(domainresource.DomainResource):
         description="The encounter that establishes the context for this NutritionIntake.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -111,6 +114,7 @@ class NutritionIntake(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -204,6 +208,7 @@ class NutritionIntake(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -225,6 +230,7 @@ class NutritionIntake(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -238,6 +244,7 @@ class NutritionIntake(domainresource.DomainResource):
         description="A larger event of which this particular event is a component or step.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["NutritionIntake", "Procedure", "Observation"],
         },
@@ -283,6 +290,7 @@ class NutritionIntake(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -354,6 +362,7 @@ class NutritionIntake(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -390,6 +399,7 @@ class NutritionIntake(domainresource.DomainResource):
         description="The person, animal or group who is/was consuming the food or fluid.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -397,9 +407,9 @@ class NutritionIntake(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionIntake`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionIntake`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -432,6 +442,28 @@ class NutritionIntake(domainresource.DomainResource):
             "derivedFrom",
             "reason",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionIntake`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "basedOn",
+            "partOf",
+            "status",
+            "code",
+            "subject",
+            "encounter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "recorded",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -482,6 +514,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -532,6 +565,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["NutritionProduct"],
         },
@@ -544,6 +578,7 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -567,14 +602,15 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionIntakeConsumedItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionIntakeConsumedItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -588,6 +624,13 @@ class NutritionIntakeConsumedItem(backboneelement.BackboneElement):
             "notConsumed",
             "notConsumedReason",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionIntakeConsumedItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "nutritionProduct", "amount", "rate"]
 
 
 class NutritionIntakeIngredientLabel(backboneelement.BackboneElement):
@@ -628,11 +671,18 @@ class NutritionIntakeIngredientLabel(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionIntakeIngredientLabel`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionIntakeIngredientLabel`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "nutrient", "amount"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionIntakeIngredientLabel`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class NutritionIntakePerformer(backboneelement.BackboneElement):
@@ -678,8 +728,15 @@ class NutritionIntakePerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionIntakePerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionIntakePerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionIntakePerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

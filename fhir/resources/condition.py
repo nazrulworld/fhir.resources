@@ -136,6 +136,7 @@ class Condition(domainresource.DomainResource):
         description="The anatomical location where this condition manifests itself.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -159,6 +160,7 @@ class Condition(domainresource.DomainResource):
         description="The clinical status of the condition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -169,6 +171,7 @@ class Condition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -182,6 +185,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -198,6 +202,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -214,6 +219,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -241,6 +247,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e onset[x]
             "one_of_many": "onset",
             "one_of_many_required": False,
@@ -257,6 +264,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e onset[x]
             "one_of_many": "onset",
             "one_of_many_required": False,
@@ -276,6 +284,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e onset[x]
             "one_of_many": "onset",
             "one_of_many_required": False,
@@ -292,6 +301,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e onset[x]
             "one_of_many": "onset",
             "one_of_many_required": False,
@@ -308,6 +318,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e onset[x]
             "one_of_many": "onset",
             "one_of_many_required": False,
@@ -330,6 +341,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -343,6 +355,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -387,6 +400,7 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -406,14 +420,15 @@ class Condition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Condition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Condition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -448,6 +463,33 @@ class Condition(domainresource.DomainResource):
             "stage",
             "evidence",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Condition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "clinicalStatus",
+            "verificationStatus",
+            "code",
+            "bodySite",
+            "subject",
+            "encounter",
+            "onsetDateTime",
+            "onsetAge",
+            "onsetPeriod",
+            "onsetRange",
+            "onsetString",
+            "recordedDate",
+            "participant",
+            "evidence",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -505,6 +547,7 @@ class ConditionParticipant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -528,16 +571,24 @@ class ConditionParticipant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConditionParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConditionParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConditionParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "function", "actor"]
 
 
 class ConditionStage(backboneelement.BackboneElement):
@@ -599,8 +650,15 @@ class ConditionStage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConditionStage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConditionStage`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "summary", "assessment", "type"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConditionStage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

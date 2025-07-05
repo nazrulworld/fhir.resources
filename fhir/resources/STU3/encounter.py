@@ -46,6 +46,7 @@ class Encounter(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Appointment"],
         },
@@ -77,6 +78,7 @@ class Encounter(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -87,6 +89,7 @@ class Encounter(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -106,6 +109,7 @@ class Encounter(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["EpisodeOfCare"],
         },
@@ -128,6 +132,7 @@ class Encounter(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -188,6 +193,7 @@ class Encounter(domainresource.DomainResource):
         description="The\u00a0list of\u00a0people\u00a0responsible for providing the service.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -221,6 +227,7 @@ class Encounter(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -252,6 +259,7 @@ class Encounter(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -292,6 +300,7 @@ class Encounter(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -307,14 +316,15 @@ class Encounter(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Encounter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Encounter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -346,6 +356,27 @@ class Encounter(domainresource.DomainResource):
             "location",
             "serviceProvider",
             "partOf",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Encounter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "class",
+            "type",
+            "subject",
+            "episodeOfCare",
+            "participant",
+            "appointment",
+            "reason",
+            "diagnosis",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -400,11 +431,18 @@ class EncounterClassHistory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EncounterClassHistory`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EncounterClassHistory`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "class", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EncounterClassHistory`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EncounterDiagnosis(backboneelement.BackboneElement):
@@ -462,11 +500,18 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EncounterDiagnosis`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EncounterDiagnosis`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "condition", "role", "rank"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EncounterDiagnosis`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EncounterHospitalization(backboneelement.BackboneElement):
@@ -582,9 +627,9 @@ class EncounterHospitalization(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EncounterHospitalization`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EncounterHospitalization`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -600,6 +645,13 @@ class EncounterHospitalization(backboneelement.BackboneElement):
             "destination",
             "dischargeDisposition",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EncounterHospitalization`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EncounterLocation(backboneelement.BackboneElement):
@@ -657,11 +709,18 @@ class EncounterLocation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EncounterLocation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EncounterLocation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "location", "status", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EncounterLocation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EncounterParticipant(backboneelement.BackboneElement):
@@ -682,6 +741,7 @@ class EncounterParticipant(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "RelatedPerson"],
         },
@@ -708,16 +768,24 @@ class EncounterParticipant(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EncounterParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EncounterParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "period", "individual"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EncounterParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "individual"]
 
 
 class EncounterStatusHistory(backboneelement.BackboneElement):
@@ -774,11 +842,18 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EncounterStatusHistory`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EncounterStatusHistory`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "status", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EncounterStatusHistory`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

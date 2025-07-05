@@ -33,6 +33,7 @@ class CodeableConcept(element.Element):
         description="A reference to a code defined by a terminology system.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -47,6 +48,7 @@ class CodeableConcept(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -55,8 +57,15 @@ class CodeableConcept(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CodeableConcept`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CodeableConcept`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "coding", "text"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CodeableConcept`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["coding", "text"]

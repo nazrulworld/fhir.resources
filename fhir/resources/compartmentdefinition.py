@@ -36,6 +36,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         description="Which compartment this definition describes.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -63,6 +64,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -79,6 +81,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -112,6 +115,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -129,6 +133,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -146,6 +151,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -175,6 +181,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         description="Information about how a resource is related to the compartment.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -185,6 +192,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         description="Whether the search syntax is supported,.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -202,6 +210,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -221,6 +230,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -246,6 +256,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -267,6 +278,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -285,6 +297,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -301,6 +314,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -317,6 +331,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -330,9 +345,9 @@ class CompartmentDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CompartmentDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CompartmentDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -357,6 +372,33 @@ class CompartmentDefinition(domainresource.DomainResource):
             "description",
             "useContext",
             "purpose",
+            "code",
+            "search",
+            "resource",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CompartmentDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
             "code",
             "search",
             "resource",
@@ -416,6 +458,7 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         description="The name of a resource supported by the server.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -463,6 +506,7 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     param__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -487,9 +531,9 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CompartmentDefinitionResource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CompartmentDefinitionResource`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -501,6 +545,13 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
             "startParam",
             "endParam",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CompartmentDefinitionResource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "param"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

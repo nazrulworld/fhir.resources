@@ -53,6 +53,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -105,6 +106,7 @@ class DocumentReference(domainresource.DomainResource):
         description="The anatomic structures included in the document.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["BodyStructure"],
         },
@@ -121,6 +123,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -135,6 +138,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -175,6 +179,7 @@ class DocumentReference(domainresource.DomainResource):
         description="When the document reference was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -188,6 +193,7 @@ class DocumentReference(domainresource.DomainResource):
         description="Human-readable description of the source document.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -204,6 +210,7 @@ class DocumentReference(domainresource.DomainResource):
         description="The status of the underlying document.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -261,6 +268,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -274,6 +282,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -287,6 +296,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -316,6 +326,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -338,6 +349,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -348,6 +360,7 @@ class DocumentReference(domainresource.DomainResource):
         description="The status of this document reference.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -370,6 +383,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -386,6 +400,7 @@ class DocumentReference(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -399,6 +414,7 @@ class DocumentReference(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -407,9 +423,9 @@ class DocumentReference(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DocumentReference`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DocumentReference`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -439,6 +455,34 @@ class DocumentReference(domainresource.DomainResource):
             "author",
             "attester",
             "custodian",
+            "relatesTo",
+            "description",
+            "securityLabel",
+            "content",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DocumentReference`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "version",
+            "status",
+            "docStatus",
+            "modality",
+            "type",
+            "category",
+            "subject",
+            "bodySite",
+            "period",
+            "date",
+            "author",
             "relatesTo",
             "description",
             "securityLabel",
@@ -511,11 +555,18 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DocumentReferenceAttester`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DocumentReferenceAttester`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "mode", "time", "party"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DocumentReferenceAttester`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class DocumentReferenceContent(backboneelement.BackboneElement):
@@ -541,6 +592,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -555,16 +607,24 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DocumentReferenceContent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DocumentReferenceContent`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "attachment", "profile"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DocumentReferenceContent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "attachment", "profile"]
 
 
 class DocumentReferenceContentProfile(backboneelement.BackboneElement):
@@ -587,6 +647,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -603,6 +664,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -616,6 +678,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -627,9 +690,9 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DocumentReferenceContentProfile`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DocumentReferenceContentProfile`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -639,6 +702,13 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
             "valueUri",
             "valueCanonical",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DocumentReferenceContentProfile`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "valueCoding", "valueUri", "valueCanonical"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -676,6 +746,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         description="The type of relationship that this document has with anther document.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -686,6 +757,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         description="The target document of this relationship.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -693,8 +765,15 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DocumentReferenceRelatesTo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DocumentReferenceRelatesTo`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "target"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DocumentReferenceRelatesTo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "target"]

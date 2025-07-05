@@ -32,6 +32,7 @@ class Reference(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -55,6 +56,7 @@ class Reference(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -73,6 +75,7 @@ class Reference(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -99,6 +102,7 @@ class Reference(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -107,8 +111,15 @@ class Reference(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Reference`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Reference`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "reference", "type", "identifier", "display"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Reference`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["reference", "type", "identifier", "display"]

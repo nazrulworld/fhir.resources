@@ -36,6 +36,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["OperationDefinition"],
         },
@@ -48,6 +49,7 @@ class OperationDefinition(domainresource.DomainResource):
         description="The name used to invoke the operation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -78,6 +80,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -94,6 +97,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -127,6 +131,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -144,6 +149,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     idempotent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -160,6 +166,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -177,6 +184,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -208,6 +216,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -249,6 +258,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -278,6 +288,7 @@ class OperationDefinition(domainresource.DomainResource):
         description="The types on which this operation can be executed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     resource__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -294,6 +305,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -315,6 +327,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -333,6 +346,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -355,6 +369,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -372,6 +387,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -390,6 +406,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -398,9 +415,9 @@ class OperationDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``OperationDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``OperationDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -434,6 +451,34 @@ class OperationDefinition(domainresource.DomainResource):
             "instance",
             "parameter",
             "overload",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``OperationDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "version",
+            "name",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "idempotent",
+            "code",
+            "base",
+            "resource",
+            "system",
+            "type",
+            "instance",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -497,11 +542,18 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``OperationDefinitionOverload`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``OperationDefinitionOverload`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "parameterName", "comment"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``OperationDefinitionOverload`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class OperationDefinitionParameter(backboneelement.BackboneElement):
@@ -673,9 +725,9 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``OperationDefinitionParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``OperationDefinitionParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -692,6 +744,13 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
             "binding",
             "part",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``OperationDefinitionParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -782,9 +841,9 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``OperationDefinitionParameterBinding`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``OperationDefinitionParameterBinding`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -794,6 +853,13 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
             "valueSetUri",
             "valueSetReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``OperationDefinitionParameterBinding`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

@@ -70,6 +70,7 @@ class SampledData(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -87,6 +88,7 @@ class SampledData(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -103,6 +105,7 @@ class SampledData(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     interval__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -116,6 +119,7 @@ class SampledData(datatype.DataType):
         description="The measurement unit in which the sample interval is expressed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -134,6 +138,7 @@ class SampledData(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lowerLimit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -169,6 +174,7 @@ class SampledData(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -183,6 +189,7 @@ class SampledData(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -191,9 +198,9 @@ class SampledData(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SampledData`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SampledData`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -208,6 +215,21 @@ class SampledData(datatype.DataType):
             "codeMap",
             "offsets",
             "data",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SampledData`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "origin",
+            "interval",
+            "intervalUnit",
+            "factor",
+            "lowerLimit",
+            "upperLimit",
+            "dimensions",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

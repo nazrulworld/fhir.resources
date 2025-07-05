@@ -50,6 +50,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -64,6 +65,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -84,6 +86,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -97,6 +100,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     geographicalLocation__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -117,6 +121,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -130,6 +135,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -143,6 +149,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     organismName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -160,6 +167,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -170,6 +178,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     parentSubstanceName__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -185,6 +194,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -198,6 +208,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -208,6 +219,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -222,14 +234,15 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceSourceMaterial`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceSourceMaterial`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -239,6 +252,31 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "sourceMaterialClass",
+            "sourceMaterialType",
+            "sourceMaterialState",
+            "organismId",
+            "organismName",
+            "parentSubstanceId",
+            "parentSubstanceName",
+            "countryOfOrigin",
+            "geographicalLocation",
+            "developmentStage",
+            "fractionDescription",
+            "organism",
+            "partDescription",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceSourceMaterial`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "sourceMaterialClass",
             "sourceMaterialType",
@@ -284,6 +322,7 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     fraction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -301,16 +340,24 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceSourceMaterialFractionDescription`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceSourceMaterialFractionDescription`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "fraction", "materialType"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceSourceMaterialFractionDescription`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "fraction", "materialType"]
 
 
 class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
@@ -333,6 +380,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -343,6 +391,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -357,6 +406,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -367,6 +417,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -382,6 +433,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     intraspecificDescription__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -397,6 +449,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -407,6 +460,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -421,18 +475,36 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceSourceMaterialOrganism`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceSourceMaterialOrganism`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "family",
+            "genus",
+            "species",
+            "intraspecificType",
+            "intraspecificDescription",
+            "author",
+            "hybrid",
+            "organismGeneral",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceSourceMaterialOrganism`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "family",
             "genus",
@@ -467,6 +539,7 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authorDescription__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -488,14 +561,15 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceSourceMaterialOrganismAuthor`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceSourceMaterialOrganismAuthor`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -504,6 +578,13 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
             "authorType",
             "authorDescription",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceSourceMaterialOrganismAuthor`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "authorType", "authorDescription"]
 
 
 class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
@@ -523,6 +604,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -538,6 +620,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     maternalOrganismId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -558,6 +641,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     maternalOrganismName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -576,6 +660,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     paternalOrganismId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -594,6 +679,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     paternalOrganismName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -604,13 +690,27 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceSourceMaterialOrganismHybrid`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceSourceMaterialOrganismHybrid`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "maternalOrganismId",
+            "maternalOrganismName",
+            "paternalOrganismId",
+            "paternalOrganismName",
+            "hybridType",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceSourceMaterialOrganismHybrid`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "maternalOrganismId",
             "maternalOrganismName",
@@ -637,6 +737,7 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -647,6 +748,7 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -657,6 +759,7 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -667,14 +770,15 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceSourceMaterialOrganismOrganismGeneral`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceSourceMaterialOrganismOrganismGeneral`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -685,6 +789,13 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
             "class",
             "order",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceSourceMaterialOrganismOrganismGeneral`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "kingdom", "phylum", "class", "order"]
 
 
 class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
@@ -704,6 +815,7 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -718,13 +830,21 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceSourceMaterialPartDescription`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceSourceMaterialPartDescription`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "part", "partLocation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceSourceMaterialPartDescription`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "part", "partLocation"]

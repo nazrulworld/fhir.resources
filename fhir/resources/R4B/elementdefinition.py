@@ -33,6 +33,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         description="Identifies additional names by which this element might also be known.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     alias__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -55,6 +56,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -68,6 +70,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +84,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -96,6 +100,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -112,6 +117,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     condition__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -128,6 +134,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -144,6 +151,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     contentReference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -162,6 +170,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -178,6 +187,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -194,6 +204,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -210,6 +221,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -226,6 +238,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -247,6 +260,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -268,6 +282,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -289,6 +304,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -310,6 +326,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -326,6 +343,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -342,6 +360,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -358,6 +377,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -374,6 +394,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -390,6 +411,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -406,6 +428,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -422,6 +445,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -438,6 +462,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -459,6 +484,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -480,6 +506,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -501,6 +528,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -517,6 +545,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -533,6 +562,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -549,6 +579,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -565,6 +596,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -581,6 +613,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -600,6 +633,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -616,6 +650,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -637,6 +672,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -658,6 +694,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -679,6 +716,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -695,6 +733,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -714,6 +753,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -730,6 +770,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -746,6 +787,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -767,6 +809,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -783,6 +826,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -799,6 +843,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -815,6 +860,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -831,6 +877,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -847,6 +894,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -863,6 +911,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -879,6 +928,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -895,6 +945,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -916,6 +967,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -937,6 +989,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -953,6 +1006,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -969,6 +1023,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -990,6 +1045,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1009,6 +1065,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1028,6 +1085,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1044,6 +1102,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1069,6 +1128,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1085,6 +1145,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1100,6 +1161,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1118,6 +1180,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1136,6 +1199,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1154,6 +1218,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1172,6 +1237,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1195,6 +1261,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1216,6 +1283,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1237,6 +1305,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1258,6 +1327,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1276,6 +1346,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1294,6 +1365,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1312,6 +1384,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1330,6 +1403,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1348,6 +1422,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1366,6 +1441,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1384,6 +1460,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1402,6 +1479,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1423,6 +1501,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1444,6 +1523,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1465,6 +1545,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1483,6 +1564,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1501,6 +1583,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1519,6 +1602,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1537,6 +1621,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1555,6 +1640,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1576,6 +1662,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1594,6 +1681,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1615,6 +1703,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1636,6 +1725,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1657,6 +1747,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1675,6 +1766,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1696,6 +1788,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1714,6 +1807,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1732,6 +1826,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1755,6 +1850,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1773,6 +1869,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1791,6 +1888,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1809,6 +1907,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1827,6 +1926,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1845,6 +1945,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1863,6 +1964,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1881,6 +1983,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1899,6 +2002,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1920,6 +2024,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1941,6 +2046,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1959,6 +2065,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -1977,6 +2084,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -2000,6 +2108,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -2021,6 +2130,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -2042,6 +2152,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -2060,6 +2171,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e fixed[x]
             "one_of_many": "fixed",
             "one_of_many_required": False,
@@ -2084,6 +2196,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     isModifier__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2100,6 +2213,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     isModifierReason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2118,6 +2232,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     isSummary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2135,6 +2250,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2151,6 +2267,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -2164,6 +2281,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2181,6 +2299,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2198,6 +2317,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2218,6 +2338,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2240,6 +2361,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2260,6 +2382,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2280,6 +2403,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2300,6 +2424,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2322,6 +2447,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2339,6 +2465,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2359,6 +2486,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e maxValue[x]
             "one_of_many": "maxValue",
             "one_of_many_required": False,
@@ -2380,6 +2508,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     meaningWhenMissing__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2395,6 +2524,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         description="The minimum number of times this element SHALL appear in the instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2412,6 +2542,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2432,6 +2563,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2454,6 +2586,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2474,6 +2607,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2494,6 +2628,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2514,6 +2649,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2536,6 +2672,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2553,6 +2690,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2573,6 +2711,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e minValue[x]
             "one_of_many": "minValue",
             "one_of_many_required": False,
@@ -2597,6 +2736,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     mustSupport__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2614,6 +2754,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     orderMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -2631,6 +2772,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -2660,6 +2802,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2688,6 +2831,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2716,6 +2860,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2744,6 +2889,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2772,6 +2918,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2805,6 +2952,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2836,6 +2984,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2869,6 +3018,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2900,6 +3050,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2928,6 +3079,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2956,6 +3108,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -2984,6 +3137,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3012,6 +3166,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3040,6 +3195,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3068,6 +3224,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3096,6 +3253,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3124,6 +3282,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3155,6 +3314,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3186,6 +3346,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3217,6 +3378,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3245,6 +3407,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3273,6 +3436,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3301,6 +3465,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3329,6 +3494,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3357,6 +3523,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3388,6 +3555,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3416,6 +3584,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3447,6 +3616,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3478,6 +3648,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3509,6 +3680,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3537,6 +3709,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3568,6 +3741,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3596,6 +3770,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3624,6 +3799,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3657,6 +3833,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3685,6 +3862,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3713,6 +3891,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3741,6 +3920,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3769,6 +3949,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3797,6 +3978,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3825,6 +4007,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3853,6 +4036,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3881,6 +4065,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3912,6 +4097,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3943,6 +4129,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3971,6 +4158,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -3999,6 +4187,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -4032,6 +4221,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -4063,6 +4253,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -4094,6 +4285,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -4122,6 +4314,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e pattern[x]
             "one_of_many": "pattern",
             "one_of_many_required": False,
@@ -4141,6 +4334,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["xmlAttr", "xmlText", "typeAttr", "cdaText", "xhtml"],
@@ -4162,6 +4356,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     requirements__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -4178,6 +4373,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     short__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -4200,6 +4396,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     sliceIsConstraining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -4220,6 +4417,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -4242,6 +4440,7 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -4255,18 +4454,228 @@ class ElementDefinition(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "path",
+            "representation",
+            "sliceName",
+            "sliceIsConstraining",
+            "label",
+            "code",
+            "slicing",
+            "short",
+            "definition",
+            "comment",
+            "requirements",
+            "alias",
+            "min",
+            "max",
+            "base",
+            "contentReference",
+            "type",
+            "defaultValueBase64Binary",
+            "defaultValueBoolean",
+            "defaultValueCanonical",
+            "defaultValueCode",
+            "defaultValueDate",
+            "defaultValueDateTime",
+            "defaultValueDecimal",
+            "defaultValueId",
+            "defaultValueInstant",
+            "defaultValueInteger",
+            "defaultValueMarkdown",
+            "defaultValueOid",
+            "defaultValuePositiveInt",
+            "defaultValueString",
+            "defaultValueTime",
+            "defaultValueUnsignedInt",
+            "defaultValueUri",
+            "defaultValueUrl",
+            "defaultValueUuid",
+            "defaultValueAddress",
+            "defaultValueAge",
+            "defaultValueAnnotation",
+            "defaultValueAttachment",
+            "defaultValueCodeableConcept",
+            "defaultValueCodeableReference",
+            "defaultValueCoding",
+            "defaultValueContactPoint",
+            "defaultValueCount",
+            "defaultValueDistance",
+            "defaultValueDuration",
+            "defaultValueHumanName",
+            "defaultValueIdentifier",
+            "defaultValueMoney",
+            "defaultValuePeriod",
+            "defaultValueQuantity",
+            "defaultValueRange",
+            "defaultValueRatio",
+            "defaultValueRatioRange",
+            "defaultValueReference",
+            "defaultValueSampledData",
+            "defaultValueSignature",
+            "defaultValueTiming",
+            "defaultValueContactDetail",
+            "defaultValueContributor",
+            "defaultValueDataRequirement",
+            "defaultValueExpression",
+            "defaultValueParameterDefinition",
+            "defaultValueRelatedArtifact",
+            "defaultValueTriggerDefinition",
+            "defaultValueUsageContext",
+            "defaultValueDosage",
+            "meaningWhenMissing",
+            "orderMeaning",
+            "fixedBase64Binary",
+            "fixedBoolean",
+            "fixedCanonical",
+            "fixedCode",
+            "fixedDate",
+            "fixedDateTime",
+            "fixedDecimal",
+            "fixedId",
+            "fixedInstant",
+            "fixedInteger",
+            "fixedMarkdown",
+            "fixedOid",
+            "fixedPositiveInt",
+            "fixedString",
+            "fixedTime",
+            "fixedUnsignedInt",
+            "fixedUri",
+            "fixedUrl",
+            "fixedUuid",
+            "fixedAddress",
+            "fixedAge",
+            "fixedAnnotation",
+            "fixedAttachment",
+            "fixedCodeableConcept",
+            "fixedCodeableReference",
+            "fixedCoding",
+            "fixedContactPoint",
+            "fixedCount",
+            "fixedDistance",
+            "fixedDuration",
+            "fixedHumanName",
+            "fixedIdentifier",
+            "fixedMoney",
+            "fixedPeriod",
+            "fixedQuantity",
+            "fixedRange",
+            "fixedRatio",
+            "fixedRatioRange",
+            "fixedReference",
+            "fixedSampledData",
+            "fixedSignature",
+            "fixedTiming",
+            "fixedContactDetail",
+            "fixedContributor",
+            "fixedDataRequirement",
+            "fixedExpression",
+            "fixedParameterDefinition",
+            "fixedRelatedArtifact",
+            "fixedTriggerDefinition",
+            "fixedUsageContext",
+            "fixedDosage",
+            "patternBase64Binary",
+            "patternBoolean",
+            "patternCanonical",
+            "patternCode",
+            "patternDate",
+            "patternDateTime",
+            "patternDecimal",
+            "patternId",
+            "patternInstant",
+            "patternInteger",
+            "patternMarkdown",
+            "patternOid",
+            "patternPositiveInt",
+            "patternString",
+            "patternTime",
+            "patternUnsignedInt",
+            "patternUri",
+            "patternUrl",
+            "patternUuid",
+            "patternAddress",
+            "patternAge",
+            "patternAnnotation",
+            "patternAttachment",
+            "patternCodeableConcept",
+            "patternCodeableReference",
+            "patternCoding",
+            "patternContactPoint",
+            "patternCount",
+            "patternDistance",
+            "patternDuration",
+            "patternHumanName",
+            "patternIdentifier",
+            "patternMoney",
+            "patternPeriod",
+            "patternQuantity",
+            "patternRange",
+            "patternRatio",
+            "patternRatioRange",
+            "patternReference",
+            "patternSampledData",
+            "patternSignature",
+            "patternTiming",
+            "patternContactDetail",
+            "patternContributor",
+            "patternDataRequirement",
+            "patternExpression",
+            "patternParameterDefinition",
+            "patternRelatedArtifact",
+            "patternTriggerDefinition",
+            "patternUsageContext",
+            "patternDosage",
+            "example",
+            "minValueDate",
+            "minValueDateTime",
+            "minValueInstant",
+            "minValueTime",
+            "minValueDecimal",
+            "minValueInteger",
+            "minValuePositiveInt",
+            "minValueUnsignedInt",
+            "minValueQuantity",
+            "maxValueDate",
+            "maxValueDateTime",
+            "maxValueInstant",
+            "maxValueTime",
+            "maxValueDecimal",
+            "maxValueInteger",
+            "maxValuePositiveInt",
+            "maxValueUnsignedInt",
+            "maxValueQuantity",
+            "maxLength",
+            "condition",
+            "constraint",
+            "mustSupport",
+            "isModifier",
+            "isModifierReason",
+            "isSummary",
+            "binding",
+            "mapping",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "path",
             "representation",
@@ -4705,6 +5114,7 @@ class ElementDefinitionBase(element.Element):
         description="Maximum cardinality of the base element identified by the path.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -4719,6 +5129,7 @@ class ElementDefinitionBase(element.Element):
         description="Minimum cardinality of the base element identified by the path.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -4739,6 +5150,7 @@ class ElementDefinitionBase(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -4748,11 +5160,18 @@ class ElementDefinitionBase(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinitionBase`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinitionBase`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "path", "min", "max"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinitionBase`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["path", "min", "max"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -4789,6 +5208,7 @@ class ElementDefinitionBinding(element.Element):
         description="Describes the intended use of this particular set of codes.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -4806,6 +5226,7 @@ class ElementDefinitionBinding(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -4826,6 +5247,7 @@ class ElementDefinitionBinding(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ValueSet"],
         },
@@ -4836,11 +5258,18 @@ class ElementDefinitionBinding(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinitionBinding`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinitionBinding`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "strength", "description", "valueSet"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinitionBinding`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["strength", "description", "valueSet"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -4876,6 +5305,7 @@ class ElementDefinitionConstraint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -4892,6 +5322,7 @@ class ElementDefinitionConstraint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -4910,6 +5341,7 @@ class ElementDefinitionConstraint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -4924,6 +5356,7 @@ class ElementDefinitionConstraint(element.Element):
         description="Description of why this constraint is necessary or appropriate.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     requirements__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -4940,6 +5373,7 @@ class ElementDefinitionConstraint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -4960,6 +5394,7 @@ class ElementDefinitionConstraint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition"],
         },
@@ -4978,6 +5413,7 @@ class ElementDefinitionConstraint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     xpath__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -4986,13 +5422,28 @@ class ElementDefinitionConstraint(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinitionConstraint`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinitionConstraint`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "key",
+            "requirements",
+            "severity",
+            "human",
+            "expression",
+            "xpath",
+            "source",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinitionConstraint`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "key",
             "requirements",
             "severity",
@@ -5037,6 +5488,7 @@ class ElementDefinitionExample(element.Element):
         description="Describes the purpose of this example amoung the set of examples.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -5054,6 +5506,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5070,6 +5523,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5086,6 +5540,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5102,6 +5557,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5118,6 +5574,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5139,6 +5596,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5158,6 +5616,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5177,6 +5636,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5196,6 +5656,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5212,6 +5673,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5228,6 +5690,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5244,6 +5707,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5260,6 +5724,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5276,6 +5741,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5292,6 +5758,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5308,6 +5775,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5324,6 +5792,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5343,6 +5812,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5362,6 +5832,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5381,6 +5852,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5397,6 +5869,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5413,6 +5886,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5429,6 +5903,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5445,6 +5920,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5461,6 +5937,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5480,6 +5957,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5496,6 +5974,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5515,6 +5994,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5534,6 +6014,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5553,6 +6034,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5569,6 +6051,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5588,6 +6071,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5604,6 +6088,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5620,6 +6105,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5641,6 +6127,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5657,6 +6144,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5673,6 +6161,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5689,6 +6178,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5705,6 +6195,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5721,6 +6212,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5737,6 +6229,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5753,6 +6246,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5769,6 +6263,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5788,6 +6283,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5807,6 +6303,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5823,6 +6320,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5839,6 +6337,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5860,6 +6359,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5879,6 +6379,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5898,6 +6399,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5914,6 +6416,7 @@ class ElementDefinitionExample(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -5925,13 +6428,73 @@ class ElementDefinitionExample(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinitionExample`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinitionExample`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "label",
+            "valueBase64Binary",
+            "valueBoolean",
+            "valueCanonical",
+            "valueCode",
+            "valueDate",
+            "valueDateTime",
+            "valueDecimal",
+            "valueId",
+            "valueInstant",
+            "valueInteger",
+            "valueMarkdown",
+            "valueOid",
+            "valuePositiveInt",
+            "valueString",
+            "valueTime",
+            "valueUnsignedInt",
+            "valueUri",
+            "valueUrl",
+            "valueUuid",
+            "valueAddress",
+            "valueAge",
+            "valueAnnotation",
+            "valueAttachment",
+            "valueCodeableConcept",
+            "valueCodeableReference",
+            "valueCoding",
+            "valueContactPoint",
+            "valueCount",
+            "valueDistance",
+            "valueDuration",
+            "valueHumanName",
+            "valueIdentifier",
+            "valueMoney",
+            "valuePeriod",
+            "valueQuantity",
+            "valueRange",
+            "valueRatio",
+            "valueRatioRange",
+            "valueReference",
+            "valueSampledData",
+            "valueSignature",
+            "valueTiming",
+            "valueContactDetail",
+            "valueContributor",
+            "valueDataRequirement",
+            "valueExpression",
+            "valueParameterDefinition",
+            "valueRelatedArtifact",
+            "valueTriggerDefinition",
+            "valueUsageContext",
+            "valueDosage",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinitionExample`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "label",
             "valueBase64Binary",
             "valueBoolean",
@@ -6087,6 +6650,7 @@ class ElementDefinitionMapping(element.Element):
         description="Comments that provide information about the mapping or its use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -6100,6 +6664,7 @@ class ElementDefinitionMapping(element.Element):
         description="An internal reference to the definition of a mapping.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -6114,6 +6679,7 @@ class ElementDefinitionMapping(element.Element):
         description="Identifies the computable language in which mapping.map is expressed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -6130,6 +6696,7 @@ class ElementDefinitionMapping(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -6139,11 +6706,18 @@ class ElementDefinitionMapping(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinitionMapping`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinitionMapping`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "identity", "language", "map", "comment"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinitionMapping`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["identity", "language", "map", "comment"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -6186,6 +6760,7 @@ class ElementDefinitionSlicing(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -6205,6 +6780,7 @@ class ElementDefinitionSlicing(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -6218,6 +6794,7 @@ class ElementDefinitionSlicing(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     ordered__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -6235,6 +6812,7 @@ class ElementDefinitionSlicing(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -6247,11 +6825,18 @@ class ElementDefinitionSlicing(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinitionSlicing`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinitionSlicing`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "discriminator", "description", "ordered", "rules"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinitionSlicing`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["discriminator", "description", "ordered", "rules"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -6291,6 +6876,7 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -6305,6 +6891,7 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
         description="How the element value is interpreted when discrimination is evaluated.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -6317,11 +6904,18 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinitionSlicingDiscriminator`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinitionSlicingDiscriminator`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "type", "path"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinitionSlicingDiscriminator`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["type", "path"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -6358,6 +6952,7 @@ class ElementDefinitionType(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["contained", "referenced", "bundled"],
@@ -6380,6 +6975,7 @@ class ElementDefinitionType(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -6402,6 +6998,7 @@ class ElementDefinitionType(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition", "ImplementationGuide"],
         },
@@ -6430,6 +7027,7 @@ class ElementDefinitionType(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition", "ImplementationGuide"],
         },
@@ -6448,6 +7046,7 @@ class ElementDefinitionType(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["either", "independent", "specific"],
@@ -6459,9 +7058,9 @@ class ElementDefinitionType(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ElementDefinitionType`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ElementDefinitionType`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -6472,6 +7071,13 @@ class ElementDefinitionType(element.Element):
             "aggregation",
             "versioning",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ElementDefinitionType`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["code", "profile", "targetProfile", "aggregation", "versioning"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

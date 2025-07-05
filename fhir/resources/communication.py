@@ -54,6 +54,7 @@ class Communication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -82,6 +83,7 @@ class Communication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -98,6 +100,7 @@ class Communication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -124,6 +127,7 @@ class Communication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "PlanDefinition",
@@ -151,6 +155,7 @@ class Communication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -190,6 +195,7 @@ class Communication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -218,6 +224,7 @@ class Communication(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["routine", "urgent", "asap", "stat"],
@@ -234,6 +241,7 @@ class Communication(domainresource.DomainResource):
         description="The reason or justification for the communication.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -327,6 +335,7 @@ class Communication(domainresource.DomainResource):
         description="The status of the transmission.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -353,6 +362,7 @@ class Communication(domainresource.DomainResource):
         description="Captures the reason for the current state of the Communication.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -363,6 +373,7 @@ class Communication(domainresource.DomainResource):
         description="The patient or group that was the focus of this communication.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -383,9 +394,9 @@ class Communication(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Communication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Communication`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -418,6 +429,29 @@ class Communication(domainresource.DomainResource):
             "reason",
             "payload",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Communication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "partOf",
+            "status",
+            "statusReason",
+            "priority",
+            "subject",
+            "encounter",
+            "reason",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -495,9 +529,9 @@ class CommunicationPayload(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CommunicationPayload`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CommunicationPayload`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -507,6 +541,13 @@ class CommunicationPayload(backboneelement.BackboneElement):
             "contentReference",
             "contentCodeableConcept",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CommunicationPayload`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

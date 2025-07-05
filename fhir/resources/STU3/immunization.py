@@ -146,6 +146,7 @@ class Immunization(domainresource.DomainResource):
         description="Indicates if the vaccination was or was not given.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -163,6 +164,7 @@ class Immunization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -185,6 +187,7 @@ class Immunization(domainresource.DomainResource):
         description="Indicates who or what performed the event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -259,6 +262,7 @@ class Immunization(domainresource.DomainResource):
         description="Indicates the current status of the vaccination event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -294,9 +298,9 @@ class Immunization(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Immunization`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Immunization`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -328,6 +332,21 @@ class Immunization(domainresource.DomainResource):
             "explanation",
             "reaction",
             "vaccinationProtocol",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Immunization`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "notGiven",
+            "practitioner",
+            "note",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -379,11 +398,18 @@ class ImmunizationExplanation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationExplanation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationExplanation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reason", "reasonNotGiven"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationExplanation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ImmunizationPractitioner(backboneelement.BackboneElement):
@@ -404,6 +430,7 @@ class ImmunizationPractitioner(backboneelement.BackboneElement):
         description="The device, practitioner, etc. who performed the action.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner"],
         },
@@ -419,16 +446,24 @@ class ImmunizationPractitioner(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationPractitioner`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationPractitioner`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationPractitioner`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "role", "actor"]
 
 
 class ImmunizationReaction(backboneelement.BackboneElement):
@@ -483,11 +518,18 @@ class ImmunizationReaction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationReaction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationReaction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "date", "detail", "reported"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationReaction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
@@ -610,9 +652,9 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationVaccinationProtocol`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationVaccinationProtocol`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -627,3 +669,10 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
             "doseStatus",
             "doseStatusReason",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationVaccinationProtocol`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

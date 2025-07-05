@@ -87,6 +87,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -128,6 +129,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -170,6 +172,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -194,6 +197,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -211,6 +215,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -224,6 +229,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -255,6 +261,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -283,6 +290,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -335,6 +343,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -372,6 +381,7 @@ class Citation(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the citation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -396,6 +406,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -415,6 +426,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -433,6 +445,7 @@ class Citation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -441,9 +454,9 @@ class Citation(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Citation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Citation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -483,6 +496,30 @@ class Citation(domainresource.DomainResource):
             "statusDate",
             "relatesTo",
             "citedArtifact",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Citation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "effectivePeriod",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -557,6 +594,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     dateAccessed__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -574,6 +612,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -620,6 +659,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -675,9 +715,9 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifact`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifact`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -699,6 +739,13 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
             "contributorship",
             "note",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifact`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "identifier", "relatedIdentifier", "dateAccessed"]
 
 
 class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
@@ -760,9 +807,9 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactAbstract`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactAbstract`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -773,6 +820,13 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
             "text",
             "copyright",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactAbstract`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -828,9 +882,9 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactClassification`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactClassification`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -840,6 +894,13 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
             "classifier",
             "whoClassified",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactClassification`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneElement):
@@ -921,9 +982,9 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactClassificationWhoClassified`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactClassificationWhoClassified`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -935,6 +996,13 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
             "classifierCopyright",
             "freeToShare",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactClassificationWhoClassified`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
@@ -987,11 +1055,18 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactContributorship`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactContributorship`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "complete", "entry", "summary"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorship`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement):
@@ -1147,9 +1222,9 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactContributorshipEntry`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactContributorshipEntry`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1168,6 +1243,13 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
             "correspondingContact",
             "listOrder",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorshipEntry`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactContributorshipEntryAffiliationInfo(
@@ -1221,9 +1303,9 @@ class CitationCitedArtifactContributorshipEntryAffiliationInfo(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactContributorshipEntryAffiliationInfo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactContributorshipEntryAffiliationInfo`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1233,6 +1315,13 @@ class CitationCitedArtifactContributorshipEntryAffiliationInfo(
             "role",
             "identifier",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorshipEntryAffiliationInfo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactContributorshipEntryContributionInstance(
@@ -1272,11 +1361,18 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactContributorshipEntryContributionInstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactContributorshipEntryContributionInstance`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "time"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorshipEntryContributionInstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElement):
@@ -1342,9 +1438,9 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactContributorshipSummary`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactContributorshipSummary`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1355,6 +1451,13 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
             "source",
             "value",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorshipSummary`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1415,11 +1518,18 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactPart`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactPart`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "value", "baseCitation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactPart`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
@@ -1578,9 +1688,9 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactPublicationForm`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactPublicationForm`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1598,6 +1708,13 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "pageCount",
             "copyright",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactPublicationForm`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactPublicationFormPeriodicRelease(
@@ -1663,9 +1780,9 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactPublicationFormPeriodicRelease`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactPublicationFormPeriodicRelease`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1676,6 +1793,13 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
             "issue",
             "dateOfPublication",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactPublicationFormPeriodicRelease`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
@@ -1775,9 +1899,9 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1790,6 +1914,13 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
             "season",
             "text",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneElement):
@@ -1867,9 +1998,9 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactPublicationFormPublishedIn`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactPublicationFormPublishedIn`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1881,6 +2012,13 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
             "publisher",
             "publisherLocation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactPublicationFormPublishedIn`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
@@ -1972,9 +2110,9 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactRelatesTo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactRelatesTo`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1987,6 +2125,13 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
             "targetReference",
             "targetAttachment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactRelatesTo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -2057,11 +2202,18 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactStatusDate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactStatusDate`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "activity", "actual", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactStatusDate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationCitedArtifactTitle(backboneelement.BackboneElement):
@@ -2110,11 +2262,18 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactTitle`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactTitle`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "language", "text"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactTitle`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -2166,11 +2325,18 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactVersion`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactVersion`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "value", "baseCitation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactVersion`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -2219,11 +2385,18 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationCitedArtifactWebLocation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationCitedArtifactWebLocation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "url"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactWebLocation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationClassification(backboneelement.BackboneElement):
@@ -2258,11 +2431,18 @@ class CitationClassification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationClassification`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationClassification`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "classifier"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationClassification`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationRelatesTo(backboneelement.BackboneElement):
@@ -2354,9 +2534,9 @@ class CitationRelatesTo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationRelatesTo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationRelatesTo`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2369,6 +2549,13 @@ class CitationRelatesTo(backboneelement.BackboneElement):
             "targetReference",
             "targetAttachment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationRelatesTo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -2439,11 +2626,18 @@ class CitationStatusDate(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationStatusDate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationStatusDate`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "activity", "actual", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationStatusDate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CitationSummary(backboneelement.BackboneElement):
@@ -2473,6 +2667,7 @@ class CitationSummary(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -2482,11 +2677,18 @@ class CitationSummary(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CitationSummary`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CitationSummary`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "style", "text"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CitationSummary`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "text"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

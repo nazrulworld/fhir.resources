@@ -34,6 +34,7 @@ class Practitioner(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -54,6 +55,7 @@ class Practitioner(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -64,6 +66,7 @@ class Practitioner(domainresource.DomainResource):
         description="The date of birth for the practitioner.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -90,6 +93,7 @@ class Practitioner(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["male", "female", "other", "unknown"],
@@ -106,6 +110,7 @@ class Practitioner(domainresource.DomainResource):
         description="An identifier that applies to this person in this role.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -116,6 +121,7 @@ class Practitioner(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -157,14 +163,15 @@ class Practitioner(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Practitioner`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Practitioner`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -185,6 +192,24 @@ class Practitioner(domainresource.DomainResource):
             "photo",
             "qualification",
             "communication",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Practitioner`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "active",
+            "name",
+            "telecom",
+            "address",
+            "gender",
+            "birthDate",
         ]
 
 
@@ -248,9 +273,9 @@ class PractitionerQualification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PractitionerQualification`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PractitionerQualification`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -261,3 +286,10 @@ class PractitionerQualification(backboneelement.BackboneElement):
             "period",
             "issuer",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PractitionerQualification`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

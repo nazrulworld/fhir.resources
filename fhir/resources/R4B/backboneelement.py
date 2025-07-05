@@ -47,13 +47,21 @@ class BackboneElement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BackboneElement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BackboneElement`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BackboneElement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

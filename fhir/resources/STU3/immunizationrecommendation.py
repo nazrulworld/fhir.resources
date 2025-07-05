@@ -34,6 +34,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         description="A unique identifier assigned to this particular recommendation record.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -44,6 +45,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         description="The patient the recommendations are for.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -56,14 +58,15 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationRecommendation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationRecommendation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -74,6 +77,20 @@ class ImmunizationRecommendation(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "patient",
+            "recommendation",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationRecommendation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "patient",
             "recommendation",
@@ -97,6 +114,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         description="The date the immunization recommendation was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -127,6 +145,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     doseNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -140,6 +159,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -193,6 +213,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         description="The targeted disease for the recommendation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -203,14 +224,15 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         description="Vaccine that pertains to the recommendation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationRecommendationRecommendation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationRecommendationRecommendation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -225,6 +247,20 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "protocol",
             "supportingImmunization",
             "supportingPatientInformation",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationRecommendationRecommendation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "date",
+            "vaccineCode",
+            "targetDisease",
+            "doseNumber",
+            "forecastStatus",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -282,11 +318,18 @@ class ImmunizationRecommendationRecommendationDateCriterion(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationRecommendationRecommendationDateCriterion`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationRecommendationRecommendationDateCriterion`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "value"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationRecommendationRecommendationDateCriterion`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -376,9 +419,9 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationRecommendationRecommendationProtocol`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationRecommendationRecommendationProtocol`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -389,3 +432,10 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
             "authority",
             "series",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationRecommendationRecommendationProtocol`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

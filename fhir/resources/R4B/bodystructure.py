@@ -34,6 +34,7 @@ class BodyStructure(domainresource.DomainResource):
         description="Whether this body site is in active use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -47,6 +48,7 @@ class BodyStructure(domainresource.DomainResource):
         description="A summary, characterization or explanation of the body structure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -60,6 +62,7 @@ class BodyStructure(domainresource.DomainResource):
         description="Identifier for this instance of the anatomical structure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -83,6 +86,7 @@ class BodyStructure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -110,6 +114,7 @@ class BodyStructure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -120,6 +125,7 @@ class BodyStructure(domainresource.DomainResource):
         description="The person to which the body site belongs.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -127,9 +133,9 @@ class BodyStructure(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BodyStructure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BodyStructure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -147,5 +153,22 @@ class BodyStructure(domainresource.DomainResource):
             "locationQualifier",
             "description",
             "image",
+            "patient",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BodyStructure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "active",
+            "morphology",
+            "location",
+            "description",
             "patient",
         ]

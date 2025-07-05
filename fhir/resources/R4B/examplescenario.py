@@ -44,6 +44,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -77,6 +78,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -94,6 +96,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -111,6 +114,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -134,6 +138,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -148,6 +153,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -174,6 +180,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -207,6 +214,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -235,6 +243,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -254,6 +263,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -272,6 +282,7 @@ class ExampleScenario(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -295,9 +306,9 @@ class ExampleScenario(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenario`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenario`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -325,6 +336,28 @@ class ExampleScenario(domainresource.DomainResource):
             "instance",
             "process",
             "workflow",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenario`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -408,9 +441,9 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenarioActor`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenarioActor`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -421,6 +454,13 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
             "name",
             "description",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenarioActor`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -523,9 +563,9 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenarioInstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenarioInstance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -538,6 +578,13 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "version",
             "containedInstance",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenarioInstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -595,11 +642,18 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenarioInstanceContainedInstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenarioInstanceContainedInstance`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "resourceId", "versionId"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenarioInstanceContainedInstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -653,11 +707,18 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenarioInstanceVersion`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenarioInstanceVersion`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "versionId", "description"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenarioInstanceVersion`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -740,6 +801,7 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -749,9 +811,9 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenarioProcess`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenarioProcess`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -763,6 +825,13 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
             "postConditions",
             "step",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenarioProcess`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "title"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -834,9 +903,9 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenarioProcessStep`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenarioProcessStep`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -847,6 +916,13 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
             "operation",
             "alternative",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenarioProcessStep`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
@@ -906,11 +982,18 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenarioProcessStepAlternative`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenarioProcessStepAlternative`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "title", "description", "step"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenarioProcessStepAlternative`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1061,9 +1144,9 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExampleScenarioProcessStepOperation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExampleScenarioProcessStepOperation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1080,6 +1163,13 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
             "request",
             "response",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExampleScenarioProcessStepOperation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

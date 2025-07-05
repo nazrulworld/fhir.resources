@@ -22,8 +22,15 @@ class Duration(quantity.Quantity):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Duration`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Duration`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Duration`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["value", "comparator", "unit", "system", "code"]

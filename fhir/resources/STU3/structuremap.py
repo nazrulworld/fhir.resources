@@ -35,6 +35,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -67,6 +68,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -100,6 +102,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -116,6 +119,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -130,6 +134,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -140,6 +145,7 @@ class StructureMap(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     import__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -156,6 +162,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -170,6 +177,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -187,6 +195,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -219,6 +228,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -240,6 +250,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -250,6 +261,7 @@ class StructureMap(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the structure map.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -270,6 +282,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -288,6 +301,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -306,6 +320,7 @@ class StructureMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -314,9 +329,9 @@ class StructureMap(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMap`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMap`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -342,6 +357,32 @@ class StructureMap(domainresource.DomainResource):
             "jurisdiction",
             "purpose",
             "copyright",
+            "structure",
+            "import",
+            "group",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMap`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
             "structure",
             "import",
             "group",
@@ -385,6 +426,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -398,6 +440,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     extends__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -414,6 +457,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -424,6 +468,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         description="A unique name for the group for the convenience of human readers.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -438,6 +483,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -451,6 +497,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -463,13 +510,28 @@ class StructureMapGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMapGroup`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMapGroup`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "name",
+            "extends",
+            "typeMode",
+            "documentation",
+            "input",
+            "rule",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMapGroup`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "name",
             "extends",
@@ -523,6 +585,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
         description="Mode for this instance of data.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -540,6 +603,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -554,6 +618,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -562,9 +627,9 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMapGroupInput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMapGroupInput`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -575,6 +640,13 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
             "mode",
             "documentation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMapGroupInput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "name", "type", "mode"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -605,6 +677,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -628,6 +701,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -642,6 +716,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -652,6 +727,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -662,14 +738,15 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMapGroupRule`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMapGroupRule`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -682,6 +759,13 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
             "dependent",
             "documentation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMapGroupRule`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "name", "source", "target", "rule", "dependent"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -712,6 +796,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -726,6 +811,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -735,11 +821,18 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMapGroupRuleDependent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMapGroupRuleDependent`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "variable"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMapGroupRuleDependent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "name", "variable"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -773,6 +866,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     check__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -786,6 +880,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     condition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -799,6 +894,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -813,6 +909,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -826,6 +923,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -839,6 +937,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -852,6 +951,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -865,6 +965,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -883,6 +984,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -901,6 +1003,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -919,6 +1022,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -932,6 +1036,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -945,6 +1050,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -958,6 +1064,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -971,6 +1078,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -989,6 +1097,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1007,6 +1116,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1025,6 +1135,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1038,6 +1149,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1051,6 +1163,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1064,6 +1177,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1080,6 +1194,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1093,6 +1208,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1111,6 +1227,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1129,6 +1246,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1147,6 +1265,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1160,6 +1279,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1173,6 +1293,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1189,6 +1310,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1202,6 +1324,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1220,6 +1343,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1233,6 +1357,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1246,6 +1371,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1259,6 +1385,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1272,6 +1399,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1285,6 +1413,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1298,6 +1427,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1316,6 +1446,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1334,6 +1465,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1347,6 +1479,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1365,6 +1498,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="A value to use if there is no existing value in the source object.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e defaultValue[x]
             "one_of_many": "defaultValue",
             "one_of_many_required": False,
@@ -1381,6 +1515,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     element__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1394,6 +1529,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description="How to handle the list mode for this element.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["first", "not_first", "last", "not_last", "only_one"],
@@ -1414,6 +1550,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1430,6 +1567,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1446,6 +1584,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1459,6 +1598,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     variable__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1467,13 +1607,69 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMapGroupRuleSource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMapGroupRuleSource`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "context",
+            "min",
+            "max",
+            "type",
+            "defaultValueBase64Binary",
+            "defaultValueBoolean",
+            "defaultValueCode",
+            "defaultValueDate",
+            "defaultValueDateTime",
+            "defaultValueDecimal",
+            "defaultValueId",
+            "defaultValueInstant",
+            "defaultValueInteger",
+            "defaultValueMarkdown",
+            "defaultValueOid",
+            "defaultValuePositiveInt",
+            "defaultValueString",
+            "defaultValueTime",
+            "defaultValueUnsignedInt",
+            "defaultValueUri",
+            "defaultValueAddress",
+            "defaultValueAge",
+            "defaultValueAnnotation",
+            "defaultValueAttachment",
+            "defaultValueCodeableConcept",
+            "defaultValueCoding",
+            "defaultValueContactPoint",
+            "defaultValueCount",
+            "defaultValueDistance",
+            "defaultValueDuration",
+            "defaultValueHumanName",
+            "defaultValueIdentifier",
+            "defaultValueMoney",
+            "defaultValuePeriod",
+            "defaultValueQuantity",
+            "defaultValueRange",
+            "defaultValueRatio",
+            "defaultValueReference",
+            "defaultValueSampledData",
+            "defaultValueSignature",
+            "defaultValueTiming",
+            "defaultValueMeta",
+            "element",
+            "listMode",
+            "variable",
+            "condition",
+            "check",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMapGroupRuleSource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "context",
             "min",
@@ -1610,6 +1806,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     context__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1623,6 +1820,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         description="How to interpret the context.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["type", "variable"],
@@ -1639,6 +1837,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     element__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1652,6 +1851,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         description="If field is a list, how to manage the list.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["first", "share", "last", "collate"],
@@ -1668,6 +1868,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     listRuleId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1681,6 +1882,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1691,6 +1893,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         description="How the data is copied / created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["create", "copy", "+"],
@@ -1707,6 +1910,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     variable__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1715,13 +1919,30 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMapGroupRuleTarget`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMapGroupRuleTarget`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "context",
+            "contextType",
+            "element",
+            "variable",
+            "listMode",
+            "listRuleId",
+            "transform",
+            "parameter",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMapGroupRuleTarget`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "context",
             "contextType",
@@ -1751,6 +1972,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -1767,6 +1989,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -1783,6 +2006,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -1799,6 +2023,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -1815,6 +2040,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -1826,13 +2052,27 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMapGroupRuleTargetParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMapGroupRuleTargetParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "valueId",
+            "valueString",
+            "valueBoolean",
+            "valueInteger",
+            "valueDecimal",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMapGroupRuleTargetParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "valueId",
             "valueString",
@@ -1885,6 +2125,7 @@ class StructureMapStructure(backboneelement.BackboneElement):
         description="The name used for this type in the map.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     alias__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1911,6 +2152,7 @@ class StructureMapStructure(backboneelement.BackboneElement):
         description="How the referenced structure is used in this mapping.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -1928,6 +2170,7 @@ class StructureMapStructure(backboneelement.BackboneElement):
         description="The canonical URL that identifies the structure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1937,9 +2180,9 @@ class StructureMapStructure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``StructureMapStructure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``StructureMapStructure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1950,6 +2193,13 @@ class StructureMapStructure(backboneelement.BackboneElement):
             "alias",
             "documentation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``StructureMapStructure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "url", "mode", "alias"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

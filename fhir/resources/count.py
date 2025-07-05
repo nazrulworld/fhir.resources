@@ -25,8 +25,15 @@ class Count(quantity.Quantity):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Count`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Count`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Count`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["value", "comparator", "unit", "system", "code"]

@@ -31,6 +31,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["BodyStructure"],
         },
@@ -43,6 +44,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -53,6 +55,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device"],
         },
@@ -65,6 +68,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -78,6 +82,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -88,6 +93,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -98,6 +104,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description="Indicates the state of the Device association.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -108,6 +115,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -121,6 +129,7 @@ class DeviceAssociation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -134,9 +143,9 @@ class DeviceAssociation(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceAssociation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceAssociation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -146,6 +155,27 @@ class DeviceAssociation(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "device",
+            "category",
+            "status",
+            "statusReason",
+            "subject",
+            "bodyStructure",
+            "period",
+            "operation",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceAssociation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "identifier",
             "device",
@@ -176,6 +206,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Practitioner", "RelatedPerson"],
         },
@@ -188,6 +219,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -198,13 +230,21 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         description="Device operational condition corresponding to the association.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceAssociationOperation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceAssociationOperation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "status", "operator", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceAssociationOperation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "status", "operator", "period"]

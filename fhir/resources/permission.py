@@ -32,6 +32,7 @@ class Permission(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -58,6 +59,7 @@ class Permission(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -82,6 +84,7 @@ class Permission(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -95,6 +98,7 @@ class Permission(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -105,6 +109,7 @@ class Permission(domainresource.DomainResource):
         description="A set of rules.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -115,6 +120,7 @@ class Permission(domainresource.DomainResource):
         description="Status.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -132,14 +138,15 @@ class Permission(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Permission`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Permission`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -149,6 +156,25 @@ class Permission(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "status",
+            "asserter",
+            "date",
+            "validity",
+            "justification",
+            "combining",
+            "rule",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Permission`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "status",
             "asserter",
@@ -191,6 +217,7 @@ class PermissionJustification(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -201,6 +228,7 @@ class PermissionJustification(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -208,11 +236,18 @@ class PermissionJustification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PermissionJustification`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PermissionJustification`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "basis", "evidence"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PermissionJustification`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "basis", "evidence"]
 
 
 class PermissionRule(backboneelement.BackboneElement):
@@ -236,6 +271,7 @@ class PermissionRule(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -252,6 +288,7 @@ class PermissionRule(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -262,6 +299,7 @@ class PermissionRule(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -272,6 +310,7 @@ class PermissionRule(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["deny", "permit"],
@@ -283,9 +322,9 @@ class PermissionRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PermissionRule`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PermissionRule`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -296,6 +335,13 @@ class PermissionRule(backboneelement.BackboneElement):
             "activity",
             "limit",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PermissionRule`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "data", "activity", "limit"]
 
 
 class PermissionRuleActivity(backboneelement.BackboneElement):
@@ -316,6 +362,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
         description="Actions controlled by this Rule.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -326,6 +373,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
         description="The actor(s) authorized for the defined activity.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Device",
@@ -347,16 +395,24 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PermissionRuleActivity`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PermissionRuleActivity`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "actor", "action", "purpose"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PermissionRuleActivity`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "actor", "action", "purpose"]
 
 
 class PermissionRuleData(backboneelement.BackboneElement):
@@ -379,6 +435,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
         description="Used when other data selection elements are insufficient.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -392,6 +449,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -402,6 +460,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -415,14 +474,15 @@ class PermissionRuleData(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PermissionRuleData`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PermissionRuleData`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -433,6 +493,13 @@ class PermissionRuleData(backboneelement.BackboneElement):
             "period",
             "expression",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PermissionRuleData`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "resource", "security", "period", "expression"]
 
 
 class PermissionRuleDataResource(backboneelement.BackboneElement):
@@ -455,6 +522,7 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -475,6 +543,7 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -482,11 +551,18 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PermissionRuleDataResource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PermissionRuleDataResource`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "meaning", "reference"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PermissionRuleDataResource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "meaning", "reference"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

@@ -71,6 +71,7 @@ class GenomicStudy(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -83,6 +84,7 @@ class GenomicStudy(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -185,6 +187,7 @@ class GenomicStudy(domainresource.DomainResource):
         description="The status of the genomic study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -208,6 +211,7 @@ class GenomicStudy(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -232,14 +236,15 @@ class GenomicStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GenomicStudy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GenomicStudy`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -265,6 +270,23 @@ class GenomicStudy(domainresource.DomainResource):
             "note",
             "description",
             "analysis",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GenomicStudy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "subject",
+            "encounter",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -350,6 +372,7 @@ class GenomicStudyAnalysis(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -372,6 +395,7 @@ class GenomicStudyAnalysis(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -431,6 +455,7 @@ class GenomicStudyAnalysis(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -507,6 +532,7 @@ class GenomicStudyAnalysis(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Specimen"],
         },
@@ -519,6 +545,7 @@ class GenomicStudyAnalysis(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -527,9 +554,9 @@ class GenomicStudyAnalysis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GenomicStudyAnalysis`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GenomicStudyAnalysis`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -553,6 +580,20 @@ class GenomicStudyAnalysis(backboneelement.BackboneElement):
             "output",
             "performer",
             "device",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GenomicStudyAnalysis`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "identifier",
+            "methodType",
+            "title",
+            "focus",
+            "specimen",
         ]
 
 
@@ -591,11 +632,18 @@ class GenomicStudyAnalysisDevice(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GenomicStudyAnalysisDevice`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GenomicStudyAnalysisDevice`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "device", "function"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GenomicStudyAnalysisDevice`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class GenomicStudyAnalysisInput(backboneelement.BackboneElement):
@@ -615,6 +663,7 @@ class GenomicStudyAnalysisInput(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -664,9 +713,9 @@ class GenomicStudyAnalysisInput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GenomicStudyAnalysisInput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GenomicStudyAnalysisInput`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -677,6 +726,13 @@ class GenomicStudyAnalysisInput(backboneelement.BackboneElement):
             "generatedByIdentifier",
             "generatedByReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GenomicStudyAnalysisInput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "file"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -714,6 +770,7 @@ class GenomicStudyAnalysisOutput(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -726,16 +783,24 @@ class GenomicStudyAnalysisOutput(backboneelement.BackboneElement):
         description="Type of output data, e.g., VCF, MAF, or BAM.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GenomicStudyAnalysisOutput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GenomicStudyAnalysisOutput`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "file", "type"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GenomicStudyAnalysisOutput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "file", "type"]
 
 
 class GenomicStudyAnalysisPerformer(backboneelement.BackboneElement):
@@ -780,8 +845,15 @@ class GenomicStudyAnalysisPerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GenomicStudyAnalysisPerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GenomicStudyAnalysisPerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "actor", "role"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GenomicStudyAnalysisPerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

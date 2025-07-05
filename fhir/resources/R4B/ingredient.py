@@ -36,6 +36,7 @@ class Ingredient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     allergenicIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -51,6 +52,7 @@ class Ingredient(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "MedicinalProductDefinition",
@@ -74,6 +76,7 @@ class Ingredient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -88,6 +91,7 @@ class Ingredient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -105,6 +109,7 @@ class Ingredient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -118,6 +123,7 @@ class Ingredient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -131,6 +137,7 @@ class Ingredient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -148,14 +155,15 @@ class Ingredient(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Ingredient`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Ingredient`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -166,6 +174,25 @@ class Ingredient(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "status",
+            "for",
+            "role",
+            "function",
+            "allergenicIndicator",
+            "manufacturer",
+            "substance",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Ingredient`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "status",
             "for",
@@ -211,6 +238,7 @@ class IngredientManufacturer(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -228,6 +256,7 @@ class IngredientManufacturer(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["allowed", "possible", "actual"],
@@ -239,11 +268,18 @@ class IngredientManufacturer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``IngredientManufacturer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``IngredientManufacturer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "manufacturer"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``IngredientManufacturer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "role", "manufacturer"]
 
 
 class IngredientSubstance(backboneelement.BackboneElement):
@@ -263,6 +299,7 @@ class IngredientSubstance(backboneelement.BackboneElement):
         description="A code or full resource that represents the ingredient's substance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubstanceDefinition"],
         },
@@ -284,16 +321,24 @@ class IngredientSubstance(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``IngredientSubstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``IngredientSubstance`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "strength"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``IngredientSubstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "strength"]
 
 
 class IngredientSubstanceStrength(backboneelement.BackboneElement):
@@ -318,6 +363,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e concentration[x]
             "one_of_many": "concentration",
             "one_of_many_required": False,
@@ -331,6 +377,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e concentration[x]
             "one_of_many": "concentration",
             "one_of_many_required": False,
@@ -344,6 +391,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         description="The country or countries for which the strength range applies.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -359,6 +407,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -381,6 +430,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e presentation[x]
             "one_of_many": "presentation",
             "one_of_many_required": False,
@@ -401,6 +451,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e presentation[x]
             "one_of_many": "presentation",
             "one_of_many_required": False,
@@ -422,6 +473,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -439,6 +491,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     textConcentration__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -461,6 +514,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     textPresentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -471,13 +525,31 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``IngredientSubstanceStrength`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``IngredientSubstanceStrength`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "presentationRatio",
+            "presentationRatioRange",
+            "textPresentation",
+            "concentrationRatio",
+            "concentrationRatioRange",
+            "textConcentration",
+            "measurementPoint",
+            "country",
+            "referenceStrength",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``IngredientSubstanceStrength`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "presentationRatio",
             "presentationRatioRange",
@@ -534,6 +606,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         description="The country or countries for which the strength range applies.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -544,6 +617,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         description="For when strength is measured at a particular point or distance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -559,6 +633,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e strength[x]
             "one_of_many": "strength",
             "one_of_many_required": True,
@@ -572,6 +647,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e strength[x]
             "one_of_many": "strength",
             "one_of_many_required": True,
@@ -585,6 +661,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubstanceDefinition"],
         },
@@ -592,13 +669,27 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``IngredientSubstanceStrengthReferenceStrength`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``IngredientSubstanceStrengthReferenceStrength`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "substance",
+            "strengthRatio",
+            "strengthRatioRange",
+            "measurementPoint",
+            "country",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``IngredientSubstanceStrengthReferenceStrength`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "substance",
             "strengthRatio",

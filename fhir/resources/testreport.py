@@ -35,6 +35,7 @@ class TestReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -45,6 +46,7 @@ class TestReport(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -58,6 +60,7 @@ class TestReport(domainresource.DomainResource):
         description="A free text natural language name identifying the executed TestReport.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -84,6 +87,7 @@ class TestReport(domainresource.DomainResource):
         description="The overall result from the execution of the TestScript.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -104,6 +108,7 @@ class TestReport(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     score__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -130,6 +135,7 @@ class TestReport(domainresource.DomainResource):
         description="The current state of this test report.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -182,6 +188,7 @@ class TestReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["TestScript"],
@@ -198,6 +205,7 @@ class TestReport(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     tester__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -206,9 +214,9 @@ class TestReport(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReport`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReport`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -231,6 +239,26 @@ class TestReport(domainresource.DomainResource):
             "setup",
             "test",
             "teardown",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReport`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "name",
+            "status",
+            "testScript",
+            "result",
+            "score",
+            "tester",
+            "issued",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -306,11 +334,18 @@ class TestReportParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "uri", "display"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -347,11 +382,18 @@ class TestReportSetup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportSetup`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportSetup`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportSetup`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestReportSetupAction(backboneelement.BackboneElement):
@@ -387,11 +429,18 @@ class TestReportSetupAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportSetupAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportSetupAction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation", "assert"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportSetupAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestReportSetupActionAssert(backboneelement.BackboneElement):
@@ -463,9 +512,9 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportSetupActionAssert`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportSetupActionAssert`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -476,6 +525,13 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
             "detail",
             "requirement",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportSetupActionAssert`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -543,11 +599,18 @@ class TestReportSetupActionAssertRequirement(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportSetupActionAssertRequirement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportSetupActionAssertRequirement`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "linkUri", "linkCanonical"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportSetupActionAssertRequirement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -622,11 +685,18 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportSetupActionOperation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportSetupActionOperation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "result", "message", "detail"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportSetupActionOperation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -664,11 +734,18 @@ class TestReportTeardown(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportTeardown`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportTeardown`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportTeardown`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestReportTeardownAction(backboneelement.BackboneElement):
@@ -694,11 +771,18 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportTeardownAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportTeardownAction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportTeardownAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestReportTest(backboneelement.BackboneElement):
@@ -755,11 +839,18 @@ class TestReportTest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportTest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportTest`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "description", "action"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportTest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestReportTestAction(backboneelement.BackboneElement):
@@ -795,8 +886,15 @@ class TestReportTestAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestReportTestAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestReportTestAction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation", "assert"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestReportTestAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

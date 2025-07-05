@@ -36,6 +36,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -49,6 +50,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -71,6 +73,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     mustSupport__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -87,6 +90,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     profile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -104,6 +108,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -113,9 +118,9 @@ class DataRequirement(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataRequirement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataRequirement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -126,6 +131,13 @@ class DataRequirement(element.Element):
             "codeFilter",
             "dateFilter",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataRequirement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["type", "profile", "mustSupport", "codeFilter", "dateFilter"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -165,6 +177,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -185,6 +198,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     valueCode__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -204,6 +218,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -220,6 +235,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -235,6 +251,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e valueSet[x]
             "one_of_many": "valueSet",
             "one_of_many_required": False,
@@ -255,6 +272,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e valueSet[x]
             "one_of_many": "valueSet",
             "one_of_many_required": False,
@@ -266,13 +284,27 @@ class DataRequirementCodeFilter(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataRequirementCodeFilter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataRequirementCodeFilter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "path",
+            "valueSetString",
+            "valueSetReference",
+            "valueCode",
+            "valueCoding",
+            "valueCodeableConcept",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataRequirementCodeFilter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "path",
             "valueSetString",
             "valueSetReference",
@@ -335,6 +367,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -356,6 +389,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -379,6 +413,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -399,6 +434,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -407,9 +443,9 @@ class DataRequirementDateFilter(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataRequirementDateFilter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataRequirementDateFilter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -419,6 +455,13 @@ class DataRequirementDateFilter(element.Element):
             "valuePeriod",
             "valueDuration",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataRequirementDateFilter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["path", "valueDateTime", "valuePeriod", "valueDuration"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

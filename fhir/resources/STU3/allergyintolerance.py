@@ -49,6 +49,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         description="The source of the information about the allergy that is recorded.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "RelatedPerson", "Practitioner"],
         },
@@ -61,6 +62,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         description="Category of the identified substance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["food", "medication", "environment", "biologic"],
@@ -77,6 +79,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         description="The clinical status of the allergy or intolerance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "inactive", "resolved"],
@@ -102,6 +105,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -115,6 +119,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["low", "high", "unable-to-assess"],
@@ -137,6 +142,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -262,6 +268,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         description="The patient who has the allergy or intolerance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -305,6 +312,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["allergy", "intolerance"],
@@ -325,6 +333,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -339,9 +348,9 @@ class AllergyIntolerance(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AllergyIntolerance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AllergyIntolerance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -371,6 +380,26 @@ class AllergyIntolerance(domainresource.DomainResource):
             "lastOccurrence",
             "note",
             "reaction",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AllergyIntolerance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "clinicalStatus",
+            "verificationStatus",
+            "type",
+            "category",
+            "criticality",
+            "code",
+            "patient",
+            "asserter",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -532,9 +561,9 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AllergyIntoleranceReaction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AllergyIntoleranceReaction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -548,3 +577,10 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "exposureRoute",
             "note",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AllergyIntoleranceReaction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

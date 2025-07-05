@@ -32,6 +32,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -48,6 +49,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -84,6 +86,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -94,6 +97,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -110,6 +114,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -125,6 +130,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -144,6 +150,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -159,6 +166,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -172,6 +180,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -185,14 +194,15 @@ class OrganizationAffiliation(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``OrganizationAffiliation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``OrganizationAffiliation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -215,4 +225,25 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "healthcareService",
             "telecom",
             "endpoint",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``OrganizationAffiliation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "active",
+            "period",
+            "organization",
+            "participatingOrganization",
+            "network",
+            "code",
+            "specialty",
+            "location",
+            "telecom",
         ]

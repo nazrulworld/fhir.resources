@@ -39,6 +39,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -52,6 +53,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -65,6 +67,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -79,6 +82,7 @@ class Subscription(domainresource.DomainResource):
         description="The time for the server to turn the subscription off.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -95,6 +99,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     error__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -108,6 +113,7 @@ class Subscription(domainresource.DomainResource):
         description="A description of why this subscription is defined.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -125,6 +131,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -145,14 +152,15 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Subscription`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Subscription`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -163,6 +171,25 @@ class Subscription(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "status",
+            "contact",
+            "end",
+            "reason",
+            "criteria",
+            "error",
+            "channel",
+            "tag",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Subscription`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "status",
             "contact",
             "end",
@@ -208,6 +235,7 @@ class SubscriptionChannel(backboneelement.BackboneElement):
         description="The uri that describes the actual end-point to send messages to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -221,6 +249,7 @@ class SubscriptionChannel(backboneelement.BackboneElement):
         description="Additional headers / information to send as part of the notification.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     header__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -238,6 +267,7 @@ class SubscriptionChannel(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     payload__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -251,6 +281,7 @@ class SubscriptionChannel(backboneelement.BackboneElement):
         description="The type of channel to send notifications on.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -263,9 +294,9 @@ class SubscriptionChannel(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionChannel`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionChannel`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -276,6 +307,13 @@ class SubscriptionChannel(backboneelement.BackboneElement):
             "payload",
             "header",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionChannel`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "endpoint", "payload", "header"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

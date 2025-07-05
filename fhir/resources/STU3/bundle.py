@@ -35,6 +35,7 @@ class Bundle(resource.Resource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -48,6 +49,7 @@ class Bundle(resource.Resource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -58,6 +60,7 @@ class Bundle(resource.Resource):
         description="A series of links that provide context to this bundle.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -68,6 +71,7 @@ class Bundle(resource.Resource):
         description="Digital Signature - base64 encoded. XML-DSIg or a JWT.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +85,7 @@ class Bundle(resource.Resource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     total__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -97,6 +102,7 @@ class Bundle(resource.Resource):
         description="Indicates the purpose of this bundle - how it was intended to be used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -119,15 +125,32 @@ class Bundle(resource.Resource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Bundle`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Bundle`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "meta",
             "implicitRules",
             "language",
+            "identifier",
+            "type",
+            "total",
+            "link",
+            "entry",
+            "signature",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Bundle`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "type",
             "total",
@@ -175,6 +198,7 @@ class BundleEntry(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     fullUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -188,6 +212,7 @@ class BundleEntry(backboneelement.BackboneElement):
         description="A series of links that provide context to this entry.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -201,6 +226,7 @@ class BundleEntry(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -211,6 +237,7 @@ class BundleEntry(backboneelement.BackboneElement):
         description="The Resources for the entry.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -224,6 +251,7 @@ class BundleEntry(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -237,18 +265,34 @@ class BundleEntry(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BundleEntry`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BundleEntry`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "link",
+            "fullUrl",
+            "resource",
+            "search",
+            "request",
+            "response",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BundleEntry`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "link",
             "fullUrl",
@@ -282,6 +326,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     ifMatch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -298,6 +343,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     ifModifiedSince__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -316,6 +362,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     ifNoneExist__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -332,6 +379,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     ifNoneMatch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -348,6 +396,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -368,6 +417,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -377,13 +427,28 @@ class BundleEntryRequest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BundleEntryRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BundleEntryRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "method",
+            "url",
+            "ifNoneMatch",
+            "ifModifiedSince",
+            "ifMatch",
+            "ifNoneExist",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BundleEntryRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "method",
             "url",
@@ -429,6 +494,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     etag__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -442,6 +508,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         description="The date/time that the resource was modified on the server.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -455,6 +522,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         description="The location header created by processing this operation.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     location__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -471,6 +539,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -485,6 +554,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -494,13 +564,27 @@ class BundleEntryResponse(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BundleEntryResponse`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BundleEntryResponse`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "status",
+            "location",
+            "etag",
+            "lastModified",
+            "outcome",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BundleEntryResponse`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "status",
             "location",
@@ -543,6 +627,7 @@ class BundleEntrySearch(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["match", "include", "outcome"],
@@ -559,6 +644,7 @@ class BundleEntrySearch(backboneelement.BackboneElement):
         description="When searching, the server's search ranking score for the entry.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     score__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -567,11 +653,18 @@ class BundleEntrySearch(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BundleEntrySearch`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BundleEntrySearch`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "mode", "score"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BundleEntrySearch`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "mode", "score"]
 
 
 class BundleLink(backboneelement.BackboneElement):
@@ -601,6 +694,7 @@ class BundleLink(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -615,6 +709,7 @@ class BundleLink(backboneelement.BackboneElement):
         description="The reference details for the link.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -624,11 +719,18 @@ class BundleLink(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BundleLink`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BundleLink`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "relation", "url"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BundleLink`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "relation", "url"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

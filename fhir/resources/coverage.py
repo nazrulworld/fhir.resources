@@ -36,6 +36,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -84,6 +85,7 @@ class Coverage(domainresource.DomainResource):
         description="A designator for a dependent under the coverage.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     dependent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -97,6 +99,7 @@ class Coverage(domainresource.DomainResource):
         description="The identifier of the coverage as issued by the insurer.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -122,6 +125,7 @@ class Coverage(domainresource.DomainResource):
         description="The program or plan underwriter, payor, insurance company.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -137,6 +141,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -159,6 +164,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     network__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -182,6 +188,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     order__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -212,6 +219,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -222,6 +230,7 @@ class Coverage(domainresource.DomainResource):
         description="The party who 'owns' the insurance policy.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "RelatedPerson", "Organization"],
         },
@@ -244,6 +253,7 @@ class Coverage(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -282,6 +292,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "RelatedPerson"],
         },
@@ -294,6 +305,7 @@ class Coverage(domainresource.DomainResource):
         description="The insurer assigned ID for the Subscriber.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -308,14 +320,15 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Coverage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Coverage`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -348,6 +361,31 @@ class Coverage(domainresource.DomainResource):
             "insurancePlan",
         ]
 
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Coverage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "kind",
+            "type",
+            "policyHolder",
+            "subscriber",
+            "subscriberId",
+            "beneficiary",
+            "dependent",
+            "period",
+            "insurer",
+            "order",
+            "network",
+        ]
+
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
@@ -378,6 +416,7 @@ class CoverageClass(backboneelement.BackboneElement):
         description="A short description for the class.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -396,6 +435,7 @@ class CoverageClass(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -406,16 +446,24 @@ class CoverageClass(backboneelement.BackboneElement):
         description="The alphanumeric identifier associated with the insurer issued label.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageClass`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageClass`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "value", "name"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageClass`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "value", "name"]
 
 
 class CoverageCostToBeneficiary(backboneelement.BackboneElement):
@@ -490,6 +538,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         description="The category of patient centric costs associated with treatment.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -510,6 +559,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         description="The amount due from the patient for the cost category.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -523,6 +573,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         description="The amount due from the patient for the cost category.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -531,9 +582,9 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageCostToBeneficiary`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageCostToBeneficiary`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -548,6 +599,13 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
             "valueMoney",
             "exception",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageCostToBeneficiary`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "valueQuantity", "valueMoney"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -585,6 +643,7 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
         description="The timeframe the exception is in force.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -595,16 +654,24 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
         description="The code for the specific exception.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageCostToBeneficiaryException`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageCostToBeneficiaryException`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageCostToBeneficiaryException`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "period"]
 
 
 class CoveragePaymentBy(backboneelement.BackboneElement):
@@ -629,6 +696,7 @@ class CoveragePaymentBy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "RelatedPerson", "Organization"],
         },
@@ -641,6 +709,7 @@ class CoveragePaymentBy(backboneelement.BackboneElement):
         description=" Description of the financial responsibility.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     responsibility__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -649,8 +718,15 @@ class CoveragePaymentBy(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoveragePaymentBy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoveragePaymentBy`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "party", "responsibility"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoveragePaymentBy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "party", "responsibility"]

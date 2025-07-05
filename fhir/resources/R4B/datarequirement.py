@@ -38,6 +38,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -53,6 +54,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -66,6 +68,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     limit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -92,6 +95,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     mustSupport__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -108,6 +112,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition"],
         },
@@ -123,6 +128,7 @@ class DataRequirement(element.Element):
         description="Specifies the order of the results to be returned.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -139,6 +145,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e subject[x]
             "one_of_many": "subject",
             "one_of_many_required": False,
@@ -158,6 +165,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e subject[x]
             "one_of_many": "subject",
             "one_of_many_required": False,
@@ -177,6 +185,7 @@ class DataRequirement(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -186,13 +195,30 @@ class DataRequirement(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataRequirement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataRequirement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "type",
+            "profile",
+            "subjectCodeableConcept",
+            "subjectReference",
+            "mustSupport",
+            "codeFilter",
+            "dateFilter",
+            "limit",
+            "sort",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataRequirement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "type",
             "profile",
             "subjectCodeableConcept",
@@ -259,6 +285,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -279,6 +306,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -296,6 +324,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     searchParam__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -314,6 +343,7 @@ class DataRequirementCodeFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ValueSet"],
         },
@@ -324,11 +354,18 @@ class DataRequirementCodeFilter(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataRequirementCodeFilter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataRequirementCodeFilter`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "path", "searchParam", "valueSet", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataRequirementCodeFilter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["path", "searchParam", "valueSet", "code"]
 
 
 class DataRequirementDateFilter(element.Element):
@@ -361,6 +398,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -378,6 +416,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     searchParam__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -399,6 +438,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -423,6 +463,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -444,6 +485,7 @@ class DataRequirementDateFilter(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -452,9 +494,9 @@ class DataRequirementDateFilter(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataRequirementDateFilter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataRequirementDateFilter`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -465,6 +507,13 @@ class DataRequirementDateFilter(element.Element):
             "valuePeriod",
             "valueDuration",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataRequirementDateFilter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["path", "searchParam", "valueDateTime", "valuePeriod", "valueDuration"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -503,6 +552,7 @@ class DataRequirementSort(element.Element):
         description="The direction of the sort, ascending or descending.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -526,6 +576,7 @@ class DataRequirementSort(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -535,11 +586,18 @@ class DataRequirementSort(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataRequirementSort`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataRequirementSort`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "path", "direction"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataRequirementSort`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["path", "direction"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

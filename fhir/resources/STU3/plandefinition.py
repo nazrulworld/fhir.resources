@@ -66,6 +66,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -112,6 +113,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -128,6 +130,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -144,6 +147,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -158,6 +162,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -190,6 +195,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -203,6 +209,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -249,6 +256,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -265,6 +273,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -310,6 +319,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -327,6 +337,7 @@ class PlanDefinition(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the plan definition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -357,6 +368,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -374,6 +386,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -407,6 +420,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -430,6 +444,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -438,9 +453,9 @@ class PlanDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PlanDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PlanDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -477,6 +492,32 @@ class PlanDefinition(domainresource.DomainResource):
             "library",
             "goal",
             "action",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PlanDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "type",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "description",
+            "effectivePeriod",
+            "useContext",
+            "jurisdiction",
+            "contact",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -925,9 +966,9 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PlanDefinitionAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PlanDefinitionAction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -963,6 +1004,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "dynamicValue",
             "action",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PlanDefinitionAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1065,9 +1113,9 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PlanDefinitionActionCondition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PlanDefinitionActionCondition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1078,6 +1126,13 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "language",
             "expression",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PlanDefinitionActionCondition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1167,9 +1222,9 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PlanDefinitionActionDynamicValue`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PlanDefinitionActionDynamicValue`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1180,6 +1235,13 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "language",
             "expression",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PlanDefinitionActionDynamicValue`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
@@ -1225,11 +1287,18 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PlanDefinitionActionParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PlanDefinitionActionParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "role"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PlanDefinitionActionParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1333,9 +1402,9 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PlanDefinitionActionRelatedAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PlanDefinitionActionRelatedAction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1346,6 +1415,13 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "offsetDuration",
             "offsetRange",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PlanDefinitionActionRelatedAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1479,9 +1555,9 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PlanDefinitionGoal`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PlanDefinitionGoal`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1495,6 +1571,13 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             "documentation",
             "target",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PlanDefinitionGoal`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
@@ -1596,9 +1679,9 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PlanDefinitionGoalTarget`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PlanDefinitionGoalTarget`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1610,6 +1693,13 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "detailCodeableConcept",
             "due",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PlanDefinitionGoalTarget`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

@@ -40,6 +40,7 @@ class Address(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     city__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -53,6 +54,7 @@ class Address(element.Element):
         description="Country - a nation as commonly understood or generally accepted.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     country__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -66,6 +68,7 @@ class Address(element.Element):
         description="The name of the administrative area (county).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     district__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -83,6 +86,7 @@ class Address(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     line__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -96,6 +100,7 @@ class Address(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -106,6 +111,7 @@ class Address(element.Element):
         description="A postal code designating a region defined by the postal service.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     postalCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -123,6 +129,7 @@ class Address(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     state__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -140,6 +147,7 @@ class Address(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -157,6 +165,7 @@ class Address(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["postal", "physical", "both"],
@@ -173,6 +182,7 @@ class Address(element.Element):
         description="The purpose of this address.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["home", "work", "temp", "old", "billing"],
@@ -184,13 +194,31 @@ class Address(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Address`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Address`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "use",
+            "type",
+            "text",
+            "line",
+            "city",
+            "district",
+            "state",
+            "postalCode",
+            "country",
+            "period",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Address`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "use",
             "type",
             "text",

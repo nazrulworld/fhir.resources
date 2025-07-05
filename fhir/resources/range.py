@@ -30,6 +30,7 @@ class Range(datatype.DataType):
         description="The high limit. The boundary is inclusive.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -40,13 +41,21 @@ class Range(datatype.DataType):
         description="The low limit. The boundary is inclusive.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Range`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Range`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "low", "high"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Range`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["low", "high"]

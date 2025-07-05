@@ -55,6 +55,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -68,6 +69,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -95,6 +97,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Group"],
         },
@@ -111,6 +114,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -124,6 +128,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -137,6 +142,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -147,6 +153,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="Key terms to aid in searching for or filtering the study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -173,6 +180,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ResearchStudy"],
         },
@@ -188,6 +196,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -201,6 +210,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner"],
         },
@@ -216,6 +226,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["PlanDefinition"],
         },
@@ -231,6 +242,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -254,6 +266,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -266,6 +279,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="The organization responsible for the execution of the study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -281,6 +295,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="The current state of the study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -305,6 +320,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="A short, descriptive user-friendly label for the study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -313,9 +329,9 @@ class ResearchStudy(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudy`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -346,6 +362,33 @@ class ResearchStudy(domainresource.DomainResource):
             "reasonStopped",
             "note",
             "arm",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "title",
+            "protocol",
+            "partOf",
+            "status",
+            "category",
+            "focus",
+            "contact",
+            "keyword",
+            "jurisdiction",
+            "enrollment",
+            "period",
+            "sponsor",
+            "principalInvestigator",
+            "site",
+            "reasonStopped",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -418,11 +461,18 @@ class ResearchStudyArm(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudyArm`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudyArm`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "code", "description"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudyArm`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

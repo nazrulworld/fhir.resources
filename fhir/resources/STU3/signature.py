@@ -56,6 +56,7 @@ class Signature(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -72,6 +73,7 @@ class Signature(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e onBehalfOf[x]
             "one_of_many": "onBehalfOf",
             "one_of_many_required": False,
@@ -96,6 +98,7 @@ class Signature(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e onBehalfOf[x]
             "one_of_many": "onBehalfOf",
             "one_of_many_required": False,
@@ -117,6 +120,7 @@ class Signature(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -127,6 +131,7 @@ class Signature(element.Element):
         description="When the digital signature was signed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -144,6 +149,7 @@ class Signature(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e who[x]
             "one_of_many": "who",
             "one_of_many_required": True,
@@ -168,6 +174,7 @@ class Signature(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e who[x]
             "one_of_many": "who",
             "one_of_many_required": True,
@@ -179,9 +186,9 @@ class Signature(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Signature`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Signature`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -202,6 +209,29 @@ class Signature(element.Element):
             "onBehalfOfReference",
             "contentType",
             "blob",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Signature`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "type",
+            "when",
+            "whoUri",
+            "whoReference",
+            "whoReference",
+            "whoReference",
+            "whoReference",
+            "whoReference",
+            "onBehalfOfUri",
+            "onBehalfOfReference",
+            "onBehalfOfReference",
+            "onBehalfOfReference",
+            "onBehalfOfReference",
+            "onBehalfOfReference",
+            "contentType",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

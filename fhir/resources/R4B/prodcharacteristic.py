@@ -37,6 +37,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     color__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -55,6 +56,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -70,6 +72,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -85,6 +88,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -98,6 +102,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -108,6 +113,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     imprint__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -126,6 +132,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -140,6 +147,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -154,6 +162,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     shape__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -172,6 +181,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -187,18 +197,39 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProdCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProdCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "height",
+            "width",
+            "depth",
+            "weight",
+            "nominalVolume",
+            "externalDiameter",
+            "shape",
+            "color",
+            "imprint",
+            "image",
+            "scoring",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProdCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "height",
             "width",

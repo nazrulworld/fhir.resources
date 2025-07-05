@@ -38,6 +38,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -71,6 +72,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -101,6 +103,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -131,6 +134,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -149,6 +153,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -166,6 +171,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -179,6 +185,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -192,6 +199,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     license__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -222,6 +230,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -241,6 +250,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -258,6 +268,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -274,6 +285,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -293,6 +305,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -318,6 +331,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -338,6 +352,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -356,6 +371,7 @@ class ImplementationGuide(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -364,9 +380,9 @@ class ImplementationGuide(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuide`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuide`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -397,6 +413,33 @@ class ImplementationGuide(domainresource.DomainResource):
             "global",
             "definition",
             "manifest",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuide`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "packageId",
+            "license",
+            "fhirVersion",
+            "dependsOn",
+            "global",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -492,9 +535,9 @@ class ImplementationGuideDefinition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -506,6 +549,13 @@ class ImplementationGuideDefinition(backboneelement.BackboneElement):
             "parameter",
             "template",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ImplementationGuideDefinitionGrouping(backboneelement.BackboneElement):
@@ -552,11 +602,18 @@ class ImplementationGuideDefinitionGrouping(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideDefinitionGrouping`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideDefinitionGrouping`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "description"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideDefinitionGrouping`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -659,9 +716,9 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideDefinitionPage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideDefinitionPage`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -673,6 +730,13 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
             "generation",
             "page",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideDefinitionPage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -760,11 +824,18 @@ class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideDefinitionParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideDefinitionParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "value"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideDefinitionParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -913,9 +984,9 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideDefinitionResource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideDefinitionResource`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -929,6 +1000,13 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
             "exampleCanonical",
             "groupingId",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideDefinitionResource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1000,11 +1078,18 @@ class ImplementationGuideDefinitionTemplate(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideDefinitionTemplate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideDefinitionTemplate`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "source", "scope"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideDefinitionTemplate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1041,6 +1126,7 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     packageId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1054,6 +1140,7 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
         description="A canonical reference to the Implementation guide for the dependency.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ImplementationGuide"],
@@ -1073,6 +1160,7 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1081,11 +1169,18 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideDependsOn`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideDependsOn`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "uri", "packageId", "version"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideDependsOn`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "uri", "packageId", "version"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1118,6 +1213,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         description="A reference to the profile that all instances must conform to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition"],
@@ -1134,6 +1230,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         description="The type of resource that all instances must conform to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1143,11 +1240,18 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideGlobal`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideGlobal`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "profile"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideGlobal`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "profile"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1223,6 +1327,7 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     rendering__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1241,14 +1346,15 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideManifest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideManifest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1260,6 +1366,13 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
             "image",
             "other",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideManifest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "rendering", "resource"]
 
 
 class ImplementationGuideManifestPage(backboneelement.BackboneElement):
@@ -1315,11 +1428,18 @@ class ImplementationGuideManifestPage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideManifestPage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideManifestPage`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "title", "anchor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideManifestPage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1398,6 +1518,7 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
         description="Where this resource is found.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -1418,9 +1539,9 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImplementationGuideManifestResource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImplementationGuideManifestResource`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1431,6 +1552,13 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
             "exampleCanonical",
             "relativePath",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImplementationGuideManifestResource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "reference"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

@@ -51,6 +51,7 @@ class Appointment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -100,6 +101,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -114,6 +116,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -159,6 +162,7 @@ class Appointment(domainresource.DomainResource):
         description="Date/Time that the appointment is to conclude.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -177,6 +181,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -307,6 +312,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Condition",
@@ -394,6 +400,7 @@ class Appointment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -404,6 +411,7 @@ class Appointment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["HealthcareService"],
         },
@@ -434,6 +442,7 @@ class Appointment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -444,6 +453,7 @@ class Appointment(domainresource.DomainResource):
         description="Date/Time that the appointment is to take place.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -464,6 +474,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -496,6 +507,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -528,9 +540,9 @@ class Appointment(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Appointment`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Appointment`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -575,6 +587,30 @@ class Appointment(domainresource.DomainResource):
             "recurrenceTemplate",
         ]
 
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Appointment`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "cancellationReason",
+            "class",
+            "serviceCategory",
+            "serviceType",
+            "specialty",
+            "appointmentType",
+            "reason",
+            "start",
+            "end",
+            "subject",
+        ]
+
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
@@ -608,6 +644,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -643,6 +680,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     required__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -656,6 +694,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         description="Participation status of the actor.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -673,14 +712,15 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AppointmentParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AppointmentParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -692,6 +732,13 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "required",
             "status",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AppointmentParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "actor", "required", "status"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -844,9 +891,9 @@ class AppointmentRecurrenceTemplate(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AppointmentRecurrenceTemplate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AppointmentRecurrenceTemplate`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -863,6 +910,13 @@ class AppointmentRecurrenceTemplate(backboneelement.BackboneElement):
             "excludingDate",
             "excludingRecurrenceId",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AppointmentRecurrenceTemplate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class AppointmentRecurrenceTemplateMonthlyTemplate(backboneelement.BackboneElement):
@@ -933,9 +987,9 @@ class AppointmentRecurrenceTemplateMonthlyTemplate(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AppointmentRecurrenceTemplateMonthlyTemplate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AppointmentRecurrenceTemplateMonthlyTemplate`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -946,6 +1000,13 @@ class AppointmentRecurrenceTemplateMonthlyTemplate(backboneelement.BackboneEleme
             "dayOfWeek",
             "monthInterval",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AppointmentRecurrenceTemplateMonthlyTemplate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1080,9 +1141,9 @@ class AppointmentRecurrenceTemplateWeeklyTemplate(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AppointmentRecurrenceTemplateWeeklyTemplate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AppointmentRecurrenceTemplateWeeklyTemplate`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1097,6 +1158,13 @@ class AppointmentRecurrenceTemplateWeeklyTemplate(backboneelement.BackboneElemen
             "sunday",
             "weekInterval",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AppointmentRecurrenceTemplateWeeklyTemplate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class AppointmentRecurrenceTemplateYearlyTemplate(backboneelement.BackboneElement):
@@ -1125,11 +1193,18 @@ class AppointmentRecurrenceTemplateYearlyTemplate(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AppointmentRecurrenceTemplateYearlyTemplate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AppointmentRecurrenceTemplateYearlyTemplate`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "yearInterval"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AppointmentRecurrenceTemplateYearlyTemplate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

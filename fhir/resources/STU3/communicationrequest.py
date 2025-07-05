@@ -37,6 +37,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -53,6 +54,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -81,6 +83,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter", "EpisodeOfCare"],
         },
@@ -97,6 +100,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -112,6 +116,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -145,6 +150,7 @@ class CommunicationRequest(domainresource.DomainResource):
         description="The time when this communication is to occur.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -163,6 +169,7 @@ class CommunicationRequest(domainresource.DomainResource):
         description="The time when this communication is to occur.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -192,6 +199,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -205,6 +213,7 @@ class CommunicationRequest(domainresource.DomainResource):
         description="Describes why the request is being made in coded or textual form.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -215,6 +224,7 @@ class CommunicationRequest(domainresource.DomainResource):
         description="Indicates another resource whose existence justifies this request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Condition", "Observation"],
         },
@@ -254,6 +264,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CommunicationRequest"],
         },
@@ -269,6 +280,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -303,6 +315,7 @@ class CommunicationRequest(domainresource.DomainResource):
         description="The status of the proposal or order.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -350,9 +363,9 @@ class CommunicationRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CommunicationRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CommunicationRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -384,6 +397,30 @@ class CommunicationRequest(domainresource.DomainResource):
             "reasonCode",
             "reasonReference",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CommunicationRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "basedOn",
+            "replaces",
+            "groupIdentifier",
+            "status",
+            "priority",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "authoredOn",
+            "requester",
+            "reasonCode",
+            "reasonReference",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -480,9 +517,9 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CommunicationRequestPayload`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CommunicationRequestPayload`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -492,6 +529,13 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
             "contentAttachment",
             "contentReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CommunicationRequestPayload`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -531,6 +575,7 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
         description="The device, practitioner, etc. who initiated the request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -549,6 +594,7 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
         description="The organization the device or practitioner was acting on behalf of.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -556,8 +602,15 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CommunicationRequestRequester`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CommunicationRequestRequester`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CommunicationRequestRequester`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "agent", "onBehalfOf"]

@@ -33,6 +33,7 @@ class Flag(domainresource.DomainResource):
         description="The person, organization or device that created the flag.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Device",
@@ -54,6 +55,7 @@ class Flag(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -67,6 +69,7 @@ class Flag(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -77,6 +80,7 @@ class Flag(domainresource.DomainResource):
         description="This alert is only relevant during the encounter.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -92,6 +96,7 @@ class Flag(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -106,6 +111,7 @@ class Flag(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -116,6 +122,7 @@ class Flag(domainresource.DomainResource):
         description="Supports basic workflow.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -136,6 +143,7 @@ class Flag(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -152,9 +160,9 @@ class Flag(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Flag`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Flag`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -165,6 +173,25 @@ class Flag(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "code",
+            "subject",
+            "period",
+            "encounter",
+            "author",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Flag`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "status",
             "category",

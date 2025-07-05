@@ -52,6 +52,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -64,6 +65,7 @@ class Task(domainresource.DomainResource):
         description="Contains business-specific nuances of the business state.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -74,6 +76,7 @@ class Task(domainresource.DomainResource):
         description="A name or code (or both) briefly describing what the task involves.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -84,6 +87,7 @@ class Task(domainresource.DomainResource):
         description="A free-text description of what is to be performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -100,6 +104,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -116,6 +121,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -129,6 +135,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -144,6 +151,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -159,6 +167,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -194,6 +203,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ActivityDefinition"],
         },
@@ -215,6 +225,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -250,6 +261,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -277,6 +289,7 @@ class Task(domainresource.DomainResource):
         description="The date and time of last modification to this task.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -290,6 +303,7 @@ class Task(domainresource.DomainResource):
         description="Principal physical location where the this task is performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -325,6 +339,7 @@ class Task(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -346,6 +361,7 @@ class Task(domainresource.DomainResource):
         description="Task that this particular task is part of.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Task"],
         },
@@ -425,6 +441,7 @@ class Task(domainresource.DomainResource):
         description="The creator of the task.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Device",
@@ -459,6 +476,7 @@ class Task(domainresource.DomainResource):
         description="The current status of the task.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -476,14 +494,15 @@ class Task(domainresource.DomainResource):
         description="An explanation as to why this task is held, failed, was refused, etc.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Task`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Task`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -525,6 +544,36 @@ class Task(domainresource.DomainResource):
             "restriction",
             "input",
             "output",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Task`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "groupIdentifier",
+            "partOf",
+            "status",
+            "statusReason",
+            "businessStatus",
+            "intent",
+            "code",
+            "description",
+            "focus",
+            "for",
+            "encounter",
+            "executionPeriod",
+            "lastModified",
+            "requester",
+            "owner",
+            "location",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -1278,9 +1327,9 @@ class TaskInput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TaskInput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TaskInput`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1338,6 +1387,13 @@ class TaskInput(backboneelement.BackboneElement):
             "valueDosage",
             "valueMeta",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TaskInput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -2145,9 +2201,9 @@ class TaskOutput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TaskOutput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TaskOutput`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2205,6 +2261,13 @@ class TaskOutput(backboneelement.BackboneElement):
             "valueDosage",
             "valueMeta",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TaskOutput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -2336,9 +2399,9 @@ class TaskRestriction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TaskRestriction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TaskRestriction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2348,3 +2411,10 @@ class TaskRestriction(backboneelement.BackboneElement):
             "period",
             "recipient",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TaskRestriction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

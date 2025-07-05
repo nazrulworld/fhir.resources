@@ -35,6 +35,7 @@ class Expression(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -48,6 +49,7 @@ class Expression(datatype.DataType):
         description="An expression in the specified language that returns a value.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -61,6 +63,7 @@ class Expression(datatype.DataType):
         description="The media type of the language for the expression.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -85,6 +88,7 @@ class Expression(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -98,6 +102,7 @@ class Expression(datatype.DataType):
         description="A URI that defines where the expression is found.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -106,9 +111,9 @@ class Expression(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Expression`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Expression`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -119,3 +124,10 @@ class Expression(datatype.DataType):
             "expression",
             "reference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Expression`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["description", "name", "language", "expression", "reference"]

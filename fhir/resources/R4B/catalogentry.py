@@ -79,6 +79,7 @@ class CatalogEntry(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -105,6 +106,7 @@ class CatalogEntry(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -119,6 +121,7 @@ class CatalogEntry(domainresource.DomainResource):
         description="The item in a catalog or definition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Medication",
@@ -203,9 +206,9 @@ class CatalogEntry(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CatalogEntry`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CatalogEntry`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -229,6 +232,20 @@ class CatalogEntry(domainresource.DomainResource):
             "additionalCharacteristic",
             "additionalClassification",
             "relatedEntry",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CatalogEntry`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "orderable",
+            "referencedItem",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -289,11 +306,18 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CatalogEntryRelatedEntry`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CatalogEntryRelatedEntry`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "relationtype", "item"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CatalogEntryRelatedEntry`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

@@ -36,6 +36,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -46,6 +47,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -63,6 +65,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -76,6 +79,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -86,6 +90,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -101,6 +106,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -111,6 +117,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -124,6 +131,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -137,6 +145,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -157,14 +166,15 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ManufacturedItemDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ManufacturedItemDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -174,6 +184,28 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "name",
+            "manufacturedDoseForm",
+            "unitOfPresentation",
+            "manufacturer",
+            "marketingStatus",
+            "ingredient",
+            "property",
+            "component",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ManufacturedItemDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "identifier",
             "status",
@@ -220,6 +252,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -230,6 +263,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -246,6 +280,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -259,6 +294,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -269,6 +305,7 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -279,18 +316,34 @@ class ManufacturedItemDefinitionComponent(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ManufacturedItemDefinitionComponent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ManufacturedItemDefinitionComponent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "function",
+            "amount",
+            "constituent",
+            "property",
+            "component",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ManufacturedItemDefinitionComponent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "function",
@@ -324,6 +377,7 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -334,6 +388,7 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -344,6 +399,7 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Ingredient"],
         },
@@ -364,14 +420,15 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ManufacturedItemDefinitionComponentConstituent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ManufacturedItemDefinitionComponentConstituent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -382,6 +439,13 @@ class ManufacturedItemDefinitionComponentConstituent(backboneelement.BackboneEle
             "function",
             "hasIngredient",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ManufacturedItemDefinitionComponentConstituent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "amount", "location", "function", "hasIngredient"]
 
 
 class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
@@ -401,6 +465,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -411,6 +476,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -424,6 +490,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -440,6 +507,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -453,6 +521,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -469,6 +538,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -485,6 +555,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -498,6 +569,7 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -508,13 +580,30 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ManufacturedItemDefinitionProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ManufacturedItemDefinitionProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueDate",
+            "valueBoolean",
+            "valueMarkdown",
+            "valueAttachment",
+            "valueReference",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ManufacturedItemDefinitionProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "valueCodeableConcept",

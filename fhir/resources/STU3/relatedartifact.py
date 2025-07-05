@@ -36,6 +36,7 @@ class RelatedArtifact(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -52,6 +53,7 @@ class RelatedArtifact(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -68,6 +70,7 @@ class RelatedArtifact(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +84,7 @@ class RelatedArtifact(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -96,6 +100,7 @@ class RelatedArtifact(element.Element):
         description="The type of relationship to the related artifact.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -125,6 +130,7 @@ class RelatedArtifact(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -133,9 +139,9 @@ class RelatedArtifact(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RelatedArtifact`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RelatedArtifact`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -147,6 +153,13 @@ class RelatedArtifact(element.Element):
             "document",
             "resource",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RelatedArtifact`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["type", "display", "citation", "url", "document", "resource"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

@@ -62,6 +62,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         description="Total payment amount as indicated on the financial instrument.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -104,6 +105,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         description="The date when the resource was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -118,6 +120,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         description="The date of payment as indicated on the financial instrument.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -278,6 +281,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         description="The party who generated the payment.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization", "Patient", "RelatedPerson"],
         },
@@ -293,6 +297,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -386,6 +391,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -419,14 +425,15 @@ class PaymentReconciliation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PaymentReconciliation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PaymentReconciliation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -466,6 +473,25 @@ class PaymentReconciliation(domainresource.DomainResource):
             "allocation",
             "formCode",
             "processNote",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PaymentReconciliation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "type",
+            "status",
+            "period",
+            "created",
+            "paymentIssuer",
+            "date",
+            "amount",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -728,9 +754,9 @@ class PaymentReconciliationAllocation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PaymentReconciliationAllocation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PaymentReconciliationAllocation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -752,6 +778,13 @@ class PaymentReconciliationAllocation(backboneelement.BackboneElement):
             "payee",
             "amount",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PaymentReconciliationAllocation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -818,8 +851,15 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PaymentReconciliationProcessNote`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PaymentReconciliationProcessNote`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "text"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PaymentReconciliationProcessNote`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

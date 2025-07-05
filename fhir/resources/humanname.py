@@ -37,6 +37,7 @@ class HumanName(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     family__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -50,6 +51,7 @@ class HumanName(datatype.DataType):
         description="Given name.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     given__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -66,6 +68,7 @@ class HumanName(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -80,6 +83,7 @@ class HumanName(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     prefix__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -97,6 +101,7 @@ class HumanName(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     suffix__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -114,6 +119,7 @@ class HumanName(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -127,6 +133,7 @@ class HumanName(datatype.DataType):
         description="Identifies the purpose for this name.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -146,9 +153,9 @@ class HumanName(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``HumanName`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``HumanName`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -161,3 +168,10 @@ class HumanName(datatype.DataType):
             "suffix",
             "period",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``HumanName`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["use", "text", "family", "given", "prefix", "suffix", "period"]

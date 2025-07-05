@@ -40,6 +40,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CarePlan", "ServiceRequest"],
         },
@@ -55,6 +56,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -68,6 +70,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +84,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -111,6 +115,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -151,6 +156,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -191,6 +197,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -205,6 +212,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "PlanDefinition",
@@ -232,6 +240,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -248,6 +257,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -275,6 +285,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -293,6 +304,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -316,6 +328,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -334,6 +347,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -352,6 +366,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -375,6 +390,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -391,6 +407,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -404,6 +421,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Procedure",
@@ -423,6 +441,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -437,6 +456,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Condition",
@@ -459,6 +479,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -475,6 +496,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -515,6 +537,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e reported[x]
             "one_of_many": "reported",
             "one_of_many_required": False,
@@ -535,6 +558,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e reported[x]
             "one_of_many": "reported",
             "one_of_many_required": False,
@@ -562,6 +586,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -588,6 +613,7 @@ class Procedure(domainresource.DomainResource):
         description="Captures the reason for the current state of the procedure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -606,6 +632,7 @@ class Procedure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -658,9 +685,9 @@ class Procedure(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Procedure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Procedure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -705,6 +732,45 @@ class Procedure(domainresource.DomainResource):
             "focalDevice",
             "used",
             "supportingInfo",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Procedure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "partOf",
+            "status",
+            "statusReason",
+            "category",
+            "code",
+            "subject",
+            "focus",
+            "encounter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceString",
+            "occurrenceAge",
+            "occurrenceRange",
+            "occurrenceTiming",
+            "recorded",
+            "recorder",
+            "reportedBoolean",
+            "reportedReference",
+            "performer",
+            "location",
+            "reason",
+            "bodySite",
+            "outcome",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -782,11 +848,18 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProcedureFocalDevice`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProcedureFocalDevice`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action", "manipulated"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProcedureFocalDevice`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ProcedurePerformer(backboneelement.BackboneElement):
@@ -807,6 +880,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         description="Indicates who or what performed the procedure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -831,6 +905,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -861,9 +936,9 @@ class ProcedurePerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProcedurePerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProcedurePerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -874,3 +949,10 @@ class ProcedurePerformer(backboneelement.BackboneElement):
             "onBehalfOf",
             "period",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProcedurePerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "function", "actor"]

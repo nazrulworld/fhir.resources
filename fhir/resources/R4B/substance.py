@@ -34,6 +34,7 @@ class Substance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -44,6 +45,7 @@ class Substance(domainresource.DomainResource):
         description="A code (or set of codes) that identify this substance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -57,6 +59,7 @@ class Substance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -70,6 +73,7 @@ class Substance(domainresource.DomainResource):
         description="Unique identifier for the substance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -80,6 +84,7 @@ class Substance(domainresource.DomainResource):
         description="A substance can be composed of other substances.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -93,6 +98,7 @@ class Substance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -103,6 +109,7 @@ class Substance(domainresource.DomainResource):
         description="A code to indicate if the substance is actively used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "inactive", "entered-in-error"],
@@ -114,9 +121,9 @@ class Substance(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Substance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Substance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -127,6 +134,24 @@ class Substance(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "code",
+            "description",
+            "instance",
+            "ingredient",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Substance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "status",
             "category",
@@ -155,6 +180,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         description="The amount of the ingredient in the substance - a concentration ratio.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -165,6 +191,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         description="Another substance that is a component of this substance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e substance[x]
             "one_of_many": "substance",
             "one_of_many_required": True,
@@ -178,6 +205,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         description="Another substance that is a component of this substance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e substance[x]
             "one_of_many": "substance",
             "one_of_many_required": True,
@@ -188,13 +216,25 @@ class SubstanceIngredient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceIngredient`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceIngredient`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "quantity",
+            "substanceCodeableConcept",
+            "substanceReference",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceIngredient`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "quantity",
             "substanceCodeableConcept",
@@ -242,6 +282,7 @@ class SubstanceInstance(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     expiry__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -258,6 +299,7 @@ class SubstanceInstance(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -268,14 +310,15 @@ class SubstanceInstance(backboneelement.BackboneElement):
         description="The amount of the substance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceInstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceInstance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -285,3 +328,10 @@ class SubstanceInstance(backboneelement.BackboneElement):
             "expiry",
             "quantity",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceInstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "identifier", "expiry", "quantity"]

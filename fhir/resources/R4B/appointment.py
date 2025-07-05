@@ -36,6 +36,7 @@ class Appointment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -65,6 +66,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -123,6 +125,7 @@ class Appointment(domainresource.DomainResource):
         description="Date/Time that the appointment is to conclude.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -141,6 +144,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -222,6 +226,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -278,6 +283,7 @@ class Appointment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -288,6 +294,7 @@ class Appointment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -316,6 +323,7 @@ class Appointment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -326,6 +334,7 @@ class Appointment(domainresource.DomainResource):
         description="Date/Time that the appointment is to take place.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -346,6 +355,7 @@ class Appointment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -384,9 +394,9 @@ class Appointment(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Appointment`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Appointment`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -419,6 +429,27 @@ class Appointment(domainresource.DomainResource):
             "basedOn",
             "participant",
             "requestedPeriod",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Appointment`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "cancelationReason",
+            "serviceCategory",
+            "serviceType",
+            "specialty",
+            "appointmentType",
+            "reasonCode",
+            "start",
+            "end",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -454,6 +485,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -489,6 +521,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["required", "optional", "information-only"],
@@ -505,6 +538,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         description="Participation status of the actor.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -522,14 +556,15 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AppointmentParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AppointmentParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -541,6 +576,13 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "status",
             "period",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AppointmentParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "actor", "required", "status"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

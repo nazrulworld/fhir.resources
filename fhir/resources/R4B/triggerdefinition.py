@@ -37,6 +37,7 @@ class TriggerDefinition(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -51,6 +52,7 @@ class TriggerDefinition(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -65,6 +67,7 @@ class TriggerDefinition(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -78,6 +81,7 @@ class TriggerDefinition(element.Element):
         description="The timing of the event (if this is a periodic trigger).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e timing[x]
             "one_of_many": "timing",
             "one_of_many_required": False,
@@ -94,6 +98,7 @@ class TriggerDefinition(element.Element):
         description="The timing of the event (if this is a periodic trigger).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e timing[x]
             "one_of_many": "timing",
             "one_of_many_required": False,
@@ -110,6 +115,7 @@ class TriggerDefinition(element.Element):
         description="The timing of the event (if this is a periodic trigger).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e timing[x]
             "one_of_many": "timing",
             "one_of_many_required": False,
@@ -125,6 +131,7 @@ class TriggerDefinition(element.Element):
         description="The timing of the event (if this is a periodic trigger).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e timing[x]
             "one_of_many": "timing",
             "one_of_many_required": False,
@@ -141,6 +148,7 @@ class TriggerDefinition(element.Element):
         description="The type of triggering event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -162,13 +170,29 @@ class TriggerDefinition(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TriggerDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TriggerDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "type",
+            "name",
+            "timingTiming",
+            "timingReference",
+            "timingDate",
+            "timingDateTime",
+            "data",
+            "condition",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TriggerDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "type",
             "name",
             "timingTiming",

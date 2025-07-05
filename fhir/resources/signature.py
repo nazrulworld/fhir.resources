@@ -55,6 +55,7 @@ class Signature(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -113,6 +114,7 @@ class Signature(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -123,6 +125,7 @@ class Signature(datatype.DataType):
         description="When the digital signature was signed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     when__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -139,6 +142,7 @@ class Signature(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -153,9 +157,9 @@ class Signature(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Signature`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Signature`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -168,3 +172,10 @@ class Signature(datatype.DataType):
             "sigFormat",
             "data",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Signature`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["type", "when", "who", "onBehalfOf"]

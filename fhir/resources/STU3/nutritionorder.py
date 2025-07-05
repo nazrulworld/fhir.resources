@@ -51,6 +51,7 @@ class NutritionOrder(domainresource.DomainResource):
         description="The date and time that this nutrition order was requested.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -160,6 +161,7 @@ class NutritionOrder(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner"],
         },
@@ -175,6 +177,7 @@ class NutritionOrder(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -190,6 +193,7 @@ class NutritionOrder(domainresource.DomainResource):
         description="The workflow status of the nutrition order/request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -224,9 +228,9 @@ class NutritionOrder(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionOrder`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionOrder`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -249,6 +253,21 @@ class NutritionOrder(domainresource.DomainResource):
             "oralDiet",
             "supplement",
             "enteralFormula",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionOrder`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "patient",
+            "dateTime",
+            "orderer",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -333,6 +352,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     administrationInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -369,6 +389,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -417,9 +438,9 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionOrderEnteralFormula`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionOrderEnteralFormula`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -435,6 +456,13 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "maxVolumeToDeliver",
             "administrationInstruction",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionOrderEnteralFormula`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "baseFormulaType", "administrationInstruction"]
 
 
 class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement):
@@ -511,9 +539,9 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionOrderEnteralFormulaAdministration`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionOrderEnteralFormulaAdministration`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -524,6 +552,13 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
             "rateQuantity",
             "rateRatio",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionOrderEnteralFormulaAdministration`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -576,6 +611,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -636,14 +672,15 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionOrderOralDiet`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionOrderOralDiet`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -656,6 +693,13 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
             "fluidConsistencyType",
             "instruction",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionOrderOralDiet`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "instruction"]
 
 
 class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
@@ -692,11 +736,18 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionOrderOralDietNutrient`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionOrderOralDietNutrient`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "modifier", "amount"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionOrderOralDietNutrient`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
@@ -742,11 +793,18 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionOrderOralDietTexture`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionOrderOralDietTexture`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "modifier", "foodType"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionOrderOralDietTexture`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class NutritionOrderSupplement(backboneelement.BackboneElement):
@@ -771,6 +829,7 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -827,14 +886,15 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionOrderSupplement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionOrderSupplement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -846,3 +906,10 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
             "quantity",
             "instruction",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionOrderSupplement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "instruction"]

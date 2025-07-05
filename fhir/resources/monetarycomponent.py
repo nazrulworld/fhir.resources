@@ -31,6 +31,7 @@ class MonetaryComponent(datatype.DataType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -47,6 +48,7 @@ class MonetaryComponent(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -57,6 +59,7 @@ class MonetaryComponent(datatype.DataType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -70,6 +73,7 @@ class MonetaryComponent(datatype.DataType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -89,11 +93,18 @@ class MonetaryComponent(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MonetaryComponent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MonetaryComponent`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "type", "code", "factor", "amount"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MonetaryComponent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["type", "code", "factor", "amount"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

@@ -39,6 +39,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -93,6 +94,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -197,9 +199,9 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BiologicallyDerivedProduct`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BiologicallyDerivedProduct`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -223,6 +225,20 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             "collection",
             "storageTempRequirements",
             "property",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BiologicallyDerivedProduct`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "biologicalSourceEvent",
         ]
 
 
@@ -299,9 +315,9 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BiologicallyDerivedProductCollection`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BiologicallyDerivedProductCollection`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -312,6 +328,13 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
             "collectedDateTime",
             "collectedPeriod",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BiologicallyDerivedProductCollection`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -481,9 +504,9 @@ class BiologicallyDerivedProductProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BiologicallyDerivedProductProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BiologicallyDerivedProductProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -500,6 +523,13 @@ class BiologicallyDerivedProductProperty(backboneelement.BackboneElement):
             "valueString",
             "valueAttachment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BiologicallyDerivedProductProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

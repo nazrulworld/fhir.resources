@@ -33,6 +33,7 @@ class Population(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e age[x]
             "one_of_many": "age",
             "one_of_many_required": False,
@@ -46,6 +47,7 @@ class Population(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e age[x]
             "one_of_many": "age",
             "one_of_many_required": False,
@@ -59,6 +61,7 @@ class Population(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -72,6 +75,7 @@ class Population(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -82,18 +86,33 @@ class Population(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Population`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Population`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "ageRange",
+            "ageCodeableConcept",
+            "gender",
+            "race",
+            "physiologicalCondition",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Population`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "ageRange",
             "ageCodeableConcept",

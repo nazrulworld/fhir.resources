@@ -34,6 +34,7 @@ class InventoryReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -51,6 +52,7 @@ class InventoryReport(domainresource.DomainResource):
         description="Business identifier for the InventoryReport.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -61,6 +63,7 @@ class InventoryReport(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +84,7 @@ class InventoryReport(domainresource.DomainResource):
         description="What type of operation is being performed - addition or subtraction.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -94,6 +98,7 @@ class InventoryReport(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -104,6 +109,7 @@ class InventoryReport(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -150,6 +156,7 @@ class InventoryReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -162,9 +169,9 @@ class InventoryReport(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InventoryReport`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InventoryReport`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -185,6 +192,25 @@ class InventoryReport(domainresource.DomainResource):
             "reportingPeriod",
             "inventoryListing",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InventoryReport`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "countType",
+            "operationType",
+            "operationTypeReason",
+            "reportedDateTime",
+            "inventoryListing",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -235,6 +261,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -245,6 +272,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         description="The status of the items.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -262,9 +290,9 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InventoryReportInventoryListing`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InventoryReportInventoryListing`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -275,6 +303,13 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
             "countingDateTime",
             "item",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InventoryReportInventoryListing`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "itemStatus", "item"]
 
 
 class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
@@ -298,6 +333,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -308,6 +344,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Medication",
@@ -328,13 +365,21 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InventoryReportInventoryListingItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InventoryReportInventoryListingItem`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "category", "quantity", "item"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InventoryReportInventoryListingItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "category", "quantity", "item"]

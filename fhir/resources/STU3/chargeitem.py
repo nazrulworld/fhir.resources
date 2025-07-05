@@ -38,6 +38,7 @@ class ChargeItem(domainresource.DomainResource):
         description="Account into which this ChargeItems belongs.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Account"],
         },
@@ -50,6 +51,7 @@ class ChargeItem(domainresource.DomainResource):
         description="The anatomical location where the related service has been applied.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -60,6 +62,7 @@ class ChargeItem(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -73,6 +76,7 @@ class ChargeItem(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter", "EpisodeOfCare"],
         },
@@ -101,6 +105,7 @@ class ChargeItem(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     enteredDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -114,6 +119,7 @@ class ChargeItem(domainresource.DomainResource):
         description="The device, practitioner, etc. who entered the charge item.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -148,6 +154,7 @@ class ChargeItem(domainresource.DomainResource):
         description="Identifiers assigned to this event performer or other systems.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -171,6 +178,7 @@ class ChargeItem(domainresource.DomainResource):
         description="Date/time(s) or duration when the charged service was applied.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -189,6 +197,7 @@ class ChargeItem(domainresource.DomainResource):
         description="Date/time(s) or duration when the charged service was applied.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -202,6 +211,7 @@ class ChargeItem(domainresource.DomainResource):
         description="Date/time(s) or duration when the charged service was applied.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -284,6 +294,7 @@ class ChargeItem(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -340,6 +351,7 @@ class ChargeItem(domainresource.DomainResource):
         description="The current state of the ChargeItem.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -368,6 +380,7 @@ class ChargeItem(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -387,9 +400,9 @@ class ChargeItem(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ChargeItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ChargeItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -425,6 +438,30 @@ class ChargeItem(domainresource.DomainResource):
             "account",
             "note",
             "supportingInformation",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ChargeItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "code",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "quantity",
+            "bodysite",
+            "enterer",
+            "enteredDate",
+            "account",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -504,8 +541,15 @@ class ChargeItemParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ChargeItemParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ChargeItemParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ChargeItemParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

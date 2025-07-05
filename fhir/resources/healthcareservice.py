@@ -35,6 +35,7 @@ class HealthcareService(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -78,6 +79,7 @@ class HealthcareService(domainresource.DomainResource):
         description="Identifies the broad category of service being performed or delivered.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -104,6 +106,7 @@ class HealthcareService(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -208,6 +211,7 @@ class HealthcareService(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -218,6 +222,7 @@ class HealthcareService(domainresource.DomainResource):
         description="The location(s) where this healthcare service may be provided.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -233,6 +238,7 @@ class HealthcareService(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -265,6 +271,7 @@ class HealthcareService(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -285,6 +292,7 @@ class HealthcareService(domainresource.DomainResource):
         description="The organization that provides this healthcare service.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -326,6 +334,7 @@ class HealthcareService(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -336,14 +345,15 @@ class HealthcareService(domainresource.DomainResource):
         description="The specific type of service that may be delivered or performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``HealthcareService`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``HealthcareService`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -377,6 +387,28 @@ class HealthcareService(domainresource.DomainResource):
             "appointmentRequired",
             "availability",
             "endpoint",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``HealthcareService`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "providedBy",
+            "category",
+            "type",
+            "specialty",
+            "location",
+            "name",
+            "comment",
+            "photo",
         ]
 
 
@@ -417,8 +449,15 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``HealthcareServiceEligibility`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``HealthcareServiceEligibility`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "comment"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``HealthcareServiceEligibility`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

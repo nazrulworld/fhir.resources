@@ -35,6 +35,7 @@ class AppointmentResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -56,6 +57,7 @@ class AppointmentResponse(domainresource.DomainResource):
         description="Appointment that this response is replying to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Appointment"],
         },
@@ -103,6 +105,7 @@ class AppointmentResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -137,6 +140,7 @@ class AppointmentResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -162,6 +166,7 @@ class AppointmentResponse(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -176,6 +181,7 @@ class AppointmentResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     proposedNewTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -232,9 +238,9 @@ class AppointmentResponse(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AppointmentResponse`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AppointmentResponse`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -257,6 +263,24 @@ class AppointmentResponse(domainresource.DomainResource):
             "recurring",
             "occurrenceDate",
             "recurrenceId",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AppointmentResponse`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "appointment",
+            "proposedNewTime",
+            "participantType",
+            "actor",
+            "participantStatus",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

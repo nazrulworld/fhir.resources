@@ -55,6 +55,7 @@ class EncounterHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -77,6 +78,7 @@ class EncounterHistory(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -146,6 +148,7 @@ class EncounterHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["HealthcareService"],
         },
@@ -161,6 +164,7 @@ class EncounterHistory(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -192,6 +196,7 @@ class EncounterHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -221,14 +226,15 @@ class EncounterHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EncounterHistory`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EncounterHistory`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -252,6 +258,24 @@ class EncounterHistory(domainresource.DomainResource):
             "plannedEndDate",
             "length",
             "location",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EncounterHistory`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "class",
+            "type",
+            "serviceType",
+            "subject",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -309,8 +333,15 @@ class EncounterHistoryLocation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EncounterHistoryLocation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EncounterHistoryLocation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "location", "form"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EncounterHistoryLocation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

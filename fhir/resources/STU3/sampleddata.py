@@ -56,6 +56,7 @@ class SampledData(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -73,6 +74,7 @@ class SampledData(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -90,6 +92,7 @@ class SampledData(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lowerLimit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -106,6 +109,7 @@ class SampledData(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -116,6 +120,7 @@ class SampledData(element.Element):
         description="The length of time between sampling times, measured in milliseconds.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -134,6 +139,7 @@ class SampledData(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -142,9 +148,9 @@ class SampledData(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SampledData`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SampledData`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -157,6 +163,13 @@ class SampledData(element.Element):
             "dimensions",
             "data",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SampledData`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["origin", "period", "factor", "lowerLimit", "upperLimit", "dimensions"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

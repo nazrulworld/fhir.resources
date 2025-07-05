@@ -123,6 +123,7 @@ class PaymentNotice(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -159,9 +160,9 @@ class PaymentNotice(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PaymentNotice`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PaymentNotice`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -183,3 +184,10 @@ class PaymentNotice(domainresource.DomainResource):
             "organization",
             "paymentStatus",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PaymentNotice`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "status"]

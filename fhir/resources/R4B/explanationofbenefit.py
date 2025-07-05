@@ -93,6 +93,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         description="The period for which charges are being submitted.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -143,6 +144,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         description="The date this resource was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -268,6 +270,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -281,6 +284,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -325,6 +329,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -346,6 +351,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -483,6 +489,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -524,6 +531,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -568,6 +576,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         description="Categorized monetary totals for the adjudication.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -581,6 +590,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -597,6 +607,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -609,9 +620,9 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefit`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefit`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -665,6 +676,28 @@ class ExplanationOfBenefit(domainresource.DomainResource):
             "processNote",
             "benefitPeriod",
             "benefitBalance",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefit`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "type",
+            "use",
+            "patient",
+            "billablePeriod",
+            "created",
+            "insurer",
+            "provider",
+            "outcome",
+            "insurance",
+            "total",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -756,9 +789,9 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitAccident`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitAccident`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -769,6 +802,13 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
             "locationAddress",
             "locationReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitAccident`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1094,9 +1134,9 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitAddItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitAddItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1124,6 +1164,13 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
             "adjudication",
             "detail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitAddItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1280,9 +1327,9 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitAddItemDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitAddItemDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1298,6 +1345,13 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
             "adjudication",
             "subDetail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitAddItemDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement):
@@ -1421,9 +1475,9 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitAddItemDetailSubDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitAddItemDetailSubDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1438,6 +1492,13 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
             "noteNumber",
             "adjudication",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitAddItemDetailSubDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
@@ -1554,9 +1615,9 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitBenefitBalance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitBenefitBalance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1571,6 +1632,13 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
             "term",
             "financial",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitBenefitBalance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElement):
@@ -1672,9 +1740,9 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitBenefitBalanceFinancial`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitBenefitBalanceFinancial`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1687,6 +1755,13 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
             "usedUnsignedInt",
             "usedMoney",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitBenefitBalanceFinancial`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1793,9 +1868,9 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitCareTeam`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitCareTeam`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1807,6 +1882,13 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
             "role",
             "qualification",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitCareTeam`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1918,9 +2000,9 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitDiagnosis`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitDiagnosis`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1933,6 +2015,13 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
             "onAdmission",
             "packageCode",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitDiagnosis`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1988,6 +2077,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Coverage"],
         },
@@ -2003,6 +2093,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -2029,9 +2120,9 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitInsurance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitInsurance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2041,6 +2132,13 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
             "coverage",
             "preAuthRef",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitInsurance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "focal", "coverage"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -2429,9 +2527,9 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2464,6 +2562,13 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
             "adjudication",
             "detail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -2571,9 +2676,9 @@ class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitItemAdjudication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitItemAdjudication`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2584,6 +2689,13 @@ class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
             "amount",
             "value",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitItemAdjudication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
@@ -2782,9 +2894,9 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitItemDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitItemDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2805,6 +2917,13 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
             "adjudication",
             "subDetail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitItemDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -3004,9 +3123,9 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitItemDetailSubDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitItemDetailSubDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -3026,6 +3145,13 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
             "noteNumber",
             "adjudication",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitItemDetailSubDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -3084,11 +3210,18 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitPayee`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitPayee`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "party"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitPayee`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
@@ -3176,9 +3309,9 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitPayment`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitPayment`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -3191,6 +3324,13 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
             "amount",
             "identifier",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitPayment`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
@@ -3290,9 +3430,9 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitProcedure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitProcedure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -3305,6 +3445,13 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
             "procedureReference",
             "udi",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitProcedure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -3402,9 +3549,9 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitProcessNote`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitProcessNote`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -3415,6 +3562,13 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
             "text",
             "language",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitProcessNote`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
@@ -3466,9 +3620,9 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitRelated`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitRelated`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -3478,6 +3632,13 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
             "relationship",
             "reference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitRelated`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
@@ -3670,9 +3831,9 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitSupportingInfo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitSupportingInfo`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -3690,6 +3851,13 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
             "valueReference",
             "reason",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitSupportingInfo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -3746,6 +3914,7 @@ class ExplanationOfBenefitTotal(backboneelement.BackboneElement):
         description="Monetary total amount associated with the category.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -3763,13 +3932,21 @@ class ExplanationOfBenefitTotal(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ExplanationOfBenefitTotal`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ExplanationOfBenefitTotal`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "category", "amount"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ExplanationOfBenefitTotal`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "category", "amount"]

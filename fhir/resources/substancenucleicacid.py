@@ -40,6 +40,7 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     areaOfHybridisation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -61,6 +62,7 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -76,6 +78,7 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -89,6 +92,7 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -103,14 +107,15 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceNucleicAcid`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceNucleicAcid`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -120,6 +125,23 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "sequenceType",
+            "numberOfSubunits",
+            "areaOfHybridisation",
+            "oligoNucleotideType",
+            "subunit",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceNucleicAcid`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "sequenceType",
             "numberOfSubunits",
@@ -153,6 +175,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -163,6 +186,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     length__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -176,6 +200,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -190,6 +215,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -203,6 +229,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -218,6 +245,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subunit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -231,6 +259,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -246,18 +275,36 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceNucleicAcidSubunit`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceNucleicAcidSubunit`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "subunit",
+            "sequence",
+            "length",
+            "sequenceAttachment",
+            "fivePrime",
+            "threePrime",
+            "linkage",
+            "sugar",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceNucleicAcidSubunit`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "subunit",
             "sequence",
@@ -294,6 +341,7 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     connectivity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -307,6 +355,7 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -320,6 +369,7 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -333,6 +383,7 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -341,13 +392,26 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceNucleicAcidSubunitLinkage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceNucleicAcidSubunitLinkage`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "connectivity",
+            "identifier",
+            "name",
+            "residueSite",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceNucleicAcidSubunitLinkage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "connectivity",
             "identifier",
@@ -376,6 +440,7 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -389,6 +454,7 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -406,6 +472,7 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -414,9 +481,9 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceNucleicAcidSubunitSugar`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceNucleicAcidSubunitSugar`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -426,3 +493,10 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
             "name",
             "residueSite",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceNucleicAcidSubunitSugar`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "identifier", "name", "residueSite"]

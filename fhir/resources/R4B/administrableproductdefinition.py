@@ -45,6 +45,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -62,6 +63,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DeviceDefinition"],
         },
@@ -87,6 +89,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MedicinalProductDefinition"],
         },
@@ -99,6 +102,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -122,6 +126,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -146,6 +151,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ManufacturedItemDefinition"],
         },
@@ -158,6 +164,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -176,6 +183,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -189,6 +197,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -213,14 +222,15 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdministrableProductDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdministrableProductDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -231,6 +241,27 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "status",
+            "formOf",
+            "administrableDoseForm",
+            "unitOfPresentation",
+            "producedFrom",
+            "ingredient",
+            "device",
+            "property",
+            "routeOfAdministration",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "status",
             "formOf",
@@ -272,6 +303,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -282,6 +314,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -292,6 +325,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -305,6 +339,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -321,6 +356,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -334,6 +370,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -350,6 +387,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -358,13 +396,29 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdministrableProductDefinitionProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdministrableProductDefinitionProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueDate",
+            "valueBoolean",
+            "valueAttachment",
+            "status",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinitionProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "valueCodeableConcept",
@@ -423,6 +477,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -439,6 +494,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -452,6 +508,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -462,6 +519,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -475,6 +533,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -488,6 +547,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -498,18 +558,35 @@ class AdministrableProductDefinitionRouteOfAdministration(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdministrableProductDefinitionRouteOfAdministration`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdministrableProductDefinitionRouteOfAdministration`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "code",
+            "firstDose",
+            "maxSingleDose",
+            "maxDosePerDay",
+            "maxDosePerTreatmentPeriod",
+            "maxTreatmentPeriod",
+            "targetSpecies",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinitionRouteOfAdministration`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "code",
             "firstDose",
@@ -542,6 +619,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -555,16 +633,24 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdministrableProductDefinitionRouteOfAdministrationTargetSpecies`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdministrableProductDefinitionRouteOfAdministrationTargetSpecies`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "withdrawalPeriod"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinitionRouteOfAdministrationTargetSpecies`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "withdrawalPeriod"]
 
 
 class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod(
@@ -587,6 +673,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -608,6 +695,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -618,14 +706,15 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -635,3 +724,10 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
             "value",
             "supportingInformation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "tissue", "value", "supportingInformation"]

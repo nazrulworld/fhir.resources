@@ -122,6 +122,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -198,9 +199,9 @@ class DeviceUseStatement(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceUseStatement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceUseStatement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -225,6 +226,13 @@ class DeviceUseStatement(domainresource.DomainResource):
             "bodySite",
             "note",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceUseStatement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "status"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

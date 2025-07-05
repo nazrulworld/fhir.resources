@@ -33,6 +33,7 @@ class Coding(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -49,6 +50,7 @@ class Coding(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -65,6 +67,7 @@ class Coding(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -81,6 +84,7 @@ class Coding(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -100,6 +104,7 @@ class Coding(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -108,9 +113,9 @@ class Coding(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Coding`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Coding`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -121,3 +126,10 @@ class Coding(element.Element):
             "display",
             "userSelected",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Coding`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["system", "version", "code", "display", "userSelected"]

@@ -57,6 +57,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -80,6 +81,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -90,6 +92,7 @@ class Composition(domainresource.DomainResource):
         description="The code specifying the level of confidentiality of the Composition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     confidentiality__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -106,6 +109,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -121,6 +125,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -138,6 +143,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -153,6 +159,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -166,6 +173,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -202,6 +210,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -224,6 +233,7 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -236,6 +246,7 @@ class Composition(domainresource.DomainResource):
         description="Official human-readable label for the composition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -254,14 +265,15 @@ class Composition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Composition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Composition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -287,6 +299,29 @@ class Composition(domainresource.DomainResource):
             "relatesTo",
             "event",
             "section",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Composition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "type",
+            "category",
+            "subject",
+            "encounter",
+            "date",
+            "author",
+            "title",
+            "confidentiality",
+            "custodian",
+            "event",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -366,11 +401,18 @@ class CompositionAttester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CompositionAttester`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CompositionAttester`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "mode", "time", "party"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CompositionAttester`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -409,6 +451,7 @@ class CompositionEvent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -423,6 +466,7 @@ class CompositionEvent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -439,16 +483,24 @@ class CompositionEvent(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CompositionEvent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CompositionEvent`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "period", "detail"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CompositionEvent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "period", "detail"]
 
 
 class CompositionRelatesTo(backboneelement.BackboneElement):
@@ -513,9 +565,9 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CompositionRelatesTo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CompositionRelatesTo`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -525,6 +577,13 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
             "targetIdentifier",
             "targetReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CompositionRelatesTo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -730,9 +789,9 @@ class CompositionSection(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CompositionSection`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CompositionSection`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -749,3 +808,10 @@ class CompositionSection(backboneelement.BackboneElement):
             "emptyReason",
             "section",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CompositionSection`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

@@ -393,6 +393,7 @@ class Device(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -422,6 +423,7 @@ class Device(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "inactive", "entered-in-error"],
@@ -457,6 +459,7 @@ class Device(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -488,9 +491,9 @@ class Device(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Device`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Device`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -533,6 +536,21 @@ class Device(domainresource.DomainResource):
             "note",
             "safety",
             "parent",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Device`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "udiCarrier",
+            "status",
+            "safety",
         ]
 
 
@@ -600,9 +618,9 @@ class DeviceConformsTo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceConformsTo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceConformsTo`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -612,6 +630,13 @@ class DeviceConformsTo(backboneelement.BackboneElement):
             "specification",
             "version",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceConformsTo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class DeviceName(backboneelement.BackboneElement):
@@ -635,6 +660,7 @@ class DeviceName(backboneelement.BackboneElement):
         description="Indicates the default or preferred name to be displayed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -651,6 +677,7 @@ class DeviceName(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -672,6 +699,7 @@ class DeviceName(backboneelement.BackboneElement):
         description="The actual name that identifies the device.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -681,11 +709,18 @@ class DeviceName(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceName`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceName`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "value", "type", "display"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceName`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "value", "type", "display"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -850,9 +885,9 @@ class DeviceProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -867,6 +902,13 @@ class DeviceProperty(backboneelement.BackboneElement):
             "valueRange",
             "valueAttachment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -922,6 +964,7 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     carrierAIDC__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -938,6 +981,7 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     carrierHRF__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -954,6 +998,7 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1006,6 +1051,7 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1035,9 +1081,9 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceUdiCarrier`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceUdiCarrier`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1049,6 +1095,19 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
             "carrierAIDC",
             "carrierHRF",
             "entryType",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceUdiCarrier`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "deviceIdentifier",
+            "issuer",
+            "carrierAIDC",
+            "carrierHRF",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -1128,9 +1187,9 @@ class DeviceVersion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceVersion`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceVersion`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1141,6 +1200,13 @@ class DeviceVersion(backboneelement.BackboneElement):
             "installDate",
             "value",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceVersion`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

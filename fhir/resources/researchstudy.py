@@ -84,6 +84,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -168,6 +169,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -178,6 +180,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="Key terms to aid in searching for or filtering the study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -257,6 +260,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ResearchStudy"],
         },
@@ -272,6 +276,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -288,6 +293,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -304,6 +310,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -327,6 +334,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["PlanDefinition"],
         },
@@ -339,6 +347,7 @@ class ResearchStudy(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -352,6 +361,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -382,6 +392,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["EvidenceReport", "Citation", "DiagnosticReport"],
         },
@@ -394,6 +405,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="A facility in which study activities are conducted.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location", "ResearchStudy", "Organization"],
         },
@@ -406,6 +418,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="The publication state of the resource (not of the study).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -427,6 +440,7 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -437,6 +451,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="The human readable name of the research study.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -485,14 +500,15 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudy`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -534,6 +550,34 @@ class ResearchStudy(domainresource.DomainResource):
             "comparisonGroup",
             "objective",
             "outcomeMeasure",
+            "result",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "title",
+            "protocol",
+            "partOf",
+            "status",
+            "primaryPurposeType",
+            "phase",
+            "studyDesign",
+            "condition",
+            "keyword",
+            "region",
+            "period",
+            "site",
+            "whyStopped",
+            "recruitment",
             "result",
         ]
 
@@ -630,9 +674,9 @@ class ResearchStudyAssociatedParty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudyAssociatedParty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudyAssociatedParty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -644,6 +688,13 @@ class ResearchStudyAssociatedParty(backboneelement.BackboneElement):
             "classifier",
             "party",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudyAssociatedParty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ResearchStudyComparisonGroup(backboneelement.BackboneElement):
@@ -746,9 +797,9 @@ class ResearchStudyComparisonGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudyComparisonGroup`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudyComparisonGroup`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -761,6 +812,13 @@ class ResearchStudyComparisonGroup(backboneelement.BackboneElement):
             "intendedExposure",
             "observedGroup",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudyComparisonGroup`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -813,11 +871,18 @@ class ResearchStudyLabel(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudyLabel`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudyLabel`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "value"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudyLabel`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ResearchStudyObjective(backboneelement.BackboneElement):
@@ -874,11 +939,18 @@ class ResearchStudyObjective(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudyObjective`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudyObjective`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "type", "description"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudyObjective`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ResearchStudyOutcomeMeasure(backboneelement.BackboneElement):
@@ -949,9 +1021,9 @@ class ResearchStudyOutcomeMeasure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudyOutcomeMeasure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudyOutcomeMeasure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -962,6 +1034,13 @@ class ResearchStudyOutcomeMeasure(backboneelement.BackboneElement):
             "description",
             "reference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudyOutcomeMeasure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ResearchStudyProgressStatus(backboneelement.BackboneElement):
@@ -1013,11 +1092,18 @@ class ResearchStudyProgressStatus(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudyProgressStatus`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudyProgressStatus`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "state", "actual", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudyProgressStatus`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ResearchStudyRecruitment(backboneelement.BackboneElement):
@@ -1037,6 +1123,7 @@ class ResearchStudyRecruitment(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Group"],
         },
@@ -1082,9 +1169,9 @@ class ResearchStudyRecruitment(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchStudyRecruitment`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchStudyRecruitment`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1095,3 +1182,10 @@ class ResearchStudyRecruitment(backboneelement.BackboneElement):
             "eligibility",
             "actualGroup",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchStudyRecruitment`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "actualGroup"]

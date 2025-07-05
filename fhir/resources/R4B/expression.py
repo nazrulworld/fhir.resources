@@ -37,6 +37,7 @@ class Expression(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -50,6 +51,7 @@ class Expression(element.Element):
         description="An expression in the specified language that returns a value.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -66,6 +68,7 @@ class Expression(element.Element):
         description="The media type of the language for the expression.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -93,6 +96,7 @@ class Expression(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -106,6 +110,7 @@ class Expression(element.Element):
         description="A URI that defines where the expression is found.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -114,9 +119,9 @@ class Expression(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Expression`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Expression`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -127,6 +132,13 @@ class Expression(element.Element):
             "expression",
             "reference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Expression`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["description", "name", "language", "expression", "reference"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

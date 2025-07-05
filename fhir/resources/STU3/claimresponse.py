@@ -253,6 +253,7 @@ class ClaimResponse(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -300,9 +301,9 @@ class ClaimResponse(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponse`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponse`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -337,6 +338,13 @@ class ClaimResponse(domainresource.DomainResource):
             "communicationRequest",
             "insurance",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponse`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "status"]
 
 
 class ClaimResponseAddItem(backboneelement.BackboneElement):
@@ -461,9 +469,9 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseAddItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseAddItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -479,6 +487,13 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "adjudication",
             "detail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseAddItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
@@ -577,9 +592,9 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseAddItemDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseAddItemDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -593,6 +608,13 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
             "noteNumber",
             "adjudication",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseAddItemDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ClaimResponseError(backboneelement.BackboneElement):
@@ -675,9 +697,9 @@ class ClaimResponseError(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseError`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseError`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -688,6 +710,13 @@ class ClaimResponseError(backboneelement.BackboneElement):
             "subdetailSequenceLinkId",
             "code",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseError`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ClaimResponseInsurance(backboneelement.BackboneElement):
@@ -790,9 +819,9 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseInsurance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseInsurance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -805,6 +834,13 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
             "preAuthRef",
             "claimResponse",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseInsurance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -878,9 +914,9 @@ class ClaimResponseItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -891,6 +927,13 @@ class ClaimResponseItem(backboneelement.BackboneElement):
             "adjudication",
             "detail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -963,9 +1006,9 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseItemAdjudication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseItemAdjudication`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -976,6 +1019,13 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
             "amount",
             "value",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseItemAdjudication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ClaimResponseItemDetail(backboneelement.BackboneElement):
@@ -1038,9 +1088,9 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseItemDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseItemDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1051,6 +1101,13 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
             "adjudication",
             "subDetail",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseItemDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1114,9 +1171,9 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseItemDetailSubDetail`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseItemDetailSubDetail`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1126,6 +1183,13 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
             "noteNumber",
             "adjudication",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseItemDetailSubDetail`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1218,9 +1282,9 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponsePayment`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponsePayment`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1233,6 +1297,13 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
             "amount",
             "identifier",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponsePayment`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ClaimResponseProcessNote(backboneelement.BackboneElement):
@@ -1302,9 +1373,9 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClaimResponseProcessNote`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClaimResponseProcessNote`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1315,3 +1386,10 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
             "text",
             "language",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClaimResponseProcessNote`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

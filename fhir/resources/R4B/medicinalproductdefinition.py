@@ -43,6 +43,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -56,6 +57,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -71,6 +73,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -84,6 +87,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -94,6 +98,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ResearchStudy"],
         },
@@ -114,6 +119,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -133,6 +139,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -143,6 +150,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -159,6 +167,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -169,6 +178,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -182,6 +192,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -199,6 +210,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -217,6 +229,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubstanceDefinition"],
         },
@@ -238,6 +251,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     indication__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -262,6 +276,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -275,6 +290,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -293,6 +309,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -312,6 +329,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -324,6 +342,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -337,6 +356,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -350,6 +370,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -360,6 +381,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description="If authorised for use in children, or infants, neonates etc.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -380,6 +402,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -397,6 +420,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -411,6 +435,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -421,6 +446,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -434,6 +460,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -447,6 +474,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -455,9 +483,9 @@ class MedicinalProductDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicinalProductDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicinalProductDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -468,6 +496,45 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "type",
+            "domain",
+            "version",
+            "status",
+            "statusDate",
+            "description",
+            "combinedPharmaceuticalDoseForm",
+            "route",
+            "indication",
+            "legalStatusOfSupply",
+            "additionalMonitoringIndicator",
+            "specialMeasures",
+            "pediatricUseIndicator",
+            "classification",
+            "marketingStatus",
+            "packagedMedicinalProduct",
+            "ingredient",
+            "impurity",
+            "attachedDocument",
+            "masterFile",
+            "contact",
+            "clinicalTrial",
+            "code",
+            "name",
+            "crossReference",
+            "operation",
+            "characteristic",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicinalProductDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "type",
             "domain",
@@ -518,6 +585,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -528,6 +596,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -541,6 +610,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -557,6 +627,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -570,6 +641,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -586,6 +658,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -594,13 +667,28 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicinalProductDefinitionCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicinalProductDefinitionCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueDate",
+            "valueBoolean",
+            "valueAttachment",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicinalProductDefinitionCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "valueCodeableConcept",
@@ -652,6 +740,7 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization", "PractitionerRole"],
         },
@@ -667,16 +756,24 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicinalProductDefinitionContact`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicinalProductDefinitionContact`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "contact"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicinalProductDefinitionContact`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "contact"]
 
 
 class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
@@ -702,6 +799,7 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MedicinalProductDefinition"],
         },
@@ -721,16 +819,24 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicinalProductDefinitionCrossReference`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicinalProductDefinitionCrossReference`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "product", "type"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicinalProductDefinitionCrossReference`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "product", "type"]
 
 
 class MedicinalProductDefinitionName(backboneelement.BackboneElement):
@@ -753,6 +859,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -763,6 +870,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -773,6 +881,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -787,18 +896,32 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicinalProductDefinitionName`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicinalProductDefinitionName`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "productName",
+            "type",
+            "namePart",
+            "countryLanguage",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicinalProductDefinitionName`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "productName",
             "type",
@@ -836,6 +959,7 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -849,6 +973,7 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -859,14 +984,15 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicinalProductDefinitionNameCountryLanguage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicinalProductDefinitionNameCountryLanguage`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -876,6 +1002,13 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
             "jurisdiction",
             "language",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicinalProductDefinitionNameCountryLanguage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "country", "jurisdiction", "language"]
 
 
 class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
@@ -895,6 +1028,7 @@ class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -909,16 +1043,24 @@ class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicinalProductDefinitionNameNamePart`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicinalProductDefinitionNameNamePart`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "part", "type"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicinalProductDefinitionNameNamePart`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "part", "type"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -957,6 +1099,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -967,6 +1110,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -984,6 +1128,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -1003,6 +1148,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
         },
@@ -1010,13 +1156,26 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicinalProductDefinitionOperation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicinalProductDefinitionOperation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "effectiveDate",
+            "organization",
+            "confidentialityIndicator",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicinalProductDefinitionOperation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "effectiveDate",

@@ -38,6 +38,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -54,6 +55,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -67,6 +69,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -97,6 +100,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -110,6 +114,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Organization",
@@ -147,6 +152,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -167,6 +173,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -182,6 +189,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     quantity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -201,6 +209,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -224,9 +233,9 @@ class Group(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Group`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Group`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -248,6 +257,27 @@ class Group(domainresource.DomainResource):
             "managingEntity",
             "characteristic",
             "member",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Group`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "type",
+            "membership",
+            "code",
+            "name",
+            "quantity",
+            "managingEntity",
+            "characteristic",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -281,6 +311,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         description="A code that identifies the kind of trait being asserted.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -294,6 +325,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -324,6 +356,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -343,6 +376,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -359,6 +393,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -375,6 +410,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -391,6 +427,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": True,
@@ -399,9 +436,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GroupCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GroupCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -415,6 +452,22 @@ class GroupCharacteristic(backboneelement.BackboneElement):
             "valueReference",
             "exclude",
             "period",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GroupCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "code",
+            "valueCodeableConcept",
+            "valueBoolean",
+            "valueQuantity",
+            "valueRange",
+            "valueReference",
+            "exclude",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -520,8 +573,15 @@ class GroupMember(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GroupMember`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GroupMember`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "entity", "period", "inactive"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GroupMember`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

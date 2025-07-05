@@ -61,11 +61,18 @@ class Narrative(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Narrative`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Narrative`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "status", "div"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Narrative`` according to specification,
+        with preserving the original sequence order.
+        """
+        return []
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

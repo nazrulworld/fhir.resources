@@ -43,6 +43,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -66,6 +67,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -76,6 +78,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -95,6 +98,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -110,6 +114,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -120,6 +125,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ClinicalUseDefinition"],
         },
@@ -134,6 +140,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -147,6 +154,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -163,6 +171,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -181,6 +190,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -191,6 +201,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -207,6 +218,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "MedicinalProductDefinition",
@@ -236,6 +248,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -254,14 +267,15 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RegulatedAuthorization`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RegulatedAuthorization`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -272,6 +286,31 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "subject",
+            "type",
+            "description",
+            "region",
+            "status",
+            "statusDate",
+            "validityPeriod",
+            "indication",
+            "intendedUse",
+            "basis",
+            "holder",
+            "regulator",
+            "case",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RegulatedAuthorization`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "subject",
             "type",
@@ -325,6 +364,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -335,6 +375,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e date[x]
             "one_of_many": "date",
             "one_of_many_required": False,
@@ -351,6 +392,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e date[x]
             "one_of_many": "date",
             "one_of_many_required": False,
@@ -364,6 +406,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -374,6 +417,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -384,18 +428,34 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RegulatedAuthorizationCase`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RegulatedAuthorizationCase`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "status",
+            "datePeriod",
+            "dateDateTime",
+            "application",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RegulatedAuthorizationCase`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "identifier",
             "type",

@@ -55,6 +55,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e artifact[x]
             "one_of_many": "artifact",
             "one_of_many_required": True,
@@ -76,6 +77,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e artifact[x]
             "one_of_many": "artifact",
             "one_of_many_required": True,
@@ -94,6 +96,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e artifact[x]
             "one_of_many": "artifact",
             "one_of_many_required": True,
@@ -180,6 +183,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -199,6 +203,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -225,6 +230,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -239,6 +245,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -252,6 +259,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -269,6 +277,7 @@ class ArtifactAssessment(domainresource.DomainResource):
         description="Indicates the workflow status of the comment or change request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -291,9 +300,9 @@ class ArtifactAssessment(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ArtifactAssessment`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ArtifactAssessment`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -316,6 +325,27 @@ class ArtifactAssessment(domainresource.DomainResource):
             "artifactCanonical",
             "artifactUri",
             "content",
+            "workflowStatus",
+            "disposition",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ArtifactAssessment`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "title",
+            "date",
+            "lastReviewDate",
+            "artifactReference",
+            "artifactCanonical",
+            "artifactUri",
             "workflowStatus",
             "disposition",
         ]
@@ -489,9 +519,9 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ArtifactAssessmentContent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ArtifactAssessmentContent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -508,3 +538,10 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
             "freeToShare",
             "component",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ArtifactAssessmentContent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

@@ -34,6 +34,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -52,6 +53,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -82,6 +84,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -98,6 +101,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     copackagedIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -116,6 +120,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -137,6 +142,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -150,6 +156,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -166,6 +173,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -181,6 +189,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -197,6 +206,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -213,6 +223,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MedicinalProductDefinition"],
         },
@@ -233,6 +244,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -251,6 +263,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -261,6 +274,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -280,14 +294,15 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PackagedProductDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PackagedProductDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -297,6 +312,33 @@ class PackagedProductDefinition(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "name",
+            "type",
+            "packageFor",
+            "status",
+            "statusDate",
+            "containedItemQuantity",
+            "description",
+            "legalStatusOfSupply",
+            "marketingStatus",
+            "copackagedIndicator",
+            "manufacturer",
+            "attachedDocument",
+            "packaging",
+            "characteristic",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PackagedProductDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "identifier",
             "name",
@@ -340,6 +382,7 @@ class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneEleme
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -353,16 +396,24 @@ class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneEleme
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PackagedProductDefinitionLegalStatusOfSupply`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PackagedProductDefinitionLegalStatusOfSupply`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "jurisdiction"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PackagedProductDefinitionLegalStatusOfSupply`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "jurisdiction"]
 
 
 class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
@@ -393,6 +444,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -410,6 +462,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     componentPart__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -423,6 +476,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -440,6 +494,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -456,6 +511,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -468,6 +524,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -485,6 +542,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -495,6 +553,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -514,6 +573,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     quantity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -527,6 +587,7 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -537,18 +598,39 @@ class PackagedProductDefinitionPackaging(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PackagedProductDefinitionPackaging`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PackagedProductDefinitionPackaging`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "componentPart",
+            "quantity",
+            "material",
+            "alternateMaterial",
+            "shelfLifeStorage",
+            "manufacturer",
+            "property",
+            "containedItem",
+            "packaging",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PackagedProductDefinitionPackaging`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "identifier",
             "type",
@@ -586,6 +668,7 @@ class PackagedProductDefinitionPackagingContainedItem(backboneelement.BackboneEl
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -609,6 +692,7 @@ class PackagedProductDefinitionPackagingContainedItem(backboneelement.BackboneEl
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "ManufacturedItemDefinition",
@@ -622,11 +706,18 @@ class PackagedProductDefinitionPackagingContainedItem(backboneelement.BackboneEl
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PackagedProductDefinitionPackagingContainedItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PackagedProductDefinitionPackagingContainedItem`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "item", "amount"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PackagedProductDefinitionPackagingContainedItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "item", "amount"]
 
 
 class PackagedProductDefinitionPackagingProperty(backboneelement.BackboneElement):
@@ -646,6 +737,7 @@ class PackagedProductDefinitionPackagingProperty(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -656,6 +748,7 @@ class PackagedProductDefinitionPackagingProperty(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -669,6 +762,7 @@ class PackagedProductDefinitionPackagingProperty(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -685,6 +779,7 @@ class PackagedProductDefinitionPackagingProperty(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -698,6 +793,7 @@ class PackagedProductDefinitionPackagingProperty(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -714,6 +810,7 @@ class PackagedProductDefinitionPackagingProperty(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e value[x]
             "one_of_many": "value",
             "one_of_many_required": False,
@@ -722,13 +819,28 @@ class PackagedProductDefinitionPackagingProperty(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PackagedProductDefinitionPackagingProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PackagedProductDefinitionPackagingProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "type",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueDate",
+            "valueBoolean",
+            "valueAttachment",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PackagedProductDefinitionPackagingProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "type",
             "valueCodeableConcept",

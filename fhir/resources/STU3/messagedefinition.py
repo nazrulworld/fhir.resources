@@ -51,6 +51,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MessageDefinition"],
         },
@@ -63,6 +64,7 @@ class MessageDefinition(domainresource.DomainResource):
         description="The impact of the content of the message.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["Consequence", "Currency", "Notification"],
@@ -82,6 +84,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -115,6 +118,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -132,6 +136,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -145,6 +150,7 @@ class MessageDefinition(domainresource.DomainResource):
         description="A coded identifier of a supported messaging event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -159,6 +165,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -176,6 +183,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -190,6 +198,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -203,6 +212,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -217,6 +227,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -233,6 +244,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
         },
@@ -248,6 +260,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -264,6 +277,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -277,6 +291,7 @@ class MessageDefinition(domainresource.DomainResource):
         description="A MessageDefinition that is superseded by this definition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MessageDefinition"],
         },
@@ -307,6 +322,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -324,6 +340,7 @@ class MessageDefinition(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the message definition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -345,6 +362,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -362,6 +380,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -380,6 +399,7 @@ class MessageDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -388,9 +408,9 @@ class MessageDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MessageDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MessageDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -424,6 +444,37 @@ class MessageDefinition(domainresource.DomainResource):
             "focus",
             "responseRequired",
             "allowedResponse",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MessageDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "base",
+            "parent",
+            "replaces",
+            "event",
+            "category",
+            "focus",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -483,11 +534,18 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MessageDefinitionAllowedResponse`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MessageDefinitionAllowedResponse`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "message", "situation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MessageDefinitionAllowedResponse`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MessageDefinitionFocus(backboneelement.BackboneElement):
@@ -510,6 +568,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         description="The kind of resource that must be the focus for this message.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -568,11 +627,18 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MessageDefinitionFocus`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MessageDefinitionFocus`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "profile", "min", "max"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MessageDefinitionFocus`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

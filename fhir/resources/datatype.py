@@ -24,8 +24,15 @@ class DataType(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DataType`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DataType`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DataType`` according to specification,
+        with preserving the original sequence order.
+        """
+        return []

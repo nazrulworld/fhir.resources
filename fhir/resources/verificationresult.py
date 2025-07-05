@@ -42,6 +42,7 @@ class VerificationResult(domainresource.DomainResource):
         description="The result if validation fails (fatal; warning; record only; none).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +82,7 @@ class VerificationResult(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -120,6 +122,7 @@ class VerificationResult(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -145,6 +148,7 @@ class VerificationResult(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -158,6 +162,7 @@ class VerificationResult(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -170,6 +175,7 @@ class VerificationResult(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     targetLocation__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -186,6 +192,7 @@ class VerificationResult(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -199,6 +206,7 @@ class VerificationResult(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -214,9 +222,9 @@ class VerificationResult(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VerificationResult`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VerificationResult`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -241,6 +249,26 @@ class VerificationResult(domainresource.DomainResource):
             "primarySource",
             "attestation",
             "validator",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VerificationResult`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "target",
+            "targetLocation",
+            "need",
+            "status",
+            "statusDate",
+            "validationType",
+            "validationProcess",
+            "failureAction",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -275,6 +303,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -285,6 +314,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -301,6 +331,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Organization",
@@ -377,6 +408,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -388,9 +420,9 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VerificationResultAttestation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VerificationResultAttestation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -405,6 +437,13 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "proxySignature",
             "sourceSignature",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VerificationResultAttestation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "who", "onBehalfOf", "communicationMethod", "date"]
 
 
 class VerificationResultPrimarySource(backboneelement.BackboneElement):
@@ -427,6 +466,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -437,6 +477,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         description="Method for communicating with the primary source (manual; API; Push).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -464,6 +505,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -511,9 +553,9 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VerificationResultPrimarySource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VerificationResultPrimarySource`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -527,6 +569,13 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
             "canPushUpdates",
             "pushTypeAvailable",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VerificationResultPrimarySource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "communicationMethod", "canPushUpdates"]
 
 
 class VerificationResultValidator(backboneelement.BackboneElement):
@@ -581,9 +630,9 @@ class VerificationResultValidator(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``VerificationResultValidator`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``VerificationResultValidator`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -593,3 +642,10 @@ class VerificationResultValidator(backboneelement.BackboneElement):
             "identityCertificate",
             "attestationSignature",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``VerificationResultValidator`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

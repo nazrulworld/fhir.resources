@@ -84,6 +84,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -112,6 +113,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -124,6 +126,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -139,6 +142,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -152,6 +156,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -180,6 +185,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         description="planned | waitlist | active | onhold | finished | cancelled.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -224,14 +230,15 @@ class EpisodeOfCare(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EpisodeOfCare`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EpisodeOfCare`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -255,6 +262,25 @@ class EpisodeOfCare(domainresource.DomainResource):
             "careManager",
             "careTeam",
             "account",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EpisodeOfCare`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "status",
+            "type",
+            "reason",
+            "diagnosis",
+            "patient",
+            "managingOrganization",
+            "period",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -290,6 +316,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Condition"],
         },
@@ -305,16 +332,24 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EpisodeOfCareDiagnosis`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EpisodeOfCareDiagnosis`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "condition", "use"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EpisodeOfCareDiagnosis`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "condition", "use"]
 
 
 class EpisodeOfCareReason(backboneelement.BackboneElement):
@@ -338,6 +373,7 @@ class EpisodeOfCareReason(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -352,6 +388,7 @@ class EpisodeOfCareReason(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Condition",
@@ -364,11 +401,18 @@ class EpisodeOfCareReason(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EpisodeOfCareReason`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EpisodeOfCareReason`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "use", "value"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EpisodeOfCareReason`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "use", "value"]
 
 
 class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
@@ -424,11 +468,18 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EpisodeOfCareStatusHistory`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EpisodeOfCareStatusHistory`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "status", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EpisodeOfCareStatusHistory`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

@@ -36,6 +36,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e age[x]
             "one_of_many": "age",
             "one_of_many_required": False,
@@ -52,6 +53,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e age[x]
             "one_of_many": "age",
             "one_of_many_required": False,
@@ -68,6 +70,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e age[x]
             "one_of_many": "age",
             "one_of_many_required": False,
@@ -144,6 +147,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         description="Describes why the family member's history is not available.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -157,6 +161,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -173,6 +178,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e deceased[x]
             "one_of_many": "deceased",
             "one_of_many_required": False,
@@ -189,6 +195,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e deceased[x]
             "one_of_many": "deceased",
             "one_of_many_required": False,
@@ -208,6 +215,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e deceased[x]
             "one_of_many": "deceased",
             "one_of_many_required": False,
@@ -227,6 +235,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e deceased[x]
             "one_of_many": "deceased",
             "one_of_many_required": False,
@@ -243,6 +252,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e deceased[x]
             "one_of_many": "deceased",
             "one_of_many_required": False,
@@ -259,6 +269,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         description="If true, indicates that the age value specified is an estimated value.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     estimatedAge__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -276,6 +287,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -290,6 +302,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "PlanDefinition",
@@ -317,6 +330,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -333,6 +347,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -360,6 +375,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         description="The person who this history concerns.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -375,6 +391,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -388,6 +405,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Condition",
@@ -410,6 +428,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -420,6 +439,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         description="The birth sex of the family member.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -433,6 +453,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -450,9 +471,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``FamilyMemberHistory`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``FamilyMemberHistory`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -489,6 +510,38 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "reasonReference",
             "note",
             "condition",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``FamilyMemberHistory`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "status",
+            "dataAbsentReason",
+            "patient",
+            "date",
+            "name",
+            "relationship",
+            "sex",
+            "ageAge",
+            "ageRange",
+            "ageString",
+            "estimatedAge",
+            "deceasedBoolean",
+            "deceasedAge",
+            "deceasedRange",
+            "deceasedDate",
+            "deceasedString",
+            "reasonCode",
+            "reasonReference",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -675,9 +728,9 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``FamilyMemberHistoryCondition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``FamilyMemberHistoryCondition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -692,6 +745,13 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "onsetString",
             "note",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``FamilyMemberHistoryCondition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

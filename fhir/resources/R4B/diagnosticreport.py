@@ -60,6 +60,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -70,6 +71,7 @@ class DiagnosticReport(domainresource.DomainResource):
         description="A code or name that describes this diagnostic report.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -114,6 +116,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -137,6 +140,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -153,6 +157,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -165,6 +170,7 @@ class DiagnosticReport(domainresource.DomainResource):
         description="Identifiers assigned to this report by the performer or other systems.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -199,6 +205,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -216,6 +223,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -226,6 +234,7 @@ class DiagnosticReport(domainresource.DomainResource):
         description="The diagnostic service that is responsible for issuing the report.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -275,6 +284,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -304,6 +314,7 @@ class DiagnosticReport(domainresource.DomainResource):
         description="The status of the diagnostic report.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -325,6 +336,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -342,9 +354,9 @@ class DiagnosticReport(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DiagnosticReport`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DiagnosticReport`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -374,6 +386,29 @@ class DiagnosticReport(domainresource.DomainResource):
             "conclusion",
             "conclusionCode",
             "presentedForm",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DiagnosticReport`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "category",
+            "code",
+            "subject",
+            "encounter",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "issued",
+            "performer",
+            "resultsInterpreter",
+            "media",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -441,6 +476,7 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Media"],
         },
@@ -448,8 +484,15 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DiagnosticReportMedia`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DiagnosticReportMedia`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "comment", "link"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DiagnosticReportMedia`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "link"]

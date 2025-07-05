@@ -49,6 +49,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -70,6 +71,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The overall type of event, intended for search and filtering purposes.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -83,6 +85,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -99,6 +102,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -112,6 +116,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     detected__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -125,6 +130,7 @@ class AdverseEvent(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -160,6 +166,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -170,6 +177,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The information about where the adverse event occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -188,6 +196,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -201,6 +210,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -211,6 +221,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The date (and perhaps time) when the adverse event occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -229,6 +240,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The date (and perhaps time) when the adverse event occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -242,6 +254,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The date (and perhaps time) when the adverse event occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -258,6 +271,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -274,6 +288,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -284,6 +299,7 @@ class AdverseEvent(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -296,6 +312,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -312,6 +329,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -335,6 +353,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Condition", "Observation"],
         },
@@ -350,6 +369,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -360,6 +380,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The current state of the adverse event or potential adverse event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -377,6 +398,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The research study that the subject is enrolled in.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ResearchStudy"],
         },
@@ -389,6 +411,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="This subject or group impacted by the event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -407,6 +430,7 @@ class AdverseEvent(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -420,14 +444,15 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEvent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEvent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -458,6 +483,43 @@ class AdverseEvent(domainresource.DomainResource):
             "participant",
             "study",
             "expectedInResearchStudy",
+            "suspectEntity",
+            "contributingFactor",
+            "preventiveAction",
+            "mitigatingAction",
+            "supportingInfo",
+            "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEvent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "actuality",
+            "category",
+            "code",
+            "subject",
+            "encounter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "detected",
+            "recordedDate",
+            "resultingEffect",
+            "location",
+            "seriousness",
+            "outcome",
+            "recorder",
+            "participant",
+            "study",
             "suspectEntity",
             "contributingFactor",
             "preventiveAction",
@@ -522,6 +584,7 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -541,6 +604,7 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -563,9 +627,9 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEventContributingFactor`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEventContributingFactor`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -574,6 +638,13 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
             "itemReference",
             "itemCodeableConcept",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEventContributingFactor`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "itemReference", "itemCodeableConcept"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -618,6 +689,7 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -637,6 +709,7 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -652,9 +725,9 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEventMitigatingAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEventMitigatingAction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -663,6 +736,13 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
             "itemReference",
             "itemCodeableConcept",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEventMitigatingAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "itemReference", "itemCodeableConcept"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -701,6 +781,7 @@ class AdverseEventParticipant(backboneelement.BackboneElement):
         description="Indicates who or what participated in the event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -725,16 +806,24 @@ class AdverseEventParticipant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEventParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEventParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEventParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "function", "actor"]
 
 
 class AdverseEventPreventiveAction(backboneelement.BackboneElement):
@@ -754,6 +843,7 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
         description="The action that contributed to avoiding the adverse event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -767,6 +857,7 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
         description="The action that contributed to avoiding the adverse event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -783,9 +874,9 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEventPreventiveAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEventPreventiveAction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -794,6 +885,13 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
             "itemReference",
             "itemCodeableConcept",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEventPreventiveAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "itemReference", "itemCodeableConcept"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -840,6 +938,7 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -864,6 +963,7 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": True,
@@ -885,9 +985,9 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEventSupportingInfo`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEventSupportingInfo`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -896,6 +996,13 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
             "itemReference",
             "itemCodeableConcept",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEventSupportingInfo`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "itemReference", "itemCodeableConcept"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -932,6 +1039,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -946,6 +1054,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e instance[x]
             "one_of_many": "instance",
             "one_of_many_required": True,
@@ -963,6 +1072,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e instance[x]
             "one_of_many": "instance",
             "one_of_many_required": True,
@@ -983,13 +1093,25 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEventSuspectEntity`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEventSuspectEntity`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "instanceCodeableConcept",
+            "instanceReference",
+            "causality",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEventSuspectEntity`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "instanceCodeableConcept",
             "instanceReference",
@@ -1038,6 +1160,7 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1048,6 +1171,7 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         description="The author of the information on the possible cause of the event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -1072,14 +1196,15 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEventSuspectEntityCausality`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEventSuspectEntityCausality`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1089,3 +1214,10 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
             "entityRelatedness",
             "author",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEventSuspectEntityCausality`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "assessmentMethod", "entityRelatedness", "author"]

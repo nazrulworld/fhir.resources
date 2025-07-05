@@ -66,6 +66,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -95,6 +96,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -129,6 +131,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -145,6 +148,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -174,6 +178,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -201,6 +206,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -218,6 +224,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -231,6 +238,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -280,6 +288,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -296,6 +305,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -354,6 +364,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -370,6 +381,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -448,6 +460,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -481,6 +494,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -510,6 +524,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -546,6 +561,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -587,6 +603,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -595,9 +612,9 @@ class ResearchElementDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchElementDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchElementDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -641,6 +658,34 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "library",
             "type",
             "variableType",
+            "characteristic",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchElementDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "shortTitle",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "effectivePeriod",
+            "type",
             "characteristic",
         ]
 
@@ -696,6 +741,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e definition[x]
             "one_of_many": "definition",
             "one_of_many_required": True,
@@ -721,6 +767,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e definition[x]
             "one_of_many": "definition",
             "one_of_many_required": True,
@@ -739,6 +786,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e definition[x]
             "one_of_many": "definition",
             "one_of_many_required": True,
@@ -757,6 +805,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e definition[x]
             "one_of_many": "definition",
             "one_of_many_required": True,
@@ -1030,9 +1079,9 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ResearchElementDefinitionCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ResearchElementDefinitionCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1059,6 +1108,19 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "participantEffectiveTiming",
             "participantEffectiveTimeFromStart",
             "participantEffectiveGroupMeasure",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ResearchElementDefinitionCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "definitionCodeableConcept",
+            "definitionCanonical",
+            "definitionExpression",
+            "definitionDataRequirement",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:

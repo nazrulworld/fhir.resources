@@ -34,6 +34,7 @@ class Basic(domainresource.DomainResource):
         description="Indicates who was responsible for creating the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -57,6 +58,7 @@ class Basic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -67,6 +69,7 @@ class Basic(domainresource.DomainResource):
         description="Identifies when the resource was first created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -83,6 +86,7 @@ class Basic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -96,6 +100,7 @@ class Basic(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -103,9 +108,9 @@ class Basic(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Basic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Basic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -115,6 +120,23 @@ class Basic(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "code",
+            "subject",
+            "created",
+            "author",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Basic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "identifier",
             "code",

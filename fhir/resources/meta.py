@@ -34,6 +34,7 @@ class Meta(datatype.DataType):
         description="When the resource last changed - e.g. when the version changed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -53,6 +54,7 @@ class Meta(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["StructureDefinition"],
         },
@@ -71,6 +73,7 @@ class Meta(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -87,6 +90,7 @@ class Meta(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -105,6 +109,7 @@ class Meta(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -119,6 +124,7 @@ class Meta(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -127,9 +133,9 @@ class Meta(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Meta`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Meta`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -141,3 +147,10 @@ class Meta(datatype.DataType):
             "security",
             "tag",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Meta`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["versionId", "lastUpdated", "source", "profile", "security", "tag"]

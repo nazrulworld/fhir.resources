@@ -33,6 +33,7 @@ class Patient(domainresource.DomainResource):
         description="Whether this patient record is in active use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -46,6 +47,7 @@ class Patient(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -56,6 +58,7 @@ class Patient(domainresource.DomainResource):
         description="This patient is known to be an animal.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -66,6 +69,7 @@ class Patient(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -105,6 +109,7 @@ class Patient(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e deceased[x]
             "one_of_many": "deceased",
             "one_of_many_required": False,
@@ -121,6 +126,7 @@ class Patient(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e deceased[x]
             "one_of_many": "deceased",
             "one_of_many_required": False,
@@ -142,6 +148,7 @@ class Patient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["male", "female", "other", "unknown"],
@@ -170,6 +177,7 @@ class Patient(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -182,6 +190,7 @@ class Patient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -192,6 +201,7 @@ class Patient(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -256,6 +266,7 @@ class Patient(domainresource.DomainResource):
         description="A name associated with the individual.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -279,14 +290,15 @@ class Patient(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Patient`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Patient`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -314,6 +326,29 @@ class Patient(domainresource.DomainResource):
             "animal",
             "communication",
             "generalPractitioner",
+            "managingOrganization",
+            "link",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Patient`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "active",
+            "name",
+            "telecom",
+            "gender",
+            "birthDate",
+            "deceasedBoolean",
+            "deceasedDateTime",
+            "address",
+            "animal",
             "managingOrganization",
             "link",
         ]
@@ -356,6 +391,7 @@ class PatientAnimal(backboneelement.BackboneElement):
         description="Identifies the detailed categorization of the kind of animal.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -366,6 +402,7 @@ class PatientAnimal(backboneelement.BackboneElement):
         description="Indicates the current state of the animal's reproductive organs.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -379,14 +416,15 @@ class PatientAnimal(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PatientAnimal`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PatientAnimal`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -396,6 +434,13 @@ class PatientAnimal(backboneelement.BackboneElement):
             "breed",
             "genderStatus",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PatientAnimal`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "species", "breed", "genderStatus"]
 
 
 class PatientCommunication(backboneelement.BackboneElement):
@@ -447,11 +492,18 @@ class PatientCommunication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PatientCommunication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PatientCommunication`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "language", "preferred"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PatientCommunication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class PatientContact(backboneelement.BackboneElement):
@@ -559,9 +611,9 @@ class PatientContact(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PatientContact`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PatientContact`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -575,6 +627,13 @@ class PatientContact(backboneelement.BackboneElement):
             "organization",
             "period",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PatientContact`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class PatientLink(backboneelement.BackboneElement):
@@ -595,6 +654,7 @@ class PatientLink(backboneelement.BackboneElement):
         description="The other patient resource that the link refers to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "RelatedPerson"],
         },
@@ -610,6 +670,7 @@ class PatientLink(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -622,11 +683,18 @@ class PatientLink(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PatientLink`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PatientLink`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "other", "type"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PatientLink`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "other", "type"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

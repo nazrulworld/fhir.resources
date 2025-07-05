@@ -35,6 +35,7 @@ class RelatedPerson(domainresource.DomainResource):
         description="Whether this related person record is in active use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -48,6 +49,7 @@ class RelatedPerson(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -58,6 +60,7 @@ class RelatedPerson(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -87,6 +90,7 @@ class RelatedPerson(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["male", "female", "other", "unknown"],
@@ -103,6 +107,7 @@ class RelatedPerson(domainresource.DomainResource):
         description="Identifier for a person within a particular scope.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -113,6 +118,7 @@ class RelatedPerson(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -123,6 +129,7 @@ class RelatedPerson(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -161,6 +168,7 @@ class RelatedPerson(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -174,14 +182,15 @@ class RelatedPerson(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RelatedPerson`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RelatedPerson`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -204,6 +213,27 @@ class RelatedPerson(domainresource.DomainResource):
             "photo",
             "period",
             "communication",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RelatedPerson`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "patient",
+            "relationship",
+            "name",
+            "telecom",
+            "gender",
+            "birthDate",
+            "address",
         ]
 
 
@@ -254,8 +284,15 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RelatedPersonCommunication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RelatedPersonCommunication`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "language", "preferred"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RelatedPersonCommunication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

@@ -75,6 +75,7 @@ class DeviceDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device", "DeviceDefinition"],
         },
@@ -114,6 +115,7 @@ class DeviceDispense(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -171,6 +173,7 @@ class DeviceDispense(domainresource.DomainResource):
         description="The time when the dispensed product was packaged and reviewed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     preparedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -220,6 +223,7 @@ class DeviceDispense(domainresource.DomainResource):
         description="A code specifying the state of the set of dispense events.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -262,6 +266,7 @@ class DeviceDispense(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Practitioner"],
         },
@@ -322,9 +327,9 @@ class DeviceDispense(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDispense`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDispense`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -356,6 +361,23 @@ class DeviceDispense(domainresource.DomainResource):
             "note",
             "usageInstruction",
             "eventHistory",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDispense`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "device",
+            "subject",
+            "preparedDate",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -419,8 +441,15 @@ class DeviceDispensePerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDispensePerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDispensePerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDispensePerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

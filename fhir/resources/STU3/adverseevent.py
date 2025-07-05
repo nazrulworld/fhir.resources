@@ -46,6 +46,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["AE", "PAE"],
@@ -62,6 +63,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The date (and perhaps time) when the adverse event occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -75,6 +77,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="Describes the adverse event in text.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -95,6 +98,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "Device"],
         },
@@ -111,6 +115,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -121,6 +126,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="The information about where the adverse event occurred.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -136,6 +142,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="Describes the type of outcome from the adverse event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -149,6 +156,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Condition"],
         },
@@ -164,6 +172,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Practitioner", "RelatedPerson"],
         },
@@ -176,6 +185,7 @@ class AdverseEvent(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DocumentReference"],
         },
@@ -188,6 +198,7 @@ class AdverseEvent(domainresource.DomainResource):
         description="Describes the seriousness or severity of the adverse event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -198,6 +209,7 @@ class AdverseEvent(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ResearchStudy"],
         },
@@ -214,6 +226,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -231,6 +244,7 @@ class AdverseEvent(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Condition",
@@ -253,6 +267,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -266,14 +281,15 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEvent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEvent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -284,6 +300,33 @@ class AdverseEvent(domainresource.DomainResource):
             "contained",
             "extension",
             "modifierExtension",
+            "identifier",
+            "category",
+            "type",
+            "subject",
+            "date",
+            "reaction",
+            "location",
+            "seriousness",
+            "outcome",
+            "recorder",
+            "eventParticipant",
+            "description",
+            "suspectEntity",
+            "subjectMedicalHistory",
+            "referenceDocument",
+            "study",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEvent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "identifier",
             "category",
             "type",
@@ -321,6 +364,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["causality1", "causality2"],
@@ -337,6 +381,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -347,6 +392,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "PractitionerRole"],
         },
@@ -359,6 +405,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -369,6 +416,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     causalityProductRelatedness__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -384,6 +432,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -398,6 +447,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Substance",
@@ -411,13 +461,29 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AdverseEventSuspectEntity`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AdverseEventSuspectEntity`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "instance",
+            "causality",
+            "causalityAssessment",
+            "causalityProductRelatedness",
+            "causalityMethod",
+            "causalityAuthor",
+            "causalityResult",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AdverseEventSuspectEntity`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "instance",
             "causality",

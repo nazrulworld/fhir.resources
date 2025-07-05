@@ -58,6 +58,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "MedicationRequest",
@@ -78,6 +79,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -91,6 +93,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter", "EpisodeOfCare"],
         },
@@ -106,6 +109,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -149,6 +153,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -171,6 +176,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -193,6 +199,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -233,6 +240,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e medication[x]
             "one_of_many": "medication",
             "one_of_many_required": True,
@@ -251,6 +259,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e medication[x]
             "one_of_many": "medication",
             "one_of_many_required": True,
@@ -279,6 +288,7 @@ class MedicationStatement(domainresource.DomainResource):
         description="A larger event of which this particular event is a component or step.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "MedicationAdministration",
@@ -336,6 +346,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -360,6 +371,7 @@ class MedicationStatement(domainresource.DomainResource):
         description="The person, animal or group who is/was taking the medication.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -375,6 +387,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -387,9 +400,9 @@ class MedicationStatement(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationStatement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationStatement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -420,6 +433,30 @@ class MedicationStatement(domainresource.DomainResource):
             "reasonReference",
             "note",
             "dosage",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationStatement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "basedOn",
+            "partOf",
+            "context",
+            "status",
+            "category",
+            "medicationCodeableConcept",
+            "medicationReference",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "dateAsserted",
+            "subject",
+            "taken",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

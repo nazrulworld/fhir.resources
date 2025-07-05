@@ -35,6 +35,7 @@ class Period(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -48,6 +49,7 @@ class Period(datatype.DataType):
         description="The start of the period. The boundary is inclusive.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -56,8 +58,15 @@ class Period(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Period`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Period`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "start", "end"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Period`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["start", "end"]

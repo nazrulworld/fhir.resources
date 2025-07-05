@@ -48,6 +48,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +82,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -177,6 +179,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -284,6 +287,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "inactive", "entered-in-error"],
@@ -304,6 +308,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     synonym__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -312,9 +317,9 @@ class MedicationKnowledge(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledge`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledge`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -347,6 +352,22 @@ class MedicationKnowledge(domainresource.DomainResource):
             "contraindication",
             "regulatory",
             "kinetics",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledge`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "code",
+            "status",
+            "manufacturer",
+            "amount",
+            "synonym",
         ]
 
 
@@ -421,9 +442,9 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeAdministrationGuidelines`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeAdministrationGuidelines`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -434,6 +455,13 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
             "indicationReference",
             "patientCharacteristics",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeAdministrationGuidelines`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -491,11 +519,18 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeAdministrationGuidelinesDosage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeAdministrationGuidelinesDosage`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "dosage"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeAdministrationGuidelinesDosage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
@@ -568,9 +603,9 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -580,6 +615,13 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
             "characteristicQuantity",
             "value",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -652,11 +694,18 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeCost`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeCost`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "source", "cost"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeCost`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
@@ -746,9 +795,9 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeDrugCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeDrugCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -760,6 +809,13 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
             "valueQuantity",
             "valueBase64Binary",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeDrugCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -862,9 +918,9 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeIngredient`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeIngredient`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -875,6 +931,13 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
             "isActive",
             "strength",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeIngredient`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -939,9 +1002,9 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeKinetics`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeKinetics`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -951,6 +1014,13 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
             "lethalDose50",
             "halfLifePeriod",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeKinetics`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement):
@@ -992,11 +1062,18 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeMedicineClassification`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeMedicineClassification`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "classification"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeMedicineClassification`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
@@ -1035,11 +1112,18 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeMonitoringProgram`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeMonitoringProgram`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "name"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeMonitoringProgram`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
@@ -1079,11 +1163,18 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeMonograph`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeMonograph`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "source"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeMonograph`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgePackaging(backboneelement.BackboneElement):
@@ -1125,11 +1216,18 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgePackaging`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgePackaging`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "quantity"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgePackaging`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
@@ -1192,9 +1290,9 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeRegulatory`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeRegulatory`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1205,6 +1303,13 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
             "schedule",
             "maxDispense",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeRegulatory`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
@@ -1240,11 +1345,18 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeRegulatoryMaxDispense`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeRegulatoryMaxDispense`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "quantity", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeRegulatoryMaxDispense`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
@@ -1269,11 +1381,18 @@ class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeRegulatorySchedule`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeRegulatorySchedule`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "schedule"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeRegulatorySchedule`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement):
@@ -1316,11 +1435,18 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeRegulatorySubstitution`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeRegulatorySubstitution`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "allowed"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeRegulatorySubstitution`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1369,8 +1495,15 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationKnowledgeRelatedMedicationKnowledge`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationKnowledgeRelatedMedicationKnowledge`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "reference"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationKnowledgeRelatedMedicationKnowledge`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

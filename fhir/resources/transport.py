@@ -53,6 +53,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -68,6 +69,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -78,6 +80,7 @@ class Transport(domainresource.DomainResource):
         description="Identifies the completion time of the event (the occurrence).",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     completionTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -91,6 +94,7 @@ class Transport(domainresource.DomainResource):
         description="The current location for the entity to be transported.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -103,6 +107,7 @@ class Transport(domainresource.DomainResource):
         description="A free-text description of what is to be performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -119,6 +124,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -134,6 +140,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -149,6 +156,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -169,6 +177,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -221,6 +230,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ActivityDefinition"],
         },
@@ -242,6 +252,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -277,6 +288,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -304,6 +316,7 @@ class Transport(domainresource.DomainResource):
         description="The date and time of last modification to this transport.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -317,6 +330,7 @@ class Transport(domainresource.DomainResource):
         description="Principal physical location where this transport is performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -352,6 +366,7 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -373,6 +388,7 @@ class Transport(domainresource.DomainResource):
         description="A larger event of which this particular event is a component or step.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Transport"],
         },
@@ -445,6 +461,7 @@ class Transport(domainresource.DomainResource):
         description="The desired or final location for the transport.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -457,6 +474,7 @@ class Transport(domainresource.DomainResource):
         description="The creator of the transport.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Device",
@@ -494,6 +512,7 @@ class Transport(domainresource.DomainResource):
         description="A code specifying the state of the transport event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -520,14 +539,15 @@ class Transport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Transport`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Transport`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -570,6 +590,38 @@ class Transport(domainresource.DomainResource):
             "currentLocation",
             "reason",
             "history",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Transport`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "groupIdentifier",
+            "partOf",
+            "status",
+            "statusReason",
+            "intent",
+            "code",
+            "description",
+            "focus",
+            "for",
+            "encounter",
+            "completionTime",
+            "lastModified",
+            "requester",
+            "owner",
+            "location",
+            "requestedLocation",
+            "currentLocation",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -1379,9 +1431,9 @@ class TransportInput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TransportInput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TransportInput`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1443,6 +1495,13 @@ class TransportInput(backboneelement.BackboneElement):
             "valueDosage",
             "valueMeta",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TransportInput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -2309,9 +2368,9 @@ class TransportOutput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TransportOutput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TransportOutput`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2373,6 +2432,13 @@ class TransportOutput(backboneelement.BackboneElement):
             "valueDosage",
             "valueMeta",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TransportOutput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -2509,9 +2575,9 @@ class TransportRestriction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TransportRestriction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TransportRestriction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2521,3 +2587,10 @@ class TransportRestriction(backboneelement.BackboneElement):
             "period",
             "recipient",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TransportRestriction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

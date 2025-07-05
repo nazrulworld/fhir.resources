@@ -61,6 +61,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -71,6 +72,7 @@ class DiagnosticReport(domainresource.DomainResource):
         description="A code or name that describes this diagnostic report.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -110,6 +112,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter", "EpisodeOfCare"],
         },
@@ -127,6 +130,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -150,6 +154,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -163,6 +168,7 @@ class DiagnosticReport(domainresource.DomainResource):
         description="Identifiers assigned to this report by the performer or other systems.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -177,6 +183,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -211,6 +218,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -224,6 +232,7 @@ class DiagnosticReport(domainresource.DomainResource):
         description="Indicates who or what participated in producing the report.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -277,6 +286,7 @@ class DiagnosticReport(domainresource.DomainResource):
         description="The status of the diagnostic report as a whole.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -298,6 +308,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group", "Device", "Location"],
         },
@@ -305,9 +316,9 @@ class DiagnosticReport(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DiagnosticReport`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DiagnosticReport`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -336,6 +347,28 @@ class DiagnosticReport(domainresource.DomainResource):
             "conclusion",
             "codedDiagnosis",
             "presentedForm",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DiagnosticReport`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "category",
+            "code",
+            "subject",
+            "context",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "issued",
+            "performer",
+            "image",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -403,6 +436,7 @@ class DiagnosticReportImage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Media"],
         },
@@ -410,11 +444,18 @@ class DiagnosticReportImage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DiagnosticReportImage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DiagnosticReportImage`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "comment", "link"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DiagnosticReportImage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "link"]
 
 
 class DiagnosticReportPerformer(backboneelement.BackboneElement):
@@ -439,6 +480,7 @@ class DiagnosticReportPerformer(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "Organization"],
         },
@@ -454,13 +496,21 @@ class DiagnosticReportPerformer(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DiagnosticReportPerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DiagnosticReportPerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DiagnosticReportPerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "role", "actor"]

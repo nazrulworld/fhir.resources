@@ -40,6 +40,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -56,6 +57,7 @@ class MedicationRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CarePlan",
@@ -142,6 +144,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -223,6 +226,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -294,6 +298,7 @@ class MedicationRequest(domainresource.DomainResource):
         description="Whether the request is a proposal, plan, or an original order.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -325,6 +330,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Medication"],
         },
@@ -381,6 +387,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -409,6 +416,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["routine", "urgent", "asap", "stat"],
@@ -479,6 +487,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     reported__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -495,6 +504,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -520,6 +530,7 @@ class MedicationRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -570,6 +581,7 @@ class MedicationRequest(domainresource.DomainResource):
         description="The individual or group for whom the medication has been requested.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -608,9 +620,9 @@ class MedicationRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -654,6 +666,30 @@ class MedicationRequest(domainresource.DomainResource):
             "dispenseRequest",
             "substitution",
             "eventHistory",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "basedOn",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "priority",
+            "doNotPerform",
+            "medication",
+            "subject",
+            "authoredOn",
+            "requester",
+            "reported",
+            "performerType",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -813,9 +849,9 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationRequestDispenseRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationRequestDispenseRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -831,6 +867,13 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
             "dispenserInstruction",
             "doseAdministrationAid",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationRequestDispenseRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElement):
@@ -867,11 +910,18 @@ class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationRequestDispenseRequestInitialFill`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationRequestDispenseRequestInitialFill`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "quantity", "duration"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationRequestDispenseRequestInitialFill`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MedicationRequestSubstitution(backboneelement.BackboneElement):
@@ -938,9 +988,9 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationRequestSubstitution`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationRequestSubstitution`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -950,6 +1000,13 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
             "allowedCodeableConcept",
             "reason",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationRequestSubstitution`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

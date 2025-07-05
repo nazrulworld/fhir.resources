@@ -30,6 +30,7 @@ class RatioRange(element.Element):
         description="The value of the denominator.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -40,6 +41,7 @@ class RatioRange(element.Element):
         description="The value of the high limit numerator.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -50,13 +52,21 @@ class RatioRange(element.Element):
         description="The value of the low limit numerator.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RatioRange`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RatioRange`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "lowNumerator", "highNumerator", "denominator"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RatioRange`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["lowNumerator", "highNumerator", "denominator"]

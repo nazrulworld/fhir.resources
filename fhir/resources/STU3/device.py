@@ -191,6 +191,7 @@ class Device(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -201,6 +202,7 @@ class Device(domainresource.DomainResource):
         description="Status of the Device availability.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "inactive", "entered-in-error", "unknown"],
@@ -230,6 +232,7 @@ class Device(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -264,9 +267,9 @@ class Device(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Device`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Device`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -296,6 +299,13 @@ class Device(domainresource.DomainResource):
             "safety",
         ]
 
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Device`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "udi", "status", "safety"]
+
 
 class DeviceUdi(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -322,6 +332,7 @@ class DeviceUdi(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     carrierAIDC__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -338,6 +349,7 @@ class DeviceUdi(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     carrierHRF__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -354,6 +366,7 @@ class DeviceUdi(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     deviceIdentifier__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -425,6 +438,7 @@ class DeviceUdi(backboneelement.BackboneElement):
         description="Name of device as used in labeling or catalog.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -433,9 +447,9 @@ class DeviceUdi(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceUdi`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceUdi`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -448,4 +462,17 @@ class DeviceUdi(backboneelement.BackboneElement):
             "carrierAIDC",
             "issuer",
             "entryType",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceUdi`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "deviceIdentifier",
+            "name",
+            "carrierHRF",
+            "carrierAIDC",
         ]

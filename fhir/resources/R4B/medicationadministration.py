@@ -97,6 +97,7 @@ class MedicationAdministration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": True,
@@ -120,6 +121,7 @@ class MedicationAdministration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": True,
@@ -168,6 +170,7 @@ class MedicationAdministration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiates__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -186,6 +189,7 @@ class MedicationAdministration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e medication[x]
             "one_of_many": "medication",
             "one_of_many_required": True,
@@ -204,6 +208,7 @@ class MedicationAdministration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e medication[x]
             "one_of_many": "medication",
             "one_of_many_required": True,
@@ -232,6 +237,7 @@ class MedicationAdministration(domainresource.DomainResource):
         description="A larger event of which this particular event is a component or step.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["MedicationAdministration", "Procedure"],
         },
@@ -247,6 +253,7 @@ class MedicationAdministration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -305,6 +312,7 @@ class MedicationAdministration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -340,6 +348,7 @@ class MedicationAdministration(domainresource.DomainResource):
         description="The person or animal or group receiving the medication.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -362,9 +371,9 @@ class MedicationAdministration(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationAdministration`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationAdministration`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -396,6 +405,26 @@ class MedicationAdministration(domainresource.DomainResource):
             "note",
             "dosage",
             "eventHistory",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationAdministration`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "instantiates",
+            "partOf",
+            "status",
+            "medicationCodeableConcept",
+            "medicationReference",
+            "subject",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "performer",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -556,9 +585,9 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationAdministrationDosage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationAdministrationDosage`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -572,6 +601,13 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
             "rateRatio",
             "rateQuantity",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationAdministrationDosage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -609,6 +645,7 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
         description="Indicates who or what performed the medication administration.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -635,8 +672,15 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationAdministrationPerformer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationAdministrationPerformer`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationAdministrationPerformer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "actor"]

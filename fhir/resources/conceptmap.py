@@ -42,6 +42,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -85,6 +86,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -136,6 +138,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -181,6 +184,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -209,6 +213,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -236,6 +241,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -249,6 +255,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -280,6 +287,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -296,6 +304,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -309,6 +318,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -370,6 +380,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e sourceScope[x]
             "one_of_many": "sourceScope",
             "one_of_many_required": False,
@@ -395,6 +406,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e sourceScope[x]
             "one_of_many": "sourceScope",
             "one_of_many_required": False,
@@ -414,6 +426,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -436,6 +449,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e targetScope[x]
             "one_of_many": "targetScope",
             "one_of_many_required": False,
@@ -461,6 +475,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e targetScope[x]
             "one_of_many": "targetScope",
             "one_of_many_required": False,
@@ -477,6 +492,7 @@ class ConceptMap(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the concept map.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -515,6 +531,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -534,6 +551,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -552,6 +570,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -568,6 +587,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -584,6 +604,7 @@ class ConceptMap(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -597,9 +618,9 @@ class ConceptMap(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMap`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMap`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -644,6 +665,39 @@ class ConceptMap(domainresource.DomainResource):
             "targetScopeUri",
             "targetScopeCanonical",
             "group",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMap`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "effectivePeriod",
+            "property",
+            "additionalAttribute",
+            "sourceScopeUri",
+            "sourceScopeCanonical",
+            "targetScopeUri",
+            "targetScopeCanonical",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -705,6 +759,7 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -727,6 +782,7 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -743,6 +799,7 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -764,6 +821,7 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -772,9 +830,9 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMapAdditionalAttribute`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMapAdditionalAttribute`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -785,6 +843,13 @@ class ConceptMapAdditionalAttribute(backboneelement.BackboneElement):
             "description",
             "type",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMapAdditionalAttribute`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "uri", "description", "type"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -879,9 +944,9 @@ class ConceptMapGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMapGroup`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMapGroup`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -892,6 +957,13 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "element",
             "unmapped",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMapGroup`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ConceptMapGroupElement(backboneelement.BackboneElement):
@@ -981,9 +1053,9 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMapGroupElement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMapGroupElement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -995,6 +1067,13 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
             "noMap",
             "target",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMapGroupElement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
@@ -1143,9 +1222,9 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMapGroupElementTarget`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMapGroupElementTarget`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1160,6 +1239,13 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "dependsOn",
             "product",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMapGroupElementTarget`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1300,9 +1386,9 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMapGroupElementTargetDependsOn`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMapGroupElementTargetDependsOn`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1316,6 +1402,13 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "valueQuantity",
             "valueSet",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMapGroupElementTargetDependsOn`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1517,9 +1610,9 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMapGroupElementTargetProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMapGroupElementTargetProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1534,6 +1627,13 @@ class ConceptMapGroupElementTargetProperty(backboneelement.BackboneElement):
             "valueDecimal",
             "valueCode",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMapGroupElementTargetProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1716,9 +1816,9 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMapGroupUnmapped`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMapGroupUnmapped`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1731,6 +1831,13 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "relationship",
             "otherMap",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMapGroupUnmapped`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1770,6 +1877,7 @@ class ConceptMapProperty(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -1787,6 +1895,7 @@ class ConceptMapProperty(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1803,6 +1912,7 @@ class ConceptMapProperty(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CodeSystem"],
         },
@@ -1818,6 +1928,7 @@ class ConceptMapProperty(backboneelement.BackboneElement):
         description="The type of the property value.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -1843,6 +1954,7 @@ class ConceptMapProperty(backboneelement.BackboneElement):
         description="Reference to the formal meaning of the property.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1851,9 +1963,9 @@ class ConceptMapProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConceptMapProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConceptMapProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1865,6 +1977,13 @@ class ConceptMapProperty(backboneelement.BackboneElement):
             "type",
             "system",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConceptMapProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "uri", "description", "type", "system"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

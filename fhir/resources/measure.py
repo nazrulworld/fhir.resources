@@ -72,6 +72,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     basis__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -88,6 +89,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     clinicalRecommendationStatement__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -106,6 +108,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -119,6 +122,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -169,6 +173,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -185,6 +190,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -202,6 +208,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     disclaimer__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -231,6 +238,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -259,6 +267,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -285,6 +294,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     guidance__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -302,6 +312,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -316,6 +327,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -329,6 +341,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -378,6 +391,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -394,6 +408,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -426,6 +441,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     rateAggregation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -443,6 +459,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     rationale__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -486,6 +503,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     riskAdjustment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -504,6 +522,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -517,6 +536,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -530,6 +550,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -629,6 +650,7 @@ class Measure(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the measure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -663,6 +685,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -684,6 +707,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -719,6 +743,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -741,6 +766,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -757,6 +783,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -773,6 +800,7 @@ class Measure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -786,9 +814,9 @@ class Measure(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Measure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Measure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -846,6 +874,46 @@ class Measure(domainresource.DomainResource):
             "guidance",
             "group",
             "supplementalData",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Measure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "basis",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "effectivePeriod",
+            "disclaimer",
+            "scoring",
+            "scoringUnit",
+            "compositeScoring",
+            "type",
+            "riskAdjustment",
+            "rateAggregation",
+            "rationale",
+            "clinicalRecommendationStatement",
+            "improvementNotation",
+            "guidance",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -907,6 +975,7 @@ class MeasureGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     basis__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -952,6 +1021,7 @@ class MeasureGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1009,6 +1079,7 @@ class MeasureGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     rateAggregation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -1027,6 +1098,7 @@ class MeasureGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1040,6 +1112,7 @@ class MeasureGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -1110,14 +1183,15 @@ class MeasureGroup(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureGroup`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureGroup`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1137,6 +1211,21 @@ class MeasureGroup(backboneelement.BackboneElement):
             "library",
             "population",
             "stratifier",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureGroup`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "type",
+            "basis",
+            "scoring",
+            "scoringUnit",
+            "rateAggregation",
+            "improvementNotation",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -1283,9 +1372,9 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureGroupPopulation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureGroupPopulation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1299,6 +1388,13 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
             "inputPopulationId",
             "aggregateMethod",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureGroupPopulation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MeasureGroupStratifier(backboneelement.BackboneElement):
@@ -1403,9 +1499,9 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureGroupStratifier`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureGroupStratifier`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1418,6 +1514,13 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
             "groupDefinition",
             "component",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureGroupStratifier`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
@@ -1509,9 +1612,9 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureGroupStratifierComponent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureGroupStratifierComponent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1523,6 +1626,13 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
             "criteria",
             "groupDefinition",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureGroupStratifierComponent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MeasureSupplementalData(backboneelement.BackboneElement):
@@ -1616,9 +1726,9 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureSupplementalData`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureSupplementalData`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1630,6 +1740,13 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
             "description",
             "criteria",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureSupplementalData`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class MeasureTerm(backboneelement.BackboneElement):
@@ -1668,8 +1785,15 @@ class MeasureTerm(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MeasureTerm`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MeasureTerm`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "definition"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MeasureTerm`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

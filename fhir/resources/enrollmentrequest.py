@@ -111,6 +111,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -122,9 +123,9 @@ class EnrollmentRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EnrollmentRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EnrollmentRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -143,3 +144,10 @@ class EnrollmentRequest(domainresource.DomainResource):
             "candidate",
             "coverage",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EnrollmentRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "modifierExtension", "status"]

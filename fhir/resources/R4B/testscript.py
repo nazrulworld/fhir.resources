@@ -36,6 +36,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -68,6 +69,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -117,6 +119,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -147,6 +150,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -160,6 +164,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -190,6 +195,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -235,6 +241,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -277,6 +284,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -317,6 +325,7 @@ class TestScript(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the test script.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -341,6 +350,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -361,6 +371,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -392,6 +403,7 @@ class TestScript(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -400,9 +412,9 @@ class TestScript(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScript`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScript`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -437,6 +449,29 @@ class TestScript(domainresource.DomainResource):
             "setup",
             "test",
             "teardown",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScript`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -500,11 +535,18 @@ class TestScriptDestination(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptDestination`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptDestination`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "index", "profile"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptDestination`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -585,9 +627,9 @@ class TestScriptFixture(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptFixture`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptFixture`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -597,6 +639,13 @@ class TestScriptFixture(backboneelement.BackboneElement):
             "autodelete",
             "resource",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptFixture`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -654,11 +703,18 @@ class TestScriptMetadata(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptMetadata`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptMetadata`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "link", "capability"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptMetadata`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestScriptMetadataCapability(backboneelement.BackboneElement):
@@ -788,9 +844,9 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptMetadataCapability`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptMetadataCapability`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -804,6 +860,13 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "link",
             "capabilities",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptMetadataCapability`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -864,11 +927,18 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptMetadataLink`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptMetadataLink`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "url", "description"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptMetadataLink`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -923,11 +993,18 @@ class TestScriptOrigin(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptOrigin`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptOrigin`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "index", "profile"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptOrigin`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -963,11 +1040,18 @@ class TestScriptSetup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptSetup`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptSetup`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptSetup`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestScriptSetupAction(backboneelement.BackboneElement):
@@ -1006,11 +1090,18 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptSetupAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptSetupAction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation", "assert"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptSetupAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestScriptSetupActionAssert(backboneelement.BackboneElement):
@@ -1409,9 +1500,9 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptSetupActionAssert`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptSetupActionAssert`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1440,6 +1531,13 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "value",
             "warningOnly",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptSetupActionAssert`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1715,9 +1813,9 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptSetupActionOperation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptSetupActionOperation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1741,6 +1839,13 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "targetId",
             "url",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptSetupActionOperation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1795,11 +1900,18 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptSetupActionOperationRequestHeader`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptSetupActionOperationRequestHeader`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "field", "value"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptSetupActionOperationRequestHeader`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1837,11 +1949,18 @@ class TestScriptTeardown(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptTeardown`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptTeardown`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptTeardown`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestScriptTeardownAction(backboneelement.BackboneElement):
@@ -1867,11 +1986,18 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptTeardownAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptTeardownAction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptTeardownAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestScriptTest(backboneelement.BackboneElement):
@@ -1928,11 +2054,18 @@ class TestScriptTest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptTest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptTest`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "description", "action"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptTest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestScriptTestAction(backboneelement.BackboneElement):
@@ -1971,11 +2104,18 @@ class TestScriptTestAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptTestAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptTestAction`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation", "assert"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptTestAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class TestScriptVariable(backboneelement.BackboneElement):
@@ -2117,9 +2257,9 @@ class TestScriptVariable(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TestScriptVariable`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TestScriptVariable`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -2134,6 +2274,13 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "path",
             "sourceId",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TestScriptVariable`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

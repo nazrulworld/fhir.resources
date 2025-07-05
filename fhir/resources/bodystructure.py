@@ -34,6 +34,7 @@ class BodyStructure(domainresource.DomainResource):
         description="Whether this body site is in active use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -47,6 +48,7 @@ class BodyStructure(domainresource.DomainResource):
         description="A summary, characterization or explanation of the body structure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -73,6 +75,7 @@ class BodyStructure(domainresource.DomainResource):
         description="Identifier for this instance of the anatomical structure.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -110,6 +113,7 @@ class BodyStructure(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -120,6 +124,7 @@ class BodyStructure(domainresource.DomainResource):
         description="The person to which the body site belongs.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -127,9 +132,9 @@ class BodyStructure(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BodyStructure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BodyStructure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -147,6 +152,23 @@ class BodyStructure(domainresource.DomainResource):
             "excludedStructure",
             "description",
             "image",
+            "patient",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BodyStructure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "morphology",
+            "description",
             "patient",
         ]
 
@@ -215,14 +237,15 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BodyStructureIncludedStructure`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BodyStructureIncludedStructure`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -234,6 +257,13 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
             "spatialReference",
             "qualifier",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BodyStructureIncludedStructure`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "structure"]
 
 
 class BodyStructureIncludedStructureBodyLandmarkOrientation(
@@ -301,9 +331,9 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BodyStructureIncludedStructureBodyLandmarkOrientation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BodyStructureIncludedStructureBodyLandmarkOrientation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -314,6 +344,13 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
             "distanceFromLandmark",
             "surfaceOrientation",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BodyStructureIncludedStructureBodyLandmarkOrientation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
@@ -356,8 +393,15 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "device", "value"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

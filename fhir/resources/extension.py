@@ -905,9 +905,9 @@ class Extension(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Extension`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Extension`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -968,6 +968,13 @@ class Extension(datatype.DataType):
             "valueDosage",
             "valueMeta",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Extension`` according to specification,
+        with preserving the original sequence order.
+        """
+        return []
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

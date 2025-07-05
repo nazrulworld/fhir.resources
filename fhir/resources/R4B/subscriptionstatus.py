@@ -36,6 +36,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -51,6 +52,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     eventsSinceSubscriptionStart__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -82,6 +84,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["requested", "active", "error", "off", "entered-in-error"],
@@ -98,6 +101,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         description="The reference to the Subscription which generated this notification.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Subscription"],
         },
@@ -113,6 +117,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubscriptionTopic"],
         },
@@ -130,6 +135,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         description="The type of event being conveyed with this notificaiton.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -148,9 +154,9 @@ class SubscriptionStatus(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionStatus`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionStatus`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -165,6 +171,23 @@ class SubscriptionStatus(domainresource.DomainResource):
             "type",
             "eventsSinceSubscriptionStart",
             "notificationEvent",
+            "subscription",
+            "topic",
+            "error",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionStatus`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "type",
+            "eventsSinceSubscriptionStart",
             "subscription",
             "topic",
             "error",
@@ -259,9 +282,9 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionStatusNotificationEvent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionStatusNotificationEvent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -272,6 +295,13 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
             "focus",
             "additionalContext",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionStatusNotificationEvent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

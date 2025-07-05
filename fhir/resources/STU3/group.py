@@ -38,6 +38,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -55,6 +56,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -82,6 +84,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -92,6 +95,7 @@ class Group(domainresource.DomainResource):
         description="A unique business identifier for this group.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -115,6 +119,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -130,6 +135,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     quantity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -146,6 +152,7 @@ class Group(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -165,9 +172,9 @@ class Group(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Group`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Group`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -187,6 +194,24 @@ class Group(domainresource.DomainResource):
             "quantity",
             "characteristic",
             "member",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Group`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "active",
+            "type",
+            "actual",
+            "code",
+            "name",
+            "quantity",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -321,9 +346,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GroupCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GroupCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -337,6 +362,13 @@ class GroupCharacteristic(backboneelement.BackboneElement):
             "exclude",
             "period",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GroupCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -433,8 +465,15 @@ class GroupMember(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GroupMember`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GroupMember`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "entity", "period", "inactive"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GroupMember`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

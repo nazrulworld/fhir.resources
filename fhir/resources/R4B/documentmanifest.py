@@ -36,6 +36,7 @@ class DocumentManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -55,6 +56,7 @@ class DocumentManifest(domainresource.DomainResource):
         description="The list of Resources that consist of the parts of this manifest.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -87,6 +89,7 @@ class DocumentManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -103,6 +106,7 @@ class DocumentManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -116,6 +120,7 @@ class DocumentManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -173,6 +178,7 @@ class DocumentManifest(domainresource.DomainResource):
         description="The status of this document manifest.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -197,6 +203,7 @@ class DocumentManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Practitioner", "Group", "Device"],
         },
@@ -212,14 +219,15 @@ class DocumentManifest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DocumentManifest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DocumentManifest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -242,6 +250,25 @@ class DocumentManifest(domainresource.DomainResource):
             "description",
             "content",
             "related",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DocumentManifest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "masterIdentifier",
+            "identifier",
+            "status",
+            "type",
+            "subject",
+            "author",
+            "description",
+            "content",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -297,8 +324,15 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DocumentManifestRelated`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DocumentManifestRelated`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "identifier", "ref"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DocumentManifestRelated`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

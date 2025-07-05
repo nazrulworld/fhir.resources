@@ -37,6 +37,7 @@ class CareTeam(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -51,6 +52,7 @@ class CareTeam(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -61,6 +63,7 @@ class CareTeam(domainresource.DomainResource):
         description="The organization responsible for the care team.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -76,6 +79,7 @@ class CareTeam(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -115,6 +119,7 @@ class CareTeam(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -137,6 +142,7 @@ class CareTeam(domainresource.DomainResource):
         description="Indicates the current state of the care team.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -162,6 +168,7 @@ class CareTeam(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -182,9 +189,9 @@ class CareTeam(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CareTeam`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CareTeam`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -206,6 +213,25 @@ class CareTeam(domainresource.DomainResource):
             "managingOrganization",
             "telecom",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CareTeam`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "name",
+            "subject",
+            "period",
+            "managingOrganization",
         ]
 
 
@@ -257,6 +283,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -276,6 +303,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         description="The organization of the practitioner.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -292,14 +320,15 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CareTeamParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CareTeamParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -311,6 +340,13 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "coveragePeriod",
             "coverageTiming",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CareTeamParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "role", "member", "onBehalfOf"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

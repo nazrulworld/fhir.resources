@@ -85,6 +85,7 @@ class GuidanceResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -98,6 +99,7 @@ class GuidanceResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e module[x]
             "one_of_many": "module",
             "one_of_many_required": True,
@@ -117,6 +119,7 @@ class GuidanceResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e module[x]
             "one_of_many": "module",
             "one_of_many_required": True,
@@ -133,6 +136,7 @@ class GuidanceResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e module[x]
             "one_of_many": "module",
             "one_of_many_required": True,
@@ -248,6 +252,7 @@ class GuidanceResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -283,6 +288,7 @@ class GuidanceResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -314,9 +320,9 @@ class GuidanceResponse(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``GuidanceResponse`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``GuidanceResponse`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -344,6 +350,23 @@ class GuidanceResponse(domainresource.DomainResource):
             "outputParameters",
             "result",
             "dataRequirement",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``GuidanceResponse`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "requestIdentifier",
+            "identifier",
+            "moduleUri",
+            "moduleCanonical",
+            "moduleCodeableConcept",
+            "status",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

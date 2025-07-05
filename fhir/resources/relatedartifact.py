@@ -36,6 +36,7 @@ class RelatedArtifact(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -49,6 +50,7 @@ class RelatedArtifact(datatype.DataType):
         description="Provides additional classifiers of the related artifact.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -62,6 +64,7 @@ class RelatedArtifact(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -78,6 +81,7 @@ class RelatedArtifact(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -91,6 +95,7 @@ class RelatedArtifact(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -104,6 +109,7 @@ class RelatedArtifact(datatype.DataType):
         description="The date of publication of the artifact being referred to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publicationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -117,6 +123,7 @@ class RelatedArtifact(datatype.DataType):
         description="The publication status of the artifact being referred to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["draft", "active", "retired", "unknown"],
@@ -138,6 +145,7 @@ class RelatedArtifact(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -156,6 +164,7 @@ class RelatedArtifact(datatype.DataType):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -177,6 +186,7 @@ class RelatedArtifact(datatype.DataType):
         description="The type of relationship to the related artifact.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -226,13 +236,31 @@ class RelatedArtifact(datatype.DataType):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RelatedArtifact`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RelatedArtifact`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "type",
+            "classifier",
+            "label",
+            "display",
+            "citation",
+            "document",
+            "resource",
+            "resourceReference",
+            "publicationStatus",
+            "publicationDate",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RelatedArtifact`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "type",
             "classifier",
             "label",

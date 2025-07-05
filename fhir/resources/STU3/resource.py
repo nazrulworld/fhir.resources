@@ -33,6 +33,7 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -47,6 +48,7 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -77,13 +79,21 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Resource`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Resource`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "meta", "implicitRules", "language"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Resource`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules"]

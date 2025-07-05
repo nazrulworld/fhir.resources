@@ -46,6 +46,7 @@ class SubstanceProtein(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     disulfideLinkage__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -66,6 +67,7 @@ class SubstanceProtein(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -85,6 +87,7 @@ class SubstanceProtein(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -104,14 +107,15 @@ class SubstanceProtein(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceProtein`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceProtein`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -121,6 +125,22 @@ class SubstanceProtein(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "sequenceType",
+            "numberOfSubunits",
+            "disulfideLinkage",
+            "subunit",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceProtein`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "sequenceType",
             "numberOfSubunits",
@@ -153,6 +173,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -171,6 +192,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -181,6 +203,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     length__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -197,6 +220,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -215,6 +239,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -234,6 +259,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -256,6 +282,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -271,6 +298,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subunit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -279,13 +307,30 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstanceProteinSubunit`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstanceProteinSubunit`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "subunit",
+            "sequence",
+            "length",
+            "sequenceAttachment",
+            "nTerminalModificationId",
+            "nTerminalModification",
+            "cTerminalModificationId",
+            "cTerminalModification",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstanceProteinSubunit`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "subunit",
             "sequence",

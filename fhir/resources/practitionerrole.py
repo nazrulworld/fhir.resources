@@ -37,6 +37,7 @@ class PractitionerRole(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -79,6 +80,7 @@ class PractitionerRole(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -152,6 +154,7 @@ class PractitionerRole(domainresource.DomainResource):
         description="Business Identifiers that are specific to a role/location.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -162,6 +165,7 @@ class PractitionerRole(domainresource.DomainResource):
         description="The location(s) at which this practitioner provides care.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -174,6 +178,7 @@ class PractitionerRole(domainresource.DomainResource):
         description="The organization where the Practitioner performs the roles associated.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -192,6 +197,7 @@ class PractitionerRole(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -205,6 +211,7 @@ class PractitionerRole(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner"],
         },
@@ -220,14 +227,15 @@ class PractitionerRole(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PractitionerRole`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PractitionerRole`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -252,4 +260,24 @@ class PractitionerRole(domainresource.DomainResource):
             "communication",
             "availability",
             "endpoint",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PractitionerRole`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "period",
+            "practitioner",
+            "organization",
+            "code",
+            "specialty",
+            "location",
         ]

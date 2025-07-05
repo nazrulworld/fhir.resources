@@ -42,6 +42,7 @@ class Dosage(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -56,6 +57,7 @@ class Dosage(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e asNeeded[x]
             "one_of_many": "asNeeded",
             "one_of_many_required": False,
@@ -76,6 +78,7 @@ class Dosage(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e asNeeded[x]
             "one_of_many": "asNeeded",
             "one_of_many_required": False,
@@ -89,6 +92,7 @@ class Dosage(backboneelement.BackboneElement):
         description="The amount of medication administered.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -99,6 +103,7 @@ class Dosage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -109,6 +114,7 @@ class Dosage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -119,6 +125,7 @@ class Dosage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -129,6 +136,7 @@ class Dosage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -139,6 +147,7 @@ class Dosage(backboneelement.BackboneElement):
         description="Instructions in terms that are understood by the patient or consumer.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -154,6 +163,7 @@ class Dosage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -167,6 +177,7 @@ class Dosage(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -180,6 +191,7 @@ class Dosage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -190,6 +202,7 @@ class Dosage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -203,18 +216,42 @@ class Dosage(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Dosage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Dosage`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "sequence",
+            "text",
+            "additionalInstruction",
+            "patientInstruction",
+            "timing",
+            "asNeededBoolean",
+            "asNeededCodeableConcept",
+            "site",
+            "route",
+            "method",
+            "doseAndRate",
+            "maxDosePerPeriod",
+            "maxDosePerAdministration",
+            "maxDosePerLifetime",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Dosage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "sequence",
             "text",
@@ -269,6 +306,7 @@ class DosageDoseAndRate(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e dose[x]
             "one_of_many": "dose",
             "one_of_many_required": False,
@@ -282,6 +320,7 @@ class DosageDoseAndRate(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e dose[x]
             "one_of_many": "dose",
             "one_of_many_required": False,
@@ -295,6 +334,7 @@ class DosageDoseAndRate(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e rate[x]
             "one_of_many": "rate",
             "one_of_many_required": False,
@@ -308,6 +348,7 @@ class DosageDoseAndRate(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e rate[x]
             "one_of_many": "rate",
             "one_of_many_required": False,
@@ -321,6 +362,7 @@ class DosageDoseAndRate(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e rate[x]
             "one_of_many": "rate",
             "one_of_many_required": False,
@@ -336,18 +378,33 @@ class DosageDoseAndRate(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DosageDoseAndRate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DosageDoseAndRate`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "type",
+            "doseRange",
+            "doseQuantity",
+            "rateRatio",
+            "rateRange",
+            "rateQuantity",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DosageDoseAndRate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "type",
             "doseRange",
             "doseQuantity",

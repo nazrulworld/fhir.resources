@@ -184,6 +184,7 @@ class ProcessResponse(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -195,9 +196,9 @@ class ProcessResponse(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProcessResponse`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProcessResponse`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -222,6 +223,13 @@ class ProcessResponse(domainresource.DomainResource):
             "error",
             "communicationRequest",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProcessResponse`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "status"]
 
 
 class ProcessResponseProcessNote(backboneelement.BackboneElement):
@@ -261,8 +269,15 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProcessResponseProcessNote`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProcessResponseProcessNote`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "text"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProcessResponseProcessNote`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

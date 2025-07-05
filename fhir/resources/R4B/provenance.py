@@ -148,6 +148,7 @@ class Provenance(domainresource.DomainResource):
         description="The instant of time at which the activity was recorded.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -180,6 +181,7 @@ class Provenance(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -187,9 +189,9 @@ class Provenance(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Provenance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Provenance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -212,6 +214,13 @@ class Provenance(domainresource.DomainResource):
             "entity",
             "signature",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Provenance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "target", "recorded"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -292,6 +301,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         description="The participation the agent had with respect to the activity.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -302,6 +312,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         description="The individual, device or organization that participated in the event.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -316,9 +327,9 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProvenanceAgent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProvenanceAgent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -329,6 +340,13 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "who",
             "onBehalfOf",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProvenanceAgent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "who"]
 
 
 class ProvenanceEntity(backboneelement.BackboneElement):
@@ -363,6 +381,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         description="How the entity was used during the activity.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -383,6 +402,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -390,11 +410,18 @@ class ProvenanceEntity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ProvenanceEntity`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ProvenanceEntity`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "what", "agent"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ProvenanceEntity`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "role", "what"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

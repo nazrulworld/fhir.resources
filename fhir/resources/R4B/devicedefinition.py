@@ -191,6 +191,7 @@ class DeviceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["DeviceDefinition"],
         },
@@ -240,6 +241,7 @@ class DeviceDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -320,9 +322,9 @@ class DeviceDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -357,6 +359,13 @@ class DeviceDefinition(domainresource.DomainResource):
             "parentDevice",
             "material",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["id", "meta", "implicitRules", "safety", "parentDevice"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -409,11 +418,18 @@ class DeviceDefinitionCapability(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDefinitionCapability`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDefinitionCapability`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "description"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDefinitionCapability`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
@@ -472,11 +488,18 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDefinitionDeviceName`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDefinitionDeviceName`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "type"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDefinitionDeviceName`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -540,9 +563,9 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDefinitionMaterial`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDefinitionMaterial`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -552,6 +575,13 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
             "alternate",
             "allergenicIndicator",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDefinitionMaterial`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class DeviceDefinitionProperty(backboneelement.BackboneElement):
@@ -600,9 +630,9 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDefinitionProperty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDefinitionProperty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -612,6 +642,13 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
             "valueQuantity",
             "valueCode",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDefinitionProperty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
@@ -654,11 +691,18 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDefinitionSpecialization`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDefinitionSpecialization`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "systemType", "version"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDefinitionSpecialization`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -736,9 +780,9 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceDefinitionUdiDeviceIdentifier`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceDefinitionUdiDeviceIdentifier`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -748,6 +792,13 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
             "issuer",
             "jurisdiction",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceDefinitionUdiDeviceIdentifier`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

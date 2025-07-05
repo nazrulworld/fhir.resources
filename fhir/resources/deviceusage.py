@@ -46,6 +46,7 @@ class DeviceUsage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ServiceRequest"],
         },
@@ -61,6 +62,7 @@ class DeviceUsage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["BodyStructure"],
         },
@@ -90,6 +92,7 @@ class DeviceUsage(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter", "EpisodeOfCare"],
         },
@@ -102,6 +105,7 @@ class DeviceUsage(domainresource.DomainResource):
         description="The time at which the statement was recorded by informationSource.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -118,6 +122,7 @@ class DeviceUsage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "ServiceRequest",
@@ -137,6 +142,7 @@ class DeviceUsage(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device", "DeviceDefinition"],
         },
@@ -149,6 +155,7 @@ class DeviceUsage(domainresource.DomainResource):
         description="An external identifier for this statement such as an IRI.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -159,6 +166,7 @@ class DeviceUsage(domainresource.DomainResource):
         description="Who reported the device was being used by the patient.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -192,6 +200,7 @@ class DeviceUsage(domainresource.DomainResource):
         description="The patient who used the device.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -207,6 +216,7 @@ class DeviceUsage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Condition",
@@ -229,6 +239,7 @@ class DeviceUsage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -246,6 +257,7 @@ class DeviceUsage(domainresource.DomainResource):
         description="How often the device was used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e timing[x]
             "one_of_many": "timing",
             "one_of_many_required": False,
@@ -262,6 +274,7 @@ class DeviceUsage(domainresource.DomainResource):
         description="How often the device was used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e timing[x]
             "one_of_many": "timing",
             "one_of_many_required": False,
@@ -275,6 +288,7 @@ class DeviceUsage(domainresource.DomainResource):
         description="How often the device was used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e timing[x]
             "one_of_many": "timing",
             "one_of_many_required": False,
@@ -309,9 +323,9 @@ class DeviceUsage(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceUsage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceUsage`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -341,6 +355,32 @@ class DeviceUsage(domainresource.DomainResource):
             "reason",
             "bodySite",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceUsage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "basedOn",
+            "status",
+            "patient",
+            "derivedFrom",
+            "context",
+            "timingTiming",
+            "timingPeriod",
+            "timingDateTime",
+            "dateAsserted",
+            "informationSource",
+            "device",
+            "reason",
+            "bodySite",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -406,8 +446,15 @@ class DeviceUsageAdherence(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceUsageAdherence`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceUsageAdherence`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "reason"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceUsageAdherence`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

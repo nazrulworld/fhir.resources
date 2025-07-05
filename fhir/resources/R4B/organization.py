@@ -35,6 +35,7 @@ class Organization(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -102,6 +103,7 @@ class Organization(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -112,6 +114,7 @@ class Organization(domainresource.DomainResource):
         description="A name associated with the organization.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -125,6 +128,7 @@ class Organization(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -147,14 +151,15 @@ class Organization(domainresource.DomainResource):
         description="The kind(s) of organization that this is.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Organization`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Organization`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -175,6 +180,22 @@ class Organization(domainresource.DomainResource):
             "partOf",
             "contact",
             "endpoint",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Organization`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "active",
+            "type",
+            "name",
+            "partOf",
         ]
 
 
@@ -233,9 +254,9 @@ class OrganizationContact(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``OrganizationContact`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``OrganizationContact`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -246,3 +267,10 @@ class OrganizationContact(backboneelement.BackboneElement):
             "telecom",
             "address",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``OrganizationContact`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

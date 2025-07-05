@@ -40,6 +40,7 @@ class Consent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -67,6 +68,7 @@ class Consent(domainresource.DomainResource):
         description="Date the consent instance was agreed to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -80,6 +82,7 @@ class Consent(domainresource.DomainResource):
         description="Action to take - permit or deny - as default.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["deny", "permit"],
@@ -100,6 +103,7 @@ class Consent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CareTeam",
@@ -123,6 +127,7 @@ class Consent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CareTeam",
@@ -143,6 +148,7 @@ class Consent(domainresource.DomainResource):
         description="Unique identifier for this copy of the Consent Statement.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -173,6 +179,7 @@ class Consent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -216,6 +223,7 @@ class Consent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -273,6 +281,7 @@ class Consent(domainresource.DomainResource):
         description="Indicates the current state of this Consent resource.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -300,6 +309,7 @@ class Consent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Practitioner", "Group"],
         },
@@ -316,14 +326,15 @@ class Consent(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Consent`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Consent`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -349,6 +360,29 @@ class Consent(domainresource.DomainResource):
             "regulatoryBasis",
             "policyBasis",
             "policyText",
+            "verification",
+            "decision",
+            "provision",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Consent`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "subject",
+            "date",
+            "period",
+            "grantor",
+            "grantee",
             "verification",
             "decision",
             "provision",
@@ -413,11 +447,18 @@ class ConsentPolicyBasis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConsentPolicyBasis`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConsentPolicyBasis`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reference", "url"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConsentPolicyBasis`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ConsentProvision(backboneelement.BackboneElement):
@@ -439,6 +480,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -462,6 +504,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         description="If this code is found in an instance, then the provision applies.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -475,6 +518,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -488,6 +532,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -502,6 +547,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -525,6 +571,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -551,6 +598,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -565,6 +613,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -578,14 +627,15 @@ class ConsentProvision(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConsentProvision`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConsentProvision`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -603,6 +653,24 @@ class ConsentProvision(backboneelement.BackboneElement):
             "data",
             "expression",
             "provision",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConsentProvision`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "modifierExtension",
+            "period",
+            "action",
+            "securityLabel",
+            "purpose",
+            "documentType",
+            "resourceType",
+            "code",
+            "dataPeriod",
+            "data",
         ]
 
 
@@ -658,11 +726,18 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConsentProvisionActor`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConsentProvisionActor`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "reference"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConsentProvisionActor`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ConsentProvisionData(backboneelement.BackboneElement):
@@ -687,6 +762,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -707,6 +783,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -714,11 +791,18 @@ class ConsentProvisionData(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConsentProvisionData`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConsentProvisionData`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "meaning", "reference"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConsentProvisionData`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "meaning", "reference"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -779,6 +863,7 @@ class ConsentVerification(backboneelement.BackboneElement):
         description="Has the instruction been verified.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -822,9 +907,9 @@ class ConsentVerification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConsentVerification`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConsentVerification`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -836,6 +921,13 @@ class ConsentVerification(backboneelement.BackboneElement):
             "verifiedWith",
             "verificationDate",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConsentVerification`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "verified"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

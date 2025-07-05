@@ -33,6 +33,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -49,6 +50,7 @@ class SupplyRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -83,6 +85,7 @@ class SupplyRequest(domainresource.DomainResource):
         description="Unique identifier for this supply request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -93,6 +96,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -111,6 +115,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -124,6 +129,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -137,6 +143,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -150,6 +157,7 @@ class SupplyRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["routine", "urgent", "asap", "stat"],
@@ -197,6 +205,7 @@ class SupplyRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -207,6 +216,7 @@ class SupplyRequest(domainresource.DomainResource):
         description="Status of the supply request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["draft", "active", "suspended", "+"],
@@ -223,6 +233,7 @@ class SupplyRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -230,9 +241,9 @@ class SupplyRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SupplyRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SupplyRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -258,6 +269,28 @@ class SupplyRequest(domainresource.DomainResource):
             "reasonReference",
             "deliverFrom",
             "deliverTo",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SupplyRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "category",
+            "priority",
+            "orderedItem",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "authoredOn",
+            "requester",
+            "supplier",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -305,6 +338,7 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": False,
@@ -322,6 +356,7 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e item[x]
             "one_of_many": "item",
             "one_of_many_required": False,
@@ -337,18 +372,33 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
         description="The amount that is being ordered of the indicated item.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SupplyRequestOrderedItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SupplyRequestOrderedItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "quantity",
+            "itemCodeableConcept",
+            "itemReference",
+            "itemReference",
+            "itemReference",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SupplyRequestOrderedItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "quantity",
             "itemCodeableConcept",
@@ -393,6 +443,7 @@ class SupplyRequestRequester(backboneelement.BackboneElement):
         description="The device, practitioner, etc. who initiated the request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -418,8 +469,15 @@ class SupplyRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SupplyRequestRequester`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SupplyRequestRequester`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SupplyRequestRequester`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "agent"]

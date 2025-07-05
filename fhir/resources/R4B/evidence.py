@@ -68,6 +68,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -125,6 +126,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -140,6 +142,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -185,6 +188,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -199,6 +203,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -238,6 +243,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -287,6 +293,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -324,6 +331,7 @@ class Evidence(domainresource.DomainResource):
         description="A short, descriptive, user-friendly title for the summary.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -348,6 +356,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -367,6 +376,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -395,6 +405,7 @@ class Evidence(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -403,9 +414,9 @@ class Evidence(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Evidence`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Evidence`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -442,6 +453,28 @@ class Evidence(domainresource.DomainResource):
             "studyType",
             "statistic",
             "certainty",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Evidence`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "url",
+            "identifier",
+            "version",
+            "title",
+            "status",
+            "date",
+            "useContext",
+            "publisher",
+            "contact",
+            "author",
+            "endorser",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -552,9 +585,9 @@ class EvidenceCertainty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceCertainty`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceCertainty`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -567,6 +600,13 @@ class EvidenceCertainty(backboneelement.BackboneElement):
             "rater",
             "subcomponent",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceCertainty`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceStatistic(backboneelement.BackboneElement):
@@ -703,9 +743,9 @@ class EvidenceStatistic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceStatistic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceStatistic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -722,6 +762,13 @@ class EvidenceStatistic(backboneelement.BackboneElement):
             "attributeEstimate",
             "modelCharacteristic",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceStatistic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
@@ -821,9 +868,9 @@ class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceStatisticAttributeEstimate`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceStatisticAttributeEstimate`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -837,6 +884,13 @@ class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
             "range",
             "attributeEstimate",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceStatisticAttributeEstimate`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceStatisticModelCharacteristic(backboneelement.BackboneElement):
@@ -895,9 +949,9 @@ class EvidenceStatisticModelCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceStatisticModelCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceStatisticModelCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -908,6 +962,13 @@ class EvidenceStatisticModelCharacteristic(backboneelement.BackboneElement):
             "variable",
             "attributeEstimate",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceStatisticModelCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneElement):
@@ -980,9 +1041,9 @@ class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceStatisticModelCharacteristicVariable`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceStatisticModelCharacteristicVariable`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -994,6 +1055,13 @@ class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneEleme
             "valueQuantity",
             "valueRange",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceStatisticModelCharacteristicVariable`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceStatisticSampleSize(backboneelement.BackboneElement):
@@ -1075,9 +1143,9 @@ class EvidenceStatisticSampleSize(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceStatisticSampleSize`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceStatisticSampleSize`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1089,6 +1157,13 @@ class EvidenceStatisticSampleSize(backboneelement.BackboneElement):
             "numberOfParticipants",
             "knownDataCount",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceStatisticSampleSize`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class EvidenceVariableDefinition(backboneelement.BackboneElement):
@@ -1156,6 +1231,7 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Group", "EvidenceVariable"],
         },
@@ -1171,14 +1247,15 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``EvidenceVariableDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``EvidenceVariableDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1191,3 +1268,10 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
             "intended",
             "directnessMatch",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``EvidenceVariableDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "variableRole", "observed"]

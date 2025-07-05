@@ -1,0 +1,44 @@
+{
+  "resourceType": "Provenance",
+  "id": "example1",
+  "text": {
+    "status": "generated",
+    "div": "\u003cdiv xmlns\u003d\"http://www.w3.org/1999/xhtml\"\u003e\u003cp\u003e\u003cb\u003eGenerated Narrative: Provenance\u003c/b\u003e\u003ca name\u003d\"example1\"\u003e \u003c/a\u003e\u003c/p\u003e\u003cdiv style\u003d\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"\u003e\u003cp style\u003d\"margin-bottom: 0px\"\u003eResource Provenance \u0026quot;example1\u0026quot; \u003c/p\u003e\u003c/div\u003e\u003cp\u003e\u003cb\u003etarget\u003c/b\u003e: \u003cspan title\u003d\"  \n    Got the patient\u0027s official name from the patient directly\n   \"\u003e\u003ca href\u003d\"patient-example-c.html\"\u003ePatient/pat3/_history/1\u003c/a\u003e \u0026quot;Simon NOTSOWELL\u0026quot;(#n1)\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cb\u003erecorded\u003c/b\u003e: 7 Dec 2021, 12:23:45 pm\u003c/p\u003e\u003ch3\u003eAgents\u003c/h3\u003e\u003ctable class\u003d\"grid\"\u003e\u003ctr\u003e\u003ctd\u003e-\u003c/td\u003e\u003ctd\u003e\u003cb\u003eType\u003c/b\u003e\u003c/td\u003e\u003ctd\u003e\u003cb\u003eWho\u003c/b\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e*\u003c/td\u003e\u003ctd\u003einformant \u003cspan style\u003d\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"\u003e (\u003ca href\u003d\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-ParticipationType.html\"\u003eParticipationType\u003c/a\u003e#INF)\u003c/span\u003e\u003c/td\u003e\u003ctd\u003e\u003ca href\u003d\"patient-example-c.html\"\u003ePatient/pat3\u003c/a\u003e \u0026quot;Simon NOTSOWELL\u0026quot;\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e\u003c/div\u003e"
+  },
+  "target": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/targetElement",
+          "valueUri": "n1"
+        }
+      ],
+      "reference": "Patient/pat3/_history/1"
+    }
+  ],
+  "recorded": "2021-12-07T12:23:45+11:00",
+  "agent": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "INF"
+          }
+        ]
+      },
+      "who": {
+        "reference": "Patient/pat3"
+      }
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+        "code": "HTEST",
+        "display": "test health data"
+      }
+    ]
+  }
+}

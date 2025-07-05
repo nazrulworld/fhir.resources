@@ -33,6 +33,7 @@ class Person(domainresource.DomainResource):
         description="Whether this person's record is in active use.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -56,6 +57,7 @@ class Person(domainresource.DomainResource):
         description="The birth date for the person.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -69,6 +71,7 @@ class Person(domainresource.DomainResource):
         description="Administrative Gender.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["male", "female", "other", "unknown"],
@@ -105,6 +108,7 @@ class Person(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -117,6 +121,7 @@ class Person(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -143,14 +148,15 @@ class Person(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Person`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Person`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -171,6 +177,23 @@ class Person(domainresource.DomainResource):
             "managingOrganization",
             "active",
             "link",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Person`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "name",
+            "telecom",
+            "gender",
+            "birthDate",
+            "managingOrganization",
+            "active",
         ]
 
 
@@ -222,8 +245,15 @@ class PersonLink(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PersonLink`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PersonLink`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "target", "assurance"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PersonLink`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

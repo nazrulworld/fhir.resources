@@ -31,6 +31,7 @@ class SubstancePolymer(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -41,6 +42,7 @@ class SubstancePolymer(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -54,6 +56,7 @@ class SubstancePolymer(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -67,6 +70,7 @@ class SubstancePolymer(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -81,6 +85,7 @@ class SubstancePolymer(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     modification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -94,6 +99,7 @@ class SubstancePolymer(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -104,14 +110,15 @@ class SubstancePolymer(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstancePolymer`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstancePolymer`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -121,6 +128,25 @@ class SubstancePolymer(domainresource.DomainResource):
             "text",
             "contained",
             "extension",
+            "modifierExtension",
+            "identifier",
+            "class",
+            "geometry",
+            "copolymerConnectivity",
+            "modification",
+            "monomerSet",
+            "repeat",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstancePolymer`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
             "modifierExtension",
             "identifier",
             "class",
@@ -152,6 +178,7 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -165,16 +192,24 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstancePolymerMonomerSet`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstancePolymerMonomerSet`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "ratioType", "startingMaterial"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstancePolymerMonomerSet`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "ratioType", "startingMaterial"]
 
 
 class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement):
@@ -194,6 +229,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -204,6 +240,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -214,6 +251,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -227,6 +265,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -235,9 +274,9 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstancePolymerMonomerSetStartingMaterial`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstancePolymerMonomerSetStartingMaterial`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -248,6 +287,13 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
             "isDefining",
             "amount",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstancePolymerMonomerSetStartingMaterial`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code", "category", "isDefining", "amount"]
 
 
 class SubstancePolymerRepeat(backboneelement.BackboneElement):
@@ -267,6 +313,7 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     averageMolecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -282,6 +329,7 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -295,18 +343,31 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstancePolymerRepeat`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstancePolymerRepeat`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "averageMolecularFormula",
+            "repeatUnitAmountType",
+            "repeatUnit",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstancePolymerRepeat`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "averageMolecularFormula",
             "repeatUnitAmountType",
@@ -331,6 +392,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     amount__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -347,6 +409,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -360,6 +423,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -370,6 +434,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -380,6 +445,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     unit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -388,13 +454,27 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstancePolymerRepeatRepeatUnit`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstancePolymerRepeatRepeatUnit`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "unit",
+            "orientation",
+            "amount",
+            "degreeOfPolymerisation",
+            "structuralRepresentation",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstancePolymerRepeatRepeatUnit`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "unit",
             "orientation",
@@ -424,6 +504,7 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     average__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -437,6 +518,7 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     high__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -450,6 +532,7 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     low__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -466,14 +549,15 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -484,6 +568,13 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
             "low",
             "high",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "average", "low", "high"]
 
 
 class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
@@ -505,6 +596,7 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -518,6 +610,7 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -531,6 +624,7 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     representation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -544,14 +638,15 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubstancePolymerRepeatRepeatUnitStructuralRepresentation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubstancePolymerRepeatRepeatUnitStructuralRepresentation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -562,3 +657,10 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
             "format",
             "attachment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubstancePolymerRepeatRepeatUnitStructuralRepresentation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "type", "representation", "format", "attachment"]

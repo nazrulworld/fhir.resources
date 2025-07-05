@@ -94,6 +94,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -127,6 +128,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         description="The vaccine administration event being evaluated.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Immunization"],
         },
@@ -139,6 +141,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         description="The individual for whom the evaluation is being done.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -186,6 +189,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -203,14 +207,15 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         description="The vaccine preventable disease the dose is being evaluated against.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ImmunizationEvaluation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ImmunizationEvaluation`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -234,6 +239,23 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "series",
             "doseNumber",
             "seriesDoses",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ImmunizationEvaluation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "status",
+            "patient",
+            "targetDisease",
+            "immunizationEvent",
+            "doseStatus",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

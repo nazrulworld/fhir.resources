@@ -34,6 +34,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="When the request transitioned to being actionable.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -47,6 +48,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="Plan/proposal/order fulfilled by this request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -59,6 +61,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="The details of the device to be used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e code[x]
             "one_of_many": "code",
             "one_of_many_required": True,
@@ -72,6 +75,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="The details of the device to be used.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e code[x]
             "one_of_many": "code",
             "one_of_many_required": True,
@@ -90,6 +94,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter", "EpisodeOfCare"],
         },
@@ -106,6 +111,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
         },
@@ -118,6 +124,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="Composite request this is part of.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -128,6 +135,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="Identifiers assigned to this order by the orderer or by the receiver.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -141,6 +149,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -171,6 +180,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -194,6 +204,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -212,6 +223,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -225,6 +237,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="The desired perfomer for doing the diagnostic testing.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Practitioner",
@@ -244,6 +257,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="Desired type of performer for doing the diagnostic testing.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -257,6 +271,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -272,6 +287,7 @@ class DeviceRequest(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -285,6 +301,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="Reason or justification for the use of this device.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -295,6 +312,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="Reason or justification for the use of this device.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Resource"],
         },
@@ -322,6 +340,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -332,6 +351,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="The status of the request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": [
@@ -355,6 +375,7 @@ class DeviceRequest(domainresource.DomainResource):
         description="The patient who will use the device.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group", "Location", "Device"],
         },
@@ -378,9 +399,9 @@ class DeviceRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceRequest`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceRequest`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -415,6 +436,38 @@ class DeviceRequest(domainresource.DomainResource):
             "supportingInfo",
             "note",
             "relevantHistory",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceRequest`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "definition",
+            "basedOn",
+            "priorRequest",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "priority",
+            "codeReference",
+            "codeCodeableConcept",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "authoredOn",
+            "requester",
+            "performerType",
+            "performer",
+            "reasonCode",
+            "reasonReference",
         ]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
@@ -460,6 +513,7 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
         description="The device, practitioner, etc. who initiated the request.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device", "Practitioner", "Organization"],
         },
@@ -472,6 +526,7 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
         description="The organization the device or practitioner was acting on behalf of.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -479,8 +534,15 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceRequestRequester`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceRequestRequester`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceRequestRequester`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "agent", "onBehalfOf"]

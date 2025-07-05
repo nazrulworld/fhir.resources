@@ -36,6 +36,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -60,6 +61,7 @@ class Coverage(domainresource.DomainResource):
         description="A unique identifier for a dependent under the coverage.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     dependent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -91,6 +93,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -106,6 +109,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     network__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -124,6 +128,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     order__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -142,6 +147,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization", "Patient", "RelatedPerson"],
         },
@@ -158,6 +164,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -171,6 +178,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "RelatedPerson", "Organization"],
         },
@@ -196,6 +204,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -209,6 +218,7 @@ class Coverage(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
@@ -229,6 +239,7 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "RelatedPerson"],
         },
@@ -241,6 +252,7 @@ class Coverage(domainresource.DomainResource):
         description="The insurer assigned ID for the Subscriber.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -258,14 +270,15 @@ class Coverage(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Coverage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Coverage`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -294,6 +307,30 @@ class Coverage(domainresource.DomainResource):
             "contract",
         ]
 
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Coverage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "type",
+            "policyHolder",
+            "subscriber",
+            "subscriberId",
+            "beneficiary",
+            "period",
+            "payor",
+            "dependent",
+            "sequence",
+            "order",
+            "network",
+        ]
+
 
 class CoverageGrouping(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -314,6 +351,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         description="A short description for the class.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     classDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -331,6 +369,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     class__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -348,6 +387,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     group__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -361,6 +401,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         description="A short description for the group.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     groupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -379,6 +420,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     plan__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -392,6 +434,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         description="A short description for the plan.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     planDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -409,6 +452,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subClass__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -422,6 +466,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         description="A short description for the subclass.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subClassDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -439,6 +484,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subGroup__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -452,6 +498,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         description="A short description for the subgroup.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subGroupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -469,6 +516,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subPlan__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -482,6 +530,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
         description="A short description for the subplan.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -490,13 +539,34 @@ class CoverageGrouping(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageGrouping`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageGrouping`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "modifierExtension",
+            "group",
+            "groupDisplay",
+            "subGroup",
+            "subGroupDisplay",
+            "plan",
+            "planDisplay",
+            "subPlan",
+            "subPlanDisplay",
+            "class",
+            "classDisplay",
+            "subClass",
+            "subClassDisplay",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageGrouping`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "modifierExtension",
             "group",
             "groupDisplay",

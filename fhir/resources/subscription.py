@@ -33,6 +33,7 @@ class Subscription(domainresource.DomainResource):
         description="The type of channel to send notifications on.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -46,6 +47,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -60,6 +62,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["empty", "id-only", "full-resource"],
@@ -84,6 +87,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -97,6 +101,7 @@ class Subscription(domainresource.DomainResource):
         description="The time for the server to turn the subscription off.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -110,6 +115,7 @@ class Subscription(domainresource.DomainResource):
         description="The url that describes the actual end-point to send notifications to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -128,6 +134,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -142,6 +149,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     heartbeatPeriod__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -159,6 +167,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -173,6 +182,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "CareTeam",
@@ -197,6 +207,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     maxCount__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -210,6 +221,7 @@ class Subscription(domainresource.DomainResource):
         description="A natural language name identifying the subscription.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -236,6 +248,7 @@ class Subscription(domainresource.DomainResource):
         description="A description of why this subscription is defined.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     reason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -252,6 +265,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -272,6 +286,7 @@ class Subscription(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     timeout__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -285,6 +300,7 @@ class Subscription(domainresource.DomainResource):
         description="The reference to the subscription topic to be notified about.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["SubscriptionTopic"],
@@ -296,9 +312,9 @@ class Subscription(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Subscription`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Subscription`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -321,6 +337,34 @@ class Subscription(domainresource.DomainResource):
             "channelType",
             "endpoint",
             "parameter",
+            "heartbeatPeriod",
+            "timeout",
+            "contentType",
+            "content",
+            "maxCount",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Subscription`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "name",
+            "status",
+            "topic",
+            "contact",
+            "end",
+            "managingEntity",
+            "reason",
+            "filterBy",
+            "channelType",
+            "endpoint",
             "heartbeatPeriod",
             "timeout",
             "contentType",
@@ -380,6 +424,7 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -436,6 +481,7 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     resourceType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -452,6 +498,7 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -461,9 +508,9 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionFilterBy`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionFilterBy`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -475,6 +522,13 @@ class SubscriptionFilterBy(backboneelement.BackboneElement):
             "modifier",
             "value",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionFilterBy`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "resourceType", "filterParameter", "value"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -541,11 +595,18 @@ class SubscriptionParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``SubscriptionParameter`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``SubscriptionParameter`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "value"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``SubscriptionParameter`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

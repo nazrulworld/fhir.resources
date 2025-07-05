@@ -33,6 +33,7 @@ class PaymentNotice(domainresource.DomainResource):
         description="The amount sent to the payee.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -43,6 +44,7 @@ class PaymentNotice(domainresource.DomainResource):
         description="The date when this resource was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -86,6 +88,7 @@ class PaymentNotice(domainresource.DomainResource):
         description="A reference to the payment which is the subject of this notice.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["PaymentReconciliation"],
         },
@@ -121,6 +124,7 @@ class PaymentNotice(domainresource.DomainResource):
         description="The party who is notified of the payment status.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -173,6 +177,7 @@ class PaymentNotice(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -185,9 +190,9 @@ class PaymentNotice(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``PaymentNotice`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``PaymentNotice`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -210,6 +215,23 @@ class PaymentNotice(domainresource.DomainResource):
             "recipient",
             "amount",
             "paymentStatus",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``PaymentNotice`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "status",
+            "created",
+            "payment",
+            "recipient",
+            "amount",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

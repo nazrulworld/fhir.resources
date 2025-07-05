@@ -60,6 +60,7 @@ class RiskAssessment(domainresource.DomainResource):
         description="The type of the risk assessment performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -73,6 +74,7 @@ class RiskAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Condition"],
         },
@@ -85,6 +87,7 @@ class RiskAssessment(domainresource.DomainResource):
         description="The encounter where the assessment was performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -97,6 +100,7 @@ class RiskAssessment(domainresource.DomainResource):
         description="Business identifier assigned to the risk assessment.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -107,6 +111,7 @@ class RiskAssessment(domainresource.DomainResource):
         description="The algorithm, process or mechanism used to evaluate the risk.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -143,6 +148,7 @@ class RiskAssessment(domainresource.DomainResource):
         description="The date (and possibly time) the risk assessment was performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -161,6 +167,7 @@ class RiskAssessment(domainresource.DomainResource):
         description="The date (and possibly time) the risk assessment was performed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e occurrence[x]
             "one_of_many": "occurrence",
             "one_of_many_required": False,
@@ -192,6 +199,7 @@ class RiskAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -240,6 +248,7 @@ class RiskAssessment(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -257,6 +266,7 @@ class RiskAssessment(domainresource.DomainResource):
         description="The patient or group the risk assessment applies to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -264,9 +274,9 @@ class RiskAssessment(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RiskAssessment`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RiskAssessment`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -294,6 +304,28 @@ class RiskAssessment(domainresource.DomainResource):
             "prediction",
             "mitigation",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RiskAssessment`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "method",
+            "code",
+            "subject",
+            "encounter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "condition",
+            "performer",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -457,9 +489,9 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RiskAssessmentPrediction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RiskAssessmentPrediction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -474,6 +506,13 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "whenRange",
             "rationale",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RiskAssessmentPrediction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

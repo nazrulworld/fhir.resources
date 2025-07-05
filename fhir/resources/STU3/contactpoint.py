@@ -31,6 +31,7 @@ class ContactPoint(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -44,6 +45,7 @@ class ContactPoint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     rank__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -60,6 +62,7 @@ class ContactPoint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["phone", "fax", "email", "pager", "url", "sms", "other"],
@@ -76,6 +79,7 @@ class ContactPoint(element.Element):
         description="Identifies the purpose for the contact point.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["home", "work", "temp", "old", "mobile"],
@@ -95,6 +99,7 @@ class ContactPoint(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -103,8 +108,15 @@ class ContactPoint(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ContactPoint`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ContactPoint`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "system", "value", "use", "rank", "period"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ContactPoint`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["system", "value", "use", "rank", "period"]

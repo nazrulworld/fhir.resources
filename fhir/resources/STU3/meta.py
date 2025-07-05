@@ -34,6 +34,7 @@ class Meta(element.Element):
         description="When the resource last changed - e.g. when the version changed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -52,6 +53,7 @@ class Meta(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     profile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -68,6 +70,7 @@ class Meta(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -83,6 +86,7 @@ class Meta(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -97,6 +101,7 @@ class Meta(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -105,9 +110,9 @@ class Meta(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Meta`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Meta`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -118,3 +123,10 @@ class Meta(element.Element):
             "security",
             "tag",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Meta`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["versionId", "lastUpdated", "profile", "security", "tag"]

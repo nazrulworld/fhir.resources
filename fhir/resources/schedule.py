@@ -35,6 +35,7 @@ class Schedule(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -51,6 +52,7 @@ class Schedule(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": [
                 "Patient",
@@ -88,6 +90,7 @@ class Schedule(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -101,6 +104,7 @@ class Schedule(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -120,6 +124,7 @@ class Schedule(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -133,6 +138,7 @@ class Schedule(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -143,6 +149,7 @@ class Schedule(domainresource.DomainResource):
         description="The specific service that is to be performed during this appointment.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["HealthcareService"],
         },
@@ -158,14 +165,15 @@ class Schedule(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Schedule`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Schedule`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -185,4 +193,24 @@ class Schedule(domainresource.DomainResource):
             "actor",
             "planningHorizon",
             "comment",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Schedule`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "serviceCategory",
+            "serviceType",
+            "specialty",
+            "name",
+            "actor",
+            "planningHorizon",
         ]

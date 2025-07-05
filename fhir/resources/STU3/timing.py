@@ -44,6 +44,7 @@ class Timing(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -54,6 +55,7 @@ class Timing(element.Element):
         description="Identifies specific times when the event occurs.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     event__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -67,16 +69,24 @@ class Timing(element.Element):
         description="A set of rules that describe when the event is scheduled.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Timing`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Timing`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "event", "repeat", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Timing`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["event", "repeat", "code"]
 
 
 class TimingRepeat(element.Element):
@@ -101,6 +111,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e bounds[x]
             "one_of_many": "bounds",
             "one_of_many_required": False,
@@ -118,6 +129,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e bounds[x]
             "one_of_many": "bounds",
             "one_of_many_required": False,
@@ -135,6 +147,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e bounds[x]
             "one_of_many": "bounds",
             "one_of_many_required": False,
@@ -148,6 +161,7 @@ class TimingRepeat(element.Element):
         description="A total count of the desired number of repetitions.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     count__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -164,6 +178,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     countMax__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -180,6 +195,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
@@ -196,6 +212,7 @@ class TimingRepeat(element.Element):
         description="How long this thing happens for when it happens.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     duration__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -209,6 +226,7 @@ class TimingRepeat(element.Element):
         description="The upper limit of how long this thing happens for when it happens.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     durationMax__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -222,6 +240,7 @@ class TimingRepeat(element.Element):
         description="The units of time for the duration, in UCUM units.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["s", "min", "h", "d", "wk", "mo", "a"],
@@ -241,6 +260,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     frequency__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -258,6 +278,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     frequencyMax__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -275,6 +296,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     offset__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -292,6 +314,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     period__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -309,6 +332,7 @@ class TimingRepeat(element.Element):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     periodMax__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -322,6 +346,7 @@ class TimingRepeat(element.Element):
         description="The units of time for the period in UCUM units.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["s", "min", "h", "d", "wk", "mo", "a"],
@@ -338,6 +363,7 @@ class TimingRepeat(element.Element):
         description="Specified time of day for action to take place.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     timeOfDay__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -351,6 +377,7 @@ class TimingRepeat(element.Element):
         description="Real world events that the occurrence of the event should be tied to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     when__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -359,13 +386,38 @@ class TimingRepeat(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``TimingRepeat`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``TimingRepeat`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
             "extension",
+            "boundsDuration",
+            "boundsRange",
+            "boundsPeriod",
+            "count",
+            "countMax",
+            "duration",
+            "durationMax",
+            "durationUnit",
+            "frequency",
+            "frequencyMax",
+            "period",
+            "periodMax",
+            "periodUnit",
+            "dayOfWeek",
+            "timeOfDay",
+            "when",
+            "offset",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``TimingRepeat`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
             "boundsDuration",
             "boundsRange",
             "boundsPeriod",

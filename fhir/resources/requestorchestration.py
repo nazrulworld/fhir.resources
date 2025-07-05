@@ -83,6 +83,7 @@ class RequestOrchestration(domainresource.DomainResource):
         description="A code that identifies what the overall request orchestration is.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -128,6 +129,7 @@ class RequestOrchestration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -141,6 +143,7 @@ class RequestOrchestration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -155,6 +158,7 @@ class RequestOrchestration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -174,6 +178,7 @@ class RequestOrchestration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -193,6 +198,7 @@ class RequestOrchestration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -236,6 +242,7 @@ class RequestOrchestration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["routine", "urgent", "asap", "stat"],
@@ -293,6 +300,7 @@ class RequestOrchestration(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -336,9 +344,9 @@ class RequestOrchestration(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RequestOrchestration`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RequestOrchestration`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -367,6 +375,26 @@ class RequestOrchestration(domainresource.DomainResource):
             "goal",
             "note",
             "action",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RequestOrchestration`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "priority",
+            "code",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -513,6 +541,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -782,6 +811,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -913,9 +943,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RequestOrchestrationAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RequestOrchestrationAction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -955,6 +985,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "dynamicValue",
             "action",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "description", "textEquivalent"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1027,11 +1064,18 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RequestOrchestrationActionCondition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RequestOrchestrationActionCondition`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "kind", "expression"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionCondition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1095,11 +1139,18 @@ class RequestOrchestrationActionDynamicValue(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RequestOrchestrationActionDynamicValue`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RequestOrchestrationActionDynamicValue`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "path", "expression"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionDynamicValue`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class RequestOrchestrationActionInput(backboneelement.BackboneElement):
@@ -1159,9 +1210,9 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RequestOrchestrationActionInput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RequestOrchestrationActionInput`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1171,6 +1222,13 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
             "requirement",
             "relatedData",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionInput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
@@ -1230,9 +1288,9 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RequestOrchestrationActionOutput`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RequestOrchestrationActionOutput`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1242,6 +1300,13 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
             "requirement",
             "relatedData",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionOutput`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
@@ -1400,9 +1465,9 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RequestOrchestrationActionParticipant`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RequestOrchestrationActionParticipant`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1416,6 +1481,13 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
             "actorCanonical",
             "actorReference",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionParticipant`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1553,9 +1625,9 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``RequestOrchestrationActionRelatedAction`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``RequestOrchestrationActionRelatedAction`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -1567,6 +1639,13 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             "offsetDuration",
             "offsetRange",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionRelatedAction`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

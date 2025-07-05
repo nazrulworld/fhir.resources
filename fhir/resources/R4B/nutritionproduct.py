@@ -38,6 +38,7 @@ class NutritionProduct(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -51,6 +52,7 @@ class NutritionProduct(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -105,6 +107,7 @@ class NutritionProduct(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -127,6 +130,7 @@ class NutritionProduct(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -147,6 +151,7 @@ class NutritionProduct(domainresource.DomainResource):
         description="The current state of the product.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -159,9 +164,9 @@ class NutritionProduct(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionProduct`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionProduct`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -182,6 +187,22 @@ class NutritionProduct(domainresource.DomainResource):
             "productCharacteristic",
             "instance",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionProduct`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "category",
+            "code",
+            "manufacturer",
+            "nutrient",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -213,6 +234,7 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -223,6 +245,7 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["NutritionProduct"],
         },
@@ -230,11 +253,18 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionProductIngredient`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionProductIngredient`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "item", "amount"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionProductIngredient`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "item", "amount"]
 
 
 class NutritionProductInstance(backboneelement.BackboneElement):
@@ -321,9 +351,9 @@ class NutritionProductInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionProductInstance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionProductInstance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -335,6 +365,13 @@ class NutritionProductInstance(backboneelement.BackboneElement):
             "expiry",
             "useBy",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionProductInstance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class NutritionProductNutrient(backboneelement.BackboneElement):
@@ -374,11 +411,18 @@ class NutritionProductNutrient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionProductNutrient`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionProductNutrient`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "item", "amount"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionProductNutrient`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
@@ -495,9 +539,9 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``NutritionProductProductCharacteristic`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``NutritionProductProductCharacteristic`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -511,6 +555,13 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
             "valueAttachment",
             "valueBoolean",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``NutritionProductProductCharacteristic`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

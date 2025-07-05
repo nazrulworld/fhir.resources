@@ -49,6 +49,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -89,6 +90,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Device"],
         },
@@ -105,6 +107,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -137,6 +140,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["on", "off", "standby", "entered-in-error"],
@@ -158,6 +162,7 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -171,14 +176,15 @@ class DeviceMetric(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceMetric`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceMetric`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -198,6 +204,24 @@ class DeviceMetric(domainresource.DomainResource):
             "category",
             "measurementFrequency",
             "calibration",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceMetric`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "unit",
+            "device",
+            "operationalStatus",
+            "category",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -275,8 +299,15 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``DeviceMetricCalibration`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``DeviceMetricCalibration`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "state", "time"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``DeviceMetricCalibration`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

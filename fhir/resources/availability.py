@@ -31,6 +31,7 @@ class Availability(datatype.DataType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -41,16 +42,24 @@ class Availability(datatype.DataType):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Availability`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Availability`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "availableTime", "notAvailableTime"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Availability`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["availableTime", "notAvailableTime"]
 
 
 class AvailabilityAvailableTime(element.Element):
@@ -70,6 +79,7 @@ class AvailabilityAvailableTime(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     allDay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -83,6 +93,7 @@ class AvailabilityAvailableTime(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -98,6 +109,7 @@ class AvailabilityAvailableTime(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -113,6 +125,7 @@ class AvailabilityAvailableTime(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
@@ -124,9 +137,9 @@ class AvailabilityAvailableTime(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AvailabilityAvailableTime`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AvailabilityAvailableTime`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -136,6 +149,13 @@ class AvailabilityAvailableTime(element.Element):
             "availableStartTime",
             "availableEndTime",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AvailabilityAvailableTime`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["daysOfWeek", "allDay", "availableStartTime", "availableEndTime"]
 
 
 class AvailabilityNotAvailableTime(element.Element):
@@ -155,6 +175,7 @@ class AvailabilityNotAvailableTime(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -168,13 +189,21 @@ class AvailabilityNotAvailableTime(element.Element):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``AvailabilityNotAvailableTime`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``AvailabilityNotAvailableTime`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "description", "during"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``AvailabilityNotAvailableTime`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["description", "during"]

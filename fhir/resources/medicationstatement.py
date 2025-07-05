@@ -60,6 +60,7 @@ class MedicationStatement(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -74,6 +75,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -87,6 +89,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -130,6 +133,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -152,6 +156,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -169,6 +174,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -185,6 +191,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -204,6 +211,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -245,6 +253,7 @@ class MedicationStatement(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Medication"],
         },
@@ -335,6 +344,7 @@ class MedicationStatement(domainresource.DomainResource):
         description="A code representing the status of recording the medication statement.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -352,6 +362,7 @@ class MedicationStatement(domainresource.DomainResource):
         description="The person, animal or group who is/was taking the medication.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -359,9 +370,9 @@ class MedicationStatement(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationStatement`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationStatement`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -390,6 +401,29 @@ class MedicationStatement(domainresource.DomainResource):
             "relatedClinicalInformation",
             "renderedDosageInstruction",
             "dosage",
+            "adherence",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationStatement`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "medication",
+            "subject",
+            "encounter",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "effectiveTiming",
+            "dateAsserted",
             "adherence",
         ]
 
@@ -441,6 +475,7 @@ class MedicationStatementAdherence(backboneelement.BackboneElement):
         description="Type of the adherence for the medication.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -456,8 +491,15 @@ class MedicationStatementAdherence(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``MedicationStatementAdherence`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``MedicationStatementAdherence`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "reason"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``MedicationStatementAdherence`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "code"]

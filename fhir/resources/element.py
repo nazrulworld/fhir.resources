@@ -57,8 +57,15 @@ class Element(base.Base):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Element`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Element`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Element`` according to specification,
+        with preserving the original sequence order.
+        """
+        return []

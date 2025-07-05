@@ -32,6 +32,7 @@ class ConditionDefinition(domainresource.DomainResource):
         description="The anatomical location where this condition manifests itself.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -42,6 +43,7 @@ class ConditionDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -55,6 +57,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -71,6 +74,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -120,6 +124,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -176,6 +181,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -189,6 +195,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -213,6 +220,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -259,6 +267,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -285,6 +294,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -298,6 +308,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -311,6 +322,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -358,6 +370,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -383,6 +396,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -402,6 +416,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -420,6 +435,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -436,6 +452,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -452,6 +469,7 @@ class ConditionDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -465,9 +483,9 @@ class ConditionDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConditionDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConditionDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -508,6 +526,36 @@ class ConditionDefinition(domainresource.DomainResource):
             "team",
             "questionnaire",
             "plan",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConditionDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "code",
+            "severity",
+            "bodySite",
+            "stage",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -572,11 +620,18 @@ class ConditionDefinitionMedication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConditionDefinitionMedication`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConditionDefinitionMedication`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "category", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConditionDefinitionMedication`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ConditionDefinitionObservation(backboneelement.BackboneElement):
@@ -611,11 +666,18 @@ class ConditionDefinitionObservation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConditionDefinitionObservation`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConditionDefinitionObservation`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "category", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConditionDefinitionObservation`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ConditionDefinitionPlan(backboneelement.BackboneElement):
@@ -652,11 +714,18 @@ class ConditionDefinitionPlan(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConditionDefinitionPlan`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConditionDefinitionPlan`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "reference"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConditionDefinitionPlan`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class ConditionDefinitionPrecondition(backboneelement.BackboneElement):
@@ -725,9 +794,9 @@ class ConditionDefinitionPrecondition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConditionDefinitionPrecondition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConditionDefinitionPrecondition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -738,6 +807,13 @@ class ConditionDefinitionPrecondition(backboneelement.BackboneElement):
             "valueCodeableConcept",
             "valueQuantity",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConditionDefinitionPrecondition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -808,11 +884,18 @@ class ConditionDefinitionQuestionnaire(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ConditionDefinitionQuestionnaire`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ConditionDefinitionQuestionnaire`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "purpose", "reference"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ConditionDefinitionQuestionnaire`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

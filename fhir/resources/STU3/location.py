@@ -66,6 +66,7 @@ class Location(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -94,6 +95,7 @@ class Location(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -107,6 +109,7 @@ class Location(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -122,6 +125,7 @@ class Location(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["instance", "kind"],
@@ -138,6 +142,7 @@ class Location(domainresource.DomainResource):
         description="Name of the location as used by humans. Does not need to be unique.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -156,6 +161,7 @@ class Location(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -178,6 +184,7 @@ class Location(domainresource.DomainResource):
         description="Physical form of the location, e.g. building, room, vehicle, road.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -205,6 +212,7 @@ class Location(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["active", "suspended", "inactive"],
@@ -235,14 +243,15 @@ class Location(domainresource.DomainResource):
         description="Indicates the type of function performed at the location.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Location`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Location`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -268,6 +277,26 @@ class Location(domainresource.DomainResource):
             "managingOrganization",
             "partOf",
             "endpoint",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Location`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "operationalStatus",
+            "name",
+            "description",
+            "mode",
+            "type",
+            "physicalType",
+            "managingOrganization",
         ]
 
 
@@ -335,9 +364,9 @@ class LocationPosition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``LocationPosition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``LocationPosition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -347,6 +376,13 @@ class LocationPosition(backboneelement.BackboneElement):
             "latitude",
             "altitude",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``LocationPosition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

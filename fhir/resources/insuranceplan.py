@@ -35,6 +35,7 @@ class InsurancePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -90,6 +91,7 @@ class InsurancePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -121,6 +123,7 @@ class InsurancePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -134,6 +137,7 @@ class InsurancePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -164,6 +168,7 @@ class InsurancePlan(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -196,6 +201,7 @@ class InsurancePlan(domainresource.DomainResource):
         description="The current state of the health insurance product.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
             "enum_values": ["draft", "active", "retired", "unknown"],
@@ -212,14 +218,15 @@ class InsurancePlan(domainresource.DomainResource):
         description="The kind of health insurance product.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlan`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlan`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -244,6 +251,25 @@ class InsurancePlan(domainresource.DomainResource):
             "network",
             "coverage",
             "plan",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlan`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "name",
+            "ownedBy",
+            "administeredBy",
+            "coverageArea",
         ]
 
 
@@ -295,11 +321,18 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlanCoverage`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlanCoverage`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "network", "benefit"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlanCoverage`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
@@ -350,11 +383,18 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlanCoverageBenefit`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlanCoverageBenefit`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "requirement", "limit"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlanCoverageBenefit`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
@@ -393,11 +433,18 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlanCoverageBenefitLimit`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlanCoverageBenefitLimit`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "value", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlanCoverageBenefitLimit`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class InsurancePlanPlan(backboneelement.BackboneElement):
@@ -421,6 +468,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Location"],
         },
@@ -447,6 +495,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -484,9 +533,9 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlanPlan`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlanPlan`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -499,6 +548,13 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
             "generalCost",
             "specificCost",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlanPlan`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "identifier", "coverageArea"]
 
 
 class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
@@ -563,9 +619,9 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlanPlanGeneralCost`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlanPlanGeneralCost`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -576,6 +632,13 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
             "cost",
             "comment",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlanPlanGeneralCost`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
@@ -614,11 +677,18 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlanPlanSpecificCost`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlanPlanSpecificCost`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "category", "benefit"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlanPlanSpecificCost`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
@@ -658,11 +728,18 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlanPlanSpecificCostBenefit`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlanPlanSpecificCostBenefit`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "cost"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlanPlanSpecificCostBenefit`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
@@ -730,9 +807,9 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``InsurancePlanPlanSpecificCostBenefitCost`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``InsurancePlanPlanSpecificCostBenefitCost`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -743,3 +820,10 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
             "qualifiers",
             "value",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``InsurancePlanPlanSpecificCostBenefitCost`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

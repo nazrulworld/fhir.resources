@@ -67,6 +67,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -80,6 +81,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -131,6 +133,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -147,6 +150,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     derivedFromUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -163,6 +167,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -180,6 +185,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -197,6 +203,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -233,6 +240,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -264,6 +272,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -280,6 +289,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ChargeItemDefinition"],
         },
@@ -312,6 +322,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -347,6 +358,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["ChargeItemDefinition"],
         },
@@ -362,6 +374,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         description="The current state of the ChargeItemDefinition.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -382,6 +395,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -407,6 +421,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -427,6 +442,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -449,6 +465,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -465,6 +482,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -481,6 +499,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e versionAlgorithm[x]
             "one_of_many": "versionAlgorithm",
             "one_of_many_required": False,
@@ -494,9 +513,9 @@ class ChargeItemDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ChargeItemDefinition`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ChargeItemDefinition`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -534,6 +553,37 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "instance",
             "applicability",
             "propertyGroup",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ChargeItemDefinition`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "versionAlgorithmString",
+            "versionAlgorithmCoding",
+            "name",
+            "title",
+            "derivedFromUri",
+            "partOf",
+            "replaces",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "code",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -602,6 +652,7 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -620,9 +671,9 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ChargeItemDefinitionApplicability`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ChargeItemDefinitionApplicability`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -632,6 +683,13 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
             "effectivePeriod",
             "relatedArtifact",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ChargeItemDefinitionApplicability`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "effectivePeriod"]
 
 
 class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
@@ -680,9 +738,9 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ChargeItemDefinitionPropertyGroup`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ChargeItemDefinitionPropertyGroup`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -691,3 +749,10 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
             "applicability",
             "priceComponent",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ChargeItemDefinitionPropertyGroup`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

@@ -35,6 +35,7 @@ class Endpoint(domainresource.DomainResource):
         description="The uri that describes the actual end-point to connect to.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -53,6 +54,7 @@ class Endpoint(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -92,6 +94,7 @@ class Endpoint(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -109,6 +112,7 @@ class Endpoint(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -121,6 +125,7 @@ class Endpoint(domainresource.DomainResource):
         description="A friendly name that this endpoint can be referred to with.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -142,6 +147,7 @@ class Endpoint(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     payloadMimeType__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
@@ -161,6 +167,7 @@ class Endpoint(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -171,6 +178,7 @@ class Endpoint(domainresource.DomainResource):
         description="The interval during which the endpoint is expected to be operational.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -181,6 +189,7 @@ class Endpoint(domainresource.DomainResource):
         description="active | suspended | error | off | test.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -200,9 +209,9 @@ class Endpoint(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``Endpoint`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``Endpoint`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -224,6 +233,26 @@ class Endpoint(domainresource.DomainResource):
             "payloadMimeType",
             "address",
             "header",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``Endpoint`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "identifier",
+            "status",
+            "connectionType",
+            "name",
+            "managingOrganization",
+            "period",
+            "payloadType",
+            "payloadMimeType",
+            "address",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:

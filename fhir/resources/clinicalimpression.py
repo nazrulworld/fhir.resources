@@ -56,6 +56,7 @@ class ClinicalImpression(domainresource.DomainResource):
         description="Indicates when the documentation of the assessment was complete.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -72,6 +73,7 @@ class ClinicalImpression(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
@@ -85,6 +87,7 @@ class ClinicalImpression(domainresource.DomainResource):
         description="The point in time or period over which the subject was assessed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -103,6 +106,7 @@ class ClinicalImpression(domainresource.DomainResource):
         description="The point in time or period over which the subject was assessed.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # Choice of Data Types. i.e effective[x]
             "one_of_many": "effective",
             "one_of_many_required": False,
@@ -119,6 +123,7 @@ class ClinicalImpression(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Encounter"],
         },
@@ -148,6 +153,7 @@ class ClinicalImpression(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
         },
     )
 
@@ -172,6 +178,7 @@ class ClinicalImpression(domainresource.DomainResource):
         description=None,
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Practitioner", "PractitionerRole"],
         },
@@ -201,6 +208,7 @@ class ClinicalImpression(domainresource.DomainResource):
         description="A list of the relevant problems/conditions for a patient.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Condition", "AllergyIntolerance"],
         },
@@ -255,6 +263,7 @@ class ClinicalImpression(domainresource.DomainResource):
         description="Identifies the workflow status of the assessment.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -291,6 +300,7 @@ class ClinicalImpression(domainresource.DomainResource):
         description="The patient or group of individuals assessed as part of this record.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient", "Group"],
         },
@@ -326,9 +336,9 @@ class ClinicalImpression(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalImpression`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalImpression`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -359,6 +369,28 @@ class ClinicalImpression(domainresource.DomainResource):
             "prognosisReference",
             "supportingInfo",
             "note",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalImpression`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "description",
+            "subject",
+            "encounter",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "date",
+            "performer",
+            "problem",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -431,8 +463,15 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``ClinicalImpressionFinding`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``ClinicalImpressionFinding`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "item", "basis"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``ClinicalImpressionFinding`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]

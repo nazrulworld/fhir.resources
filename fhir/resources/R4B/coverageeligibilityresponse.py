@@ -33,6 +33,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         description="The date this resource was created.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
         },
     )
@@ -106,6 +107,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Organization"],
         },
@@ -118,6 +120,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         description="The outcome of the request processing.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -138,6 +141,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Patient"],
         },
@@ -172,6 +176,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -189,6 +194,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         description="Reference to the original request resource.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["CoverageEligibilityRequest"],
         },
@@ -252,6 +258,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         description="The status of the resource instance.",
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             "element_required": True,
             # note: Enum values can be used in validation,
             # but use in your own responsibilities, read official FHIR documentation.
@@ -264,9 +271,9 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageEligibilityResponse`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageEligibilityResponse`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -293,6 +300,24 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "preAuthRef",
             "form",
             "error",
+        ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageEligibilityResponse`` according to specification,
+        with preserving the original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "status",
+            "purpose",
+            "patient",
+            "created",
+            "request",
+            "outcome",
+            "insurer",
         ]
 
     def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
@@ -354,11 +379,18 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageEligibilityResponseError`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageEligibilityResponseError`` according to specification,
+        with preserving the original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code"]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageEligibilityResponseError`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
@@ -395,6 +427,7 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
         ),
         json_schema_extra={
             "element_property": True,
+            "summary_element_property": True,
             # note: Listed Resource Type(s) should be allowed as Reference.
             "enum_reference_types": ["Coverage"],
         },
@@ -432,9 +465,9 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageEligibilityResponseInsurance`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageEligibilityResponseInsurance`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -445,6 +478,13 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
             "benefitPeriod",
             "item",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageEligibilityResponseInsurance`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension", "coverage"]
 
 
 class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
@@ -653,9 +693,9 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageEligibilityResponseInsuranceItem`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageEligibilityResponseInsuranceItem`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -676,6 +716,13 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
             "authorizationSupporting",
             "authorizationUrl",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageEligibilityResponseInsuranceItem`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
 
 class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneElement):
@@ -793,9 +840,9 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from
-        ``CoverageEligibilityResponseInsuranceItemBenefit`` according specification,
-        with preserving original sequence order.
+        """returning all element names from
+        ``CoverageEligibilityResponseInsuranceItemBenefit`` according to specification,
+        with preserving the original sequence order.
         """
         return [
             "id",
@@ -809,6 +856,13 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
             "usedString",
             "usedMoney",
         ]
+
+    @classmethod
+    def summary_elements_sequence(cls):
+        """returning all element names (those have summary mode are enabled) from ``CoverageEligibilityResponseInsuranceItemBenefit`` according to specification,
+        with preserving the original sequence order.
+        """
+        return ["modifierExtension"]
 
     def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice

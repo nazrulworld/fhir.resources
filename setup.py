@@ -52,11 +52,11 @@ if PY_VERSION_11_OR_LATER:
     test_requirements.append("typed-ast>=1.5.4")
 
 development_requirements = [
-    "Jinja2==2.11.1",
-    "MarkupSafe==1.1.1",
+    "Jinja2==3.1.6",
+    "MarkupSafe==2.1.5",
     "colorlog==2.10.0",
     "certifi",
-    "fhirspec",
+    "fhirspec>=0.6.0",
     "zest-releaser[recommended]",
 ]
 setup(

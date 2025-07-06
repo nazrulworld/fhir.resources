@@ -27,7 +27,7 @@ class Immunization(domainresource.DomainResource):
     __resource_type__ = "Immunization"
 
     administeredProduct: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="administeredProduct",
         title="Product that was administered",
         description=(
@@ -45,7 +45,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="basedOn",
         title="Authority that the immunization event is based on",
         description=(
@@ -66,7 +66,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     doseQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseQuantity",
         title="Amount of vaccine administered",
         description="The quantity of vaccine product that was administered.",
@@ -76,7 +76,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="encounter",
         title="Encounter immunization was part of",
         description=(
@@ -91,7 +91,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     expirationDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expirationDate",
         title="Vaccine expiration date",
         description="Date vaccine batch expires.",
@@ -100,11 +100,13 @@ class Immunization(domainresource.DomainResource):
         },
     )
     expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_expirationDate", title="Extension field for ``expirationDate``."
+        default=None,
+        alias="_expirationDate",
+        title="Extension field for ``expirationDate``.",
     )
 
     fundingSource: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="fundingSource",
         title="Funding source for the vaccine",
         description=(
@@ -120,7 +122,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier",
         description="A unique identifier assigned to this immunization record.",
@@ -130,7 +132,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     informationSource: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="informationSource",
         title="Indicates the source of a  reported record",
         description=(
@@ -152,7 +154,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     isSubpotent: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="isSubpotent",
         title="Dose potency",
         description=(
@@ -165,11 +167,11 @@ class Immunization(domainresource.DomainResource):
         },
     )
     isSubpotent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_isSubpotent", title="Extension field for ``isSubpotent``."
+        default=None, alias="_isSubpotent", title="Extension field for ``isSubpotent``."
     )
 
     location: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="location",
         title="Where immunization occurred",
         description=(
@@ -184,7 +186,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     lotNumber: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lotNumber",
         title="Vaccine lot number",
         description="Lot number of the  vaccine product.",
@@ -193,11 +195,11 @@ class Immunization(domainresource.DomainResource):
         },
     )
     lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lotNumber", title="Extension field for ``lotNumber``."
+        default=None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
     manufacturer: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="manufacturer",
         title="Vaccine manufacturer",
         description="Name of vaccine manufacturer.",
@@ -209,7 +211,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Additional immunization notes",
         description=(
@@ -223,7 +225,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="occurrenceDateTime",
         title="Vaccine administration date",
         description="Date vaccine administered or was to be administered.",
@@ -236,13 +238,13 @@ class Immunization(domainresource.DomainResource):
         },
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrenceString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="occurrenceString",
         title="Vaccine administration date",
         description="Date vaccine administered or was to be administered.",
@@ -255,13 +257,13 @@ class Immunization(domainresource.DomainResource):
         },
     )
     occurrenceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_occurrenceString",
         title="Extension field for ``occurrenceString``.",
     )
 
     patient: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="patient",
         title="Who was immunized",
         description="The patient who either received or did not receive the immunization.",
@@ -274,7 +276,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     performer: typing.List[fhirtypes.ImmunizationPerformerType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performer",
         title="Who performed event",
         description="Indicates who performed the immunization event.",
@@ -285,7 +287,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     primarySource: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="primarySource",
         title="Indicates context the data was captured in",
         description=(
@@ -302,11 +304,13 @@ class Immunization(domainresource.DomainResource):
         },
     )
     primarySource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_primarySource", title="Extension field for ``primarySource``."
+        default=None,
+        alias="_primarySource",
+        title="Extension field for ``primarySource``.",
     )
 
     programEligibility: typing.List[fhirtypes.ImmunizationProgramEligibilityType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="programEligibility",
         title="Patient eligibility for a specific vaccination program",
         description="Indicates a patient's eligibility for a funding program.",
@@ -316,7 +320,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     protocolApplied: typing.List[fhirtypes.ImmunizationProtocolAppliedType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="protocolApplied",
         title="Protocol followed by the provider",
         description=(
@@ -329,7 +333,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     reaction: typing.List[fhirtypes.ImmunizationReactionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reaction",
         title="Details of a reaction that follows immunization",
         description=(
@@ -342,7 +346,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reason",
         title="Why immunization occurred",
         description=(
@@ -358,7 +362,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     route: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="route",
         title="How vaccine entered body",
         description="The path by which the vaccine product is taken into the body.",
@@ -368,7 +372,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     site: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="site",
         title="Body site vaccine  was administered",
         description="Body site where vaccine was administered.",
@@ -378,7 +382,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="completed | entered-in-error | not-done",
         description="Indicates the current status of the immunization event.",
@@ -392,11 +396,11 @@ class Immunization(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     statusReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="statusReason",
         title="Reason for current status",
         description="Indicates the reason the immunization event was not performed.",
@@ -406,7 +410,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     subpotentReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subpotentReason",
         title="Reason for being subpotent",
         description="Reason why a dose is considered to be subpotent.",
@@ -416,7 +420,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     supportingInformation: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supportingInformation",
         title="Additional information in support of the immunization",
         description=(
@@ -436,7 +440,7 @@ class Immunization(domainresource.DomainResource):
     )
 
     vaccineCode: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="vaccineCode",
         title="Vaccine administered",
         description="Vaccine that was administered or was to be administered.",
@@ -554,7 +558,7 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
     __resource_type__ = "ImmunizationPerformer"
 
     actor: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="actor",
         title="Individual or organization who was performing",
         description="The practitioner or organization who performed the action.",
@@ -573,7 +577,7 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
     )
 
     function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="function",
         title="What type of performance was done",
         description=(
@@ -614,7 +618,7 @@ class ImmunizationProgramEligibility(backboneelement.BackboneElement):
     __resource_type__ = "ImmunizationProgramEligibility"
 
     program: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="program",
         title="The program that eligibility is declared for",
         description="Indicates which program the patient had their eligility evaluated for.",
@@ -624,7 +628,7 @@ class ImmunizationProgramEligibility(backboneelement.BackboneElement):
     )
 
     programStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="programStatus",
         title="The patient's eligibility status for the program",
         description=(
@@ -665,7 +669,7 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
     __resource_type__ = "ImmunizationProtocolApplied"
 
     authority: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="authority",
         title="Who is responsible for publishing the recommendations",
         description=(
@@ -680,7 +684,7 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
     )
 
     doseNumber: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseNumber",
         title="Dose number within series",
         description=(
@@ -693,11 +697,11 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         },
     )
     doseNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_doseNumber", title="Extension field for ``doseNumber``."
+        default=None, alias="_doseNumber", title="Extension field for ``doseNumber``."
     )
 
     series: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="series",
         title="Name of vaccine series",
         description=(
@@ -709,11 +713,11 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         },
     )
     series__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_series", title="Extension field for ``series``."
+        default=None, alias="_series", title="Extension field for ``series``."
     )
 
     seriesDoses: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="seriesDoses",
         title="Recommended number of doses for immunity",
         description=(
@@ -725,11 +729,11 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         },
     )
     seriesDoses__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_seriesDoses", title="Extension field for ``seriesDoses``."
+        default=None, alias="_seriesDoses", title="Extension field for ``seriesDoses``."
     )
 
     targetDisease: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="targetDisease",
         title="Vaccine preventatable disease being targeted",
         description=(
@@ -789,7 +793,7 @@ class ImmunizationReaction(backboneelement.BackboneElement):
     __resource_type__ = "ImmunizationReaction"
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="When reaction started",
         description="Date of reaction to the immunization.",
@@ -798,11 +802,11 @@ class ImmunizationReaction(backboneelement.BackboneElement):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     manifestation: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="manifestation",
         title="Additional information on reaction",
         description="Details of the reaction.",
@@ -814,7 +818,7 @@ class ImmunizationReaction(backboneelement.BackboneElement):
     )
 
     reported: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reported",
         title="Indicates self-reported reaction",
         description="Self-reported indicator.",
@@ -823,7 +827,7 @@ class ImmunizationReaction(backboneelement.BackboneElement):
         },
     )
     reported__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_reported", title="Extension field for ``reported``."
+        default=None, alias="_reported", title="Extension field for ``reported``."
     )
 
     @classmethod

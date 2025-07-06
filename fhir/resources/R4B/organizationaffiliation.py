@@ -26,7 +26,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     __resource_type__ = "OrganizationAffiliation"
 
     active: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="active",
         title="Whether this organization affiliation record is in active use",
         description=None,
@@ -36,11 +36,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_active", title="Extension field for ``active``."
+        default=None, alias="_active", title="Extension field for ``active``."
     )
 
     code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Definition of the role the participatingOrganization plays",
         description=(
@@ -54,7 +54,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="endpoint",
         title=(
             "Technical endpoints providing access to services operated for this " "role"
@@ -68,7 +68,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     healthcareService: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="healthcareService",
         title="Healthcare services provided through the role",
         description=None,
@@ -80,7 +80,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifiers that are specific to this role",
         description=None,
@@ -91,7 +91,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     location: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="location",
         title="The location(s) at which the role occurs",
         description=None,
@@ -104,7 +104,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     network: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="network",
         title=(
             "Health insurance provider network in which the "
@@ -121,7 +121,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="organization",
         title="Organization where the role is available",
         description=(
@@ -137,7 +137,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     participatingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="participatingOrganization",
         title=(
             "Organization that provides/performs the role (e.g. providing services "
@@ -157,7 +157,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title=(
             "The period during which the participatingOrganization is affiliated "
@@ -171,7 +171,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="specialty",
         title=(
             "Specific specialty of the participatingOrganization in the context of "
@@ -185,7 +185,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="telecom",
         title=(
             "Contact details at the participatingOrganization relevant to this "

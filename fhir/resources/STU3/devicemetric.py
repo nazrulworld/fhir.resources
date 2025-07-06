@@ -27,7 +27,7 @@ class DeviceMetric(domainresource.DomainResource):
     __resource_type__ = "DeviceMetric"
 
     calibration: typing.List[fhirtypes.DeviceMetricCalibrationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="calibration",
         title=(
             "Describes the calibrations that have been performed or that are "
@@ -41,7 +41,7 @@ class DeviceMetric(domainresource.DomainResource):
     )
 
     category: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="measurement | setting | calculation | unspecified",
         description=(
@@ -59,11 +59,11 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
     category__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_category", title="Extension field for ``category``."
+        default=None, alias="_category", title="Extension field for ``category``."
     )
 
     color: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="color",
         title="black | red | green | yellow | blue | magenta | cyan | white",
         description=(
@@ -91,11 +91,11 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
     color__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_color", title="Extension field for ``color``."
+        default=None, alias="_color", title="Extension field for ``color``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="identifier",
         title="Unique identifier of this DeviceMetric",
         description=(
@@ -112,7 +112,7 @@ class DeviceMetric(domainresource.DomainResource):
     )
 
     measurementPeriod: fhirtypes.TimingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="measurementPeriod",
         title="Describes the measurement repetition time",
         description=(
@@ -133,7 +133,7 @@ class DeviceMetric(domainresource.DomainResource):
     )
 
     operationalStatus: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="operationalStatus",
         title="on | off | standby | entered-in-error",
         description=(
@@ -149,13 +149,13 @@ class DeviceMetric(domainresource.DomainResource):
         },
     )
     operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_operationalStatus",
         title="Extension field for ``operationalStatus``.",
     )
 
     parent: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="parent",
         title="Describes the link to the parent DeviceComponent",
         description=(
@@ -176,7 +176,7 @@ class DeviceMetric(domainresource.DomainResource):
     )
 
     source: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="source",
         title="Describes the link to the source Device",
         description=(
@@ -193,7 +193,7 @@ class DeviceMetric(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="Identity of metric, for example Heart Rate or PEEP Setting",
         description=(
@@ -207,7 +207,7 @@ class DeviceMetric(domainresource.DomainResource):
     )
 
     unit: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="unit",
         title="Unit of Measure for the Metric",
         description=(
@@ -292,7 +292,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
     __resource_type__ = "DeviceMetricCalibration"
 
     state: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="state",
         title="not-calibrated | calibration-required | calibrated | unspecified",
         description="Describes the state of the calibration.",
@@ -310,11 +310,11 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         },
     )
     state__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_state", title="Extension field for ``state``."
+        default=None, alias="_state", title="Extension field for ``state``."
     )
 
     time: fhirtypes.InstantType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="time",
         title="Describes the time last calibration has been performed",
         description=None,
@@ -324,11 +324,11 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         },
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_time", title="Extension field for ``time``."
+        default=None, alias="_time", title="Extension field for ``time``."
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="unspecified | offset | gain | two-point",
         description="Describes the type of the calibration method.",
@@ -341,7 +341,7 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod

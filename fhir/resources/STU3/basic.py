@@ -28,7 +28,7 @@ class Basic(domainresource.DomainResource):
     __resource_type__ = "Basic"
 
     author: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="author",
         title="Who created",
         description="Indicates who was responsible for creating the resource instance.",
@@ -41,7 +41,7 @@ class Basic(domainresource.DomainResource):
     )
 
     code: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="Kind of Resource",
         description=(
@@ -55,7 +55,7 @@ class Basic(domainresource.DomainResource):
     )
 
     created: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="created",
         title="When created",
         description="Identifies when the resource was first created.",
@@ -65,11 +65,11 @@ class Basic(domainresource.DomainResource):
         },
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_created", title="Extension field for ``created``."
+        default=None, alias="_created", title="Extension field for ``created``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier",
         description=(
@@ -83,7 +83,7 @@ class Basic(domainresource.DomainResource):
     )
 
     subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title="Identifies the focus of this resource",
         description=(

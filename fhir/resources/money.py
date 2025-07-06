@@ -23,7 +23,7 @@ class Money(datatype.DataType):
     __resource_type__ = "Money"
 
     currency: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="currency",
         title="ISO 4217 Currency Code",
         description=None,
@@ -33,11 +33,11 @@ class Money(datatype.DataType):
         },
     )
     currency__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_currency", title="Extension field for ``currency``."
+        default=None, alias="_currency", title="Extension field for ``currency``."
     )
 
     value: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="value",
         title="Numerical value (with implicit precision)",
         description=None,
@@ -47,7 +47,7 @@ class Money(datatype.DataType):
         },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_value", title="Extension field for ``value``."
+        default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod

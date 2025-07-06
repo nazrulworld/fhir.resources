@@ -26,7 +26,7 @@ class ContactDetail(datatype.DataType):
     __resource_type__ = "ContactDetail"
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name of an individual to contact",
         description="The name of an individual to contact.",
@@ -36,11 +36,11 @@ class ContactDetail(datatype.DataType):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="telecom",
         title="Contact details for individual or organization",
         description=(

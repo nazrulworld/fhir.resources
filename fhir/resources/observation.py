@@ -27,7 +27,7 @@ class Observation(domainresource.DomainResource):
     __resource_type__ = "Observation"
 
     basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="basedOn",
         title="Fulfills plan, proposal or order",
         description=(
@@ -51,7 +51,7 @@ class Observation(domainresource.DomainResource):
     )
 
     bodySite: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="bodySite",
         title="Observed body part",
         description=(
@@ -64,7 +64,7 @@ class Observation(domainresource.DomainResource):
     )
 
     bodyStructure: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="bodyStructure",
         title="Observed body structure",
         description=(
@@ -79,7 +79,7 @@ class Observation(domainresource.DomainResource):
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="Classification of  type of observation",
         description="A code that classifies the general type of observation being made.",
@@ -89,7 +89,7 @@ class Observation(domainresource.DomainResource):
     )
 
     code: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="Type of observation (code / type)",
         description=(
@@ -103,7 +103,7 @@ class Observation(domainresource.DomainResource):
     )
 
     component: typing.List[fhirtypes.ObservationComponentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="component",
         title="Component results",
         description=(
@@ -120,7 +120,7 @@ class Observation(domainresource.DomainResource):
     )
 
     dataAbsentReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dataAbsentReason",
         title="Why the result is missing",
         description=(
@@ -133,7 +133,7 @@ class Observation(domainresource.DomainResource):
     )
 
     derivedFrom: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="derivedFrom",
         title="Related resource from which the observation is made",
         description=(
@@ -158,7 +158,7 @@ class Observation(domainresource.DomainResource):
     )
 
     device: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="device",
         title=(
             "A reference to the device that generates the measurements or the "
@@ -173,7 +173,7 @@ class Observation(domainresource.DomainResource):
     )
 
     effectiveDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectiveDateTime",
         title="Clinically relevant time/time-period for observation",
         description=(
@@ -192,13 +192,13 @@ class Observation(domainresource.DomainResource):
         },
     )
     effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_effectiveDateTime",
         title="Extension field for ``effectiveDateTime``.",
     )
 
     effectiveInstant: fhirtypes.InstantType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectiveInstant",
         title="Clinically relevant time/time-period for observation",
         description=(
@@ -217,13 +217,13 @@ class Observation(domainresource.DomainResource):
         },
     )
     effectiveInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_effectiveInstant",
         title="Extension field for ``effectiveInstant``.",
     )
 
     effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectivePeriod",
         title="Clinically relevant time/time-period for observation",
         description=(
@@ -243,7 +243,7 @@ class Observation(domainresource.DomainResource):
     )
 
     effectiveTiming: fhirtypes.TimingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectiveTiming",
         title="Clinically relevant time/time-period for observation",
         description=(
@@ -263,7 +263,7 @@ class Observation(domainresource.DomainResource):
     )
 
     encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="encounter",
         title="Healthcare event during which this observation is made",
         description=(
@@ -279,7 +279,7 @@ class Observation(domainresource.DomainResource):
     )
 
     focus: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="focus",
         title=(
             "What the observation is about, when it is not about the subject of "
@@ -306,7 +306,7 @@ class Observation(domainresource.DomainResource):
     )
 
     hasMember: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="hasMember",
         title="Related resource that belongs to the Observation group",
         description=(
@@ -327,7 +327,7 @@ class Observation(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business Identifier for observation",
         description="A unique identifier assigned to this observation.",
@@ -338,7 +338,7 @@ class Observation(domainresource.DomainResource):
     )
 
     instantiatesCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR ObservationDefinition",
         description=(
@@ -357,13 +357,13 @@ class Observation(domainresource.DomainResource):
         },
     )
     instantiatesCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
     instantiatesReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="instantiatesReference",
         title="Instantiates FHIR ObservationDefinition",
         description=(
@@ -383,7 +383,7 @@ class Observation(domainresource.DomainResource):
     )
 
     interpretation: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="interpretation",
         title="High, low, normal, etc",
         description=(
@@ -396,7 +396,7 @@ class Observation(domainresource.DomainResource):
     )
 
     issued: fhirtypes.InstantType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="issued",
         title="Date/Time this version was made available",
         description=(
@@ -410,11 +410,11 @@ class Observation(domainresource.DomainResource):
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_issued", title="Extension field for ``issued``."
+        default=None, alias="_issued", title="Extension field for ``issued``."
     )
 
     method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="method",
         title="How it was done",
         description="Indicates the mechanism used to perform the observation.",
@@ -424,7 +424,7 @@ class Observation(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Comments about the observation",
         description="Comments about the observation or the results.",
@@ -434,7 +434,7 @@ class Observation(domainresource.DomainResource):
     )
 
     partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="partOf",
         title="Part of referenced event",
         description=(
@@ -458,7 +458,7 @@ class Observation(domainresource.DomainResource):
     )
 
     performer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performer",
         title="Who is responsible for the observation",
         description='Who was responsible for asserting the observed value as "true".',
@@ -478,7 +478,7 @@ class Observation(domainresource.DomainResource):
     )
 
     referenceRange: typing.List[fhirtypes.ObservationReferenceRangeType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="referenceRange",
         title="Provides guide for interpretation",
         description=(
@@ -493,7 +493,7 @@ class Observation(domainresource.DomainResource):
     )
 
     specimen: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="specimen",
         title="Specimen used for this observation",
         description="The specimen that was used when this observation was made.",
@@ -505,7 +505,7 @@ class Observation(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="registered | preliminary | final | amended +",
         description="The status of the result value.",
@@ -519,11 +519,11 @@ class Observation(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title="Who and/or what the observation is about",
         description=(
@@ -555,7 +555,7 @@ class Observation(domainresource.DomainResource):
     )
 
     triggeredBy: typing.List[fhirtypes.ObservationTriggeredByType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="triggeredBy",
         title="Triggering observation(s)",
         description=(
@@ -568,7 +568,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueAttachment",
         title="Actual result",
         description=(
@@ -585,7 +585,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueBoolean: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueBoolean",
         title="Actual result",
         description=(
@@ -601,11 +601,13 @@ class Observation(domainresource.DomainResource):
         },
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+        default=None,
+        alias="_valueBoolean",
+        title="Extension field for ``valueBoolean``.",
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueCodeableConcept",
         title="Actual result",
         description=(
@@ -622,7 +624,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueDateTime",
         title="Actual result",
         description=(
@@ -638,11 +640,13 @@ class Observation(domainresource.DomainResource):
         },
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
+        default=None,
+        alias="_valueDateTime",
+        title="Extension field for ``valueDateTime``.",
     )
 
     valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueInteger",
         title="Actual result",
         description=(
@@ -658,11 +662,13 @@ class Observation(domainresource.DomainResource):
         },
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
+        default=None,
+        alias="_valueInteger",
+        title="Extension field for ``valueInteger``.",
     )
 
     valuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valuePeriod",
         title="Actual result",
         description=(
@@ -679,7 +685,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueQuantity",
         title="Actual result",
         description=(
@@ -696,7 +702,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueRange",
         title="Actual result",
         description=(
@@ -713,7 +719,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueRatio: fhirtypes.RatioType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueRatio",
         title="Actual result",
         description=(
@@ -730,7 +736,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueReference",
         title="Actual result",
         description=(
@@ -749,7 +755,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueSampledData: fhirtypes.SampledDataType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueSampledData",
         title="Actual result",
         description=(
@@ -766,7 +772,7 @@ class Observation(domainresource.DomainResource):
     )
 
     valueString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueString",
         title="Actual result",
         description=(
@@ -782,11 +788,11 @@ class Observation(domainresource.DomainResource):
         },
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueString", title="Extension field for ``valueString``."
+        default=None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.TimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueTime",
         title="Actual result",
         description=(
@@ -802,7 +808,7 @@ class Observation(domainresource.DomainResource):
         },
     )
     valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueTime", title="Extension field for ``valueTime``."
+        default=None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     @classmethod
@@ -976,7 +982,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     __resource_type__ = "ObservationComponent"
 
     code: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="Type of component observation (code / type)",
         description=(
@@ -990,7 +996,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     dataAbsentReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dataAbsentReason",
         title="Why the component result is missing",
         description=(
@@ -1003,7 +1009,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     interpretation: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="interpretation",
         title="High, low, normal, etc",
         description=(
@@ -1016,7 +1022,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     referenceRange: typing.List[fhirtypes.ObservationReferenceRangeType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="referenceRange",
         title="Provides guide for interpretation of component result",
         description=(
@@ -1029,7 +1035,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueAttachment",
         title="Actual component result",
         description=(
@@ -1046,7 +1052,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueBoolean: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueBoolean",
         title="Actual component result",
         description=(
@@ -1062,11 +1068,13 @@ class ObservationComponent(backboneelement.BackboneElement):
         },
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+        default=None,
+        alias="_valueBoolean",
+        title="Extension field for ``valueBoolean``.",
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueCodeableConcept",
         title="Actual component result",
         description=(
@@ -1083,7 +1091,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueDateTime",
         title="Actual component result",
         description=(
@@ -1099,11 +1107,13 @@ class ObservationComponent(backboneelement.BackboneElement):
         },
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
+        default=None,
+        alias="_valueDateTime",
+        title="Extension field for ``valueDateTime``.",
     )
 
     valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueInteger",
         title="Actual component result",
         description=(
@@ -1119,11 +1129,13 @@ class ObservationComponent(backboneelement.BackboneElement):
         },
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
+        default=None,
+        alias="_valueInteger",
+        title="Extension field for ``valueInteger``.",
     )
 
     valuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valuePeriod",
         title="Actual component result",
         description=(
@@ -1140,7 +1152,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueQuantity",
         title="Actual component result",
         description=(
@@ -1157,7 +1169,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueRange",
         title="Actual component result",
         description=(
@@ -1174,7 +1186,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueRatio: fhirtypes.RatioType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueRatio",
         title="Actual component result",
         description=(
@@ -1191,7 +1203,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueReference",
         title="Actual component result",
         description=(
@@ -1210,7 +1222,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueSampledData: fhirtypes.SampledDataType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueSampledData",
         title="Actual component result",
         description=(
@@ -1227,7 +1239,7 @@ class ObservationComponent(backboneelement.BackboneElement):
     )
 
     valueString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueString",
         title="Actual component result",
         description=(
@@ -1243,11 +1255,11 @@ class ObservationComponent(backboneelement.BackboneElement):
         },
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueString", title="Extension field for ``valueString``."
+        default=None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.TimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueTime",
         title="Actual component result",
         description=(
@@ -1263,7 +1275,7 @@ class ObservationComponent(backboneelement.BackboneElement):
         },
     )
     valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueTime", title="Extension field for ``valueTime``."
+        default=None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     @classmethod
@@ -1366,7 +1378,7 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
     __resource_type__ = "ObservationReferenceRange"
 
     age: fhirtypes.RangeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="age",
         title="Applicable age range, if relevant",
         description=(
@@ -1379,7 +1391,7 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
     )
 
     appliesTo: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="appliesTo",
         title="Reference range population",
         description=(
@@ -1396,7 +1408,7 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
     )
 
     high: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="high",
         title="High Range, if relevant",
         description=(
@@ -1411,7 +1423,7 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
     )
 
     low: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="low",
         title="Low Range, if relevant",
         description=(
@@ -1426,7 +1438,7 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
     )
 
     normalValue: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="normalValue",
         title="Normal value, if relevant",
         description="The value of the normal value of the reference range.",
@@ -1436,7 +1448,7 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
     )
 
     text: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Text based reference range in an observation",
         description=(
@@ -1450,11 +1462,11 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Reference range qualifier",
         description=(
@@ -1506,7 +1518,7 @@ class ObservationTriggeredBy(backboneelement.BackboneElement):
     __resource_type__ = "ObservationTriggeredBy"
 
     observation: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="observation",
         title="Triggering observation",
         description="Reference to the triggering observation.",
@@ -1519,7 +1531,7 @@ class ObservationTriggeredBy(backboneelement.BackboneElement):
     )
 
     reason: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reason",
         title="Reason that the observation was triggered",
         description=(
@@ -1531,11 +1543,11 @@ class ObservationTriggeredBy(backboneelement.BackboneElement):
         },
     )
     reason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_reason", title="Extension field for ``reason``."
+        default=None, alias="_reason", title="Extension field for ``reason``."
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="reflex | repeat | re-run",
         description="The type of trigger. Reflex | Repeat | Re-run.",
@@ -1549,7 +1561,7 @@ class ObservationTriggeredBy(backboneelement.BackboneElement):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod

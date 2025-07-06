@@ -27,7 +27,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     __resource_type__ = "ProdCharacteristic"
 
     color: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="color",
         title=(
             "Where applicable, the color can be specified An appropriate controlled"
@@ -41,11 +41,11 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
     color__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_color", title="Extension field for ``color``."
+        default=None, alias="_color", title="Extension field for ``color``."
     )
 
     depth: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="depth",
         title=(
             "Where applicable, the depth can be specified using a numerical value "
@@ -61,7 +61,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     )
 
     externalDiameter: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="externalDiameter",
         title=(
             "Where applicable, the external diameter can be specified using a "
@@ -77,7 +77,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     )
 
     height: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="height",
         title=(
             "Where applicable, the height can be specified using a numerical value "
@@ -93,7 +93,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     )
 
     image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="image",
         title=(
             "Where applicable, the image can be provided The format of the image "
@@ -107,7 +107,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     )
 
     imprint: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="imprint",
         title="Where applicable, the imprint can be specified as text",
         description=None,
@@ -117,11 +117,11 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
     imprint__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_imprint", title="Extension field for ``imprint``."
+        default=None, alias="_imprint", title="Extension field for ``imprint``."
     )
 
     nominalVolume: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="nominalVolume",
         title=(
             "Where applicable, the nominal volume can be specified using a "
@@ -137,7 +137,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     )
 
     scoring: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="scoring",
         title=(
             "Where applicable, the scoring can be specified An appropriate "
@@ -152,7 +152,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     )
 
     shape: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="shape",
         title=(
             "Where applicable, the shape can be specified An appropriate controlled"
@@ -166,11 +166,11 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
     shape__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_shape", title="Extension field for ``shape``."
+        default=None, alias="_shape", title="Extension field for ``shape``."
     )
 
     weight: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="weight",
         title=(
             "Where applicable, the weight can be specified using a numerical value "
@@ -186,7 +186,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     )
 
     width: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="width",
         title=(
             "Where applicable, the width can be specified using a numerical value "

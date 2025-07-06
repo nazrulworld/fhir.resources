@@ -27,7 +27,7 @@ class MetadataResource(domainresource.DomainResource):
     __resource_type__ = "MetadataResource"
 
     approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="approvalDate",
         title="When the {{title}} was approved by publisher",
         description=(
@@ -40,11 +40,13 @@ class MetadataResource(domainresource.DomainResource):
         },
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
+        default=None,
+        alias="_approvalDate",
+        title="Extension field for ``approvalDate``.",
     )
 
     author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="author",
         title="Who authored the {{title}}",
         description=(
@@ -57,7 +59,7 @@ class MetadataResource(domainresource.DomainResource):
     )
 
     editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="editor",
         title="Who edited the {{title}}",
         description=(
@@ -70,7 +72,7 @@ class MetadataResource(domainresource.DomainResource):
     )
 
     effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectivePeriod",
         title="When the {{title}} is expected to be used",
         description=(
@@ -84,7 +86,7 @@ class MetadataResource(domainresource.DomainResource):
     )
 
     endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="endorser",
         title="Who endorsed the {{title}}",
         description=(
@@ -98,7 +100,7 @@ class MetadataResource(domainresource.DomainResource):
     )
 
     lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lastReviewDate",
         title="When the {{title}} was last reviewed by the publisher",
         description=(
@@ -111,11 +113,13 @@ class MetadataResource(domainresource.DomainResource):
         },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
+        default=None,
+        alias="_lastReviewDate",
+        title="Extension field for ``lastReviewDate``.",
     )
 
     relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc",
         description=(
@@ -129,7 +133,7 @@ class MetadataResource(domainresource.DomainResource):
     )
 
     reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reviewer",
         title="Who reviewed the {{title}}",
         description=(
@@ -142,7 +146,7 @@ class MetadataResource(domainresource.DomainResource):
     )
 
     topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
         description=(

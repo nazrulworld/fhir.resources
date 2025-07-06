@@ -27,7 +27,7 @@ class Requirements(domainresource.DomainResource):
     __resource_type__ = "Requirements"
 
     actor: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="actor",
         title="Actor for these requirements",
         description="An actor these requirements are in regard to.",
@@ -38,11 +38,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     actor__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_actor", title="Extension field for ``actor``."
+        default=None, alias="_actor", title="Extension field for ``actor``."
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for the publisher",
         description=(
@@ -56,7 +56,7 @@ class Requirements(domainresource.DomainResource):
     )
 
     copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
         description=(
@@ -69,11 +69,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyright", title="Extension field for ``copyright``."
+        default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
         description=(
@@ -87,11 +87,13 @@ class Requirements(domainresource.DomainResource):
         },
     )
     copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
+        default=None,
+        alias="_copyrightLabel",
+        title="Extension field for ``copyrightLabel``.",
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date last changed",
         description=(
@@ -106,11 +108,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     derivedFrom: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="derivedFrom",
         title="Other set of Requirements this builds on",
         description=(
@@ -125,11 +127,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     derivedFrom__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
+        default=None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Natural language description of the requirements",
         description="A free text natural language description of the requirements.",
@@ -138,11 +140,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     experimental: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
         description=(
@@ -156,11 +158,13 @@ class Requirements(domainresource.DomainResource):
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_experimental", title="Extension field for ``experimental``."
+        default=None,
+        alias="_experimental",
+        title="Extension field for ``experimental``.",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Additional identifier for the Requirements (business identifier)",
         description=(
@@ -175,7 +179,7 @@ class Requirements(domainresource.DomainResource):
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for Requirements (if applicable)",
         description=(
@@ -189,7 +193,7 @@ class Requirements(domainresource.DomainResource):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name for this Requirements (computer friendly)",
         description=(
@@ -203,11 +207,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
         description=(
@@ -220,11 +224,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publisher", title="Extension field for ``publisher``."
+        default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="Why this Requirements is defined",
         description=(
@@ -236,11 +240,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_purpose", title="Extension field for ``purpose``."
+        default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     reference: typing.List[fhirtypes.UrlType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reference",
         title=(
             "External artifact (rule/document etc. that) created this set of "
@@ -256,11 +260,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     reference__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_reference", title="Extension field for ``reference``."
+        default=None, alias="_reference", title="Extension field for ``reference``."
     )
 
     statement: typing.List[fhirtypes.RequirementsStatementType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="statement",
         title="Actual statement as markdown",
         description="The actual statement of requirement, in markdown format.",
@@ -270,7 +274,7 @@ class Requirements(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -287,11 +291,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="title",
         title="Name for this Requirements (human friendly)",
         description="A short, descriptive, user-friendly title for the Requirements.",
@@ -301,11 +305,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_title", title="Extension field for ``title``."
+        default=None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title=(
             "Canonical identifier for this Requirements, represented as a URI "
@@ -326,11 +330,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useContext",
         title="The context that the content is intended to support",
         description=(
@@ -347,7 +351,7 @@ class Requirements(domainresource.DomainResource):
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Business version of the Requirements",
         description=(
@@ -365,11 +369,11 @@ class Requirements(domainresource.DomainResource):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
         description=(
@@ -386,7 +390,7 @@ class Requirements(domainresource.DomainResource):
     )
 
     versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
         description=(
@@ -402,7 +406,7 @@ class Requirements(domainresource.DomainResource):
         },
     )
     versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
@@ -515,7 +519,7 @@ class RequirementsStatement(backboneelement.BackboneElement):
     __resource_type__ = "RequirementsStatement"
 
     conditionality: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="conditionality",
         title="Set to true if requirements statement is conditional",
         description=(
@@ -529,11 +533,13 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     conditionality__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_conditionality", title="Extension field for ``conditionality``."
+        default=None,
+        alias="_conditionality",
+        title="Extension field for ``conditionality``.",
     )
 
     conformance: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="conformance",
         title="SHALL | SHOULD | MAY | SHOULD-NOT",
         description="A short human usable label for this statement.",
@@ -545,11 +551,11 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     conformance__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_conformance", title="Extension field for ``conformance``."
+        default=None, alias="_conformance", title="Extension field for ``conformance``."
     )
 
     derivedFrom: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="derivedFrom",
         title="Another statement this clarifies/restricts ([url#]key)",
         description=(
@@ -561,11 +567,11 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     derivedFrom__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
+        default=None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
     )
 
     key: fhirtypes.IdType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="key",
         title="Key that identifies this statement",
         description="Key that identifies this statement (unique within this resource).",
@@ -575,11 +581,11 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     key__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_key", title="Extension field for ``key``."
+        default=None, alias="_key", title="Extension field for ``key``."
     )
 
     label: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="label",
         title="Short Human label for this statement",
         description="A short human usable label for this statement.",
@@ -588,11 +594,11 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_label", title="Extension field for ``label``."
+        default=None, alias="_label", title="Extension field for ``label``."
     )
 
     parent: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="parent",
         title="A larger requirement that this requirement helps to refine and enable",
         description=None,
@@ -601,11 +607,11 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     parent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_parent", title="Extension field for ``parent``."
+        default=None, alias="_parent", title="Extension field for ``parent``."
     )
 
     reference: typing.List[fhirtypes.UrlType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reference",
         title="External artifact (rule/document etc. that) created this requirement",
         description=(
@@ -618,11 +624,11 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     reference__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_reference", title="Extension field for ``reference``."
+        default=None, alias="_reference", title="Extension field for ``reference``."
     )
 
     requirement: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="requirement",
         title="The actual requirement",
         description="The actual requirement for human consumption.",
@@ -632,11 +638,11 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     requirement__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_requirement", title="Extension field for ``requirement``."
+        default=None, alias="_requirement", title="Extension field for ``requirement``."
     )
 
     satisfiedBy: typing.List[fhirtypes.UrlType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="satisfiedBy",
         title="Design artifact that satisfies this requirement",
         description=(
@@ -650,11 +656,11 @@ class RequirementsStatement(backboneelement.BackboneElement):
         },
     )
     satisfiedBy__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_satisfiedBy", title="Extension field for ``satisfiedBy``."
+        default=None, alias="_satisfiedBy", title="Extension field for ``satisfiedBy``."
     )
 
     source: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="source",
         title="Who asked for this statement",
         description=(

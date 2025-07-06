@@ -27,7 +27,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
     __resource_type__ = "Element"
 
     extension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="extension",
         title="Additional Content defined by implementations",
         description=(
@@ -45,7 +45,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
     )
 
     id: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="id",
         title="xml:id (or equivalent in JSON)",
         description=(

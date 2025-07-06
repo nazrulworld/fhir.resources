@@ -29,7 +29,7 @@ class EligibilityRequest(domainresource.DomainResource):
     __resource_type__ = "EligibilityRequest"
 
     benefitCategory: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="benefitCategory",
         title="Type of services covered",
         description="Dental, Vision, Medical, Pharmacy, Rehab etc.",
@@ -39,7 +39,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     benefitSubCategory: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="benefitSubCategory",
         title="Detailed services covered within the type",
         description="Dental: basic, major, ortho; Vision exam, glasses, contacts; etc.",
@@ -49,7 +49,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     businessArrangement: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="businessArrangement",
         title="Business agreement",
         description=(
@@ -61,13 +61,13 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
     businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_businessArrangement",
         title="Extension field for ``businessArrangement``.",
     )
 
     coverage: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="coverage",
         title="Insurance or medical plan",
         description="Financial instrument by which payment information for health care.",
@@ -79,7 +79,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     created: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="created",
         title="Creation date",
         description="The date when this resource was created.",
@@ -88,11 +88,11 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_created", title="Extension field for ``created``."
+        default=None, alias="_created", title="Extension field for ``created``."
     )
 
     enterer: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="enterer",
         title="Author",
         description=(
@@ -107,7 +107,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     facility: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="facility",
         title="Servicing Facility",
         description="Facility where the services were provided.",
@@ -119,7 +119,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business Identifier",
         description="The Response business identifier.",
@@ -129,7 +129,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     insurer: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="insurer",
         title="Target",
         description="The Insurer who is target  of the request.",
@@ -141,7 +141,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="organization",
         title="Responsible organization",
         description=(
@@ -156,7 +156,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="patient",
         title="The subject of the Products and Services",
         description="Patient Resource.",
@@ -168,7 +168,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     priority: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="priority",
         title="Desired processing priority",
         description="Immediate (STAT), best effort (NORMAL), deferred (DEFER).",
@@ -178,7 +178,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     provider: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="provider",
         title="Responsible practitioner",
         description=(
@@ -193,7 +193,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     servicedDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="servicedDate",
         title="Estimated date or dates of Service",
         description=(
@@ -208,11 +208,13 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
     servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_servicedDate", title="Extension field for ``servicedDate``."
+        default=None,
+        alias="_servicedDate",
+        title="Extension field for ``servicedDate``.",
     )
 
     servicedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="servicedPeriod",
         title="Estimated date or dates of Service",
         description=(
@@ -228,7 +230,7 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
@@ -241,7 +243,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod

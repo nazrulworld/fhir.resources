@@ -26,7 +26,7 @@ class Permission(domainresource.DomainResource):
     __resource_type__ = "Permission"
 
     asserter: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="asserter",
         title="The person or entity that asserts the permission",
         description=None,
@@ -47,7 +47,7 @@ class Permission(domainresource.DomainResource):
     )
 
     combining: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="combining",
         title=(
             "deny-overrides | permit-overrides | ordered-deny-overrides | ordered-"
@@ -74,11 +74,11 @@ class Permission(domainresource.DomainResource):
         },
     )
     combining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_combining", title="Extension field for ``combining``."
+        default=None, alias="_combining", title="Extension field for ``combining``."
     )
 
     date: typing.List[fhirtypes.DateTimeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="The date that permission was asserted",
         description=None,
@@ -88,11 +88,11 @@ class Permission(domainresource.DomainResource):
         },
     )
     date__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     justification: fhirtypes.PermissionJustificationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="justification",
         title="The asserted justification for using the data",
         description=None,
@@ -103,7 +103,7 @@ class Permission(domainresource.DomainResource):
     )
 
     rule: typing.List[fhirtypes.PermissionRuleType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="rule",
         title="Constraints to the Permission",
         description="A set of rules.",
@@ -114,7 +114,7 @@ class Permission(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | entered-in-error | draft | rejected",
         description="Status.",
@@ -128,11 +128,11 @@ class Permission(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     validity: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="validity",
         title="The period in which the permission is active",
         description=None,
@@ -208,7 +208,7 @@ class PermissionJustification(backboneelement.BackboneElement):
     __resource_type__ = "PermissionJustification"
 
     basis: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="basis",
         title="The regulatory grounds upon which this Permission builds",
         description=(
@@ -222,7 +222,7 @@ class PermissionJustification(backboneelement.BackboneElement):
     )
 
     evidence: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="evidence",
         title="Justifing rational",
         description=None,
@@ -262,7 +262,7 @@ class PermissionRule(backboneelement.BackboneElement):
     __resource_type__ = "PermissionRule"
 
     activity: typing.List[fhirtypes.PermissionRuleActivityType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="activity",
         title=(
             "A description or definition of which activities are allowed to be done"
@@ -276,7 +276,7 @@ class PermissionRule(backboneelement.BackboneElement):
     )
 
     data: typing.List[fhirtypes.PermissionRuleDataType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="data",
         title=(
             "The selection criteria to identify data that is within scope of this "
@@ -293,7 +293,7 @@ class PermissionRule(backboneelement.BackboneElement):
     )
 
     limit: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="limit",
         title="What limits apply to the use of the data",
         description=None,
@@ -304,7 +304,7 @@ class PermissionRule(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="deny | permit",
         description=None,
@@ -317,7 +317,7 @@ class PermissionRule(backboneelement.BackboneElement):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
@@ -356,7 +356,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
     __resource_type__ = "PermissionRuleActivity"
 
     action: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="action",
         title="Actions controlled by this rule",
         description="Actions controlled by this Rule.",
@@ -367,7 +367,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
     )
 
     actor: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="actor",
         title="Authorized actor(s)",
         description="The actor(s) authorized for the defined activity.",
@@ -389,7 +389,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
     )
 
     purpose: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="The purpose for which the permission is given",
         description=None,
@@ -429,7 +429,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
     __resource_type__ = "PermissionRuleData"
 
     expression: fhirtypes.ExpressionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expression",
         title="Expression identifying the data",
         description="Used when other data selection elements are insufficient.",
@@ -440,7 +440,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
     )
 
     period: typing.List[fhirtypes.PeriodType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Timeframe encompasing data create/update",
         description=(
@@ -454,7 +454,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
     )
 
     resource: typing.List[fhirtypes.PermissionRuleDataResourceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resource",
         title="Explicit FHIR Resource references",
         description=None,
@@ -465,7 +465,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
     )
 
     security: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="security",
         title="Security tag code on .meta.security",
         description=(
@@ -513,7 +513,7 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
     __resource_type__ = "PermissionRuleDataResource"
 
     meaning: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="meaning",
         title="instance | related | dependents | authoredby",
         description=(
@@ -530,11 +530,11 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
         },
     )
     meaning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_meaning", title="Extension field for ``meaning``."
+        default=None, alias="_meaning", title="Extension field for ``meaning``."
     )
 
     reference: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="reference",
         title="The actual data reference",
         description=(

@@ -24,7 +24,7 @@ class Range(element.Element):
     __resource_type__ = "Range"
 
     high: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="high",
         title="High limit",
         description="The high limit. The boundary is inclusive.",
@@ -35,7 +35,7 @@ class Range(element.Element):
     )
 
     low: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="low",
         title="Low limit",
         description="The low limit. The boundary is inclusive.",

@@ -29,7 +29,7 @@ class Goal(domainresource.DomainResource):
     __resource_type__ = "Goal"
 
     addresses: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="addresses",
         title="Issues addressed by this goal",
         description=(
@@ -51,7 +51,7 @@ class Goal(domainresource.DomainResource):
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="E.g. Treatment, dietary, behavioral, etc.",
         description="Indicates a category the goal falls within.",
@@ -62,7 +62,7 @@ class Goal(domainresource.DomainResource):
     )
 
     description: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="description",
         title="Code or text describing goal",
         description=(
@@ -77,7 +77,7 @@ class Goal(domainresource.DomainResource):
     )
 
     expressedBy: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expressedBy",
         title="Who's responsible for creating Goal?",
         description="Indicates whose goal this is - patient goal, practitioner goal, etc.",
@@ -90,7 +90,7 @@ class Goal(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="External Ids for this goal",
         description=(
@@ -105,7 +105,7 @@ class Goal(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Comments about the goal",
         description="Any comments related to the goal.",
@@ -115,7 +115,7 @@ class Goal(domainresource.DomainResource):
     )
 
     outcomeCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="outcomeCode",
         title="What result was achieved regarding the goal?",
         description=(
@@ -128,7 +128,7 @@ class Goal(domainresource.DomainResource):
     )
 
     outcomeReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="outcomeReference",
         title="Observation that resulted from goal",
         description="Details of what's changed (or not changed).",
@@ -140,7 +140,7 @@ class Goal(domainresource.DomainResource):
     )
 
     priority: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="priority",
         title="high-priority | medium-priority | low-priority",
         description=(
@@ -154,7 +154,7 @@ class Goal(domainresource.DomainResource):
     )
 
     startCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="startCodeableConcept",
         title="When goal pursuit begins",
         description="The date or event after which the goal should begin being pursued.",
@@ -168,7 +168,7 @@ class Goal(domainresource.DomainResource):
     )
 
     startDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="startDate",
         title="When goal pursuit begins",
         description="The date or event after which the goal should begin being pursued.",
@@ -181,11 +181,11 @@ class Goal(domainresource.DomainResource):
         },
     )
     startDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_startDate", title="Extension field for ``startDate``."
+        default=None, alias="_startDate", title="Extension field for ``startDate``."
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title=(
             "proposed | accepted | planned | in-progress | on-target | ahead-of-"
@@ -220,11 +220,11 @@ class Goal(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     statusDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="statusDate",
         title="When goal status took effect",
         description=(
@@ -237,11 +237,11 @@ class Goal(domainresource.DomainResource):
         },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_statusDate", title="Extension field for ``statusDate``."
+        default=None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
     statusReason: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="statusReason",
         title="Reason for current status",
         description="Captures the reason for the current status.",
@@ -250,11 +250,13 @@ class Goal(domainresource.DomainResource):
         },
     )
     statusReason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_statusReason", title="Extension field for ``statusReason``."
+        default=None,
+        alias="_statusReason",
+        title="Extension field for ``statusReason``.",
     )
 
     subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title="Who this goal is intended for",
         description=(
@@ -270,7 +272,7 @@ class Goal(domainresource.DomainResource):
     )
 
     target: fhirtypes.GoalTargetType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="target",
         title="Target outcome for the goal",
         description="Indicates what should be done by when.",
@@ -372,7 +374,7 @@ class GoalTarget(backboneelement.BackboneElement):
     __resource_type__ = "GoalTarget"
 
     detailCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="detailCodeableConcept",
         title="The target value to be achieved",
         description=(
@@ -394,7 +396,7 @@ class GoalTarget(backboneelement.BackboneElement):
     )
 
     detailQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="detailQuantity",
         title="The target value to be achieved",
         description=(
@@ -416,7 +418,7 @@ class GoalTarget(backboneelement.BackboneElement):
     )
 
     detailRange: fhirtypes.RangeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="detailRange",
         title="The target value to be achieved",
         description=(
@@ -438,7 +440,7 @@ class GoalTarget(backboneelement.BackboneElement):
     )
 
     dueDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dueDate",
         title="Reach goal on or before",
         description=(
@@ -454,11 +456,11 @@ class GoalTarget(backboneelement.BackboneElement):
         },
     )
     dueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_dueDate", title="Extension field for ``dueDate``."
+        default=None, alias="_dueDate", title="Extension field for ``dueDate``."
     )
 
     dueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dueDuration",
         title="Reach goal on or before",
         description=(
@@ -475,7 +477,7 @@ class GoalTarget(backboneelement.BackboneElement):
     )
 
     measure: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="measure",
         title="The parameter whose value is being tracked",
         description=(

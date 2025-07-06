@@ -27,7 +27,7 @@ class DataElement(domainresource.DomainResource):
     __resource_type__ = "DataElement"
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for the publisher",
         description=(
@@ -41,7 +41,7 @@ class DataElement(domainresource.DomainResource):
     )
 
     copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
         description=(
@@ -54,11 +54,11 @@ class DataElement(domainresource.DomainResource):
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyright", title="Extension field for ``copyright``."
+        default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date this was last changed",
         description=(
@@ -73,11 +73,11 @@ class DataElement(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     element: typing.List[fhirtypes.ElementDefinitionType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="element",
         title="Definition of element",
         description=(
@@ -91,7 +91,7 @@ class DataElement(domainresource.DomainResource):
     )
 
     experimental: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
         description=(
@@ -105,11 +105,13 @@ class DataElement(domainresource.DomainResource):
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_experimental", title="Extension field for ``experimental``."
+        default=None,
+        alias="_experimental",
+        title="Extension field for ``experimental``.",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Additional identifier for the data element",
         description=(
@@ -124,7 +126,7 @@ class DataElement(domainresource.DomainResource):
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for data element (if applicable)",
         description=(
@@ -138,7 +140,7 @@ class DataElement(domainresource.DomainResource):
     )
 
     mapping: typing.List[fhirtypes.DataElementMappingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="mapping",
         title="External specification mapped to",
         description=(
@@ -151,7 +153,7 @@ class DataElement(domainresource.DomainResource):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name for this data element (computer friendly)",
         description=(
@@ -165,11 +167,11 @@ class DataElement(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
         description=(
@@ -182,11 +184,11 @@ class DataElement(domainresource.DomainResource):
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publisher", title="Extension field for ``publisher``."
+        default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -203,11 +205,11 @@ class DataElement(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     stringency: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="stringency",
         title=(
             "comparable | fully-specified | equivalent | convertable | scaleable | "
@@ -230,11 +232,11 @@ class DataElement(domainresource.DomainResource):
         },
     )
     stringency__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_stringency", title="Extension field for ``stringency``."
+        default=None, alias="_stringency", title="Extension field for ``stringency``."
     )
 
     title: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="title",
         title="Name for this data element (human friendly)",
         description="A short, descriptive, user-friendly title for the data element.",
@@ -244,11 +246,11 @@ class DataElement(domainresource.DomainResource):
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_title", title="Extension field for ``title``."
+        default=None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title="Logical URI to reference this data element (globally unique)",
         description=(
@@ -265,11 +267,11 @@ class DataElement(domainresource.DomainResource):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useContext",
         title="Context the content is intended to support",
         description=(
@@ -284,7 +286,7 @@ class DataElement(domainresource.DomainResource):
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Business version of the data element",
         description=(
@@ -302,7 +304,7 @@ class DataElement(domainresource.DomainResource):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
@@ -388,7 +390,7 @@ class DataElementMapping(backboneelement.BackboneElement):
     __resource_type__ = "DataElementMapping"
 
     comment: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="comment",
         title="Versions, issues, scope limitations, etc.",
         description=(
@@ -400,11 +402,11 @@ class DataElementMapping(backboneelement.BackboneElement):
         },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_comment", title="Extension field for ``comment``."
+        default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
     identity: fhirtypes.IdType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identity",
         title="Internal id when this mapping is used",
         description=(
@@ -417,11 +419,11 @@ class DataElementMapping(backboneelement.BackboneElement):
         },
     )
     identity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_identity", title="Extension field for ``identity``."
+        default=None, alias="_identity", title="Extension field for ``identity``."
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Names what this mapping refers to",
         description="A name for the specification that is being mapped to.",
@@ -430,11 +432,11 @@ class DataElementMapping(backboneelement.BackboneElement):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     uri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="uri",
         title="Identifies what this mapping refers to",
         description=(
@@ -446,7 +448,7 @@ class DataElementMapping(backboneelement.BackboneElement):
         },
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_uri", title="Extension field for ``uri``."
+        default=None, alias="_uri", title="Extension field for ``uri``."
     )
 
     @classmethod

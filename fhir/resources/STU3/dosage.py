@@ -27,7 +27,7 @@ class Dosage(element.Element):
     __resource_type__ = "Dosage"
 
     additionalInstruction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="additionalInstruction",
         title='Supplemental instruction - e.g. "with meals"',
         description=None,
@@ -38,7 +38,7 @@ class Dosage(element.Element):
     )
 
     asNeededBoolean: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="asNeededBoolean",
         title='Take "as needed" (for x)',
         description=(
@@ -55,11 +55,13 @@ class Dosage(element.Element):
         },
     )
     asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
+        default=None,
+        alias="_asNeededBoolean",
+        title="Extension field for ``asNeededBoolean``.",
     )
 
     asNeededCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="asNeededCodeableConcept",
         title='Take "as needed" (for x)',
         description=(
@@ -77,7 +79,7 @@ class Dosage(element.Element):
     )
 
     doseQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseQuantity",
         title="Amount of medication per dose",
         description=None,
@@ -91,7 +93,7 @@ class Dosage(element.Element):
     )
 
     doseRange: fhirtypes.RangeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseRange",
         title="Amount of medication per dose",
         description=None,
@@ -105,7 +107,7 @@ class Dosage(element.Element):
     )
 
     maxDosePerAdministration: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="maxDosePerAdministration",
         title="Upper limit on medication per administration",
         description=None,
@@ -116,7 +118,7 @@ class Dosage(element.Element):
     )
 
     maxDosePerLifetime: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="maxDosePerLifetime",
         title="Upper limit on medication per lifetime of the patient",
         description=None,
@@ -127,7 +129,7 @@ class Dosage(element.Element):
     )
 
     maxDosePerPeriod: fhirtypes.RatioType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="maxDosePerPeriod",
         title="Upper limit on medication per unit of time",
         description=None,
@@ -138,7 +140,7 @@ class Dosage(element.Element):
     )
 
     method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="method",
         title="Technique for administering medication",
         description=None,
@@ -149,7 +151,7 @@ class Dosage(element.Element):
     )
 
     patientInstruction: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="patientInstruction",
         title="Patient or consumer oriented instructions",
         description="Instructions in terms that are understood by the patient or consumer.",
@@ -159,13 +161,13 @@ class Dosage(element.Element):
         },
     )
     patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_patientInstruction",
         title="Extension field for ``patientInstruction``.",
     )
 
     rateQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="rateQuantity",
         title="Amount of medication per unit of time",
         description=None,
@@ -179,7 +181,7 @@ class Dosage(element.Element):
     )
 
     rateRange: fhirtypes.RangeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="rateRange",
         title="Amount of medication per unit of time",
         description=None,
@@ -193,7 +195,7 @@ class Dosage(element.Element):
     )
 
     rateRatio: fhirtypes.RatioType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="rateRatio",
         title="Amount of medication per unit of time",
         description=None,
@@ -207,7 +209,7 @@ class Dosage(element.Element):
     )
 
     route: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="route",
         title="How drug should enter body",
         description=None,
@@ -218,7 +220,7 @@ class Dosage(element.Element):
     )
 
     sequence: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sequence",
         title="The order of the dosage instructions",
         description=(
@@ -231,11 +233,11 @@ class Dosage(element.Element):
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_sequence", title="Extension field for ``sequence``."
+        default=None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     site: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="site",
         title="Body site to administer to",
         description=None,
@@ -246,7 +248,7 @@ class Dosage(element.Element):
     )
 
     text: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Free text dosage instructions e.g. SIG",
         description=None,
@@ -256,11 +258,11 @@ class Dosage(element.Element):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     timing: fhirtypes.TimingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="timing",
         title="When medication should be administered",
         description=None,

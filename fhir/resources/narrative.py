@@ -28,7 +28,7 @@ class Narrative(datatype.DataType):
     __resource_type__ = "Narrative"
 
     div: fhirtypes.XhtmlType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="div",
         title="Limited xhtml content",
         description="The actual narrative content, a stripped down version of XHTML.",
@@ -38,11 +38,11 @@ class Narrative(datatype.DataType):
         },
     )
     div__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_div", title="Extension field for ``div``."
+        default=None, alias="_div", title="Extension field for ``div``."
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="generated | extensions | additional | empty",
         description=(
@@ -59,7 +59,7 @@ class Narrative(datatype.DataType):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod

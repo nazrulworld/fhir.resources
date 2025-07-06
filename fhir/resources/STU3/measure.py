@@ -26,7 +26,7 @@ class Measure(domainresource.DomainResource):
     __resource_type__ = "Measure"
 
     approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="approvalDate",
         title="When the measure was approved by publisher",
         description=(
@@ -39,11 +39,13 @@ class Measure(domainresource.DomainResource):
         },
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
+        default=None,
+        alias="_approvalDate",
+        title="Extension field for ``approvalDate``.",
     )
 
     clinicalRecommendationStatement: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="clinicalRecommendationStatement",
         title="Summary of clinical guidelines",
         description=(
@@ -56,13 +58,13 @@ class Measure(domainresource.DomainResource):
         },
     )
     clinicalRecommendationStatement__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_clinicalRecommendationStatement",
         title="Extension field for ``clinicalRecommendationStatement``.",
     )
 
     compositeScoring: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="compositeScoring",
         title="opportunity | all-or-nothing | linear | weighted",
         description=(
@@ -76,7 +78,7 @@ class Measure(domainresource.DomainResource):
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for the publisher",
         description=(
@@ -90,7 +92,7 @@ class Measure(domainresource.DomainResource):
     )
 
     contributor: typing.List[fhirtypes.ContributorType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contributor",
         title="A content contributor",
         description=(
@@ -103,7 +105,7 @@ class Measure(domainresource.DomainResource):
     )
 
     copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
         description=(
@@ -116,11 +118,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyright", title="Extension field for ``copyright``."
+        default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date this was last changed",
         description=(
@@ -135,11 +137,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     definition: typing.List[fhirtypes.MarkdownType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="definition",
         title="Defined terms used in the measure documentation",
         description="Provides a description of an individual term used within the measure.",
@@ -149,11 +151,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     definition__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_definition", title="Extension field for ``definition``."
+        default=None, alias="_definition", title="Extension field for ``definition``."
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Natural language description of the measure",
         description=(
@@ -166,11 +168,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     disclaimer: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="disclaimer",
         title="Disclaimer for use of the measure or its referenced content",
         description=(
@@ -184,11 +186,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     disclaimer__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_disclaimer", title="Extension field for ``disclaimer``."
+        default=None, alias="_disclaimer", title="Extension field for ``disclaimer``."
     )
 
     effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectivePeriod",
         title="When the measure is expected to be used",
         description=(
@@ -202,7 +204,7 @@ class Measure(domainresource.DomainResource):
     )
 
     experimental: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
         description=(
@@ -216,11 +218,13 @@ class Measure(domainresource.DomainResource):
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_experimental", title="Extension field for ``experimental``."
+        default=None,
+        alias="_experimental",
+        title="Extension field for ``experimental``.",
     )
 
     group: typing.List[fhirtypes.MeasureGroupType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="group",
         title="Population criteria group",
         description="A group of population criteria for the measure.",
@@ -230,7 +234,7 @@ class Measure(domainresource.DomainResource):
     )
 
     guidance: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="guidance",
         title="Additional guidance for implementers",
         description=(
@@ -243,11 +247,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     guidance__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_guidance", title="Extension field for ``guidance``."
+        default=None, alias="_guidance", title="Extension field for ``guidance``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Additional identifier for the measure",
         description=(
@@ -262,7 +266,7 @@ class Measure(domainresource.DomainResource):
     )
 
     improvementNotation: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="improvementNotation",
         title=(
             "Improvement notation for the measure, e.g. higher score indicates "
@@ -279,13 +283,13 @@ class Measure(domainresource.DomainResource):
         },
     )
     improvementNotation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_improvementNotation",
         title="Extension field for ``improvementNotation``.",
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for measure (if applicable)",
         description=(
@@ -299,7 +303,7 @@ class Measure(domainresource.DomainResource):
     )
 
     lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lastReviewDate",
         title="When the measure was last reviewed",
         description=(
@@ -312,11 +316,13 @@ class Measure(domainresource.DomainResource):
         },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
+        default=None,
+        alias="_lastReviewDate",
+        title="Extension field for ``lastReviewDate``.",
     )
 
     library: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="library",
         title="Logic used by the measure",
         description=(
@@ -331,7 +337,7 @@ class Measure(domainresource.DomainResource):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name for this measure (computer friendly)",
         description=(
@@ -345,11 +351,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
         description="The name of the individual or organization that published the measure.",
@@ -359,11 +365,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publisher", title="Extension field for ``publisher``."
+        default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="Why this measure is defined",
         description=(
@@ -375,11 +381,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_purpose", title="Extension field for ``purpose``."
+        default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     rateAggregation: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="rateAggregation",
         title="How is rate aggregation performed for this measure",
         description=(
@@ -392,11 +398,13 @@ class Measure(domainresource.DomainResource):
         },
     )
     rateAggregation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_rateAggregation", title="Extension field for ``rateAggregation``."
+        default=None,
+        alias="_rateAggregation",
+        title="Extension field for ``rateAggregation``.",
     )
 
     rationale: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="rationale",
         title="Why does this measure exist",
         description=(
@@ -410,11 +418,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     rationale__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_rationale", title="Extension field for ``rationale``."
+        default=None, alias="_rationale", title="Extension field for ``rationale``."
     )
 
     relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc",
         description=(
@@ -427,7 +435,7 @@ class Measure(domainresource.DomainResource):
     )
 
     riskAdjustment: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="riskAdjustment",
         title="How is risk adjustment applied for this measure",
         description=(
@@ -441,11 +449,13 @@ class Measure(domainresource.DomainResource):
         },
     )
     riskAdjustment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_riskAdjustment", title="Extension field for ``riskAdjustment``."
+        default=None,
+        alias="_riskAdjustment",
+        title="Extension field for ``riskAdjustment``.",
     )
 
     scoring: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="scoring",
         title="proportion | ratio | continuous-variable | cohort",
         description=(
@@ -461,7 +471,7 @@ class Measure(domainresource.DomainResource):
     )
 
     set: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="set",
         title="The measure set, e.g. Preventive Care and Screening",
         description=None,
@@ -471,11 +481,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     set__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_set", title="Extension field for ``set``."
+        default=None, alias="_set", title="Extension field for ``set``."
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -492,11 +502,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     supplementalData: typing.List[fhirtypes.MeasureSupplementalDataType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supplementalData",
         title="What other data should be reported with the measure",
         description=(
@@ -510,7 +520,7 @@ class Measure(domainresource.DomainResource):
     )
 
     title: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="title",
         title="Name for this measure (human friendly)",
         description="A short, descriptive, user-friendly title for the measure.",
@@ -520,11 +530,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_title", title="Extension field for ``title``."
+        default=None, alias="_title", title="Extension field for ``title``."
     )
 
     topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
         description=(
@@ -538,7 +548,7 @@ class Measure(domainresource.DomainResource):
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="process | outcome | structure | patient-reported-outcome | composite",
         description=(
@@ -553,7 +563,7 @@ class Measure(domainresource.DomainResource):
     )
 
     url: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title="Logical URI to reference this measure (globally unique)",
         description=(
@@ -570,11 +580,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     usage: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="usage",
         title="Describes the clinical usage of the measure",
         description=(
@@ -586,11 +596,11 @@ class Measure(domainresource.DomainResource):
         },
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_usage", title="Extension field for ``usage``."
+        default=None, alias="_usage", title="Extension field for ``usage``."
     )
 
     useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useContext",
         title="Context the content is intended to support",
         description=(
@@ -605,7 +615,7 @@ class Measure(domainresource.DomainResource):
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Business version of the measure",
         description=(
@@ -627,7 +637,7 @@ class Measure(domainresource.DomainResource):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
@@ -745,7 +755,7 @@ class MeasureGroup(backboneelement.BackboneElement):
     __resource_type__ = "MeasureGroup"
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Summary description",
         description="The human readable description of this population group.",
@@ -754,11 +764,11 @@ class MeasureGroup(backboneelement.BackboneElement):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="identifier",
         title="Unique identifier",
         description=(
@@ -771,7 +781,7 @@ class MeasureGroup(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Short name",
         description="Optional name or short description of this group.",
@@ -780,11 +790,11 @@ class MeasureGroup(backboneelement.BackboneElement):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     population: typing.List[fhirtypes.MeasureGroupPopulationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="population",
         title="Population criteria",
         description="A population criteria for the measure.",
@@ -794,7 +804,7 @@ class MeasureGroup(backboneelement.BackboneElement):
     )
 
     stratifier: typing.List[fhirtypes.MeasureGroupStratifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="stratifier",
         title="Stratifier criteria for the measure",
         description=(
@@ -844,7 +854,7 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
     __resource_type__ = "MeasureGroupPopulation"
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title=(
             "initial-population | numerator | numerator-exclusion | denominator | "
@@ -858,7 +868,7 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
     )
 
     criteria: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="criteria",
         title=(
             "The name of a valid referenced CQL expression (may be namespaced) that"
@@ -871,11 +881,11 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
         },
     )
     criteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_criteria", title="Extension field for ``criteria``."
+        default=None, alias="_criteria", title="Extension field for ``criteria``."
     )
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="The human readable description of this population criteria",
         description=None,
@@ -884,11 +894,11 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Unique identifier",
         description=(
@@ -901,7 +911,7 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Short name",
         description="Optional name or short description of this population.",
@@ -910,7 +920,7 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     @classmethod
@@ -963,7 +973,7 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
     __resource_type__ = "MeasureGroupStratifier"
 
     criteria: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="criteria",
         title="How the measure should be stratified",
         description=(
@@ -975,11 +985,11 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
         },
     )
     criteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_criteria", title="Extension field for ``criteria``."
+        default=None, alias="_criteria", title="Extension field for ``criteria``."
     )
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title=(
             "The identifier for the stratifier used to coordinate the reported data"
@@ -992,7 +1002,7 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
     )
 
     path: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="path",
         title="Path to the stratifier",
         description=(
@@ -1004,7 +1014,7 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
         },
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_path", title="Extension field for ``path``."
+        default=None, alias="_path", title="Extension field for ``path``."
     )
 
     @classmethod
@@ -1044,7 +1054,7 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
     __resource_type__ = "MeasureSupplementalData"
 
     criteria: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="criteria",
         title="Expression describing additional data to be reported",
         description=(
@@ -1057,11 +1067,11 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
         },
     )
     criteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_criteria", title="Extension field for ``criteria``."
+        default=None, alias="_criteria", title="Extension field for ``criteria``."
     )
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Identifier, unique within the measure",
         description="An identifier for the supplemental data.",
@@ -1071,7 +1081,7 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
     )
 
     path: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="path",
         title="Path to the supplemental data element",
         description=(
@@ -1083,11 +1093,11 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
         },
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_path", title="Extension field for ``path``."
+        default=None, alias="_path", title="Extension field for ``path``."
     )
 
     usage: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="usage",
         title="supplemental-data | risk-adjustment-factor",
         description=(

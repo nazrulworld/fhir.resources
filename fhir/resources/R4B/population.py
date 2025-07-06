@@ -27,7 +27,7 @@ class Population(backboneelement.BackboneElement):
     __resource_type__ = "Population"
 
     ageCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="ageCodeableConcept",
         title="The age of the specific population",
         description=None,
@@ -41,7 +41,7 @@ class Population(backboneelement.BackboneElement):
     )
 
     ageRange: fhirtypes.RangeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="ageRange",
         title="The age of the specific population",
         description=None,
@@ -55,7 +55,7 @@ class Population(backboneelement.BackboneElement):
     )
 
     gender: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="gender",
         title="The gender of the specific population",
         description=None,
@@ -66,7 +66,7 @@ class Population(backboneelement.BackboneElement):
     )
 
     physiologicalCondition: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="physiologicalCondition",
         title=(
             "The existing physiological conditions of the specific population to "
@@ -80,7 +80,7 @@ class Population(backboneelement.BackboneElement):
     )
 
     race: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="race",
         title="Race of the specific population",
         description=None,

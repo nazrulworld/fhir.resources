@@ -25,7 +25,7 @@ class Availability(datatype.DataType):
     __resource_type__ = "Availability"
 
     availableTime: typing.List[fhirtypes.AvailabilityAvailableTimeType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="availableTime",
         title="Times the {item} is available",
         description=None,
@@ -36,7 +36,7 @@ class Availability(datatype.DataType):
     )
 
     notAvailableTime: typing.List[fhirtypes.AvailabilityNotAvailableTimeType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="notAvailableTime",
         title="Not available during this time due to provided reason",
         description=None,
@@ -73,7 +73,7 @@ class AvailabilityAvailableTime(element.Element):
     __resource_type__ = "AvailabilityAvailableTime"
 
     allDay: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="allDay",
         title="Always available? i.e. 24 hour service",
         description=None,
@@ -83,11 +83,11 @@ class AvailabilityAvailableTime(element.Element):
         },
     )
     allDay__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_allDay", title="Extension field for ``allDay``."
+        default=None, alias="_allDay", title="Extension field for ``allDay``."
     )
 
     availableEndTime: fhirtypes.TimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="availableEndTime",
         title="Closing time of day (ignored if allDay = true)",
         description=None,
@@ -97,13 +97,13 @@ class AvailabilityAvailableTime(element.Element):
         },
     )
     availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_availableEndTime",
         title="Extension field for ``availableEndTime``.",
     )
 
     availableStartTime: fhirtypes.TimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="availableStartTime",
         title="Opening time of day (ignored if allDay = true)",
         description=None,
@@ -113,13 +113,13 @@ class AvailabilityAvailableTime(element.Element):
         },
     )
     availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_availableStartTime",
         title="Extension field for ``availableStartTime``.",
     )
 
     daysOfWeek: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="daysOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
         description=None,
@@ -132,7 +132,7 @@ class AvailabilityAvailableTime(element.Element):
         },
     )
     daysOfWeek__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``."
+        default=None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``."
     )
 
     @classmethod
@@ -169,7 +169,7 @@ class AvailabilityNotAvailableTime(element.Element):
     __resource_type__ = "AvailabilityNotAvailableTime"
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Reason presented to the user explaining why time not available",
         description=None,
@@ -179,11 +179,11 @@ class AvailabilityNotAvailableTime(element.Element):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     during: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="during",
         title="Service not available during this period",
         description=None,

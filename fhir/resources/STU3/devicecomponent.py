@@ -27,7 +27,7 @@ class DeviceComponent(domainresource.DomainResource):
     __resource_type__ = "DeviceComponent"
 
     identifier: fhirtypes.IdentifierType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="identifier",
         title="Instance id assigned by the software stack",
         description=(
@@ -41,7 +41,7 @@ class DeviceComponent(domainresource.DomainResource):
     )
 
     languageCode: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="languageCode",
         title=(
             "Language code for the human-readable text strings produced by the "
@@ -59,7 +59,7 @@ class DeviceComponent(domainresource.DomainResource):
     )
 
     lastSystemChange: fhirtypes.InstantType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lastSystemChange",
         title="Recent system change timestamp",
         description=(
@@ -72,13 +72,13 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
     lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_lastSystemChange",
         title="Extension field for ``lastSystemChange``.",
     )
 
     measurementPrinciple: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="measurementPrinciple",
         title=(
             "other | chemical | electrical | impedance | nuclear | optical | "
@@ -109,13 +109,13 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
     measurementPrinciple__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_measurementPrinciple",
         title="Extension field for ``measurementPrinciple``.",
     )
 
     operationalStatus: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="operationalStatus",
         title=(
             "Current operational status of the component, for example On, Off or "
@@ -132,7 +132,7 @@ class DeviceComponent(domainresource.DomainResource):
     )
 
     parameterGroup: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="parameterGroup",
         title="Current supported parameter group",
         description=(
@@ -146,7 +146,7 @@ class DeviceComponent(domainresource.DomainResource):
     )
 
     parent: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="parent",
         title="Parent resource link",
         description=(
@@ -162,7 +162,7 @@ class DeviceComponent(domainresource.DomainResource):
     )
 
     productionSpecification: typing.List[fhirtypes.DeviceComponentProductionSpecificationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="productionSpecification",
         title="Specification details such as Component Revisions, or Serial Numbers",
         description=(
@@ -176,7 +176,7 @@ class DeviceComponent(domainresource.DomainResource):
     )
 
     source: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="source",
         title="Top-level device resource link",
         description=(
@@ -192,7 +192,7 @@ class DeviceComponent(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="What kind of component it is",
         description=(
@@ -267,7 +267,7 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     __resource_type__ = "DeviceComponentProductionSpecification"
 
     componentId: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="componentId",
         title="Internal component unique identification",
         description=(
@@ -283,7 +283,7 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     )
 
     productionSpec: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="productionSpec",
         title="A printable string defining the component",
         description="The printable string defining the component.",
@@ -293,11 +293,13 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         },
     )
     productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_productionSpec", title="Extension field for ``productionSpec``."
+        default=None,
+        alias="_productionSpec",
+        title="Extension field for ``productionSpec``.",
     )
 
     specType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="specType",
         title=(
             "Type or kind of production specification, for example serial number or"

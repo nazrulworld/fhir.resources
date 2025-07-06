@@ -27,7 +27,7 @@ class Contributor(element.Element):
     __resource_type__ = "Contributor"
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details of the contributor",
         description=(
@@ -41,7 +41,7 @@ class Contributor(element.Element):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Who contributed the content",
         description=(
@@ -55,11 +55,11 @@ class Contributor(element.Element):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="author | editor | reviewer | endorser",
         description="The type of contributor.",
@@ -73,7 +73,7 @@ class Contributor(element.Element):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod

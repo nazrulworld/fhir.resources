@@ -27,7 +27,7 @@ class BackboneType(datatype.DataType):
     __resource_type__ = "BackboneType"
 
     modifierExtension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored even if unrecognized",
         description=(

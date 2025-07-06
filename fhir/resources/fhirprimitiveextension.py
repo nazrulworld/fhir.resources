@@ -19,16 +19,16 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
     __resource_type__ = "FHIRPrimitiveExtension"
 
     id: typing.Optional[fhirtypes.StringType] = Field(
-        None,
+        default=None,
         alias="id",
         title="Type `String`",
         description="Unique id for inter-element referencing",
-        # if property is element of this resource.
+        # if property is an element of this resource.
         json_schema_extra={"element_property": False},
     )
 
     extension: typing.Optional[typing.List[fhirtypes.ExtensionType]] = Field(  # type: ignore
-        None,
+        default=None,
         alias="extension",
         title="List of `Extension` items (represented as `dict` in JSON)",
         description="Additional content defined by implementations",

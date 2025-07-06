@@ -24,7 +24,7 @@ class Period(datatype.DataType):
     __resource_type__ = "Period"
 
     end: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="end",
         title="End time with inclusive boundary, if not ongoing",
         description=(
@@ -39,11 +39,11 @@ class Period(datatype.DataType):
         },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_end", title="Extension field for ``end``."
+        default=None, alias="_end", title="Extension field for ``end``."
     )
 
     start: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="start",
         title="Starting time with inclusive boundary",
         description="The start of the period. The boundary is inclusive.",
@@ -53,7 +53,7 @@ class Period(datatype.DataType):
         },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_start", title="Extension field for ``start``."
+        default=None, alias="_start", title="Extension field for ``start``."
     )
 
     @classmethod

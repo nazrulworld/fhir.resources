@@ -26,7 +26,7 @@ class Quantity(element.Element):
     __resource_type__ = "Quantity"
 
     code: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Coded form of the unit",
         description=(
@@ -39,11 +39,11 @@ class Quantity(element.Element):
         },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_code", title="Extension field for ``code``."
+        default=None, alias="_code", title="Extension field for ``code``."
     )
 
     comparator: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="comparator",
         title="< | <= | >= | > - how to understand the value",
         description=(
@@ -58,11 +58,11 @@ class Quantity(element.Element):
         },
     )
     comparator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_comparator", title="Extension field for ``comparator``."
+        default=None, alias="_comparator", title="Extension field for ``comparator``."
     )
 
     system: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="system",
         title="System that defines coded unit form",
         description=(
@@ -75,11 +75,11 @@ class Quantity(element.Element):
         },
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_system", title="Extension field for ``system``."
+        default=None, alias="_system", title="Extension field for ``system``."
     )
 
     unit: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="unit",
         title="Unit representation",
         description="A human-readable form of the unit.",
@@ -89,11 +89,11 @@ class Quantity(element.Element):
         },
     )
     unit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_unit", title="Extension field for ``unit``."
+        default=None, alias="_unit", title="Extension field for ``unit``."
     )
 
     value: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="value",
         title="Numerical value (with implicit precision)",
         description=(
@@ -106,7 +106,7 @@ class Quantity(element.Element):
         },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_value", title="Extension field for ``value``."
+        default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod

@@ -120,7 +120,7 @@ setup(
         "all": (yaml_requirements + xml_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="8.0.1.dev0",
+    version="8.1.0.dev0",
     zip_safe=False,
     python_requires=">=3.8",
     project_urls={

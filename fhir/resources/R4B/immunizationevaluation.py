@@ -28,7 +28,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     __resource_type__ = "ImmunizationEvaluation"
 
     authority: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="authority",
         title="Who is responsible for publishing the recommendations",
         description="Indicates the authority who published the protocol (e.g. ACIP).",
@@ -40,7 +40,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date evaluation was performed",
         description=(
@@ -52,11 +52,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Evaluation notes",
         description="Additional information about the evaluation.",
@@ -65,11 +65,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     doseNumberPositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseNumberPositiveInt",
         title="Dose number within series",
         description="Nominal position in a series.",
@@ -81,13 +81,13 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
     doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_doseNumberPositiveInt",
         title="Extension field for ``doseNumberPositiveInt``.",
     )
 
     doseNumberString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseNumberString",
         title="Dose number within series",
         description="Nominal position in a series.",
@@ -99,13 +99,13 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
     doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_doseNumberString",
         title="Extension field for ``doseNumberString``.",
     )
 
     doseStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="doseStatus",
         title="Status of the dose relative to published recommendations",
         description=(
@@ -119,7 +119,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     )
 
     doseStatusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseStatusReason",
         title="Reason for the dose status",
         description=(
@@ -132,7 +132,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier",
         description="A unique identifier assigned to this immunization evaluation record.",
@@ -142,7 +142,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     )
 
     immunizationEvent: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="immunizationEvent",
         title="Immunization being evaluated",
         description="The vaccine administration event being evaluated.",
@@ -155,7 +155,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     )
 
     patient: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="patient",
         title="Who this evaluation is for",
         description="The individual for whom the evaluation is being done.",
@@ -168,7 +168,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     )
 
     series: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="series",
         title="Name of vaccine series",
         description=(
@@ -180,11 +180,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
     series__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_series", title="Extension field for ``series``."
+        default=None, alias="_series", title="Extension field for ``series``."
     )
 
     seriesDosesPositiveInt: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="seriesDosesPositiveInt",
         title="Recommended number of doses for immunity",
         description="The recommended number of doses to achieve immunity.",
@@ -196,13 +196,13 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
     seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_seriesDosesPositiveInt",
         title="Extension field for ``seriesDosesPositiveInt``.",
     )
 
     seriesDosesString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="seriesDosesString",
         title="Recommended number of doses for immunity",
         description="The recommended number of doses to achieve immunity.",
@@ -214,13 +214,13 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
     seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_seriesDosesString",
         title="Extension field for ``seriesDosesString``.",
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="completed | entered-in-error",
         description=(
@@ -237,11 +237,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     targetDisease: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="targetDisease",
         title="Evaluation target disease",
         description="The vaccine preventable disease the dose is being evaluated against.",

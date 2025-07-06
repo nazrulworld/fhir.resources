@@ -2,10 +2,16 @@
 History
 =======
 
-8.0.1 (unreleased)
+8.1.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+New features
+
+- Issue #181 ``summary``(https://www.hl7.org/fhir/search.html#_summary) mode feature added.
+
+Fixes
+
+- Issue #184 pyright struggles with default position args.
 
 
 8.0.0 (2024-12-25)

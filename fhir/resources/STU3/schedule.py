@@ -26,7 +26,7 @@ class Schedule(domainresource.DomainResource):
     __resource_type__ = "Schedule"
 
     active: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="active",
         title="Whether this schedule is in active use",
         description=(
@@ -39,11 +39,11 @@ class Schedule(domainresource.DomainResource):
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_active", title="Extension field for ``active``."
+        default=None, alias="_active", title="Extension field for ``active``."
     )
 
     actor: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="actor",
         title=(
             "The resource this Schedule resource is providing availability "
@@ -69,7 +69,7 @@ class Schedule(domainresource.DomainResource):
     )
 
     comment: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="comment",
         title=(
             "Comments on the availability to describe any extended information. "
@@ -81,11 +81,11 @@ class Schedule(domainresource.DomainResource):
         },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_comment", title="Extension field for ``comment``."
+        default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="External Ids for this item",
         description=None,
@@ -96,7 +96,7 @@ class Schedule(domainresource.DomainResource):
     )
 
     planningHorizon: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="planningHorizon",
         title=(
             "The period of time that the slots that are attached to this Schedule "
@@ -113,7 +113,7 @@ class Schedule(domainresource.DomainResource):
     )
 
     serviceCategory: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="serviceCategory",
         title=(
             "A broad categorisation of the service that is to be performed during "
@@ -127,7 +127,7 @@ class Schedule(domainresource.DomainResource):
     )
 
     serviceType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="serviceType",
         title="The specific service that is to be performed during this appointment",
         description=None,
@@ -138,7 +138,7 @@ class Schedule(domainresource.DomainResource):
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="specialty",
         title=(
             "The specialty of a practitioner that would be required to perform the "

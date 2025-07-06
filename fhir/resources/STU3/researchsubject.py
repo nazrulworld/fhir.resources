@@ -31,7 +31,7 @@ class ResearchSubject(domainresource.DomainResource):
     __resource_type__ = "ResearchSubject"
 
     actualArm: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="actualArm",
         title="What path was followed",
         description=(
@@ -43,11 +43,11 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
     actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_actualArm", title="Extension field for ``actualArm``."
+        default=None, alias="_actualArm", title="Extension field for ``actualArm``."
     )
 
     assignedArm: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="assignedArm",
         title="What path should be followed",
         description=(
@@ -59,11 +59,11 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
     assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_assignedArm", title="Extension field for ``assignedArm``."
+        default=None, alias="_assignedArm", title="Extension field for ``assignedArm``."
     )
 
     consent: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="consent",
         title="Agreement to participate in study",
         description=(
@@ -78,7 +78,7 @@ class ResearchSubject(domainresource.DomainResource):
     )
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business Identifier for research subject",
         description=(
@@ -92,7 +92,7 @@ class ResearchSubject(domainresource.DomainResource):
     )
 
     individual: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="individual",
         title="Who is part of study",
         description="The record of the person or animal who is involved in the study.",
@@ -105,7 +105,7 @@ class ResearchSubject(domainresource.DomainResource):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Start and end of participation",
         description=(
@@ -118,7 +118,7 @@ class ResearchSubject(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="candidate | enrolled | active | suspended | withdrawn | completed",
         description="The current state of the subject.",
@@ -139,11 +139,11 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     study: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="study",
         title="Study subject is part of",
         description="Reference to the study the subject is participating in.",

@@ -28,7 +28,7 @@ class HumanName(datatype.DataType):
     __resource_type__ = "HumanName"
 
     family: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="family",
         title="Family name (often called 'Surname')",
         description=(
@@ -41,11 +41,11 @@ class HumanName(datatype.DataType):
         },
     )
     family__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_family", title="Extension field for ``family``."
+        default=None, alias="_family", title="Extension field for ``family``."
     )
 
     given: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="given",
         title="Given names (not always 'first'). Includes middle names",
         description="Given name.",
@@ -55,11 +55,11 @@ class HumanName(datatype.DataType):
         },
     )
     given__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_given", title="Extension field for ``given``."
+        default=None, alias="_given", title="Extension field for ``given``."
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Time period when name was/is in use",
         description=(
@@ -73,7 +73,7 @@ class HumanName(datatype.DataType):
     )
 
     prefix: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="prefix",
         title="Parts that come before the name",
         description=(
@@ -87,11 +87,11 @@ class HumanName(datatype.DataType):
         },
     )
     prefix__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_prefix", title="Extension field for ``prefix``."
+        default=None, alias="_prefix", title="Extension field for ``prefix``."
     )
 
     suffix: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="suffix",
         title="Parts that come after the name",
         description=(
@@ -105,11 +105,11 @@ class HumanName(datatype.DataType):
         },
     )
     suffix__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_suffix", title="Extension field for ``suffix``."
+        default=None, alias="_suffix", title="Extension field for ``suffix``."
     )
 
     text: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Text representation of the full name",
         description=(
@@ -123,11 +123,11 @@ class HumanName(datatype.DataType):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     use: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="use",
         title="usual | official | temp | nickname | anonymous | old | maiden",
         description="Identifies the purpose for this name.",
@@ -148,7 +148,7 @@ class HumanName(datatype.DataType):
         },
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_use", title="Extension field for ``use``."
+        default=None, alias="_use", title="Extension field for ``use``."
     )
 
     @classmethod

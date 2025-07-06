@@ -25,7 +25,7 @@ class InventoryReport(domainresource.DomainResource):
     __resource_type__ = "InventoryReport"
 
     countType: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="countType",
         title="snapshot | difference",
         description=(
@@ -42,11 +42,11 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
     countType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_countType", title="Extension field for ``countType``."
+        default=None, alias="_countType", title="Extension field for ``countType``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier for the report",
         description="Business identifier for the InventoryReport.",
@@ -57,7 +57,7 @@ class InventoryReport(domainresource.DomainResource):
     )
 
     inventoryListing: typing.List[fhirtypes.InventoryReportInventoryListingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="inventoryListing",
         title="An inventory listing section (grouped by any of the attributes)",
         description=None,
@@ -68,7 +68,7 @@ class InventoryReport(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="A note associated with the InventoryReport",
         description=None,
@@ -78,7 +78,7 @@ class InventoryReport(domainresource.DomainResource):
     )
 
     operationType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="operationType",
         title="addition | subtraction",
         description="What type of operation is being performed - addition or subtraction.",
@@ -89,7 +89,7 @@ class InventoryReport(domainresource.DomainResource):
     )
 
     operationTypeReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="operationTypeReason",
         title=(
             "The reason for this count - regular count, ad-hoc count, new arrivals,"
@@ -103,7 +103,7 @@ class InventoryReport(domainresource.DomainResource):
     )
 
     reportedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reportedDateTime",
         title="When the report has been submitted",
         description=None,
@@ -114,13 +114,13 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
     reportedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_reportedDateTime",
         title="Extension field for ``reportedDateTime``.",
     )
 
     reporter: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reporter",
         title="Who submits the report",
         description=None,
@@ -137,7 +137,7 @@ class InventoryReport(domainresource.DomainResource):
     )
 
     reportingPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reportingPeriod",
         title="The period the report refers to",
         description=None,
@@ -147,7 +147,7 @@ class InventoryReport(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | requested | active | entered-in-error",
         description=(
@@ -164,7 +164,7 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
@@ -240,7 +240,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
     __resource_type__ = "InventoryReportInventoryListing"
 
     countingDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="countingDateTime",
         title="The date and time when the items were counted",
         description=None,
@@ -249,13 +249,13 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         },
     )
     countingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_countingDateTime",
         title="Extension field for ``countingDateTime``.",
     )
 
     item: typing.List[fhirtypes.InventoryReportInventoryListingItemType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="item",
         title="The item or items in this listing",
         description=None,
@@ -266,7 +266,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
     )
 
     itemStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemStatus",
         title="The status of the items that are being reported",
         description="The status of the items.",
@@ -277,7 +277,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
     )
 
     location: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="location",
         title="Location of the inventory items",
         description=None,
@@ -323,7 +323,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
     __resource_type__ = "InventoryReportInventoryListingItem"
 
     category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="The inventory category or classification of the items being reported",
         description=(
@@ -338,7 +338,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
     )
 
     item: fhirtypes.CodeableReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="item",
         title="The code or reference to the item type",
         description=None,
@@ -359,7 +359,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
     )
 
     quantity: fhirtypes.QuantityType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="quantity",
         title="The quantity of the item or items being reported",
         description=None,

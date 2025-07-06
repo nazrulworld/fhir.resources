@@ -33,7 +33,7 @@ class Address(datatype.DataType):
     __resource_type__ = "Address"
 
     city: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="city",
         title="Name of city, town etc.",
         description=(
@@ -46,11 +46,11 @@ class Address(datatype.DataType):
         },
     )
     city__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_city", title="Extension field for ``city``."
+        default=None, alias="_city", title="Extension field for ``city``."
     )
 
     country: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="country",
         title="Country (e.g. may be ISO 3166 2 or 3 letter code)",
         description="Country - a nation as commonly understood or generally accepted.",
@@ -60,11 +60,11 @@ class Address(datatype.DataType):
         },
     )
     country__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_country", title="Extension field for ``country``."
+        default=None, alias="_country", title="Extension field for ``country``."
     )
 
     district: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="district",
         title="District name (aka county)",
         description="The name of the administrative area (county).",
@@ -74,11 +74,11 @@ class Address(datatype.DataType):
         },
     )
     district__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_district", title="Extension field for ``district``."
+        default=None, alias="_district", title="Extension field for ``district``."
     )
 
     line: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="line",
         title="Street name, number, direction & P.O. Box etc.",
         description=(
@@ -92,11 +92,11 @@ class Address(datatype.DataType):
         },
     )
     line__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_line", title="Extension field for ``line``."
+        default=None, alias="_line", title="Extension field for ``line``."
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Time period when address was/is in use",
         description=None,
@@ -107,7 +107,7 @@ class Address(datatype.DataType):
     )
 
     postalCode: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="postalCode",
         title="Postal code for area",
         description="A postal code designating a region defined by the postal service.",
@@ -117,11 +117,11 @@ class Address(datatype.DataType):
         },
     )
     postalCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_postalCode", title="Extension field for ``postalCode``."
+        default=None, alias="_postalCode", title="Extension field for ``postalCode``."
     )
 
     state: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="state",
         title="Sub-unit of country (abbreviations ok)",
         description=(
@@ -135,11 +135,11 @@ class Address(datatype.DataType):
         },
     )
     state__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_state", title="Extension field for ``state``."
+        default=None, alias="_state", title="Extension field for ``state``."
     )
 
     text: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Text representation of the address",
         description=(
@@ -153,11 +153,11 @@ class Address(datatype.DataType):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="postal | physical | both",
         description=(
@@ -174,11 +174,11 @@ class Address(datatype.DataType):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     use: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="use",
         title="home | work | temp | old | billing - purpose of this address",
         description="The purpose of this address.",
@@ -191,7 +191,7 @@ class Address(datatype.DataType):
         },
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_use", title="Extension field for ``use``."
+        default=None, alias="_use", title="Extension field for ``use``."
     )
 
     @classmethod

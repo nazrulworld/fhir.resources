@@ -27,7 +27,7 @@ class ExtendedContactDetail(datatype.DataType):
     __resource_type__ = "ExtendedContactDetail"
 
     address: fhirtypes.AddressType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="address",
         title="Address for the contact",
         description=None,
@@ -38,7 +38,7 @@ class ExtendedContactDetail(datatype.DataType):
     )
 
     name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name of an individual to contact",
         description=(
@@ -52,7 +52,7 @@ class ExtendedContactDetail(datatype.DataType):
     )
 
     organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="organization",
         title="This contact detail is handled/monitored by a specific organization",
         description=(
@@ -69,7 +69,7 @@ class ExtendedContactDetail(datatype.DataType):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Period that this contact was valid for usage",
         description=None,
@@ -80,7 +80,7 @@ class ExtendedContactDetail(datatype.DataType):
     )
 
     purpose: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="The type of contact",
         description="The purpose/type of contact.",
@@ -91,7 +91,7 @@ class ExtendedContactDetail(datatype.DataType):
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="telecom",
         title="Contact details (e.g.phone/fax/url)",
         description="The contact details application for the purpose defined.",

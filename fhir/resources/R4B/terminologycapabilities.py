@@ -29,7 +29,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     __resource_type__ = "TerminologyCapabilities"
 
     closure: fhirtypes.TerminologyCapabilitiesClosureType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="closure",
         title=(
             "Information about the [ConceptMap/$closure](conceptmap-operation-"
@@ -42,7 +42,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     codeSearch: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="codeSearch",
         title="explicit | all",
         description=(
@@ -57,11 +57,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     codeSearch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_codeSearch", title="Extension field for ``codeSearch``."
+        default=None, alias="_codeSearch", title="Extension field for ``codeSearch``."
     )
 
     codeSystem: typing.List[fhirtypes.TerminologyCapabilitiesCodeSystemType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="codeSystem",
         title="A code system supported by the server",
         description=(
@@ -75,7 +75,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for the publisher",
         description=(
@@ -89,7 +89,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
         description=(
@@ -103,11 +103,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyright", title="Extension field for ``copyright``."
+        default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date last changed",
         description=(
@@ -124,11 +124,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Natural language description of the terminology capabilities",
         description=(
@@ -143,11 +143,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     expansion: fhirtypes.TerminologyCapabilitiesExpansionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expansion",
         title=(
             "Information about the [ValueSet/$expand](valueset-operation-"
@@ -160,7 +160,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     experimental: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
         description=(
@@ -174,11 +174,13 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_experimental", title="Extension field for ``experimental``."
+        default=None,
+        alias="_experimental",
+        title="Extension field for ``experimental``.",
     )
 
     implementation: fhirtypes.TerminologyCapabilitiesImplementationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="implementation",
         title="If this describes a specific instance",
         description=(
@@ -193,7 +195,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for terminology capabilities (if applicable)",
         description=(
@@ -207,7 +209,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     kind: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="kind",
         title="instance | capability | requirements",
         description=(
@@ -226,11 +228,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_kind", title="Extension field for ``kind``."
+        default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
     lockedDate: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lockedDate",
         title="Whether lockedDate is supported",
         description="Whether the server supports lockedDate.",
@@ -240,11 +242,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     lockedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lockedDate", title="Extension field for ``lockedDate``."
+        default=None, alias="_lockedDate", title="Extension field for ``lockedDate``."
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name for this terminology capabilities (computer friendly)",
         description=(
@@ -258,11 +260,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
         description=(
@@ -275,11 +277,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publisher", title="Extension field for ``publisher``."
+        default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="Why this terminology capabilities is defined",
         description=(
@@ -291,11 +293,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_purpose", title="Extension field for ``purpose``."
+        default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     software: fhirtypes.TerminologyCapabilitiesSoftwareType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="software",
         title="Software that is covered by this terminology capability statement",
         description=(
@@ -310,7 +312,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -327,11 +329,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="title",
         title="Name for this terminology capabilities (human friendly)",
         description=(
@@ -344,11 +346,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_title", title="Extension field for ``title``."
+        default=None, alias="_title", title="Extension field for ``title``."
     )
 
     translation: fhirtypes.TerminologyCapabilitiesTranslationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="translation",
         title=(
             "Information about the [ConceptMap/$translate](conceptmap-operation-"
@@ -361,7 +363,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     url: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title=(
             "Canonical identifier for this terminology capabilities, represented as"
@@ -383,11 +385,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useContext",
         title="The context that the content is intended to support",
         description=(
@@ -405,7 +407,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     validateCode: fhirtypes.TerminologyCapabilitiesValidateCodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="validateCode",
         title=(
             "Information about the [ValueSet/$validate-code](valueset-operation-"
@@ -418,7 +420,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Business version of the terminology capabilities",
         description=(
@@ -436,7 +438,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
@@ -536,7 +538,7 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
     __resource_type__ = "TerminologyCapabilitiesClosure"
 
     translation: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="translation",
         title="If cross-system closure is supported",
         description=None,
@@ -545,7 +547,7 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
         },
     )
     translation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_translation", title="Extension field for ``translation``."
+        default=None, alias="_translation", title="Extension field for ``translation``."
     )
 
     @classmethod
@@ -578,7 +580,7 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
     __resource_type__ = "TerminologyCapabilitiesCodeSystem"
 
     subsumption: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subsumption",
         title="Whether subsumption is supported",
         description="True if subsumption is supported for this version of the code system.",
@@ -587,11 +589,11 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         },
     )
     subsumption__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_subsumption", title="Extension field for ``subsumption``."
+        default=None, alias="_subsumption", title="Extension field for ``subsumption``."
     )
 
     uri: fhirtypes.CanonicalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="uri",
         title="URI for the Code System",
         description=None,
@@ -602,11 +604,11 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         },
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_uri", title="Extension field for ``uri``."
+        default=None, alias="_uri", title="Extension field for ``uri``."
     )
 
     version: typing.List[fhirtypes.TerminologyCapabilitiesCodeSystemVersionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Version of Code System supported",
         description=(
@@ -646,7 +648,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     __resource_type__ = "TerminologyCapabilitiesCodeSystemVersion"
 
     code: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Version identifier for this version",
         description=(
@@ -659,11 +661,11 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_code", title="Extension field for ``code``."
+        default=None, alias="_code", title="Extension field for ``code``."
     )
 
     compositional: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="compositional",
         title="If compositional grammar is supported",
         description="If the compositional grammar defined by the code system is supported.",
@@ -672,11 +674,13 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         },
     )
     compositional__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_compositional", title="Extension field for ``compositional``."
+        default=None,
+        alias="_compositional",
+        title="Extension field for ``compositional``.",
     )
 
     filter: typing.List[fhirtypes.TerminologyCapabilitiesCodeSystemVersionFilterType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="filter",
         title="Filter Properties supported",
         description=None,
@@ -686,7 +690,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     )
 
     isDefault: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="isDefault",
         title="If this is the default version for this code system",
         description=None,
@@ -696,11 +700,11 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         },
     )
     isDefault__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_isDefault", title="Extension field for ``isDefault``."
+        default=None, alias="_isDefault", title="Extension field for ``isDefault``."
     )
 
     language: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="language",
         title="Language Displays supported",
         description=None,
@@ -709,11 +713,11 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         },
     )
     language__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_language", title="Extension field for ``language``."
+        default=None, alias="_language", title="Extension field for ``language``."
     )
 
     property: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="property",
         title="Properties supported for $lookup",
         description=None,
@@ -722,7 +726,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         },
     )
     property__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_property", title="Extension field for ``property``."
+        default=None, alias="_property", title="Extension field for ``property``."
     )
 
     @classmethod
@@ -762,7 +766,7 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
     __resource_type__ = "TerminologyCapabilitiesCodeSystemVersionFilter"
 
     code: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Code of the property supported",
         description=None,
@@ -772,11 +776,11 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
         },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_code", title="Extension field for ``code``."
+        default=None, alias="_code", title="Extension field for ``code``."
     )
 
     op: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="op",
         title="Operations supported for the property",
         description=None,
@@ -786,7 +790,7 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
         },
     )
     op__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_op", title="Extension field for ``op``."
+        default=None, alias="_op", title="Extension field for ``op``."
     )
 
     @classmethod
@@ -828,7 +832,7 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     __resource_type__ = "TerminologyCapabilitiesExpansion"
 
     hierarchical: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="hierarchical",
         title="Whether the server can return nested value sets",
         description=None,
@@ -837,11 +841,13 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         },
     )
     hierarchical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_hierarchical", title="Extension field for ``hierarchical``."
+        default=None,
+        alias="_hierarchical",
+        title="Extension field for ``hierarchical``.",
     )
 
     incomplete: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="incomplete",
         title="Allow request for incomplete expansions?",
         description="Allow request for incomplete expansions?",
@@ -850,11 +856,11 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         },
     )
     incomplete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_incomplete", title="Extension field for ``incomplete``."
+        default=None, alias="_incomplete", title="Extension field for ``incomplete``."
     )
 
     paging: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="paging",
         title="Whether the server supports paging on expansion",
         description=None,
@@ -863,11 +869,11 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         },
     )
     paging__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_paging", title="Extension field for ``paging``."
+        default=None, alias="_paging", title="Extension field for ``paging``."
     )
 
     parameter: typing.List[fhirtypes.TerminologyCapabilitiesExpansionParameterType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="parameter",
         title="Supported expansion parameter",
         description=None,
@@ -877,7 +883,7 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     )
 
     textFilter: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="textFilter",
         title="Documentation about text searching works",
         description=None,
@@ -886,7 +892,7 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         },
     )
     textFilter__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_textFilter", title="Extension field for ``textFilter``."
+        default=None, alias="_textFilter", title="Extension field for ``textFilter``."
     )
 
     @classmethod
@@ -925,7 +931,7 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
     __resource_type__ = "TerminologyCapabilitiesExpansionParameter"
 
     documentation: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="documentation",
         title="Description of support for parameter",
         description=None,
@@ -934,11 +940,13 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
         },
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_documentation", title="Extension field for ``documentation``."
+        default=None,
+        alias="_documentation",
+        title="Extension field for ``documentation``.",
     )
 
     name: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Expansion Parameter name",
         description=None,
@@ -948,7 +956,7 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     @classmethod
@@ -992,7 +1000,7 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
     __resource_type__ = "TerminologyCapabilitiesImplementation"
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Describes this specific instance",
         description=(
@@ -1006,11 +1014,11 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     url: fhirtypes.UrlType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title="Base URL for the implementation",
         description="An absolute base URL for the implementation.",
@@ -1020,7 +1028,7 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     @classmethod
@@ -1064,7 +1072,7 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
     __resource_type__ = "TerminologyCapabilitiesSoftware"
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="A name the software is known by",
         description="Name the software is known by.",
@@ -1075,11 +1083,11 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Version covered by this statement",
         description="The version identifier for the software covered by this statement.",
@@ -1089,7 +1097,7 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
@@ -1131,7 +1139,7 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
     __resource_type__ = "TerminologyCapabilitiesTranslation"
 
     needsMap: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="needsMap",
         title="Whether the client must identify the map",
         description=None,
@@ -1141,7 +1149,7 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
         },
     )
     needsMap__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_needsMap", title="Extension field for ``needsMap``."
+        default=None, alias="_needsMap", title="Extension field for ``needsMap``."
     )
 
     @classmethod
@@ -1183,7 +1191,7 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
     __resource_type__ = "TerminologyCapabilitiesValidateCode"
 
     translations: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="translations",
         title="Whether translations are validated",
         description=None,
@@ -1193,7 +1201,9 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
         },
     )
     translations__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_translations", title="Extension field for ``translations``."
+        default=None,
+        alias="_translations",
+        title="Extension field for ``translations``.",
     )
 
     @classmethod

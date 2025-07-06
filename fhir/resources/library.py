@@ -29,7 +29,7 @@ class Library(domainresource.DomainResource):
     __resource_type__ = "Library"
 
     approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="approvalDate",
         title="When the library was approved by publisher",
         description=(
@@ -42,11 +42,13 @@ class Library(domainresource.DomainResource):
         },
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
+        default=None,
+        alias="_approvalDate",
+        title="Extension field for ``approvalDate``.",
     )
 
     author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="author",
         title="Who authored the content",
         description=(
@@ -59,7 +61,7 @@ class Library(domainresource.DomainResource):
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for the publisher",
         description=(
@@ -73,7 +75,7 @@ class Library(domainresource.DomainResource):
     )
 
     content: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="content",
         title="Contents of the library, either embedded or referenced",
         description=(
@@ -89,7 +91,7 @@ class Library(domainresource.DomainResource):
     )
 
     copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
         description=(
@@ -102,11 +104,11 @@ class Library(domainresource.DomainResource):
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyright", title="Extension field for ``copyright``."
+        default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
         description=(
@@ -120,11 +122,13 @@ class Library(domainresource.DomainResource):
         },
     )
     copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
+        default=None,
+        alias="_copyrightLabel",
+        title="Extension field for ``copyrightLabel``.",
     )
 
     dataRequirement: typing.List[fhirtypes.DataRequirementType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dataRequirement",
         title="What data is referenced by this library",
         description=(
@@ -137,7 +141,7 @@ class Library(domainresource.DomainResource):
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date last changed",
         description=(
@@ -152,11 +156,11 @@ class Library(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Natural language description of the library",
         description=(
@@ -169,11 +173,11 @@ class Library(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="editor",
         title="Who edited the content",
         description=(
@@ -186,7 +190,7 @@ class Library(domainresource.DomainResource):
     )
 
     effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectivePeriod",
         title="When the library is expected to be used",
         description=(
@@ -200,7 +204,7 @@ class Library(domainresource.DomainResource):
     )
 
     endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="endorser",
         title="Who endorsed the content",
         description=(
@@ -214,7 +218,7 @@ class Library(domainresource.DomainResource):
     )
 
     experimental: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
         description=(
@@ -228,11 +232,13 @@ class Library(domainresource.DomainResource):
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_experimental", title="Extension field for ``experimental``."
+        default=None,
+        alias="_experimental",
+        title="Extension field for ``experimental``.",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Additional identifier for the library",
         description=(
@@ -249,7 +255,7 @@ class Library(domainresource.DomainResource):
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for library (if applicable)",
         description=(
@@ -263,7 +269,7 @@ class Library(domainresource.DomainResource):
     )
 
     lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lastReviewDate",
         title="When the library was last reviewed by the publisher",
         description=(
@@ -276,11 +282,13 @@ class Library(domainresource.DomainResource):
         },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
+        default=None,
+        alias="_lastReviewDate",
+        title="Extension field for ``lastReviewDate``.",
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name for this library (computer friendly)",
         description=(
@@ -294,11 +302,11 @@ class Library(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     parameter: typing.List[fhirtypes.ParameterDefinitionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="parameter",
         title="Parameters defined by the library",
         description="The parameter element defines parameters used by the library.",
@@ -308,7 +316,7 @@ class Library(domainresource.DomainResource):
     )
 
     publisher: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
         description=(
@@ -321,11 +329,11 @@ class Library(domainresource.DomainResource):
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publisher", title="Extension field for ``publisher``."
+        default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="Why this library is defined",
         description=(
@@ -337,11 +345,11 @@ class Library(domainresource.DomainResource):
         },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_purpose", title="Extension field for ``purpose``."
+        default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc",
         description=(
@@ -354,7 +362,7 @@ class Library(domainresource.DomainResource):
     )
 
     reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reviewer",
         title="Who reviewed the content",
         description=(
@@ -367,7 +375,7 @@ class Library(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -384,11 +392,11 @@ class Library(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     subjectCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subjectCodeableConcept",
         title="Type of individual the library content is focused on",
         description=(
@@ -404,7 +412,7 @@ class Library(domainresource.DomainResource):
     )
 
     subjectReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subjectReference",
         title="Type of individual the library content is focused on",
         description=(
@@ -422,7 +430,7 @@ class Library(domainresource.DomainResource):
     )
 
     subtitle: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subtitle",
         title="Subordinate title of the library",
         description=(
@@ -434,11 +442,11 @@ class Library(domainresource.DomainResource):
         },
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_subtitle", title="Extension field for ``subtitle``."
+        default=None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
     title: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="title",
         title="Name for this library (human friendly)",
         description="A short, descriptive, user-friendly title for the library.",
@@ -448,11 +456,11 @@ class Library(domainresource.DomainResource):
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_title", title="Extension field for ``title``."
+        default=None, alias="_title", title="Extension field for ``title``."
     )
 
     topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
         description=(
@@ -466,7 +474,7 @@ class Library(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title=(
             "logic-library | model-definition | asset-collection | module-" "definition"
@@ -482,7 +490,7 @@ class Library(domainresource.DomainResource):
     )
 
     url: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title=(
             "Canonical identifier for this library, represented as a URI (globally "
@@ -503,11 +511,11 @@ class Library(domainresource.DomainResource):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     usage: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="usage",
         title="Describes the clinical usage of the library",
         description=(
@@ -519,11 +527,11 @@ class Library(domainresource.DomainResource):
         },
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_usage", title="Extension field for ``usage``."
+        default=None, alias="_usage", title="Extension field for ``usage``."
     )
 
     useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useContext",
         title="The context that the content is intended to support",
         description=(
@@ -540,7 +548,7 @@ class Library(domainresource.DomainResource):
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Business version of the library",
         description=(
@@ -562,11 +570,11 @@ class Library(domainresource.DomainResource):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
         description=(
@@ -583,7 +591,7 @@ class Library(domainresource.DomainResource):
     )
 
     versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
         description=(
@@ -599,7 +607,7 @@ class Library(domainresource.DomainResource):
         },
     )
     versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )

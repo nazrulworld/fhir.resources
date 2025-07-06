@@ -35,7 +35,7 @@ class Provenance(domainresource.DomainResource):
     __resource_type__ = "Provenance"
 
     activity: fhirtypes.CodingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="activity",
         title="Activity that occurred",
         description=(
@@ -49,7 +49,7 @@ class Provenance(domainresource.DomainResource):
     )
 
     agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="agent",
         title="Actor involved",
         description=(
@@ -62,7 +62,7 @@ class Provenance(domainresource.DomainResource):
     )
 
     entity: typing.List[fhirtypes.ProvenanceEntityType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="entity",
         title="An entity used in this activity",
         description=None,
@@ -72,7 +72,7 @@ class Provenance(domainresource.DomainResource):
     )
 
     location: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="location",
         title="Where the activity occurred, if relevant",
         description=None,
@@ -84,7 +84,7 @@ class Provenance(domainresource.DomainResource):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="When the activity occurred",
         description="The period during which the activity occurred.",
@@ -94,7 +94,7 @@ class Provenance(domainresource.DomainResource):
     )
 
     policy: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="policy",
         title="Policy or plan the activity was defined by",
         description=(
@@ -107,11 +107,11 @@ class Provenance(domainresource.DomainResource):
         },
     )
     policy__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_policy", title="Extension field for ``policy``."
+        default=None, alias="_policy", title="Extension field for ``policy``."
     )
 
     reason: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reason",
         title="Reason the activity is occurring",
         description="The reason that the activity was taking place.",
@@ -121,7 +121,7 @@ class Provenance(domainresource.DomainResource):
     )
 
     recorded: fhirtypes.InstantType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="recorded",
         title="When the activity was recorded / updated",
         description="The instant of time at which the activity was recorded.",
@@ -132,11 +132,11 @@ class Provenance(domainresource.DomainResource):
         },
     )
     recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_recorded", title="Extension field for ``recorded``."
+        default=None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
     signature: typing.List[fhirtypes.SignatureType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="signature",
         title="Signature on target",
         description=(
@@ -149,7 +149,7 @@ class Provenance(domainresource.DomainResource):
     )
 
     target: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="target",
         title="Target Reference(s) (usually version specific)",
         description=(
@@ -225,7 +225,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     __resource_type__ = "ProvenanceAgent"
 
     onBehalfOfReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="onBehalfOfReference",
         title="Who the agent is representing",
         description="The individual, device, or organization for whom the change was made.",
@@ -246,7 +246,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     )
 
     onBehalfOfUri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="onBehalfOfUri",
         title="Who the agent is representing",
         description="The individual, device, or organization for whom the change was made.",
@@ -258,11 +258,13 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
     onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_onBehalfOfUri", title="Extension field for ``onBehalfOfUri``."
+        default=None,
+        alias="_onBehalfOfUri",
+        title="Extension field for ``onBehalfOfUri``.",
     )
 
     relatedAgentType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relatedAgentType",
         title="Type of relationship between agents",
         description="The type of relationship between agents.",
@@ -272,7 +274,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     )
 
     role: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="role",
         title="What the agents role was",
         description=(
@@ -286,7 +288,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     )
 
     whoReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whoReference",
         title="Who participated",
         description="The individual, device or organization that participated in the event.",
@@ -308,7 +310,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     )
 
     whoUri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whoUri",
         title="Who participated",
         description="The individual, device or organization that participated in the event.",
@@ -321,7 +323,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
     whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_whoUri", title="Extension field for ``whoUri``."
+        default=None, alias="_whoUri", title="Extension field for ``whoUri``."
     )
 
     @classmethod
@@ -397,7 +399,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     __resource_type__ = "ProvenanceEntity"
 
     agent: typing.List[fhirtypes.ProvenanceAgentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="agent",
         title="Entity is attributed to this agent",
         description=(
@@ -412,7 +414,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     )
 
     role: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="role",
         title="derivation | revision | quotation | source | removal",
         description="How the entity was used during the activity.",
@@ -426,11 +428,11 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         },
     )
     role__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_role", title="Extension field for ``role``."
+        default=None, alias="_role", title="Extension field for ``role``."
     )
 
     whatIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whatIdentifier",
         title="Identity of entity",
         description=(
@@ -447,7 +449,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     )
 
     whatReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whatReference",
         title="Identity of entity",
         description=(
@@ -466,7 +468,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     )
 
     whatUri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whatUri",
         title="Identity of entity",
         description=(
@@ -482,7 +484,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         },
     )
     whatUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_whatUri", title="Extension field for ``whatUri``."
+        default=None, alias="_whatUri", title="Extension field for ``whatUri``."
     )
 
     @classmethod

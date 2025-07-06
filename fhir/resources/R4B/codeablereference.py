@@ -25,7 +25,7 @@ class CodeableReference(element.Element):
     __resource_type__ = "CodeableReference"
 
     concept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="concept",
         title="Reference to a concept (by class)",
         description=(
@@ -39,7 +39,7 @@ class CodeableReference(element.Element):
     )
 
     reference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reference",
         title="Reference to a resource (by instance)",
         description=(

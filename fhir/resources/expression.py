@@ -26,7 +26,7 @@ class Expression(datatype.DataType):
     __resource_type__ = "Expression"
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Natural language description of the condition",
         description=(
@@ -39,11 +39,11 @@ class Expression(datatype.DataType):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     expression: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expression",
         title="Expression in specified language",
         description="An expression in the specified language that returns a value.",
@@ -53,11 +53,11 @@ class Expression(datatype.DataType):
         },
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_expression", title="Extension field for ``expression``."
+        default=None, alias="_expression", title="Extension field for ``expression``."
     )
 
     language: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="language",
         title="text/cql | text/fhirpath | application/x-fhir-query | etc.",
         description="The media type of the language for the expression.",
@@ -75,11 +75,11 @@ class Expression(datatype.DataType):
         },
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_language", title="Extension field for ``language``."
+        default=None, alias="_language", title="Extension field for ``language``."
     )
 
     name: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Short name assigned to expression for reuse",
         description=(
@@ -92,11 +92,11 @@ class Expression(datatype.DataType):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     reference: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reference",
         title="Where the expression is found",
         description="A URI that defines where the expression is found.",
@@ -106,7 +106,7 @@ class Expression(datatype.DataType):
         },
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_reference", title="Extension field for ``reference``."
+        default=None, alias="_reference", title="Extension field for ``reference``."
     )
 
     @classmethod

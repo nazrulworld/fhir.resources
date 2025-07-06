@@ -28,7 +28,7 @@ class Binary(resource.Resource):
     __resource_type__ = "Binary"
 
     contentType: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentType",
         title="MimeType of the binary content",
         description=(
@@ -42,11 +42,11 @@ class Binary(resource.Resource):
         },
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_contentType", title="Extension field for ``contentType``."
+        default=None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
     data: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="data",
         title="The actual content",
         description="The actual content, base64 encoded.",
@@ -55,11 +55,11 @@ class Binary(resource.Resource):
         },
     )
     data__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_data", title="Extension field for ``data``."
+        default=None, alias="_data", title="Extension field for ``data``."
     )
 
     securityContext: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="securityContext",
         title=(
             "Identifies another resource to use as proxy when enforcing access "

@@ -25,7 +25,7 @@ class ContactPoint(element.Element):
     __resource_type__ = "ContactPoint"
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Time period when the contact point was/is in use",
         description=None,
@@ -36,7 +36,7 @@ class ContactPoint(element.Element):
     )
 
     rank: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="rank",
         title="Specify preferred order of use (1 = highest)",
         description=(
@@ -50,11 +50,11 @@ class ContactPoint(element.Element):
         },
     )
     rank__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_rank", title="Extension field for ``rank``."
+        default=None, alias="_rank", title="Extension field for ``rank``."
     )
 
     system: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="system",
         title="phone | fax | email | pager | url | sms | other",
         description=(
@@ -70,11 +70,11 @@ class ContactPoint(element.Element):
         },
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_system", title="Extension field for ``system``."
+        default=None, alias="_system", title="Extension field for ``system``."
     )
 
     use: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="use",
         title="home | work | temp | old | mobile - purpose of this contact point",
         description="Identifies the purpose for the contact point.",
@@ -87,11 +87,11 @@ class ContactPoint(element.Element):
         },
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_use", title="Extension field for ``use``."
+        default=None, alias="_use", title="Extension field for ``use``."
     )
 
     value: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="value",
         title="The actual contact point details",
         description=(
@@ -104,7 +104,7 @@ class ContactPoint(element.Element):
         },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_value", title="Extension field for ``value``."
+        default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod

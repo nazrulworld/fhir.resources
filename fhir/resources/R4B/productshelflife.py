@@ -26,7 +26,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
     __resource_type__ = "ProductShelfLife"
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Unique identifier for the packaged Medicinal Product",
         description=None,
@@ -37,7 +37,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
     )
 
     period: fhirtypes.QuantityType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="period",
         title=(
             "The shelf life time period can be specified using a numerical value "
@@ -54,7 +54,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
     )
 
     specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="specialPrecautionsForStorage",
         title=(
             "Special precautions for storage, if any, can be specified using an "
@@ -69,7 +69,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title=(
             "This describes the shelf life, taking into account various scenarios "

@@ -31,7 +31,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     __resource_type__ = "EpisodeOfCare"
 
     account: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="account",
         title=(
             "The set of accounts that may be used for billing for this " "EpisodeOfCare"
@@ -45,7 +45,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     careManager: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="careManager",
         title="Care manager/care coordinator for the patient",
         description=(
@@ -60,7 +60,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     careTeam: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="careTeam",
         title="Other practitioners facilitating this episode of care",
         description=(
@@ -75,7 +75,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     diagnosis: typing.List[fhirtypes.EpisodeOfCareDiagnosisType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="diagnosis",
         title=(
             "The list of medical conditions that were addressed during the episode "
@@ -89,7 +89,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business Identifier(s) relevant for this EpisodeOfCare",
         description=(
@@ -103,7 +103,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     managingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="managingOrganization",
         title="Organization that assumes responsibility for care coordination",
         description=(
@@ -120,7 +120,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     patient: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="patient",
         title="The patient who is the focus of this episode of care",
         description=None,
@@ -133,7 +133,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Interval during responsibility is assumed",
         description=(
@@ -147,7 +147,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     reason: typing.List[fhirtypes.EpisodeOfCareReasonType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reason",
         title=(
             "The list of medical reasons that are expected to be addressed during "
@@ -161,7 +161,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     referralRequest: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="referralRequest",
         title="Originating Referral Request(s)",
         description=(
@@ -176,7 +176,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title=(
             "planned | waitlist | active | onhold | finished | cancelled | entered-"
@@ -201,11 +201,11 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     statusHistory: typing.List[fhirtypes.EpisodeOfCareStatusHistoryType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="statusHistory",
         title=(
             "Past list of status codes (the current status may be included to cover"
@@ -221,7 +221,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Type/class  - e.g. specialist referral, disease management",
         description=(
@@ -307,7 +307,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
     __resource_type__ = "EpisodeOfCareDiagnosis"
 
     condition: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="condition",
         title="The medical condition that was addressed during the episode of care",
         description=(
@@ -323,7 +323,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
     )
 
     use: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="use",
         title=(
             "Role that this diagnosis has within the episode of care (e.g. "
@@ -364,7 +364,7 @@ class EpisodeOfCareReason(backboneelement.BackboneElement):
     __resource_type__ = "EpisodeOfCareReason"
 
     use: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="use",
         title="What the reason value should be used for/as",
         description=(
@@ -378,7 +378,7 @@ class EpisodeOfCareReason(backboneelement.BackboneElement):
     )
 
     value: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="value",
         title="Medical reason to be addressed",
         description=(
@@ -429,7 +429,7 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
     __resource_type__ = "EpisodeOfCareStatusHistory"
 
     period: fhirtypes.PeriodType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="period",
         title="Duration the EpisodeOfCare was in the specified status",
         description="The period during this EpisodeOfCare that the specific status applied.",
@@ -439,7 +439,7 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title=(
             "planned | waitlist | active | onhold | finished | cancelled | entered-"
@@ -463,7 +463,7 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod

@@ -25,7 +25,7 @@ class MarketingStatus(backbonetype.BackboneType):
     __resource_type__ = "MarketingStatus"
 
     country: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="country",
         title=(
             "The country in which the marketing authorization has been granted "
@@ -40,7 +40,7 @@ class MarketingStatus(backbonetype.BackboneType):
     )
 
     dateRange: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dateRange",
         title=(
             "The date when the Medicinal Product is placed on the market by the "
@@ -59,7 +59,7 @@ class MarketingStatus(backbonetype.BackboneType):
     )
 
     jurisdiction: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="jurisdiction",
         title=(
             "Where a Medicines Regulatory Agency has granted a marketing "
@@ -76,7 +76,7 @@ class MarketingStatus(backbonetype.BackboneType):
     )
 
     restoreDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="restoreDate",
         title=(
             "The date when the Medicinal Product is placed on the market by the "
@@ -94,11 +94,11 @@ class MarketingStatus(backbonetype.BackboneType):
         },
     )
     restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_restoreDate", title="Extension field for ``restoreDate``."
+        default=None, alias="_restoreDate", title="Extension field for ``restoreDate``."
     )
 
     status: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="status",
         title=(
             "This attribute provides information on the status of the marketing of "

@@ -27,7 +27,7 @@ class CompartmentDefinition(domainresource.DomainResource):
     __resource_type__ = "CompartmentDefinition"
 
     code: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Patient | Encounter | RelatedPerson | Practitioner | Device",
         description="Which compartment this definition describes.",
@@ -47,11 +47,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_code", title="Extension field for ``code``."
+        default=None, alias="_code", title="Extension field for ``code``."
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for the publisher",
         description=(
@@ -65,7 +65,7 @@ class CompartmentDefinition(domainresource.DomainResource):
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date last changed",
         description=(
@@ -81,11 +81,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Natural language description of the compartment definition",
         description=(
@@ -97,11 +97,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     experimental: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
         description=(
@@ -115,11 +115,13 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_experimental", title="Extension field for ``experimental``."
+        default=None,
+        alias="_experimental",
+        title="Extension field for ``experimental``.",
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name for this compartment definition (computer friendly)",
         description=(
@@ -134,11 +136,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
         description=(
@@ -151,11 +153,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publisher", title="Extension field for ``publisher``."
+        default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="Why this compartment definition is defined",
         description=(
@@ -167,11 +169,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_purpose", title="Extension field for ``purpose``."
+        default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     resource: typing.List[fhirtypes.CompartmentDefinitionResourceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resource",
         title="How a resource is related to the compartment",
         description="Information about how a resource is related to the compartment.",
@@ -182,7 +184,7 @@ class CompartmentDefinition(domainresource.DomainResource):
     )
 
     search: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="search",
         title="Whether the search syntax is supported",
         description="Whether the search syntax is supported,.",
@@ -193,11 +195,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     search__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_search", title="Extension field for ``search``."
+        default=None, alias="_search", title="Extension field for ``search``."
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -214,11 +216,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     url: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title=(
             "Canonical identifier for this compartment definition, represented as a"
@@ -241,11 +243,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useContext",
         title="The context that the content is intended to support",
         description=(
@@ -263,7 +265,7 @@ class CompartmentDefinition(domainresource.DomainResource):
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Business version of the compartment definition",
         description=(
@@ -281,7 +283,7 @@ class CompartmentDefinition(domainresource.DomainResource):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
@@ -368,7 +370,7 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
     __resource_type__ = "CompartmentDefinitionResource"
 
     code: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Name of resource type",
         description="The name of a resource supported by the server.",
@@ -379,11 +381,11 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_code", title="Extension field for ``code``."
+        default=None, alias="_code", title="Extension field for ``code``."
     )
 
     documentation: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="documentation",
         title="Additional documentation about the resource and compartment",
         description=None,
@@ -392,11 +394,13 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         },
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_documentation", title="Extension field for ``documentation``."
+        default=None,
+        alias="_documentation",
+        title="Extension field for ``documentation``.",
     )
 
     param: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="param",
         title="Search Parameter Name, or chained parameters",
         description=(
@@ -410,7 +414,7 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         },
     )
     param__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_param", title="Extension field for ``param``."
+        default=None, alias="_param", title="Extension field for ``param``."
     )
 
     @classmethod

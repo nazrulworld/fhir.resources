@@ -24,7 +24,7 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
     __resource_type__ = "Resource"
 
     id: fhirtypes.IdType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="id",
         title="Logical id of this artifact",
         description=(
@@ -38,7 +38,7 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
     )
 
     implicitRules: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="implicitRules",
         title="A set of rules under which this content was created",
         description=(
@@ -53,11 +53,13 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
         },
     )
     implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_implicitRules", title="Extension field for ``implicitRules``."
+        default=None,
+        alias="_implicitRules",
+        title="Extension field for ``implicitRules``.",
     )
 
     language: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="language",
         title="Language of the resource content",
         description="The base language in which the resource is written.",
@@ -66,11 +68,11 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
         },
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_language", title="Extension field for ``language``."
+        default=None, alias="_language", title="Extension field for ``language``."
     )
 
     meta: fhirtypes.MetaType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="meta",
         title="Metadata about the resource",
         description=(

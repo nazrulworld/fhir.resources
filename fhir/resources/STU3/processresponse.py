@@ -27,7 +27,7 @@ class ProcessResponse(domainresource.DomainResource):
     __resource_type__ = "ProcessResponse"
 
     communicationRequest: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="communicationRequest",
         title="Request for additional information",
         description=(
@@ -42,7 +42,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     created: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="created",
         title="Creation date",
         description=(
@@ -54,11 +54,11 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_created", title="Extension field for ``created``."
+        default=None, alias="_created", title="Extension field for ``created``."
     )
 
     disposition: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="disposition",
         title="Disposition Message",
         description="A description of the status of the adjudication or processing.",
@@ -67,11 +67,11 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_disposition", title="Extension field for ``disposition``."
+        default=None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     error: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="error",
         title="Error code",
         description="Processing errors.",
@@ -81,7 +81,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     form: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="form",
         title="Printed Form Identifier",
         description="The form to be used for printing the content.",
@@ -91,7 +91,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business Identifier",
         description="The Response business identifier.",
@@ -101,7 +101,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="organization",
         title="Authoring Organization",
         description="The organization who produced this adjudicated response.",
@@ -113,7 +113,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     outcome: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="outcome",
         title="Processing outcome",
         description="Transaction status: error, complete, held.",
@@ -123,7 +123,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     processNote: typing.List[fhirtypes.ProcessResponseProcessNoteType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="processNote",
         title="Processing comments or additional requirements",
         description=(
@@ -136,7 +136,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     request: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="request",
         title="Request reference",
         description="Original request resource reference.",
@@ -148,7 +148,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     requestOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="requestOrganization",
         title="Responsible organization",
         description=(
@@ -163,7 +163,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     requestProvider: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="requestProvider",
         title="Responsible Practitioner",
         description=(
@@ -178,7 +178,7 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
@@ -191,7 +191,7 @@ class ProcessResponse(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
@@ -245,7 +245,7 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
     __resource_type__ = "ProcessResponseProcessNote"
 
     text: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Comment on the processing",
         description="The note text.",
@@ -254,11 +254,11 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="display | print | printoper",
         description="The note purpose: Print/Display.",

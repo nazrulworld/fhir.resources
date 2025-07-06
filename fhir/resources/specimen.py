@@ -26,7 +26,7 @@ class Specimen(domainresource.DomainResource):
     __resource_type__ = "Specimen"
 
     accessionIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="accessionIdentifier",
         title="Identifier assigned by the lab",
         description=(
@@ -41,7 +41,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     collection: fhirtypes.SpecimenCollectionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="collection",
         title="Collection details",
         description="Details concerning the specimen collection.",
@@ -51,7 +51,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     combined: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="combined",
         title="grouped | pooled",
         description="This element signifies if the specimen is part of a group or pooled.",
@@ -64,11 +64,11 @@ class Specimen(domainresource.DomainResource):
         },
     )
     combined__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_combined", title="Extension field for ``combined``."
+        default=None, alias="_combined", title="Extension field for ``combined``."
     )
 
     condition: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="condition",
         title="State of the specimen",
         description="A mode or state of being that describes the nature of the specimen.",
@@ -79,7 +79,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     container: typing.List[fhirtypes.SpecimenContainerType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="container",
         title="Direct container of specimen (tube/slide, etc.)",
         description=(
@@ -92,7 +92,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     feature: typing.List[fhirtypes.SpecimenFeatureType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="feature",
         title="The physical feature of a specimen",
         description=(
@@ -108,7 +108,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="External Identifier",
         description="Id for specimen.",
@@ -119,7 +119,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Comments",
         description=(
@@ -133,7 +133,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     parent: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="parent",
         title="Specimen from which this specimen originated",
         description=(
@@ -148,7 +148,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     processing: typing.List[fhirtypes.SpecimenProcessingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="processing",
         title="Processing and processing step details",
         description="Details concerning processing and processing steps for the specimen.",
@@ -158,7 +158,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     receivedTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="receivedTime",
         title="The time when specimen is received by the testing laboratory",
         description=(
@@ -171,11 +171,13 @@ class Specimen(domainresource.DomainResource):
         },
     )
     receivedTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_receivedTime", title="Extension field for ``receivedTime``."
+        default=None,
+        alias="_receivedTime",
+        title="Extension field for ``receivedTime``.",
     )
 
     request: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="request",
         title="Why the specimen was collected",
         description=(
@@ -190,7 +192,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     role: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="role",
         title="The role the specimen serves",
         description="The role or reason for the specimen in the testing workflow.",
@@ -200,7 +202,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="available | unavailable | unsatisfactory | entered-in-error",
         description="The availability of the specimen.",
@@ -218,11 +220,11 @@ class Specimen(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title=(
             "Where the specimen came from. This may be from patient(s), from a "
@@ -246,7 +248,7 @@ class Specimen(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Kind of material that forms the specimen",
         description="The kind of material that forms the specimen.",
@@ -322,7 +324,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     __resource_type__ = "SpecimenCollection"
 
     bodySite: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="bodySite",
         title="Anatomical collection site",
         description=(
@@ -338,7 +340,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     collectedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="collectedDateTime",
         title="Collection time",
         description=(
@@ -354,13 +356,13 @@ class SpecimenCollection(backboneelement.BackboneElement):
         },
     )
     collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_collectedDateTime",
         title="Extension field for ``collectedDateTime``.",
     )
 
     collectedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="collectedPeriod",
         title="Collection time",
         description=(
@@ -377,7 +379,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     collector: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="collector",
         title="Who collected the specimen",
         description="Person who collected the specimen.",
@@ -395,7 +397,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     device: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="device",
         title="Device used to perform collection",
         description=(
@@ -410,7 +412,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     duration: fhirtypes.DurationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="duration",
         title="How long it took to collect specimen",
         description="The span of time over which the collection of a specimen occurred.",
@@ -421,7 +423,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     fastingStatusCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="fastingStatusCodeableConcept",
         title="Whether or how long patient abstained from food and/or drink",
         description=(
@@ -438,7 +440,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     fastingStatusDuration: fhirtypes.DurationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="fastingStatusDuration",
         title="Whether or how long patient abstained from food and/or drink",
         description=(
@@ -455,7 +457,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="method",
         title="Technique used to perform collection",
         description=(
@@ -468,7 +470,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     procedure: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="procedure",
         title="The procedure that collects the specimen",
         description=(
@@ -483,7 +485,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="quantity",
         title="The quantity of specimen collected",
         description=(
@@ -566,7 +568,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
     __resource_type__ = "SpecimenContainer"
 
     device: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="device",
         title="Device resource for the container",
         description=(
@@ -582,7 +584,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
     )
 
     location: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="location",
         title="Where the container is",
         description="The location of the container holding the specimen.",
@@ -594,7 +596,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
     )
 
     specimenQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="specimenQuantity",
         title="Quantity of specimen within container",
         description=(
@@ -645,7 +647,7 @@ class SpecimenFeature(backboneelement.BackboneElement):
     __resource_type__ = "SpecimenFeature"
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Information about the feature",
         description="Description of the feature of the specimen.",
@@ -655,11 +657,11 @@ class SpecimenFeature(backboneelement.BackboneElement):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="Highlighted feature",
         description="The landmark or feature being highlighted.",
@@ -707,7 +709,7 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     __resource_type__ = "SpecimenProcessing"
 
     additive: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="additive",
         title="Material used in the processing step",
         description=None,
@@ -719,7 +721,7 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     )
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Textual description of procedure",
         description=None,
@@ -728,11 +730,11 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="method",
         title="Indicates the treatment step  applied to the specimen",
         description="A coded value specifying the method used to process the specimen.",
@@ -742,7 +744,7 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     )
 
     timeDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="timeDateTime",
         title="Date and time of specimen processing",
         description=(
@@ -758,11 +760,13 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         },
     )
     timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_timeDateTime", title="Extension field for ``timeDateTime``."
+        default=None,
+        alias="_timeDateTime",
+        title="Extension field for ``timeDateTime``.",
     )
 
     timePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="timePeriod",
         title="Date and time of specimen processing",
         description=(

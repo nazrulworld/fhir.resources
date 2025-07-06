@@ -29,7 +29,7 @@ class Consent(domainresource.DomainResource):
     __resource_type__ = "Consent"
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="category",
         title="Classification of the consent statement - for indexing/retrieval",
         description=(
@@ -43,7 +43,7 @@ class Consent(domainresource.DomainResource):
     )
 
     dateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dateTime",
         title="When this Consent was created or indexed",
         description="When this  Consent was issued / created / indexed.",
@@ -53,11 +53,11 @@ class Consent(domainresource.DomainResource):
         },
     )
     dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_dateTime", title="Extension field for ``dateTime``."
+        default=None, alias="_dateTime", title="Extension field for ``dateTime``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Identifier for this record (external references)",
         description="Unique identifier for this copy of the Consent Statement.",
@@ -68,7 +68,7 @@ class Consent(domainresource.DomainResource):
     )
 
     organization: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="organization",
         title="Custodian of the consent",
         description=(
@@ -84,7 +84,7 @@ class Consent(domainresource.DomainResource):
     )
 
     patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="patient",
         title="Who the consent applies to",
         description="The patient/healthcare consumer to whom this consent applies.",
@@ -97,7 +97,7 @@ class Consent(domainresource.DomainResource):
     )
 
     performer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performer",
         title="Who is agreeing to the policy and rules",
         description=(
@@ -122,7 +122,7 @@ class Consent(domainresource.DomainResource):
     )
 
     policy: typing.List[fhirtypes.ConsentPolicyType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="policy",
         title="Policies covered by this consent",
         description=(
@@ -136,7 +136,7 @@ class Consent(domainresource.DomainResource):
     )
 
     policyRule: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="policyRule",
         title="Regulation that this consents to",
         description="A reference to the specific base computable regulation or policy.",
@@ -147,7 +147,7 @@ class Consent(domainresource.DomainResource):
     )
 
     provision: fhirtypes.ConsentProvisionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="provision",
         title="Constraints to the base Consent.policyRule",
         description=(
@@ -161,7 +161,7 @@ class Consent(domainresource.DomainResource):
     )
 
     scope: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="scope",
         title="Which of the four areas this resource covers (extensible)",
         description=(
@@ -175,7 +175,7 @@ class Consent(domainresource.DomainResource):
     )
 
     sourceAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sourceAttachment",
         title="Source from which this consent is taken",
         description=(
@@ -194,7 +194,7 @@ class Consent(domainresource.DomainResource):
     )
 
     sourceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sourceReference",
         title="Source from which this consent is taken",
         description=(
@@ -220,7 +220,7 @@ class Consent(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | proposed | active | rejected | inactive | entered-in-error",
         description="Indicates the current state of this consent.",
@@ -241,11 +241,11 @@ class Consent(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     verification: typing.List[fhirtypes.ConsentVerificationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="verification",
         title="Consent Verified by patient or family",
         description=(
@@ -356,7 +356,7 @@ class ConsentPolicy(backboneelement.BackboneElement):
     __resource_type__ = "ConsentPolicy"
 
     authority: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="authority",
         title="Enforcement source for policy",
         description=(
@@ -369,11 +369,11 @@ class ConsentPolicy(backboneelement.BackboneElement):
         },
     )
     authority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_authority", title="Extension field for ``authority``."
+        default=None, alias="_authority", title="Extension field for ``authority``."
     )
 
     uri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="uri",
         title="Specific policy covered by this consent",
         description=(
@@ -386,7 +386,7 @@ class ConsentPolicy(backboneelement.BackboneElement):
         },
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_uri", title="Extension field for ``uri``."
+        default=None, alias="_uri", title="Extension field for ``uri``."
     )
 
     @classmethod
@@ -418,7 +418,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     __resource_type__ = "ConsentProvision"
 
     action: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="action",
         title="Actions controlled by this rule",
         description="Actions controlled by this Rule.",
@@ -429,7 +429,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     actor: typing.List[fhirtypes.ConsentProvisionActorType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="actor",
         title="Who|what controlled by this rule (or group, by role)",
         description=(
@@ -442,7 +442,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     class_fhir: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="class",
         title="e.g. Resource Type, Profile, CDA, etc.",
         description=(
@@ -457,7 +457,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="e.g. LOINC or SNOMED CT code, etc. in the content",
         description="If this code is found in an instance, then the rule applies.",
@@ -468,7 +468,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     data: typing.List[fhirtypes.ConsentProvisionDataType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="data",
         title="Data controlled by this rule",
         description=(
@@ -482,7 +482,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     dataPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dataPeriod",
         title="Timeframe for data controlled by this rule",
         description=(
@@ -496,7 +496,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Timeframe for this rule",
         description="The timeframe in this rule is valid.",
@@ -507,7 +507,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     provision: typing.List[fhirtypes.ConsentProvisionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="provision",
         title="Nested Exception Rules",
         description="Rules which provide exceptions to the base rule or subrules.",
@@ -517,7 +517,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     purpose: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="Context of activities covered by this rule",
         description=(
@@ -531,7 +531,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     securityLabel: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="securityLabel",
         title="Security Labels that define affected resources",
         description=(
@@ -545,7 +545,7 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="deny | permit",
         description=(
@@ -561,7 +561,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
@@ -619,7 +619,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
     __resource_type__ = "ConsentProvisionActor"
 
     reference: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="reference",
         title="Resource for the actor (or group, by role)",
         description=(
@@ -644,7 +644,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
     )
 
     role: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="role",
         title="How the actor is involved",
         description=(
@@ -684,7 +684,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
     __resource_type__ = "ConsentProvisionData"
 
     meaning: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="meaning",
         title="instance | related | dependents | authoredby",
         description=(
@@ -701,11 +701,11 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         },
     )
     meaning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_meaning", title="Extension field for ``meaning``."
+        default=None, alias="_meaning", title="Extension field for ``meaning``."
     )
 
     reference: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="reference",
         title="The actual data reference",
         description=(
@@ -760,7 +760,7 @@ class ConsentVerification(backboneelement.BackboneElement):
     __resource_type__ = "ConsentVerification"
 
     verificationDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="verificationDate",
         title="When consent verified",
         description="Date verification was collected.",
@@ -769,13 +769,13 @@ class ConsentVerification(backboneelement.BackboneElement):
         },
     )
     verificationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_verificationDate",
         title="Extension field for ``verificationDate``.",
     )
 
     verified: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="verified",
         title="Has been verified",
         description="Has the instruction been verified.",
@@ -786,11 +786,11 @@ class ConsentVerification(backboneelement.BackboneElement):
         },
     )
     verified__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_verified", title="Extension field for ``verified``."
+        default=None, alias="_verified", title="Extension field for ``verified``."
     )
 
     verifiedWith: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="verifiedWith",
         title="Person who verified",
         description=(

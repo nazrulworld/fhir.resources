@@ -25,7 +25,7 @@ class SubstancePolymer(domainresource.DomainResource):
     __resource_type__ = "SubstancePolymer"
 
     class_fhir: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="class",
         title="Overall type of the polymer",
         description=None,
@@ -36,7 +36,7 @@ class SubstancePolymer(domainresource.DomainResource):
     )
 
     copolymerConnectivity: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copolymerConnectivity",
         title="Descrtibes the copolymer sequence type (polymer connectivity)",
         description=None,
@@ -47,7 +47,7 @@ class SubstancePolymer(domainresource.DomainResource):
     )
 
     geometry: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="geometry",
         title=(
             "Polymer geometry, e.g. linear, branched, cross-linked, network or "
@@ -61,7 +61,7 @@ class SubstancePolymer(domainresource.DomainResource):
     )
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title=(
             "A business idenfier for this polymer, but typically this is handled by"
@@ -75,7 +75,7 @@ class SubstancePolymer(domainresource.DomainResource):
     )
 
     modification: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="modification",
         title=(
             "Todo - this is intended to connect to a repeating full modification "
@@ -89,11 +89,13 @@ class SubstancePolymer(domainresource.DomainResource):
         },
     )
     modification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_modification", title="Extension field for ``modification``."
+        default=None,
+        alias="_modification",
+        title="Extension field for ``modification``.",
     )
 
     monomerSet: typing.List[fhirtypes.SubstancePolymerMonomerSetType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="monomerSet",
         title="Todo",
         description=None,
@@ -104,7 +106,7 @@ class SubstancePolymer(domainresource.DomainResource):
     )
 
     repeat: typing.List[fhirtypes.SubstancePolymerRepeatType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="repeat",
         title="Specifies and quantifies the repeated units and their configuration",
         description=None,
@@ -169,7 +171,7 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
     __resource_type__ = "SubstancePolymerMonomerSet"
 
     ratioType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="ratioType",
         title=(
             "Captures the type of ratio to the entire polymer, e.g. Monomer/Polymer"
@@ -183,7 +185,7 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
     )
 
     startingMaterial: typing.List[fhirtypes.SubstancePolymerMonomerSetStartingMaterialType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="startingMaterial",
         title=(
             "The starting materials - monomer(s) used in the synthesis of the "
@@ -223,7 +225,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
     __resource_type__ = "SubstancePolymerMonomerSetStartingMaterial"
 
     amount: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="amount",
         title="A percentage",
         description=None,
@@ -234,7 +236,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
     )
 
     category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="Substance high level category, e.g. chemical substance",
         description=None,
@@ -245,7 +247,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
     )
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="The type of substance for this starting material",
         description=None,
@@ -256,7 +258,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
     )
 
     isDefining: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="isDefining",
         title=(
             "Used to specify whether the attribute described is a defining element "
@@ -269,7 +271,7 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
         },
     )
     isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_isDefining", title="Extension field for ``isDefining``."
+        default=None, alias="_isDefining", title="Extension field for ``isDefining``."
     )
 
     @classmethod
@@ -307,7 +309,7 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
     __resource_type__ = "SubstancePolymerRepeat"
 
     averageMolecularFormula: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="averageMolecularFormula",
         title="A representation of an (average) molecular formula from a polymer",
         description=None,
@@ -317,13 +319,13 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
         },
     )
     averageMolecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_averageMolecularFormula",
         title="Extension field for ``averageMolecularFormula``.",
     )
 
     repeatUnit: typing.List[fhirtypes.SubstancePolymerRepeatRepeatUnitType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="repeatUnit",
         title="An SRU - Structural Repeat Unit",
         description=None,
@@ -334,7 +336,7 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
     )
 
     repeatUnitAmountType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="repeatUnitAmountType",
         title=(
             "How the quantitative amount of Structural Repeat Units is captured "
@@ -386,7 +388,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     __resource_type__ = "SubstancePolymerRepeatRepeatUnit"
 
     amount: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="amount",
         title="Number of repeats of this unit",
         description=None,
@@ -396,11 +398,11 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         },
     )
     amount__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_amount", title="Extension field for ``amount``."
+        default=None, alias="_amount", title="Extension field for ``amount``."
     )
 
     degreeOfPolymerisation: typing.List[fhirtypes.SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="degreeOfPolymerisation",
         title=(
             "Applies to homopolymer and block co-polymers where the degree of "
@@ -414,7 +416,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     )
 
     orientation: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="orientation",
         title=(
             "The orientation of the polymerisation, e.g. head-tail, head-head, "
@@ -428,7 +430,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     )
 
     structuralRepresentation: typing.List[fhirtypes.SubstancePolymerRepeatRepeatUnitStructuralRepresentationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="structuralRepresentation",
         title="A graphical structure for this SRU",
         description=None,
@@ -439,7 +441,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     )
 
     unit: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="unit",
         title="Structural repeat units are essential elements for defining polymers",
         description=None,
@@ -449,7 +451,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         },
     )
     unit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_unit", title="Extension field for ``unit``."
+        default=None, alias="_unit", title="Extension field for ``unit``."
     )
 
     @classmethod
@@ -498,7 +500,7 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
     __resource_type__ = "SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation"
 
     average: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="average",
         title="An average amount of polymerisation",
         description=None,
@@ -508,11 +510,11 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
         },
     )
     average__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_average", title="Extension field for ``average``."
+        default=None, alias="_average", title="Extension field for ``average``."
     )
 
     high: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="high",
         title="A high expected limit of the amount",
         description=None,
@@ -522,11 +524,11 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
         },
     )
     high__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_high", title="Extension field for ``high``."
+        default=None, alias="_high", title="Extension field for ``high``."
     )
 
     low: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="low",
         title="A low expected limit of the amount",
         description=None,
@@ -536,11 +538,11 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
         },
     )
     low__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_low", title="Extension field for ``low``."
+        default=None, alias="_low", title="Extension field for ``low``."
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title=(
             "The type of the degree of polymerisation shall be described, e.g. "
@@ -590,7 +592,7 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     __resource_type__ = "SubstancePolymerRepeatRepeatUnitStructuralRepresentation"
 
     attachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="attachment",
         title="An attached file with the structural representation",
         description=None,
@@ -601,7 +603,7 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     )
 
     format: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="format",
         title=(
             "The format of the representation e.g. InChI, SMILES, MOLFILE, CDX, "
@@ -615,7 +617,7 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     )
 
     representation: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="representation",
         title=(
             "The structural representation as text string in a standard format e.g."
@@ -628,11 +630,13 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
         },
     )
     representation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_representation", title="Extension field for ``representation``."
+        default=None,
+        alias="_representation",
+        title="Extension field for ``representation``.",
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="The type of structure (e.g. Full, Partial, Representative)",
         description=None,

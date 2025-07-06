@@ -39,7 +39,7 @@ class AdverseEvent(domainresource.DomainResource):
     __resource_type__ = "AdverseEvent"
 
     actuality: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="actuality",
         title="actual | potential",
         description=(
@@ -57,11 +57,11 @@ class AdverseEvent(domainresource.DomainResource):
         },
     )
     actuality__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_actuality", title="Extension field for ``actuality``."
+        default=None, alias="_actuality", title="Extension field for ``actuality``."
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title=(
             "wrong-patient | procedure-mishap | medication-mishap | device | "
@@ -76,7 +76,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Event or incident that occurred or was averted",
         description=(
@@ -90,7 +90,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     contributingFactor: typing.List[fhirtypes.AdverseEventContributingFactorType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contributingFactor",
         title=(
             "Contributing factors suspected to have increased the probability or "
@@ -107,7 +107,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     detected: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="detected",
         title="When the event was detected",
         description=(
@@ -120,11 +120,11 @@ class AdverseEvent(domainresource.DomainResource):
         },
     )
     detected__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_detected", title="Extension field for ``detected``."
+        default=None, alias="_detected", title="Extension field for ``detected``."
     )
 
     encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="encounter",
         title="The Encounter associated with the start of the AdverseEvent",
         description=None,
@@ -137,7 +137,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     expectedInResearchStudy: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expectedInResearchStudy",
         title="Considered likely or probable or anticipated in the research study",
         description=(
@@ -150,13 +150,13 @@ class AdverseEvent(domainresource.DomainResource):
         },
     )
     expectedInResearchStudy__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_expectedInResearchStudy",
         title="Extension field for ``expectedInResearchStudy``.",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier for the event",
         description=(
@@ -171,7 +171,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     location: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="location",
         title="Location where adverse event occurred",
         description="The information about where the adverse event occurred.",
@@ -184,7 +184,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     mitigatingAction: typing.List[fhirtypes.AdverseEventMitigatingActionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="mitigatingAction",
         title=(
             "Ameliorating actions taken after the adverse event occured in order to"
@@ -201,7 +201,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Comment on adverse event",
         description=(
@@ -215,7 +215,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="occurrenceDateTime",
         title="When the event occurred",
         description="The date (and perhaps time) when the adverse event occurred.",
@@ -228,13 +228,13 @@ class AdverseEvent(domainresource.DomainResource):
         },
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="occurrencePeriod",
         title="When the event occurred",
         description="The date (and perhaps time) when the adverse event occurred.",
@@ -248,7 +248,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="occurrenceTiming",
         title="When the event occurred",
         description="The date (and perhaps time) when the adverse event occurred.",
@@ -262,7 +262,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     outcome: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="outcome",
         title="Type of outcome from the adverse event",
         description=(
@@ -276,7 +276,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     participant: typing.List[fhirtypes.AdverseEventParticipantType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="participant",
         title=(
             "Who was involved in the adverse event or the potential adverse event "
@@ -293,7 +293,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     preventiveAction: typing.List[fhirtypes.AdverseEventPreventiveActionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="preventiveAction",
         title="Preventive actions that contributed to avoiding the adverse event",
         description=None,
@@ -304,7 +304,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     recordedDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="recordedDate",
         title="When the event was recorded",
         description=(
@@ -316,11 +316,13 @@ class AdverseEvent(domainresource.DomainResource):
         },
     )
     recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_recordedDate", title="Extension field for ``recordedDate``."
+        default=None,
+        alias="_recordedDate",
+        title="Extension field for ``recordedDate``.",
     )
 
     recorder: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="recorder",
         title="Who recorded the adverse event",
         description=(
@@ -342,7 +344,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     resultingEffect: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resultingEffect",
         title="Effect on the subject due to this event",
         description=(
@@ -360,7 +362,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     seriousness: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="seriousness",
         title="Seriousness or gravity of the event",
         description=(
@@ -374,7 +376,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="in-progress | completed | entered-in-error | unknown",
         description="The current state of the adverse event or potential adverse event.",
@@ -388,11 +390,11 @@ class AdverseEvent(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     study: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="study",
         title="Research study that the subject is enrolled in",
         description="The research study that the subject is enrolled in.",
@@ -405,7 +407,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     subject: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="subject",
         title="Subject impacted by event",
         description="This subject or group impacted by the event.",
@@ -424,7 +426,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     supportingInfo: typing.List[fhirtypes.AdverseEventSupportingInfoType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supportingInfo",
         title="Supporting information relevant to the event",
         description=None,
@@ -435,7 +437,7 @@ class AdverseEvent(domainresource.DomainResource):
     )
 
     suspectEntity: typing.List[fhirtypes.AdverseEventSuspectEntityType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="suspectEntity",
         title="The suspected agent causing the adverse event",
         description=(
@@ -572,7 +574,7 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
     __resource_type__ = "AdverseEventContributingFactor"
 
     itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemCodeableConcept",
         title=(
             "Item suspected to have increased the probability or severity of the "
@@ -592,7 +594,7 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
     )
 
     itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemReference",
         title=(
             "Item suspected to have increased the probability or severity of the "
@@ -677,7 +679,7 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
     __resource_type__ = "AdverseEventMitigatingAction"
 
     itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemCodeableConcept",
         title=(
             "Ameliorating action taken after the adverse event occured in order to "
@@ -697,7 +699,7 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
     )
 
     itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemReference",
         title=(
             "Ameliorating action taken after the adverse event occured in order to "
@@ -775,7 +777,7 @@ class AdverseEventParticipant(backboneelement.BackboneElement):
     __resource_type__ = "AdverseEventParticipant"
 
     actor: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="actor",
         title="Who was involved in the adverse event or the potential adverse event",
         description="Indicates who or what participated in the event.",
@@ -797,7 +799,7 @@ class AdverseEventParticipant(backboneelement.BackboneElement):
     )
 
     function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="function",
         title="Type of involvement",
         description=(
@@ -837,7 +839,7 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
     __resource_type__ = "AdverseEventPreventiveAction"
 
     itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemCodeableConcept",
         title="Action that contributed to avoiding the adverse event",
         description="The action that contributed to avoiding the adverse event.",
@@ -851,7 +853,7 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
     )
 
     itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemReference",
         title="Action that contributed to avoiding the adverse event",
         description="The action that contributed to avoiding the adverse event.",
@@ -921,7 +923,7 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
     __resource_type__ = "AdverseEventSupportingInfo"
 
     itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemCodeableConcept",
         title="Subject medical history or document relevant to this adverse event",
         description=(
@@ -946,7 +948,7 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
     )
 
     itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemReference",
         title="Subject medical history or document relevant to this adverse event",
         description=(
@@ -1033,7 +1035,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     __resource_type__ = "AdverseEventSuspectEntity"
 
     causality: fhirtypes.AdverseEventSuspectEntityCausalityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="causality",
         title="Information on the possible cause of the event",
         description=None,
@@ -1044,7 +1046,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     )
 
     instanceCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="instanceCodeableConcept",
         title="Refers to the specific entity that caused the adverse event",
         description=(
@@ -1062,7 +1064,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     )
 
     instanceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="instanceReference",
         title="Refers to the specific entity that caused the adverse event",
         description=(
@@ -1148,7 +1150,7 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
     __resource_type__ = "AdverseEventSuspectEntityCausality"
 
     assessmentMethod: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="assessmentMethod",
         title=(
             "Method of evaluating the relatedness of the suspected entity to the "
@@ -1165,7 +1167,7 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
     )
 
     author: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="author",
         title="Author of the information on the possible cause of the event",
         description="The author of the information on the possible cause of the event.",
@@ -1184,7 +1186,7 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
     )
 
     entityRelatedness: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="entityRelatedness",
         title=(
             "Result of the assessment regarding the relatedness of the suspected "

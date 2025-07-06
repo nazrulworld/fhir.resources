@@ -27,7 +27,7 @@ class Binary(resource.Resource):
     __resource_type__ = "Binary"
 
     content: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="content",
         title="The actual content",
         description="The actual content, base64 encoded.",
@@ -37,11 +37,11 @@ class Binary(resource.Resource):
         },
     )
     content__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_content", title="Extension field for ``content``."
+        default=None, alias="_content", title="Extension field for ``content``."
     )
 
     contentType: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentType",
         title="MimeType of the binary content",
         description=(
@@ -55,11 +55,11 @@ class Binary(resource.Resource):
         },
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_contentType", title="Extension field for ``contentType``."
+        default=None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
     securityContext: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="securityContext",
         title="Access Control Management",
         description=(

@@ -30,7 +30,7 @@ class Timing(backboneelement.BackboneElement):
     __resource_type__ = "Timing"
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="BID | TID | QID | AM | PM | QD | QOD | +",
         description=(
@@ -49,7 +49,7 @@ class Timing(backboneelement.BackboneElement):
     )
 
     event: typing.List[fhirtypes.DateTimeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="event",
         title="When the event occurs",
         description="Identifies specific times when the event occurs.",
@@ -59,11 +59,11 @@ class Timing(backboneelement.BackboneElement):
         },
     )
     event__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_event", title="Extension field for ``event``."
+        default=None, alias="_event", title="Extension field for ``event``."
     )
 
     repeat: fhirtypes.TimingRepeatType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="repeat",
         title="When the event is to occur",
         description="A set of rules that describe when the event is scheduled.",
@@ -101,7 +101,7 @@ class TimingRepeat(element.Element):
     __resource_type__ = "TimingRepeat"
 
     boundsDuration: fhirtypes.DurationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="boundsDuration",
         title="Length/Range of lengths, or (Start and/or end) limits",
         description=(
@@ -119,7 +119,7 @@ class TimingRepeat(element.Element):
     )
 
     boundsPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="boundsPeriod",
         title="Length/Range of lengths, or (Start and/or end) limits",
         description=(
@@ -137,7 +137,7 @@ class TimingRepeat(element.Element):
     )
 
     boundsRange: fhirtypes.RangeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="boundsRange",
         title="Length/Range of lengths, or (Start and/or end) limits",
         description=(
@@ -155,7 +155,7 @@ class TimingRepeat(element.Element):
     )
 
     count: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="count",
         title="Number of times to repeat",
         description=(
@@ -170,11 +170,11 @@ class TimingRepeat(element.Element):
         },
     )
     count__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_count", title="Extension field for ``count``."
+        default=None, alias="_count", title="Extension field for ``count``."
     )
 
     countMax: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="countMax",
         title="Maximum number of times to repeat",
         description=(
@@ -187,11 +187,11 @@ class TimingRepeat(element.Element):
         },
     )
     countMax__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_countMax", title="Extension field for ``countMax``."
+        default=None, alias="_countMax", title="Extension field for ``countMax``."
     )
 
     dayOfWeek: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dayOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
         description=(
@@ -207,11 +207,11 @@ class TimingRepeat(element.Element):
         },
     )
     dayOfWeek__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_dayOfWeek", title="Extension field for ``dayOfWeek``."
+        default=None, alias="_dayOfWeek", title="Extension field for ``dayOfWeek``."
     )
 
     duration: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="duration",
         title="How long when it happens",
         description=(
@@ -225,11 +225,11 @@ class TimingRepeat(element.Element):
         },
     )
     duration__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_duration", title="Extension field for ``duration``."
+        default=None, alias="_duration", title="Extension field for ``duration``."
     )
 
     durationMax: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="durationMax",
         title="How long when it happens (Max)",
         description=(
@@ -242,11 +242,11 @@ class TimingRepeat(element.Element):
         },
     )
     durationMax__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_durationMax", title="Extension field for ``durationMax``."
+        default=None, alias="_durationMax", title="Extension field for ``durationMax``."
     )
 
     durationUnit: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="durationUnit",
         title="s | min | h | d | wk | mo | a - unit of time (UCUM)",
         description="The units of time for the duration, in UCUM units.",
@@ -259,11 +259,13 @@ class TimingRepeat(element.Element):
         },
     )
     durationUnit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_durationUnit", title="Extension field for ``durationUnit``."
+        default=None,
+        alias="_durationUnit",
+        title="Extension field for ``durationUnit``.",
     )
 
     frequency: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="frequency",
         title="Event occurs frequency times per period",
         description=(
@@ -277,11 +279,11 @@ class TimingRepeat(element.Element):
         },
     )
     frequency__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_frequency", title="Extension field for ``frequency``."
+        default=None, alias="_frequency", title="Extension field for ``frequency``."
     )
 
     frequencyMax: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="frequencyMax",
         title="Event occurs up to frequencyMax times per period",
         description=(
@@ -295,11 +297,13 @@ class TimingRepeat(element.Element):
         },
     )
     frequencyMax__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_frequencyMax", title="Extension field for ``frequencyMax``."
+        default=None,
+        alias="_frequencyMax",
+        title="Extension field for ``frequencyMax``.",
     )
 
     offset: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="offset",
         title="Minutes from event (before or after)",
         description=(
@@ -313,11 +317,11 @@ class TimingRepeat(element.Element):
         },
     )
     offset__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_offset", title="Extension field for ``offset``."
+        default=None, alias="_offset", title="Extension field for ``offset``."
     )
 
     period: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Event occurs frequency times per period",
         description=(
@@ -332,11 +336,11 @@ class TimingRepeat(element.Element):
         },
     )
     period__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_period", title="Extension field for ``period``."
+        default=None, alias="_period", title="Extension field for ``period``."
     )
 
     periodMax: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="periodMax",
         title="Upper limit of period (3-4 hours)",
         description=(
@@ -350,11 +354,11 @@ class TimingRepeat(element.Element):
         },
     )
     periodMax__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_periodMax", title="Extension field for ``periodMax``."
+        default=None, alias="_periodMax", title="Extension field for ``periodMax``."
     )
 
     periodUnit: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="periodUnit",
         title="s | min | h | d | wk | mo | a - unit of time (UCUM)",
         description="The units of time for the period in UCUM units.",
@@ -367,11 +371,11 @@ class TimingRepeat(element.Element):
         },
     )
     periodUnit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_periodUnit", title="Extension field for ``periodUnit``."
+        default=None, alias="_periodUnit", title="Extension field for ``periodUnit``."
     )
 
     timeOfDay: typing.List[fhirtypes.TimeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="timeOfDay",
         title="Time of day for action",
         description="Specified time of day for action to take place.",
@@ -381,11 +385,11 @@ class TimingRepeat(element.Element):
         },
     )
     timeOfDay__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_timeOfDay", title="Extension field for ``timeOfDay``."
+        default=None, alias="_timeOfDay", title="Extension field for ``timeOfDay``."
     )
 
     when: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="when",
         title="Code for time period of occurrence",
         description=(
@@ -398,7 +402,7 @@ class TimingRepeat(element.Element):
         },
     )
     when__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_when", title="Extension field for ``when``."
+        default=None, alias="_when", title="Extension field for ``when``."
     )
 
     @classmethod

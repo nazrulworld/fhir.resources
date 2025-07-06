@@ -27,7 +27,7 @@ class Flag(domainresource.DomainResource):
     __resource_type__ = "Flag"
 
     author: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="author",
         title="Flag creator",
         description="The person, organization or device that created the flag.",
@@ -45,7 +45,7 @@ class Flag(domainresource.DomainResource):
     )
 
     category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="Clinical, administrative, etc.",
         description=(
@@ -60,7 +60,7 @@ class Flag(domainresource.DomainResource):
     )
 
     code: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="Coded or textual message to display to user",
         description=(
@@ -74,7 +74,7 @@ class Flag(domainresource.DomainResource):
     )
 
     encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="encounter",
         title="Alert relevant during encounter",
         description="This alert is only relevant during the encounter.",
@@ -87,7 +87,7 @@ class Flag(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier",
         description=(
@@ -101,7 +101,7 @@ class Flag(domainresource.DomainResource):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Time period when flag is active",
         description=(
@@ -116,7 +116,7 @@ class Flag(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | inactive | entered-in-error",
         description="Supports basic workflow.",
@@ -130,11 +130,11 @@ class Flag(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="subject",
         title="Who/What is flag about?",
         description=(

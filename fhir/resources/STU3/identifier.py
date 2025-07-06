@@ -24,7 +24,7 @@ class Identifier(element.Element):
     __resource_type__ = "Identifier"
 
     assigner: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="assigner",
         title="Organization that issued id (may be just text)",
         description="Organization that issued/manages the identifier.",
@@ -37,7 +37,7 @@ class Identifier(element.Element):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Time period when id is/was valid for use",
         description="Time period during which identifier is/was valid for use.",
@@ -48,7 +48,7 @@ class Identifier(element.Element):
     )
 
     system: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="system",
         title="The namespace for the identifier value",
         description=(
@@ -61,11 +61,11 @@ class Identifier(element.Element):
         },
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_system", title="Extension field for ``system``."
+        default=None, alias="_system", title="Extension field for ``system``."
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Description of identifier",
         description=(
@@ -79,7 +79,7 @@ class Identifier(element.Element):
     )
 
     use: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="use",
         title="usual | official | temp | secondary (If known)",
         description="The purpose of this identifier.",
@@ -92,11 +92,11 @@ class Identifier(element.Element):
         },
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_use", title="Extension field for ``use``."
+        default=None, alias="_use", title="Extension field for ``use``."
     )
 
     value: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="value",
         title="The value that is unique",
         description=(
@@ -109,7 +109,7 @@ class Identifier(element.Element):
         },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_value", title="Extension field for ``value``."
+        default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod

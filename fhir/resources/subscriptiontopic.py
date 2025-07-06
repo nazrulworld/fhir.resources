@@ -28,7 +28,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     __resource_type__ = "SubscriptionTopic"
 
     approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="approvalDate",
         title="When SubscriptionTopic is/was approved by publisher",
         description=(
@@ -41,11 +41,13 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
+        default=None,
+        alias="_approvalDate",
+        title="Extension field for ``approvalDate``.",
     )
 
     canFilterBy: typing.List[fhirtypes.SubscriptionTopicCanFilterByType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="canFilterBy",
         title=(
             "Properties by which a Subscription can filter notifications from the "
@@ -64,7 +66,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for the publisher",
         description=(
@@ -78,7 +80,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
         description=(
@@ -91,11 +93,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyright", title="Extension field for ``copyright``."
+        default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
         description=(
@@ -109,11 +111,13 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
+        default=None,
+        alias="_copyrightLabel",
+        title="Extension field for ``copyrightLabel``.",
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date status first applied",
         description=(
@@ -129,11 +133,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     derivedFrom: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="derivedFrom",
         title="Based on FHIR protocol or definition",
         description=(
@@ -148,11 +152,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     derivedFrom__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
+        default=None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Natural language description of the SubscriptionTopic",
         description=(
@@ -164,11 +168,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectivePeriod",
         title="The effective date range for the SubscriptionTopic",
         description=(
@@ -182,7 +186,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     eventTrigger: typing.List[fhirtypes.SubscriptionTopicEventTriggerType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="eventTrigger",
         title="Event definitions the SubscriptionTopic",
         description="Event definition which can be used to trigger the SubscriptionTopic.",
@@ -193,7 +197,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     experimental: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="experimental",
         title="If for testing purposes, not real usage",
         description=(
@@ -207,11 +211,13 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_experimental", title="Extension field for ``experimental``."
+        default=None,
+        alias="_experimental",
+        title="Extension field for ``experimental``.",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier for subscription topic",
         description=(
@@ -226,7 +232,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="jurisdiction",
         title="Intended jurisdiction of the SubscriptionTopic (if applicable)",
         description="A jurisdiction in which the Topic is intended to be used.",
@@ -237,7 +243,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lastReviewDate",
         title="Date the Subscription Topic was last reviewed by the publisher",
         description=(
@@ -250,11 +256,13 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
+        default=None,
+        alias="_lastReviewDate",
+        title="Extension field for ``lastReviewDate``.",
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name for this subscription topic (computer friendly)",
         description=(
@@ -268,11 +276,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     notificationShape: typing.List[fhirtypes.SubscriptionTopicNotificationShapeType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="notificationShape",
         title=(
             "Properties for describing the shape of notifications generated by this"
@@ -289,7 +297,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     publisher: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title=(
             "The name of the individual or organization that published the "
@@ -305,11 +313,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publisher", title="Extension field for ``publisher``."
+        default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="purpose",
         title="Why this SubscriptionTopic is defined",
         description=(
@@ -321,11 +329,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_purpose", title="Extension field for ``purpose``."
+        default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     resourceTrigger: typing.List[fhirtypes.SubscriptionTopicResourceTriggerType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resourceTrigger",
         title="Definition of a resource-based trigger for the subscription topic",
         description=(
@@ -343,7 +351,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | active | retired | unknown",
         description="The current state of the SubscriptionTopic.",
@@ -357,11 +365,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="title",
         title="Name for this subscription topic (human friendly)",
         description=(
@@ -374,11 +382,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_title", title="Extension field for ``title``."
+        default=None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title=(
             "Canonical identifier for this subscription topic, represented as an "
@@ -400,11 +408,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useContext",
         title="Content intends to support these contexts",
         description=(
@@ -419,7 +427,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Business version of the subscription topic",
         description=(
@@ -436,11 +444,11 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
         description=(
@@ -457,7 +465,7 @@ class SubscriptionTopic(domainresource.DomainResource):
     )
 
     versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
         description=(
@@ -473,7 +481,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         },
     )
     versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
@@ -598,7 +606,7 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
     __resource_type__ = "SubscriptionTopicCanFilterBy"
 
     comparator: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="comparator",
         title="eq | ne | gt | lt | ge | le | sa | eb | ap",
         description="Comparators allowed for the filter parameter.",
@@ -610,11 +618,11 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         },
     )
     comparator__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_comparator", title="Extension field for ``comparator``."
+        default=None, alias="_comparator", title="Extension field for ``comparator``."
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Description of this filter parameter",
         description="Description of how this filtering parameter is intended to be used.",
@@ -624,11 +632,11 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     filterDefinition: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="filterDefinition",
         title="Canonical URL for a filterParameter definition",
         description=(
@@ -643,13 +651,13 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         },
     )
     filterDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_filterDefinition",
         title="Extension field for ``filterDefinition``.",
     )
 
     filterParameter: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="filterParameter",
         title=(
             "Human-readable and computation-friendly name for a filter parameter "
@@ -668,11 +676,13 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         },
     )
     filterParameter__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_filterParameter", title="Extension field for ``filterParameter``."
+        default=None,
+        alias="_filterParameter",
+        title="Extension field for ``filterParameter``.",
     )
 
     modifier: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="modifier",
         title=(
             "missing | exact | contains | not | text | in | not-in | below | above "
@@ -703,11 +713,11 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         },
     )
     modifier__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_modifier", title="Extension field for ``modifier``."
+        default=None, alias="_modifier", title="Extension field for ``modifier``."
     )
 
     resource: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resource",
         title="URL of the triggering Resource that this filter applies to",
         description=(
@@ -723,7 +733,7 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
         },
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_resource", title="Extension field for ``resource``."
+        default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
     @classmethod
@@ -781,7 +791,7 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
     __resource_type__ = "SubscriptionTopicEventTrigger"
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Text representation of the event trigger",
         description=(
@@ -796,11 +806,11 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     event: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="event",
         title="Event which can trigger a notification from the SubscriptionTopic",
         description=(
@@ -814,7 +824,7 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
     )
 
     resource: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resource",
         title=(
             "Data Type or Resource (reference to definition) for this trigger "
@@ -836,7 +846,7 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
         },
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_resource", title="Extension field for ``resource``."
+        default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
     @classmethod
@@ -887,7 +897,7 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
     __resource_type__ = "SubscriptionTopicNotificationShape"
 
     include: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="include",
         title="Include directives, rooted in the resource for this shape",
         description=(
@@ -903,11 +913,11 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
         },
     )
     include__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_include", title="Extension field for ``include``."
+        default=None, alias="_include", title="Extension field for ``include``."
     )
 
     resource: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resource",
         title=(
             "URL of the Resource that is the focus (main) resource in a "
@@ -928,11 +938,11 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
         },
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_resource", title="Extension field for ``resource``."
+        default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
     revInclude: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="revInclude",
         title="Reverse include directives, rooted in the resource for this shape",
         description=(
@@ -948,7 +958,7 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
         },
     )
     revInclude__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_revInclude", title="Extension field for ``revInclude``."
+        default=None, alias="_revInclude", title="Extension field for ``revInclude``."
     )
 
     @classmethod
@@ -1001,7 +1011,7 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
     __resource_type__ = "SubscriptionTopicResourceTrigger"
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Text representation of the resource trigger",
         description=(
@@ -1015,11 +1025,11 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     fhirPathCriteria: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="fhirPathCriteria",
         title="FHIRPath based trigger rule",
         description=(
@@ -1032,13 +1042,13 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         },
     )
     fhirPathCriteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_fhirPathCriteria",
         title="Extension field for ``fhirPathCriteria``.",
     )
 
     queryCriteria: fhirtypes.SubscriptionTopicResourceTriggerQueryCriteriaType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="queryCriteria",
         title="Query based trigger rule",
         description=(
@@ -1052,7 +1062,7 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
     )
 
     resource: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resource",
         title=(
             "Data Type or Resource (reference to definition) for this trigger "
@@ -1074,11 +1084,11 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         },
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_resource", title="Extension field for ``resource``."
+        default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
     supportedInteraction: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supportedInteraction",
         title="create | update | delete",
         description=(
@@ -1096,7 +1106,7 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         },
     )
     supportedInteraction__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_supportedInteraction",
         title="Extension field for ``supportedInteraction``.",
     )
@@ -1157,7 +1167,7 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
     __resource_type__ = "SubscriptionTopicResourceTriggerQueryCriteria"
 
     current: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="current",
         title="Rule applied to current resource state",
         description=(
@@ -1170,11 +1180,11 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         },
     )
     current__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_current", title="Extension field for ``current``."
+        default=None, alias="_current", title="Extension field for ``current``."
     )
 
     previous: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="previous",
         title="Rule applied to previous resource state",
         description=(
@@ -1187,11 +1197,11 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         },
     )
     previous__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_previous", title="Extension field for ``previous``."
+        default=None, alias="_previous", title="Extension field for ``previous``."
     )
 
     requireBoth: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="requireBoth",
         title="Both must be true flag",
         description=(
@@ -1207,11 +1217,11 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         },
     )
     requireBoth__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_requireBoth", title="Extension field for ``requireBoth``."
+        default=None, alias="_requireBoth", title="Extension field for ``requireBoth``."
     )
 
     resultForCreate: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resultForCreate",
         title="test-passes | test-fails",
         description=(
@@ -1229,11 +1239,13 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         },
     )
     resultForCreate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_resultForCreate", title="Extension field for ``resultForCreate``."
+        default=None,
+        alias="_resultForCreate",
+        title="Extension field for ``resultForCreate``.",
     )
 
     resultForDelete: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resultForDelete",
         title="test-passes | test-fails",
         description=(
@@ -1251,7 +1263,9 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         },
     )
     resultForDelete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_resultForDelete", title="Extension field for ``resultForDelete``."
+        default=None,
+        alias="_resultForDelete",
+        title="Extension field for ``resultForDelete``.",
     )
 
     @classmethod

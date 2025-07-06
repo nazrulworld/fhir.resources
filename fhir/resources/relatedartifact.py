@@ -27,7 +27,7 @@ class RelatedArtifact(datatype.DataType):
     __resource_type__ = "RelatedArtifact"
 
     citation: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="citation",
         title="Bibliographic citation for the artifact",
         description=(
@@ -40,11 +40,11 @@ class RelatedArtifact(datatype.DataType):
         },
     )
     citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_citation", title="Extension field for ``citation``."
+        default=None, alias="_citation", title="Extension field for ``citation``."
     )
 
     classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="classifier",
         title="Additional classifiers",
         description="Provides additional classifiers of the related artifact.",
@@ -55,7 +55,7 @@ class RelatedArtifact(datatype.DataType):
     )
 
     display: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="display",
         title="Brief description of the related artifact",
         description=(
@@ -68,11 +68,11 @@ class RelatedArtifact(datatype.DataType):
         },
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_display", title="Extension field for ``display``."
+        default=None, alias="_display", title="Extension field for ``display``."
     )
 
     document: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="document",
         title="What document is being referenced",
         description=(
@@ -86,7 +86,7 @@ class RelatedArtifact(datatype.DataType):
     )
 
     label: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="label",
         title="Short label",
         description=(
@@ -99,11 +99,11 @@ class RelatedArtifact(datatype.DataType):
         },
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_label", title="Extension field for ``label``."
+        default=None, alias="_label", title="Extension field for ``label``."
     )
 
     publicationDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publicationDate",
         title="Date of publication of the artifact being referred to",
         description="The date of publication of the artifact being referred to.",
@@ -113,11 +113,13 @@ class RelatedArtifact(datatype.DataType):
         },
     )
     publicationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publicationDate", title="Extension field for ``publicationDate``."
+        default=None,
+        alias="_publicationDate",
+        title="Extension field for ``publicationDate``.",
     )
 
     publicationStatus: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publicationStatus",
         title="draft | active | retired | unknown",
         description="The publication status of the artifact being referred to.",
@@ -130,13 +132,13 @@ class RelatedArtifact(datatype.DataType):
         },
     )
     publicationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_publicationStatus",
         title="Extension field for ``publicationStatus``.",
     )
 
     resource: fhirtypes.CanonicalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resource",
         title="What artifact is being referenced",
         description=(
@@ -151,11 +153,11 @@ class RelatedArtifact(datatype.DataType):
         },
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_resource", title="Extension field for ``resource``."
+        default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
     resourceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resourceReference",
         title="What artifact, if not a conformance resource",
         description=(
@@ -171,7 +173,7 @@ class RelatedArtifact(datatype.DataType):
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title=(
             "documentation | justification | citation | predecessor | successor | "
@@ -231,7 +233,7 @@ class RelatedArtifact(datatype.DataType):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod

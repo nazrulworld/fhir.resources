@@ -28,7 +28,7 @@ class Practitioner(domainresource.DomainResource):
     __resource_type__ = "Practitioner"
 
     active: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="active",
         title="Whether this practitioner's record is in active use",
         description=None,
@@ -38,11 +38,11 @@ class Practitioner(domainresource.DomainResource):
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_active", title="Extension field for ``active``."
+        default=None, alias="_active", title="Extension field for ``active``."
     )
 
     address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="address",
         title=(
             "Address(es) of the practitioner that are not role specific (typically "
@@ -60,7 +60,7 @@ class Practitioner(domainresource.DomainResource):
     )
 
     birthDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="birthDate",
         title="The date  on which the practitioner was born",
         description="The date of birth for the practitioner.",
@@ -70,11 +70,11 @@ class Practitioner(domainresource.DomainResource):
         },
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_birthDate", title="Extension field for ``birthDate``."
+        default=None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
     communication: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="communication",
         title="A language the practitioner can use in patient communication",
         description=None,
@@ -84,7 +84,7 @@ class Practitioner(domainresource.DomainResource):
     )
 
     gender: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="gender",
         title="male | female | other | unknown",
         description=(
@@ -100,11 +100,11 @@ class Practitioner(domainresource.DomainResource):
         },
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_gender", title="Extension field for ``gender``."
+        default=None, alias="_gender", title="Extension field for ``gender``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="An identifier for the person as this agent",
         description="An identifier that applies to this person in this role.",
@@ -115,7 +115,7 @@ class Practitioner(domainresource.DomainResource):
     )
 
     name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="The name(s) associated with the practitioner",
         description=None,
@@ -126,7 +126,7 @@ class Practitioner(domainresource.DomainResource):
     )
 
     photo: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="photo",
         title="Image of the person",
         description=None,
@@ -136,7 +136,7 @@ class Practitioner(domainresource.DomainResource):
     )
 
     qualification: typing.List[fhirtypes.PractitionerQualificationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="qualification",
         title=(
             "Certification, licenses, or training pertaining to the provision of "
@@ -154,7 +154,7 @@ class Practitioner(domainresource.DomainResource):
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="telecom",
         title="A contact detail for the practitioner (that apply to all roles)",
         description=(
@@ -228,7 +228,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
     __resource_type__ = "PractitionerQualification"
 
     code: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="Coded representation of the qualification",
         description=None,
@@ -238,7 +238,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="An identifier for this qualification for the practitioner",
         description=(
@@ -250,7 +250,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
     )
 
     issuer: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="issuer",
         title="Organization that regulates and issues the qualification",
         description=None,
@@ -262,7 +262,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Period during which the qualification is valid",
         description=None,

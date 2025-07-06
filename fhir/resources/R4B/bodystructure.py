@@ -28,7 +28,7 @@ class BodyStructure(domainresource.DomainResource):
     __resource_type__ = "BodyStructure"
 
     active: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="active",
         title="Whether this record is in active use",
         description="Whether this body site is in active use.",
@@ -38,11 +38,11 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_active", title="Extension field for ``active``."
+        default=None, alias="_active", title="Extension field for ``active``."
     )
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Text description",
         description="A summary, characterization or explanation of the body structure.",
@@ -52,11 +52,11 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Bodystructure identifier",
         description="Identifier for this instance of the anatomical structure.",
@@ -67,7 +67,7 @@ class BodyStructure(domainresource.DomainResource):
     )
 
     image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="image",
         title="Attached images",
         description="Image or images used to identify a location.",
@@ -77,7 +77,7 @@ class BodyStructure(domainresource.DomainResource):
     )
 
     location: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="location",
         title="Body site",
         description=(
@@ -91,7 +91,7 @@ class BodyStructure(domainresource.DomainResource):
     )
 
     locationQualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="locationQualifier",
         title="Body site modifier",
         description=(
@@ -104,7 +104,7 @@ class BodyStructure(domainresource.DomainResource):
     )
 
     morphology: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="morphology",
         title="Kind of Structure",
         description=(
@@ -119,7 +119,7 @@ class BodyStructure(domainresource.DomainResource):
     )
 
     patient: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="patient",
         title="Who this is about",
         description="The person to which the body site belongs.",

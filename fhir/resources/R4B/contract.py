@@ -27,7 +27,7 @@ class Contract(domainresource.DomainResource):
     __resource_type__ = "Contract"
 
     alias: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="alias",
         title="Acronym or short name",
         description=(
@@ -40,11 +40,11 @@ class Contract(domainresource.DomainResource):
         },
     )
     alias__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_alias", title="Extension field for ``alias``."
+        default=None, alias="_alias", title="Extension field for ``alias``."
     )
 
     applies: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="applies",
         title="Effective time",
         description="Relevant time or time-period when this Contract is applicable.",
@@ -55,7 +55,7 @@ class Contract(domainresource.DomainResource):
     )
 
     author: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="author",
         title="Source of Contract",
         description=(
@@ -75,7 +75,7 @@ class Contract(domainresource.DomainResource):
     )
 
     authority: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="authority",
         title="Authority under which this Contract has standing",
         description=(
@@ -92,7 +92,7 @@ class Contract(domainresource.DomainResource):
     )
 
     contentDefinition: fhirtypes.ContractContentDefinitionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentDefinition",
         title="Contract precursor content",
         description=(
@@ -106,7 +106,7 @@ class Contract(domainresource.DomainResource):
     )
 
     contentDerivative: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentDerivative",
         title="Content derived from the basal information",
         description=(
@@ -119,7 +119,7 @@ class Contract(domainresource.DomainResource):
     )
 
     domain: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="domain",
         title=(
             "A sphere of control governed by an authoritative jurisdiction, "
@@ -139,7 +139,7 @@ class Contract(domainresource.DomainResource):
     )
 
     expirationType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expirationType",
         title="Contract cessation cause",
         description=(
@@ -152,7 +152,7 @@ class Contract(domainresource.DomainResource):
     )
 
     friendly: typing.List[fhirtypes.ContractFriendlyType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="friendly",
         title="Contract Friendly Language",
         description=(
@@ -170,7 +170,7 @@ class Contract(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Contract number",
         description=(
@@ -184,7 +184,7 @@ class Contract(domainresource.DomainResource):
     )
 
     instantiatesCanonical: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="instantiatesCanonical",
         title="Source Contract Definition",
         description=(
@@ -199,7 +199,7 @@ class Contract(domainresource.DomainResource):
     )
 
     instantiatesUri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="instantiatesUri",
         title="External Contract Definition",
         description=(
@@ -211,11 +211,13 @@ class Contract(domainresource.DomainResource):
         },
     )
     instantiatesUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
+        default=None,
+        alias="_instantiatesUri",
+        title="Extension field for ``instantiatesUri``.",
     )
 
     issued: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="issued",
         title="When this Contract was issued",
         description="When this  Contract was issued.",
@@ -225,11 +227,11 @@ class Contract(domainresource.DomainResource):
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_issued", title="Extension field for ``issued``."
+        default=None, alias="_issued", title="Extension field for ``issued``."
     )
 
     legal: typing.List[fhirtypes.ContractLegalType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="legal",
         title="Contract Legal Language",
         description="List of Legal expressions or representations of this Contract.",
@@ -239,7 +241,7 @@ class Contract(domainresource.DomainResource):
     )
 
     legalState: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="legalState",
         title="Negotiation status",
         description=(
@@ -255,7 +257,7 @@ class Contract(domainresource.DomainResource):
     )
 
     legallyBindingAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="legallyBindingAttachment",
         title="Binding Contract",
         description=(
@@ -273,7 +275,7 @@ class Contract(domainresource.DomainResource):
     )
 
     legallyBindingReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="legallyBindingReference",
         title="Binding Contract",
         description=(
@@ -298,7 +300,7 @@ class Contract(domainresource.DomainResource):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Computer friendly designation",
         description=(
@@ -314,11 +316,11 @@ class Contract(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     relevantHistory: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relevantHistory",
         title="Key event in Contract History",
         description=(
@@ -337,7 +339,7 @@ class Contract(domainresource.DomainResource):
     )
 
     rule: typing.List[fhirtypes.ContractRuleType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="rule",
         title="Computable Contract Language",
         description=(
@@ -350,7 +352,7 @@ class Contract(domainresource.DomainResource):
     )
 
     scope: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="scope",
         title="Range of Legal Concerns",
         description=(
@@ -363,7 +365,7 @@ class Contract(domainresource.DomainResource):
     )
 
     signer: typing.List[fhirtypes.ContractSignerType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="signer",
         title="Contract Signatory",
         description=(
@@ -378,7 +380,7 @@ class Contract(domainresource.DomainResource):
     )
 
     site: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="site",
         title="Specific Location",
         description="Sites in which the contract is complied with,  exercised, or in force.",
@@ -390,7 +392,7 @@ class Contract(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title=(
             "amended | appended | cancelled | disputed | entered-in-error | "
@@ -423,11 +425,11 @@ class Contract(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     subType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subType",
         title="Subtype within the context of type",
         description=(
@@ -442,7 +444,7 @@ class Contract(domainresource.DomainResource):
     )
 
     subject: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title="Contract Target Entity",
         description=(
@@ -458,7 +460,7 @@ class Contract(domainresource.DomainResource):
     )
 
     subtitle: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subtitle",
         title="Subordinate Friendly name",
         description=(
@@ -471,11 +473,11 @@ class Contract(domainresource.DomainResource):
         },
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_subtitle", title="Extension field for ``subtitle``."
+        default=None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
     supportingInfo: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supportingInfo",
         title="Extra Information",
         description=(
@@ -490,7 +492,7 @@ class Contract(domainresource.DomainResource):
     )
 
     term: typing.List[fhirtypes.ContractTermType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="term",
         title="Contract Term List",
         description=(
@@ -503,7 +505,7 @@ class Contract(domainresource.DomainResource):
     )
 
     title: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="title",
         title="Human Friendly name",
         description=(
@@ -517,11 +519,11 @@ class Contract(domainresource.DomainResource):
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_title", title="Extension field for ``title``."
+        default=None, alias="_title", title="Extension field for ``title``."
     )
 
     topicCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="topicCodeableConcept",
         title="Focus of contract interest",
         description=(
@@ -537,7 +539,7 @@ class Contract(domainresource.DomainResource):
     )
 
     topicReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="topicReference",
         title="Focus of contract interest",
         description=(
@@ -555,7 +557,7 @@ class Contract(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Legal instrument category",
         description=(
@@ -572,7 +574,7 @@ class Contract(domainresource.DomainResource):
     )
 
     url: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="url",
         title="Basal definition",
         description=(
@@ -584,11 +586,11 @@ class Contract(domainresource.DomainResource):
         },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_url", title="Extension field for ``url``."
+        default=None, alias="_url", title="Extension field for ``url``."
     )
 
     version: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="version",
         title="Business edition",
         description=(
@@ -601,7 +603,7 @@ class Contract(domainresource.DomainResource):
         },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_version", title="Extension field for ``version``."
+        default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
@@ -711,7 +713,7 @@ class ContractContentDefinition(backboneelement.BackboneElement):
     __resource_type__ = "ContractContentDefinition"
 
     copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyright",
         title="Publication Ownership",
         description=(
@@ -724,11 +726,11 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyright", title="Extension field for ``copyright``."
+        default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     publicationDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publicationDate",
         title="When published",
         description=(
@@ -742,11 +744,13 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         },
     )
     publicationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publicationDate", title="Extension field for ``publicationDate``."
+        default=None,
+        alias="_publicationDate",
+        title="Extension field for ``publicationDate``.",
     )
 
     publicationStatus: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publicationStatus",
         title=(
             "amended | appended | cancelled | disputed | entered-in-error | "
@@ -779,13 +783,13 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         },
     )
     publicationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_publicationStatus",
         title="Extension field for ``publicationStatus``.",
     )
 
     publisher: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title="Publisher Entity",
         description=(
@@ -804,7 +808,7 @@ class ContractContentDefinition(backboneelement.BackboneElement):
     )
 
     subType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subType",
         title="Detailed Content Type Definition",
         description="Detailed Precusory content type.",
@@ -814,7 +818,7 @@ class ContractContentDefinition(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="Content structure and use",
         description=(
@@ -882,7 +886,7 @@ class ContractFriendly(backboneelement.BackboneElement):
     __resource_type__ = "ContractFriendly"
 
     contentAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentAttachment",
         title="Easily comprehended representation of this Contract",
         description=(
@@ -899,7 +903,7 @@ class ContractFriendly(backboneelement.BackboneElement):
     )
 
     contentReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentReference",
         title="Easily comprehended representation of this Contract",
         description=(
@@ -971,7 +975,7 @@ class ContractLegal(backboneelement.BackboneElement):
     __resource_type__ = "ContractLegal"
 
     contentAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentAttachment",
         title="Contract Legal Text",
         description="Contract legal text in human renderable form.",
@@ -984,7 +988,7 @@ class ContractLegal(backboneelement.BackboneElement):
     )
 
     contentReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentReference",
         title="Contract Legal Text",
         description="Contract legal text in human renderable form.",
@@ -1052,7 +1056,7 @@ class ContractRule(backboneelement.BackboneElement):
     __resource_type__ = "ContractRule"
 
     contentAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentAttachment",
         title="Computable Contract Rules",
         description=(
@@ -1068,7 +1072,7 @@ class ContractRule(backboneelement.BackboneElement):
     )
 
     contentReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentReference",
         title="Computable Contract Rules",
         description=(
@@ -1138,7 +1142,7 @@ class ContractSigner(backboneelement.BackboneElement):
     __resource_type__ = "ContractSigner"
 
     party: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="party",
         title="Contract Signatory Party",
         description="Party which is a signator to this Contract.",
@@ -1156,7 +1160,7 @@ class ContractSigner(backboneelement.BackboneElement):
     )
 
     signature: typing.List[fhirtypes.SignatureType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="signature",
         title="Contract Documentation Signature",
         description="Legally binding Contract DSIG signature contents in Base64.",
@@ -1166,7 +1170,7 @@ class ContractSigner(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodingType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="Contract Signatory Role",
         description="Role of this Contract signer, e.g. notary, grantee.",
@@ -1204,7 +1208,7 @@ class ContractTerm(backboneelement.BackboneElement):
     __resource_type__ = "ContractTerm"
 
     action: typing.List[fhirtypes.ContractTermActionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="action",
         title="Entity being ascribed responsibility",
         description=(
@@ -1217,7 +1221,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     applies: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="applies",
         title="Contract Term Effective Time",
         description=(
@@ -1231,7 +1235,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     asset: typing.List[fhirtypes.ContractTermAssetType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="asset",
         title="Contract Term Asset List",
         description=None,
@@ -1241,7 +1245,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     group: typing.List[fhirtypes.ContractTermType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="group",
         title="Nested Contract Term Group",
         description="Nested group of Contract Provisions.",
@@ -1251,7 +1255,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Contract Term Number",
         description="Unique identifier for this particular Contract Provision.",
@@ -1262,7 +1266,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     issued: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="issued",
         title="Contract Term Issue Date Time",
         description="When this Contract Provision was issued.",
@@ -1272,11 +1276,11 @@ class ContractTerm(backboneelement.BackboneElement):
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_issued", title="Extension field for ``issued``."
+        default=None, alias="_issued", title="Extension field for ``issued``."
     )
 
     offer: fhirtypes.ContractTermOfferType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="offer",
         title="Context of the Contract term",
         description=(
@@ -1288,7 +1292,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     securityLabel: typing.List[fhirtypes.ContractTermSecurityLabelType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="securityLabel",
         title="Protection for the Term",
         description=(
@@ -1301,7 +1305,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     subType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subType",
         title="Contract Term Type specific classification",
         description=(
@@ -1314,7 +1318,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     text: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Term Statement",
         description="Statement of a provision in a policy or a contract.",
@@ -1324,11 +1328,11 @@ class ContractTerm(backboneelement.BackboneElement):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     topicCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="topicCodeableConcept",
         title="Term Concern",
         description="The entity that the term applies to.",
@@ -1341,7 +1345,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     topicReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="topicReference",
         title="Term Concern",
         description="The entity that the term applies to.",
@@ -1356,7 +1360,7 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Contract Term Type or Form",
         description=(
@@ -1432,7 +1436,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermAction"
 
     context: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="context",
         title="Episode associated with action",
         description=(
@@ -1447,7 +1451,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     contextLinkId: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contextLinkId",
         title="Pointer to specific item",
         description=(
@@ -1460,11 +1464,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     contextLinkId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_contextLinkId", title="Extension field for ``contextLinkId``."
+        default=None,
+        alias="_contextLinkId",
+        title="Extension field for ``contextLinkId``.",
     )
 
     doNotPerform: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doNotPerform",
         title="True if the term prohibits the  action",
         description=None,
@@ -1473,11 +1479,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
+        default=None,
+        alias="_doNotPerform",
+        title="Extension field for ``doNotPerform``.",
     )
 
     intent: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="intent",
         title="Purpose for the Contract Term Action",
         description=(
@@ -1489,7 +1497,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     linkId: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="linkId",
         title="Pointer to specific item",
         description=(
@@ -1501,11 +1509,11 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     linkId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_linkId", title="Extension field for ``linkId``."
+        default=None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Comments about the action",
         description=(
@@ -1518,7 +1526,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="occurrenceDateTime",
         title="When action happens",
         description=None,
@@ -1530,13 +1538,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="occurrencePeriod",
         title="When action happens",
         description=None,
@@ -1549,7 +1557,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="occurrenceTiming",
         title="When action happens",
         description=None,
@@ -1562,7 +1570,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     performer: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performer",
         title="Actor that wil execute (or not) the action",
         description=(
@@ -1587,7 +1595,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     performerLinkId: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performerLinkId",
         title="Pointer to specific item",
         description=(
@@ -1600,11 +1608,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     performerLinkId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_performerLinkId", title="Extension field for ``performerLinkId``."
+        default=None,
+        alias="_performerLinkId",
+        title="Extension field for ``performerLinkId``.",
     )
 
     performerRole: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performerRole",
         title="Competency of the performer",
         description=(
@@ -1617,7 +1627,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     performerType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performerType",
         title="Kind of service performer",
         description=(
@@ -1630,7 +1640,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     reason: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reason",
         title="Why action is to be performed",
         description=(
@@ -1642,11 +1652,11 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     reason__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_reason", title="Extension field for ``reason``."
+        default=None, alias="_reason", title="Extension field for ``reason``."
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reasonCode",
         title="Why is action (not) needed?",
         description=(
@@ -1659,7 +1669,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     reasonLinkId: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reasonLinkId",
         title="Pointer to specific item",
         description=(
@@ -1672,11 +1682,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     reasonLinkId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_reasonLinkId", title="Extension field for ``reasonLinkId``."
+        default=None,
+        alias="_reasonLinkId",
+        title="Extension field for ``reasonLinkId``.",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reasonReference",
         title="Why is action (not) needed?",
         description=(
@@ -1698,7 +1710,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     requester: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="requester",
         title="Who asked for action",
         description=(
@@ -1721,7 +1733,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     requesterLinkId: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="requesterLinkId",
         title="Pointer to specific item",
         description=(
@@ -1734,11 +1746,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     requesterLinkId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_requesterLinkId", title="Extension field for ``requesterLinkId``."
+        default=None,
+        alias="_requesterLinkId",
+        title="Extension field for ``requesterLinkId``.",
     )
 
     securityLabelNumber: typing.List[fhirtypes.UnsignedIntType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="securityLabelNumber",
         title="Action restriction numbers",
         description="Security labels that protects the action.",
@@ -1747,13 +1761,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         },
     )
     securityLabelNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_securityLabelNumber",
         title="Extension field for ``securityLabelNumber``.",
     )
 
     status: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="status",
         title="State of the action",
         description="Current state of the term action.",
@@ -1763,7 +1777,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     subject: typing.List[fhirtypes.ContractTermActionSubjectType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title="Entity of the action",
         description=None,
@@ -1773,7 +1787,7 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="Type or form of the action",
         description=(
@@ -1857,7 +1871,7 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermActionSubject"
 
     reference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="reference",
         title="Entity of the action",
         description="The entity the action is performed or not performed on or for.",
@@ -1877,7 +1891,7 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
     )
 
     role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="role",
         title="Role type of the agent",
         description="Role type of agent assigned roles in this Contract.",
@@ -1913,7 +1927,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermAsset"
 
     answer: typing.List[fhirtypes.ContractTermOfferAnswerType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="answer",
         title="Response to assets",
         description=None,
@@ -1923,7 +1937,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     condition: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="condition",
         title="Quality desctiption of asset",
         description=(
@@ -1935,11 +1949,11 @@ class ContractTermAsset(backboneelement.BackboneElement):
         },
     )
     condition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_condition", title="Extension field for ``condition``."
+        default=None, alias="_condition", title="Extension field for ``condition``."
     )
 
     context: typing.List[fhirtypes.ContractTermAssetContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="context",
         title="Circumstance of the asset",
         description=None,
@@ -1949,7 +1963,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     linkId: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="linkId",
         title="Pointer to asset text",
         description=(
@@ -1961,11 +1975,11 @@ class ContractTermAsset(backboneelement.BackboneElement):
         },
     )
     linkId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_linkId", title="Extension field for ``linkId``."
+        default=None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
     period: typing.List[fhirtypes.PeriodType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Time period of the asset",
         description="Asset relevant contractual time period.",
@@ -1975,7 +1989,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     periodType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="periodType",
         title="Asset availability types",
         description="Type of Asset availability for use or ownership.",
@@ -1985,7 +1999,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     relationship: fhirtypes.CodingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relationship",
         title="Kinship of the asset",
         description=(
@@ -1999,7 +2013,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     scope: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="scope",
         title="Range of asset",
         description="Differentiates the kind of the asset .",
@@ -2009,7 +2023,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     securityLabelNumber: typing.List[fhirtypes.UnsignedIntType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="securityLabelNumber",
         title="Asset restriction numbers",
         description="Security labels that protects the asset.",
@@ -2018,13 +2032,13 @@ class ContractTermAsset(backboneelement.BackboneElement):
         },
     )
     securityLabelNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_securityLabelNumber",
         title="Extension field for ``securityLabelNumber``.",
     )
 
     subtype: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subtype",
         title="Asset sub-category",
         description="May be a subtype or part of an offered asset.",
@@ -2034,7 +2048,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     text: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Asset clause or question text",
         description=(
@@ -2047,11 +2061,11 @@ class ContractTermAsset(backboneelement.BackboneElement):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Asset category",
         description="Target entity type about which the term may be concerned.",
@@ -2061,7 +2075,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     typeReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="typeReference",
         title="Associated entities",
         description=None,
@@ -2073,7 +2087,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     usePeriod: typing.List[fhirtypes.PeriodType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="usePeriod",
         title="Time period",
         description="Time period of asset use.",
@@ -2083,7 +2097,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
     )
 
     valuedItem: typing.List[fhirtypes.ContractTermAssetValuedItemType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valuedItem",
         title="Contract Valued Item List",
         description=None,
@@ -2138,7 +2152,7 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermAssetContext"
 
     code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Codeable asset context",
         description=(
@@ -2151,7 +2165,7 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
     )
 
     reference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reference",
         title="Creator,custodian or owner",
         description=(
@@ -2167,7 +2181,7 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
     )
 
     text: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Context description",
         description=None,
@@ -2176,7 +2190,7 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     @classmethod
@@ -2206,7 +2220,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermAssetValuedItem"
 
     effectiveTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectiveTime",
         title="Contract Valued Item Effective Tiem",
         description=(
@@ -2218,11 +2232,13 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         },
     )
     effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_effectiveTime", title="Extension field for ``effectiveTime``."
+        default=None,
+        alias="_effectiveTime",
+        title="Extension field for ``effectiveTime``.",
     )
 
     entityCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="entityCodeableConcept",
         title="Contract Valued Item Type",
         description="Specific type of Contract Valued Item that may be priced.",
@@ -2235,7 +2251,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     )
 
     entityReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="entityReference",
         title="Contract Valued Item Type",
         description="Specific type of Contract Valued Item that may be priced.",
@@ -2250,7 +2266,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     )
 
     factor: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="factor",
         title="Contract Valued Item Price Scaling Factor",
         description=(
@@ -2264,11 +2280,11 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         },
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_factor", title="Extension field for ``factor``."
+        default=None, alias="_factor", title="Extension field for ``factor``."
     )
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Contract Valued Item Number",
         description="Identifies a Contract Valued Item instance.",
@@ -2278,7 +2294,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     )
 
     linkId: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="linkId",
         title="Pointer to specific item",
         description=(
@@ -2290,11 +2306,11 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         },
     )
     linkId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_linkId", title="Extension field for ``linkId``."
+        default=None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
     net: fhirtypes.MoneyType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="net",
         title="Total Contract Valued Item Value",
         description=(
@@ -2309,7 +2325,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     )
 
     payment: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="payment",
         title="Terms of valuation",
         description=None,
@@ -2318,11 +2334,11 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         },
     )
     payment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_payment", title="Extension field for ``payment``."
+        default=None, alias="_payment", title="Extension field for ``payment``."
     )
 
     paymentDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="paymentDate",
         title="When payment is due",
         description=None,
@@ -2331,11 +2347,11 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         },
     )
     paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_paymentDate", title="Extension field for ``paymentDate``."
+        default=None, alias="_paymentDate", title="Extension field for ``paymentDate``."
     )
 
     points: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="points",
         title="Contract Valued Item Difficulty Scaling Factor",
         description=(
@@ -2350,11 +2366,11 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         },
     )
     points__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_points", title="Extension field for ``points``."
+        default=None, alias="_points", title="Extension field for ``points``."
     )
 
     quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="quantity",
         title="Count of Contract Valued Items",
         description=(
@@ -2368,7 +2384,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     )
 
     recipient: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="recipient",
         title="Who will receive payment",
         description=None,
@@ -2386,7 +2402,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     )
 
     responsible: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="responsible",
         title="Who will make payment",
         description=None,
@@ -2404,7 +2420,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     )
 
     securityLabelNumber: typing.List[fhirtypes.UnsignedIntType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="securityLabelNumber",
         title="Security Labels that define affected terms",
         description=(
@@ -2416,13 +2432,13 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         },
     )
     securityLabelNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_securityLabelNumber",
         title="Extension field for ``securityLabelNumber``.",
     )
 
     unitPrice: fhirtypes.MoneyType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="unitPrice",
         title="Contract Valued Item fee, charge, or cost",
         description="A Contract Valued Item unit valuation measure.",
@@ -2494,7 +2510,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermOffer"
 
     answer: typing.List[fhirtypes.ContractTermOfferAnswerType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="answer",
         title="Response to offer text",
         description=None,
@@ -2504,7 +2520,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
     )
 
     decision: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="decision",
         title="Accepting party choice",
         description=(
@@ -2517,7 +2533,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
     )
 
     decisionMode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="decisionMode",
         title="How decision is conveyed",
         description="How the decision about a Contract was conveyed.",
@@ -2527,7 +2543,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Offer business ID",
         description="Unique identifier for this particular Contract Provision.",
@@ -2537,7 +2553,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
     )
 
     linkId: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="linkId",
         title="Pointer to text",
         description=(
@@ -2549,11 +2565,11 @@ class ContractTermOffer(backboneelement.BackboneElement):
         },
     )
     linkId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_linkId", title="Extension field for ``linkId``."
+        default=None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
     party: typing.List[fhirtypes.ContractTermOfferPartyType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="party",
         title="Offer Recipient",
         description=None,
@@ -2563,7 +2579,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
     )
 
     securityLabelNumber: typing.List[fhirtypes.UnsignedIntType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="securityLabelNumber",
         title="Offer restriction numbers",
         description="Security labels that protects the offer.",
@@ -2572,13 +2588,13 @@ class ContractTermOffer(backboneelement.BackboneElement):
         },
     )
     securityLabelNumber__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_securityLabelNumber",
         title="Extension field for ``securityLabelNumber``.",
     )
 
     text: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="Human readable offer text",
         description="Human readable form of this Contract Offer.",
@@ -2587,11 +2603,11 @@ class ContractTermOffer(backboneelement.BackboneElement):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     topic: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="topic",
         title="Negotiable offer asset",
         description=(
@@ -2609,7 +2625,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Contract Offer Type or Form",
         description=(
@@ -2662,7 +2678,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermOfferAnswer"
 
     valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueAttachment",
         title="The actual answer response",
         description=(
@@ -2680,7 +2696,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
     )
 
     valueBoolean: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueBoolean",
         title="The actual answer response",
         description=(
@@ -2697,11 +2713,13 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         },
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+        default=None,
+        alias="_valueBoolean",
+        title="Extension field for ``valueBoolean``.",
     )
 
     valueCoding: fhirtypes.CodingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueCoding",
         title="The actual answer response",
         description=(
@@ -2719,7 +2737,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
     )
 
     valueDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueDate",
         title="The actual answer response",
         description=(
@@ -2736,11 +2754,11 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         },
     )
     valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueDate", title="Extension field for ``valueDate``."
+        default=None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
     valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueDateTime",
         title="The actual answer response",
         description=(
@@ -2757,11 +2775,13 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         },
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
+        default=None,
+        alias="_valueDateTime",
+        title="Extension field for ``valueDateTime``.",
     )
 
     valueDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueDecimal",
         title="The actual answer response",
         description=(
@@ -2778,11 +2798,13 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         },
     )
     valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
+        default=None,
+        alias="_valueDecimal",
+        title="Extension field for ``valueDecimal``.",
     )
 
     valueInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueInteger",
         title="The actual answer response",
         description=(
@@ -2799,11 +2821,13 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         },
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
+        default=None,
+        alias="_valueInteger",
+        title="Extension field for ``valueInteger``.",
     )
 
     valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueQuantity",
         title="The actual answer response",
         description=(
@@ -2821,7 +2845,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
     )
 
     valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueReference",
         title="The actual answer response",
         description=(
@@ -2841,7 +2865,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
     )
 
     valueString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueString",
         title="The actual answer response",
         description=(
@@ -2858,11 +2882,11 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         },
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueString", title="Extension field for ``valueString``."
+        default=None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.TimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueTime",
         title="The actual answer response",
         description=(
@@ -2879,11 +2903,11 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         },
     )
     valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueTime", title="Extension field for ``valueTime``."
+        default=None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     valueUri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueUri",
         title="The actual answer response",
         description=(
@@ -2900,7 +2924,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         },
     )
     valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueUri", title="Extension field for ``valueUri``."
+        default=None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
     @classmethod
@@ -2977,7 +3001,7 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermOfferParty"
 
     reference: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="reference",
         title="Referenced entity",
         description="Participant in the offer.",
@@ -2997,7 +3021,7 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
     )
 
     role: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="role",
         title="Participant engagement type",
         description="How the party participates in the offer.",
@@ -3035,7 +3059,7 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
     __resource_type__ = "ContractTermSecurityLabel"
 
     category: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="Applicable Policy",
         description=(
@@ -3048,7 +3072,7 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
     )
 
     classification: fhirtypes.CodingType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="classification",
         title="Confidentiality Protection",
         description=(
@@ -3061,7 +3085,7 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
     )
 
     control: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="control",
         title="Handling Instructions",
         description=(
@@ -3074,7 +3098,7 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
     )
 
     number: typing.List[fhirtypes.UnsignedIntType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="number",
         title="Link to Security Labels",
         description=(
@@ -3086,7 +3110,7 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
         },
     )
     number__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_number", title="Extension field for ``number``."
+        default=None, alias="_number", title="Extension field for ``number``."
     )
 
     @classmethod

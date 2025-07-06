@@ -29,7 +29,7 @@ class FormularyItem(domainresource.DomainResource):
     __resource_type__ = "FormularyItem"
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Codes that identify this formulary item",
         description=(
@@ -43,7 +43,7 @@ class FormularyItem(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier for this formulary item",
         description=None,
@@ -54,7 +54,7 @@ class FormularyItem(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | entered-in-error | inactive",
         description=(
@@ -70,7 +70,7 @@ class FormularyItem(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod

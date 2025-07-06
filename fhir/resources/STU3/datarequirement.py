@@ -27,7 +27,7 @@ class DataRequirement(element.Element):
     __resource_type__ = "DataRequirement"
 
     codeFilter: typing.List[fhirtypes.DataRequirementCodeFilterType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="codeFilter",
         title="What codes are expected",
         description=(
@@ -41,7 +41,7 @@ class DataRequirement(element.Element):
     )
 
     dateFilter: typing.List[fhirtypes.DataRequirementDateFilterType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dateFilter",
         title="What dates/date ranges are expected",
         description=(
@@ -55,7 +55,7 @@ class DataRequirement(element.Element):
     )
 
     mustSupport: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="mustSupport",
         title=(
             "Indicates that specific structure elements are referenced by the "
@@ -77,11 +77,11 @@ class DataRequirement(element.Element):
         },
     )
     mustSupport__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_mustSupport", title="Extension field for ``mustSupport``."
+        default=None, alias="_mustSupport", title="Extension field for ``mustSupport``."
     )
 
     profile: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="profile",
         title="The profile of the required data",
         description=(
@@ -94,11 +94,11 @@ class DataRequirement(element.Element):
         },
     )
     profile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_profile", title="Extension field for ``profile``."
+        default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="The type of the required data",
         description=(
@@ -113,7 +113,7 @@ class DataRequirement(element.Element):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
@@ -164,7 +164,7 @@ class DataRequirementCodeFilter(element.Element):
     __resource_type__ = "DataRequirementCodeFilter"
 
     path: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="path",
         title="The code-valued attribute of the filter",
         description=(
@@ -182,11 +182,11 @@ class DataRequirementCodeFilter(element.Element):
         },
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_path", title="Extension field for ``path``."
+        default=None, alias="_path", title="Extension field for ``path``."
     )
 
     valueCode: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueCode",
         title="What code is expected",
         description=(
@@ -202,11 +202,11 @@ class DataRequirementCodeFilter(element.Element):
         },
     )
     valueCode__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_valueCode", title="Extension field for ``valueCode``."
+        default=None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
     valueCodeableConcept: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueCodeableConcept",
         title="What CodeableConcept is expected",
         description=(
@@ -223,7 +223,7 @@ class DataRequirementCodeFilter(element.Element):
     )
 
     valueCoding: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueCoding",
         title="What Coding is expected",
         description=(
@@ -240,7 +240,7 @@ class DataRequirementCodeFilter(element.Element):
     )
 
     valueSetReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueSetReference",
         title="Valueset for the filter",
         description=(
@@ -261,7 +261,7 @@ class DataRequirementCodeFilter(element.Element):
     )
 
     valueSetString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueSetString",
         title="Valueset for the filter",
         description=(
@@ -279,7 +279,9 @@ class DataRequirementCodeFilter(element.Element):
         },
     )
     valueSetString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueSetString", title="Extension field for ``valueSetString``."
+        default=None,
+        alias="_valueSetString",
+        title="Extension field for ``valueSetString``.",
     )
 
     @classmethod
@@ -354,7 +356,7 @@ class DataRequirementDateFilter(element.Element):
     __resource_type__ = "DataRequirementDateFilter"
 
     path: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="path",
         title="The date-valued attribute of the filter",
         description=(
@@ -372,11 +374,11 @@ class DataRequirementDateFilter(element.Element):
         },
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_path", title="Extension field for ``path``."
+        default=None, alias="_path", title="Extension field for ``path``."
     )
 
     valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueDateTime",
         title="The value of the filter, as a Period, DateTime, or Duration value",
         description=(
@@ -396,11 +398,13 @@ class DataRequirementDateFilter(element.Element):
         },
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
+        default=None,
+        alias="_valueDateTime",
+        title="Extension field for ``valueDateTime``.",
     )
 
     valueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueDuration",
         title="The value of the filter, as a Period, DateTime, or Duration value",
         description=(
@@ -421,7 +425,7 @@ class DataRequirementDateFilter(element.Element):
     )
 
     valuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valuePeriod",
         title="The value of the filter, as a Period, DateTime, or Duration value",
         description=(

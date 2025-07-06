@@ -28,7 +28,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     __resource_type__ = "ImmunizationRecommendation"
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier",
         description="A unique identifier assigned to this particular recommendation record.",
@@ -39,7 +39,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     )
 
     patient: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="patient",
         title="Who this profile is for",
         description="The patient the recommendations are for.",
@@ -52,7 +52,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     )
 
     recommendation: typing.List[fhirtypes.ImmunizationRecommendationRecommendationType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="recommendation",
         title="Vaccine administration recommendations",
         description=None,
@@ -108,7 +108,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     __resource_type__ = "ImmunizationRecommendationRecommendation"
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date recommendation created",
         description="The date the immunization recommendation was created.",
@@ -119,11 +119,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     dateCriterion: typing.List[fhirtypes.ImmunizationRecommendationRecommendationDateCriterionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dateCriterion",
         title="Dates governing proposed immunization",
         description=(
@@ -136,7 +136,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     )
 
     doseNumber: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseNumber",
         title="Recommended dose number",
         description=(
@@ -149,11 +149,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         },
     )
     doseNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_doseNumber", title="Extension field for ``doseNumber``."
+        default=None, alias="_doseNumber", title="Extension field for ``doseNumber``."
     )
 
     forecastStatus: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="forecastStatus",
         title="Vaccine administration status",
         description=None,
@@ -164,7 +164,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     )
 
     protocol: fhirtypes.ImmunizationRecommendationRecommendationProtocolType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="protocol",
         title="Protocol used by recommendation",
         description=(
@@ -177,7 +177,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     )
 
     supportingImmunization: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supportingImmunization",
         title="Past immunizations supporting recommendation",
         description=(
@@ -191,7 +191,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     )
 
     supportingPatientInformation: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supportingPatientInformation",
         title="Patient observations supporting recommendation",
         description=(
@@ -207,7 +207,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     )
 
     targetDisease: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="targetDisease",
         title="Disease to be immunized against",
         description="The targeted disease for the recommendation.",
@@ -218,7 +218,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     )
 
     vaccineCode: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="vaccineCode",
         title="Vaccine recommendation applies to",
         description="Vaccine that pertains to the recommendation.",
@@ -290,7 +290,7 @@ class ImmunizationRecommendationRecommendationDateCriterion(
     __resource_type__ = "ImmunizationRecommendationRecommendationDateCriterion"
 
     code: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="Type of date",
         description=(
@@ -303,7 +303,7 @@ class ImmunizationRecommendationRecommendationDateCriterion(
     )
 
     value: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="value",
         title="Recommended date",
         description="The date whose meaning is specified by dateCriterion.code.",
@@ -313,7 +313,7 @@ class ImmunizationRecommendationRecommendationDateCriterion(
         },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_value", title="Extension field for ``value``."
+        default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
@@ -356,7 +356,7 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
     __resource_type__ = "ImmunizationRecommendationRecommendationProtocol"
 
     authority: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="authority",
         title="Who is responsible for protocol",
         description=(
@@ -370,7 +370,7 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
     )
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Protocol details",
         description=(
@@ -382,11 +382,11 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     doseSequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="doseSequence",
         title="Dose number within sequence",
         description=(
@@ -398,11 +398,13 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
         },
     )
     doseSequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_doseSequence", title="Extension field for ``doseSequence``."
+        default=None,
+        alias="_doseSequence",
+        title="Extension field for ``doseSequence``.",
     )
 
     series: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="series",
         title="Name of vaccination series",
         description=(
@@ -414,7 +416,7 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
         },
     )
     series__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_series", title="Extension field for ``series``."
+        default=None, alias="_series", title="Extension field for ``series``."
     )
 
     @classmethod

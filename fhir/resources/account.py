@@ -28,7 +28,7 @@ class Account(domainresource.DomainResource):
     __resource_type__ = "Account"
 
     balance: typing.List[fhirtypes.AccountBalanceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="balance",
         title="Calculated account balance(s)",
         description=(
@@ -42,7 +42,7 @@ class Account(domainresource.DomainResource):
     )
 
     billingStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="billingStatus",
         title="Tracks the lifecycle of the account through the billing process",
         description=(
@@ -57,7 +57,7 @@ class Account(domainresource.DomainResource):
     )
 
     calculatedAt: fhirtypes.InstantType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="calculatedAt",
         title="Time the balance amount was calculated",
         description=None,
@@ -66,11 +66,13 @@ class Account(domainresource.DomainResource):
         },
     )
     calculatedAt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_calculatedAt", title="Extension field for ``calculatedAt``."
+        default=None,
+        alias="_calculatedAt",
+        title="Extension field for ``calculatedAt``.",
     )
 
     coverage: typing.List[fhirtypes.AccountCoverageType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="coverage",
         title=(
             "The party(s) that are responsible for covering the payment of this "
@@ -84,7 +86,7 @@ class Account(domainresource.DomainResource):
     )
 
     currency: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="currency",
         title="The base or default currency",
         description="The default currency for the account.",
@@ -94,7 +96,7 @@ class Account(domainresource.DomainResource):
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Explanation of purpose/use",
         description=(
@@ -107,11 +109,11 @@ class Account(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     diagnosis: typing.List[fhirtypes.AccountDiagnosisType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="diagnosis",
         title="The list of diagnoses relevant to this account",
         description=(
@@ -127,7 +129,7 @@ class Account(domainresource.DomainResource):
     )
 
     guarantor: typing.List[fhirtypes.AccountGuarantorType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="guarantor",
         title="The parties ultimately responsible for balancing the Account",
         description=(
@@ -140,7 +142,7 @@ class Account(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Account number",
         description=(
@@ -154,7 +156,7 @@ class Account(domainresource.DomainResource):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Human-readable label",
         description=(
@@ -166,11 +168,11 @@ class Account(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     owner: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="owner",
         title="Entity managing the Account",
         description=(
@@ -186,7 +188,7 @@ class Account(domainresource.DomainResource):
     )
 
     procedure: typing.List[fhirtypes.AccountProcedureType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="procedure",
         title="The list of procedures relevant to this account",
         description=(
@@ -202,7 +204,7 @@ class Account(domainresource.DomainResource):
     )
 
     relatedAccount: typing.List[fhirtypes.AccountRelatedAccountType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relatedAccount",
         title="Other associated accounts related to this account",
         description=None,
@@ -212,7 +214,7 @@ class Account(domainresource.DomainResource):
     )
 
     servicePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="servicePeriod",
         title="Transaction window",
         description="The date range of services associated with this account.",
@@ -223,7 +225,7 @@ class Account(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | inactive | entered-in-error | on-hold | unknown",
         description="Indicates whether the account is presently used/usable or not.",
@@ -243,11 +245,11 @@ class Account(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title="The entity that caused the expenses",
         description=(
@@ -273,7 +275,7 @@ class Account(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="E.g. patient, expense, depreciation",
         description="Categorizes the account for reporting and searching purposes.",
@@ -369,7 +371,7 @@ class AccountBalance(backboneelement.BackboneElement):
     __resource_type__ = "AccountBalance"
 
     aggregate: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="aggregate",
         title="Who is expected to pay this part of the balance",
         description=None,
@@ -379,7 +381,7 @@ class AccountBalance(backboneelement.BackboneElement):
     )
 
     amount: fhirtypes.MoneyType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="amount",
         title="Calculated amount",
         description=(
@@ -392,7 +394,7 @@ class AccountBalance(backboneelement.BackboneElement):
     )
 
     estimate: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="estimate",
         title="Estimated balance",
         description=(
@@ -405,11 +407,11 @@ class AccountBalance(backboneelement.BackboneElement):
         },
     )
     estimate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_estimate", title="Extension field for ``estimate``."
+        default=None, alias="_estimate", title="Extension field for ``estimate``."
     )
 
     term: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="term",
         title="current | 30 | 60 | 90 | 120",
         description=(
@@ -457,7 +459,7 @@ class AccountCoverage(backboneelement.BackboneElement):
     __resource_type__ = "AccountCoverage"
 
     coverage: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="coverage",
         title=(
             "The party(s), such as insurances, that may contribute to the payment "
@@ -478,7 +480,7 @@ class AccountCoverage(backboneelement.BackboneElement):
     )
 
     priority: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="priority",
         title="The priority of the coverage in the context of this account",
         description=None,
@@ -488,7 +490,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         },
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_priority", title="Extension field for ``priority``."
+        default=None, alias="_priority", title="Extension field for ``priority``."
     )
 
     @classmethod
@@ -521,7 +523,7 @@ class AccountDiagnosis(backboneelement.BackboneElement):
     __resource_type__ = "AccountDiagnosis"
 
     condition: fhirtypes.CodeableReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="condition",
         title="The diagnosis relevant to the account",
         description=None,
@@ -534,7 +536,7 @@ class AccountDiagnosis(backboneelement.BackboneElement):
     )
 
     dateOfDiagnosis: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dateOfDiagnosis",
         title="Date of the diagnosis (when coded diagnosis)",
         description="Ranking of the diagnosis (for each type).",
@@ -543,11 +545,13 @@ class AccountDiagnosis(backboneelement.BackboneElement):
         },
     )
     dateOfDiagnosis__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_dateOfDiagnosis", title="Extension field for ``dateOfDiagnosis``."
+        default=None,
+        alias="_dateOfDiagnosis",
+        title="Extension field for ``dateOfDiagnosis``.",
     )
 
     onAdmission: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="onAdmission",
         title="Diagnosis present on Admission",
         description="Was the Diagnosis present on Admission in the related Encounter.",
@@ -556,11 +560,11 @@ class AccountDiagnosis(backboneelement.BackboneElement):
         },
     )
     onAdmission__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_onAdmission", title="Extension field for ``onAdmission``."
+        default=None, alias="_onAdmission", title="Extension field for ``onAdmission``."
     )
 
     packageCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="packageCode",
         title="Package Code specific for billing",
         description=(
@@ -573,7 +577,7 @@ class AccountDiagnosis(backboneelement.BackboneElement):
     )
 
     sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sequence",
         title="Ranking of the diagnosis (for each type)",
         description=None,
@@ -582,11 +586,11 @@ class AccountDiagnosis(backboneelement.BackboneElement):
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_sequence", title="Extension field for ``sequence``."
+        default=None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title=(
             "Type that this diagnosis has relevant to the account (e.g. admission, "
@@ -637,7 +641,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
     __resource_type__ = "AccountGuarantor"
 
     onHold: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="onHold",
         title="Credit or other hold applied",
         description=(
@@ -649,11 +653,11 @@ class AccountGuarantor(backboneelement.BackboneElement):
         },
     )
     onHold__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_onHold", title="Extension field for ``onHold``."
+        default=None, alias="_onHold", title="Extension field for ``onHold``."
     )
 
     party: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="party",
         title="Responsible entity",
         description="The entity who is responsible.",
@@ -665,7 +669,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Guarantee account during",
         description=(
@@ -708,7 +712,7 @@ class AccountProcedure(backboneelement.BackboneElement):
     __resource_type__ = "AccountProcedure"
 
     code: fhirtypes.CodeableReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="The procedure relevant to the account",
         description=None,
@@ -721,7 +725,7 @@ class AccountProcedure(backboneelement.BackboneElement):
     )
 
     dateOfService: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dateOfService",
         title="Date of the procedure (when coded procedure)",
         description=(
@@ -734,11 +738,13 @@ class AccountProcedure(backboneelement.BackboneElement):
         },
     )
     dateOfService__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_dateOfService", title="Extension field for ``dateOfService``."
+        default=None,
+        alias="_dateOfService",
+        title="Extension field for ``dateOfService``.",
     )
 
     device: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="device",
         title="Any devices that were associated with the procedure",
         description=(
@@ -754,7 +760,7 @@ class AccountProcedure(backboneelement.BackboneElement):
     )
 
     packageCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="packageCode",
         title="Package Code specific for billing",
         description=(
@@ -767,7 +773,7 @@ class AccountProcedure(backboneelement.BackboneElement):
     )
 
     sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sequence",
         title="Ranking of the procedure (for each type)",
         description=None,
@@ -776,11 +782,11 @@ class AccountProcedure(backboneelement.BackboneElement):
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_sequence", title="Extension field for ``sequence``."
+        default=None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="How this procedure value should be used in charging the account",
         description=None,
@@ -826,7 +832,7 @@ class AccountRelatedAccount(backboneelement.BackboneElement):
     __resource_type__ = "AccountRelatedAccount"
 
     account: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="account",
         title="Reference to an associated Account",
         description=None,
@@ -838,7 +844,7 @@ class AccountRelatedAccount(backboneelement.BackboneElement):
     )
 
     relationship: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relationship",
         title="Relationship of the associated Account",
         description=None,

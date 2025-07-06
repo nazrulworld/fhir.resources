@@ -32,7 +32,7 @@ class SubstanceProtein(domainresource.DomainResource):
     __resource_type__ = "SubstanceProtein"
 
     disulfideLinkage: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="disulfideLinkage",
         title=(
             "The disulphide bond between two cysteine residues either on the same "
@@ -50,13 +50,13 @@ class SubstanceProtein(domainresource.DomainResource):
         },
     )
     disulfideLinkage__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_disulfideLinkage",
         title="Extension field for ``disulfideLinkage``.",
     )
 
     numberOfSubunits: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="numberOfSubunits",
         title=(
             "Number of linear sequences of amino acids linked through peptide "
@@ -71,13 +71,13 @@ class SubstanceProtein(domainresource.DomainResource):
         },
     )
     numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_numberOfSubunits",
         title="Extension field for ``numberOfSubunits``.",
     )
 
     sequenceType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sequenceType",
         title=(
             "The SubstanceProtein descriptive elements will only be used when a "
@@ -92,7 +92,7 @@ class SubstanceProtein(domainresource.DomainResource):
     )
 
     subunit: typing.List[fhirtypes.SubstanceProteinSubunitType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subunit",
         title=(
             "This subclause refers to the description of each subunit constituting "
@@ -167,7 +167,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     __resource_type__ = "SubstanceProteinSubunit"
 
     cTerminalModification: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="cTerminalModification",
         title="The modification at the C-terminal shall be specified",
         description=None,
@@ -177,13 +177,13 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
     cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_cTerminalModification",
         title="Extension field for ``cTerminalModification``.",
     )
 
     cTerminalModificationId: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="cTerminalModificationId",
         title=(
             "Unique identifier for molecular fragment modification based on the ISO"
@@ -197,7 +197,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     )
 
     length: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="length",
         title="Length of linear sequences of amino acids contained in the subunit",
         description=None,
@@ -207,11 +207,11 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
     length__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_length", title="Extension field for ``length``."
+        default=None, alias="_length", title="Extension field for ``length``."
     )
 
     nTerminalModification: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="nTerminalModification",
         title=(
             "The name of the fragment modified at the N-terminal of the "
@@ -224,13 +224,13 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
     nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_nTerminalModification",
         title="Extension field for ``nTerminalModification``.",
     )
 
     nTerminalModificationId: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="nTerminalModificationId",
         title=(
             "Unique identifier for molecular fragment modification based on the ISO"
@@ -244,7 +244,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     )
 
     sequence: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sequence",
         title=(
             "The sequence information shall be provided enumerating the amino acids"
@@ -263,11 +263,11 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_sequence", title="Extension field for ``sequence``."
+        default=None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     sequenceAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sequenceAttachment",
         title=(
             "The sequence information shall be provided enumerating the amino acids"
@@ -287,7 +287,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     )
 
     subunit: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subunit",
         title=(
             "Index of primary sequences of amino acids linked through peptide bonds"
@@ -302,7 +302,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
     subunit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_subunit", title="Extension field for ``subunit``."
+        default=None, alias="_subunit", title="Extension field for ``subunit``."
     )
 
     @classmethod

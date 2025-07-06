@@ -31,7 +31,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     __resource_type__ = "RegulatedAuthorization"
 
     basis: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="basis",
         title=(
             "The legal/regulatory framework or reasons under which this "
@@ -48,7 +48,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     case: fhirtypes.RegulatedAuthorizationCaseType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="case",
         title=(
             "The case or regulatory procedure for granting or amending a regulated "
@@ -72,7 +72,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="General textual supporting information",
         description=None,
@@ -82,11 +82,11 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     holder: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="holder",
         title=(
             "The organization that has been granted this authorization, by the "
@@ -105,7 +105,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title=(
             "Business identifier for the authorization, typically assigned by the "
@@ -119,7 +119,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     indication: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="indication",
         title="Condition for which the use of the regulated product applies",
         description=None,
@@ -132,7 +132,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     intendedUse: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="intendedUse",
         title="The intended use of the product, e.g. prevention, treatment",
         description=(
@@ -145,7 +145,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     region: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="region",
         title="The territory in which the authorization has been granted",
         description=(
@@ -159,7 +159,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     regulator: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="regulator",
         title=(
             "The regulatory authority or authorizing body granting the " "authorization"
@@ -178,7 +178,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title=(
             "The status that is authorised e.g. approved. Intermediate states can "
@@ -195,7 +195,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     statusDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="statusDate",
         title="The date at which the current status was assigned",
         description=None,
@@ -205,11 +205,11 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_statusDate", title="Extension field for ``statusDate``."
+        default=None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
     subject: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title=(
             "The product type, treatment, facility or activity that is being "
@@ -239,7 +239,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title=(
             "Overall type of this authorization, for example drug marketing "
@@ -253,7 +253,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     validityPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="validityPeriod",
         title=(
             "The time period in which the regulatory approval etc. is in effect, "
@@ -349,7 +349,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
     __resource_type__ = "RegulatedAuthorizationCase"
 
     application: typing.List[fhirtypes.RegulatedAuthorizationCaseType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="application",
         title=(
             "Applications submitted to obtain a regulated authorization. Steps "
@@ -369,7 +369,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
     )
 
     dateDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dateDateTime",
         title="Relevant date for this case",
         description=None,
@@ -382,11 +382,13 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         },
     )
     dateDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_dateDateTime", title="Extension field for ``dateDateTime``."
+        default=None,
+        alias="_dateDateTime",
+        title="Extension field for ``dateDateTime``.",
     )
 
     datePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="datePeriod",
         title="Relevant date for this case",
         description=None,
@@ -400,7 +402,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
     )
 
     identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Identifier by which this case can be referenced",
         description=None,
@@ -411,7 +413,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
     )
 
     status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="The status associated with the case",
         description=None,
@@ -422,7 +424,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="The defining type of case",
         description=None,

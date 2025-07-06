@@ -27,7 +27,7 @@ class Linkage(domainresource.DomainResource):
     __resource_type__ = "Linkage"
 
     active: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="active",
         title="Whether this linkage assertion is active or not",
         description=(
@@ -40,11 +40,11 @@ class Linkage(domainresource.DomainResource):
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_active", title="Extension field for ``active``."
+        default=None, alias="_active", title="Extension field for ``active``."
     )
 
     author: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="author",
         title="Who is responsible for linkages",
         description=(
@@ -61,7 +61,7 @@ class Linkage(domainresource.DomainResource):
     )
 
     item: typing.List[fhirtypes.LinkageItemType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="item",
         title="Item to be linked",
         description=(
@@ -117,7 +117,7 @@ class LinkageItem(backboneelement.BackboneElement):
     __resource_type__ = "LinkageItem"
 
     resource: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="resource",
         title="Resource being linked",
         description="The resource instance being linked as part of the group.",
@@ -128,7 +128,7 @@ class LinkageItem(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="source | alternate | historical",
         description=(
@@ -145,7 +145,7 @@ class LinkageItem(backboneelement.BackboneElement):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod

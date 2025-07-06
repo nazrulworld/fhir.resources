@@ -25,7 +25,7 @@ class Ratio(datatype.DataType):
     __resource_type__ = "Ratio"
 
     denominator: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="denominator",
         title="Denominator value",
         description="The value of the denominator.",
@@ -36,7 +36,7 @@ class Ratio(datatype.DataType):
     )
 
     numerator: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="numerator",
         title="Numerator value",
         description="The value of the numerator.",

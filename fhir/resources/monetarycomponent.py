@@ -25,7 +25,7 @@ class MonetaryComponent(datatype.DataType):
     __resource_type__ = "MonetaryComponent"
 
     amount: fhirtypes.MoneyType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="amount",
         title="Explicit value amount to be used",
         description=None,
@@ -36,7 +36,7 @@ class MonetaryComponent(datatype.DataType):
     )
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title=(
             "Codes may be used to differentiate between kinds of taxes, surcharges,"
@@ -53,7 +53,7 @@ class MonetaryComponent(datatype.DataType):
     )
 
     factor: fhirtypes.DecimalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="factor",
         title="Factor used for calculating this component",
         description=None,
@@ -63,11 +63,11 @@ class MonetaryComponent(datatype.DataType):
         },
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_factor", title="Extension field for ``factor``."
+        default=None, alias="_factor", title="Extension field for ``factor``."
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="base | surcharge | deduction | discount | tax | informational",
         description=None,
@@ -88,7 +88,7 @@ class MonetaryComponent(datatype.DataType):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod

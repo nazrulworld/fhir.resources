@@ -27,7 +27,7 @@ class Annotation(element.Element):
     __resource_type__ = "Annotation"
 
     authorReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="authorReference",
         title="Individual responsible for the annotation",
         description="The individual responsible for making the annotation.",
@@ -48,7 +48,7 @@ class Annotation(element.Element):
     )
 
     authorString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="authorString",
         title="Individual responsible for the annotation",
         description="The individual responsible for making the annotation.",
@@ -61,11 +61,13 @@ class Annotation(element.Element):
         },
     )
     authorString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_authorString", title="Extension field for ``authorString``."
+        default=None,
+        alias="_authorString",
+        title="Extension field for ``authorString``.",
     )
 
     text: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="text",
         title="The annotation  - text content (as markdown)",
         description="The text of the annotation in markdown format.",
@@ -76,11 +78,11 @@ class Annotation(element.Element):
         },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_text", title="Extension field for ``text``."
+        default=None, alias="_text", title="Extension field for ``text``."
     )
 
     time: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="time",
         title="When the annotation was made",
         description="Indicates when this particular annotation was made.",
@@ -90,7 +92,7 @@ class Annotation(element.Element):
         },
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_time", title="Extension field for ``time``."
+        default=None, alias="_time", title="Extension field for ``time``."
     )
 
     @classmethod

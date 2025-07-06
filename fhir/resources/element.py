@@ -26,7 +26,7 @@ class Element(base.Base):
     __resource_type__ = "Element"
 
     extension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="extension",
         title="Additional content defined by implementations",
         description=(
@@ -43,7 +43,7 @@ class Element(base.Base):
     )
 
     id: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="id",
         title="Unique id for inter-element referencing",
         description=(

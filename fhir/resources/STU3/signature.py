@@ -29,7 +29,7 @@ class Signature(element.Element):
     __resource_type__ = "Signature"
 
     blob: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="blob",
         title="The actual signature content (XML DigSig. JWT, picture, etc.)",
         description=(
@@ -41,11 +41,11 @@ class Signature(element.Element):
         },
     )
     blob__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_blob", title="Extension field for ``blob``."
+        default=None, alias="_blob", title="Extension field for ``blob``."
     )
 
     contentType: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contentType",
         title="The technical format of the signature",
         description=(
@@ -60,11 +60,11 @@ class Signature(element.Element):
         },
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_contentType", title="Extension field for ``contentType``."
+        default=None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
     onBehalfOfReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="onBehalfOfReference",
         title="The party represented",
         description=(
@@ -89,7 +89,7 @@ class Signature(element.Element):
     )
 
     onBehalfOfUri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="onBehalfOfUri",
         title="The party represented",
         description=(
@@ -105,11 +105,13 @@ class Signature(element.Element):
         },
     )
     onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_onBehalfOfUri", title="Extension field for ``onBehalfOfUri``."
+        default=None,
+        alias="_onBehalfOfUri",
+        title="Extension field for ``onBehalfOfUri``.",
     )
 
     type: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="Indication of the reason the entity signed the object(s)",
         description=(
@@ -125,7 +127,7 @@ class Signature(element.Element):
     )
 
     when: fhirtypes.InstantType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="when",
         title="When the signature was created",
         description="When the digital signature was signed.",
@@ -136,11 +138,11 @@ class Signature(element.Element):
         },
     )
     when__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_when", title="Extension field for ``when``."
+        default=None, alias="_when", title="Extension field for ``when``."
     )
 
     whoReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whoReference",
         title="Who signed",
         description=(
@@ -165,7 +167,7 @@ class Signature(element.Element):
     )
 
     whoUri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whoUri",
         title="Who signed",
         description=(
@@ -181,7 +183,7 @@ class Signature(element.Element):
         },
     )
     whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_whoUri", title="Extension field for ``whoUri``."
+        default=None, alias="_whoUri", title="Extension field for ``whoUri``."
     )
 
     @classmethod

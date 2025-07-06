@@ -30,7 +30,7 @@ class MedicationDispense(domainresource.DomainResource):
     __resource_type__ = "MedicationDispense"
 
     authorizingPrescription: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="authorizingPrescription",
         title="Medication order that authorizes the dispense",
         description="Indicates the medication order that is being dispensed against.",
@@ -42,7 +42,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="basedOn",
         title="Plan that is fulfilled by this dispense",
         description=(
@@ -57,7 +57,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="Type of medication dispense",
         description=(
@@ -71,7 +71,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     daysSupply: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="daysSupply",
         title="Amount of medication expressed as a timing amount",
         description="The amount of medication expressed as a timing amount.",
@@ -81,7 +81,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     destination: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="destination",
         title="Where the medication was/will be sent",
         description=(
@@ -96,7 +96,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     dosageInstruction: typing.List[fhirtypes.DosageType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dosageInstruction",
         title=(
             "How the medication is to be used by the patient or administered by the"
@@ -109,7 +109,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="encounter",
         title="Encounter associated with event",
         description="The encounter that establishes the context for this event.",
@@ -121,7 +121,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     eventHistory: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="eventHistory",
         title="A list of relevant lifecycle events",
         description=(
@@ -136,7 +136,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="External identifier",
         description=(
@@ -153,7 +153,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     location: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="location",
         title="Where the dispense occurred",
         description="The principal physical location where the dispense was performed.",
@@ -165,7 +165,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     medication: fhirtypes.CodeableReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="medication",
         title="What medication was supplied",
         description=(
@@ -183,7 +183,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     notPerformedReason: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="notPerformedReason",
         title="Why a dispense was not performed",
         description="Indicates the reason why a dispense was not performed.",
@@ -195,7 +195,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Information about the dispense",
         description=(
@@ -208,7 +208,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="partOf",
         title="Event that dispense is part of",
         description=(
@@ -222,7 +222,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     performer: typing.List[fhirtypes.MedicationDispensePerformerType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performer",
         title="Who performed event",
         description="Indicates who or what performed the event.",
@@ -232,7 +232,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="quantity",
         title="Amount dispensed",
         description=(
@@ -245,7 +245,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     receiver: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="receiver",
         title="Who collected the medication or where the medication was delivered",
         description=(
@@ -268,7 +268,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     recorded: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="recorded",
         title="When the recording of the dispense started",
         description=(
@@ -280,11 +280,11 @@ class MedicationDispense(domainresource.DomainResource):
         },
     )
     recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_recorded", title="Extension field for ``recorded``."
+        default=None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
     renderedDosageInstruction: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="renderedDosageInstruction",
         title="Full representation of the dosage instructions",
         description=(
@@ -298,13 +298,13 @@ class MedicationDispense(domainresource.DomainResource):
         },
     )
     renderedDosageInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_renderedDosageInstruction",
         title="Extension field for ``renderedDosageInstruction``.",
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title=(
             "preparation | in-progress | cancelled | on-hold | completed | entered-"
@@ -331,11 +331,11 @@ class MedicationDispense(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     statusChanged: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="statusChanged",
         title="When the status changed",
         description=(
@@ -347,11 +347,13 @@ class MedicationDispense(domainresource.DomainResource):
         },
     )
     statusChanged__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_statusChanged", title="Extension field for ``statusChanged``."
+        default=None,
+        alias="_statusChanged",
+        title="Extension field for ``statusChanged``.",
     )
 
     subject: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="subject",
         title="Who the dispense is for",
         description=(
@@ -367,7 +369,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     substitution: fhirtypes.MedicationDispenseSubstitutionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="substitution",
         title="Whether a substitution was performed on the dispense",
         description=(
@@ -383,7 +385,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     supportingInformation: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supportingInformation",
         title="Information that supports the dispensing of the medication",
         description=(
@@ -400,7 +402,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Trial fill, partial fill, emergency fill, etc",
         description=(
@@ -414,7 +416,7 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     whenHandedOver: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whenHandedOver",
         title="When product was given out",
         description=(
@@ -426,11 +428,13 @@ class MedicationDispense(domainresource.DomainResource):
         },
     )
     whenHandedOver__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_whenHandedOver", title="Extension field for ``whenHandedOver``."
+        default=None,
+        alias="_whenHandedOver",
+        title="Extension field for ``whenHandedOver``.",
     )
 
     whenPrepared: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="whenPrepared",
         title="When product was packaged and reviewed",
         description="The time when the dispensed product was packaged and reviewed.",
@@ -440,7 +444,9 @@ class MedicationDispense(domainresource.DomainResource):
         },
     )
     whenPrepared__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_whenPrepared", title="Extension field for ``whenPrepared``."
+        default=None,
+        alias="_whenPrepared",
+        title="Extension field for ``whenPrepared``.",
     )
 
     @classmethod
@@ -527,7 +533,7 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
     __resource_type__ = "MedicationDispensePerformer"
 
     actor: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="actor",
         title="Individual who was performing",
         description=(
@@ -550,7 +556,7 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
     )
 
     function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="function",
         title="Who performed the dispense and what they did",
         description=(
@@ -594,7 +600,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
     __resource_type__ = "MedicationDispenseSubstitution"
 
     reason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reason",
         title="Why was substitution made",
         description=(
@@ -607,7 +613,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
     )
 
     responsibleParty: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="responsibleParty",
         title="Who is responsible for the substitution",
         description=(
@@ -626,7 +632,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title=(
             "Code signifying whether a different drug was dispensed from what was "
@@ -642,7 +648,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
     )
 
     wasSubstituted: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="wasSubstituted",
         title="Whether a substitution was or was not performed on the dispense",
         description=(
@@ -655,7 +661,9 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         },
     )
     wasSubstituted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_wasSubstituted", title="Extension field for ``wasSubstituted``."
+        default=None,
+        alias="_wasSubstituted",
+        title="Extension field for ``wasSubstituted``.",
     )
 
     @classmethod

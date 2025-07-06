@@ -27,7 +27,7 @@ class Medication(domainresource.DomainResource):
     __resource_type__ = "Medication"
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Codes that identify this medication",
         description=(
@@ -44,7 +44,7 @@ class Medication(domainresource.DomainResource):
     )
 
     form: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="form",
         title="powder | tablets | capsule +",
         description="Describes the form of the item.  Powder; tablets; capsule.",
@@ -54,7 +54,7 @@ class Medication(domainresource.DomainResource):
     )
 
     image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="image",
         title="Picture of the medication",
         description="Photo(s) or graphic representation(s) of the medication.",
@@ -64,7 +64,7 @@ class Medication(domainresource.DomainResource):
     )
 
     ingredient: typing.List[fhirtypes.MedicationIngredientType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="ingredient",
         title="Active or inactive ingredient",
         description="Identifies a particular constituent of interest in the product.",
@@ -74,7 +74,7 @@ class Medication(domainresource.DomainResource):
     )
 
     isBrand: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="isBrand",
         title="True if a brand",
         description="Set to true if the item is attributable to a specific manufacturer.",
@@ -84,11 +84,11 @@ class Medication(domainresource.DomainResource):
         },
     )
     isBrand__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_isBrand", title="Extension field for ``isBrand``."
+        default=None, alias="_isBrand", title="Extension field for ``isBrand``."
     )
 
     isOverTheCounter: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="isOverTheCounter",
         title="True if medication does not require a prescription",
         description=(
@@ -101,13 +101,13 @@ class Medication(domainresource.DomainResource):
         },
     )
     isOverTheCounter__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_isOverTheCounter",
         title="Extension field for ``isOverTheCounter``.",
     )
 
     manufacturer: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="manufacturer",
         title="Manufacturer of the item",
         description=(
@@ -124,7 +124,7 @@ class Medication(domainresource.DomainResource):
     )
 
     package: fhirtypes.MedicationPackageType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="package",
         title="Details about packaged medications",
         description="Information that only applies to packages (not products).",
@@ -134,7 +134,7 @@ class Medication(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | inactive | entered-in-error",
         description="A code to indicate if the medication is in active use.",
@@ -147,7 +147,7 @@ class Medication(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
@@ -205,7 +205,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
     __resource_type__ = "MedicationIngredient"
 
     amount: fhirtypes.RatioType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="amount",
         title="Quantity of ingredient present",
         description=(
@@ -219,7 +219,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
     )
 
     isActive: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="isActive",
         title="Active ingredient indicator",
         description=(
@@ -231,11 +231,11 @@ class MedicationIngredient(backboneelement.BackboneElement):
         },
     )
     isActive__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_isActive", title="Extension field for ``isActive``."
+        default=None, alias="_isActive", title="Extension field for ``isActive``."
     )
 
     itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemCodeableConcept",
         title="The product contained",
         description=(
@@ -251,7 +251,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
     )
 
     itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemReference",
         title="The product contained",
         description=(
@@ -321,7 +321,7 @@ class MedicationPackage(backboneelement.BackboneElement):
     __resource_type__ = "MedicationPackage"
 
     batch: typing.List[fhirtypes.MedicationPackageBatchType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="batch",
         title="Identifies a single production run",
         description=(
@@ -334,7 +334,7 @@ class MedicationPackage(backboneelement.BackboneElement):
     )
 
     container: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="container",
         title="E.g. box, vial, blister-pack",
         description="The kind of container that this package comes as.",
@@ -344,7 +344,7 @@ class MedicationPackage(backboneelement.BackboneElement):
     )
 
     content: typing.List[fhirtypes.MedicationPackageContentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="content",
         title="What is  in the package",
         description="A set of components that go to make up the described item.",
@@ -382,7 +382,7 @@ class MedicationPackageBatch(backboneelement.BackboneElement):
     __resource_type__ = "MedicationPackageBatch"
 
     expirationDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expirationDate",
         title="When batch will expire",
         description="When this specific batch of product will expire.",
@@ -391,11 +391,13 @@ class MedicationPackageBatch(backboneelement.BackboneElement):
         },
     )
     expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_expirationDate", title="Extension field for ``expirationDate``."
+        default=None,
+        alias="_expirationDate",
+        title="Extension field for ``expirationDate``.",
     )
 
     lotNumber: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lotNumber",
         title="Identifier assigned to batch",
         description="The assigned lot number of a batch of the specified product.",
@@ -404,7 +406,7 @@ class MedicationPackageBatch(backboneelement.BackboneElement):
         },
     )
     lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lotNumber", title="Extension field for ``lotNumber``."
+        default=None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
     @classmethod
@@ -435,7 +437,7 @@ class MedicationPackageContent(backboneelement.BackboneElement):
     __resource_type__ = "MedicationPackageContent"
 
     amount: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="amount",
         title="Quantity present in the package",
         description="The amount of the product that is in the package.",
@@ -445,7 +447,7 @@ class MedicationPackageContent(backboneelement.BackboneElement):
     )
 
     itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemCodeableConcept",
         title="The item in the package",
         description="Identifies one of the items in the package.",
@@ -458,7 +460,7 @@ class MedicationPackageContent(backboneelement.BackboneElement):
     )
 
     itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="itemReference",
         title="The item in the package",
         description="Identifies one of the items in the package.",

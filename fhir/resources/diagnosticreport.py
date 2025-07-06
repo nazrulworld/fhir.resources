@@ -33,7 +33,7 @@ class DiagnosticReport(domainresource.DomainResource):
     __resource_type__ = "DiagnosticReport"
 
     basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="basedOn",
         title="What was requested",
         description="Details concerning a service requested.",
@@ -51,7 +51,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="Service category",
         description=(
@@ -67,7 +67,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     code: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="Name/Code for this diagnostic report",
         description="A code or name that describes this diagnostic report.",
@@ -78,7 +78,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     composition: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="composition",
         title="Reference to a Composition resource for the DiagnosticReport structure",
         description=(
@@ -93,7 +93,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     conclusion: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="conclusion",
         title="Clinical conclusion (interpretation) of test results",
         description=(
@@ -105,11 +105,11 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
     conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_conclusion", title="Extension field for ``conclusion``."
+        default=None, alias="_conclusion", title="Extension field for ``conclusion``."
     )
 
     conclusionCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="conclusionCode",
         title="Codes for the clinical conclusion of test results",
         description=(
@@ -122,7 +122,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     effectiveDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectiveDateTime",
         title="Clinically relevant time/time-period for report",
         description=(
@@ -140,13 +140,13 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
     effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_effectiveDateTime",
         title="Extension field for ``effectiveDateTime``.",
     )
 
     effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="effectivePeriod",
         title="Clinically relevant time/time-period for report",
         description=(
@@ -165,7 +165,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="encounter",
         title="Health care event when test ordered",
         description=(
@@ -181,7 +181,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business identifier for report",
         description="Identifiers assigned to this report by the performer or other systems.",
@@ -192,7 +192,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     issued: fhirtypes.InstantType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="issued",
         title="DateTime this version was made",
         description=(
@@ -205,11 +205,11 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_issued", title="Extension field for ``issued``."
+        default=None, alias="_issued", title="Extension field for ``issued``."
     )
 
     media: typing.List[fhirtypes.DiagnosticReportMediaType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="media",
         title="Key images or data associated with this report",
         description=(
@@ -225,7 +225,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Comments about the diagnostic report",
         description=None,
@@ -235,7 +235,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     performer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="performer",
         title="Responsible Diagnostic Service",
         description="The diagnostic service that is responsible for issuing the report.",
@@ -253,7 +253,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     presentedForm: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="presentedForm",
         title="Entire report as issued",
         description=(
@@ -267,7 +267,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     result: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="result",
         title="Observations",
         description=(
@@ -282,7 +282,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     resultsInterpreter: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="resultsInterpreter",
         title="Primary result interpreter",
         description=(
@@ -303,7 +303,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     specimen: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="specimen",
         title="Specimens this report is based on",
         description="Details about the specimens on which this diagnostic report is based.",
@@ -315,7 +315,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title=(
             "registered | partial | preliminary | modified | final | amended | "
@@ -344,11 +344,11 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     study: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="study",
         title=(
             "Reference to full details of an analysis associated with the "
@@ -374,7 +374,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title="The subject of the report - usually, but not always, the patient",
         description=(
@@ -401,7 +401,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     supportingInfo: typing.List[fhirtypes.DiagnosticReportSupportingInfoType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="supportingInfo",
         title="Additional information supporting the diagnostic report",
         description=(
@@ -519,7 +519,7 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
     __resource_type__ = "DiagnosticReportMedia"
 
     comment: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="comment",
         title="Comment about the image or data (e.g. explanation)",
         description=(
@@ -532,11 +532,11 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_comment", title="Extension field for ``comment``."
+        default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
     link: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="link",
         title="Reference to the image or data source",
         description=None,
@@ -578,7 +578,7 @@ class DiagnosticReportSupportingInfo(backboneelement.BackboneElement):
     __resource_type__ = "DiagnosticReportSupportingInfo"
 
     reference: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="reference",
         title="Supporting information reference",
         description="The reference for the supporting information in the diagnostic report.",
@@ -595,7 +595,7 @@ class DiagnosticReportSupportingInfo(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="Supporting information role code",
         description=(

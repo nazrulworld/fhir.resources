@@ -27,7 +27,7 @@ class DeviceUsage(domainresource.DomainResource):
     __resource_type__ = "DeviceUsage"
 
     adherence: fhirtypes.DeviceUsageAdherenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="adherence",
         title="How device is being used",
         description="This indicates how or if the device is being used.",
@@ -37,7 +37,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="basedOn",
         title="Fulfills plan, proposal or order",
         description=(
@@ -53,7 +53,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     bodySite: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="bodySite",
         title="Target body site",
         description=(
@@ -69,7 +69,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="The category of the statement - classifying how the statement is made",
         description=(
@@ -83,7 +83,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     context: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="context",
         title=(
             "The encounter or episode of care that establishes the context for this"
@@ -99,7 +99,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     dateAsserted: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="dateAsserted",
         title="When the statement was made (and recorded)",
         description="The time at which the statement was recorded by informationSource.",
@@ -109,11 +109,13 @@ class DeviceUsage(domainresource.DomainResource):
         },
     )
     dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_dateAsserted", title="Extension field for ``dateAsserted``."
+        default=None,
+        alias="_dateAsserted",
+        title="Extension field for ``dateAsserted``.",
     )
 
     derivedFrom: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="derivedFrom",
         title="Supporting information",
         description=(
@@ -136,7 +138,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     device: fhirtypes.CodeableReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="device",
         title="Code or Reference to device used",
         description=None,
@@ -149,7 +151,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="External identifier for this record",
         description="An external identifier for this statement such as an IRI.",
@@ -160,7 +162,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     informationSource: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="informationSource",
         title="Who made the statement",
         description="Who reported the device was being used by the patient.",
@@ -179,7 +181,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Addition details (comments, instructions)",
         description=(
@@ -194,7 +196,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     patient: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="patient",
         title="Patient using device",
         description="The patient who used the device.",
@@ -207,7 +209,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="reason",
         title="Why device was used",
         description=(
@@ -229,7 +231,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | completed | not-done | entered-in-error +",
         description=(
@@ -247,11 +249,11 @@ class DeviceUsage(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     timingDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="timingDateTime",
         title="How often  the device was used",
         description="How often the device was used.",
@@ -264,11 +266,13 @@ class DeviceUsage(domainresource.DomainResource):
         },
     )
     timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_timingDateTime", title="Extension field for ``timingDateTime``."
+        default=None,
+        alias="_timingDateTime",
+        title="Extension field for ``timingDateTime``.",
     )
 
     timingPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="timingPeriod",
         title="How often  the device was used",
         description="How often the device was used.",
@@ -282,7 +286,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     timingTiming: fhirtypes.TimingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="timingTiming",
         title="How often  the device was used",
         description="How often the device was used.",
@@ -296,7 +300,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     usageReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="usageReason",
         title=(
             "The reason for asserting the usage status - for example forgot, lost, "
@@ -309,7 +313,7 @@ class DeviceUsage(domainresource.DomainResource):
     )
 
     usageStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="usageStatus",
         title=(
             "The status of the device usage, for example always, sometimes, never. "
@@ -425,7 +429,7 @@ class DeviceUsageAdherence(backboneelement.BackboneElement):
     __resource_type__ = "DeviceUsageAdherence"
 
     code: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="code",
         title="always | never | sometimes",
         description="Type of adherence.",
@@ -435,7 +439,7 @@ class DeviceUsageAdherence(backboneelement.BackboneElement):
     )
 
     reason: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="reason",
         title="lost | stolen | prescribed | broken | burned | forgot",
         description="Reason for adherence type.",

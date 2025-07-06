@@ -29,7 +29,7 @@ class ParameterDefinition(element.Element):
     __resource_type__ = "ParameterDefinition"
 
     documentation: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="documentation",
         title="A brief description of the parameter",
         description=(
@@ -42,11 +42,13 @@ class ParameterDefinition(element.Element):
         },
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_documentation", title="Extension field for ``documentation``."
+        default=None,
+        alias="_documentation",
+        title="Extension field for ``documentation``.",
     )
 
     max: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="max",
         title="Maximum cardinality (a number of *)",
         description=(
@@ -59,11 +61,11 @@ class ParameterDefinition(element.Element):
         },
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_max", title="Extension field for ``max``."
+        default=None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.IntegerType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="min",
         title="Minimum cardinality",
         description=(
@@ -76,11 +78,11 @@ class ParameterDefinition(element.Element):
         },
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_min", title="Extension field for ``min``."
+        default=None, alias="_min", title="Extension field for ``min``."
     )
 
     name: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name used to access the parameter value",
         description=(
@@ -93,11 +95,11 @@ class ParameterDefinition(element.Element):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     profile: fhirtypes.CanonicalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="profile",
         title="What profile the value is expected to be",
         description=(
@@ -112,11 +114,11 @@ class ParameterDefinition(element.Element):
         },
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_profile", title="Extension field for ``profile``."
+        default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="What type of value",
         description="The type of the parameter.",
@@ -127,11 +129,11 @@ class ParameterDefinition(element.Element):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     use: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="use",
         title="in | out",
         description="Whether the parameter is input or output for the module.",
@@ -145,7 +147,7 @@ class ParameterDefinition(element.Element):
         },
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_use", title="Extension field for ``use``."
+        default=None, alias="_use", title="Extension field for ``use``."
     )
 
     @classmethod

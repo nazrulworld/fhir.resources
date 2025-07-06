@@ -26,7 +26,7 @@ class ProductShelfLife(backbonetype.BackboneType):
     __resource_type__ = "ProductShelfLife"
 
     periodDuration: fhirtypes.DurationType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="periodDuration",
         title=(
             "The shelf life time period can be specified using a numerical value "
@@ -46,7 +46,7 @@ class ProductShelfLife(backbonetype.BackboneType):
     )
 
     periodString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="periodString",
         title=(
             "The shelf life time period can be specified using a numerical value "
@@ -65,11 +65,13 @@ class ProductShelfLife(backbonetype.BackboneType):
         },
     )
     periodString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_periodString", title="Extension field for ``periodString``."
+        default=None,
+        alias="_periodString",
+        title="Extension field for ``periodString``.",
     )
 
     specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="specialPrecautionsForStorage",
         title=(
             "Special precautions for storage, if any, can be specified using an "
@@ -84,7 +86,7 @@ class ProductShelfLife(backbonetype.BackboneType):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title=(
             "This describes the shelf life, taking into account various scenarios "

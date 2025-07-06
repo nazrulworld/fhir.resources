@@ -29,7 +29,7 @@ class ArtifactAssessment(domainresource.DomainResource):
     __resource_type__ = "ArtifactAssessment"
 
     approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="approvalDate",
         title="When the artifact assessment was approved by publisher",
         description=(
@@ -42,11 +42,13 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
+        default=None,
+        alias="_approvalDate",
+        title="Extension field for ``approvalDate``.",
     )
 
     artifactCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="artifactCanonical",
         title="The artifact assessed, commented upon or rated",
         description=(
@@ -62,13 +64,13 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     artifactCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_artifactCanonical",
         title="Extension field for ``artifactCanonical``.",
     )
 
     artifactReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="artifactReference",
         title="The artifact assessed, commented upon or rated",
         description=(
@@ -87,7 +89,7 @@ class ArtifactAssessment(domainresource.DomainResource):
     )
 
     artifactUri: fhirtypes.UriType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="artifactUri",
         title="The artifact assessed, commented upon or rated",
         description=(
@@ -103,11 +105,11 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     artifactUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_artifactUri", title="Extension field for ``artifactUri``."
+        default=None, alias="_artifactUri", title="Extension field for ``artifactUri``."
     )
 
     citeAsMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="citeAsMarkdown",
         title="How to cite the comment or rating",
         description=(
@@ -122,11 +124,13 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     citeAsMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_citeAsMarkdown", title="Extension field for ``citeAsMarkdown``."
+        default=None,
+        alias="_citeAsMarkdown",
+        title="Extension field for ``citeAsMarkdown``.",
     )
 
     citeAsReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="citeAsReference",
         title="How to cite the comment or rating",
         description=(
@@ -144,7 +148,7 @@ class ArtifactAssessment(domainresource.DomainResource):
     )
 
     content: typing.List[fhirtypes.ArtifactAssessmentContentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="content",
         title="Comment, classifier, or rating content",
         description="A component comment, classifier, or rating of the artifact.",
@@ -154,7 +158,7 @@ class ArtifactAssessment(domainresource.DomainResource):
     )
 
     copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
         description=(
@@ -167,11 +171,11 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_copyright", title="Extension field for ``copyright``."
+        default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date last changed",
         description=(
@@ -187,11 +191,11 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     disposition: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="disposition",
         title=(
             "unresolved | not-persuasive | persuasive | persuasive-with-"
@@ -216,11 +220,11 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_disposition", title="Extension field for ``disposition``."
+        default=None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Additional identifier for the artifact assessment",
         description=(
@@ -235,7 +239,7 @@ class ArtifactAssessment(domainresource.DomainResource):
     )
 
     lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lastReviewDate",
         title="When the artifact assessment was last reviewed by the publisher",
         description=(
@@ -249,11 +253,13 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
+        default=None,
+        alias="_lastReviewDate",
+        title="Extension field for ``lastReviewDate``.",
     )
 
     title: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="title",
         title="A short title for the assessment for use in displaying and selecting",
         description=None,
@@ -263,11 +269,11 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_title", title="Extension field for ``title``."
+        default=None, alias="_title", title="Extension field for ``title``."
     )
 
     workflowStatus: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="workflowStatus",
         title=(
             "submitted | triaged | waiting-for-input | resolved-no-change | "
@@ -295,7 +301,9 @@ class ArtifactAssessment(domainresource.DomainResource):
         },
     )
     workflowStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_workflowStatus", title="Extension field for ``workflowStatus``."
+        default=None,
+        alias="_workflowStatus",
+        title="Extension field for ``workflowStatus``.",
     )
 
     @classmethod
@@ -382,7 +390,7 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
     __resource_type__ = "ArtifactAssessmentContent"
 
     author: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="author",
         title="Who authored the content",
         description="Indicates who or what authored the content.",
@@ -400,7 +408,7 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
     )
 
     classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="classifier",
         title="Rating, classifier, or assessment",
         description="Represents a rating, classifier, or assessment of the artifact.",
@@ -410,7 +418,7 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
     )
 
     component: typing.List[fhirtypes.ArtifactAssessmentContentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="component",
         title="Contained content",
         description="If the informationType is container, the components of the content.",
@@ -420,7 +428,7 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
     )
 
     freeToShare: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="freeToShare",
         title="Acceptable to publicly share the resource content",
         description="Acceptable to publicly share the comment, classifier or rating.",
@@ -429,11 +437,11 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         },
     )
     freeToShare__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_freeToShare", title="Extension field for ``freeToShare``."
+        default=None, alias="_freeToShare", title="Extension field for ``freeToShare``."
     )
 
     informationType: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="informationType",
         title="comment | classifier | rating | container | response | change-request",
         description="The type of information this component of the content represents.",
@@ -452,11 +460,13 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         },
     )
     informationType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_informationType", title="Extension field for ``informationType``."
+        default=None,
+        alias="_informationType",
+        title="Extension field for ``informationType``.",
     )
 
     path: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="path",
         title="What the comment is directed to",
         description=(
@@ -468,11 +478,11 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         },
     )
     path__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_path", title="Extension field for ``path``."
+        default=None, alias="_path", title="Extension field for ``path``."
     )
 
     quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="quantity",
         title="Quantitative rating",
         description="A quantitative rating of the artifact.",
@@ -482,7 +492,7 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
     )
 
     relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="relatedArtifact",
         title="Additional information",
         description=(
@@ -495,7 +505,7 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
     )
 
     summary: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="summary",
         title="Brief summary of the content",
         description="A brief summary of the content of this component.",
@@ -504,11 +514,11 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         },
     )
     summary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_summary", title="Extension field for ``summary``."
+        default=None, alias="_summary", title="Extension field for ``summary``."
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="What type of content",
         description="Indicates what type of content this component represents.",

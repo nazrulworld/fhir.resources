@@ -25,7 +25,7 @@ class VirtualServiceDetail(datatype.DataType):
     __resource_type__ = "VirtualServiceDetail"
 
     additionalInfo: typing.List[fhirtypes.UrlType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="additionalInfo",
         title="Address to see alternative connection details",
         description=None,
@@ -35,11 +35,13 @@ class VirtualServiceDetail(datatype.DataType):
         },
     )
     additionalInfo__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_additionalInfo", title="Extension field for ``additionalInfo``."
+        default=None,
+        alias="_additionalInfo",
+        title="Extension field for ``additionalInfo``.",
     )
 
     addressContactPoint: fhirtypes.ContactPointType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="addressContactPoint",
         title="Contact address/number",
         description=(
@@ -57,7 +59,7 @@ class VirtualServiceDetail(datatype.DataType):
     )
 
     addressExtendedContactDetail: fhirtypes.ExtendedContactDetailType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="addressExtendedContactDetail",
         title="Contact address/number",
         description=(
@@ -75,7 +77,7 @@ class VirtualServiceDetail(datatype.DataType):
     )
 
     addressString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="addressString",
         title="Contact address/number",
         description=(
@@ -92,11 +94,13 @@ class VirtualServiceDetail(datatype.DataType):
         },
     )
     addressString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_addressString", title="Extension field for ``addressString``."
+        default=None,
+        alias="_addressString",
+        title="Extension field for ``addressString``.",
     )
 
     addressUrl: fhirtypes.UrlType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="addressUrl",
         title="Contact address/number",
         description=(
@@ -113,11 +117,11 @@ class VirtualServiceDetail(datatype.DataType):
         },
     )
     addressUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_addressUrl", title="Extension field for ``addressUrl``."
+        default=None, alias="_addressUrl", title="Extension field for ``addressUrl``."
     )
 
     channelType: fhirtypes.CodingType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="channelType",
         title="Channel Type",
         description=(
@@ -131,7 +135,7 @@ class VirtualServiceDetail(datatype.DataType):
     )
 
     maxParticipants: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="maxParticipants",
         title="Maximum number of participants supported by the virtual service",
         description=None,
@@ -141,11 +145,13 @@ class VirtualServiceDetail(datatype.DataType):
         },
     )
     maxParticipants__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_maxParticipants", title="Extension field for ``maxParticipants``."
+        default=None,
+        alias="_maxParticipants",
+        title="Extension field for ``maxParticipants``.",
     )
 
     sessionKey: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sessionKey",
         title="Session Key required by the virtual service",
         description=None,
@@ -155,7 +161,7 @@ class VirtualServiceDetail(datatype.DataType):
         },
     )
     sessionKey__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_sessionKey", title="Extension field for ``sessionKey``."
+        default=None, alias="_sessionKey", title="Extension field for ``sessionKey``."
     )
 
     @classmethod

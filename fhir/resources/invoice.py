@@ -27,7 +27,7 @@ class Invoice(domainresource.DomainResource):
     __resource_type__ = "Invoice"
 
     account: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="account",
         title="Account that is being balanced",
         description="Account which is supposed to be balanced with this Invoice.",
@@ -39,7 +39,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     cancelledReason: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="cancelledReason",
         title="Reason for cancellation of this Invoice",
         description=(
@@ -51,11 +51,13 @@ class Invoice(domainresource.DomainResource):
         },
     )
     cancelledReason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_cancelledReason", title="Extension field for ``cancelledReason``."
+        default=None,
+        alias="_cancelledReason",
+        title="Extension field for ``cancelledReason``.",
     )
 
     creation: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="creation",
         title="When posted",
         description="Date/time(s) of when this Invoice was posted.",
@@ -65,11 +67,11 @@ class Invoice(domainresource.DomainResource):
         },
     )
     creation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_creation", title="Extension field for ``creation``."
+        default=None, alias="_creation", title="Extension field for ``creation``."
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="DEPRICATED",
         description="Depricared by the element below.",
@@ -78,11 +80,11 @@ class Invoice(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Business Identifier for item",
         description=(
@@ -96,7 +98,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     issuer: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="issuer",
         title="Issuing Organization of Invoice",
         description="The organizationissuing the Invoice.",
@@ -108,7 +110,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     lineItem: typing.List[fhirtypes.InvoiceLineItemType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lineItem",
         title="Line items of this Invoice",
         description=(
@@ -122,7 +124,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Comments made about the invoice",
         description=(
@@ -135,7 +137,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     participant: typing.List[fhirtypes.InvoiceParticipantType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="participant",
         title="Participant in creation of this Invoice",
         description=(
@@ -147,7 +149,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     paymentTerms: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="paymentTerms",
         title="Payment details",
         description=(
@@ -159,11 +161,13 @@ class Invoice(domainresource.DomainResource):
         },
     )
     paymentTerms__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_paymentTerms", title="Extension field for ``paymentTerms``."
+        default=None,
+        alias="_paymentTerms",
+        title="Extension field for ``paymentTerms``.",
     )
 
     periodDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="periodDate",
         title="Billing date or period",
         description="Date/time(s) range of services included in this invoice.",
@@ -176,11 +180,11 @@ class Invoice(domainresource.DomainResource):
         },
     )
     periodDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_periodDate", title="Extension field for ``periodDate``."
+        default=None, alias="_periodDate", title="Extension field for ``periodDate``."
     )
 
     periodPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="periodPeriod",
         title="Billing date or period",
         description="Date/time(s) range of services included in this invoice.",
@@ -194,7 +198,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     recipient: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="recipient",
         title="Recipient of this invoice",
         description=(
@@ -210,7 +214,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | issued | balanced | cancelled | entered-in-error",
         description="The current state of the Invoice.",
@@ -230,11 +234,11 @@ class Invoice(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title="Recipient(s) of goods and services",
         description=(
@@ -250,7 +254,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     totalGross: fhirtypes.MoneyType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="totalGross",
         title="Gross total of this Invoice",
         description="Invoice total, tax included.",
@@ -261,7 +265,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     totalNet: fhirtypes.MoneyType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="totalNet",
         title="Net total of this Invoice",
         description="Invoice total , taxes excluded.",
@@ -272,7 +276,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     totalPriceComponent: typing.List[fhirtypes.MonetaryComponentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="totalPriceComponent",
         title="Components of Invoice total",
         description=(
@@ -288,7 +292,7 @@ class Invoice(domainresource.DomainResource):
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="Type of Invoice",
         description=(
@@ -401,7 +405,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     __resource_type__ = "InvoiceLineItem"
 
     chargeItemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="chargeItemCodeableConcept",
         title=(
             "Reference to ChargeItem containing details of this line item or an "
@@ -422,7 +426,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     )
 
     chargeItemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="chargeItemReference",
         title=(
             "Reference to ChargeItem containing details of this line item or an "
@@ -445,7 +449,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     )
 
     priceComponent: typing.List[fhirtypes.MonetaryComponentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="priceComponent",
         title="Components of total line item price",
         description=(
@@ -463,7 +467,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     )
 
     sequence: fhirtypes.PositiveIntType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="sequence",
         title="Sequence number of line item",
         description="Sequence in which the items appear on the invoice.",
@@ -472,11 +476,11 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_sequence", title="Extension field for ``sequence``."
+        default=None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     servicedDate: fhirtypes.DateType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="servicedDate",
         title="Service data or period",
         description="Date/time(s) range when this service was delivered or completed.",
@@ -488,11 +492,13 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         },
     )
     servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_servicedDate", title="Extension field for ``servicedDate``."
+        default=None,
+        alias="_servicedDate",
+        title="Extension field for ``servicedDate``.",
     )
 
     servicedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="servicedPeriod",
         title="Service data or period",
         description="Date/time(s) range when this service was delivered or completed.",
@@ -561,7 +567,7 @@ class InvoiceParticipant(backboneelement.BackboneElement):
     __resource_type__ = "InvoiceParticipant"
 
     actor: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="actor",
         title="Individual who was involved",
         description=(
@@ -583,7 +589,7 @@ class InvoiceParticipant(backboneelement.BackboneElement):
     )
 
     role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="role",
         title="Type of involvement in creation of this Invoice",
         description=(

@@ -28,7 +28,7 @@ class NamingSystem(domainresource.DomainResource):
     __resource_type__ = "NamingSystem"
 
     contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for the publisher",
         description=(
@@ -42,7 +42,7 @@ class NamingSystem(domainresource.DomainResource):
     )
 
     date: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="date",
         title="Date last changed",
         description=(
@@ -58,11 +58,11 @@ class NamingSystem(domainresource.DomainResource):
         },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_date", title="Extension field for ``date``."
+        default=None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.MarkdownType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Natural language description of the naming system",
         description=(
@@ -75,11 +75,11 @@ class NamingSystem(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for naming system (if applicable)",
         description=(
@@ -93,7 +93,7 @@ class NamingSystem(domainresource.DomainResource):
     )
 
     kind: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="kind",
         title="codesystem | identifier | root",
         description=(
@@ -110,11 +110,11 @@ class NamingSystem(domainresource.DomainResource):
         },
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_kind", title="Extension field for ``kind``."
+        default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="Name for this naming system (computer friendly)",
         description=(
@@ -129,11 +129,11 @@ class NamingSystem(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
         description=(
@@ -146,11 +146,11 @@ class NamingSystem(domainresource.DomainResource):
         },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_publisher", title="Extension field for ``publisher``."
+        default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     responsible: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="responsible",
         title="Who maintains system namespace?",
         description=(
@@ -163,11 +163,11 @@ class NamingSystem(domainresource.DomainResource):
         },
     )
     responsible__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_responsible", title="Extension field for ``responsible``."
+        default=None, alias="_responsible", title="Extension field for ``responsible``."
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -184,11 +184,11 @@ class NamingSystem(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="e.g. driver,  provider,  patient, bank etc.",
         description=(
@@ -201,7 +201,7 @@ class NamingSystem(domainresource.DomainResource):
     )
 
     uniqueId: typing.List[fhirtypes.NamingSystemUniqueIdType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="uniqueId",
         title="Unique identifiers used for system",
         description=(
@@ -215,7 +215,7 @@ class NamingSystem(domainresource.DomainResource):
     )
 
     usage: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="usage",
         title="How/where is it used",
         description=(
@@ -227,11 +227,11 @@ class NamingSystem(domainresource.DomainResource):
         },
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_usage", title="Extension field for ``usage``."
+        default=None, alias="_usage", title="Extension field for ``usage``."
     )
 
     useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useContext",
         title="The context that the content is intended to support",
         description=(
@@ -327,7 +327,7 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
     __resource_type__ = "NamingSystemUniqueId"
 
     comment: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="comment",
         title="Notes about identifier usage",
         description="Notes about the past or intended usage of this identifier.",
@@ -336,11 +336,11 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
         },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_comment", title="Extension field for ``comment``."
+        default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="When is identifier valid?",
         description=(
@@ -354,7 +354,7 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
     )
 
     preferred: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="preferred",
         title="Is this the id that should be used for this type",
         description=(
@@ -366,11 +366,11 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
         },
     )
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_preferred", title="Extension field for ``preferred``."
+        default=None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
     type: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title="oid | uuid | uri | other",
         description=(
@@ -387,11 +387,11 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
         },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_type", title="Extension field for ``type``."
+        default=None, alias="_type", title="Extension field for ``type``."
     )
 
     value: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="value",
         title="The unique identifier",
         description=(
@@ -405,7 +405,7 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
         },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_value", title="Extension field for ``value``."
+        default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod

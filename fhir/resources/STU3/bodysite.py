@@ -28,7 +28,7 @@ class BodySite(domainresource.DomainResource):
     __resource_type__ = "BodySite"
 
     active: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="active",
         title="Whether this body site record is in active use",
         description="Whether this body site is in active use.",
@@ -38,11 +38,11 @@ class BodySite(domainresource.DomainResource):
         },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_active", title="Extension field for ``active``."
+        default=None, alias="_active", title="Extension field for ``active``."
     )
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="Named anatomical location",
         description="Named anatomical location - ideally coded where possible.",
@@ -53,7 +53,7 @@ class BodySite(domainresource.DomainResource):
     )
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title="Anatomical location description",
         description="A summary, charactarization or explanation of the anatomic location.",
@@ -63,11 +63,11 @@ class BodySite(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Bodysite identifier",
         description="Identifier for this instance of the anatomical location.",
@@ -78,7 +78,7 @@ class BodySite(domainresource.DomainResource):
     )
 
     image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="image",
         title="Attached images",
         description="Image or images used to identify a location.",
@@ -88,7 +88,7 @@ class BodySite(domainresource.DomainResource):
     )
 
     patient: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="patient",
         title="Who this is about",
         description="The person to which the body site belongs.",
@@ -101,7 +101,7 @@ class BodySite(domainresource.DomainResource):
     )
 
     qualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="qualifier",
         title="Modification to location code",
         description=(

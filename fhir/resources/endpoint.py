@@ -30,7 +30,7 @@ class Endpoint(domainresource.DomainResource):
     __resource_type__ = "Endpoint"
 
     address: fhirtypes.UrlType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="address",
         title="The technical base address for connecting to this endpoint",
         description="The uri that describes the actual end-point to connect to.",
@@ -41,11 +41,11 @@ class Endpoint(domainresource.DomainResource):
         },
     )
     address__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_address", title="Extension field for ``address``."
+        default=None, alias="_address", title="Extension field for ``address``."
     )
 
     connectionType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
-        ...,
+        default=...,
         alias="connectionType",
         title="Protocol/Profile/Standard to be used with this endpoint connection",
         description=(
@@ -60,7 +60,7 @@ class Endpoint(domainresource.DomainResource):
     )
 
     contact: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="contact",
         title="Contact details for source (e.g. troubleshooting)",
         description=(
@@ -73,7 +73,7 @@ class Endpoint(domainresource.DomainResource):
     )
 
     description: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="description",
         title=(
             "Additional details about the endpoint that could be displayed as "
@@ -90,11 +90,11 @@ class Endpoint(domainresource.DomainResource):
         },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_description", title="Extension field for ``description``."
+        default=None, alias="_description", title="Extension field for ``description``."
     )
 
     environmentType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="environmentType",
         title="The type of environment(s) exposed at this endpoint",
         description=(
@@ -108,7 +108,7 @@ class Endpoint(domainresource.DomainResource):
     )
 
     header: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="header",
         title="Usage depends on the channel type",
         description="Additional headers / information to send as part of the notification.",
@@ -117,11 +117,11 @@ class Endpoint(domainresource.DomainResource):
         },
     )
     header__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_header", title="Extension field for ``header``."
+        default=None, alias="_header", title="Extension field for ``header``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Identifies this endpoint across multiple systems",
         description=(
@@ -135,7 +135,7 @@ class Endpoint(domainresource.DomainResource):
     )
 
     managingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="managingOrganization",
         title=(
             "Organization that manages this endpoint (might not be the organization"
@@ -155,7 +155,7 @@ class Endpoint(domainresource.DomainResource):
     )
 
     name: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="name",
         title="A name that this endpoint can be identified by",
         description="A friendly name that this endpoint can be referred to with.",
@@ -165,11 +165,11 @@ class Endpoint(domainresource.DomainResource):
         },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_name", title="Extension field for ``name``."
+        default=None, alias="_name", title="Extension field for ``name``."
     )
 
     payload: typing.List[fhirtypes.EndpointPayloadType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="payload",
         title="Set of payloads that are provided by this endpoint",
         description="The set of payloads that are provided/available at this endpoint.",
@@ -179,7 +179,7 @@ class Endpoint(domainresource.DomainResource):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Interval the endpoint is expected to be operational",
         description="The interval during which the endpoint is expected to be operational.",
@@ -190,7 +190,7 @@ class Endpoint(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | suspended | error | off | entered-in-error | test",
         description=(
@@ -214,7 +214,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
@@ -291,7 +291,7 @@ class EndpointPayload(backboneelement.BackboneElement):
     __resource_type__ = "EndpointPayload"
 
     mimeType: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="mimeType",
         title=(
             "Mimetype to send. If not specified, the content could be anything "
@@ -309,11 +309,11 @@ class EndpointPayload(backboneelement.BackboneElement):
         },
     )
     mimeType__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
-        None, alias="_mimeType", title="Extension field for ``mimeType``."
+        default=None, alias="_mimeType", title="Extension field for ``mimeType``."
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="type",
         title=(
             "The type of content that may be used at this endpoint (e.g. XDS "

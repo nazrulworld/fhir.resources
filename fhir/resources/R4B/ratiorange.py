@@ -24,7 +24,7 @@ class RatioRange(element.Element):
     __resource_type__ = "RatioRange"
 
     denominator: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="denominator",
         title="Denominator value",
         description="The value of the denominator.",
@@ -35,7 +35,7 @@ class RatioRange(element.Element):
     )
 
     highNumerator: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="highNumerator",
         title="High Numerator limit",
         description="The value of the high limit numerator.",
@@ -46,7 +46,7 @@ class RatioRange(element.Element):
     )
 
     lowNumerator: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lowNumerator",
         title="Low Numerator limit",
         description="The value of the low limit numerator.",

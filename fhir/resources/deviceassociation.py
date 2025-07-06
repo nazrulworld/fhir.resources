@@ -25,7 +25,7 @@ class DeviceAssociation(domainresource.DomainResource):
     __resource_type__ = "DeviceAssociation"
 
     bodyStructure: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="bodyStructure",
         title="Current anatomical location of the device in/on subject",
         description=None,
@@ -38,7 +38,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title="Describes the relationship between the device and subject",
         description=None,
@@ -49,7 +49,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     device: fhirtypes.ReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="device",
         title="Reference to the devices associated with the patient or group",
         description=None,
@@ -62,7 +62,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="Instance identifier",
         description=None,
@@ -73,7 +73,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     operation: typing.List[fhirtypes.DeviceAssociationOperationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="operation",
         title=(
             "The details about the device when it is in use to describe its "
@@ -87,7 +87,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Begin and end dates and times for the device association",
         description=None,
@@ -98,7 +98,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="status",
         title="implanted | explanted | attached | entered-in-error | unknown",
         description="Indicates the state of the Device association.",
@@ -109,7 +109,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     statusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="statusReason",
         title="The reasons given for the current association status",
         description=None,
@@ -120,7 +120,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="subject",
         title=(
             "The individual, group of individuals or device that the device is on "
@@ -200,7 +200,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
     __resource_type__ = "DeviceAssociationOperation"
 
     operator: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="operator",
         title="The individual performing the action enabled by the device",
         description=None,
@@ -213,7 +213,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
     )
 
     period: fhirtypes.PeriodType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="period",
         title="Begin and end dates and times for the device's operation",
         description=None,
@@ -224,7 +224,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
     )
 
     status: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="status",
         title="Device operational condition",
         description="Device operational condition corresponding to the association.",

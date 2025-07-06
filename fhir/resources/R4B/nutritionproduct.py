@@ -26,7 +26,7 @@ class NutritionProduct(domainresource.DomainResource):
     __resource_type__ = "NutritionProduct"
 
     category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="category",
         title=(
             "A category or class of the nutrition product (halal, kosher, gluten "
@@ -43,7 +43,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="code",
         title="A code designating a specific type of nutritional product",
         description=(
@@ -57,7 +57,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     ingredient: typing.List[fhirtypes.NutritionProductIngredientType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="ingredient",
         title="Ingredients contained in this product",
         description=None,
@@ -67,7 +67,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     instance: fhirtypes.NutritionProductInstanceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="instance",
         title=(
             "One or several physical instances or occurrences of the nutrition "
@@ -83,7 +83,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     knownAllergen: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="knownAllergen",
         title="Known or suspected allergens that are a part of this product",
         description=(
@@ -98,7 +98,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     manufacturer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="manufacturer",
         title="Manufacturer, representative or officially responsible for the product",
         description=(
@@ -114,7 +114,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="note",
         title="Comments made about the product",
         description=None,
@@ -124,7 +124,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     nutrient: typing.List[fhirtypes.NutritionProductNutrientType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="nutrient",
         title="The product's nutritional information expressed by the nutrients",
         description=None,
@@ -135,7 +135,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     productCharacteristic: typing.List[fhirtypes.NutritionProductProductCharacteristicType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="productCharacteristic",
         title="Specifies descriptive properties of the nutrition product",
         description=None,
@@ -145,7 +145,7 @@ class NutritionProduct(domainresource.DomainResource):
     )
 
     status: fhirtypes.CodeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="status",
         title="active | inactive | entered-in-error",
         description="The current state of the product.",
@@ -159,7 +159,7 @@ class NutritionProduct(domainresource.DomainResource):
         },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_status", title="Extension field for ``status``."
+        default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
@@ -228,7 +228,7 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
     __resource_type__ = "NutritionProductIngredient"
 
     amount: typing.List[fhirtypes.RatioType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="amount",
         title="The amount of ingredient that is in the product",
         description=None,
@@ -239,7 +239,7 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
     )
 
     item: fhirtypes.CodeableReferenceType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="item",
         title="The ingredient contained in the product",
         description=None,
@@ -280,7 +280,7 @@ class NutritionProductInstance(backboneelement.BackboneElement):
     __resource_type__ = "NutritionProductInstance"
 
     expiry: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="expiry",
         title="The expiry date or date and time for the product",
         description=(
@@ -292,11 +292,11 @@ class NutritionProductInstance(backboneelement.BackboneElement):
         },
     )
     expiry__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_expiry", title="Extension field for ``expiry``."
+        default=None, alias="_expiry", title="Extension field for ``expiry``."
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="identifier",
         title="The identifier for the physical instance, typically a serial number",
         description=None,
@@ -306,7 +306,7 @@ class NutritionProductInstance(backboneelement.BackboneElement):
     )
 
     lotNumber: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="lotNumber",
         title="The identification of the batch or lot of the product",
         description=None,
@@ -315,11 +315,11 @@ class NutritionProductInstance(backboneelement.BackboneElement):
         },
     )
     lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_lotNumber", title="Extension field for ``lotNumber``."
+        default=None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
     quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="quantity",
         title="The amount of items or instances",
         description=(
@@ -332,7 +332,7 @@ class NutritionProductInstance(backboneelement.BackboneElement):
     )
 
     useBy: fhirtypes.DateTimeType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="useBy",
         title=(
             "The date until which the product is expected to be good for " "consumption"
@@ -346,7 +346,7 @@ class NutritionProductInstance(backboneelement.BackboneElement):
         },
     )
     useBy__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_useBy", title="Extension field for ``useBy``."
+        default=None, alias="_useBy", title="Extension field for ``useBy``."
     )
 
     @classmethod
@@ -385,7 +385,7 @@ class NutritionProductNutrient(backboneelement.BackboneElement):
     __resource_type__ = "NutritionProductNutrient"
 
     amount: typing.List[fhirtypes.RatioType] | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="amount",
         title=(
             "The amount of nutrient expressed in one or more units: X per pack / "
@@ -398,7 +398,7 @@ class NutritionProductNutrient(backboneelement.BackboneElement):
     )
 
     item: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="item",
         title="The (relevant) nutrients in the product",
         description=None,
@@ -436,7 +436,7 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
     __resource_type__ = "NutritionProductProductCharacteristic"
 
     type: fhirtypes.CodeableConceptType = Field(  # type: ignore
-        ...,
+        default=...,
         alias="type",
         title="Code specifying the type of characteristic",
         description=(
@@ -449,7 +449,7 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
     )
 
     valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueAttachment",
         title="The value of the characteristic",
         description="The actual characteristic value corresponding to the type.",
@@ -462,7 +462,7 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
     )
 
     valueBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueBase64Binary",
         title="The value of the characteristic",
         description="The actual characteristic value corresponding to the type.",
@@ -474,13 +474,13 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
         },
     )
     valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="_valueBase64Binary",
         title="Extension field for ``valueBase64Binary``.",
     )
 
     valueBoolean: bool | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueBoolean",
         title="The value of the characteristic",
         description="The actual characteristic value corresponding to the type.",
@@ -492,11 +492,13 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
         },
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+        default=None,
+        alias="_valueBoolean",
+        title="Extension field for ``valueBoolean``.",
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueCodeableConcept",
         title="The value of the characteristic",
         description="The actual characteristic value corresponding to the type.",
@@ -509,7 +511,7 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
     )
 
     valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueQuantity",
         title="The value of the characteristic",
         description="The actual characteristic value corresponding to the type.",
@@ -522,7 +524,7 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
     )
 
     valueString: fhirtypes.StringType | None = Field(  # type: ignore
-        None,
+        default=None,
         alias="valueString",
         title="The value of the characteristic",
         description="The actual characteristic value corresponding to the type.",
@@ -534,7 +536,7 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
         },
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        None, alias="_valueString", title="Extension field for ``valueString``."
+        default=None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     @classmethod

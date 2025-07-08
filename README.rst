@@ -104,7 +104,7 @@ Usages
     ...     "name": "Acme Corporation",
     ...     "address": [{"country": "Switzerland"}]
     ... }'''
-    >>> org = Organization.model_dump_json(json_str)
+    >>> org = Organization.model_validate_json(json_str)
     >>> isinstance(org.address[0], Address)
     True
     >>> org.address[0].country == "Switzerland"
@@ -681,6 +681,26 @@ Examples::
     >>> importlib.reload(ftypes)
 
 
+FHIR ``summary`` search support
+-------------------------------
+This package is providing supporting ´´summary mode´´ activated serialization, meaning that you will not need to do extra, if you are planning to support `summary search <https://www.hl7.org/fhir/search.html#_summary>`_
+
+Example::
+
+    >>> from fhir.resources.organization import Organization
+    >>> json_str = '''{"resourceType": "Organization",
+    ...     "text": {"status": "generated", "div": "<p>summary example</p>"}
+    ...     "id": "f001",
+    ...     "active": True,
+    ...     "name": "Acme Corporation"
+    ... }'''
+    >>> org = Organization.model_validate_json(json_str)
+    >>> summary_dict = org.model_dump(summary_only=True)
+    >>> "text" not in summary_dict
+    True
+    >>> "active" in summary_dict
+    True
+    >>> "name" in summary_dict
 
 FHIR release R4B over R4
 ------------------------

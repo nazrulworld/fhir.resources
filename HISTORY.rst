@@ -7,12 +7,13 @@ History
 
 New features
 
-- Issue #181 ``summary``(https://www.hl7.org/fhir/search.html#_summary) mode feature added.
+- Issue #181 ``summary`` (https://www.hl7.org/fhir/search.html#_summary) mode feature added.
 
 Fixes
 
 - Issue #184 pyright struggles with default position args.
-
+- Issue #186 missing py.typed marker, causing mypy import errors.
+- Issue #183 Pydantic 2.11+ Deprecation Warnings: model_fields Should Be Accessed on Class, Not Instance.
 
 8.0.0 (2024-12-25)
 ------------------

@@ -58,6 +58,7 @@ development_requirements = [
     "certifi",
     "fhirspec>=0.6.0",
     "zest-releaser[recommended]",
+    "twine==6.1.0",
 ]
 setup(
     author="Md Nazrul Islam",

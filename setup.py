@@ -18,7 +18,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["fhir-core>=1.1.1"]
+requirements = ["fhir-core>=1.1.3"]
 if PY_VERSION_9_OR_EARLIER:
     requirements.append("eval-type-backport")
 
@@ -39,7 +39,7 @@ test_requirements = [
     + (PY_VERSION_10_OR_LATER and ">=22.12.6" or "==20.1.4;python_version<'3.10'"),
     "requests==2.23.0;python_version<'3.10'",
     "isort" + (PY_VERSION_10_OR_LATER and ">=5.11.4" or "==4.3.21"),
-    "black",
+    "black>=23.0,<24.0; python_version >= '3.7'",
     "mypy",
     "types-PyYAML",
     "types-simplejson",

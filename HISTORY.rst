@@ -2,7 +2,7 @@
 History
 =======
 
-8.1.0 (unreleased)
+8.1.0 (2025-07-10)
 ------------------
 
 New features

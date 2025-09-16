@@ -797,7 +797,7 @@ Release and Version Policy
 --------------------------
 
 Starting from  version ``5.0.0`` we are following our own release policy and we although follow Semantic Versioning scheme like FHIR® version.
-Unlike previous statement (bellow), releasing now is not dependent on FHIR®.
+Unlike previous statement (below), releasing now is not dependent on FHIR®.
 
 
 **removed statement**

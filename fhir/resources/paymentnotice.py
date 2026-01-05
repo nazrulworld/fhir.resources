@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/PaymentNotice
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class PaymentNotice(domainresource.DomainResource):
 
     __resource_type__ = "PaymentNotice"
 
-    amount: fhirtypes.MoneyType = Field(  # type: ignore
+    amount: fhirtypes.MoneyType = Field(
         default=...,
         alias="amount",
         title="Monetary amount of the payment",
@@ -37,7 +38,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="created",
         title="Creation date",
@@ -48,11 +49,11 @@ class PaymentNotice(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_created", title="Extension field for ``created``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business Identifier for the payment notice",
@@ -62,7 +63,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    payee: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    payee: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="payee",
         title="Party being paid",
@@ -81,7 +82,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    payment: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    payment: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="payment",
         title="Payment reference",
@@ -94,7 +95,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    paymentDate: fhirtypes.DateType | None = Field(  # type: ignore
+    paymentDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="paymentDate",
         title="Payment or clearing date",
@@ -103,11 +104,11 @@ class PaymentNotice(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_paymentDate", title="Extension field for ``paymentDate``."
     )
 
-    paymentStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    paymentStatus: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="paymentStatus",
         title="Issued or cleared Status of the payment",
@@ -117,7 +118,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    recipient: fhirtypes.ReferenceType = Field(  # type: ignore
+    recipient: fhirtypes.ReferenceType = Field(
         default=...,
         alias="recipient",
         title="Party being notified",
@@ -130,7 +131,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    reporter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    reporter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="reporter",
         title="Responsible practitioner",
@@ -146,7 +147,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    request: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    request: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="request",
         title="Request reference",
@@ -158,7 +159,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    response: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    response: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="response",
         title="Response reference",
@@ -170,7 +171,7 @@ class PaymentNotice(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -184,12 +185,12 @@ class PaymentNotice(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PaymentNotice`` according to specification,
         with preserving the original sequence order.
@@ -218,7 +219,7 @@ class PaymentNotice(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PaymentNotice`` according to specification,
         with preserving the original sequence order.
         """

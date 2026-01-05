@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SimpleQuantity
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import datatype, fhirtypes
@@ -25,7 +28,7 @@ class Quantity(datatype.DataType):
 
     __resource_type__ = "Quantity"
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title="Coded form of the unit",
@@ -38,11 +41,11 @@ class Quantity(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    comparator: fhirtypes.CodeType | None = Field(  # type: ignore
+    comparator: fhirtypes.CodeType | None = Field(
         default=None,
         alias="comparator",
         title="< | <= | >= | > | ad - how to understand the value",
@@ -57,11 +60,11 @@ class Quantity(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    comparator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comparator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comparator", title="Extension field for ``comparator``."
     )
 
-    system: fhirtypes.UriType | None = Field(  # type: ignore
+    system: fhirtypes.UriType | None = Field(
         default=None,
         alias="system",
         title="System that defines coded unit form",
@@ -74,11 +77,11 @@ class Quantity(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_system", title="Extension field for ``system``."
     )
 
-    unit: fhirtypes.StringType | None = Field(  # type: ignore
+    unit: fhirtypes.StringType | None = Field(
         default=None,
         alias="unit",
         title="Unit representation",
@@ -88,11 +91,11 @@ class Quantity(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    unit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    unit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_unit", title="Extension field for ``unit``."
     )
 
-    value: fhirtypes.DecimalType | None = Field(  # type: ignore
+    value: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="value",
         title="Numerical value (with implicit precision)",
@@ -105,12 +108,12 @@ class Quantity(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Quantity`` according to specification,
         with preserving the original sequence order.
@@ -118,7 +121,7 @@ class Quantity(datatype.DataType):
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Quantity`` according to specification,
         with preserving the original sequence order.
         """

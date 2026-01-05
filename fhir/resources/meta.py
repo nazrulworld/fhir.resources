@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Meta
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class Meta(datatype.DataType):
 
     __resource_type__ = "Meta"
 
-    lastUpdated: fhirtypes.InstantType | None = Field(  # type: ignore
+    lastUpdated: fhirtypes.InstantType | None = Field(
         default=None,
         alias="lastUpdated",
         title="When the resource version last changed",
@@ -37,11 +38,11 @@ class Meta(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
     )
 
-    profile: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    profile: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="profile",
         title="Profiles this resource claims to conform to",
@@ -59,11 +60,13 @@ class Meta(datatype.DataType):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    profile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    profile__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    security: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    security: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="security",
         title="Security Labels applied to this resource",
@@ -77,7 +80,7 @@ class Meta(datatype.DataType):
         },
     )
 
-    source: fhirtypes.UriType | None = Field(  # type: ignore
+    source: fhirtypes.UriType | None = Field(
         default=None,
         alias="source",
         title="Identifies where the resource comes from",
@@ -93,11 +96,11 @@ class Meta(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_source", title="Extension field for ``source``."
     )
 
-    tag: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    tag: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="tag",
         title="Tags applied to this resource",
@@ -113,7 +116,7 @@ class Meta(datatype.DataType):
         },
     )
 
-    versionId: fhirtypes.IdType | None = Field(  # type: ignore
+    versionId: fhirtypes.IdType | None = Field(
         default=None,
         alias="versionId",
         title="Version specific identifier",
@@ -127,12 +130,12 @@ class Meta(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_versionId", title="Extension field for ``versionId``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Meta`` according to specification,
         with preserving the original sequence order.
@@ -149,7 +152,7 @@ class Meta(datatype.DataType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Meta`` according to specification,
         with preserving the original sequence order.
         """

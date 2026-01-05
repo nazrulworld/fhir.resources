@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MarketingStatus
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import backbonetype, fhirtypes
@@ -24,7 +27,7 @@ class MarketingStatus(backbonetype.BackboneType):
 
     __resource_type__ = "MarketingStatus"
 
-    country: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    country: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="country",
         title=(
@@ -39,7 +42,7 @@ class MarketingStatus(backbonetype.BackboneType):
         },
     )
 
-    dateRange: fhirtypes.PeriodType | None = Field(  # type: ignore
+    dateRange: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="dateRange",
         title=(
@@ -58,7 +61,7 @@ class MarketingStatus(backbonetype.BackboneType):
         },
     )
 
-    jurisdiction: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    jurisdiction: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="jurisdiction",
         title=(
@@ -75,7 +78,7 @@ class MarketingStatus(backbonetype.BackboneType):
         },
     )
 
-    restoreDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    restoreDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="restoreDate",
         title=(
@@ -93,11 +96,11 @@ class MarketingStatus(backbonetype.BackboneType):
             "summary_element_property": True,
         },
     )
-    restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_restoreDate", title="Extension field for ``restoreDate``."
     )
 
-    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="status",
         title=(
@@ -113,7 +116,7 @@ class MarketingStatus(backbonetype.BackboneType):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MarketingStatus`` according to specification,
         with preserving the original sequence order.
@@ -130,7 +133,7 @@ class MarketingStatus(backbonetype.BackboneType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MarketingStatus`` according to specification,
         with preserving the original sequence order.
         """

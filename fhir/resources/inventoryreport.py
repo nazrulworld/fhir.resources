@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/InventoryReport
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -24,7 +25,7 @@ class InventoryReport(domainresource.DomainResource):
 
     __resource_type__ = "InventoryReport"
 
-    countType: fhirtypes.CodeType | None = Field(  # type: ignore
+    countType: fhirtypes.CodeType | None = Field(
         default=None,
         alias="countType",
         title="snapshot | difference",
@@ -41,11 +42,11 @@ class InventoryReport(domainresource.DomainResource):
             "enum_values": ["snapshot", "difference"],
         },
     )
-    countType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    countType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_countType", title="Extension field for ``countType``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier for the report",
@@ -56,7 +57,9 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
 
-    inventoryListing: typing.List[fhirtypes.InventoryReportInventoryListingType] | None = Field(  # type: ignore
+    inventoryListing: typing.List[
+        fhirtypes.InventoryReportInventoryListingType
+    ] | None = Field(
         default=None,
         alias="inventoryListing",
         title="An inventory listing section (grouped by any of the attributes)",
@@ -67,7 +70,7 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="A note associated with the InventoryReport",
@@ -77,7 +80,7 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
 
-    operationType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    operationType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="operationType",
         title="addition | subtraction",
@@ -88,7 +91,7 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
 
-    operationTypeReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    operationTypeReason: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="operationTypeReason",
         title=(
@@ -102,7 +105,7 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
 
-    reportedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    reportedDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="reportedDateTime",
         title="When the report has been submitted",
@@ -113,13 +116,13 @@ class InventoryReport(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    reportedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    reportedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_reportedDateTime",
         title="Extension field for ``reportedDateTime``.",
     )
 
-    reporter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    reporter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="reporter",
         title="Who submits the report",
@@ -136,7 +139,7 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
 
-    reportingPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    reportingPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="reportingPeriod",
         title="The period the report refers to",
@@ -146,7 +149,7 @@ class InventoryReport(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | requested | active | entered-in-error",
@@ -163,12 +166,12 @@ class InventoryReport(domainresource.DomainResource):
             "enum_values": ["draft", "requested", "active", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``InventoryReport`` according to specification,
         with preserving the original sequence order.
@@ -195,7 +198,7 @@ class InventoryReport(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``InventoryReport`` according to specification,
         with preserving the original sequence order.
         """
@@ -239,7 +242,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
 
     __resource_type__ = "InventoryReportInventoryListing"
 
-    countingDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    countingDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="countingDateTime",
         title="The date and time when the items were counted",
@@ -248,13 +251,13 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    countingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    countingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_countingDateTime",
         title="Extension field for ``countingDateTime``.",
     )
 
-    item: typing.List[fhirtypes.InventoryReportInventoryListingItemType] | None = Field(  # type: ignore
+    item: typing.List[fhirtypes.InventoryReportInventoryListingItemType] | None = Field(
         default=None,
         alias="item",
         title="The item or items in this listing",
@@ -265,7 +268,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         },
     )
 
-    itemStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    itemStatus: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="itemStatus",
         title="The status of the items that are being reported",
@@ -276,7 +279,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         },
     )
 
-    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="location",
         title="Location of the inventory items",
@@ -289,7 +292,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``InventoryReportInventoryListing`` according to specification,
         with preserving the original sequence order.
@@ -305,7 +308,7 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``InventoryReportInventoryListing`` according to specification,
         with preserving the original sequence order.
         """
@@ -322,7 +325,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
 
     __resource_type__ = "InventoryReportInventoryListingItem"
 
-    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="category",
         title="The inventory category or classification of the items being reported",
@@ -337,7 +340,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
         },
     )
 
-    item: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    item: fhirtypes.CodeableReferenceType = Field(
         default=...,
         alias="item",
         title="The code or reference to the item type",
@@ -358,7 +361,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType = Field(
         default=...,
         alias="quantity",
         title="The quantity of the item or items being reported",
@@ -370,7 +373,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``InventoryReportInventoryListingItem`` according to specification,
         with preserving the original sequence order.
@@ -378,7 +381,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "category", "quantity", "item"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``InventoryReportInventoryListingItem`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SubstanceDefinition
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,9 @@ class SubstanceDefinition(domainresource.DomainResource):
 
     __resource_type__ = "SubstanceDefinition"
 
-    characterization: typing.List[fhirtypes.SubstanceDefinitionCharacterizationType] | None = Field(  # type: ignore
+    characterization: typing.List[
+        fhirtypes.SubstanceDefinitionCharacterizationType
+    ] | None = Field(
         default=None,
         alias="characterization",
         title="General specifications for this substance",
@@ -36,7 +39,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    classification: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    classification: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="classification",
         title=(
@@ -56,7 +59,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    code: typing.List[fhirtypes.SubstanceDefinitionCodeType] | None = Field(  # type: ignore
+    code: typing.List[fhirtypes.SubstanceDefinitionCodeType] | None = Field(
         default=None,
         alias="code",
         title="Codes associated with the substance",
@@ -67,7 +70,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Textual description of the substance",
@@ -77,11 +80,11 @@ class SubstanceDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    domain: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    domain: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="domain",
         title="If the substance applies to human or veterinary use",
@@ -92,7 +95,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    grade: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    grade: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="grade",
         title=(
@@ -109,7 +112,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Identifier by which this substance is known",
@@ -120,7 +123,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    informationSource: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    informationSource: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="informationSource",
         title="Supporting literature",
@@ -133,7 +136,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    manufacturer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    manufacturer: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="manufacturer",
         title="The entity that creates, makes, produces or fabricates the substance",
@@ -150,7 +153,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    moiety: typing.List[fhirtypes.SubstanceDefinitionMoietyType] | None = Field(  # type: ignore
+    moiety: typing.List[fhirtypes.SubstanceDefinitionMoietyType] | None = Field(
         default=None,
         alias="moiety",
         title="Moiety, for structural modifications",
@@ -161,7 +164,9 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    molecularWeight: typing.List[fhirtypes.SubstanceDefinitionMolecularWeightType] | None = Field(  # type: ignore
+    molecularWeight: typing.List[
+        fhirtypes.SubstanceDefinitionMolecularWeightType
+    ] | None = Field(
         default=None,
         alias="molecularWeight",
         title="The average mass of a molecule of a compound",
@@ -176,7 +181,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.SubstanceDefinitionNameType] | None = Field(  # type: ignore
+    name: typing.List[fhirtypes.SubstanceDefinitionNameType] | None = Field(
         default=None,
         alias="name",
         title="Names applicable to this substance",
@@ -187,7 +192,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Textual comment about the substance's catalogue or registry record",
@@ -198,7 +203,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    nucleicAcid: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    nucleicAcid: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="nucleicAcid",
         title="Data items specific to nucleic acids",
@@ -211,7 +216,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    polymer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    polymer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="polymer",
         title="Data items specific to polymers",
@@ -224,7 +229,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    property: typing.List[fhirtypes.SubstanceDefinitionPropertyType] | None = Field(  # type: ignore
+    property: typing.List[fhirtypes.SubstanceDefinitionPropertyType] | None = Field(
         default=None,
         alias="property",
         title="General specifications for this substance",
@@ -235,7 +240,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    protein: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    protein: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="protein",
         title="Data items specific to proteins",
@@ -248,7 +253,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    referenceInformation: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    referenceInformation: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="referenceInformation",
         title="General information detailing this substance",
@@ -261,7 +266,9 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    relationship: typing.List[fhirtypes.SubstanceDefinitionRelationshipType] | None = Field(  # type: ignore
+    relationship: typing.List[
+        fhirtypes.SubstanceDefinitionRelationshipType
+    ] | None = Field(
         default=None,
         alias="relationship",
         title="A link between this substance and another",
@@ -275,7 +282,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    sourceMaterial: fhirtypes.SubstanceDefinitionSourceMaterialType | None = Field(  # type: ignore
+    sourceMaterial: fhirtypes.SubstanceDefinitionSourceMaterialType | None = Field(
         default=None,
         alias="sourceMaterial",
         title="Material or taxonomic/anatomical source",
@@ -286,7 +293,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="status",
         title="Status of substance within the catalogue e.g. active, retired",
@@ -297,7 +304,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    structure: fhirtypes.SubstanceDefinitionStructureType | None = Field(  # type: ignore
+    structure: fhirtypes.SubstanceDefinitionStructureType | None = Field(
         default=None,
         alias="structure",
         title="Structural information",
@@ -308,7 +315,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    supplier: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    supplier: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="supplier",
         title=(
@@ -327,7 +334,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="A business level version identifier of the substance",
@@ -337,12 +344,12 @@ class SubstanceDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinition`` according to specification,
         with preserving the original sequence order.
@@ -383,7 +390,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -429,7 +436,7 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionCharacterization"
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title=(
@@ -442,11 +449,11 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    file: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    file: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="file",
         title=(
@@ -461,7 +468,7 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
         },
     )
 
-    form: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    form: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="form",
         title=(
@@ -475,7 +482,7 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
         },
     )
 
-    technique: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    technique: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="technique",
         title="The method used to find the characterization e.g. HPLC",
@@ -490,7 +497,7 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionCharacterization`` according to specification,
         with preserving the original sequence order.
@@ -506,7 +513,7 @@ class SubstanceDefinitionCharacterization(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionCharacterization`` according to specification,
         with preserving the original sequence order.
         """
@@ -523,7 +530,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionCode"
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="The specific code",
@@ -534,7 +541,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Any comment can be provided in this field",
@@ -545,7 +552,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         },
     )
 
-    source: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    source: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="source",
         title="Supporting literature",
@@ -558,7 +565,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         },
     )
 
-    status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="status",
         title="Status of the code assignment, for example 'provisional', 'approved'",
@@ -569,7 +576,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         },
     )
 
-    statusDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    statusDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="statusDate",
         title="The date at which the code status was changed",
@@ -582,12 +589,12 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionCode`` according to specification,
         with preserving the original sequence order.
@@ -604,7 +611,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionCode`` according to specification,
         with preserving the original sequence order.
         """
@@ -621,7 +628,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionMoiety"
 
-    amountQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    amountQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="amountQuantity",
         title="Quantitative value for this moiety",
@@ -635,7 +642,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         },
     )
 
-    amountString: fhirtypes.StringType | None = Field(  # type: ignore
+    amountString: fhirtypes.StringType | None = Field(
         default=None,
         alias="amountString",
         title="Quantitative value for this moiety",
@@ -648,13 +655,13 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_amountString",
         title="Extension field for ``amountString``.",
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Identifier by which this moiety substance is known",
@@ -665,7 +672,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         },
     )
 
-    measurementType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    measurementType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="measurementType",
         title="The measurement type of the quantitative value",
@@ -681,7 +688,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         },
     )
 
-    molecularFormula: fhirtypes.StringType | None = Field(  # type: ignore
+    molecularFormula: fhirtypes.StringType | None = Field(
         default=None,
         alias="molecularFormula",
         title="Molecular formula for this moiety (e.g. with the Hill system)",
@@ -694,13 +701,13 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_molecularFormula",
         title="Extension field for ``molecularFormula``.",
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Textual name for this moiety substance",
@@ -710,11 +717,11 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    opticalActivity: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    opticalActivity: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="opticalActivity",
         title="Optical activity type",
@@ -725,7 +732,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="role",
         title="Role that the moiety is playing",
@@ -736,7 +743,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         },
     )
 
-    stereochemistry: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    stereochemistry: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="stereochemistry",
         title="Stereochemistry type",
@@ -748,7 +755,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionMoiety`` according to specification,
         with preserving the original sequence order.
@@ -769,7 +776,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionMoiety`` according to specification,
         with preserving the original sequence order.
         """
@@ -816,7 +823,7 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionMolecularWeight"
 
-    amount: fhirtypes.QuantityType = Field(  # type: ignore
+    amount: fhirtypes.QuantityType = Field(
         default=...,
         alias="amount",
         title="Used to capture quantitative values for a variety of elements",
@@ -832,7 +839,7 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
         },
     )
 
-    method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    method: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="method",
         title="The method by which the weight was determined",
@@ -843,7 +850,7 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Type of molecular weight e.g. exact, average, weight average",
@@ -858,7 +865,7 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionMolecularWeight`` according to specification,
         with preserving the original sequence order.
@@ -866,7 +873,7 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "method", "type", "amount"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionMolecularWeight`` according to specification,
         with preserving the original sequence order.
         """
@@ -883,7 +890,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionName"
 
-    domain: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    domain: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="domain",
         title=(
@@ -900,7 +907,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="The jurisdiction where this name applies",
@@ -911,7 +918,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    language: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    language: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="language",
         title="Human language that the name is written in",
@@ -922,7 +929,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="The actual name",
@@ -933,11 +940,11 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    official: typing.List[fhirtypes.SubstanceDefinitionNameOfficialType] | None = Field(  # type: ignore
+    official: typing.List[fhirtypes.SubstanceDefinitionNameOfficialType] | None = Field(
         default=None,
         alias="official",
         title="Details of the official nature of this name",
@@ -948,7 +955,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    preferred: bool | None = Field(  # type: ignore
+    preferred: bool | None = Field(
         default=None,
         alias="preferred",
         title="If this is the preferred name for this substance",
@@ -958,11 +965,11 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
-    source: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    source: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="source",
         title="Supporting literature",
@@ -975,7 +982,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="status",
         title="The status of the name e.g. 'current', 'proposed'",
@@ -986,7 +993,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    synonym: typing.List[fhirtypes.SubstanceDefinitionNameType] | None = Field(  # type: ignore
+    synonym: typing.List[fhirtypes.SubstanceDefinitionNameType] | None = Field(
         default=None,
         alias="synonym",
         title=(
@@ -999,7 +1006,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    translation: typing.List[fhirtypes.SubstanceDefinitionNameType] | None = Field(  # type: ignore
+    translation: typing.List[fhirtypes.SubstanceDefinitionNameType] | None = Field(
         default=None,
         alias="translation",
         title="A translation for this name into another human language",
@@ -1010,7 +1017,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Name type e.g. 'systematic',  'scientific, 'brand'",
@@ -1022,7 +1029,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionName`` according to specification,
         with preserving the original sequence order.
@@ -1045,7 +1052,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionName`` according to specification,
         with preserving the original sequence order.
         """
@@ -1086,7 +1093,7 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionNameOfficial"
 
-    authority: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    authority: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="authority",
         title="Which authority uses this official name",
@@ -1097,7 +1104,7 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
         },
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date of official name change",
@@ -1107,11 +1114,11 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="status",
         title="The status of the official name, for example 'draft', 'active'",
@@ -1126,7 +1133,7 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionNameOfficial`` according to specification,
         with preserving the original sequence order.
@@ -1134,7 +1141,7 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "authority", "status", "date"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionNameOfficial`` according to specification,
         with preserving the original sequence order.
         """
@@ -1151,7 +1158,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionProperty"
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title="A code expressing the type of property",
@@ -1162,7 +1169,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    valueAttachment: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="valueAttachment",
         title="A value for the property",
@@ -1176,7 +1183,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool | None = Field(  # type: ignore
+    valueBoolean: bool | None = Field(
         default=None,
         alias="valueBoolean",
         title="A value for the property",
@@ -1189,13 +1196,13 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueBoolean",
         title="Extension field for ``valueBoolean``.",
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="valueCodeableConcept",
         title="A value for the property",
@@ -1209,7 +1216,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueDate: fhirtypes.DateType | None = Field(  # type: ignore
+    valueDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="valueDate",
         title="A value for the property",
@@ -1222,11 +1229,11 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="valueQuantity",
         title="A value for the property",
@@ -1241,7 +1248,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionProperty`` according to specification,
         with preserving the original sequence order.
@@ -1259,7 +1266,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionProperty`` according to specification,
         with preserving the original sequence order.
         """
@@ -1310,7 +1317,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionRelationship"
 
-    amountQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    amountQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="amountQuantity",
         title=(
@@ -1331,7 +1338,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         },
     )
 
-    amountRatio: fhirtypes.RatioType | None = Field(  # type: ignore
+    amountRatio: fhirtypes.RatioType | None = Field(
         default=None,
         alias="amountRatio",
         title=(
@@ -1352,7 +1359,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         },
     )
 
-    amountString: fhirtypes.StringType | None = Field(  # type: ignore
+    amountString: fhirtypes.StringType | None = Field(
         default=None,
         alias="amountString",
         title=(
@@ -1372,13 +1379,13 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_amountString",
         title="Extension field for ``amountString``.",
     )
 
-    comparator: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    comparator: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="comparator",
         title=(
@@ -1392,7 +1399,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         },
     )
 
-    isDefining: bool | None = Field(  # type: ignore
+    isDefining: bool | None = Field(
         default=None,
         alias="isDefining",
         title=(
@@ -1410,11 +1417,11 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_isDefining", title="Extension field for ``isDefining``."
     )
 
-    ratioHighLimitAmount: fhirtypes.RatioType | None = Field(  # type: ignore
+    ratioHighLimitAmount: fhirtypes.RatioType | None = Field(
         default=None,
         alias="ratioHighLimitAmount",
         title="For use when the numeric has an uncertain range",
@@ -1425,7 +1432,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         },
     )
 
-    source: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    source: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="source",
         title="Supporting literature",
@@ -1438,7 +1445,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         },
     )
 
-    substanceDefinitionCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    substanceDefinitionCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="substanceDefinitionCodeableConcept",
         title=(
@@ -1458,7 +1465,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         },
     )
 
-    substanceDefinitionReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    substanceDefinitionReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="substanceDefinitionReference",
         title=(
@@ -1480,7 +1487,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title='For example "salt to parent", "active moiety"',
@@ -1495,7 +1502,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionRelationship`` according to specification,
         with preserving the original sequence order.
@@ -1517,7 +1524,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionRelationship`` according to specification,
         with preserving the original sequence order.
         """
@@ -1569,7 +1576,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionSourceMaterial"
 
-    countryOfOrigin: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    countryOfOrigin: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="countryOfOrigin",
         title="The country or countries where the material is harvested",
@@ -1580,7 +1587,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         },
     )
 
-    genus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    genus: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="genus",
         title=(
@@ -1597,7 +1604,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         },
     )
 
-    part: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    part: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="part",
         title="An anatomical origin of the source material within an organism",
@@ -1608,7 +1615,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         },
     )
 
-    species: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    species: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="species",
         title=(
@@ -1625,7 +1632,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -1643,7 +1650,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionSourceMaterial`` according to specification,
         with preserving the original sequence order.
@@ -1660,7 +1667,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionSourceMaterial`` according to specification,
         with preserving the original sequence order.
         """
@@ -1684,7 +1691,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceDefinitionStructure"
 
-    molecularFormula: fhirtypes.StringType | None = Field(  # type: ignore
+    molecularFormula: fhirtypes.StringType | None = Field(
         default=None,
         alias="molecularFormula",
         title=(
@@ -1697,13 +1704,13 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_molecularFormula",
         title="Extension field for ``molecularFormula``.",
     )
 
-    molecularFormulaByMoiety: fhirtypes.StringType | None = Field(  # type: ignore
+    molecularFormulaByMoiety: fhirtypes.StringType | None = Field(
         default=None,
         alias="molecularFormulaByMoiety",
         title="Specified per moiety according to the Hill system",
@@ -1716,13 +1723,13 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    molecularFormulaByMoiety__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    molecularFormulaByMoiety__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_molecularFormulaByMoiety",
         title="Extension field for ``molecularFormulaByMoiety``.",
     )
 
-    molecularWeight: fhirtypes.SubstanceDefinitionMolecularWeightType | None = Field(  # type: ignore
+    molecularWeight: fhirtypes.SubstanceDefinitionMolecularWeightType | None = Field(
         default=None,
         alias="molecularWeight",
         title="The molecular weight or weight range",
@@ -1736,7 +1743,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         },
     )
 
-    opticalActivity: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    opticalActivity: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="opticalActivity",
         title="Optical activity type",
@@ -1747,7 +1754,9 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         },
     )
 
-    representation: typing.List[fhirtypes.SubstanceDefinitionStructureRepresentationType] | None = Field(  # type: ignore
+    representation: typing.List[
+        fhirtypes.SubstanceDefinitionStructureRepresentationType
+    ] | None = Field(
         default=None,
         alias="representation",
         title="A depiction of the structure of the substance",
@@ -1758,7 +1767,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         },
     )
 
-    sourceDocument: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    sourceDocument: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="sourceDocument",
         title="Source of information for the structure",
@@ -1771,7 +1780,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         },
     )
 
-    stereochemistry: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    stereochemistry: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="stereochemistry",
         title="Stereochemistry type",
@@ -1782,7 +1791,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         },
     )
 
-    technique: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    technique: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="technique",
         title="The method used to find the structure e.g. X-ray, NMR",
@@ -1797,7 +1806,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionStructure`` according to specification,
         with preserving the original sequence order.
@@ -1817,7 +1826,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionStructure`` according to specification,
         with preserving the original sequence order.
         """
@@ -1844,7 +1853,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
 
     __resource_type__ = "SubstanceDefinitionStructureRepresentation"
 
-    document: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    document: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="document",
         title=(
@@ -1863,7 +1872,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         },
     )
 
-    format: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    format: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="format",
         title=(
@@ -1881,7 +1890,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         },
     )
 
-    representation: fhirtypes.StringType | None = Field(  # type: ignore
+    representation: fhirtypes.StringType | None = Field(
         default=None,
         alias="representation",
         title="The structural representation as a text string in a standard format",
@@ -1891,13 +1900,13 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
             "summary_element_property": True,
         },
     )
-    representation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    representation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_representation",
         title="Extension field for ``representation``.",
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="The kind of structural representation (e.g. full, partial)",
@@ -1909,7 +1918,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceDefinitionStructureRepresentation`` according to specification,
         with preserving the original sequence order.
@@ -1925,7 +1934,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceDefinitionStructureRepresentation`` according to specification,
         with preserving the original sequence order.
         """

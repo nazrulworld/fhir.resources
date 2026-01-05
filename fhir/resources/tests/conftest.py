@@ -1,1 +1,1 @@
-pytest_plugins = ["fhir.resources.tests.fixtures"]
+from .fixtures import *  # noqa: F401, F403

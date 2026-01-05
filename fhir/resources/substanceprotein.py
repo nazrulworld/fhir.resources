@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SubstanceProtein
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -31,7 +32,7 @@ class SubstanceProtein(domainresource.DomainResource):
 
     __resource_type__ = "SubstanceProtein"
 
-    disulfideLinkage: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    disulfideLinkage: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="disulfideLinkage",
         title=(
@@ -49,13 +50,15 @@ class SubstanceProtein(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    disulfideLinkage__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    disulfideLinkage__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_disulfideLinkage",
         title="Extension field for ``disulfideLinkage``.",
     )
 
-    numberOfSubunits: fhirtypes.IntegerType | None = Field(  # type: ignore
+    numberOfSubunits: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="numberOfSubunits",
         title=(
@@ -70,13 +73,13 @@ class SubstanceProtein(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_numberOfSubunits",
         title="Extension field for ``numberOfSubunits``.",
     )
 
-    sequenceType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    sequenceType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="sequenceType",
         title=(
@@ -91,7 +94,7 @@ class SubstanceProtein(domainresource.DomainResource):
         },
     )
 
-    subunit: typing.List[fhirtypes.SubstanceProteinSubunitType] | None = Field(  # type: ignore
+    subunit: typing.List[fhirtypes.SubstanceProteinSubunitType] | None = Field(
         default=None,
         alias="subunit",
         title=(
@@ -112,7 +115,7 @@ class SubstanceProtein(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceProtein`` according to specification,
         with preserving the original sequence order.
@@ -133,7 +136,7 @@ class SubstanceProtein(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceProtein`` according to specification,
         with preserving the original sequence order.
         """
@@ -166,7 +169,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceProteinSubunit"
 
-    cTerminalModification: fhirtypes.StringType | None = Field(  # type: ignore
+    cTerminalModification: fhirtypes.StringType | None = Field(
         default=None,
         alias="cTerminalModification",
         title="The modification at the C-terminal shall be specified",
@@ -176,13 +179,13 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_cTerminalModification",
         title="Extension field for ``cTerminalModification``.",
     )
 
-    cTerminalModificationId: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    cTerminalModificationId: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="cTerminalModificationId",
         title=(
@@ -196,7 +199,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
 
-    length: fhirtypes.IntegerType | None = Field(  # type: ignore
+    length: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="length",
         title="Length of linear sequences of amino acids contained in the subunit",
@@ -206,11 +209,11 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    length__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    length__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_length", title="Extension field for ``length``."
     )
 
-    nTerminalModification: fhirtypes.StringType | None = Field(  # type: ignore
+    nTerminalModification: fhirtypes.StringType | None = Field(
         default=None,
         alias="nTerminalModification",
         title=(
@@ -223,13 +226,13 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_nTerminalModification",
         title="Extension field for ``nTerminalModification``.",
     )
 
-    nTerminalModificationId: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    nTerminalModificationId: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="nTerminalModificationId",
         title=(
@@ -243,7 +246,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.StringType | None = Field(  # type: ignore
+    sequence: fhirtypes.StringType | None = Field(
         default=None,
         alias="sequence",
         title=(
@@ -262,11 +265,11 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    sequenceAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    sequenceAttachment: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="sequenceAttachment",
         title=(
@@ -286,7 +289,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         },
     )
 
-    subunit: fhirtypes.IntegerType | None = Field(  # type: ignore
+    subunit: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="subunit",
         title=(
@@ -301,12 +304,12 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    subunit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    subunit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_subunit", title="Extension field for ``subunit``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceProteinSubunit`` according to specification,
         with preserving the original sequence order.
@@ -326,7 +329,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceProteinSubunit`` according to specification,
         with preserving the original sequence order.
         """

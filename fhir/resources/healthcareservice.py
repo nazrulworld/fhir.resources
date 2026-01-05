@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/HealthcareService
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -24,7 +25,7 @@ class HealthcareService(domainresource.DomainResource):
 
     __resource_type__ = "HealthcareService"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this HealthcareService record is in active use",
@@ -38,11 +39,11 @@ class HealthcareService(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    appointmentRequired: bool | None = Field(  # type: ignore
+    appointmentRequired: bool | None = Field(
         default=None,
         alias="appointmentRequired",
         title="If an appointment is required for access to this service",
@@ -56,13 +57,13 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    appointmentRequired__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    appointmentRequired__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_appointmentRequired",
         title="Extension field for ``appointmentRequired``.",
     )
 
-    availability: typing.List[fhirtypes.AvailabilityType] | None = Field(  # type: ignore
+    availability: typing.List[fhirtypes.AvailabilityType] | None = Field(
         default=None,
         alias="availability",
         title="Times the healthcare service is available (including exceptions)",
@@ -72,7 +73,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="Broad category of service being performed or delivered",
@@ -83,7 +84,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    characteristic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    characteristic: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="characteristic",
         title="Collection of characteristics (attributes)",
@@ -93,7 +94,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    comment: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    comment: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="comment",
         title=(
@@ -109,11 +110,11 @@ class HealthcareService(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    communication: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    communication: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="communication",
         title="The language that this service is offered in",
@@ -128,7 +129,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ExtendedContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ExtendedContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Official contact details for the HealthcareService",
@@ -142,7 +143,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    coverageArea: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    coverageArea: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="coverageArea",
         title="Location(s) service is intended for/available to",
@@ -157,7 +158,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    eligibility: typing.List[fhirtypes.HealthcareServiceEligibilityType] | None = Field(  # type: ignore
+    eligibility: typing.List[fhirtypes.HealthcareServiceEligibilityType] | None = Field(
         default=None,
         alias="eligibility",
         title="Specific eligibility requirements required to use the service",
@@ -170,7 +171,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="endpoint",
         title=(
@@ -188,7 +189,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    extraDetails: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    extraDetails: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="extraDetails",
         title=(
@@ -200,13 +201,13 @@ class HealthcareService(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    extraDetails__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    extraDetails__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_extraDetails",
         title="Extension field for ``extraDetails``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External identifiers for this item",
@@ -217,7 +218,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    location: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="location",
         title="Location(s) where service may be provided",
@@ -230,7 +231,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Description of service as presented to a consumer while searching",
@@ -243,11 +244,11 @@ class HealthcareService(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    offeredIn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    offeredIn: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="offeredIn",
         title="The service within which this service is offered",
@@ -262,7 +263,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    photo: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    photo: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="photo",
         title="Facilitates quick identification of the service",
@@ -277,7 +278,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    program: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    program: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="program",
         title="Programs that this service is applicable to",
@@ -287,7 +288,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    providedBy: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    providedBy: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="providedBy",
         title="Organization that provides this service",
@@ -300,7 +301,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    referralMethod: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    referralMethod: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="referralMethod",
         title="Ways that the service accepts referrals",
@@ -313,7 +314,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    serviceProvisionCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    serviceProvisionCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="serviceProvisionCode",
         title="Conditions under which service is available/offered",
@@ -326,7 +327,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="specialty",
         title="Specialties handled by the HealthcareService",
@@ -340,7 +341,7 @@ class HealthcareService(domainresource.DomainResource):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="type",
         title="Type of service that may be delivered or performed",
@@ -352,7 +353,7 @@ class HealthcareService(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``HealthcareService`` according to specification,
         with preserving the original sequence order.
@@ -392,7 +393,7 @@ class HealthcareService(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``HealthcareService`` according to specification,
         with preserving the original sequence order.
         """
@@ -426,7 +427,7 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
 
     __resource_type__ = "HealthcareServiceEligibility"
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Coded value for the eligibility",
@@ -436,7 +437,7 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
         },
     )
 
-    comment: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    comment: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="comment",
         title="Describes the eligibility conditions for the service",
@@ -445,12 +446,12 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``HealthcareServiceEligibility`` according to specification,
         with preserving the original sequence order.
@@ -458,7 +459,7 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "code", "comment"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``HealthcareServiceEligibility`` according to specification,
         with preserving the original sequence order.
         """

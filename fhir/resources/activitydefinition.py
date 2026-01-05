@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ActivityDefinition
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class ActivityDefinition(domainresource.DomainResource):
 
     __resource_type__ = "ActivityDefinition"
 
-    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="approvalDate",
         title="When the activity definition was approved by publisher",
@@ -41,13 +42,13 @@ class ActivityDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_approvalDate",
         title="Extension field for ``approvalDate``.",
     )
 
-    asNeededBoolean: bool | None = Field(  # type: ignore
+    asNeededBoolean: bool | None = Field(
         default=None,
         alias="asNeededBoolean",
         title="Preconditions for service",
@@ -63,13 +64,13 @@ class ActivityDefinition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_asNeededBoolean",
         title="Extension field for ``asNeededBoolean``.",
     )
 
-    asNeededCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    asNeededCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="asNeededCodeableConcept",
         title="Preconditions for service",
@@ -86,7 +87,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="author",
         title="Who authored the content",
@@ -99,7 +100,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    bodySite: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    bodySite: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="bodySite",
         title="What part of body to perform on",
@@ -112,7 +113,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Detail type of activity",
@@ -126,7 +127,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -140,7 +141,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -153,11 +154,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
+    copyrightLabel: fhirtypes.StringType | None = Field(
         default=None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -171,13 +172,13 @@ class ActivityDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_copyrightLabel",
         title="Extension field for ``copyrightLabel``.",
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -193,11 +194,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the activity definition",
@@ -210,11 +211,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    doNotPerform: bool | None = Field(  # type: ignore
+    doNotPerform: bool | None = Field(
         default=None,
         alias="doNotPerform",
         title="True if the activity should not be performed",
@@ -230,13 +231,13 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_doNotPerform",
         title="Extension field for ``doNotPerform``.",
     )
 
-    dosage: typing.List[fhirtypes.DosageType] | None = Field(  # type: ignore
+    dosage: typing.List[fhirtypes.DosageType] | None = Field(
         default=None,
         alias="dosage",
         title="Detailed dosage instructions",
@@ -249,7 +250,9 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    dynamicValue: typing.List[fhirtypes.ActivityDefinitionDynamicValueType] | None = Field(  # type: ignore
+    dynamicValue: typing.List[
+        fhirtypes.ActivityDefinitionDynamicValueType
+    ] | None = Field(
         default=None,
         alias="dynamicValue",
         title="Dynamic aspects of the definition",
@@ -265,7 +268,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="editor",
         title="Who edited the content",
@@ -278,7 +281,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="When the activity definition is expected to be used",
@@ -292,7 +295,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="endorser",
         title="Who endorsed the content",
@@ -306,7 +309,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -320,13 +323,13 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Additional identifier for the activity definition",
@@ -341,7 +344,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    intent: fhirtypes.CodeType | None = Field(  # type: ignore
+    intent: fhirtypes.CodeType | None = Field(
         default=None,
         alias="intent",
         title=(
@@ -369,11 +372,11 @@ class ActivityDefinition(domainresource.DomainResource):
             ],
         },
     )
-    intent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_intent", title="Extension field for ``intent``."
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for activity definition (if applicable)",
@@ -387,7 +390,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    kind: fhirtypes.CodeType | None = Field(  # type: ignore
+    kind: fhirtypes.CodeType | None = Field(
         default=None,
         alias="kind",
         title="Kind of resource",
@@ -401,11 +404,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="lastReviewDate",
         title="When the activity definition was last reviewed by the publisher",
@@ -418,13 +421,13 @@ class ActivityDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastReviewDate",
         title="Extension field for ``lastReviewDate``.",
     )
 
-    library: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    library: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="library",
         title="Logic used by the activity definition",
@@ -438,11 +441,13 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_reference_types": ["Library"],
         },
     )
-    library__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    library__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_library", title="Extension field for ``library``."
     )
 
-    location: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
+    location: fhirtypes.CodeableReferenceType | None = Field(
         default=None,
         alias="location",
         title="Where it should happen",
@@ -457,7 +462,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this activity definition (computer friendly)",
@@ -471,11 +476,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    observationRequirement: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    observationRequirement: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="observationRequirement",
         title="What observations are required to perform this action",
@@ -489,13 +494,17 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_reference_types": ["ObservationDefinition"],
         },
     )
-    observationRequirement__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    observationRequirement__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_observationRequirement",
         title="Extension field for ``observationRequirement``.",
     )
 
-    observationResultRequirement: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    observationResultRequirement: typing.List[
+        fhirtypes.CanonicalType | None
+    ] | None = Field(
         default=None,
         alias="observationResultRequirement",
         title="What observations must be produced by this action",
@@ -509,13 +518,17 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_reference_types": ["ObservationDefinition"],
         },
     )
-    observationResultRequirement__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    observationResultRequirement__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_observationResultRequirement",
         title="Extension field for ``observationResultRequirement``.",
     )
 
-    participant: typing.List[fhirtypes.ActivityDefinitionParticipantType] | None = Field(  # type: ignore
+    participant: typing.List[
+        fhirtypes.ActivityDefinitionParticipantType
+    ] | None = Field(
         default=None,
         alias="participant",
         title="Who should participate in the action",
@@ -525,7 +538,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(
         default=None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -540,11 +553,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    productCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    productCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="productCodeableConcept",
         title="What's administered/supplied",
@@ -560,7 +573,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    productReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    productReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="productReference",
         title="What's administered/supplied",
@@ -583,7 +596,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    profile: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    profile: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="profile",
         title="What profile the resource needs to conform to",
@@ -597,11 +610,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -614,11 +627,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this activity definition is defined",
@@ -630,11 +643,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="quantity",
         title="How much is administered/consumed/supplied",
@@ -647,7 +660,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc",
@@ -660,7 +673,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="reviewer",
         title="Who reviewed the content",
@@ -673,7 +686,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    specimenRequirement: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    specimenRequirement: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="specimenRequirement",
         title="What specimens are required to perform this action",
@@ -687,13 +700,15 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_reference_types": ["SpecimenDefinition"],
         },
     )
-    specimenRequirement__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    specimenRequirement__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_specimenRequirement",
         title="Extension field for ``specimenRequirement``.",
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -710,11 +725,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subjectCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    subjectCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="subjectCanonical",
         title="Type of individual the activity definition is intended for",
@@ -736,13 +751,13 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_reference_types": ["EvidenceVariable"],
         },
     )
-    subjectCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    subjectCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_subjectCanonical",
         title="Extension field for ``subjectCanonical``.",
     )
 
-    subjectCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    subjectCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="subjectCodeableConcept",
         title="Type of individual the activity definition is intended for",
@@ -763,7 +778,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    subjectReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subjectReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subjectReference",
         title="Type of individual the activity definition is intended for",
@@ -793,7 +808,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    subtitle: fhirtypes.StringType | None = Field(  # type: ignore
+    subtitle: fhirtypes.StringType | None = Field(
         default=None,
         alias="subtitle",
         title="Subordinate title of the activity definition",
@@ -805,11 +820,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
-    timingAge: fhirtypes.AgeType | None = Field(  # type: ignore
+    timingAge: fhirtypes.AgeType | None = Field(
         default=None,
         alias="timingAge",
         title="When activity is to occur",
@@ -822,7 +837,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    timingDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    timingDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="timingDuration",
         title="When activity is to occur",
@@ -835,7 +850,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    timingRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    timingRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="timingRange",
         title="When activity is to occur",
@@ -848,7 +863,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    timingTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    timingTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="timingTiming",
         title="When activity is to occur",
@@ -861,7 +876,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this activity definition (human friendly)",
@@ -871,11 +886,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
@@ -889,7 +904,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    transform: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    transform: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="transform",
         title="Transform to apply the template",
@@ -904,11 +919,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "enum_reference_types": ["StructureMap"],
         },
     )
-    transform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    transform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_transform", title="Extension field for ``transform``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -929,11 +944,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    usage: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    usage: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="usage",
         title="Describes the clinical usage of the activity definition",
@@ -945,11 +960,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_usage", title="Extension field for ``usage``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -966,7 +981,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the activity definition",
@@ -988,11 +1003,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
+    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(
         default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -1009,7 +1024,7 @@ class ActivityDefinition(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
+    versionAlgorithmString: fhirtypes.StringType | None = Field(
         default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -1025,14 +1040,14 @@ class ActivityDefinition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ActivityDefinition`` according to specification,
         with preserving the original sequence order.
@@ -1106,7 +1121,7 @@ class ActivityDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ActivityDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -1191,7 +1206,7 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
 
     __resource_type__ = "ActivityDefinitionDynamicValue"
 
-    expression: fhirtypes.ExpressionType = Field(  # type: ignore
+    expression: fhirtypes.ExpressionType = Field(
         default=...,
         alias="expression",
         title="An expression that provides the dynamic value for the customization",
@@ -1201,7 +1216,7 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
         },
     )
 
-    path: fhirtypes.StringType | None = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(
         default=None,
         alias="path",
         title="The path to the element to be set dynamically",
@@ -1221,12 +1236,12 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_path", title="Extension field for ``path``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ActivityDefinitionDynamicValue`` according to specification,
         with preserving the original sequence order.
@@ -1234,7 +1249,7 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "path", "expression"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ActivityDefinitionDynamicValue`` according to specification,
         with preserving the original sequence order.
         """
@@ -1263,7 +1278,7 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "ActivityDefinitionParticipant"
 
-    function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    function: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="function",
         title="E.g. Author, Reviewer, Witness, etc",
@@ -1276,7 +1291,7 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="role",
         title="E.g. Nurse, Surgeon, Parent, etc",
@@ -1289,7 +1304,7 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -1316,11 +1331,11 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    typeCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    typeCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="typeCanonical",
         title="Who or what can participate",
@@ -1331,13 +1346,13 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
             "enum_reference_types": ["CapabilityStatement"],
         },
     )
-    typeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    typeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_typeCanonical",
         title="Extension field for ``typeCanonical``.",
     )
 
-    typeReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    typeReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="typeReference",
         title="Who or what can participate",
@@ -1363,7 +1378,7 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ActivityDefinitionParticipant`` according to specification,
         with preserving the original sequence order.
@@ -1380,7 +1395,7 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ActivityDefinitionParticipant`` according to specification,
         with preserving the original sequence order.
         """

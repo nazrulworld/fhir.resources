@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DeviceAssociation
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -24,7 +25,7 @@ class DeviceAssociation(domainresource.DomainResource):
 
     __resource_type__ = "DeviceAssociation"
 
-    bodyStructure: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    bodyStructure: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="bodyStructure",
         title="Current anatomical location of the device in/on subject",
@@ -37,7 +38,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="Describes the relationship between the device and subject",
@@ -48,7 +49,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    device: fhirtypes.ReferenceType = Field(  # type: ignore
+    device: fhirtypes.ReferenceType = Field(
         default=...,
         alias="device",
         title="Reference to the devices associated with the patient or group",
@@ -61,7 +62,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Instance identifier",
@@ -72,7 +73,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    operation: typing.List[fhirtypes.DeviceAssociationOperationType] | None = Field(  # type: ignore
+    operation: typing.List[fhirtypes.DeviceAssociationOperationType] | None = Field(
         default=None,
         alias="operation",
         title=(
@@ -86,7 +87,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Begin and end dates and times for the device association",
@@ -97,7 +98,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="status",
         title="implanted | explanted | attached | entered-in-error | unknown",
@@ -108,7 +109,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    statusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    statusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="statusReason",
         title="The reasons given for the current association status",
@@ -119,7 +120,7 @@ class DeviceAssociation(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title=(
@@ -142,7 +143,7 @@ class DeviceAssociation(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DeviceAssociation`` according to specification,
         with preserving the original sequence order.
@@ -168,7 +169,7 @@ class DeviceAssociation(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DeviceAssociation`` according to specification,
         with preserving the original sequence order.
         """
@@ -199,7 +200,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
 
     __resource_type__ = "DeviceAssociationOperation"
 
-    operator: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    operator: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="operator",
         title="The individual performing the action enabled by the device",
@@ -212,7 +213,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Begin and end dates and times for the device's operation",
@@ -223,7 +224,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         },
     )
 
-    status: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="status",
         title="Device operational condition",
@@ -235,7 +236,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DeviceAssociationOperation`` according to specification,
         with preserving the original sequence order.
@@ -243,7 +244,7 @@ class DeviceAssociationOperation(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "status", "operator", "period"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DeviceAssociationOperation`` according to specification,
         with preserving the original sequence order.
         """

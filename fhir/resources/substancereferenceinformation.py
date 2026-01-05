@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SubstanceReferenceInformation
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -24,7 +25,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
 
     __resource_type__ = "SubstanceReferenceInformation"
 
-    comment: fhirtypes.StringType | None = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(
         default=None,
         alias="comment",
         title="Todo",
@@ -34,11 +35,11 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    gene: typing.List[fhirtypes.SubstanceReferenceInformationGeneType] | None = Field(  # type: ignore
+    gene: typing.List[fhirtypes.SubstanceReferenceInformationGeneType] | None = Field(
         default=None,
         alias="gene",
         title="Todo",
@@ -49,7 +50,9 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         },
     )
 
-    geneElement: typing.List[fhirtypes.SubstanceReferenceInformationGeneElementType] | None = Field(  # type: ignore
+    geneElement: typing.List[
+        fhirtypes.SubstanceReferenceInformationGeneElementType
+    ] | None = Field(
         default=None,
         alias="geneElement",
         title="Todo",
@@ -60,7 +63,9 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         },
     )
 
-    target: typing.List[fhirtypes.SubstanceReferenceInformationTargetType] | None = Field(  # type: ignore
+    target: typing.List[
+        fhirtypes.SubstanceReferenceInformationTargetType
+    ] | None = Field(
         default=None,
         alias="target",
         title="Todo",
@@ -72,7 +77,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceReferenceInformation`` according to specification,
         with preserving the original sequence order.
@@ -93,7 +98,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceReferenceInformation`` according to specification,
         with preserving the original sequence order.
         """
@@ -119,7 +124,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceReferenceInformationGene"
 
-    gene: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    gene: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="gene",
         title="Todo",
@@ -130,7 +135,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         },
     )
 
-    geneSequenceOrigin: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    geneSequenceOrigin: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="geneSequenceOrigin",
         title="Todo",
@@ -141,7 +146,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         },
     )
 
-    source: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    source: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="source",
         title="Todo",
@@ -155,7 +160,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceReferenceInformationGene`` according to specification,
         with preserving the original sequence order.
@@ -170,7 +175,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceReferenceInformationGene`` according to specification,
         with preserving the original sequence order.
         """
@@ -187,7 +192,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceReferenceInformationGeneElement"
 
-    element: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    element: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="element",
         title="Todo",
@@ -198,7 +203,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         },
     )
 
-    source: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    source: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="source",
         title="Todo",
@@ -211,7 +216,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Todo",
@@ -223,7 +228,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceReferenceInformationGeneElement`` according to specification,
         with preserving the original sequence order.
@@ -231,7 +236,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "element", "source"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceReferenceInformationGeneElement`` according to specification,
         with preserving the original sequence order.
         """
@@ -248,7 +253,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceReferenceInformationTarget"
 
-    amountQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    amountQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="amountQuantity",
         title="Todo",
@@ -262,7 +267,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         },
     )
 
-    amountRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    amountRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="amountRange",
         title="Todo",
@@ -276,7 +281,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         },
     )
 
-    amountString: fhirtypes.StringType | None = Field(  # type: ignore
+    amountString: fhirtypes.StringType | None = Field(
         default=None,
         alias="amountString",
         title="Todo",
@@ -289,13 +294,13 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_amountString",
         title="Extension field for ``amountString``.",
     )
 
-    amountType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    amountType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="amountType",
         title="Todo",
@@ -306,7 +311,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         },
     )
 
-    interaction: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    interaction: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="interaction",
         title="Todo",
@@ -317,7 +322,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         },
     )
 
-    organism: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    organism: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="organism",
         title="Todo",
@@ -328,7 +333,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         },
     )
 
-    organismType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    organismType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="organismType",
         title="Todo",
@@ -339,7 +344,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         },
     )
 
-    source: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    source: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="source",
         title="Todo",
@@ -352,7 +357,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         },
     )
 
-    target: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    target: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="target",
         title="Todo",
@@ -363,7 +368,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Todo",
@@ -375,7 +380,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceReferenceInformationTarget`` according to specification,
         with preserving the original sequence order.
@@ -397,7 +402,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceReferenceInformationTarget`` according to specification,
         with preserving the original sequence order.
         """

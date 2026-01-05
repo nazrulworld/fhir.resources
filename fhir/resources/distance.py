@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Distance
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from . import quantity
 
 
@@ -21,7 +24,7 @@ class Distance(quantity.Quantity):
     __resource_type__ = "Distance"
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Distance`` according to specification,
         with preserving the original sequence order.
@@ -29,7 +32,7 @@ class Distance(quantity.Quantity):
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Distance`` according to specification,
         with preserving the original sequence order.
         """

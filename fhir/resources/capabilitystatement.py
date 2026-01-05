@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CapabilityStatement
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class CapabilityStatement(domainresource.DomainResource):
 
     __resource_type__ = "CapabilityStatement"
 
-    acceptLanguage: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    acceptLanguage: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="acceptLanguage",
         title="Languages supported",
@@ -41,13 +42,15 @@ class CapabilityStatement(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    acceptLanguage__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    acceptLanguage__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_acceptLanguage",
         title="Extension field for ``acceptLanguage``.",
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -61,7 +64,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -74,11 +77,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
+    copyrightLabel: fhirtypes.StringType | None = Field(
         default=None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -92,13 +95,13 @@ class CapabilityStatement(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_copyrightLabel",
         title="Extension field for ``copyrightLabel``.",
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -115,11 +118,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the capability statement",
@@ -134,11 +137,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    document: typing.List[fhirtypes.CapabilityStatementDocumentType] | None = Field(  # type: ignore
+    document: typing.List[fhirtypes.CapabilityStatementDocumentType] | None = Field(
         default=None,
         alias="document",
         title="Document definition",
@@ -149,7 +152,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -163,13 +166,13 @@ class CapabilityStatement(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    fhirVersion: fhirtypes.CodeType | None = Field(  # type: ignore
+    fhirVersion: fhirtypes.CodeType | None = Field(
         default=None,
         alias="fhirVersion",
         title="FHIR Version the system supports",
@@ -184,11 +187,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
     )
 
-    format: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    format: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="format",
         title="formats supported (xml | json | ttl | mime type)",
@@ -205,11 +208,13 @@ class CapabilityStatement(domainresource.DomainResource):
             "enum_values": ["formats", "json", "ttl", "mime"],
         },
     )
-    format__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    format__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_format", title="Extension field for ``format``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title=(
@@ -226,7 +231,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    implementation: fhirtypes.CapabilityStatementImplementationType | None = Field(  # type: ignore
+    implementation: fhirtypes.CapabilityStatementImplementationType | None = Field(
         default=None,
         alias="implementation",
         title="If this describes a specific instance",
@@ -241,7 +246,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    implementationGuide: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    implementationGuide: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="implementationGuide",
         title="Implementation guides supported",
@@ -256,13 +261,15 @@ class CapabilityStatement(domainresource.DomainResource):
             "enum_reference_types": ["ImplementationGuide"],
         },
     )
-    implementationGuide__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    implementationGuide__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_implementationGuide",
         title="Extension field for ``implementationGuide``.",
     )
 
-    imports: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    imports: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="imports",
         title="Canonical URL of another capability statement this adds to",
@@ -280,11 +287,13 @@ class CapabilityStatement(domainresource.DomainResource):
             "enum_reference_types": ["CapabilityStatement"],
         },
     )
-    imports__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    imports__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_imports", title="Extension field for ``imports``."
     )
 
-    instantiates: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    instantiates: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="instantiates",
         title="Canonical URL of another capability statement this implements",
@@ -303,13 +312,15 @@ class CapabilityStatement(domainresource.DomainResource):
             "enum_reference_types": ["CapabilityStatement"],
         },
     )
-    instantiates__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    instantiates__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_instantiates",
         title="Extension field for ``instantiates``.",
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for capability statement (if applicable)",
@@ -323,7 +334,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    kind: fhirtypes.CodeType | None = Field(  # type: ignore
+    kind: fhirtypes.CodeType | None = Field(
         default=None,
         alias="kind",
         title="instance | capability | requirements",
@@ -342,11 +353,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "enum_values": ["instance", "capability", "requirements"],
         },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    messaging: typing.List[fhirtypes.CapabilityStatementMessagingType] | None = Field(  # type: ignore
+    messaging: typing.List[fhirtypes.CapabilityStatementMessagingType] | None = Field(
         default=None,
         alias="messaging",
         title="If messaging is supported",
@@ -357,7 +368,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this capability statement (computer friendly)",
@@ -371,11 +382,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    patchFormat: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    patchFormat: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="patchFormat",
         title="Patch formats supported",
@@ -388,11 +399,13 @@ class CapabilityStatement(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    patchFormat__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    patchFormat__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_patchFormat", title="Extension field for ``patchFormat``."
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -405,11 +418,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this capability statement is defined",
@@ -421,11 +434,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    rest: typing.List[fhirtypes.CapabilityStatementRestType] | None = Field(  # type: ignore
+    rest: typing.List[fhirtypes.CapabilityStatementRestType] | None = Field(
         default=None,
         alias="rest",
         title="If the endpoint is a RESTful one",
@@ -436,7 +449,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    software: fhirtypes.CapabilityStatementSoftwareType | None = Field(  # type: ignore
+    software: fhirtypes.CapabilityStatementSoftwareType | None = Field(
         default=None,
         alias="software",
         title="Software that is covered by this capability statement",
@@ -451,7 +464,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -468,11 +481,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this capability statement (human friendly)",
@@ -484,11 +497,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -510,11 +523,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -531,7 +544,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the capability statement",
@@ -549,11 +562,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
+    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(
         default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -570,7 +583,7 @@ class CapabilityStatement(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
+    versionAlgorithmString: fhirtypes.StringType | None = Field(
         default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -586,14 +599,14 @@ class CapabilityStatement(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatement`` according to specification,
         with preserving the original sequence order.
@@ -641,7 +654,7 @@ class CapabilityStatement(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatement`` according to specification,
         with preserving the original sequence order.
         """
@@ -726,7 +739,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementDocument"
 
-    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="documentation",
         title="Description of document support",
@@ -739,13 +752,13 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
-    mode: fhirtypes.CodeType | None = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(
         default=None,
         alias="mode",
         title="producer | consumer",
@@ -762,11 +775,11 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
             "enum_values": ["producer", "consumer"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    profile: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    profile: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="profile",
         title="Constraint on the resources used in the document",
@@ -782,12 +795,12 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementDocument`` according to specification,
         with preserving the original sequence order.
@@ -802,7 +815,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementDocument`` according to specification,
         with preserving the original sequence order.
         """
@@ -833,7 +846,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementImplementation"
 
-    custodian: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    custodian: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="custodian",
         title="Organization that manages the data",
@@ -849,7 +862,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Describes this specific instance",
@@ -863,11 +876,11 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    url: fhirtypes.UrlType | None = Field(  # type: ignore
+    url: fhirtypes.UrlType | None = Field(
         default=None,
         alias="url",
         title="Base URL for the installation",
@@ -880,12 +893,12 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementImplementation`` according to specification,
         with preserving the original sequence order.
@@ -900,7 +913,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementImplementation`` according to specification,
         with preserving the original sequence order.
         """
@@ -929,7 +942,7 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementMessaging"
 
-    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="documentation",
         title="Messaging interface behavior details",
@@ -943,13 +956,15 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
-    endpoint: typing.List[fhirtypes.CapabilityStatementMessagingEndpointType] | None = Field(  # type: ignore
+    endpoint: typing.List[
+        fhirtypes.CapabilityStatementMessagingEndpointType
+    ] | None = Field(
         default=None,
         alias="endpoint",
         title="Where messages should be sent",
@@ -962,7 +977,7 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
         },
     )
 
-    reliableCache: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
+    reliableCache: fhirtypes.UnsignedIntType | None = Field(
         default=None,
         alias="reliableCache",
         title="Reliable Message Cache Length (min)",
@@ -975,13 +990,15 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    reliableCache__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    reliableCache__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_reliableCache",
         title="Extension field for ``reliableCache``.",
     )
 
-    supportedMessage: typing.List[fhirtypes.CapabilityStatementMessagingSupportedMessageType] | None = Field(  # type: ignore
+    supportedMessage: typing.List[
+        fhirtypes.CapabilityStatementMessagingSupportedMessageType
+    ] | None = Field(
         default=None,
         alias="supportedMessage",
         title="Messages supported by this system",
@@ -996,7 +1013,7 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementMessaging`` according to specification,
         with preserving the original sequence order.
@@ -1012,7 +1029,7 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementMessaging`` according to specification,
         with preserving the original sequence order.
         """
@@ -1031,7 +1048,7 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementMessagingEndpoint"
 
-    address: fhirtypes.UrlType | None = Field(  # type: ignore
+    address: fhirtypes.UrlType | None = Field(
         default=None,
         alias="address",
         title="Network address or identifier of the end-point",
@@ -1044,11 +1061,11 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    address__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_address", title="Extension field for ``address``."
     )
 
-    protocol: fhirtypes.CodingType = Field(  # type: ignore
+    protocol: fhirtypes.CodingType = Field(
         default=...,
         alias="protocol",
         title="http | ftp | mllp +",
@@ -1062,7 +1079,7 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementMessagingEndpoint`` according to specification,
         with preserving the original sequence order.
@@ -1070,7 +1087,7 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "protocol", "address"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementMessagingEndpoint`` according to specification,
         with preserving the original sequence order.
         """
@@ -1100,7 +1117,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
 
     __resource_type__ = "CapabilityStatementMessagingSupportedMessage"
 
-    definition: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    definition: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="definition",
         title="Message supported by this system",
@@ -1116,11 +1133,11 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
             "enum_reference_types": ["MessageDefinition"],
         },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    mode: fhirtypes.CodeType | None = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(
         default=None,
         alias="mode",
         title="sender | receiver",
@@ -1137,12 +1154,12 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
             "enum_values": ["sender", "receiver"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_mode", title="Extension field for ``mode``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementMessagingSupportedMessage`` according to specification,
         with preserving the original sequence order.
@@ -1150,7 +1167,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         return ["id", "extension", "modifierExtension", "mode", "definition"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementMessagingSupportedMessage`` according to specification,
         with preserving the original sequence order.
         """
@@ -1179,7 +1196,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementRest"
 
-    compartment: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    compartment: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="compartment",
         title="Compartments served/used by system",
@@ -1194,11 +1211,13 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "enum_reference_types": ["CompartmentDefinition"],
         },
     )
-    compartment__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    compartment__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_compartment", title="Extension field for ``compartment``."
     )
 
-    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="documentation",
         title="General description of implementation",
@@ -1210,13 +1229,15 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
-    interaction: typing.List[fhirtypes.CapabilityStatementRestInteractionType] | None = Field(  # type: ignore
+    interaction: typing.List[
+        fhirtypes.CapabilityStatementRestInteractionType
+    ] | None = Field(
         default=None,
         alias="interaction",
         title="What operations are supported?",
@@ -1226,7 +1247,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         },
     )
 
-    mode: fhirtypes.CodeType | None = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(
         default=None,
         alias="mode",
         title="client | server",
@@ -1243,11 +1264,13 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "enum_values": ["client", "server"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    operation: typing.List[fhirtypes.CapabilityStatementRestResourceOperationType] | None = Field(  # type: ignore
+    operation: typing.List[
+        fhirtypes.CapabilityStatementRestResourceOperationType
+    ] | None = Field(
         default=None,
         alias="operation",
         title="Definition of a system level operation",
@@ -1261,7 +1284,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         },
     )
 
-    resource: typing.List[fhirtypes.CapabilityStatementRestResourceType] | None = Field(  # type: ignore
+    resource: typing.List[fhirtypes.CapabilityStatementRestResourceType] | None = Field(
         default=None,
         alias="resource",
         title="Resource served on the REST interface",
@@ -1275,7 +1298,9 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         },
     )
 
-    searchParam: typing.List[fhirtypes.CapabilityStatementRestResourceSearchParamType] | None = Field(  # type: ignore
+    searchParam: typing.List[
+        fhirtypes.CapabilityStatementRestResourceSearchParamType
+    ] | None = Field(
         default=None,
         alias="searchParam",
         title="Search parameters for searching all resources",
@@ -1291,7 +1316,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         },
     )
 
-    security: fhirtypes.CapabilityStatementRestSecurityType | None = Field(  # type: ignore
+    security: fhirtypes.CapabilityStatementRestSecurityType | None = Field(
         default=None,
         alias="security",
         title="Information about security of implementation",
@@ -1306,7 +1331,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementRest`` according to specification,
         with preserving the original sequence order.
@@ -1326,7 +1351,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRest`` according to specification,
         with preserving the original sequence order.
         """
@@ -1355,7 +1380,7 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementRestInteraction"
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title="transaction | batch | search-system | history-system",
@@ -1368,11 +1393,11 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
             "enum_values": ["transaction", "batch", "search-system", "history-system"],
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="documentation",
         title="Anything special about operation behavior",
@@ -1385,14 +1410,14 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementRestInteraction`` according to specification,
         with preserving the original sequence order.
@@ -1400,7 +1425,7 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "code", "documentation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestInteraction`` according to specification,
         with preserving the original sequence order.
         """
@@ -1430,7 +1455,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementRestResource"
 
-    conditionalCreate: bool | None = Field(  # type: ignore
+    conditionalCreate: bool | None = Field(
         default=None,
         alias="conditionalCreate",
         title="If allows/uses conditional create",
@@ -1439,13 +1464,13 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    conditionalCreate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    conditionalCreate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_conditionalCreate",
         title="Extension field for ``conditionalCreate``.",
     )
 
-    conditionalDelete: fhirtypes.CodeType | None = Field(  # type: ignore
+    conditionalDelete: fhirtypes.CodeType | None = Field(
         default=None,
         alias="conditionalDelete",
         title=(
@@ -1459,13 +1484,13 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "enum_values": ["not-supported", "single", "multiple"],
         },
     )
-    conditionalDelete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    conditionalDelete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_conditionalDelete",
         title="Extension field for ``conditionalDelete``.",
     )
 
-    conditionalPatch: bool | None = Field(  # type: ignore
+    conditionalPatch: bool | None = Field(
         default=None,
         alias="conditionalPatch",
         title="If allows/uses conditional patch",
@@ -1474,13 +1499,13 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    conditionalPatch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    conditionalPatch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_conditionalPatch",
         title="Extension field for ``conditionalPatch``.",
     )
 
-    conditionalRead: fhirtypes.CodeType | None = Field(  # type: ignore
+    conditionalRead: fhirtypes.CodeType | None = Field(
         default=None,
         alias="conditionalRead",
         title="not-supported | modified-since | not-match | full-support",
@@ -1497,13 +1522,13 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             ],
         },
     )
-    conditionalRead__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    conditionalRead__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_conditionalRead",
         title="Extension field for ``conditionalRead``.",
     )
 
-    conditionalUpdate: bool | None = Field(  # type: ignore
+    conditionalUpdate: bool | None = Field(
         default=None,
         alias="conditionalUpdate",
         title="If allows/uses conditional update",
@@ -1512,13 +1537,13 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    conditionalUpdate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    conditionalUpdate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_conditionalUpdate",
         title="Extension field for ``conditionalUpdate``.",
     )
 
-    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="documentation",
         title="Additional information about the use of the resource type",
@@ -1527,13 +1552,15 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
-    interaction: typing.List[fhirtypes.CapabilityStatementRestResourceInteractionType] | None = Field(  # type: ignore
+    interaction: typing.List[
+        fhirtypes.CapabilityStatementRestResourceInteractionType
+    ] | None = Field(
         default=None,
         alias="interaction",
         title="What operations are supported?",
@@ -1543,7 +1570,9 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         },
     )
 
-    operation: typing.List[fhirtypes.CapabilityStatementRestResourceOperationType] | None = Field(  # type: ignore
+    operation: typing.List[
+        fhirtypes.CapabilityStatementRestResourceOperationType
+    ] | None = Field(
         default=None,
         alias="operation",
         title="Definition of a resource operation",
@@ -1559,7 +1588,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         },
     )
 
-    profile: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    profile: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="profile",
         title="System-wide profile",
@@ -1577,11 +1606,11 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    readHistory: bool | None = Field(  # type: ignore
+    readHistory: bool | None = Field(
         default=None,
         alias="readHistory",
         title="Whether vRead can return past versions",
@@ -1593,11 +1622,11 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    readHistory__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    readHistory__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_readHistory", title="Extension field for ``readHistory``."
     )
 
-    referencePolicy: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    referencePolicy: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="referencePolicy",
         title="literal | logical | resolves | enforced | local",
@@ -1609,13 +1638,15 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "enum_values": ["literal", "logical", "resolves", "enforced", "local"],
         },
     )
-    referencePolicy__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    referencePolicy__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_referencePolicy",
         title="Extension field for ``referencePolicy``.",
     )
 
-    searchInclude: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    searchInclude: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="searchInclude",
         title="_include values supported by the server",
@@ -1624,13 +1655,17 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    searchInclude__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    searchInclude__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_searchInclude",
         title="Extension field for ``searchInclude``.",
     )
 
-    searchParam: typing.List[fhirtypes.CapabilityStatementRestResourceSearchParamType] | None = Field(  # type: ignore
+    searchParam: typing.List[
+        fhirtypes.CapabilityStatementRestResourceSearchParamType
+    ] | None = Field(
         default=None,
         alias="searchParam",
         title="Search parameters supported by implementation",
@@ -1644,7 +1679,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         },
     )
 
-    searchRevInclude: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    searchRevInclude: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="searchRevInclude",
         title="_revinclude values supported by the server",
@@ -1655,13 +1690,15 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    searchRevInclude__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    searchRevInclude__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_searchRevInclude",
         title="Extension field for ``searchRevInclude``.",
     )
 
-    supportedProfile: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    supportedProfile: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="supportedProfile",
         title="Use-case specific profiles",
@@ -1683,13 +1720,15 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    supportedProfile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    supportedProfile__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_supportedProfile",
         title="Extension field for ``supportedProfile``.",
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="A resource type that is supported",
@@ -1700,11 +1739,11 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    updateCreate: bool | None = Field(  # type: ignore
+    updateCreate: bool | None = Field(
         default=None,
         alias="updateCreate",
         title="If update can commit to a new identity",
@@ -1719,13 +1758,13 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    updateCreate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    updateCreate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_updateCreate",
         title="Extension field for ``updateCreate``.",
     )
 
-    versioning: fhirtypes.CodeType | None = Field(  # type: ignore
+    versioning: fhirtypes.CodeType | None = Field(
         default=None,
         alias="versioning",
         title="no-version | versioned | versioned-update",
@@ -1744,12 +1783,12 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "enum_values": ["no-version", "versioned", "versioned-update"],
         },
     )
-    versioning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    versioning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_versioning", title="Extension field for ``versioning``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementRestResource`` according to specification,
         with preserving the original sequence order.
@@ -1779,7 +1818,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestResource`` according to specification,
         with preserving the original sequence order.
         """
@@ -1808,7 +1847,7 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
 
     __resource_type__ = "CapabilityStatementRestResourceInteraction"
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title=(
@@ -1834,11 +1873,11 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
             ],
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="documentation",
         title="Anything special about operation behavior",
@@ -1851,14 +1890,14 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementRestResourceInteraction`` according to specification,
         with preserving the original sequence order.
@@ -1866,7 +1905,7 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
         return ["id", "extension", "modifierExtension", "code", "documentation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestResourceInteraction`` according to specification,
         with preserving the original sequence order.
         """
@@ -1897,7 +1936,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementRestResourceOperation"
 
-    definition: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    definition: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="definition",
         title="The defined operation/query",
@@ -1920,11 +1959,11 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
             "enum_reference_types": ["OperationDefinition"],
         },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="documentation",
         title="Specific details about operation behavior",
@@ -1937,13 +1976,13 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name by which the operation/query is invoked",
@@ -1962,12 +2001,12 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementRestResourceOperation`` according to specification,
         with preserving the original sequence order.
@@ -1982,7 +2021,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestResourceOperation`` according to specification,
         with preserving the original sequence order.
         """
@@ -2013,7 +2052,7 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
 
     __resource_type__ = "CapabilityStatementRestResourceSearchParam"
 
-    definition: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    definition: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="definition",
         title="Source of definition for parameter",
@@ -2032,11 +2071,11 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             "enum_reference_types": ["SearchParameter"],
         },
     )
-    definition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_definition", title="Extension field for ``definition``."
     )
 
-    documentation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    documentation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="documentation",
         title="Server-specific usage",
@@ -2048,13 +2087,13 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for parameter in search url",
@@ -2071,11 +2110,11 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -2104,12 +2143,12 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementRestResourceSearchParam`` according to specification,
         with preserving the original sequence order.
@@ -2125,7 +2164,7 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestResourceSearchParam`` according to specification,
         with preserving the original sequence order.
         """
@@ -2155,7 +2194,7 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementRestSecurity"
 
-    cors: bool | None = Field(  # type: ignore
+    cors: bool | None = Field(
         default=None,
         alias="cors",
         title="Adds CORS Headers (http://enable-cors.org/)",
@@ -2168,11 +2207,11 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    cors__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    cors__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_cors", title="Extension field for ``cors``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="General description of how security works",
@@ -2181,11 +2220,11 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    service: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    service: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="service",
         title="OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates",
@@ -2197,7 +2236,7 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementRestSecurity`` according to specification,
         with preserving the original sequence order.
@@ -2212,7 +2251,7 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementRestSecurity`` according to specification,
         with preserving the original sequence order.
         """
@@ -2232,7 +2271,7 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
 
     __resource_type__ = "CapabilityStatementSoftware"
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="A name the software is known by",
@@ -2243,11 +2282,11 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    releaseDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    releaseDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="releaseDate",
         title="Date this version was released",
@@ -2257,11 +2296,11 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    releaseDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    releaseDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_releaseDate", title="Extension field for ``releaseDate``."
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Version covered by this statement",
@@ -2271,12 +2310,12 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CapabilityStatementSoftware`` according to specification,
         with preserving the original sequence order.
@@ -2291,7 +2330,7 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CapabilityStatementSoftware`` according to specification,
         with preserving the original sequence order.
         """

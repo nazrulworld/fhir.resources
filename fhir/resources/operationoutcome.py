@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/OperationOutcome
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class OperationOutcome(domainresource.DomainResource):
 
     __resource_type__ = "OperationOutcome"
 
-    issue: typing.List[fhirtypes.OperationOutcomeIssueType] = Field(  # type: ignore
+    issue: typing.List[fhirtypes.OperationOutcomeIssueType] = Field(
         default=...,
         alias="issue",
         title="A single issue associated with the action",
@@ -41,7 +42,7 @@ class OperationOutcome(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``OperationOutcome`` according to specification,
         with preserving the original sequence order.
@@ -59,7 +60,7 @@ class OperationOutcome(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``OperationOutcome`` according to specification,
         with preserving the original sequence order.
         """
@@ -78,7 +79,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
 
     __resource_type__ = "OperationOutcomeIssue"
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title="Error or warning code",
@@ -94,11 +95,11 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    details: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    details: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="details",
         title="Additional details about the error",
@@ -112,7 +113,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         },
     )
 
-    diagnostics: fhirtypes.StringType | None = Field(  # type: ignore
+    diagnostics: fhirtypes.StringType | None = Field(
         default=None,
         alias="diagnostics",
         title="Additional diagnostic information about the issue",
@@ -122,11 +123,11 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    diagnostics__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    diagnostics__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_diagnostics", title="Extension field for ``diagnostics``."
     )
 
-    expression: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    expression: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="expression",
         title="FHIRPath of element(s) related to issue",
@@ -141,11 +142,13 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    expression__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    expression__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    location: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    location: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="location",
         title="Deprecated: Path of element(s) related to issue",
@@ -163,11 +166,13 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    location__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    location__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_location", title="Extension field for ``location``."
     )
 
-    severity: fhirtypes.CodeType | None = Field(  # type: ignore
+    severity: fhirtypes.CodeType | None = Field(
         default=None,
         alias="severity",
         title="fatal | error | warning | information | success",
@@ -184,12 +189,12 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "enum_values": ["fatal", "error", "warning", "information", "success"],
         },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_severity", title="Extension field for ``severity``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``OperationOutcomeIssue`` according to specification,
         with preserving the original sequence order.
@@ -207,7 +212,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``OperationOutcomeIssue`` according to specification,
         with preserving the original sequence order.
         """

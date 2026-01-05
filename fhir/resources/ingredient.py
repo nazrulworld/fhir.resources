@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Ingredient
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -24,7 +25,7 @@ class Ingredient(domainresource.DomainResource):
 
     __resource_type__ = "Ingredient"
 
-    allergenicIndicator: bool | None = Field(  # type: ignore
+    allergenicIndicator: bool | None = Field(
         default=None,
         alias="allergenicIndicator",
         title="If the ingredient is a known or suspected allergen",
@@ -39,13 +40,13 @@ class Ingredient(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    allergenicIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    allergenicIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_allergenicIndicator",
         title="Extension field for ``allergenicIndicator``.",
     )
 
-    comment: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    comment: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="comment",
         title=(
@@ -57,11 +58,11 @@ class Ingredient(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    for_fhir: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    for_fhir: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="for",
         title="The product which this ingredient is a constituent part of",
@@ -78,7 +79,7 @@ class Ingredient(domainresource.DomainResource):
         },
     )
 
-    function: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    function: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="function",
         title=(
@@ -96,7 +97,7 @@ class Ingredient(domainresource.DomainResource):
         },
     )
 
-    group: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    group: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="group",
         title=(
@@ -111,7 +112,7 @@ class Ingredient(domainresource.DomainResource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="An identifier or code by which the ingredient can be referenced",
@@ -126,7 +127,7 @@ class Ingredient(domainresource.DomainResource):
         },
     )
 
-    manufacturer: typing.List[fhirtypes.IngredientManufacturerType] | None = Field(  # type: ignore
+    manufacturer: typing.List[fhirtypes.IngredientManufacturerType] | None = Field(
         default=None,
         alias="manufacturer",
         title="An organization that manufactures this ingredient",
@@ -144,7 +145,7 @@ class Ingredient(domainresource.DomainResource):
         },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="role",
         title="Purpose of the ingredient within the product, e.g. active, inactive",
@@ -158,7 +159,7 @@ class Ingredient(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -175,11 +176,11 @@ class Ingredient(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    substance: fhirtypes.IngredientSubstanceType = Field(  # type: ignore
+    substance: fhirtypes.IngredientSubstanceType = Field(
         default=...,
         alias="substance",
         title="The substance that comprises this ingredient",
@@ -191,7 +192,7 @@ class Ingredient(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Ingredient`` according to specification,
         with preserving the original sequence order.
@@ -218,7 +219,7 @@ class Ingredient(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Ingredient`` according to specification,
         with preserving the original sequence order.
         """
@@ -266,7 +267,7 @@ class IngredientManufacturer(backboneelement.BackboneElement):
 
     __resource_type__ = "IngredientManufacturer"
 
-    manufacturer: fhirtypes.ReferenceType = Field(  # type: ignore
+    manufacturer: fhirtypes.ReferenceType = Field(
         default=...,
         alias="manufacturer",
         title="An organization that manufactures this ingredient",
@@ -279,7 +280,7 @@ class IngredientManufacturer(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeType | None = Field(  # type: ignore
+    role: fhirtypes.CodeType | None = Field(
         default=None,
         alias="role",
         title="allowed | possible | actual",
@@ -297,12 +298,12 @@ class IngredientManufacturer(backboneelement.BackboneElement):
             "enum_values": ["allowed", "possible", "actual"],
         },
     )
-    role__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    role__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_role", title="Extension field for ``role``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``IngredientManufacturer`` according to specification,
         with preserving the original sequence order.
@@ -310,7 +311,7 @@ class IngredientManufacturer(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "role", "manufacturer"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``IngredientManufacturer`` according to specification,
         with preserving the original sequence order.
         """
@@ -327,7 +328,7 @@ class IngredientSubstance(backboneelement.BackboneElement):
 
     __resource_type__ = "IngredientSubstance"
 
-    code: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    code: fhirtypes.CodeableReferenceType = Field(
         default=...,
         alias="code",
         title="A code or full resource that represents the ingredient substance",
@@ -340,7 +341,7 @@ class IngredientSubstance(backboneelement.BackboneElement):
         },
     )
 
-    strength: typing.List[fhirtypes.IngredientSubstanceStrengthType] | None = Field(  # type: ignore
+    strength: typing.List[fhirtypes.IngredientSubstanceStrengthType] | None = Field(
         default=None,
         alias="strength",
         title=(
@@ -361,7 +362,7 @@ class IngredientSubstance(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``IngredientSubstance`` according to specification,
         with preserving the original sequence order.
@@ -369,7 +370,7 @@ class IngredientSubstance(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "code", "strength"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``IngredientSubstance`` according to specification,
         with preserving the original sequence order.
         """
@@ -391,7 +392,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
 
     __resource_type__ = "IngredientSubstanceStrength"
 
-    basis: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    basis: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="basis",
         title=(
@@ -406,7 +407,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    concentrationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    concentrationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="concentrationCodeableConcept",
         title="The strength per unitary volume (or mass)",
@@ -420,7 +421,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    concentrationQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    concentrationQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="concentrationQuantity",
         title="The strength per unitary volume (or mass)",
@@ -434,7 +435,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    concentrationRatio: fhirtypes.RatioType | None = Field(  # type: ignore
+    concentrationRatio: fhirtypes.RatioType | None = Field(
         default=None,
         alias="concentrationRatio",
         title="The strength per unitary volume (or mass)",
@@ -448,7 +449,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    concentrationRatioRange: fhirtypes.RatioRangeType | None = Field(  # type: ignore
+    concentrationRatioRange: fhirtypes.RatioRangeType | None = Field(
         default=None,
         alias="concentrationRatioRange",
         title="The strength per unitary volume (or mass)",
@@ -462,7 +463,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    country: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    country: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="country",
         title="Where the strength range applies",
@@ -473,7 +474,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    measurementPoint: fhirtypes.StringType | None = Field(  # type: ignore
+    measurementPoint: fhirtypes.StringType | None = Field(
         default=None,
         alias="measurementPoint",
         title="When strength is measured at a particular point or distance",
@@ -488,13 +489,13 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_measurementPoint",
         title="Extension field for ``measurementPoint``.",
     )
 
-    presentationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    presentationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="presentationCodeableConcept",
         title="The quantity of substance in the unit of presentation",
@@ -515,7 +516,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    presentationQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    presentationQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="presentationQuantity",
         title="The quantity of substance in the unit of presentation",
@@ -536,7 +537,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    presentationRatio: fhirtypes.RatioType | None = Field(  # type: ignore
+    presentationRatio: fhirtypes.RatioType | None = Field(
         default=None,
         alias="presentationRatio",
         title="The quantity of substance in the unit of presentation",
@@ -557,7 +558,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    presentationRatioRange: fhirtypes.RatioRangeType | None = Field(  # type: ignore
+    presentationRatioRange: fhirtypes.RatioRangeType | None = Field(
         default=None,
         alias="presentationRatioRange",
         title="The quantity of substance in the unit of presentation",
@@ -578,7 +579,9 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    referenceStrength: typing.List[fhirtypes.IngredientSubstanceStrengthReferenceStrengthType] | None = Field(  # type: ignore
+    referenceStrength: typing.List[
+        fhirtypes.IngredientSubstanceStrengthReferenceStrengthType
+    ] | None = Field(
         default=None,
         alias="referenceStrength",
         title="Strength expressed in terms of a reference substance",
@@ -597,7 +600,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         },
     )
 
-    textConcentration: fhirtypes.StringType | None = Field(  # type: ignore
+    textConcentration: fhirtypes.StringType | None = Field(
         default=None,
         alias="textConcentration",
         title=(
@@ -614,13 +617,13 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    textConcentration__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    textConcentration__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_textConcentration",
         title="Extension field for ``textConcentration``.",
     )
 
-    textPresentation: fhirtypes.StringType | None = Field(  # type: ignore
+    textPresentation: fhirtypes.StringType | None = Field(
         default=None,
         alias="textPresentation",
         title=(
@@ -637,14 +640,14 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    textPresentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    textPresentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_textPresentation",
         title="Extension field for ``textPresentation``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``IngredientSubstanceStrength`` according to specification,
         with preserving the original sequence order.
@@ -670,7 +673,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``IngredientSubstanceStrength`` according to specification,
         with preserving the original sequence order.
         """
@@ -739,7 +742,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
 
     __resource_type__ = "IngredientSubstanceStrengthReferenceStrength"
 
-    country: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    country: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="country",
         title="Where the strength range applies",
@@ -750,7 +753,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         },
     )
 
-    measurementPoint: fhirtypes.StringType | None = Field(  # type: ignore
+    measurementPoint: fhirtypes.StringType | None = Field(
         default=None,
         alias="measurementPoint",
         title="When strength is measured at a particular point or distance",
@@ -760,13 +763,13 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
             "summary_element_property": True,
         },
     )
-    measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_measurementPoint",
         title="Extension field for ``measurementPoint``.",
     )
 
-    strengthQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    strengthQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="strengthQuantity",
         title="Strength expressed in terms of a reference substance",
@@ -780,7 +783,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         },
     )
 
-    strengthRatio: fhirtypes.RatioType | None = Field(  # type: ignore
+    strengthRatio: fhirtypes.RatioType | None = Field(
         default=None,
         alias="strengthRatio",
         title="Strength expressed in terms of a reference substance",
@@ -794,7 +797,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         },
     )
 
-    strengthRatioRange: fhirtypes.RatioRangeType | None = Field(  # type: ignore
+    strengthRatioRange: fhirtypes.RatioRangeType | None = Field(
         default=None,
         alias="strengthRatioRange",
         title="Strength expressed in terms of a reference substance",
@@ -808,7 +811,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         },
     )
 
-    substance: fhirtypes.CodeableReferenceType = Field(  # type: ignore
+    substance: fhirtypes.CodeableReferenceType = Field(
         default=...,
         alias="substance",
         title="Relevant reference substance",
@@ -822,7 +825,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``IngredientSubstanceStrengthReferenceStrength`` according to specification,
         with preserving the original sequence order.
@@ -840,7 +843,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``IngredientSubstanceStrengthReferenceStrength`` according to specification,
         with preserving the original sequence order.
         """

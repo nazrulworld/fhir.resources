@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Count
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from . import quantity
 
 
@@ -24,7 +27,7 @@ class Count(quantity.Quantity):
     __resource_type__ = "Count"
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Count`` according to specification,
         with preserving the original sequence order.
@@ -32,7 +35,7 @@ class Count(quantity.Quantity):
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Count`` according to specification,
         with preserving the original sequence order.
         """

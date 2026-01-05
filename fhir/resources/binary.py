@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Binary
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class Binary(resource.Resource):
 
     __resource_type__ = "Binary"
 
-    contentType: fhirtypes.CodeType | None = Field(  # type: ignore
+    contentType: fhirtypes.CodeType | None = Field(
         default=None,
         alias="contentType",
         title="MimeType of the binary content",
@@ -41,11 +42,11 @@ class Binary(resource.Resource):
             "element_required": True,
         },
     )
-    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
-    data: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
+    data: fhirtypes.Base64BinaryType | None = Field(
         default=None,
         alias="data",
         title="The actual content",
@@ -54,11 +55,11 @@ class Binary(resource.Resource):
             "element_property": True,
         },
     )
-    data__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    data__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_data", title="Extension field for ``data``."
     )
 
-    securityContext: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    securityContext: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="securityContext",
         title=(
@@ -87,7 +88,7 @@ class Binary(resource.Resource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Binary`` according to specification,
         with preserving the original sequence order.
@@ -103,7 +104,7 @@ class Binary(resource.Resource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Binary`` according to specification,
         with preserving the original sequence order.
         """

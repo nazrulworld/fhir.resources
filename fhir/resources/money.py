@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Money
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import datatype, fhirtypes
@@ -22,7 +25,7 @@ class Money(datatype.DataType):
 
     __resource_type__ = "Money"
 
-    currency: fhirtypes.CodeType | None = Field(  # type: ignore
+    currency: fhirtypes.CodeType | None = Field(
         default=None,
         alias="currency",
         title="ISO 4217 Currency Code",
@@ -32,11 +35,11 @@ class Money(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    currency__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    currency__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_currency", title="Extension field for ``currency``."
     )
 
-    value: fhirtypes.DecimalType | None = Field(  # type: ignore
+    value: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="value",
         title="Numerical value (with implicit precision)",
@@ -46,12 +49,12 @@ class Money(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Money`` according to specification,
         with preserving the original sequence order.
@@ -59,7 +62,7 @@ class Money(datatype.DataType):
         return ["id", "extension", "value", "currency"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Money`` according to specification,
         with preserving the original sequence order.
         """

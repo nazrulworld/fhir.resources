@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Coverage
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class Coverage(domainresource.DomainResource):
 
     __resource_type__ = "Coverage"
 
-    beneficiary: fhirtypes.ReferenceType = Field(  # type: ignore
+    beneficiary: fhirtypes.ReferenceType = Field(
         default=...,
         alias="beneficiary",
         title="Plan beneficiary",
@@ -42,7 +43,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    class_fhir: typing.List[fhirtypes.CoverageClassType] | None = Field(  # type: ignore
+    class_fhir: typing.List[fhirtypes.CoverageClassType] | None = Field(
         default=None,
         alias="class",
         title="Additional coverage classifications",
@@ -52,7 +53,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    contract: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    contract: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="contract",
         title="Contract details",
@@ -64,7 +65,9 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    costToBeneficiary: typing.List[fhirtypes.CoverageCostToBeneficiaryType] | None = Field(  # type: ignore
+    costToBeneficiary: typing.List[
+        fhirtypes.CoverageCostToBeneficiaryType
+    ] | None = Field(
         default=None,
         alias="costToBeneficiary",
         title="Patient payments for services/products",
@@ -78,7 +81,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    dependent: fhirtypes.StringType | None = Field(  # type: ignore
+    dependent: fhirtypes.StringType | None = Field(
         default=None,
         alias="dependent",
         title="Dependent number",
@@ -88,11 +91,11 @@ class Coverage(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    dependent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    dependent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_dependent", title="Extension field for ``dependent``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier(s) for this coverage",
@@ -103,7 +106,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    insurancePlan: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    insurancePlan: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="insurancePlan",
         title="Insurance plan details",
@@ -118,7 +121,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    insurer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    insurer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="insurer",
         title="Issuer of the policy",
@@ -131,7 +134,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    kind: fhirtypes.CodeType | None = Field(  # type: ignore
+    kind: fhirtypes.CodeType | None = Field(
         default=None,
         alias="kind",
         title="insurance | self-pay | other",
@@ -148,11 +151,11 @@ class Coverage(domainresource.DomainResource):
             "enum_values": ["insurance", "self-pay", "other"],
         },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    network: fhirtypes.StringType | None = Field(  # type: ignore
+    network: fhirtypes.StringType | None = Field(
         default=None,
         alias="network",
         title="Insurer network",
@@ -167,11 +170,11 @@ class Coverage(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    network__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    network__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_network", title="Extension field for ``network``."
     )
 
-    order: fhirtypes.PositiveIntType | None = Field(  # type: ignore
+    order: fhirtypes.PositiveIntType | None = Field(
         default=None,
         alias="order",
         title="Relative order of the coverage",
@@ -191,11 +194,11 @@ class Coverage(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    order__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    order__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_order", title="Extension field for ``order``."
     )
 
-    paymentBy: typing.List[fhirtypes.CoveragePaymentByType] | None = Field(  # type: ignore
+    paymentBy: typing.List[fhirtypes.CoveragePaymentByType] | None = Field(
         default=None,
         alias="paymentBy",
         title="Self-pay parties and responsibility",
@@ -208,7 +211,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Coverage start and end dates",
@@ -223,7 +226,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    policyHolder: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    policyHolder: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="policyHolder",
         title="Owner of the policy",
@@ -236,7 +239,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    relationship: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    relationship: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="relationship",
         title="Beneficiary relationship to the subscriber",
@@ -246,7 +249,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -260,11 +263,11 @@ class Coverage(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subrogation: bool | None = Field(  # type: ignore
+    subrogation: bool | None = Field(
         default=None,
         alias="subrogation",
         title="Reimbursement to insurer",
@@ -277,11 +280,11 @@ class Coverage(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    subrogation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    subrogation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_subrogation", title="Extension field for ``subrogation``."
     )
 
-    subscriber: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subscriber: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subscriber",
         title="Subscriber to the policy",
@@ -298,7 +301,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    subscriberId: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    subscriberId: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="subscriberId",
         title="ID assigned to the subscriber",
@@ -309,7 +312,7 @@ class Coverage(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Coverage category such as medical or accident",
@@ -325,7 +328,7 @@ class Coverage(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Coverage`` according to specification,
         with preserving the original sequence order.
@@ -362,7 +365,7 @@ class Coverage(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Coverage`` according to specification,
         with preserving the original sequence order.
         """
@@ -409,7 +412,7 @@ class CoverageClass(backboneelement.BackboneElement):
 
     __resource_type__ = "CoverageClass"
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Human readable description of the type and value",
@@ -419,11 +422,11 @@ class CoverageClass(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title="Type of class such as 'group' or 'plan'",
@@ -439,7 +442,7 @@ class CoverageClass(backboneelement.BackboneElement):
         },
     )
 
-    value: fhirtypes.IdentifierType = Field(  # type: ignore
+    value: fhirtypes.IdentifierType = Field(
         default=...,
         alias="value",
         title="Value associated with the type",
@@ -451,7 +454,7 @@ class CoverageClass(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CoverageClass`` according to specification,
         with preserving the original sequence order.
@@ -459,7 +462,7 @@ class CoverageClass(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "value", "name"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CoverageClass`` according to specification,
         with preserving the original sequence order.
         """
@@ -479,7 +482,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
 
     __resource_type__ = "CoverageCostToBeneficiary"
 
-    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="category",
         title="Benefit classification",
@@ -492,7 +495,9 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         },
     )
 
-    exception: typing.List[fhirtypes.CoverageCostToBeneficiaryExceptionType] | None = Field(  # type: ignore
+    exception: typing.List[
+        fhirtypes.CoverageCostToBeneficiaryExceptionType
+    ] | None = Field(
         default=None,
         alias="exception",
         title="Exceptions for patient payments",
@@ -505,7 +510,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         },
     )
 
-    network: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    network: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="network",
         title="In or out of network",
@@ -518,7 +523,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         },
     )
 
-    term: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    term: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="term",
         title="Annual or lifetime",
@@ -531,7 +536,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Cost category",
@@ -542,7 +547,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         },
     )
 
-    unit: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    unit: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="unit",
         title="Individual or family",
@@ -552,7 +557,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         },
     )
 
-    valueMoney: fhirtypes.MoneyType | None = Field(  # type: ignore
+    valueMoney: fhirtypes.MoneyType | None = Field(
         default=None,
         alias="valueMoney",
         title="The amount or percentage due from the beneficiary",
@@ -566,7 +571,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="valueQuantity",
         title="The amount or percentage due from the beneficiary",
@@ -581,7 +586,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CoverageCostToBeneficiary`` according to specification,
         with preserving the original sequence order.
@@ -601,7 +606,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CoverageCostToBeneficiary`` according to specification,
         with preserving the original sequence order.
         """
@@ -636,7 +641,7 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
 
     __resource_type__ = "CoverageCostToBeneficiaryException"
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="The effective period of the exception",
@@ -647,7 +652,7 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title="Exception category",
@@ -659,7 +664,7 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CoverageCostToBeneficiaryException`` according to specification,
         with preserving the original sequence order.
@@ -667,7 +672,7 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "period"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CoverageCostToBeneficiaryException`` according to specification,
         with preserving the original sequence order.
         """
@@ -686,7 +691,7 @@ class CoveragePaymentBy(backboneelement.BackboneElement):
 
     __resource_type__ = "CoveragePaymentBy"
 
-    party: fhirtypes.ReferenceType = Field(  # type: ignore
+    party: fhirtypes.ReferenceType = Field(
         default=...,
         alias="party",
         title="Parties performing self-payment",
@@ -702,7 +707,7 @@ class CoveragePaymentBy(backboneelement.BackboneElement):
         },
     )
 
-    responsibility: fhirtypes.StringType | None = Field(  # type: ignore
+    responsibility: fhirtypes.StringType | None = Field(
         default=None,
         alias="responsibility",
         title="Party's responsibility",
@@ -712,14 +717,14 @@ class CoveragePaymentBy(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    responsibility__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    responsibility__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_responsibility",
         title="Extension field for ``responsibility``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CoveragePaymentBy`` according to specification,
         with preserving the original sequence order.
@@ -727,7 +732,7 @@ class CoveragePaymentBy(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "party", "responsibility"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CoveragePaymentBy`` according to specification,
         with preserving the original sequence order.
         """

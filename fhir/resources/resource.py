@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Resource
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import base, fhirtypes
@@ -23,7 +26,7 @@ class Resource(base.Base):
 
     __resource_type__ = "Resource"
 
-    id: fhirtypes.IdType | None = Field(  # type: ignore
+    id: fhirtypes.IdType | None = Field(
         default=None,
         alias="id",
         title="Logical id of this artifact",
@@ -37,7 +40,7 @@ class Resource(base.Base):
         },
     )
 
-    implicitRules: fhirtypes.UriType | None = Field(  # type: ignore
+    implicitRules: fhirtypes.UriType | None = Field(
         default=None,
         alias="implicitRules",
         title="A set of rules under which this content was created",
@@ -52,13 +55,13 @@ class Resource(base.Base):
             "summary_element_property": True,
         },
     )
-    implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_implicitRules",
         title="Extension field for ``implicitRules``.",
     )
 
-    language: fhirtypes.CodeType | None = Field(  # type: ignore
+    language: fhirtypes.CodeType | None = Field(
         default=None,
         alias="language",
         title="Language of the resource content",
@@ -67,11 +70,11 @@ class Resource(base.Base):
             "element_property": True,
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_language", title="Extension field for ``language``."
     )
 
-    meta: fhirtypes.MetaType | None = Field(  # type: ignore
+    meta: fhirtypes.MetaType | None = Field(
         default=None,
         alias="meta",
         title="Metadata about the resource",
@@ -87,7 +90,7 @@ class Resource(base.Base):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Resource`` according to specification,
         with preserving the original sequence order.
@@ -95,7 +98,7 @@ class Resource(base.Base):
         return ["id", "meta", "implicitRules", "language"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Resource`` according to specification,
         with preserving the original sequence order.
         """

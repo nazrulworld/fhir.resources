@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Element
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class Element(base.Base):
 
     __resource_type__ = "Element"
 
-    extension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
+    extension: typing.List[fhirtypes.ExtensionType] | None = Field(
         default=None,
         alias="extension",
         title="Additional content defined by implementations",
@@ -42,7 +43,7 @@ class Element(base.Base):
         },
     )
 
-    id: fhirtypes.StringType | None = Field(  # type: ignore
+    id: fhirtypes.StringType | None = Field(
         default=None,
         alias="id",
         title="Unique id for inter-element referencing",
@@ -56,7 +57,7 @@ class Element(base.Base):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Element`` according to specification,
         with preserving the original sequence order.
@@ -64,7 +65,7 @@ class Element(base.Base):
         return ["id", "extension"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Element`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DocumentReference
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -33,7 +34,7 @@ class DocumentReference(domainresource.DomainResource):
 
     __resource_type__ = "DocumentReference"
 
-    attester: typing.List[fhirtypes.DocumentReferenceAttesterType] | None = Field(  # type: ignore
+    attester: typing.List[fhirtypes.DocumentReferenceAttesterType] | None = Field(
         default=None,
         alias="attester",
         title="Attests to accuracy of the document",
@@ -43,7 +44,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    author: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    author: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="author",
         title="Who and/or what authored the document",
@@ -67,7 +68,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="basedOn",
         title="Procedure that caused this media to be created",
@@ -99,7 +100,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    bodySite: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    bodySite: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="bodySite",
         title="Body part included",
@@ -112,7 +113,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="Categorization of document",
@@ -127,7 +128,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    content: typing.List[fhirtypes.DocumentReferenceContentType] = Field(  # type: ignore
+    content: typing.List[fhirtypes.DocumentReferenceContentType] = Field(
         default=...,
         alias="content",
         title="Document referenced",
@@ -142,7 +143,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    context: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    context: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="context",
         title="Context of the document content",
@@ -157,7 +158,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    custodian: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    custodian: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="custodian",
         title="Organization which maintains the document",
@@ -172,7 +173,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.InstantType | None = Field(  # type: ignore
+    date: fhirtypes.InstantType | None = Field(
         default=None,
         alias="date",
         title="When this document reference was created",
@@ -182,11 +183,11 @@ class DocumentReference(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Human-readable description",
@@ -196,11 +197,11 @@ class DocumentReference(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    docStatus: fhirtypes.CodeType | None = Field(  # type: ignore
+    docStatus: fhirtypes.CodeType | None = Field(
         default=None,
         alias="docStatus",
         title=(
@@ -228,11 +229,11 @@ class DocumentReference(domainresource.DomainResource):
             ],
         },
     )
-    docStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    docStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_docStatus", title="Extension field for ``docStatus``."
     )
 
-    event: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    event: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="event",
         title="Main clinical acts documented",
@@ -248,7 +249,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    facilityType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    facilityType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="facilityType",
         title="Kind of facility where patient was seen",
@@ -258,7 +259,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifiers for the document",
@@ -272,7 +273,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    modality: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    modality: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="modality",
         title="Imaging modality used",
@@ -286,7 +287,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Time of service that is being documented",
@@ -300,7 +301,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    practiceSetting: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    practiceSetting: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="practiceSetting",
         title=(
@@ -316,7 +317,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    relatesTo: typing.List[fhirtypes.DocumentReferenceRelatesToType] | None = Field(  # type: ignore
+    relatesTo: typing.List[fhirtypes.DocumentReferenceRelatesToType] | None = Field(
         default=None,
         alias="relatesTo",
         title="Relationships to other documents",
@@ -330,7 +331,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    securityLabel: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    securityLabel: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="securityLabel",
         title="Document security-tags",
@@ -353,7 +354,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="current | superseded | entered-in-error",
@@ -367,11 +368,11 @@ class DocumentReference(domainresource.DomainResource):
             "enum_values": ["current", "superseded", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Who/what is the subject of the document",
@@ -389,7 +390,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Kind of document (LOINC if possible)",
@@ -404,7 +405,7 @@ class DocumentReference(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title=(
@@ -417,12 +418,12 @@ class DocumentReference(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DocumentReference`` according to specification,
         with preserving the original sequence order.
@@ -462,7 +463,7 @@ class DocumentReference(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DocumentReference`` according to specification,
         with preserving the original sequence order.
         """
@@ -512,7 +513,7 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentReferenceAttester"
 
-    mode: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    mode: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="mode",
         title="personal | professional | legal | official",
@@ -522,7 +523,7 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
         },
     )
 
-    party: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    party: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="party",
         title="Who attested the document",
@@ -540,7 +541,7 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
         },
     )
 
-    time: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    time: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="time",
         title="When the document was attested",
@@ -549,12 +550,12 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_time", title="Extension field for ``time``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DocumentReferenceAttester`` according to specification,
         with preserving the original sequence order.
@@ -562,7 +563,7 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "mode", "time", "party"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DocumentReferenceAttester`` according to specification,
         with preserving the original sequence order.
         """
@@ -582,7 +583,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentReferenceContent"
 
-    attachment: fhirtypes.AttachmentType = Field(  # type: ignore
+    attachment: fhirtypes.AttachmentType = Field(
         default=...,
         alias="attachment",
         title="Where to access the document",
@@ -596,7 +597,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
         },
     )
 
-    profile: typing.List[fhirtypes.DocumentReferenceContentProfileType] | None = Field(  # type: ignore
+    profile: typing.List[fhirtypes.DocumentReferenceContentProfileType] | None = Field(
         default=None,
         alias="profile",
         title="Content profile rules for the document",
@@ -612,7 +613,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DocumentReferenceContent`` according to specification,
         with preserving the original sequence order.
@@ -620,7 +621,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "attachment", "profile"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DocumentReferenceContent`` according to specification,
         with preserving the original sequence order.
         """
@@ -640,7 +641,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentReferenceContentProfile"
 
-    valueCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    valueCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="valueCanonical",
         title="Code|uri|canonical",
@@ -653,13 +654,13 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueCanonical",
         title="Extension field for ``valueCanonical``.",
     )
 
-    valueCoding: fhirtypes.CodingType | None = Field(  # type: ignore
+    valueCoding: fhirtypes.CodingType | None = Field(
         default=None,
         alias="valueCoding",
         title="Code|uri|canonical",
@@ -673,7 +674,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
         },
     )
 
-    valueUri: fhirtypes.UriType | None = Field(  # type: ignore
+    valueUri: fhirtypes.UriType | None = Field(
         default=None,
         alias="valueUri",
         title="Code|uri|canonical",
@@ -686,12 +687,12 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DocumentReferenceContentProfile`` according to specification,
         with preserving the original sequence order.
@@ -706,7 +707,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DocumentReferenceContentProfile`` according to specification,
         with preserving the original sequence order.
         """
@@ -741,7 +742,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentReferenceRelatesTo"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="The relationship type with another document",
@@ -752,7 +753,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    target: fhirtypes.ReferenceType = Field(  # type: ignore
+    target: fhirtypes.ReferenceType = Field(
         default=...,
         alias="target",
         title="Target of the relationship",
@@ -766,7 +767,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DocumentReferenceRelatesTo`` according to specification,
         with preserving the original sequence order.
@@ -774,7 +775,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "code", "target"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DocumentReferenceRelatesTo`` according to specification,
         with preserving the original sequence order.
         """

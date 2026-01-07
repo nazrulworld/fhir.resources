@@ -7,7 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from .. import questionnaire
-from .fixtures import ExternalValidatorModel  # noqa: F401
+from .fixtures import ExternalValidatorModel
 
 
 def impl_questionnaire_1(inst):

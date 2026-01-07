@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ImagingManifest
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class ImagingManifest(domainresource.DomainResource):
 
     __resource_type__ = "ImagingManifest"
 
-    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="author",
         title="Author (human or machine)",
@@ -51,7 +52,7 @@ class ImagingManifest(domainresource.DomainResource):
         },
     )
 
-    authoringTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    authoringTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="authoringTime",
         title="Time when the selection of instances was made",
@@ -66,13 +67,13 @@ class ImagingManifest(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    authoringTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    authoringTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_authoringTime",
         title="Extension field for ``authoringTime``.",
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Description text",
@@ -90,11 +91,11 @@ class ImagingManifest(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="SOP Instance UID",
@@ -108,7 +109,7 @@ class ImagingManifest(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType = Field(
         default=...,
         alias="patient",
         title="Patient of the selected objects",
@@ -124,7 +125,7 @@ class ImagingManifest(domainresource.DomainResource):
         },
     )
 
-    study: typing.List[fhirtypes.ImagingManifestStudyType] = Field(  # type: ignore
+    study: typing.List[fhirtypes.ImagingManifestStudyType] = Field(
         default=...,
         alias="study",
         title="Study identity of the selected instances",
@@ -139,7 +140,7 @@ class ImagingManifest(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ImagingManifest`` according to specification,
         with preserving the original sequence order.
@@ -162,7 +163,7 @@ class ImagingManifest(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ImagingManifest`` according to specification,
         with preserving the original sequence order.
         """
@@ -191,7 +192,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingManifestStudy"
 
-    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="endpoint",
         title="Study access service endpoint",
@@ -210,7 +211,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         },
     )
 
-    imagingStudy: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    imagingStudy: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="imagingStudy",
         title="Reference to ImagingStudy",
@@ -223,7 +224,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         },
     )
 
-    series: typing.List[fhirtypes.ImagingManifestStudySeriesType] = Field(  # type: ignore
+    series: typing.List[fhirtypes.ImagingManifestStudySeriesType] = Field(
         default=...,
         alias="series",
         title="Series identity of the selected instances",
@@ -237,7 +238,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         },
     )
 
-    uid: fhirtypes.OidType | None = Field(  # type: ignore
+    uid: fhirtypes.OidType | None = Field(
         default=None,
         alias="uid",
         title="Study instance UID",
@@ -248,12 +249,12 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_uid", title="Extension field for ``uid``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ImagingManifestStudy`` according to specification,
         with preserving the original sequence order.
@@ -269,7 +270,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ImagingManifestStudy`` according to specification,
         with preserving the original sequence order.
         """
@@ -299,7 +300,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingManifestStudySeries"
 
-    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="endpoint",
         title="Series access endpoint",
@@ -317,7 +318,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    instance: typing.List[fhirtypes.ImagingManifestStudySeriesInstanceType] = Field(  # type: ignore
+    instance: typing.List[fhirtypes.ImagingManifestStudySeriesInstanceType] = Field(
         default=...,
         alias="instance",
         title="The selected instance",
@@ -328,7 +329,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         },
     )
 
-    uid: fhirtypes.OidType | None = Field(  # type: ignore
+    uid: fhirtypes.OidType | None = Field(
         default=None,
         alias="uid",
         title="Series instance UID",
@@ -339,12 +340,12 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_uid", title="Extension field for ``uid``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ImagingManifestStudySeries`` according to specification,
         with preserving the original sequence order.
@@ -352,7 +353,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "uid", "endpoint", "instance"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ImagingManifestStudySeries`` according to specification,
         with preserving the original sequence order.
         """
@@ -381,7 +382,7 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
 
     __resource_type__ = "ImagingManifestStudySeriesInstance"
 
-    sopClass: fhirtypes.OidType | None = Field(  # type: ignore
+    sopClass: fhirtypes.OidType | None = Field(
         default=None,
         alias="sopClass",
         title="SOP class UID of instance",
@@ -392,11 +393,11 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sopClass", title="Extension field for ``sopClass``."
     )
 
-    uid: fhirtypes.OidType | None = Field(  # type: ignore
+    uid: fhirtypes.OidType | None = Field(
         default=None,
         alias="uid",
         title="Selected instance UID",
@@ -407,12 +408,12 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_uid", title="Extension field for ``uid``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ImagingManifestStudySeriesInstance`` according to specification,
         with preserving the original sequence order.
@@ -420,7 +421,7 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "sopClass", "uid"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ImagingManifestStudySeriesInstance`` according to specification,
         with preserving the original sequence order.
         """

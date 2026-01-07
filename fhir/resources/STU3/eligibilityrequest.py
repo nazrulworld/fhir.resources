@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/EligibilityRequest
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class EligibilityRequest(domainresource.DomainResource):
 
     __resource_type__ = "EligibilityRequest"
 
-    benefitCategory: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    benefitCategory: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="benefitCategory",
         title="Type of services covered",
@@ -38,7 +39,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    benefitSubCategory: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    benefitSubCategory: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="benefitSubCategory",
         title="Detailed services covered within the type",
@@ -48,7 +49,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    businessArrangement: fhirtypes.StringType | None = Field(  # type: ignore
+    businessArrangement: fhirtypes.StringType | None = Field(
         default=None,
         alias="businessArrangement",
         title="Business agreement",
@@ -60,13 +61,13 @@ class EligibilityRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_businessArrangement",
         title="Extension field for ``businessArrangement``.",
     )
 
-    coverage: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    coverage: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="coverage",
         title="Insurance or medical plan",
@@ -78,7 +79,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="created",
         title="Creation date",
@@ -87,11 +88,11 @@ class EligibilityRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_created", title="Extension field for ``created``."
     )
 
-    enterer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    enterer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="enterer",
         title="Author",
@@ -106,7 +107,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    facility: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    facility: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="facility",
         title="Servicing Facility",
@@ -118,7 +119,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business Identifier",
@@ -128,7 +129,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    insurer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    insurer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="insurer",
         title="Target",
@@ -140,7 +141,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="organization",
         title="Responsible organization",
@@ -155,7 +156,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="patient",
         title="The subject of the Products and Services",
@@ -167,7 +168,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="priority",
         title="Desired processing priority",
@@ -177,7 +178,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    provider: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    provider: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="provider",
         title="Responsible practitioner",
@@ -192,7 +193,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    servicedDate: fhirtypes.DateType | None = Field(  # type: ignore
+    servicedDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="servicedDate",
         title="Estimated date or dates of Service",
@@ -207,13 +208,13 @@ class EligibilityRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_servicedDate",
         title="Extension field for ``servicedDate``.",
     )
 
-    servicedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    servicedPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="servicedPeriod",
         title="Estimated date or dates of Service",
@@ -229,7 +230,7 @@ class EligibilityRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -242,12 +243,12 @@ class EligibilityRequest(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EligibilityRequest`` according to specification,
         with preserving the original sequence order.
@@ -280,7 +281,7 @@ class EligibilityRequest(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EligibilityRequest`` according to specification,
         with preserving the original sequence order.
         """

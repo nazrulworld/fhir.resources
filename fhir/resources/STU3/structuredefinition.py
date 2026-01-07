@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/StructureDefinition
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class StructureDefinition(domainresource.DomainResource):
 
     __resource_type__ = "StructureDefinition"
 
-    abstract: bool | None = Field(  # type: ignore
+    abstract: bool | None = Field(
         default=None,
         alias="abstract",
         title="Whether the structure is abstract",
@@ -43,11 +44,11 @@ class StructureDefinition(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    abstract__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    abstract__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_abstract", title="Extension field for ``abstract``."
     )
 
-    baseDefinition: fhirtypes.UriType | None = Field(  # type: ignore
+    baseDefinition: fhirtypes.UriType | None = Field(
         default=None,
         alias="baseDefinition",
         title="Definition that this type is constrained/specialized from",
@@ -60,13 +61,13 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    baseDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    baseDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_baseDefinition",
         title="Extension field for ``baseDefinition``.",
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -80,7 +81,7 @@ class StructureDefinition(domainresource.DomainResource):
         },
     )
 
-    context: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    context: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="context",
         title="Where the extension can be used in instances",
@@ -93,11 +94,13 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    context__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    context__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_context", title="Extension field for ``context``."
     )
 
-    contextInvariant: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    contextInvariant: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="contextInvariant",
         title="FHIRPath invariants - when the extension can be used",
@@ -110,13 +113,15 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    contextInvariant__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    contextInvariant__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_contextInvariant",
         title="Extension field for ``contextInvariant``.",
     )
 
-    contextType: fhirtypes.CodeType | None = Field(  # type: ignore
+    contextType: fhirtypes.CodeType | None = Field(
         default=None,
         alias="contextType",
         title="resource | datatype | extension",
@@ -132,11 +137,11 @@ class StructureDefinition(domainresource.DomainResource):
             "enum_values": ["resource", "datatype", "extension"],
         },
     )
-    contextType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    contextType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_contextType", title="Extension field for ``contextType``."
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -149,11 +154,11 @@ class StructureDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date this was last changed",
@@ -169,11 +174,11 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    derivation: fhirtypes.CodeType | None = Field(  # type: ignore
+    derivation: fhirtypes.CodeType | None = Field(
         default=None,
         alias="derivation",
         title="specialization | constraint - How relates to base definition",
@@ -186,11 +191,11 @@ class StructureDefinition(domainresource.DomainResource):
             "enum_values": ["specialization", "constraint"],
         },
     )
-    derivation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    derivation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_derivation", title="Extension field for ``derivation``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the structure definition",
@@ -202,11 +207,11 @@ class StructureDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    differential: fhirtypes.StructureDefinitionDifferentialType | None = Field(  # type: ignore
+    differential: fhirtypes.StructureDefinitionDifferentialType | None = Field(
         default=None,
         alias="differential",
         title="Differential view of the structure",
@@ -219,7 +224,7 @@ class StructureDefinition(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -233,13 +238,13 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    fhirVersion: fhirtypes.IdType | None = Field(  # type: ignore
+    fhirVersion: fhirtypes.IdType | None = Field(
         default=None,
         alias="fhirVersion",
         title="FHIR Version this StructureDefinition targets",
@@ -254,11 +259,11 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Additional identifier for the structure definition",
@@ -273,7 +278,7 @@ class StructureDefinition(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for structure definition (if applicable)",
@@ -287,7 +292,7 @@ class StructureDefinition(domainresource.DomainResource):
         },
     )
 
-    keyword: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    keyword: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="keyword",
         title="Assist with indexing and finding",
@@ -301,7 +306,7 @@ class StructureDefinition(domainresource.DomainResource):
         },
     )
 
-    kind: fhirtypes.CodeType | None = Field(  # type: ignore
+    kind: fhirtypes.CodeType | None = Field(
         default=None,
         alias="kind",
         title="primitive-type | complex-type | resource | logical",
@@ -315,11 +320,11 @@ class StructureDefinition(domainresource.DomainResource):
             "enum_values": ["primitive-type", "complex-type", "resource", "logical"],
         },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    mapping: typing.List[fhirtypes.StructureDefinitionMappingType] | None = Field(  # type: ignore
+    mapping: typing.List[fhirtypes.StructureDefinitionMappingType] | None = Field(
         default=None,
         alias="mapping",
         title="External specification that the content is mapped to",
@@ -329,7 +334,7 @@ class StructureDefinition(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this structure definition (computer friendly)",
@@ -344,11 +349,11 @@ class StructureDefinition(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -361,11 +366,11 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this structure definition is defined",
@@ -377,11 +382,11 @@ class StructureDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    snapshot: fhirtypes.StructureDefinitionSnapshotType | None = Field(  # type: ignore
+    snapshot: fhirtypes.StructureDefinitionSnapshotType | None = Field(
         default=None,
         alias="snapshot",
         title="Snapshot view of the structure",
@@ -394,7 +399,7 @@ class StructureDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -411,11 +416,11 @@ class StructureDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this structure definition (human friendly)",
@@ -427,11 +432,11 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="Type defined or constrained by this structure",
@@ -449,11 +454,11 @@ class StructureDefinition(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title="Logical URI to reference this structure definition (globally unique)",
@@ -472,11 +477,11 @@ class StructureDefinition(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="Context the content is intended to support",
@@ -491,7 +496,7 @@ class StructureDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the structure definition",
@@ -509,12 +514,12 @@ class StructureDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``StructureDefinition`` according to specification,
         with preserving the original sequence order.
@@ -559,7 +564,7 @@ class StructureDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``StructureDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -622,7 +627,7 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureDefinitionDifferential"
 
-    element: typing.List[fhirtypes.ElementDefinitionType] = Field(  # type: ignore
+    element: typing.List[fhirtypes.ElementDefinitionType] = Field(
         default=...,
         alias="element",
         title="Definition of elements in the resource (if no StructureDefinition)",
@@ -633,7 +638,7 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``StructureDefinitionDifferential`` according to specification,
         with preserving the original sequence order.
@@ -641,7 +646,7 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "element"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``StructureDefinitionDifferential`` according to specification,
         with preserving the original sequence order.
         """
@@ -659,7 +664,7 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureDefinitionMapping"
 
-    comment: fhirtypes.StringType | None = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(
         default=None,
         alias="comment",
         title="Versions, Issues, Scope limitations etc.",
@@ -671,11 +676,11 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    identity: fhirtypes.IdType | None = Field(  # type: ignore
+    identity: fhirtypes.IdType | None = Field(
         default=None,
         alias="identity",
         title="Internal id when this mapping is used",
@@ -688,11 +693,11 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    identity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    identity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_identity", title="Extension field for ``identity``."
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Names what this mapping refers to",
@@ -701,11 +706,11 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    uri: fhirtypes.UriType | None = Field(  # type: ignore
+    uri: fhirtypes.UriType | None = Field(
         default=None,
         alias="uri",
         title="Identifies what this mapping refers to",
@@ -717,12 +722,12 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_uri", title="Extension field for ``uri``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``StructureDefinitionMapping`` according to specification,
         with preserving the original sequence order.
@@ -738,7 +743,7 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``StructureDefinitionMapping`` according to specification,
         with preserving the original sequence order.
         """
@@ -768,7 +773,7 @@ class StructureDefinitionSnapshot(backboneelement.BackboneElement):
 
     __resource_type__ = "StructureDefinitionSnapshot"
 
-    element: typing.List[fhirtypes.ElementDefinitionType] = Field(  # type: ignore
+    element: typing.List[fhirtypes.ElementDefinitionType] = Field(
         default=...,
         alias="element",
         title="Definition of elements in the resource (if no StructureDefinition)",
@@ -779,7 +784,7 @@ class StructureDefinitionSnapshot(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``StructureDefinitionSnapshot`` according to specification,
         with preserving the original sequence order.
@@ -787,7 +792,7 @@ class StructureDefinitionSnapshot(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "element"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``StructureDefinitionSnapshot`` according to specification,
         with preserving the original sequence order.
         """

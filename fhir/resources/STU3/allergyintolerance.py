@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/AllergyIntolerance
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class AllergyIntolerance(domainresource.DomainResource):
 
     __resource_type__ = "AllergyIntolerance"
 
-    assertedDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    assertedDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="assertedDate",
         title="Date record was believed accurate",
@@ -38,13 +39,13 @@ class AllergyIntolerance(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_assertedDate",
         title="Extension field for ``assertedDate``.",
     )
 
-    asserter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    asserter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="asserter",
         title="Source of the information about the allergy",
@@ -57,7 +58,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="category",
         title="food | medication | environment | biologic",
@@ -70,11 +71,13 @@ class AllergyIntolerance(domainresource.DomainResource):
             "enum_values": ["food", "medication", "environment", "biologic"],
         },
     )
-    category__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    category__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_category", title="Extension field for ``category``."
     )
 
-    clinicalStatus: fhirtypes.CodeType | None = Field(  # type: ignore
+    clinicalStatus: fhirtypes.CodeType | None = Field(
         default=None,
         alias="clinicalStatus",
         title="active | inactive | resolved",
@@ -87,13 +90,13 @@ class AllergyIntolerance(domainresource.DomainResource):
             "enum_values": ["active", "inactive", "resolved"],
         },
     )
-    clinicalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    clinicalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_clinicalStatus",
         title="Extension field for ``clinicalStatus``.",
     )
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Code that identifies the allergy or intolerance",
@@ -113,7 +116,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    criticality: fhirtypes.CodeType | None = Field(  # type: ignore
+    criticality: fhirtypes.CodeType | None = Field(
         default=None,
         alias="criticality",
         title="low | high | unable-to-assess",
@@ -129,11 +132,11 @@ class AllergyIntolerance(domainresource.DomainResource):
             "enum_values": ["low", "high", "unable-to-assess"],
         },
     )
-    criticality__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    criticality__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_criticality", title="Extension field for ``criticality``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External ids for this item",
@@ -150,7 +153,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    lastOccurrence: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    lastOccurrence: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="lastOccurrence",
         title="Date(/time) of last known occurrence of a reaction",
@@ -162,13 +165,13 @@ class AllergyIntolerance(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastOccurrence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastOccurrence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastOccurrence",
         title="Extension field for ``lastOccurrence``.",
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Additional text not captured in other fields",
@@ -181,7 +184,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    onsetAge: fhirtypes.AgeType | None = Field(  # type: ignore
+    onsetAge: fhirtypes.AgeType | None = Field(
         default=None,
         alias="onsetAge",
         title="When allergy or intolerance was identified",
@@ -197,7 +200,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    onsetDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    onsetDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="onsetDateTime",
         title="When allergy or intolerance was identified",
@@ -212,13 +215,13 @@ class AllergyIntolerance(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_onsetDateTime",
         title="Extension field for ``onsetDateTime``.",
     )
 
-    onsetPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    onsetPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="onsetPeriod",
         title="When allergy or intolerance was identified",
@@ -234,7 +237,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    onsetRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    onsetRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="onsetRange",
         title="When allergy or intolerance was identified",
@@ -250,7 +253,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    onsetString: fhirtypes.StringType | None = Field(  # type: ignore
+    onsetString: fhirtypes.StringType | None = Field(
         default=None,
         alias="onsetString",
         title="When allergy or intolerance was identified",
@@ -265,11 +268,11 @@ class AllergyIntolerance(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType = Field(
         default=...,
         alias="patient",
         title="Who the sensitivity is for",
@@ -282,7 +285,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    reaction: typing.List[fhirtypes.AllergyIntoleranceReactionType] | None = Field(  # type: ignore
+    reaction: typing.List[fhirtypes.AllergyIntoleranceReactionType] | None = Field(
         default=None,
         alias="reaction",
         title="Adverse Reaction Events linked to exposure to substance",
@@ -295,7 +298,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    recorder: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    recorder: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="recorder",
         title="Who recorded the sensitivity",
@@ -310,7 +313,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="allergy | intolerance - Underlying mechanism (if known)",
@@ -326,11 +329,11 @@ class AllergyIntolerance(domainresource.DomainResource):
             "enum_values": ["allergy", "intolerance"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    verificationStatus: fhirtypes.CodeType | None = Field(  # type: ignore
+    verificationStatus: fhirtypes.CodeType | None = Field(
         default=None,
         alias="verificationStatus",
         title="unconfirmed | confirmed | refuted | entered-in-error",
@@ -348,14 +351,14 @@ class AllergyIntolerance(domainresource.DomainResource):
             "enum_values": ["unconfirmed", "confirmed", "refuted", "entered-in-error"],
         },
     )
-    verificationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    verificationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_verificationStatus",
         title="Extension field for ``verificationStatus``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AllergyIntolerance`` according to specification,
         with preserving the original sequence order.
@@ -391,7 +394,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AllergyIntolerance`` according to specification,
         with preserving the original sequence order.
         """
@@ -458,7 +461,7 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
 
     __resource_type__ = "AllergyIntoleranceReaction"
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Description of the event as a whole",
@@ -470,11 +473,11 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    exposureRoute: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    exposureRoute: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="exposureRoute",
         title="How the subject was exposed to the substance",
@@ -487,7 +490,7 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         },
     )
 
-    manifestation: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    manifestation: typing.List[fhirtypes.CodeableConceptType] = Field(
         default=...,
         alias="manifestation",
         title="Clinical symptoms/signs associated with the Event",
@@ -500,7 +503,7 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Text about event not captured in other fields",
@@ -513,7 +516,7 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         },
     )
 
-    onset: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    onset: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="onset",
         title="Date(/time) when manifestations showed",
@@ -522,11 +525,11 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    onset__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    onset__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_onset", title="Extension field for ``onset``."
     )
 
-    severity: fhirtypes.CodeType | None = Field(  # type: ignore
+    severity: fhirtypes.CodeType | None = Field(
         default=None,
         alias="severity",
         title="mild | moderate | severe (of event as a whole)",
@@ -541,11 +544,11 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "enum_values": ["mild", "moderate", "severe"],
         },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_severity", title="Extension field for ``severity``."
     )
 
-    substance: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    substance: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="substance",
         title=(
@@ -568,7 +571,7 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AllergyIntoleranceReaction`` according to specification,
         with preserving the original sequence order.
@@ -587,7 +590,7 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AllergyIntoleranceReaction`` according to specification,
         with preserving the original sequence order.
         """

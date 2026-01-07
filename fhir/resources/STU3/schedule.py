@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Schedule
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class Schedule(domainresource.DomainResource):
 
     __resource_type__ = "Schedule"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this schedule is in active use",
@@ -38,11 +39,11 @@ class Schedule(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    actor: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    actor: typing.List[fhirtypes.ReferenceType] = Field(
         default=...,
         alias="actor",
         title=(
@@ -68,7 +69,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    comment: fhirtypes.StringType | None = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(
         default=None,
         alias="comment",
         title=(
@@ -80,11 +81,11 @@ class Schedule(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External Ids for this item",
@@ -95,7 +96,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    planningHorizon: fhirtypes.PeriodType | None = Field(  # type: ignore
+    planningHorizon: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="planningHorizon",
         title=(
@@ -112,7 +113,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    serviceCategory: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    serviceCategory: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="serviceCategory",
         title=(
@@ -126,7 +127,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    serviceType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    serviceType: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="serviceType",
         title="The specific service that is to be performed during this appointment",
@@ -137,7 +138,7 @@ class Schedule(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="specialty",
         title=(
@@ -152,7 +153,7 @@ class Schedule(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Schedule`` according to specification,
         with preserving the original sequence order.
@@ -177,7 +178,7 @@ class Schedule(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Schedule`` according to specification,
         with preserving the original sequence order.
         """

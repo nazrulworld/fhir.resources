@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ProcessRequest
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class ProcessRequest(domainresource.DomainResource):
 
     __resource_type__ = "ProcessRequest"
 
-    action: fhirtypes.CodeType | None = Field(  # type: ignore
+    action: fhirtypes.CodeType | None = Field(
         default=None,
         alias="action",
         title="cancel | poll | reprocess | status",
@@ -41,11 +42,11 @@ class ProcessRequest(domainresource.DomainResource):
             "enum_values": ["cancel", "poll", "reprocess", "status"],
         },
     )
-    action__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    action__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_action", title="Extension field for ``action``."
     )
 
-    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="created",
         title="Creation date",
@@ -54,11 +55,11 @@ class ProcessRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_created", title="Extension field for ``created``."
     )
 
-    exclude: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    exclude: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="exclude",
         title="Resource type(s) to exclude",
@@ -67,11 +68,13 @@ class ProcessRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    exclude__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    exclude__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_exclude", title="Extension field for ``exclude``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business Identifier",
@@ -81,7 +84,7 @@ class ProcessRequest(domainresource.DomainResource):
         },
     )
 
-    include: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    include: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="include",
         title="Resource type(s) to include",
@@ -90,11 +93,13 @@ class ProcessRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    include__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    include__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_include", title="Extension field for ``include``."
     )
 
-    item: typing.List[fhirtypes.ProcessRequestItemType] | None = Field(  # type: ignore
+    item: typing.List[fhirtypes.ProcessRequestItemType] | None = Field(
         default=None,
         alias="item",
         title="Items to re-adjudicate",
@@ -107,7 +112,7 @@ class ProcessRequest(domainresource.DomainResource):
         },
     )
 
-    nullify: bool | None = Field(  # type: ignore
+    nullify: bool | None = Field(
         default=None,
         alias="nullify",
         title="Remove history",
@@ -116,11 +121,11 @@ class ProcessRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    nullify__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    nullify__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_nullify", title="Extension field for ``nullify``."
     )
 
-    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="organization",
         title="Responsible organization",
@@ -135,7 +140,7 @@ class ProcessRequest(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Selection period",
@@ -148,7 +153,7 @@ class ProcessRequest(domainresource.DomainResource):
         },
     )
 
-    provider: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    provider: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="provider",
         title="Responsible practitioner",
@@ -163,7 +168,7 @@ class ProcessRequest(domainresource.DomainResource):
         },
     )
 
-    reference: fhirtypes.StringType | None = Field(  # type: ignore
+    reference: fhirtypes.StringType | None = Field(
         default=None,
         alias="reference",
         title="Reference number/string",
@@ -172,11 +177,11 @@ class ProcessRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_reference", title="Extension field for ``reference``."
     )
 
-    request: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    request: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="request",
         title="Reference to the Request resource",
@@ -188,7 +193,7 @@ class ProcessRequest(domainresource.DomainResource):
         },
     )
 
-    response: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    response: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="response",
         title="Reference to the Response resource",
@@ -203,7 +208,7 @@ class ProcessRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -216,11 +221,11 @@ class ProcessRequest(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    target: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    target: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="target",
         title="Party which is the target of the request",
@@ -233,7 +238,7 @@ class ProcessRequest(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProcessRequest`` according to specification,
         with preserving the original sequence order.
@@ -265,7 +270,7 @@ class ProcessRequest(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProcessRequest`` according to specification,
         with preserving the original sequence order.
         """
@@ -284,7 +289,7 @@ class ProcessRequestItem(backboneelement.BackboneElement):
 
     __resource_type__ = "ProcessRequestItem"
 
-    sequenceLinkId: fhirtypes.IntegerType | None = Field(  # type: ignore
+    sequenceLinkId: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="sequenceLinkId",
         title="Service instance",
@@ -294,14 +299,14 @@ class ProcessRequestItem(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_sequenceLinkId",
         title="Extension field for ``sequenceLinkId``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProcessRequestItem`` according to specification,
         with preserving the original sequence order.
@@ -309,7 +314,7 @@ class ProcessRequestItem(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "sequenceLinkId"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProcessRequestItem`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MessageDefinition
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,9 @@ class MessageDefinition(domainresource.DomainResource):
 
     __resource_type__ = "MessageDefinition"
 
-    allowedResponse: typing.List[fhirtypes.MessageDefinitionAllowedResponseType] | None = Field(  # type: ignore
+    allowedResponse: typing.List[
+        fhirtypes.MessageDefinitionAllowedResponseType
+    ] | None = Field(
         default=None,
         alias="allowedResponse",
         title="Responses to this message",
@@ -41,7 +44,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    base: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    base: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="base",
         title="Definition this one is based on",
@@ -57,7 +60,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    category: fhirtypes.CodeType | None = Field(  # type: ignore
+    category: fhirtypes.CodeType | None = Field(
         default=None,
         alias="category",
         title="Consequence | Currency | Notification",
@@ -70,11 +73,11 @@ class MessageDefinition(domainresource.DomainResource):
             "enum_values": ["Consequence", "Currency", "Notification"],
         },
     )
-    category__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_category", title="Extension field for ``category``."
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -88,7 +91,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -101,11 +104,11 @@ class MessageDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date this was last changed",
@@ -122,11 +125,11 @@ class MessageDefinition(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the message definition",
@@ -139,11 +142,11 @@ class MessageDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    event: fhirtypes.CodingType = Field(  # type: ignore
+    event: fhirtypes.CodingType = Field(
         default=...,
         alias="event",
         title="Event type",
@@ -154,7 +157,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -168,13 +171,13 @@ class MessageDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    focus: typing.List[fhirtypes.MessageDefinitionFocusType] | None = Field(  # type: ignore
+    focus: typing.List[fhirtypes.MessageDefinitionFocusType] | None = Field(
         default=None,
         alias="focus",
         title="Resource(s) that are the subject of the event",
@@ -189,7 +192,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Additional identifier for the message definition",
@@ -204,7 +207,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for message definition (if applicable)",
@@ -218,7 +221,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this message definition (computer friendly)",
@@ -232,11 +235,11 @@ class MessageDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    parent: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    parent: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="parent",
         title="Protocol/workflow this is part of",
@@ -252,7 +255,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -265,11 +268,11 @@ class MessageDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this message definition is defined",
@@ -282,11 +285,11 @@ class MessageDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="replaces",
         title="Takes the place of",
@@ -299,7 +302,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    responseRequired: bool | None = Field(  # type: ignore
+    responseRequired: bool | None = Field(
         default=None,
         alias="responseRequired",
         title="Is a response required?",
@@ -308,13 +311,13 @@ class MessageDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    responseRequired__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    responseRequired__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_responseRequired",
         title="Extension field for ``responseRequired``.",
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -331,11 +334,11 @@ class MessageDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this message definition (human friendly)",
@@ -345,11 +348,11 @@ class MessageDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title="Logical URI to reference this message definition (globally unique)",
@@ -367,11 +370,11 @@ class MessageDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="Context the content is intended to support",
@@ -386,7 +389,7 @@ class MessageDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the message definition",
@@ -404,12 +407,12 @@ class MessageDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MessageDefinition`` according to specification,
         with preserving the original sequence order.
@@ -449,7 +452,7 @@ class MessageDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MessageDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -503,7 +506,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
 
     __resource_type__ = "MessageDefinitionAllowedResponse"
 
-    message: fhirtypes.ReferenceType = Field(  # type: ignore
+    message: fhirtypes.ReferenceType = Field(
         default=...,
         alias="message",
         title="Reference to allowed message definition response",
@@ -518,7 +521,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         },
     )
 
-    situation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    situation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="situation",
         title="When should this response be used",
@@ -530,12 +533,12 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    situation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    situation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_situation", title="Extension field for ``situation``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MessageDefinitionAllowedResponse`` according to specification,
         with preserving the original sequence order.
@@ -543,7 +546,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "message", "situation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MessageDefinitionAllowedResponse`` according to specification,
         with preserving the original sequence order.
         """
@@ -563,7 +566,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
 
     __resource_type__ = "MessageDefinitionFocus"
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title="Type of resource",
@@ -574,11 +577,11 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    max: fhirtypes.StringType | None = Field(  # type: ignore
+    max: fhirtypes.StringType | None = Field(
         default=None,
         alias="max",
         title="Maximum number of focuses of this type",
@@ -591,11 +594,11 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.UnsignedIntType | None = Field(  # type: ignore
+    min: fhirtypes.UnsignedIntType | None = Field(
         default=None,
         alias="min",
         title="Minimum number of focuses of this type",
@@ -608,11 +611,11 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_min", title="Extension field for ``min``."
     )
 
-    profile: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    profile: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="profile",
         title="Profile that must be adhered to by focus",
@@ -628,7 +631,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MessageDefinitionFocus`` according to specification,
         with preserving the original sequence order.
@@ -636,7 +639,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "code", "profile", "min", "max"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MessageDefinitionFocus`` according to specification,
         with preserving the original sequence order.
         """

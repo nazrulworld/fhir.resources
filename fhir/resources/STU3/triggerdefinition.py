@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/TriggerDefinition
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class TriggerDefinition(element.Element):
 
     __resource_type__ = "TriggerDefinition"
 
-    eventData: fhirtypes.DataRequirementType | None = Field(  # type: ignore
+    eventData: fhirtypes.DataRequirementType | None = Field(
         default=None,
         alias="eventData",
         title="Triggering data of the event",
@@ -36,7 +37,7 @@ class TriggerDefinition(element.Element):
         },
     )
 
-    eventName: fhirtypes.StringType | None = Field(  # type: ignore
+    eventName: fhirtypes.StringType | None = Field(
         default=None,
         alias="eventName",
         title="Triggering event name",
@@ -46,11 +47,11 @@ class TriggerDefinition(element.Element):
             "summary_element_property": True,
         },
     )
-    eventName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    eventName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_eventName", title="Extension field for ``eventName``."
     )
 
-    eventTimingDate: fhirtypes.DateType | None = Field(  # type: ignore
+    eventTimingDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="eventTimingDate",
         title="Timing of the event",
@@ -63,13 +64,13 @@ class TriggerDefinition(element.Element):
             "one_of_many_required": False,
         },
     )
-    eventTimingDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    eventTimingDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_eventTimingDate",
         title="Extension field for ``eventTimingDate``.",
     )
 
-    eventTimingDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    eventTimingDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="eventTimingDateTime",
         title="Timing of the event",
@@ -82,13 +83,13 @@ class TriggerDefinition(element.Element):
             "one_of_many_required": False,
         },
     )
-    eventTimingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    eventTimingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_eventTimingDateTime",
         title="Extension field for ``eventTimingDateTime``.",
     )
 
-    eventTimingReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    eventTimingReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="eventTimingReference",
         title="Timing of the event",
@@ -104,7 +105,7 @@ class TriggerDefinition(element.Element):
         },
     )
 
-    eventTimingTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    eventTimingTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="eventTimingTiming",
         title="Timing of the event",
@@ -118,7 +119,7 @@ class TriggerDefinition(element.Element):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -143,12 +144,12 @@ class TriggerDefinition(element.Element):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TriggerDefinition`` according to specification,
         with preserving the original sequence order.
@@ -166,7 +167,7 @@ class TriggerDefinition(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TriggerDefinition`` according to specification,
         with preserving the original sequence order.
         """

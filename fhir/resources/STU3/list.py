@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/List
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class List(domainresource.DomainResource):
 
     __resource_type__ = "List"
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="What the purpose of this list is",
@@ -36,7 +37,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="When the list was prepared",
@@ -46,11 +47,11 @@ class List(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    emptyReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    emptyReason: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="emptyReason",
         title="Why list is empty",
@@ -60,7 +61,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="encounter",
         title="Context in which list created",
@@ -72,7 +73,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    entry: typing.List[fhirtypes.ListEntryType] | None = Field(  # type: ignore
+    entry: typing.List[fhirtypes.ListEntryType] | None = Field(
         default=None,
         alias="entry",
         title="Entries in the list",
@@ -82,7 +83,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier",
@@ -95,7 +96,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    mode: fhirtypes.CodeType | None = Field(  # type: ignore
+    mode: fhirtypes.CodeType | None = Field(
         default=None,
         alias="mode",
         title="working | snapshot | changes",
@@ -115,11 +116,11 @@ class List(domainresource.DomainResource):
             "enum_values": ["working", "snapshot", "changes"],
         },
     )
-    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Comments about the list",
@@ -129,7 +130,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    orderedBy: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    orderedBy: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="orderedBy",
         title="What order the list has",
@@ -139,7 +140,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    source: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    source: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="source",
         title="Who and/or what defined the list contents (aka Author)",
@@ -156,7 +157,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="current | retired | entered-in-error",
@@ -170,11 +171,11 @@ class List(domainresource.DomainResource):
             "enum_values": ["current", "retired", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="If all resources have the same subject",
@@ -190,7 +191,7 @@ class List(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Descriptive name for the list",
@@ -200,12 +201,12 @@ class List(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``List`` according to specification,
         with preserving the original sequence order.
@@ -235,7 +236,7 @@ class List(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``List`` according to specification,
         with preserving the original sequence order.
         """
@@ -275,7 +276,7 @@ class ListEntry(backboneelement.BackboneElement):
 
     __resource_type__ = "ListEntry"
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="When item added to list",
@@ -284,11 +285,11 @@ class ListEntry(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    deleted: bool | None = Field(  # type: ignore
+    deleted: bool | None = Field(
         default=None,
         alias="deleted",
         title="If this item is actually marked as deleted",
@@ -297,11 +298,11 @@ class ListEntry(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    deleted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    deleted__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_deleted", title="Extension field for ``deleted``."
     )
 
-    flag: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    flag: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="flag",
         title="Status/Workflow information about this item",
@@ -314,7 +315,7 @@ class ListEntry(backboneelement.BackboneElement):
         },
     )
 
-    item: fhirtypes.ReferenceType = Field(  # type: ignore
+    item: fhirtypes.ReferenceType = Field(
         default=...,
         alias="item",
         title="Actual entry",
@@ -327,7 +328,7 @@ class ListEntry(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ListEntry`` according to specification,
         with preserving the original sequence order.
@@ -343,7 +344,7 @@ class ListEntry(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ListEntry`` according to specification,
         with preserving the original sequence order.
         """

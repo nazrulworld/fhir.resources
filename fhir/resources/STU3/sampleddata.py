@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SampledData
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class SampledData(element.Element):
 
     __resource_type__ = "SampledData"
 
-    data: fhirtypes.StringType | None = Field(  # type: ignore
+    data: fhirtypes.StringType | None = Field(
         default=None,
         alias="data",
         title='Decimal values with spaces, or "E" | "U" | "L"',
@@ -41,11 +42,11 @@ class SampledData(element.Element):
             "element_required": True,
         },
     )
-    data__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    data__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_data", title="Extension field for ``data``."
     )
 
-    dimensions: fhirtypes.PositiveIntType | None = Field(  # type: ignore
+    dimensions: fhirtypes.PositiveIntType | None = Field(
         default=None,
         alias="dimensions",
         title="Number of sample points at each time point",
@@ -60,11 +61,11 @@ class SampledData(element.Element):
             "element_required": True,
         },
     )
-    dimensions__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    dimensions__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_dimensions", title="Extension field for ``dimensions``."
     )
 
-    factor: fhirtypes.DecimalType | None = Field(  # type: ignore
+    factor: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="factor",
         title="Multiply data by this before adding to origin",
@@ -77,11 +78,11 @@ class SampledData(element.Element):
             "summary_element_property": True,
         },
     )
-    factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    lowerLimit: fhirtypes.DecimalType | None = Field(  # type: ignore
+    lowerLimit: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="lowerLimit",
         title="Lower limit of detection",
@@ -95,11 +96,11 @@ class SampledData(element.Element):
             "summary_element_property": True,
         },
     )
-    lowerLimit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lowerLimit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_lowerLimit", title="Extension field for ``lowerLimit``."
     )
 
-    origin: fhirtypes.QuantityType = Field(  # type: ignore
+    origin: fhirtypes.QuantityType = Field(
         default=...,
         alias="origin",
         title="Zero value and units",
@@ -113,7 +114,7 @@ class SampledData(element.Element):
         },
     )
 
-    period: fhirtypes.DecimalType | None = Field(  # type: ignore
+    period: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="period",
         title="Number of milliseconds between samples",
@@ -124,11 +125,11 @@ class SampledData(element.Element):
             "element_required": True,
         },
     )
-    period__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    period__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_period", title="Extension field for ``period``."
     )
 
-    upperLimit: fhirtypes.DecimalType | None = Field(  # type: ignore
+    upperLimit: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="upperLimit",
         title="Upper limit of detection",
@@ -142,12 +143,12 @@ class SampledData(element.Element):
             "summary_element_property": True,
         },
     )
-    upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_upperLimit", title="Extension field for ``upperLimit``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SampledData`` according to specification,
         with preserving the original sequence order.
@@ -165,7 +166,7 @@ class SampledData(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SampledData`` according to specification,
         with preserving the original sequence order.
         """

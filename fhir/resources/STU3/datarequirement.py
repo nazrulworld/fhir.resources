@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DataRequirement
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class DataRequirement(element.Element):
 
     __resource_type__ = "DataRequirement"
 
-    codeFilter: typing.List[fhirtypes.DataRequirementCodeFilterType] | None = Field(  # type: ignore
+    codeFilter: typing.List[fhirtypes.DataRequirementCodeFilterType] | None = Field(
         default=None,
         alias="codeFilter",
         title="What codes are expected",
@@ -40,7 +41,7 @@ class DataRequirement(element.Element):
         },
     )
 
-    dateFilter: typing.List[fhirtypes.DataRequirementDateFilterType] | None = Field(  # type: ignore
+    dateFilter: typing.List[fhirtypes.DataRequirementDateFilterType] | None = Field(
         default=None,
         alias="dateFilter",
         title="What dates/date ranges are expected",
@@ -54,7 +55,7 @@ class DataRequirement(element.Element):
         },
     )
 
-    mustSupport: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    mustSupport: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="mustSupport",
         title=(
@@ -76,11 +77,13 @@ class DataRequirement(element.Element):
             "summary_element_property": True,
         },
     )
-    mustSupport__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    mustSupport__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_mustSupport", title="Extension field for ``mustSupport``."
     )
 
-    profile: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    profile: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="profile",
         title="The profile of the required data",
@@ -93,11 +96,13 @@ class DataRequirement(element.Element):
             "summary_element_property": True,
         },
     )
-    profile__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    profile__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="The type of the required data",
@@ -112,12 +117,12 @@ class DataRequirement(element.Element):
             "element_required": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DataRequirement`` according to specification,
         with preserving the original sequence order.
@@ -133,7 +138,7 @@ class DataRequirement(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DataRequirement`` according to specification,
         with preserving the original sequence order.
         """
@@ -163,7 +168,7 @@ class DataRequirementCodeFilter(element.Element):
 
     __resource_type__ = "DataRequirementCodeFilter"
 
-    path: fhirtypes.StringType | None = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(
         default=None,
         alias="path",
         title="The code-valued attribute of the filter",
@@ -181,11 +186,11 @@ class DataRequirementCodeFilter(element.Element):
             "element_required": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_path", title="Extension field for ``path``."
     )
 
-    valueCode: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    valueCode: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="valueCode",
         title="What code is expected",
@@ -201,11 +206,13 @@ class DataRequirementCodeFilter(element.Element):
             "summary_element_property": True,
         },
     )
-    valueCode__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    valueCode__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
-    valueCodeableConcept: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    valueCodeableConcept: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="valueCodeableConcept",
         title="What CodeableConcept is expected",
@@ -222,7 +229,7 @@ class DataRequirementCodeFilter(element.Element):
         },
     )
 
-    valueCoding: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    valueCoding: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="valueCoding",
         title="What Coding is expected",
@@ -239,7 +246,7 @@ class DataRequirementCodeFilter(element.Element):
         },
     )
 
-    valueSetReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    valueSetReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="valueSetReference",
         title="Valueset for the filter",
@@ -260,7 +267,7 @@ class DataRequirementCodeFilter(element.Element):
         },
     )
 
-    valueSetString: fhirtypes.StringType | None = Field(  # type: ignore
+    valueSetString: fhirtypes.StringType | None = Field(
         default=None,
         alias="valueSetString",
         title="Valueset for the filter",
@@ -278,14 +285,14 @@ class DataRequirementCodeFilter(element.Element):
             "one_of_many_required": False,
         },
     )
-    valueSetString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueSetString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueSetString",
         title="Extension field for ``valueSetString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DataRequirementCodeFilter`` according to specification,
         with preserving the original sequence order.
@@ -302,7 +309,7 @@ class DataRequirementCodeFilter(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DataRequirementCodeFilter`` according to specification,
         with preserving the original sequence order.
         """
@@ -355,7 +362,7 @@ class DataRequirementDateFilter(element.Element):
 
     __resource_type__ = "DataRequirementDateFilter"
 
-    path: fhirtypes.StringType | None = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(
         default=None,
         alias="path",
         title="The date-valued attribute of the filter",
@@ -373,11 +380,11 @@ class DataRequirementDateFilter(element.Element):
             "element_required": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_path", title="Extension field for ``path``."
     )
 
-    valueDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    valueDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="valueDateTime",
         title="The value of the filter, as a Period, DateTime, or Duration value",
@@ -397,13 +404,13 @@ class DataRequirementDateFilter(element.Element):
             "one_of_many_required": False,
         },
     )
-    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueDateTime",
         title="Extension field for ``valueDateTime``.",
     )
 
-    valueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    valueDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="valueDuration",
         title="The value of the filter, as a Period, DateTime, or Duration value",
@@ -424,7 +431,7 @@ class DataRequirementDateFilter(element.Element):
         },
     )
 
-    valuePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    valuePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="valuePeriod",
         title="The value of the filter, as a Period, DateTime, or Duration value",
@@ -446,7 +453,7 @@ class DataRequirementDateFilter(element.Element):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DataRequirementDateFilter`` according to specification,
         with preserving the original sequence order.
@@ -461,7 +468,7 @@ class DataRequirementDateFilter(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DataRequirementDateFilter`` according to specification,
         with preserving the original sequence order.
         """

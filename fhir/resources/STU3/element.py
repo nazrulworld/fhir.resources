@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Element
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from fhir_core import fhirabstractmodel
@@ -26,7 +27,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
 
     __resource_type__ = "Element"
 
-    extension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
+    extension: typing.List[fhirtypes.ExtensionType] | None = Field(
         default=None,
         alias="extension",
         title="Additional Content defined by implementations",
@@ -44,7 +45,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
         },
     )
 
-    id: fhirtypes.StringType | None = Field(  # type: ignore
+    id: fhirtypes.StringType | None = Field(
         default=None,
         alias="id",
         title="xml:id (or equivalent in JSON)",
@@ -58,7 +59,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Element`` according to specification,
         with preserving the original sequence order.
@@ -66,7 +67,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
         return ["id", "extension"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Element`` according to specification,
         with preserving the original sequence order.
         """

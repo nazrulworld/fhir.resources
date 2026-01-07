@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DeviceUseStatement
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class DeviceUseStatement(domainresource.DomainResource):
 
     __resource_type__ = "DeviceUseStatement"
 
-    bodySite: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    bodySite: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="bodySite",
         title="Target body site",
@@ -39,7 +40,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    device: fhirtypes.ReferenceType = Field(  # type: ignore
+    device: fhirtypes.ReferenceType = Field(
         default=...,
         alias="device",
         title="Reference to device used",
@@ -51,7 +52,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External identifier for this record",
@@ -61,7 +62,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    indication: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    indication: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="indication",
         title="Why device was used",
@@ -71,7 +72,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Addition details (comments, instructions)",
@@ -86,7 +87,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    recordedOn: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    recordedOn: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="recordedOn",
         title="When statement was recorded",
@@ -95,11 +96,11 @@ class DeviceUseStatement(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    recordedOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    recordedOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_recordedOn", title="Extension field for ``recordedOn``."
     )
 
-    source: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    source: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="source",
         title="Who made the statement",
@@ -111,7 +112,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | completed | entered-in-error +",
@@ -129,11 +130,11 @@ class DeviceUseStatement(domainresource.DomainResource):
             "enum_values": ["active", "completed", "entered-in-error", "+"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType = Field(
         default=...,
         alias="subject",
         title="Patient using device",
@@ -145,7 +146,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    timingDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    timingDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="timingDateTime",
         title="How often  the device was used",
@@ -157,13 +158,13 @@ class DeviceUseStatement(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_timingDateTime",
         title="Extension field for ``timingDateTime``.",
     )
 
-    timingPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    timingPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="timingPeriod",
         title="How often  the device was used",
@@ -176,7 +177,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    timingTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    timingTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="timingTiming",
         title="How often  the device was used",
@@ -189,7 +190,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         },
     )
 
-    whenUsed: fhirtypes.PeriodType | None = Field(  # type: ignore
+    whenUsed: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="whenUsed",
         title="Period device was used",
@@ -200,7 +201,7 @@ class DeviceUseStatement(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DeviceUseStatement`` according to specification,
         with preserving the original sequence order.
@@ -230,7 +231,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DeviceUseStatement`` according to specification,
         with preserving the original sequence order.
         """

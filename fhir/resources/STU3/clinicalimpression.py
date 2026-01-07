@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ClinicalImpression
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -32,7 +33,7 @@ class ClinicalImpression(domainresource.DomainResource):
 
     __resource_type__ = "ClinicalImpression"
 
-    action: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    action: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="action",
         title="Action taken as part of assessment procedure",
@@ -50,7 +51,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    assessor: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    assessor: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="assessor",
         title="The clinician performing the assessment",
@@ -63,7 +64,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Kind of assessment performed",
@@ -74,7 +75,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    context: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    context: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="context",
         title="Encounter or Episode created from",
@@ -90,7 +91,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="When the assessment was documented",
@@ -100,11 +101,11 @@ class ClinicalImpression(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Why/how the assessment was performed",
@@ -117,11 +118,11 @@ class ClinicalImpression(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    effectiveDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    effectiveDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="effectiveDateTime",
         title="Time of assessment",
@@ -134,13 +135,13 @@ class ClinicalImpression(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_effectiveDateTime",
         title="Extension field for ``effectiveDateTime``.",
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="Time of assessment",
@@ -154,7 +155,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    finding: typing.List[fhirtypes.ClinicalImpressionFindingType] | None = Field(  # type: ignore
+    finding: typing.List[fhirtypes.ClinicalImpressionFindingType] | None = Field(
         default=None,
         alias="finding",
         title="Possible or likely findings and diagnoses",
@@ -167,7 +168,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier",
@@ -181,7 +182,9 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    investigation: typing.List[fhirtypes.ClinicalImpressionInvestigationType] | None = Field(  # type: ignore
+    investigation: typing.List[
+        fhirtypes.ClinicalImpressionInvestigationType
+    ] | None = Field(
         default=None,
         alias="investigation",
         title="One or more sets of investigations (signs, symptions, etc.)",
@@ -197,7 +200,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Comments made about the ClinicalImpression",
@@ -211,7 +214,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    previous: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    previous: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="previous",
         title="Reference to last assessment",
@@ -228,7 +231,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    problem: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    problem: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="problem",
         title="Relevant impressions of patient state",
@@ -241,7 +244,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    prognosisCodeableConcept: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    prognosisCodeableConcept: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="prognosisCodeableConcept",
         title="Estimate of likely outcome",
@@ -251,7 +254,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    prognosisReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    prognosisReference: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="prognosisReference",
         title="RiskAssessment expressing likely outcome",
@@ -263,7 +266,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    protocol: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    protocol: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="protocol",
         title="Clinical Protocol followed",
@@ -276,11 +279,13 @@ class ClinicalImpression(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    protocol__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    protocol__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_protocol", title="Extension field for ``protocol``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | completed | entered-in-error",
@@ -294,11 +299,11 @@ class ClinicalImpression(domainresource.DomainResource):
             "enum_values": ["draft", "completed", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType = Field(
         default=...,
         alias="subject",
         title="Patient or group assessed",
@@ -311,7 +316,7 @@ class ClinicalImpression(domainresource.DomainResource):
         },
     )
 
-    summary: fhirtypes.StringType | None = Field(  # type: ignore
+    summary: fhirtypes.StringType | None = Field(
         default=None,
         alias="summary",
         title="Summary of the assessment",
@@ -320,12 +325,12 @@ class ClinicalImpression(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    summary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    summary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_summary", title="Extension field for ``summary``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ClinicalImpression`` according to specification,
         with preserving the original sequence order.
@@ -362,7 +367,7 @@ class ClinicalImpression(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ClinicalImpression`` according to specification,
         with preserving the original sequence order.
         """
@@ -423,7 +428,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
 
     __resource_type__ = "ClinicalImpressionFinding"
 
-    basis: fhirtypes.StringType | None = Field(  # type: ignore
+    basis: fhirtypes.StringType | None = Field(
         default=None,
         alias="basis",
         title="Which investigations support finding",
@@ -432,11 +437,11 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    basis__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    basis__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_basis", title="Extension field for ``basis``."
     )
 
-    itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="itemCodeableConcept",
         title="What was found",
@@ -452,7 +457,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         },
     )
 
-    itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    itemReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="itemReference",
         title="What was found",
@@ -471,7 +476,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ClinicalImpressionFinding`` according to specification,
         with preserving the original sequence order.
@@ -487,7 +492,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ClinicalImpressionFinding`` according to specification,
         with preserving the original sequence order.
         """
@@ -525,7 +530,7 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
 
     __resource_type__ = "ClinicalImpressionInvestigation"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="A name/code for the set",
@@ -540,7 +545,7 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
         },
     )
 
-    item: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    item: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="item",
         title="Record of a specific investigation",
@@ -560,7 +565,7 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ClinicalImpressionInvestigation`` according to specification,
         with preserving the original sequence order.
@@ -568,7 +573,7 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "code", "item"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ClinicalImpressionInvestigation`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MedicationAdministration
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -29,7 +30,7 @@ class MedicationAdministration(domainresource.DomainResource):
 
     __resource_type__ = "MedicationAdministration"
 
-    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="category",
         title="Type of medication usage",
@@ -42,7 +43,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    context: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    context: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="context",
         title="Encounter or Episode of Care administered as part of",
@@ -57,7 +58,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    device: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    device: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="device",
         title="Device used to administer",
@@ -72,7 +73,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    dosage: fhirtypes.MedicationAdministrationDosageType | None = Field(  # type: ignore
+    dosage: fhirtypes.MedicationAdministrationDosageType | None = Field(
         default=None,
         alias="dosage",
         title="Details of how medication was taken",
@@ -85,7 +86,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    effectiveDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    effectiveDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="effectiveDateTime",
         title="Start and end time of administration",
@@ -103,13 +104,13 @@ class MedicationAdministration(domainresource.DomainResource):
             "one_of_many_required": True,
         },
     )
-    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_effectiveDateTime",
         title="Extension field for ``effectiveDateTime``.",
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="Start and end time of administration",
@@ -128,7 +129,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    eventHistory: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    eventHistory: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="eventHistory",
         title="A list of events of interest in the lifecycle",
@@ -143,7 +144,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External identifier",
@@ -160,7 +161,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    instantiates: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    instantiates: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="instantiates",
         title="Instantiates protocol or definition",
@@ -173,13 +174,15 @@ class MedicationAdministration(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    instantiates__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    instantiates__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_instantiates",
         title="Extension field for ``instantiates``.",
     )
 
-    medicationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    medicationCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="medicationCodeableConcept",
         title="What was administered",
@@ -198,7 +201,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    medicationReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    medicationReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="medicationReference",
         title="What was administered",
@@ -219,7 +222,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Information about the administration",
@@ -232,7 +235,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="partOf",
         title="Part of referenced event",
@@ -245,7 +248,9 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    performer: typing.List[fhirtypes.MedicationAdministrationPerformerType] | None = Field(  # type: ignore
+    performer: typing.List[
+        fhirtypes.MedicationAdministrationPerformerType
+    ] | None = Field(
         default=None,
         alias="performer",
         title="Who performed the medication administration and what they did",
@@ -259,7 +264,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="reasonCode",
         title="Reason administration performed",
@@ -269,7 +274,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="reasonReference",
         title=(
@@ -284,7 +289,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    request: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    request: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="request",
         title="Request administration performed against",
@@ -299,7 +304,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -329,11 +334,11 @@ class MedicationAdministration(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    statusReason: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="statusReason",
         title="Reason administration not performed",
@@ -343,7 +348,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType = Field(
         default=...,
         alias="subject",
         title="Who received medication",
@@ -356,7 +361,7 @@ class MedicationAdministration(domainresource.DomainResource):
         },
     )
 
-    supportingInformation: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    supportingInformation: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="supportingInformation",
         title="Additional information to support administration",
@@ -372,7 +377,7 @@ class MedicationAdministration(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MedicationAdministration`` according to specification,
         with preserving the original sequence order.
@@ -410,7 +415,7 @@ class MedicationAdministration(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MedicationAdministration`` according to specification,
         with preserving the original sequence order.
         """
@@ -472,7 +477,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicationAdministrationDosage"
 
-    dose: fhirtypes.QuantityType | None = Field(  # type: ignore
+    dose: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="dose",
         title="Amount of medication per dose",
@@ -486,7 +491,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         },
     )
 
-    method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    method: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="method",
         title="How drug was administered",
@@ -501,7 +506,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         },
     )
 
-    rateQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    rateQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="rateQuantity",
         title="Dose quantity per unit of time",
@@ -520,7 +525,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         },
     )
 
-    rateRatio: fhirtypes.RatioType | None = Field(  # type: ignore
+    rateRatio: fhirtypes.RatioType | None = Field(
         default=None,
         alias="rateRatio",
         title="Dose quantity per unit of time",
@@ -539,7 +544,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         },
     )
 
-    route: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    route: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="route",
         title="Path of substance into body",
@@ -553,7 +558,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         },
     )
 
-    site: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    site: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="site",
         title="Body site administered to",
@@ -566,7 +571,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         },
     )
 
-    text: fhirtypes.StringType | None = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(
         default=None,
         alias="text",
         title="Free text dosage instructions e.g. SIG",
@@ -581,12 +586,12 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_text", title="Extension field for ``text``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MedicationAdministrationDosage`` according to specification,
         with preserving the original sequence order.
@@ -605,7 +610,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MedicationAdministrationDosage`` according to specification,
         with preserving the original sequence order.
         """
@@ -640,7 +645,7 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
 
     __resource_type__ = "MedicationAdministrationPerformer"
 
-    actor: fhirtypes.ReferenceType = Field(  # type: ignore
+    actor: fhirtypes.ReferenceType = Field(
         default=...,
         alias="actor",
         title="Who performed the medication administration",
@@ -659,7 +664,7 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    function: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="function",
         title="Type of performance",
@@ -673,7 +678,7 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MedicationAdministrationPerformer`` according to specification,
         with preserving the original sequence order.
@@ -681,7 +686,7 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "function", "actor"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MedicationAdministrationPerformer`` according to specification,
         with preserving the original sequence order.
         """

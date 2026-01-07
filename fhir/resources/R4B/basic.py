@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Basic
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class Basic(domainresource.DomainResource):
 
     __resource_type__ = "Basic"
 
-    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="author",
         title="Who created",
@@ -46,7 +47,7 @@ class Basic(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="Kind of Resource",
@@ -60,7 +61,7 @@ class Basic(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateType | None = Field(  # type: ignore
+    created: fhirtypes.DateType | None = Field(
         default=None,
         alias="created",
         title="When created",
@@ -70,11 +71,11 @@ class Basic(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_created", title="Extension field for ``created``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier",
@@ -88,7 +89,7 @@ class Basic(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Identifies the focus of this resource",
@@ -105,7 +106,7 @@ class Basic(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Basic`` according to specification,
         with preserving the original sequence order.
@@ -127,7 +128,7 @@ class Basic(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Basic`` according to specification,
         with preserving the original sequence order.
         """

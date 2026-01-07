@@ -10,7 +10,7 @@ import typing
 import zipfile
 from os.path import dirname
 
-import pytest  # type: ignore
+import pytest
 from fhir_core.types import (
     Base64BinaryType,
     DateTimeType,

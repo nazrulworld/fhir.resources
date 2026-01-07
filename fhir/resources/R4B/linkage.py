@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Linkage
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class Linkage(domainresource.DomainResource):
 
     __resource_type__ = "Linkage"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this linkage assertion is active or not",
@@ -39,11 +40,11 @@ class Linkage(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="author",
         title="Who is responsible for linkages",
@@ -64,7 +65,7 @@ class Linkage(domainresource.DomainResource):
         },
     )
 
-    item: typing.List[fhirtypes.LinkageItemType] = Field(  # type: ignore
+    item: typing.List[fhirtypes.LinkageItemType] = Field(
         default=...,
         alias="item",
         title="Item to be linked",
@@ -80,7 +81,7 @@ class Linkage(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Linkage`` according to specification,
         with preserving the original sequence order.
@@ -100,7 +101,7 @@ class Linkage(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Linkage`` according to specification,
         with preserving the original sequence order.
         """
@@ -120,7 +121,7 @@ class LinkageItem(backboneelement.BackboneElement):
 
     __resource_type__ = "LinkageItem"
 
-    resource: fhirtypes.ReferenceType = Field(  # type: ignore
+    resource: fhirtypes.ReferenceType = Field(
         default=...,
         alias="resource",
         title="Resource being linked",
@@ -133,7 +134,7 @@ class LinkageItem(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="source | alternate | historical",
@@ -150,12 +151,12 @@ class LinkageItem(backboneelement.BackboneElement):
             "enum_values": ["source", "alternate", "historical"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``LinkageItem`` according to specification,
         with preserving the original sequence order.
@@ -163,7 +164,7 @@ class LinkageItem(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "resource"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``LinkageItem`` according to specification,
         with preserving the original sequence order.
         """

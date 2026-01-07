@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/SupplyRequest
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class SupplyRequest(domainresource.DomainResource):
 
     __resource_type__ = "SupplyRequest"
 
-    authoredOn: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    authoredOn: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="authoredOn",
         title="When the request was made",
@@ -36,11 +37,11 @@ class SupplyRequest(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
-    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="category",
         title="The kind of supply (central, non-stock, etc.)",
@@ -54,7 +55,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    deliverFrom: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    deliverFrom: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="deliverFrom",
         title="The origin of the supply",
@@ -66,7 +67,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    deliverTo: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    deliverTo: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="deliverTo",
         title="The destination of the supply",
@@ -78,7 +79,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business Identifier for SupplyRequest",
@@ -93,7 +94,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    itemCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="itemCodeableConcept",
         title="Medication, Substance, or Device requested to be supplied",
@@ -111,7 +112,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    itemReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    itemReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="itemReference",
         title="Medication, Substance, or Device requested to be supplied",
@@ -131,7 +132,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="occurrenceDateTime",
         title="When the request should be fulfilled",
@@ -144,13 +145,13 @@ class SupplyRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="occurrencePeriod",
         title="When the request should be fulfilled",
@@ -164,7 +165,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    occurrenceTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="occurrenceTiming",
         title="When the request should be fulfilled",
@@ -178,7 +179,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    parameter: typing.List[fhirtypes.SupplyRequestParameterType] | None = Field(  # type: ignore
+    parameter: typing.List[fhirtypes.SupplyRequestParameterType] | None = Field(
         default=None,
         alias="parameter",
         title="Ordered item details",
@@ -191,7 +192,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(
         default=None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -207,11 +208,11 @@ class SupplyRequest(domainresource.DomainResource):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    quantity: fhirtypes.QuantityType = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType = Field(
         default=...,
         alias="quantity",
         title="The requested amount of the item indicated",
@@ -222,7 +223,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="reasonCode",
         title="The reason why the supply item was requested",
@@ -232,7 +233,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="reasonReference",
         title="The reason why the supply item was requested",
@@ -249,7 +250,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    requester: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    requester: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="requester",
         title="Individual making the request",
@@ -269,7 +270,7 @@ class SupplyRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | suspended +",
@@ -282,11 +283,11 @@ class SupplyRequest(domainresource.DomainResource):
             "enum_values": ["draft", "active", "suspended", "+"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    supplier: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    supplier: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="supplier",
         title="Who is intended to fulfill the request",
@@ -300,7 +301,7 @@ class SupplyRequest(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SupplyRequest`` according to specification,
         with preserving the original sequence order.
@@ -335,7 +336,7 @@ class SupplyRequest(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SupplyRequest`` according to specification,
         with preserving the original sequence order.
         """
@@ -394,7 +395,7 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
 
     __resource_type__ = "SupplyRequestParameter"
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Item detail",
@@ -404,7 +405,7 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool | None = Field(  # type: ignore
+    valueBoolean: bool | None = Field(
         default=None,
         alias="valueBoolean",
         title="Value of detail",
@@ -416,13 +417,13 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueBoolean",
         title="Extension field for ``valueBoolean``.",
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="valueCodeableConcept",
         title="Value of detail",
@@ -435,7 +436,7 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="valueQuantity",
         title="Value of detail",
@@ -448,7 +449,7 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
         },
     )
 
-    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="valueRange",
         title="Value of detail",
@@ -462,7 +463,7 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SupplyRequestParameter`` according to specification,
         with preserving the original sequence order.
@@ -479,7 +480,7 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SupplyRequestParameter`` according to specification,
         with preserving the original sequence order.
         """

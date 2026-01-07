@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Patient
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class Patient(domainresource.DomainResource):
 
     __resource_type__ = "Patient"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this patient's record is in active use",
@@ -43,11 +44,11 @@ class Patient(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
+    address: typing.List[fhirtypes.AddressType] | None = Field(
         default=None,
         alias="address",
         title="An address for the individual",
@@ -58,7 +59,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType | None = Field(  # type: ignore
+    birthDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="birthDate",
         title="The date of birth for the individual",
@@ -68,11 +69,11 @@ class Patient(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: typing.List[fhirtypes.PatientCommunicationType] | None = Field(  # type: ignore
+    communication: typing.List[fhirtypes.PatientCommunicationType] | None = Field(
         default=None,
         alias="communication",
         title=(
@@ -85,7 +86,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.PatientContactType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.PatientContactType] | None = Field(
         default=None,
         alias="contact",
         title="A contact party (e.g. guardian, partner, friend) for the patient",
@@ -95,7 +96,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    deceasedBoolean: bool | None = Field(  # type: ignore
+    deceasedBoolean: bool | None = Field(
         default=None,
         alias="deceasedBoolean",
         title="Indicates if the individual is deceased or not",
@@ -108,13 +109,13 @@ class Patient(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_deceasedBoolean",
         title="Extension field for ``deceasedBoolean``.",
     )
 
-    deceasedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    deceasedDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="deceasedDateTime",
         title="Indicates if the individual is deceased or not",
@@ -127,13 +128,13 @@ class Patient(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_deceasedDateTime",
         title="Extension field for ``deceasedDateTime``.",
     )
 
-    gender: fhirtypes.CodeType | None = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(
         default=None,
         alias="gender",
         title="male | female | other | unknown",
@@ -149,11 +150,11 @@ class Patient(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    generalPractitioner: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    generalPractitioner: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="generalPractitioner",
         title="Patient's nominated primary care provider",
@@ -169,7 +170,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="An identifier for this patient",
@@ -180,7 +181,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    link: typing.List[fhirtypes.PatientLinkType] | None = Field(  # type: ignore
+    link: typing.List[fhirtypes.PatientLinkType] | None = Field(
         default=None,
         alias="link",
         title="Link to another patient resource that concerns the same actual person",
@@ -193,7 +194,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    managingOrganization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="managingOrganization",
         title="Organization that is the custodian of the patient record",
@@ -206,7 +207,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    maritalStatus: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    maritalStatus: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="maritalStatus",
         title="Marital (civil) status of a patient",
@@ -216,7 +217,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    multipleBirthBoolean: bool | None = Field(  # type: ignore
+    multipleBirthBoolean: bool | None = Field(
         default=None,
         alias="multipleBirthBoolean",
         title="Whether patient is part of a multiple birth",
@@ -231,13 +232,13 @@ class Patient(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    multipleBirthBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    multipleBirthBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_multipleBirthBoolean",
         title="Extension field for ``multipleBirthBoolean``.",
     )
 
-    multipleBirthInteger: fhirtypes.IntegerType | None = Field(  # type: ignore
+    multipleBirthInteger: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="multipleBirthInteger",
         title="Whether patient is part of a multiple birth",
@@ -252,13 +253,13 @@ class Patient(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    multipleBirthInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    multipleBirthInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_multipleBirthInteger",
         title="Extension field for ``multipleBirthInteger``.",
     )
 
-    name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
+    name: typing.List[fhirtypes.HumanNameType] | None = Field(
         default=None,
         alias="name",
         title="A name associated with the patient",
@@ -269,7 +270,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    photo: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="photo",
         title="Image of the patient",
@@ -279,7 +280,7 @@ class Patient(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="telecom",
         title="A contact detail for the individual",
@@ -294,7 +295,7 @@ class Patient(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Patient`` according to specification,
         with preserving the original sequence order.
@@ -329,7 +330,7 @@ class Patient(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Patient`` according to specification,
         with preserving the original sequence order.
         """
@@ -381,7 +382,7 @@ class PatientCommunication(backboneelement.BackboneElement):
 
     __resource_type__ = "PatientCommunication"
 
-    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    language: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="language",
         title=(
@@ -399,7 +400,7 @@ class PatientCommunication(backboneelement.BackboneElement):
         },
     )
 
-    preferred: bool | None = Field(  # type: ignore
+    preferred: bool | None = Field(
         default=None,
         alias="preferred",
         title="Language preference indicator",
@@ -411,12 +412,12 @@ class PatientCommunication(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PatientCommunication`` according to specification,
         with preserving the original sequence order.
@@ -424,7 +425,7 @@ class PatientCommunication(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "language", "preferred"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PatientCommunication`` according to specification,
         with preserving the original sequence order.
         """
@@ -441,7 +442,7 @@ class PatientContact(backboneelement.BackboneElement):
 
     __resource_type__ = "PatientContact"
 
-    address: fhirtypes.AddressType | None = Field(  # type: ignore
+    address: fhirtypes.AddressType | None = Field(
         default=None,
         alias="address",
         title="Address for the contact person",
@@ -451,7 +452,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    gender: fhirtypes.CodeType | None = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(
         default=None,
         alias="gender",
         title="male | female | other | unknown",
@@ -466,11 +467,11 @@ class PatientContact(backboneelement.BackboneElement):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    name: fhirtypes.HumanNameType | None = Field(  # type: ignore
+    name: fhirtypes.HumanNameType | None = Field(
         default=None,
         alias="name",
         title="A name associated with the contact person",
@@ -480,7 +481,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="organization",
         title="Organization that is associated with the contact",
@@ -495,7 +496,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title=(
@@ -508,7 +509,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    relationship: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    relationship: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="relationship",
         title="The kind of relationship",
@@ -521,7 +522,7 @@ class PatientContact(backboneelement.BackboneElement):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="telecom",
         title="A contact detail for the person",
@@ -535,7 +536,7 @@ class PatientContact(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PatientContact`` according to specification,
         with preserving the original sequence order.
@@ -554,7 +555,7 @@ class PatientContact(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PatientContact`` according to specification,
         with preserving the original sequence order.
         """
@@ -572,7 +573,7 @@ class PatientLink(backboneelement.BackboneElement):
 
     __resource_type__ = "PatientLink"
 
-    other: fhirtypes.ReferenceType = Field(  # type: ignore
+    other: fhirtypes.ReferenceType = Field(
         default=...,
         alias="other",
         title="The other patient or related person resource that the link refers to",
@@ -585,7 +586,7 @@ class PatientLink(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="replaced-by | replaces | refer | seealso",
@@ -602,12 +603,12 @@ class PatientLink(backboneelement.BackboneElement):
             "enum_values": ["replaced-by", "replaces", "refer", "seealso"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PatientLink`` according to specification,
         with preserving the original sequence order.
@@ -615,7 +616,7 @@ class PatientLink(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "other", "type"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PatientLink`` according to specification,
         with preserving the original sequence order.
         """

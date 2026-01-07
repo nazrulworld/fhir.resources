@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Population
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class Population(backboneelement.BackboneElement):
 
     __resource_type__ = "Population"
 
-    ageCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    ageCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="ageCodeableConcept",
         title="The age of the specific population",
@@ -40,7 +41,7 @@ class Population(backboneelement.BackboneElement):
         },
     )
 
-    ageRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    ageRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="ageRange",
         title="The age of the specific population",
@@ -54,7 +55,7 @@ class Population(backboneelement.BackboneElement):
         },
     )
 
-    gender: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    gender: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="gender",
         title="The gender of the specific population",
@@ -65,7 +66,7 @@ class Population(backboneelement.BackboneElement):
         },
     )
 
-    physiologicalCondition: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    physiologicalCondition: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="physiologicalCondition",
         title=(
@@ -79,7 +80,7 @@ class Population(backboneelement.BackboneElement):
         },
     )
 
-    race: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    race: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="race",
         title="Race of the specific population",
@@ -91,7 +92,7 @@ class Population(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Population`` according to specification,
         with preserving the original sequence order.
@@ -108,7 +109,7 @@ class Population(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Population`` according to specification,
         with preserving the original sequence order.
         """

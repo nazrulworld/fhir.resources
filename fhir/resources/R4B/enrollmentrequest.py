@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/EnrollmentRequest
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class EnrollmentRequest(domainresource.DomainResource):
 
     __resource_type__ = "EnrollmentRequest"
 
-    candidate: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    candidate: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="candidate",
         title="The subject to be enrolled",
@@ -38,7 +39,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    coverage: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    coverage: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="coverage",
         title="Insurance information",
@@ -50,7 +51,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="created",
         title="Creation date",
@@ -59,11 +60,11 @@ class EnrollmentRequest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_created", title="Extension field for ``created``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business Identifier",
@@ -73,7 +74,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    insurer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    insurer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="insurer",
         title="Target",
@@ -85,7 +86,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    provider: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    provider: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="provider",
         title="Responsible practitioner",
@@ -104,7 +105,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
@@ -117,12 +118,12 @@ class EnrollmentRequest(domainresource.DomainResource):
             "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EnrollmentRequest`` according to specification,
         with preserving the original sequence order.
@@ -146,7 +147,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EnrollmentRequest`` according to specification,
         with preserving the original sequence order.
         """

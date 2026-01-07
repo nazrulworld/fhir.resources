@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/EpisodeOfCare
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -30,7 +31,7 @@ class EpisodeOfCare(domainresource.DomainResource):
 
     __resource_type__ = "EpisodeOfCare"
 
-    account: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    account: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="account",
         title=(
@@ -44,7 +45,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    careManager: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    careManager: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="careManager",
         title="Care manager/care coordinator for the patient",
@@ -59,7 +60,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    diagnosis: typing.List[fhirtypes.EpisodeOfCareDiagnosisType] | None = Field(  # type: ignore
+    diagnosis: typing.List[fhirtypes.EpisodeOfCareDiagnosisType] | None = Field(
         default=None,
         alias="diagnosis",
         title="The list of diagnosis relevant to this episode of care",
@@ -70,7 +71,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business Identifier(s) relevant for this EpisodeOfCare",
@@ -84,7 +85,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    managingOrganization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="managingOrganization",
         title="Organization that assumes care",
@@ -100,7 +101,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType = Field(
         default=...,
         alias="patient",
         title="The patient who is the focus of this episode of care",
@@ -113,7 +114,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Interval during responsibility is assumed",
@@ -127,7 +128,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    referralRequest: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    referralRequest: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="referralRequest",
         title="Originating Referral Request(s)",
@@ -142,7 +143,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -167,11 +168,11 @@ class EpisodeOfCare(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusHistory: typing.List[fhirtypes.EpisodeOfCareStatusHistoryType] | None = Field(  # type: ignore
+    statusHistory: typing.List[fhirtypes.EpisodeOfCareStatusHistoryType] | None = Field(
         default=None,
         alias="statusHistory",
         title=(
@@ -187,7 +188,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    team: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    team: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="team",
         title="Other practitioners facilitating this episode of care",
@@ -202,7 +203,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="type",
         title="Type/class  - e.g. specialist referral, disease management",
@@ -217,7 +218,7 @@ class EpisodeOfCare(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EpisodeOfCare`` according to specification,
         with preserving the original sequence order.
@@ -246,7 +247,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EpisodeOfCare`` according to specification,
         with preserving the original sequence order.
         """
@@ -284,7 +285,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
 
     __resource_type__ = "EpisodeOfCareDiagnosis"
 
-    condition: fhirtypes.ReferenceType = Field(  # type: ignore
+    condition: fhirtypes.ReferenceType = Field(
         default=...,
         alias="condition",
         title="Conditions/problems/diagnoses this episode of care is for",
@@ -300,7 +301,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         },
     )
 
-    rank: fhirtypes.PositiveIntType | None = Field(  # type: ignore
+    rank: fhirtypes.PositiveIntType | None = Field(
         default=None,
         alias="rank",
         title="Ranking of the diagnosis (for each role type)",
@@ -310,11 +311,11 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    rank__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    rank__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_rank", title="Extension field for ``rank``."
     )
 
-    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="role",
         title=(
@@ -329,7 +330,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EpisodeOfCareDiagnosis`` according to specification,
         with preserving the original sequence order.
@@ -337,7 +338,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "condition", "role", "rank"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EpisodeOfCareDiagnosis`` according to specification,
         with preserving the original sequence order.
         """
@@ -357,7 +358,7 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
 
     __resource_type__ = "EpisodeOfCareStatusHistory"
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType = Field(
         default=...,
         alias="period",
         title="Duration the EpisodeOfCare was in the specified status",
@@ -367,7 +368,7 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -391,12 +392,12 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EpisodeOfCareStatusHistory`` according to specification,
         with preserving the original sequence order.
@@ -404,7 +405,7 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "status", "period"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EpisodeOfCareStatusHistory`` according to specification,
         with preserving the original sequence order.
         """

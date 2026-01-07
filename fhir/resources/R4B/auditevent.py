@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/AuditEvent
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class AuditEvent(domainresource.DomainResource):
 
     __resource_type__ = "AuditEvent"
 
-    action: fhirtypes.CodeType | None = Field(  # type: ignore
+    action: fhirtypes.CodeType | None = Field(
         default=None,
         alias="action",
         title="Type of action performed during the event",
@@ -40,11 +41,11 @@ class AuditEvent(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    action__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    action__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_action", title="Extension field for ``action``."
     )
 
-    agent: typing.List[fhirtypes.AuditEventAgentType] = Field(  # type: ignore
+    agent: typing.List[fhirtypes.AuditEventAgentType] = Field(
         default=...,
         alias="agent",
         title="Actor involved in the event",
@@ -56,7 +57,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    entity: typing.List[fhirtypes.AuditEventEntityType] | None = Field(  # type: ignore
+    entity: typing.List[fhirtypes.AuditEventEntityType] | None = Field(
         default=None,
         alias="entity",
         title="Data or objects used",
@@ -66,7 +67,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    outcome: fhirtypes.CodeType | None = Field(  # type: ignore
+    outcome: fhirtypes.CodeType | None = Field(
         default=None,
         alias="outcome",
         title="Whether the event succeeded or failed",
@@ -76,11 +77,11 @@ class AuditEvent(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_outcome", title="Extension field for ``outcome``."
     )
 
-    outcomeDesc: fhirtypes.StringType | None = Field(  # type: ignore
+    outcomeDesc: fhirtypes.StringType | None = Field(
         default=None,
         alias="outcomeDesc",
         title="Description of the event outcome",
@@ -90,11 +91,11 @@ class AuditEvent(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    outcomeDesc__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    outcomeDesc__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_outcomeDesc", title="Extension field for ``outcomeDesc``."
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="When the activity occurred",
@@ -104,7 +105,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    purposeOfEvent: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    purposeOfEvent: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="purposeOfEvent",
         title="The purposeOfUse of the event",
@@ -118,7 +119,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    recorded: fhirtypes.InstantType | None = Field(  # type: ignore
+    recorded: fhirtypes.InstantType | None = Field(
         default=None,
         alias="recorded",
         title="Time when the event was recorded",
@@ -129,11 +130,11 @@ class AuditEvent(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    source: fhirtypes.AuditEventSourceType = Field(  # type: ignore
+    source: fhirtypes.AuditEventSourceType = Field(
         default=...,
         alias="source",
         title="Audit Event Reporter",
@@ -143,7 +144,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    subtype: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    subtype: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="subtype",
         title="More specific type/id for the event",
@@ -154,7 +155,7 @@ class AuditEvent(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodingType = Field(  # type: ignore
+    type: fhirtypes.CodingType = Field(
         default=...,
         alias="type",
         title="Type/identifier of event",
@@ -170,7 +171,7 @@ class AuditEvent(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AuditEvent`` according to specification,
         with preserving the original sequence order.
@@ -198,7 +199,7 @@ class AuditEvent(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AuditEvent`` according to specification,
         with preserving the original sequence order.
         """
@@ -238,7 +239,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
     __resource_type__ = "AuditEventAgent"
 
-    altId: fhirtypes.StringType | None = Field(  # type: ignore
+    altId: fhirtypes.StringType | None = Field(
         default=None,
         alias="altId",
         title="Alternative User identity",
@@ -252,11 +253,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    altId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    altId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_altId", title="Extension field for ``altId``."
     )
 
-    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="location",
         title="Where",
@@ -268,7 +269,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    media: fhirtypes.CodingType | None = Field(  # type: ignore
+    media: fhirtypes.CodingType | None = Field(
         default=None,
         alias="media",
         title="Type of media",
@@ -281,7 +282,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Human friendly name for the agent",
@@ -290,11 +291,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    network: fhirtypes.AuditEventAgentNetworkType | None = Field(  # type: ignore
+    network: fhirtypes.AuditEventAgentNetworkType | None = Field(
         default=None,
         alias="network",
         title="Logical network location for application activity",
@@ -307,7 +308,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    policy: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    policy: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="policy",
         title="Policy that authorized event",
@@ -321,11 +322,13 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    policy__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    policy__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_policy", title="Extension field for ``policy``."
     )
 
-    purposeOfUse: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    purposeOfUse: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="purposeOfUse",
         title="Reason given for this user",
@@ -338,7 +341,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    requestor: bool | None = Field(  # type: ignore
+    requestor: bool | None = Field(
         default=None,
         alias="requestor",
         title="Whether user is initiator",
@@ -352,11 +355,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    requestor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    requestor__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_requestor", title="Extension field for ``requestor``."
     )
 
-    role: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    role: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="role",
         title="Agent role in the event",
@@ -370,7 +373,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="How agent participated",
@@ -383,7 +386,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         },
     )
 
-    who: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    who: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="who",
         title="Identifier of who",
@@ -404,7 +407,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AuditEventAgent`` according to specification,
         with preserving the original sequence order.
@@ -427,7 +430,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AuditEventAgent`` according to specification,
         with preserving the original sequence order.
         """
@@ -457,7 +460,7 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
 
     __resource_type__ = "AuditEventAgentNetwork"
 
-    address: fhirtypes.StringType | None = Field(  # type: ignore
+    address: fhirtypes.StringType | None = Field(
         default=None,
         alias="address",
         title="Identifier for the network access point of the user device",
@@ -469,11 +472,11 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    address__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_address", title="Extension field for ``address``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="The type of network access point",
@@ -485,12 +488,12 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AuditEventAgentNetwork`` according to specification,
         with preserving the original sequence order.
@@ -498,7 +501,7 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "address", "type"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AuditEventAgentNetwork`` according to specification,
         with preserving the original sequence order.
         """
@@ -516,7 +519,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
 
     __resource_type__ = "AuditEventEntity"
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Descriptive text",
@@ -525,11 +528,11 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    detail: typing.List[fhirtypes.AuditEventEntityDetailType] | None = Field(  # type: ignore
+    detail: typing.List[fhirtypes.AuditEventEntityDetailType] | None = Field(
         default=None,
         alias="detail",
         title="Additional Information about the entity",
@@ -542,7 +545,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    lifecycle: fhirtypes.CodingType | None = Field(  # type: ignore
+    lifecycle: fhirtypes.CodingType | None = Field(
         default=None,
         alias="lifecycle",
         title="Life-cycle stage for the entity",
@@ -552,7 +555,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Descriptor for entity",
@@ -562,11 +565,11 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    query: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
+    query: fhirtypes.Base64BinaryType | None = Field(
         default=None,
         alias="query",
         title="Query parameters",
@@ -576,11 +579,11 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    query__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    query__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_query", title="Extension field for ``query``."
     )
 
-    role: fhirtypes.CodingType | None = Field(  # type: ignore
+    role: fhirtypes.CodingType | None = Field(
         default=None,
         alias="role",
         title="What role the entity played",
@@ -593,7 +596,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    securityLabel: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    securityLabel: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="securityLabel",
         title="Security labels on the entity",
@@ -603,7 +606,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodingType | None = Field(  # type: ignore
+    type: fhirtypes.CodingType | None = Field(
         default=None,
         alias="type",
         title="Type of entity involved",
@@ -613,7 +616,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         },
     )
 
-    what: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    what: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="what",
         title="Specific instance of resource",
@@ -630,7 +633,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AuditEventEntity`` according to specification,
         with preserving the original sequence order.
@@ -651,7 +654,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AuditEventEntity`` according to specification,
         with preserving the original sequence order.
         """
@@ -669,7 +672,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
 
     __resource_type__ = "AuditEventEntityDetail"
 
-    type: fhirtypes.StringType | None = Field(  # type: ignore
+    type: fhirtypes.StringType | None = Field(
         default=None,
         alias="type",
         title="Name of the property",
@@ -679,11 +682,11 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    valueBase64Binary: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
+    valueBase64Binary: fhirtypes.Base64BinaryType | None = Field(
         default=None,
         alias="valueBase64Binary",
         title="Property value",
@@ -695,13 +698,13 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueBase64Binary",
         title="Extension field for ``valueBase64Binary``.",
     )
 
-    valueString: fhirtypes.StringType | None = Field(  # type: ignore
+    valueString: fhirtypes.StringType | None = Field(
         default=None,
         alias="valueString",
         title="Property value",
@@ -713,12 +716,12 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AuditEventEntityDetail`` according to specification,
         with preserving the original sequence order.
@@ -733,7 +736,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AuditEventEntityDetail`` according to specification,
         with preserving the original sequence order.
         """
@@ -778,7 +781,7 @@ class AuditEventSource(backboneelement.BackboneElement):
 
     __resource_type__ = "AuditEventSource"
 
-    observer: fhirtypes.ReferenceType = Field(  # type: ignore
+    observer: fhirtypes.ReferenceType = Field(
         default=...,
         alias="observer",
         title="The identity of source detecting the event",
@@ -798,7 +801,7 @@ class AuditEventSource(backboneelement.BackboneElement):
         },
     )
 
-    site: fhirtypes.StringType | None = Field(  # type: ignore
+    site: fhirtypes.StringType | None = Field(
         default=None,
         alias="site",
         title="Logical source location within the enterprise",
@@ -811,11 +814,11 @@ class AuditEventSource(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    site__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    site__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_site", title="Extension field for ``site``."
     )
 
-    type: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="type",
         title="The type of source where event originated",
@@ -826,7 +829,7 @@ class AuditEventSource(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AuditEventSource`` according to specification,
         with preserving the original sequence order.
@@ -834,7 +837,7 @@ class AuditEventSource(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "site", "observer", "type"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AuditEventSource`` according to specification,
         with preserving the original sequence order.
         """

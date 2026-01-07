@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/TestScript
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class TestScript(domainresource.DomainResource):
 
     __resource_type__ = "TestScript"
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -40,7 +41,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -53,11 +54,11 @@ class TestScript(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -72,11 +73,11 @@ class TestScript(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the test script",
@@ -88,11 +89,11 @@ class TestScript(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    destination: typing.List[fhirtypes.TestScriptDestinationType] | None = Field(  # type: ignore
+    destination: typing.List[fhirtypes.TestScriptDestinationType] | None = Field(
         default=None,
         alias="destination",
         title=(
@@ -108,7 +109,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -122,13 +123,13 @@ class TestScript(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    fixture: typing.List[fhirtypes.TestScriptFixtureType] | None = Field(  # type: ignore
+    fixture: typing.List[fhirtypes.TestScriptFixtureType] | None = Field(
         default=None,
         alias="fixture",
         title="Fixture in the test script - by reference (uri)",
@@ -141,7 +142,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Additional identifier for the test script",
@@ -156,7 +157,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for test script (if applicable)",
@@ -170,7 +171,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    metadata: fhirtypes.TestScriptMetadataType | None = Field(  # type: ignore
+    metadata: fhirtypes.TestScriptMetadataType | None = Field(
         default=None,
         alias="metadata",
         title=(
@@ -186,7 +187,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this test script (computer friendly)",
@@ -201,11 +202,11 @@ class TestScript(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    origin: typing.List[fhirtypes.TestScriptOriginType] | None = Field(  # type: ignore
+    origin: typing.List[fhirtypes.TestScriptOriginType] | None = Field(
         default=None,
         alias="origin",
         title=(
@@ -221,7 +222,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    profile: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    profile: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="profile",
         title="Reference of the validation profile",
@@ -233,7 +234,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -246,11 +247,11 @@ class TestScript(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this test script is defined",
@@ -262,11 +263,11 @@ class TestScript(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    setup: fhirtypes.TestScriptSetupType | None = Field(  # type: ignore
+    setup: fhirtypes.TestScriptSetupType | None = Field(
         default=None,
         alias="setup",
         title="A series of required setup operations before tests are executed",
@@ -276,7 +277,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -293,11 +294,11 @@ class TestScript(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    teardown: fhirtypes.TestScriptTeardownType | None = Field(  # type: ignore
+    teardown: fhirtypes.TestScriptTeardownType | None = Field(
         default=None,
         alias="teardown",
         title="A series of required clean up steps",
@@ -310,7 +311,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    test: typing.List[fhirtypes.TestScriptTestType] | None = Field(  # type: ignore
+    test: typing.List[fhirtypes.TestScriptTestType] | None = Field(
         default=None,
         alias="test",
         title="A test in this script",
@@ -320,7 +321,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this test script (human friendly)",
@@ -330,11 +331,11 @@ class TestScript(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -356,11 +357,11 @@ class TestScript(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -377,7 +378,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    variable: typing.List[fhirtypes.TestScriptVariableType] | None = Field(  # type: ignore
+    variable: typing.List[fhirtypes.TestScriptVariableType] | None = Field(
         default=None,
         alias="variable",
         title="Placeholder for evaluated elements",
@@ -390,7 +391,7 @@ class TestScript(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the test script",
@@ -408,12 +409,12 @@ class TestScript(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScript`` according to specification,
         with preserving the original sequence order.
@@ -454,7 +455,7 @@ class TestScript(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScript`` according to specification,
         with preserving the original sequence order.
         """
@@ -505,7 +506,7 @@ class TestScriptDestination(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptDestination"
 
-    index: fhirtypes.IntegerType | None = Field(  # type: ignore
+    index: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="index",
         title="The index of the abstract destination server starting at 1",
@@ -518,11 +519,11 @@ class TestScriptDestination(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    index__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    index__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_index", title="Extension field for ``index``."
     )
 
-    profile: fhirtypes.CodingType = Field(  # type: ignore
+    profile: fhirtypes.CodingType = Field(
         default=...,
         alias="profile",
         title=(
@@ -536,7 +537,7 @@ class TestScriptDestination(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptDestination`` according to specification,
         with preserving the original sequence order.
@@ -544,7 +545,7 @@ class TestScriptDestination(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "index", "profile"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptDestination`` according to specification,
         with preserving the original sequence order.
         """
@@ -574,7 +575,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptFixture"
 
-    autocreate: bool | None = Field(  # type: ignore
+    autocreate: bool | None = Field(
         default=None,
         alias="autocreate",
         title="Whether or not to implicitly create the fixture during setup",
@@ -589,11 +590,11 @@ class TestScriptFixture(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    autocreate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    autocreate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_autocreate", title="Extension field for ``autocreate``."
     )
 
-    autodelete: bool | None = Field(  # type: ignore
+    autodelete: bool | None = Field(
         default=None,
         alias="autodelete",
         title="Whether or not to implicitly delete the fixture during teardown",
@@ -608,11 +609,11 @@ class TestScriptFixture(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    autodelete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    autodelete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_autodelete", title="Extension field for ``autodelete``."
     )
 
-    resource: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    resource: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="resource",
         title="Reference of the resource",
@@ -628,7 +629,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptFixture`` according to specification,
         with preserving the original sequence order.
@@ -643,7 +644,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptFixture`` according to specification,
         with preserving the original sequence order.
         """
@@ -677,7 +678,7 @@ class TestScriptMetadata(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptMetadata"
 
-    capability: typing.List[fhirtypes.TestScriptMetadataCapabilityType] = Field(  # type: ignore
+    capability: typing.List[fhirtypes.TestScriptMetadataCapabilityType] = Field(
         default=...,
         alias="capability",
         title=(
@@ -693,7 +694,7 @@ class TestScriptMetadata(backboneelement.BackboneElement):
         },
     )
 
-    link: typing.List[fhirtypes.TestScriptMetadataLinkType] | None = Field(  # type: ignore
+    link: typing.List[fhirtypes.TestScriptMetadataLinkType] | None = Field(
         default=None,
         alias="link",
         title="Links to the FHIR specification",
@@ -704,7 +705,7 @@ class TestScriptMetadata(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptMetadata`` according to specification,
         with preserving the original sequence order.
@@ -712,7 +713,7 @@ class TestScriptMetadata(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "link", "capability"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptMetadata`` according to specification,
         with preserving the original sequence order.
         """
@@ -732,7 +733,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptMetadataCapability"
 
-    capabilities: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    capabilities: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="capabilities",
         title="Required Capability Statement",
@@ -748,13 +749,13 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "enum_reference_types": ["CapabilityStatement"],
         },
     )
-    capabilities__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    capabilities__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_capabilities",
         title="Extension field for ``capabilities``.",
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="The expected capabilities of the server",
@@ -766,11 +767,11 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    destination: fhirtypes.IntegerType | None = Field(  # type: ignore
+    destination: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="destination",
         title="Which server these requirements apply to",
@@ -779,11 +780,11 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    destination__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    destination__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_destination", title="Extension field for ``destination``."
     )
 
-    link: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    link: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="link",
         title="Links to the FHIR specification",
@@ -795,11 +796,11 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    link__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    link__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(
         default=None, alias="_link", title="Extension field for ``link``."
     )
 
-    origin: typing.List[fhirtypes.IntegerType | None] | None = Field(  # type: ignore
+    origin: typing.List[fhirtypes.IntegerType | None] | None = Field(
         default=None,
         alias="origin",
         title="Which origin server these requirements apply to",
@@ -808,11 +809,13 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    origin__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    origin__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_origin", title="Extension field for ``origin``."
     )
 
-    required: bool | None = Field(  # type: ignore
+    required: bool | None = Field(
         default=None,
         alias="required",
         title="Are the capabilities required?",
@@ -825,11 +828,11 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    required__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    required__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_required", title="Extension field for ``required``."
     )
 
-    validated: bool | None = Field(  # type: ignore
+    validated: bool | None = Field(
         default=None,
         alias="validated",
         title="Are the capabilities validated?",
@@ -842,12 +845,12 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    validated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    validated__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_validated", title="Extension field for ``validated``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptMetadataCapability`` according to specification,
         with preserving the original sequence order.
@@ -866,7 +869,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptMetadataCapability`` according to specification,
         with preserving the original sequence order.
         """
@@ -899,7 +902,7 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptMetadataLink"
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Short description",
@@ -908,11 +911,11 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title="URL to the specification",
@@ -925,12 +928,12 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptMetadataLink`` according to specification,
         with preserving the original sequence order.
@@ -938,7 +941,7 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "url", "description"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptMetadataLink`` according to specification,
         with preserving the original sequence order.
         """
@@ -968,7 +971,7 @@ class TestScriptOrigin(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptOrigin"
 
-    index: fhirtypes.IntegerType | None = Field(  # type: ignore
+    index: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="index",
         title="The index of the abstract origin server starting at 1",
@@ -981,11 +984,11 @@ class TestScriptOrigin(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    index__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    index__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_index", title="Extension field for ``index``."
     )
 
-    profile: fhirtypes.CodingType = Field(  # type: ignore
+    profile: fhirtypes.CodingType = Field(
         default=...,
         alias="profile",
         title="FHIR-Client | FHIR-SDC-FormFiller",
@@ -996,7 +999,7 @@ class TestScriptOrigin(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptOrigin`` according to specification,
         with preserving the original sequence order.
@@ -1004,7 +1007,7 @@ class TestScriptOrigin(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "index", "profile"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptOrigin`` according to specification,
         with preserving the original sequence order.
         """
@@ -1032,7 +1035,7 @@ class TestScriptSetup(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptSetup"
 
-    action: typing.List[fhirtypes.TestScriptSetupActionType] = Field(  # type: ignore
+    action: typing.List[fhirtypes.TestScriptSetupActionType] = Field(
         default=...,
         alias="action",
         title="A setup operation or assert to perform",
@@ -1043,7 +1046,7 @@ class TestScriptSetup(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptSetup`` according to specification,
         with preserving the original sequence order.
@@ -1051,7 +1054,7 @@ class TestScriptSetup(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "action"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptSetup`` according to specification,
         with preserving the original sequence order.
         """
@@ -1069,7 +1072,7 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptSetupAction"
 
-    assert_fhir: fhirtypes.TestScriptSetupActionAssertType | None = Field(  # type: ignore
+    assert_fhir: fhirtypes.TestScriptSetupActionAssertType | None = Field(
         default=None,
         alias="assert",
         title="The assertion to perform",
@@ -1082,7 +1085,7 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
         },
     )
 
-    operation: fhirtypes.TestScriptSetupActionOperationType | None = Field(  # type: ignore
+    operation: fhirtypes.TestScriptSetupActionOperationType | None = Field(
         default=None,
         alias="operation",
         title="The setup operation to perform",
@@ -1093,7 +1096,7 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptSetupAction`` according to specification,
         with preserving the original sequence order.
@@ -1101,7 +1104,7 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "operation", "assert"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptSetupAction`` according to specification,
         with preserving the original sequence order.
         """
@@ -1120,7 +1123,7 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptSetupActionAssert"
 
-    compareToSourceExpression: fhirtypes.StringType | None = Field(  # type: ignore
+    compareToSourceExpression: fhirtypes.StringType | None = Field(
         default=None,
         alias="compareToSourceExpression",
         title="The FHIRPath expression to evaluate against the source fixture",
@@ -1133,13 +1136,13 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    compareToSourceExpression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    compareToSourceExpression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_compareToSourceExpression",
         title="Extension field for ``compareToSourceExpression``.",
     )
 
-    compareToSourceId: fhirtypes.StringType | None = Field(  # type: ignore
+    compareToSourceId: fhirtypes.StringType | None = Field(
         default=None,
         alias="compareToSourceId",
         title="Id of the source fixture to be evaluated",
@@ -1151,13 +1154,13 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    compareToSourceId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    compareToSourceId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_compareToSourceId",
         title="Extension field for ``compareToSourceId``.",
     )
 
-    compareToSourcePath: fhirtypes.StringType | None = Field(  # type: ignore
+    compareToSourcePath: fhirtypes.StringType | None = Field(
         default=None,
         alias="compareToSourcePath",
         title="XPath or JSONPath expression to evaluate against the source fixture",
@@ -1170,13 +1173,13 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    compareToSourcePath__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    compareToSourcePath__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_compareToSourcePath",
         title="Extension field for ``compareToSourcePath``.",
     )
 
-    contentType: fhirtypes.CodeType | None = Field(  # type: ignore
+    contentType: fhirtypes.CodeType | None = Field(
         default=None,
         alias="contentType",
         title="Mime type to compare against the 'Content-Type' header",
@@ -1188,11 +1191,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Tracking/reporting assertion description",
@@ -1204,11 +1207,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    direction: fhirtypes.CodeType | None = Field(  # type: ignore
+    direction: fhirtypes.CodeType | None = Field(
         default=None,
         alias="direction",
         title="response | request",
@@ -1220,11 +1223,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "enum_values": ["response", "request"],
         },
     )
-    direction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    direction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_direction", title="Extension field for ``direction``."
     )
 
-    expression: fhirtypes.StringType | None = Field(  # type: ignore
+    expression: fhirtypes.StringType | None = Field(
         default=None,
         alias="expression",
         title="The FHIRPath expression to be evaluated",
@@ -1236,11 +1239,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    headerField: fhirtypes.StringType | None = Field(  # type: ignore
+    headerField: fhirtypes.StringType | None = Field(
         default=None,
         alias="headerField",
         title="HTTP header field name",
@@ -1249,11 +1252,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    headerField__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    headerField__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_headerField", title="Extension field for ``headerField``."
     )
 
-    label: fhirtypes.StringType | None = Field(  # type: ignore
+    label: fhirtypes.StringType | None = Field(
         default=None,
         alias="label",
         title="Tracking/logging assertion label",
@@ -1262,11 +1265,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_label", title="Extension field for ``label``."
     )
 
-    minimumId: fhirtypes.StringType | None = Field(  # type: ignore
+    minimumId: fhirtypes.StringType | None = Field(
         default=None,
         alias="minimumId",
         title="Fixture Id of minimum content resource",
@@ -1278,11 +1281,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    minimumId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    minimumId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_minimumId", title="Extension field for ``minimumId``."
     )
 
-    navigationLinks: bool | None = Field(  # type: ignore
+    navigationLinks: bool | None = Field(
         default=None,
         alias="navigationLinks",
         title="Perform validation on navigation links?",
@@ -1294,13 +1297,13 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    navigationLinks__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    navigationLinks__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_navigationLinks",
         title="Extension field for ``navigationLinks``.",
     )
 
-    operator: fhirtypes.CodeType | None = Field(  # type: ignore
+    operator: fhirtypes.CodeType | None = Field(
         default=None,
         alias="operator",
         title=(
@@ -1330,11 +1333,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             ],
         },
     )
-    operator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    operator__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_operator", title="Extension field for ``operator``."
     )
 
-    path: fhirtypes.StringType | None = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(
         default=None,
         alias="path",
         title="XPath or JSONPath expression",
@@ -1346,11 +1349,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_path", title="Extension field for ``path``."
     )
 
-    requestMethod: fhirtypes.CodeType | None = Field(  # type: ignore
+    requestMethod: fhirtypes.CodeType | None = Field(
         default=None,
         alias="requestMethod",
         title="delete | get | options | patch | post | put | head",
@@ -1365,13 +1368,13 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "enum_values": ["delete", "get", "options", "patch", "post", "put", "head"],
         },
     )
-    requestMethod__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    requestMethod__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_requestMethod",
         title="Extension field for ``requestMethod``.",
     )
 
-    requestURL: fhirtypes.StringType | None = Field(  # type: ignore
+    requestURL: fhirtypes.StringType | None = Field(
         default=None,
         alias="requestURL",
         title="Request URL comparison value",
@@ -1380,11 +1383,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    requestURL__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    requestURL__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_requestURL", title="Extension field for ``requestURL``."
     )
 
-    resource: fhirtypes.CodeType | None = Field(  # type: ignore
+    resource: fhirtypes.CodeType | None = Field(
         default=None,
         alias="resource",
         title="Resource type",
@@ -1395,11 +1398,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
-    response: fhirtypes.CodeType | None = Field(  # type: ignore
+    response: fhirtypes.CodeType | None = Field(
         default=None,
         alias="response",
         title=(
@@ -1428,11 +1431,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             ],
         },
     )
-    response__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    response__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_response", title="Extension field for ``response``."
     )
 
-    responseCode: fhirtypes.StringType | None = Field(  # type: ignore
+    responseCode: fhirtypes.StringType | None = Field(
         default=None,
         alias="responseCode",
         title="HTTP response code to test",
@@ -1441,13 +1444,13 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    responseCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    responseCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_responseCode",
         title="Extension field for ``responseCode``.",
     )
 
-    sourceId: fhirtypes.IdType | None = Field(  # type: ignore
+    sourceId: fhirtypes.IdType | None = Field(
         default=None,
         alias="sourceId",
         title="Fixture Id of source expression or headerField",
@@ -1459,11 +1462,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sourceId", title="Extension field for ``sourceId``."
     )
 
-    validateProfileId: fhirtypes.IdType | None = Field(  # type: ignore
+    validateProfileId: fhirtypes.IdType | None = Field(
         default=None,
         alias="validateProfileId",
         title="Profile Id of validation profile reference",
@@ -1472,13 +1475,13 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    validateProfileId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    validateProfileId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_validateProfileId",
         title="Extension field for ``validateProfileId``.",
     )
 
-    value: fhirtypes.StringType | None = Field(  # type: ignore
+    value: fhirtypes.StringType | None = Field(
         default=None,
         alias="value",
         title="The value to compare to",
@@ -1487,11 +1490,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
-    warningOnly: bool | None = Field(  # type: ignore
+    warningOnly: bool | None = Field(
         default=None,
         alias="warningOnly",
         title="Will this assert produce a warning only on error?",
@@ -1504,12 +1507,12 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    warningOnly__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    warningOnly__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_warningOnly", title="Extension field for ``warningOnly``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptSetupActionAssert`` according to specification,
         with preserving the original sequence order.
@@ -1543,7 +1546,7 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptSetupActionAssert`` according to specification,
         with preserving the original sequence order.
         """
@@ -1572,7 +1575,7 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptSetupActionOperation"
 
-    accept: fhirtypes.CodeType | None = Field(  # type: ignore
+    accept: fhirtypes.CodeType | None = Field(
         default=None,
         alias="accept",
         title="Mime type to accept in the payload of the response, with charset etc.",
@@ -1581,11 +1584,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    accept__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    accept__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_accept", title="Extension field for ``accept``."
     )
 
-    contentType: fhirtypes.CodeType | None = Field(  # type: ignore
+    contentType: fhirtypes.CodeType | None = Field(
         default=None,
         alias="contentType",
         title="Mime type of the request payload contents, with charset etc.",
@@ -1597,11 +1600,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Tracking/reporting operation description",
@@ -1613,11 +1616,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    destination: fhirtypes.IntegerType | None = Field(  # type: ignore
+    destination: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="destination",
         title="Server responding to the request",
@@ -1629,11 +1632,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    destination__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    destination__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_destination", title="Extension field for ``destination``."
     )
 
-    encodeRequestUrl: bool | None = Field(  # type: ignore
+    encodeRequestUrl: bool | None = Field(
         default=None,
         alias="encodeRequestUrl",
         title="Whether or not to send the request url in encoded format",
@@ -1648,13 +1651,13 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    encodeRequestUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    encodeRequestUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_encodeRequestUrl",
         title="Extension field for ``encodeRequestUrl``.",
     )
 
-    label: fhirtypes.StringType | None = Field(  # type: ignore
+    label: fhirtypes.StringType | None = Field(
         default=None,
         alias="label",
         title="Tracking/logging operation label",
@@ -1663,11 +1666,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_label", title="Extension field for ``label``."
     )
 
-    method: fhirtypes.CodeType | None = Field(  # type: ignore
+    method: fhirtypes.CodeType | None = Field(
         default=None,
         alias="method",
         title="delete | get | options | patch | post | put | head",
@@ -1682,11 +1685,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "enum_values": ["delete", "get", "options", "patch", "post", "put", "head"],
         },
     )
-    method__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    method__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_method", title="Extension field for ``method``."
     )
 
-    origin: fhirtypes.IntegerType | None = Field(  # type: ignore
+    origin: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="origin",
         title="Server initiating the request",
@@ -1698,11 +1701,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    origin__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    origin__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_origin", title="Extension field for ``origin``."
     )
 
-    params: fhirtypes.StringType | None = Field(  # type: ignore
+    params: fhirtypes.StringType | None = Field(
         default=None,
         alias="params",
         title="Explicitly defined path parameters",
@@ -1714,11 +1717,13 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    params__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    params__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_params", title="Extension field for ``params``."
     )
 
-    requestHeader: typing.List[fhirtypes.TestScriptSetupActionOperationRequestHeaderType] | None = Field(  # type: ignore
+    requestHeader: typing.List[
+        fhirtypes.TestScriptSetupActionOperationRequestHeaderType
+    ] | None = Field(
         default=None,
         alias="requestHeader",
         title="Each operation can have one or more header elements",
@@ -1728,7 +1733,7 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         },
     )
 
-    requestId: fhirtypes.IdType | None = Field(  # type: ignore
+    requestId: fhirtypes.IdType | None = Field(
         default=None,
         alias="requestId",
         title="Fixture Id of mapped request",
@@ -1737,11 +1742,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    requestId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    requestId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_requestId", title="Extension field for ``requestId``."
     )
 
-    resource: fhirtypes.CodeType | None = Field(  # type: ignore
+    resource: fhirtypes.CodeType | None = Field(
         default=None,
         alias="resource",
         title="Resource type",
@@ -1752,11 +1757,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
-    responseId: fhirtypes.IdType | None = Field(  # type: ignore
+    responseId: fhirtypes.IdType | None = Field(
         default=None,
         alias="responseId",
         title="Fixture Id of mapped response",
@@ -1765,11 +1770,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    responseId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    responseId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_responseId", title="Extension field for ``responseId``."
     )
 
-    sourceId: fhirtypes.IdType | None = Field(  # type: ignore
+    sourceId: fhirtypes.IdType | None = Field(
         default=None,
         alias="sourceId",
         title="Fixture Id of body for PUT and POST requests",
@@ -1778,11 +1783,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sourceId", title="Extension field for ``sourceId``."
     )
 
-    targetId: fhirtypes.IdType | None = Field(  # type: ignore
+    targetId: fhirtypes.IdType | None = Field(
         default=None,
         alias="targetId",
         title=(
@@ -1794,11 +1799,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    targetId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    targetId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_targetId", title="Extension field for ``targetId``."
     )
 
-    type: fhirtypes.CodingType | None = Field(  # type: ignore
+    type: fhirtypes.CodingType | None = Field(
         default=None,
         alias="type",
         title="The operation code type that will be executed",
@@ -1808,7 +1813,7 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         },
     )
 
-    url: fhirtypes.StringType | None = Field(  # type: ignore
+    url: fhirtypes.StringType | None = Field(
         default=None,
         alias="url",
         title="Request URL",
@@ -1817,12 +1822,12 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptSetupActionOperation`` according to specification,
         with preserving the original sequence order.
@@ -1851,7 +1856,7 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptSetupActionOperation`` according to specification,
         with preserving the original sequence order.
         """
@@ -1880,7 +1885,7 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
 
     __resource_type__ = "TestScriptSetupActionOperationRequestHeader"
 
-    field: fhirtypes.StringType | None = Field(  # type: ignore
+    field: fhirtypes.StringType | None = Field(
         default=None,
         alias="field",
         title="HTTP header field name",
@@ -1890,11 +1895,11 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
             "element_required": True,
         },
     )
-    field__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    field__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_field", title="Extension field for ``field``."
     )
 
-    value: fhirtypes.StringType | None = Field(  # type: ignore
+    value: fhirtypes.StringType | None = Field(
         default=None,
         alias="value",
         title="HTTP headerfield value",
@@ -1904,12 +1909,12 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptSetupActionOperationRequestHeader`` according to specification,
         with preserving the original sequence order.
@@ -1917,7 +1922,7 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
         return ["id", "extension", "modifierExtension", "field", "value"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptSetupActionOperationRequestHeader`` according to specification,
         with preserving the original sequence order.
         """
@@ -1947,7 +1952,7 @@ class TestScriptTeardown(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptTeardown"
 
-    action: typing.List[fhirtypes.TestScriptTeardownActionType] = Field(  # type: ignore
+    action: typing.List[fhirtypes.TestScriptTeardownActionType] = Field(
         default=...,
         alias="action",
         title="One or more teardown operations to perform",
@@ -1958,7 +1963,7 @@ class TestScriptTeardown(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptTeardown`` according to specification,
         with preserving the original sequence order.
@@ -1966,7 +1971,7 @@ class TestScriptTeardown(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "action"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptTeardown`` according to specification,
         with preserving the original sequence order.
         """
@@ -1984,7 +1989,7 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptTeardownAction"
 
-    operation: fhirtypes.TestScriptSetupActionOperationType = Field(  # type: ignore
+    operation: fhirtypes.TestScriptSetupActionOperationType = Field(
         default=...,
         alias="operation",
         title="The teardown operation to perform",
@@ -1995,7 +2000,7 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptTeardownAction`` according to specification,
         with preserving the original sequence order.
@@ -2003,7 +2008,7 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "operation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptTeardownAction`` according to specification,
         with preserving the original sequence order.
         """
@@ -2020,7 +2025,7 @@ class TestScriptTest(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptTest"
 
-    action: typing.List[fhirtypes.TestScriptTestActionType] = Field(  # type: ignore
+    action: typing.List[fhirtypes.TestScriptTestActionType] = Field(
         default=...,
         alias="action",
         title="A test operation or assert to perform",
@@ -2030,7 +2035,7 @@ class TestScriptTest(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Tracking/reporting short description of the test",
@@ -2042,11 +2047,11 @@ class TestScriptTest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Tracking/logging name of this test",
@@ -2058,12 +2063,12 @@ class TestScriptTest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptTest`` according to specification,
         with preserving the original sequence order.
@@ -2071,7 +2076,7 @@ class TestScriptTest(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "name", "description", "action"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptTest`` according to specification,
         with preserving the original sequence order.
         """
@@ -2089,7 +2094,7 @@ class TestScriptTestAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptTestAction"
 
-    assert_fhir: fhirtypes.TestScriptSetupActionAssertType | None = Field(  # type: ignore
+    assert_fhir: fhirtypes.TestScriptSetupActionAssertType | None = Field(
         default=None,
         alias="assert",
         title="The setup assertion to perform",
@@ -2102,7 +2107,7 @@ class TestScriptTestAction(backboneelement.BackboneElement):
         },
     )
 
-    operation: fhirtypes.TestScriptSetupActionOperationType | None = Field(  # type: ignore
+    operation: fhirtypes.TestScriptSetupActionOperationType | None = Field(
         default=None,
         alias="operation",
         title="The setup operation to perform",
@@ -2113,7 +2118,7 @@ class TestScriptTestAction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptTestAction`` according to specification,
         with preserving the original sequence order.
@@ -2121,7 +2126,7 @@ class TestScriptTestAction(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "operation", "assert"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptTestAction`` according to specification,
         with preserving the original sequence order.
         """
@@ -2140,7 +2145,7 @@ class TestScriptVariable(backboneelement.BackboneElement):
 
     __resource_type__ = "TestScriptVariable"
 
-    defaultValue: fhirtypes.StringType | None = Field(  # type: ignore
+    defaultValue: fhirtypes.StringType | None = Field(
         default=None,
         alias="defaultValue",
         title="Default, hard-coded, or user-defined value for this variable",
@@ -2149,13 +2154,13 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    defaultValue__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    defaultValue__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_defaultValue",
         title="Extension field for ``defaultValue``.",
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the variable",
@@ -2167,11 +2172,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    expression: fhirtypes.StringType | None = Field(  # type: ignore
+    expression: fhirtypes.StringType | None = Field(
         default=None,
         alias="expression",
         title="The FHIRPath expression against the fixture body",
@@ -2184,11 +2189,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    headerField: fhirtypes.StringType | None = Field(  # type: ignore
+    headerField: fhirtypes.StringType | None = Field(
         default=None,
         alias="headerField",
         title="HTTP header field name for source",
@@ -2200,11 +2205,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    headerField__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    headerField__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_headerField", title="Extension field for ``headerField``."
     )
 
-    hint: fhirtypes.StringType | None = Field(  # type: ignore
+    hint: fhirtypes.StringType | None = Field(
         default=None,
         alias="hint",
         title="Hint help text for default value to enter",
@@ -2216,11 +2221,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    hint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    hint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_hint", title="Extension field for ``hint``."
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Descriptive name for this variable",
@@ -2230,11 +2235,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    path: fhirtypes.StringType | None = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(
         default=None,
         alias="path",
         title="XPath or JSONPath against the fixture body",
@@ -2247,11 +2252,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_path", title="Extension field for ``path``."
     )
 
-    sourceId: fhirtypes.IdType | None = Field(  # type: ignore
+    sourceId: fhirtypes.IdType | None = Field(
         default=None,
         alias="sourceId",
         title="Fixture Id of source expression or headerField within this variable",
@@ -2263,12 +2268,12 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sourceId", title="Extension field for ``sourceId``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestScriptVariable`` according to specification,
         with preserving the original sequence order.
@@ -2288,7 +2293,7 @@ class TestScriptVariable(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestScriptVariable`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Ratio
 Release: R4B
@@ -7,6 +5,11 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import element, fhirtypes
@@ -24,7 +27,7 @@ class Ratio(element.Element):
 
     __resource_type__ = "Ratio"
 
-    denominator: fhirtypes.QuantityType | None = Field(  # type: ignore
+    denominator: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="denominator",
         title="Denominator value",
@@ -35,7 +38,7 @@ class Ratio(element.Element):
         },
     )
 
-    numerator: fhirtypes.QuantityType | None = Field(  # type: ignore
+    numerator: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="numerator",
         title="Numerator value",
@@ -47,7 +50,7 @@ class Ratio(element.Element):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Ratio`` according to specification,
         with preserving the original sequence order.
@@ -55,7 +58,7 @@ class Ratio(element.Element):
         return ["id", "extension", "numerator", "denominator"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Ratio`` according to specification,
         with preserving the original sequence order.
         """

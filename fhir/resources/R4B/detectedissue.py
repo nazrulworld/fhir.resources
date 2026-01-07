@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DetectedIssue
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class DetectedIssue(domainresource.DomainResource):
 
     __resource_type__ = "DetectedIssue"
 
-    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="author",
         title="The provider or device that identified the issue",
@@ -45,7 +46,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Issue Category, e.g. drug-drug, duplicate therapy, etc.",
@@ -56,7 +57,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    detail: fhirtypes.StringType | None = Field(  # type: ignore
+    detail: fhirtypes.StringType | None = Field(
         default=None,
         alias="detail",
         title="Description and context",
@@ -65,11 +66,11 @@ class DetectedIssue(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    detail__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    detail__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_detail", title="Extension field for ``detail``."
     )
 
-    evidence: typing.List[fhirtypes.DetectedIssueEvidenceType] | None = Field(  # type: ignore
+    evidence: typing.List[fhirtypes.DetectedIssueEvidenceType] | None = Field(
         default=None,
         alias="evidence",
         title="Supporting evidence",
@@ -83,7 +84,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    identifiedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    identifiedDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="identifiedDateTime",
         title="When identified",
@@ -96,13 +97,13 @@ class DetectedIssue(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    identifiedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    identifiedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_identifiedDateTime",
         title="Extension field for ``identifiedDateTime``.",
     )
 
-    identifiedPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    identifiedPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="identifiedPeriod",
         title="When identified",
@@ -116,7 +117,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Unique id for the detected issue",
@@ -127,7 +128,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    implicated: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    implicated: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="implicated",
         title="Problem resource",
@@ -143,7 +144,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] | None = Field(  # type: ignore
+    mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] | None = Field(
         default=None,
         alias="mitigation",
         title="Step taken to address",
@@ -158,7 +159,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="patient",
         title="Associated patient",
@@ -174,7 +175,7 @@ class DetectedIssue(domainresource.DomainResource):
         },
     )
 
-    reference: fhirtypes.UriType | None = Field(  # type: ignore
+    reference: fhirtypes.UriType | None = Field(
         default=None,
         alias="reference",
         title="Authority for issue",
@@ -186,11 +187,11 @@ class DetectedIssue(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_reference", title="Extension field for ``reference``."
     )
 
-    severity: fhirtypes.CodeType | None = Field(  # type: ignore
+    severity: fhirtypes.CodeType | None = Field(
         default=None,
         alias="severity",
         title="high | moderate | low",
@@ -206,11 +207,11 @@ class DetectedIssue(domainresource.DomainResource):
             "enum_values": ["high", "moderate", "low"],
         },
     )
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_severity", title="Extension field for ``severity``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="registered | preliminary | final | amended +",
@@ -224,12 +225,12 @@ class DetectedIssue(domainresource.DomainResource):
             "enum_values": ["registered", "preliminary", "final", "amended", "+"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DetectedIssue`` according to specification,
         with preserving the original sequence order.
@@ -259,7 +260,7 @@ class DetectedIssue(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DetectedIssue`` according to specification,
         with preserving the original sequence order.
         """
@@ -318,7 +319,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
 
     __resource_type__ = "DetectedIssueEvidence"
 
-    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="code",
         title="Manifestation",
@@ -328,7 +329,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
         },
     )
 
-    detail: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    detail: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="detail",
         title="Supporting information",
@@ -344,7 +345,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DetectedIssueEvidence`` according to specification,
         with preserving the original sequence order.
@@ -352,7 +353,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "code", "detail"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DetectedIssueEvidence`` according to specification,
         with preserving the original sequence order.
         """
@@ -373,7 +374,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
 
     __resource_type__ = "DetectedIssueMitigation"
 
-    action: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    action: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="action",
         title="What mitigation?",
@@ -386,7 +387,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         },
     )
 
-    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="author",
         title="Who is committing?",
@@ -401,7 +402,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         },
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date committed",
@@ -410,12 +411,12 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DetectedIssueMitigation`` according to specification,
         with preserving the original sequence order.
@@ -423,7 +424,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "action", "date", "author"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DetectedIssueMitigation`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Reference
 Release: R4B
@@ -7,6 +5,11 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import element, fhirtypes
@@ -22,7 +25,7 @@ class Reference(element.Element):
 
     __resource_type__ = "Reference"
 
-    display: fhirtypes.StringType | None = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(
         default=None,
         alias="display",
         title="Text alternative for the resource",
@@ -35,11 +38,11 @@ class Reference(element.Element):
             "summary_element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_display", title="Extension field for ``display``."
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Logical reference, when literal reference is not known",
@@ -60,7 +63,7 @@ class Reference(element.Element):
         },
     )
 
-    reference: fhirtypes.StringType | None = Field(  # type: ignore
+    reference: fhirtypes.StringType | None = Field(
         default=None,
         alias="reference",
         title="Literal reference, Relative, internal or absolute URL",
@@ -78,11 +81,11 @@ class Reference(element.Element):
             "summary_element_property": True,
         },
     )
-    reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_reference", title="Extension field for ``reference``."
     )
 
-    type: fhirtypes.UriType | None = Field(  # type: ignore
+    type: fhirtypes.UriType | None = Field(
         default=None,
         alias="type",
         title='Type the reference refers to (e.g. "Patient")',
@@ -102,12 +105,12 @@ class Reference(element.Element):
             "summary_element_property": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Reference`` according to specification,
         with preserving the original sequence order.
@@ -115,7 +118,7 @@ class Reference(element.Element):
         return ["id", "extension", "reference", "type", "identifier", "display"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Reference`` according to specification,
         with preserving the original sequence order.
         """

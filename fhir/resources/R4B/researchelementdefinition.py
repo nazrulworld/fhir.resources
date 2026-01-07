@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ResearchElementDefinition
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
 
     __resource_type__ = "ResearchElementDefinition"
 
-    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="approvalDate",
         title="When the research element definition was approved by publisher",
@@ -39,13 +40,13 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_approvalDate",
         title="Extension field for ``approvalDate``.",
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="author",
         title="Who authored the content",
@@ -58,7 +59,9 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    characteristic: typing.List[fhirtypes.ResearchElementDefinitionCharacteristicType] = Field(  # type: ignore
+    characteristic: typing.List[
+        fhirtypes.ResearchElementDefinitionCharacteristicType
+    ] = Field(
         default=...,
         alias="characteristic",
         title="What defines the members of the research element",
@@ -72,7 +75,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    comment: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    comment: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="comment",
         title="Used for footnotes or explanatory notes",
@@ -84,11 +87,13 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    comment__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -102,7 +107,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -116,11 +121,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -136,11 +141,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the research element definition",
@@ -153,11 +158,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="editor",
         title="Who edited the content",
@@ -170,7 +175,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="When the research element definition is expected to be used",
@@ -184,7 +189,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="endorser",
         title="Who endorsed the content",
@@ -197,7 +202,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -211,13 +216,13 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Additional identifier for the research element definition",
@@ -232,7 +237,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for research element definition (if applicable)",
@@ -246,7 +251,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="lastReviewDate",
         title="When the research element definition was last reviewed",
@@ -259,13 +264,13 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastReviewDate",
         title="Extension field for ``lastReviewDate``.",
     )
 
-    library: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    library: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="library",
         title="Logic used by the ResearchElementDefinition",
@@ -279,11 +284,13 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "enum_reference_types": ["Library"],
         },
     )
-    library__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    library__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_library", title="Extension field for ``library``."
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this research element definition (computer friendly)",
@@ -297,11 +304,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -314,11 +321,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this research element definition is defined",
@@ -330,11 +337,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc.",
@@ -347,7 +354,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="reviewer",
         title="Who reviewed the content",
@@ -360,7 +367,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    shortTitle: fhirtypes.StringType | None = Field(  # type: ignore
+    shortTitle: fhirtypes.StringType | None = Field(
         default=None,
         alias="shortTitle",
         title="Title for use in informal contexts",
@@ -373,11 +380,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_shortTitle", title="Extension field for ``shortTitle``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -394,11 +401,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subjectCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    subjectCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="subjectCodeableConcept",
         title=(
@@ -418,7 +425,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    subjectReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subjectReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subjectReference",
         title=(
@@ -440,7 +447,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    subtitle: fhirtypes.StringType | None = Field(  # type: ignore
+    subtitle: fhirtypes.StringType | None = Field(
         default=None,
         alias="subtitle",
         title="Subordinate title of the ResearchElementDefinition",
@@ -452,11 +459,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this research element definition (human friendly)",
@@ -469,11 +476,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="topic",
         title=(
@@ -491,7 +498,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="population | exposure | outcome",
@@ -507,11 +514,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "enum_values": ["population", "exposure", "outcome"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -533,11 +540,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    usage: fhirtypes.StringType | None = Field(  # type: ignore
+    usage: fhirtypes.StringType | None = Field(
         default=None,
         alias="usage",
         title="Describes the clinical usage of the ResearchElementDefinition",
@@ -549,11 +556,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_usage", title="Extension field for ``usage``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -571,7 +578,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         },
     )
 
-    variableType: fhirtypes.CodeType | None = Field(  # type: ignore
+    variableType: fhirtypes.CodeType | None = Field(
         default=None,
         alias="variableType",
         title="dichotomous | continuous | descriptive",
@@ -585,13 +592,13 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "enum_values": ["dichotomous", "continuous", "descriptive"],
         },
     )
-    variableType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    variableType__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_variableType",
         title="Extension field for ``variableType``.",
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the research element definition",
@@ -614,12 +621,12 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ResearchElementDefinition`` according to specification,
         with preserving the original sequence order.
@@ -670,7 +677,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ResearchElementDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -737,7 +744,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
 
     __resource_type__ = "ResearchElementDefinitionCharacteristic"
 
-    definitionCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    definitionCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="definitionCanonical",
         title="What code or expression defines members?",
@@ -757,13 +764,13 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_definitionCanonical",
         title="Extension field for ``definitionCanonical``.",
     )
 
-    definitionCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    definitionCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="definitionCodeableConcept",
         title="What code or expression defines members?",
@@ -782,7 +789,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    definitionDataRequirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
+    definitionDataRequirement: fhirtypes.DataRequirementType | None = Field(
         default=None,
         alias="definitionDataRequirement",
         title="What code or expression defines members?",
@@ -801,7 +808,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    definitionExpression: fhirtypes.ExpressionType | None = Field(  # type: ignore
+    definitionExpression: fhirtypes.ExpressionType | None = Field(
         default=None,
         alias="definitionExpression",
         title="What code or expression defines members?",
@@ -820,7 +827,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    exclude: bool | None = Field(  # type: ignore
+    exclude: bool | None = Field(
         default=None,
         alias="exclude",
         title="Whether the characteristic includes or excludes members",
@@ -832,11 +839,11 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    exclude__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    exclude__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_exclude", title="Extension field for ``exclude``."
     )
 
-    participantEffectiveDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    participantEffectiveDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="participantEffectiveDateTime",
         title="What time period do participants cover",
@@ -848,13 +855,15 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    participantEffectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        default=None,
-        alias="_participantEffectiveDateTime",
-        title="Extension field for ``participantEffectiveDateTime``.",
+    participantEffectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = (
+        Field(
+            default=None,
+            alias="_participantEffectiveDateTime",
+            title="Extension field for ``participantEffectiveDateTime``.",
+        )
     )
 
-    participantEffectiveDescription: fhirtypes.StringType | None = Field(  # type: ignore
+    participantEffectiveDescription: fhirtypes.StringType | None = Field(
         default=None,
         alias="participantEffectiveDescription",
         title="What time period do participants cover",
@@ -863,13 +872,13 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    participantEffectiveDescription__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    participantEffectiveDescription__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_participantEffectiveDescription",
         title="Extension field for ``participantEffectiveDescription``.",
     )
 
-    participantEffectiveDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    participantEffectiveDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="participantEffectiveDuration",
         title="What time period do participants cover",
@@ -882,7 +891,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    participantEffectiveGroupMeasure: fhirtypes.CodeType | None = Field(  # type: ignore
+    participantEffectiveGroupMeasure: fhirtypes.CodeType | None = Field(
         default=None,
         alias="participantEffectiveGroupMeasure",
         title=(
@@ -907,13 +916,13 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             ],
         },
     )
-    participantEffectiveGroupMeasure__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    participantEffectiveGroupMeasure__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_participantEffectiveGroupMeasure",
         title="Extension field for ``participantEffectiveGroupMeasure``.",
     )
 
-    participantEffectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    participantEffectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="participantEffectivePeriod",
         title="What time period do participants cover",
@@ -926,7 +935,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    participantEffectiveTimeFromStart: fhirtypes.DurationType | None = Field(  # type: ignore
+    participantEffectiveTimeFromStart: fhirtypes.DurationType | None = Field(
         default=None,
         alias="participantEffectiveTimeFromStart",
         title="Observation time from study start",
@@ -936,7 +945,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    participantEffectiveTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    participantEffectiveTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="participantEffectiveTiming",
         title="What time period do participants cover",
@@ -949,7 +958,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    studyEffectiveDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    studyEffectiveDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="studyEffectiveDateTime",
         title="What time period does the study cover",
@@ -961,13 +970,13 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    studyEffectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    studyEffectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_studyEffectiveDateTime",
         title="Extension field for ``studyEffectiveDateTime``.",
     )
 
-    studyEffectiveDescription: fhirtypes.StringType | None = Field(  # type: ignore
+    studyEffectiveDescription: fhirtypes.StringType | None = Field(
         default=None,
         alias="studyEffectiveDescription",
         title="What time period does the study cover",
@@ -976,13 +985,13 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    studyEffectiveDescription__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    studyEffectiveDescription__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_studyEffectiveDescription",
         title="Extension field for ``studyEffectiveDescription``.",
     )
 
-    studyEffectiveDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    studyEffectiveDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="studyEffectiveDuration",
         title="What time period does the study cover",
@@ -995,7 +1004,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    studyEffectiveGroupMeasure: fhirtypes.CodeType | None = Field(  # type: ignore
+    studyEffectiveGroupMeasure: fhirtypes.CodeType | None = Field(
         default=None,
         alias="studyEffectiveGroupMeasure",
         title=(
@@ -1020,13 +1029,15 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             ],
         },
     )
-    studyEffectiveGroupMeasure__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
-        default=None,
-        alias="_studyEffectiveGroupMeasure",
-        title="Extension field for ``studyEffectiveGroupMeasure``.",
+    studyEffectiveGroupMeasure__ext: fhirtypes.FHIRPrimitiveExtensionType | None = (
+        Field(
+            default=None,
+            alias="_studyEffectiveGroupMeasure",
+            title="Extension field for ``studyEffectiveGroupMeasure``.",
+        )
     )
 
-    studyEffectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    studyEffectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="studyEffectivePeriod",
         title="What time period does the study cover",
@@ -1039,7 +1050,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    studyEffectiveTimeFromStart: fhirtypes.DurationType | None = Field(  # type: ignore
+    studyEffectiveTimeFromStart: fhirtypes.DurationType | None = Field(
         default=None,
         alias="studyEffectiveTimeFromStart",
         title="Observation time from study start",
@@ -1049,7 +1060,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    studyEffectiveTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    studyEffectiveTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="studyEffectiveTiming",
         title="What time period does the study cover",
@@ -1062,7 +1073,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    unitOfMeasure: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    unitOfMeasure: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="unitOfMeasure",
         title="What unit is the outcome described in?",
@@ -1072,7 +1083,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    usageContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    usageContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="usageContext",
         title="What code/value pairs define members?",
@@ -1086,7 +1097,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ResearchElementDefinitionCharacteristic`` according to specification,
         with preserving the original sequence order.
@@ -1119,7 +1130,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ResearchElementDefinitionCharacteristic`` according to specification,
         with preserving the original sequence order.
         """

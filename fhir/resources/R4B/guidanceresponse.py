@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/GuidanceResponse
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class GuidanceResponse(domainresource.DomainResource):
 
     __resource_type__ = "GuidanceResponse"
 
-    dataRequirement: typing.List[fhirtypes.DataRequirementType] | None = Field(  # type: ignore
+    dataRequirement: typing.List[fhirtypes.DataRequirementType] | None = Field(
         default=None,
         alias="dataRequirement",
         title="Additional required data",
@@ -43,7 +44,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="encounter",
         title="Encounter during which the response was returned",
@@ -58,7 +59,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    evaluationMessage: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    evaluationMessage: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="evaluationMessage",
         title="Messages resulting from the evaluation of the artifact or artifacts",
@@ -75,7 +76,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier",
@@ -89,7 +90,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    moduleCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    moduleCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="moduleCanonical",
         title="What guidance was requested",
@@ -105,13 +106,13 @@ class GuidanceResponse(domainresource.DomainResource):
             "one_of_many_required": True,
         },
     )
-    moduleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    moduleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_moduleCanonical",
         title="Extension field for ``moduleCanonical``.",
     )
 
-    moduleCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    moduleCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="moduleCodeableConcept",
         title="What guidance was requested",
@@ -128,7 +129,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    moduleUri: fhirtypes.UriType | None = Field(  # type: ignore
+    moduleUri: fhirtypes.UriType | None = Field(
         default=None,
         alias="moduleUri",
         title="What guidance was requested",
@@ -144,11 +145,11 @@ class GuidanceResponse(domainresource.DomainResource):
             "one_of_many_required": True,
         },
     )
-    moduleUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    moduleUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_moduleUri", title="Extension field for ``moduleUri``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Additional notes about the response",
@@ -161,7 +162,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="occurrenceDateTime",
         title="When the guidance response was processed",
@@ -170,13 +171,13 @@ class GuidanceResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    outputParameters: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    outputParameters: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="outputParameters",
         title="The output parameters of the evaluation, if any",
@@ -195,7 +196,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    performer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    performer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="performer",
         title="Device returning the guidance",
@@ -207,7 +208,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="reasonCode",
         title="Why guidance is needed",
@@ -220,7 +221,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="reasonReference",
         title="Why guidance is needed",
@@ -242,7 +243,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    requestIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    requestIdentifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="requestIdentifier",
         title="The identifier of the request associated with this response, if any",
@@ -258,7 +259,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    result: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    result: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="result",
         title="Proposed actions, if any",
@@ -270,7 +271,7 @@ class GuidanceResponse(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -304,11 +305,11 @@ class GuidanceResponse(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Patient the request was performed for",
@@ -321,7 +322,7 @@ class GuidanceResponse(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``GuidanceResponse`` according to specification,
         with preserving the original sequence order.
@@ -355,7 +356,7 @@ class GuidanceResponse(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``GuidanceResponse`` according to specification,
         with preserving the original sequence order.
         """

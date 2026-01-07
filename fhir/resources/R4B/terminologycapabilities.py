@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/TerminologyCapabilities
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
 
     __resource_type__ = "TerminologyCapabilities"
 
-    closure: fhirtypes.TerminologyCapabilitiesClosureType | None = Field(  # type: ignore
+    closure: fhirtypes.TerminologyCapabilitiesClosureType | None = Field(
         default=None,
         alias="closure",
         title=(
@@ -41,7 +42,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    codeSearch: fhirtypes.CodeType | None = Field(  # type: ignore
+    codeSearch: fhirtypes.CodeType | None = Field(
         default=None,
         alias="codeSearch",
         title="explicit | all",
@@ -56,11 +57,13 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "enum_values": ["explicit", "all"],
         },
     )
-    codeSearch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    codeSearch__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_codeSearch", title="Extension field for ``codeSearch``."
     )
 
-    codeSystem: typing.List[fhirtypes.TerminologyCapabilitiesCodeSystemType] | None = Field(  # type: ignore
+    codeSystem: typing.List[
+        fhirtypes.TerminologyCapabilitiesCodeSystemType
+    ] | None = Field(
         default=None,
         alias="codeSystem",
         title="A code system supported by the server",
@@ -74,7 +77,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -88,7 +91,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -102,11 +105,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -123,11 +126,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the terminology capabilities",
@@ -142,11 +145,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    expansion: fhirtypes.TerminologyCapabilitiesExpansionType | None = Field(  # type: ignore
+    expansion: fhirtypes.TerminologyCapabilitiesExpansionType | None = Field(
         default=None,
         alias="expansion",
         title=(
@@ -159,7 +162,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -173,13 +176,13 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    implementation: fhirtypes.TerminologyCapabilitiesImplementationType | None = Field(  # type: ignore
+    implementation: fhirtypes.TerminologyCapabilitiesImplementationType | None = Field(
         default=None,
         alias="implementation",
         title="If this describes a specific instance",
@@ -194,7 +197,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for terminology capabilities (if applicable)",
@@ -208,7 +211,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    kind: fhirtypes.CodeType | None = Field(  # type: ignore
+    kind: fhirtypes.CodeType | None = Field(
         default=None,
         alias="kind",
         title="instance | capability | requirements",
@@ -227,11 +230,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "enum_values": ["instance", "capability", "requirements"],
         },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    lockedDate: bool | None = Field(  # type: ignore
+    lockedDate: bool | None = Field(
         default=None,
         alias="lockedDate",
         title="Whether lockedDate is supported",
@@ -241,11 +244,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    lockedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lockedDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_lockedDate", title="Extension field for ``lockedDate``."
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this terminology capabilities (computer friendly)",
@@ -259,11 +262,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -276,11 +279,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this terminology capabilities is defined",
@@ -292,11 +295,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    software: fhirtypes.TerminologyCapabilitiesSoftwareType | None = Field(  # type: ignore
+    software: fhirtypes.TerminologyCapabilitiesSoftwareType | None = Field(
         default=None,
         alias="software",
         title="Software that is covered by this terminology capability statement",
@@ -311,7 +314,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -328,11 +331,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this terminology capabilities (human friendly)",
@@ -345,11 +348,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    translation: fhirtypes.TerminologyCapabilitiesTranslationType | None = Field(  # type: ignore
+    translation: fhirtypes.TerminologyCapabilitiesTranslationType | None = Field(
         default=None,
         alias="translation",
         title=(
@@ -362,7 +365,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -384,11 +387,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -406,7 +409,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    validateCode: fhirtypes.TerminologyCapabilitiesValidateCodeType | None = Field(  # type: ignore
+    validateCode: fhirtypes.TerminologyCapabilitiesValidateCodeType | None = Field(
         default=None,
         alias="validateCode",
         title=(
@@ -419,7 +422,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the terminology capabilities",
@@ -437,12 +440,12 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilities`` according to specification,
         with preserving the original sequence order.
@@ -483,7 +486,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilities`` according to specification,
         with preserving the original sequence order.
         """
@@ -537,7 +540,7 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
 
     __resource_type__ = "TerminologyCapabilitiesClosure"
 
-    translation: bool | None = Field(  # type: ignore
+    translation: bool | None = Field(
         default=None,
         alias="translation",
         title="If cross-system closure is supported",
@@ -546,12 +549,12 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    translation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    translation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_translation", title="Extension field for ``translation``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesClosure`` according to specification,
         with preserving the original sequence order.
@@ -559,7 +562,7 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "translation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesClosure`` according to specification,
         with preserving the original sequence order.
         """
@@ -579,7 +582,7 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
 
     __resource_type__ = "TerminologyCapabilitiesCodeSystem"
 
-    subsumption: bool | None = Field(  # type: ignore
+    subsumption: bool | None = Field(
         default=None,
         alias="subsumption",
         title="Whether subsumption is supported",
@@ -588,11 +591,11 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    subsumption__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    subsumption__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_subsumption", title="Extension field for ``subsumption``."
     )
 
-    uri: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    uri: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="uri",
         title="URI for the Code System",
@@ -603,11 +606,13 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
             "enum_reference_types": ["CodeSystem"],
         },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_uri", title="Extension field for ``uri``."
     )
 
-    version: typing.List[fhirtypes.TerminologyCapabilitiesCodeSystemVersionType] | None = Field(  # type: ignore
+    version: typing.List[
+        fhirtypes.TerminologyCapabilitiesCodeSystemVersionType
+    ] | None = Field(
         default=None,
         alias="version",
         title="Version of Code System supported",
@@ -621,7 +626,7 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesCodeSystem`` according to specification,
         with preserving the original sequence order.
@@ -629,7 +634,7 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "uri", "version", "subsumption"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesCodeSystem`` according to specification,
         with preserving the original sequence order.
         """
@@ -647,7 +652,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
 
     __resource_type__ = "TerminologyCapabilitiesCodeSystemVersion"
 
-    code: fhirtypes.StringType | None = Field(  # type: ignore
+    code: fhirtypes.StringType | None = Field(
         default=None,
         alias="code",
         title="Version identifier for this version",
@@ -660,11 +665,11 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    compositional: bool | None = Field(  # type: ignore
+    compositional: bool | None = Field(
         default=None,
         alias="compositional",
         title="If compositional grammar is supported",
@@ -673,13 +678,15 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    compositional__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    compositional__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_compositional",
         title="Extension field for ``compositional``.",
     )
 
-    filter: typing.List[fhirtypes.TerminologyCapabilitiesCodeSystemVersionFilterType] | None = Field(  # type: ignore
+    filter: typing.List[
+        fhirtypes.TerminologyCapabilitiesCodeSystemVersionFilterType
+    ] | None = Field(
         default=None,
         alias="filter",
         title="Filter Properties supported",
@@ -689,7 +696,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         },
     )
 
-    isDefault: bool | None = Field(  # type: ignore
+    isDefault: bool | None = Field(
         default=None,
         alias="isDefault",
         title="If this is the default version for this code system",
@@ -699,11 +706,11 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    isDefault__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    isDefault__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_isDefault", title="Extension field for ``isDefault``."
     )
 
-    language: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    language: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="language",
         title="Language Displays supported",
@@ -712,11 +719,13 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    language__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    language__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_language", title="Extension field for ``language``."
     )
 
-    property: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    property: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="property",
         title="Properties supported for $lookup",
@@ -725,12 +734,14 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    property__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    property__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_property", title="Extension field for ``property``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesCodeSystemVersion`` according to specification,
         with preserving the original sequence order.
@@ -748,7 +759,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesCodeSystemVersion`` according to specification,
         with preserving the original sequence order.
         """
@@ -765,7 +776,7 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
 
     __resource_type__ = "TerminologyCapabilitiesCodeSystemVersionFilter"
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title="Code of the property supported",
@@ -775,11 +786,11 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
             "element_required": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    op: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    op: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="op",
         title="Operations supported for the property",
@@ -789,12 +800,12 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
             "element_required": True,
         },
     )
-    op__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    op__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(
         default=None, alias="_op", title="Extension field for ``op``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesCodeSystemVersionFilter`` according to specification,
         with preserving the original sequence order.
@@ -802,7 +813,7 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
         return ["id", "extension", "modifierExtension", "code", "op"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesCodeSystemVersionFilter`` according to specification,
         with preserving the original sequence order.
         """
@@ -831,7 +842,7 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
 
     __resource_type__ = "TerminologyCapabilitiesExpansion"
 
-    hierarchical: bool | None = Field(  # type: ignore
+    hierarchical: bool | None = Field(
         default=None,
         alias="hierarchical",
         title="Whether the server can return nested value sets",
@@ -840,13 +851,13 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    hierarchical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    hierarchical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_hierarchical",
         title="Extension field for ``hierarchical``.",
     )
 
-    incomplete: bool | None = Field(  # type: ignore
+    incomplete: bool | None = Field(
         default=None,
         alias="incomplete",
         title="Allow request for incomplete expansions?",
@@ -855,11 +866,11 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    incomplete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    incomplete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_incomplete", title="Extension field for ``incomplete``."
     )
 
-    paging: bool | None = Field(  # type: ignore
+    paging: bool | None = Field(
         default=None,
         alias="paging",
         title="Whether the server supports paging on expansion",
@@ -868,11 +879,13 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    paging__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    paging__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_paging", title="Extension field for ``paging``."
     )
 
-    parameter: typing.List[fhirtypes.TerminologyCapabilitiesExpansionParameterType] | None = Field(  # type: ignore
+    parameter: typing.List[
+        fhirtypes.TerminologyCapabilitiesExpansionParameterType
+    ] | None = Field(
         default=None,
         alias="parameter",
         title="Supported expansion parameter",
@@ -882,7 +895,7 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         },
     )
 
-    textFilter: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    textFilter: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="textFilter",
         title="Documentation about text searching works",
@@ -891,12 +904,12 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    textFilter__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    textFilter__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_textFilter", title="Extension field for ``textFilter``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesExpansion`` according to specification,
         with preserving the original sequence order.
@@ -913,7 +926,7 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesExpansion`` according to specification,
         with preserving the original sequence order.
         """
@@ -930,7 +943,7 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
 
     __resource_type__ = "TerminologyCapabilitiesExpansionParameter"
 
-    documentation: fhirtypes.StringType | None = Field(  # type: ignore
+    documentation: fhirtypes.StringType | None = Field(
         default=None,
         alias="documentation",
         title="Description of support for parameter",
@@ -939,13 +952,13 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
             "element_property": True,
         },
     )
-    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_documentation",
         title="Extension field for ``documentation``.",
     )
 
-    name: fhirtypes.CodeType | None = Field(  # type: ignore
+    name: fhirtypes.CodeType | None = Field(
         default=None,
         alias="name",
         title="Expansion Parameter name",
@@ -955,12 +968,12 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesExpansionParameter`` according to specification,
         with preserving the original sequence order.
@@ -968,7 +981,7 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
         return ["id", "extension", "modifierExtension", "name", "documentation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesExpansionParameter`` according to specification,
         with preserving the original sequence order.
         """
@@ -999,7 +1012,7 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
 
     __resource_type__ = "TerminologyCapabilitiesImplementation"
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Describes this specific instance",
@@ -1013,11 +1026,11 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    url: fhirtypes.UrlType | None = Field(  # type: ignore
+    url: fhirtypes.UrlType | None = Field(
         default=None,
         alias="url",
         title="Base URL for the implementation",
@@ -1027,12 +1040,12 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesImplementation`` according to specification,
         with preserving the original sequence order.
@@ -1040,7 +1053,7 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "description", "url"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesImplementation`` according to specification,
         with preserving the original sequence order.
         """
@@ -1071,7 +1084,7 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
 
     __resource_type__ = "TerminologyCapabilitiesSoftware"
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="A name the software is known by",
@@ -1082,11 +1095,11 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Version covered by this statement",
@@ -1096,12 +1109,12 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesSoftware`` according to specification,
         with preserving the original sequence order.
@@ -1109,7 +1122,7 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "name", "version"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesSoftware`` according to specification,
         with preserving the original sequence order.
         """
@@ -1138,7 +1151,7 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
 
     __resource_type__ = "TerminologyCapabilitiesTranslation"
 
-    needsMap: bool | None = Field(  # type: ignore
+    needsMap: bool | None = Field(
         default=None,
         alias="needsMap",
         title="Whether the client must identify the map",
@@ -1148,12 +1161,12 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    needsMap__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    needsMap__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_needsMap", title="Extension field for ``needsMap``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesTranslation`` according to specification,
         with preserving the original sequence order.
@@ -1161,7 +1174,7 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "needsMap"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesTranslation`` according to specification,
         with preserving the original sequence order.
         """
@@ -1190,7 +1203,7 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
 
     __resource_type__ = "TerminologyCapabilitiesValidateCode"
 
-    translations: bool | None = Field(  # type: ignore
+    translations: bool | None = Field(
         default=None,
         alias="translations",
         title="Whether translations are validated",
@@ -1200,14 +1213,14 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    translations__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    translations__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_translations",
         title="Extension field for ``translations``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TerminologyCapabilitiesValidateCode`` according to specification,
         with preserving the original sequence order.
@@ -1215,7 +1228,7 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "translations"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TerminologyCapabilitiesValidateCode`` according to specification,
         with preserving the original sequence order.
         """

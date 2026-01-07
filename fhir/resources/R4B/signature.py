@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Signature
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -29,7 +30,7 @@ class Signature(element.Element):
 
     __resource_type__ = "Signature"
 
-    data: fhirtypes.Base64BinaryType | None = Field(  # type: ignore
+    data: fhirtypes.Base64BinaryType | None = Field(
         default=None,
         alias="data",
         title="The actual signature content (XML DigSig. JWS, picture, etc.)",
@@ -41,11 +42,11 @@ class Signature(element.Element):
             "element_property": True,
         },
     )
-    data__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    data__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_data", title="Extension field for ``data``."
     )
 
-    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="onBehalfOf",
         title="The party represented",
@@ -68,7 +69,7 @@ class Signature(element.Element):
         },
     )
 
-    sigFormat: fhirtypes.CodeType | None = Field(  # type: ignore
+    sigFormat: fhirtypes.CodeType | None = Field(
         default=None,
         alias="sigFormat",
         title="The technical format of the signature",
@@ -82,11 +83,11 @@ class Signature(element.Element):
             "element_property": True,
         },
     )
-    sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sigFormat", title="Extension field for ``sigFormat``."
     )
 
-    targetFormat: fhirtypes.CodeType | None = Field(  # type: ignore
+    targetFormat: fhirtypes.CodeType | None = Field(
         default=None,
         alias="targetFormat",
         title="The technical format of the signed resources",
@@ -98,13 +99,13 @@ class Signature(element.Element):
             "element_property": True,
         },
     )
-    targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_targetFormat",
         title="Extension field for ``targetFormat``.",
     )
 
-    type: typing.List[fhirtypes.CodingType] = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodingType] = Field(
         default=...,
         alias="type",
         title="Indication of the reason the entity signed the object(s)",
@@ -120,7 +121,7 @@ class Signature(element.Element):
         },
     )
 
-    when: fhirtypes.InstantType | None = Field(  # type: ignore
+    when: fhirtypes.InstantType | None = Field(
         default=None,
         alias="when",
         title="When the signature was created",
@@ -131,11 +132,11 @@ class Signature(element.Element):
             "element_required": True,
         },
     )
-    when__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    when__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_when", title="Extension field for ``when``."
     )
 
-    who: fhirtypes.ReferenceType = Field(  # type: ignore
+    who: fhirtypes.ReferenceType = Field(
         default=...,
         alias="who",
         title="Who signed",
@@ -159,7 +160,7 @@ class Signature(element.Element):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Signature`` according to specification,
         with preserving the original sequence order.
@@ -177,7 +178,7 @@ class Signature(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Signature`` according to specification,
         with preserving the original sequence order.
         """

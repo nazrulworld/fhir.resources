@@ -22,18 +22,41 @@ jobs:
       fail-fast: true
       max-parallel: 4
       matrix:
-        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12', '3.13', '3.14']
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false
-      - name: Setup Python ${{ matrix.python-version }}
-        id: setup-python
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+      - name: Install uv
+        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
+        id: setup-uv
         with:
           python-version: ${{ matrix.python-version }}
+          activate-environment: true
       - name: Install dependencies
         run: |
-            pip install -e .[dev]
-      - run: make lint
-      - run: black --check fhir/resources/
+          uv run python --version
+          uv pip install -e .[test]
+      - run: uv run flake8 ./fhir/resources/
+      - run: uv run black --check fhir/resources/
+      # monthly cache updates
+      - run: echo "cache_id=$(date --utc '+%m')" >> "$GITHUB_ENV"
+      - uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        with:
+          key: fhir-resources-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            fhir-resources-
+      - name: Run main tests with Python ${{ matrix.python-version }}
+        run: |
+          which pytest
+          uv run pytest tests
+      - name: Run STU3 tests with Python ${{ matrix.python-version }}
+        run: |
+          uv run pytest fhir/resources/STU3/tests
+      - name: Run R4B tests with Python ${{ matrix.python-version }}
+        run: |
+          uv run pytest -s --cov=fhir/resources/R4B/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/R4B/tests
+      - name: Run R5 tests with Python ${{ matrix.python-version }}
+        run: |
+          uv run pytest -s --cov=fhir/resources/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/tests

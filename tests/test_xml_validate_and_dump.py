@@ -1,7 +1,7 @@
 import sys
 from http import client
 
-import lxml.etree  # type: ignore
+import lxml.etree
 from fhir_core import xml_utils
 
 from fhir.resources.R4B.observation import Observation

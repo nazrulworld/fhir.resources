@@ -2,7 +2,7 @@ import logging
 import subprocess
 import sys
 from http import client
-from typing import Union
+from typing import Optional, Union
 
 from fhir_core import xml_utils
 from fhir_core.fhirabstractmodel import FHIRAbstractModel
@@ -21,9 +21,9 @@ def has_internet_connection():
         return False
 
 
-def post_xml_resource(  # type: ignore
+def post_xml_resource(
     conn: client.HTTPConnection, resource: Union[xml_utils.Node, FHIRAbstractModel]
-) -> client.HTTPResponse:
+) -> Optional[client.HTTPResponse]:
     """ """
     if isinstance(resource, FHIRAbstractModel):
         resource_str = resource.model_dump_xml(return_bytes=True, pretty_print=False)
@@ -48,3 +48,5 @@ def post_xml_resource(  # type: ignore
         return response
     except client.HTTPException as exc:
         sys.stderr.write(f"{exc}\n")
+
+    return None

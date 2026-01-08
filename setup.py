@@ -37,7 +37,7 @@ test_requirements = [
     + (PY_VERSION_10_OR_LATER and ">=6.0.0" or "==4.2.0;python_version<'3.10'"),
     "flake8-bugbear"
     + (PY_VERSION_10_OR_LATER and ">=22.12.6" or "==20.1.4;python_version<'3.10'"),
-    "requests==2.23.0;python_version<'3.10'",
+    "requests==2.32.4",
     "isort" + (PY_VERSION_10_OR_LATER and ">=5.11.4" or "==4.3.21"),
     "black>=23.0,<24.0; python_version >= '3.7'",
     "mypy",
@@ -48,8 +48,6 @@ test_requirements = [
 ]
 if PY_VERSION_10_OR_LATER:
     test_requirements.append("importlib-metadata>=5.2.0")
-if PY_VERSION_11_OR_LATER:
-    test_requirements.append("typed-ast>=1.5.4")
 
 development_requirements = [
     "Jinja2==3.1.6",

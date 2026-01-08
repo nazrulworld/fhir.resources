@@ -17,3 +17,4 @@ Contributors
 * Melvin Hazeleger [melvio]
 * Bidimpata-Kerim Aramyan-Tshimanga [Tshimanga]
 * Alexander Essenwanger [cybernop]
+* Matthias Schoettle [mschoettle]

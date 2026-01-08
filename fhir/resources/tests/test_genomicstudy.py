@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import genomicstudy
-from .fixtures import ExternalValidatorModel  # noqa: F401
+from .fixtures import ExternalValidatorModel
 
 
 def impl_genomicstudy_1(inst):

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Period
 Release: STU3
@@ -7,6 +5,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import element, fhirtypes
@@ -23,7 +26,7 @@ class Period(element.Element):
 
     __resource_type__ = "Period"
 
-    end: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    end: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="end",
         title="End time with inclusive boundary, if not ongoing",
@@ -38,11 +41,11 @@ class Period(element.Element):
             "summary_element_property": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_end", title="Extension field for ``end``."
     )
 
-    start: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    start: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="start",
         title="Starting time with inclusive boundary",
@@ -52,12 +55,12 @@ class Period(element.Element):
             "summary_element_property": True,
         },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_start", title="Extension field for ``start``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Period`` according to specification,
         with preserving the original sequence order.
@@ -65,7 +68,7 @@ class Period(element.Element):
         return ["id", "extension", "start", "end"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Period`` according to specification,
         with preserving the original sequence order.
         """

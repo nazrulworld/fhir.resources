@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ResearchSubject
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -30,7 +31,7 @@ class ResearchSubject(domainresource.DomainResource):
 
     __resource_type__ = "ResearchSubject"
 
-    actualArm: fhirtypes.StringType | None = Field(  # type: ignore
+    actualArm: fhirtypes.StringType | None = Field(
         default=None,
         alias="actualArm",
         title="What path was followed",
@@ -42,11 +43,11 @@ class ResearchSubject(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_actualArm", title="Extension field for ``actualArm``."
     )
 
-    assignedArm: fhirtypes.StringType | None = Field(  # type: ignore
+    assignedArm: fhirtypes.StringType | None = Field(
         default=None,
         alias="assignedArm",
         title="What path should be followed",
@@ -58,11 +59,11 @@ class ResearchSubject(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_assignedArm", title="Extension field for ``assignedArm``."
     )
 
-    consent: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    consent: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="consent",
         title="Agreement to participate in study",
@@ -77,7 +78,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Business Identifier for research subject",
@@ -91,7 +92,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    individual: fhirtypes.ReferenceType = Field(  # type: ignore
+    individual: fhirtypes.ReferenceType = Field(
         default=...,
         alias="individual",
         title="Who is part of study",
@@ -104,7 +105,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Start and end of participation",
@@ -117,7 +118,7 @@ class ResearchSubject(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="candidate | enrolled | active | suspended | withdrawn | completed",
@@ -138,11 +139,11 @@ class ResearchSubject(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    study: fhirtypes.ReferenceType = Field(  # type: ignore
+    study: fhirtypes.ReferenceType = Field(
         default=...,
         alias="study",
         title="Study subject is part of",
@@ -156,7 +157,7 @@ class ResearchSubject(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ResearchSubject`` according to specification,
         with preserving the original sequence order.
@@ -181,7 +182,7 @@ class ResearchSubject(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ResearchSubject`` according to specification,
         with preserving the original sequence order.
         """

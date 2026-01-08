@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MolecularSequence
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -24,7 +25,7 @@ class MolecularSequence(domainresource.DomainResource):
 
     __resource_type__ = "MolecularSequence"
 
-    device: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    device: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="device",
         title="The method for sequencing",
@@ -37,7 +38,7 @@ class MolecularSequence(domainresource.DomainResource):
         },
     )
 
-    focus: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    focus: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="focus",
         title=(
@@ -59,7 +60,7 @@ class MolecularSequence(domainresource.DomainResource):
         },
     )
 
-    formatted: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    formatted: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="formatted",
         title=(
@@ -76,7 +77,7 @@ class MolecularSequence(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Unique ID for this particular sequence",
@@ -87,7 +88,7 @@ class MolecularSequence(domainresource.DomainResource):
         },
     )
 
-    literal: fhirtypes.StringType | None = Field(  # type: ignore
+    literal: fhirtypes.StringType | None = Field(
         default=None,
         alias="literal",
         title="Sequence that was observed",
@@ -97,11 +98,11 @@ class MolecularSequence(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    literal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    literal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_literal", title="Extension field for ``literal``."
     )
 
-    performer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    performer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="performer",
         title="Who should be responsible for test result",
@@ -114,7 +115,7 @@ class MolecularSequence(domainresource.DomainResource):
         },
     )
 
-    relative: typing.List[fhirtypes.MolecularSequenceRelativeType] | None = Field(  # type: ignore
+    relative: typing.List[fhirtypes.MolecularSequenceRelativeType] | None = Field(
         default=None,
         alias="relative",
         title="A sequence defined relative to another sequence",
@@ -125,7 +126,7 @@ class MolecularSequence(domainresource.DomainResource):
         },
     )
 
-    specimen: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    specimen: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="specimen",
         title="Specimen used for sequencing",
@@ -138,7 +139,7 @@ class MolecularSequence(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Subject this sequence is associated too",
@@ -157,7 +158,7 @@ class MolecularSequence(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="aa | dna | rna",
@@ -170,12 +171,12 @@ class MolecularSequence(domainresource.DomainResource):
             "enum_values": ["aa", "dna", "rna"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MolecularSequence`` according to specification,
         with preserving the original sequence order.
@@ -202,7 +203,7 @@ class MolecularSequence(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MolecularSequence`` according to specification,
         with preserving the original sequence order.
         """
@@ -234,7 +235,7 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
 
     __resource_type__ = "MolecularSequenceRelative"
 
-    coordinateSystem: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    coordinateSystem: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="coordinateSystem",
         title="Ways of identifying nucleotides or amino acids within a sequence",
@@ -250,7 +251,7 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
         },
     )
 
-    edit: typing.List[fhirtypes.MolecularSequenceRelativeEditType] | None = Field(  # type: ignore
+    edit: typing.List[fhirtypes.MolecularSequenceRelativeEditType] | None = Field(
         default=None,
         alias="edit",
         title="Changes in sequence from the starting sequence",
@@ -261,7 +262,7 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
         },
     )
 
-    ordinalPosition: fhirtypes.IntegerType | None = Field(  # type: ignore
+    ordinalPosition: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="ordinalPosition",
         title=(
@@ -273,13 +274,13 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    ordinalPosition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    ordinalPosition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_ordinalPosition",
         title="Extension field for ``ordinalPosition``.",
     )
 
-    sequenceRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    sequenceRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="sequenceRange",
         title=(
@@ -292,22 +293,24 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
         },
     )
 
-    startingSequence: fhirtypes.MolecularSequenceRelativeStartingSequenceType | None = Field(  # type: ignore
-        default=None,
-        alias="startingSequence",
-        title="A sequence used as starting sequence",
-        description=(
-            "A sequence that is used as a starting sequence to describe variants "
-            "that are present in a sequence analyzed."
-        ),
-        json_schema_extra={
-            "element_property": True,
-            "summary_element_property": True,
-        },
+    startingSequence: fhirtypes.MolecularSequenceRelativeStartingSequenceType | None = (
+        Field(
+            default=None,
+            alias="startingSequence",
+            title="A sequence used as starting sequence",
+            description=(
+                "A sequence that is used as a starting sequence to describe variants "
+                "that are present in a sequence analyzed."
+            ),
+            json_schema_extra={
+                "element_property": True,
+                "summary_element_property": True,
+            },
+        )
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MolecularSequenceRelative`` according to specification,
         with preserving the original sequence order.
@@ -324,7 +327,7 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MolecularSequenceRelative`` according to specification,
         with preserving the original sequence order.
         """
@@ -341,7 +344,7 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
 
     __resource_type__ = "MolecularSequenceRelativeEdit"
 
-    end: fhirtypes.IntegerType | None = Field(  # type: ignore
+    end: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="end",
         title="End position of the edit on the starting sequence",
@@ -356,11 +359,11 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_end", title="Extension field for ``end``."
     )
 
-    replacedSequence: fhirtypes.StringType | None = Field(  # type: ignore
+    replacedSequence: fhirtypes.StringType | None = Field(
         default=None,
         alias="replacedSequence",
         title="Allele in the starting sequence",
@@ -376,13 +379,13 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    replacedSequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    replacedSequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_replacedSequence",
         title="Extension field for ``replacedSequence``.",
     )
 
-    replacementSequence: fhirtypes.StringType | None = Field(  # type: ignore
+    replacementSequence: fhirtypes.StringType | None = Field(
         default=None,
         alias="replacementSequence",
         title="Allele that was observed",
@@ -398,13 +401,13 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    replacementSequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    replacementSequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_replacementSequence",
         title="Extension field for ``replacementSequence``.",
     )
 
-    start: fhirtypes.IntegerType | None = Field(  # type: ignore
+    start: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="start",
         title="Start position of the edit on the starting sequence",
@@ -418,12 +421,12 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_start", title="Extension field for ``start``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MolecularSequenceRelativeEdit`` according to specification,
         with preserving the original sequence order.
@@ -439,7 +442,7 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MolecularSequenceRelativeEdit`` according to specification,
         with preserving the original sequence order.
         """
@@ -464,7 +467,7 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
 
     __resource_type__ = "MolecularSequenceRelativeStartingSequence"
 
-    chromosome: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    chromosome: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="chromosome",
         title="Chromosome Identifier",
@@ -480,7 +483,7 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
         },
     )
 
-    genomeAssembly: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    genomeAssembly: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="genomeAssembly",
         title="The genome assembly used for starting sequence, e.g. GRCh38",
@@ -491,7 +494,7 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
         },
     )
 
-    orientation: fhirtypes.CodeType | None = Field(  # type: ignore
+    orientation: fhirtypes.CodeType | None = Field(
         default=None,
         alias="orientation",
         title="sense | antisense",
@@ -509,11 +512,11 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "enum_values": ["sense", "antisense"],
         },
     )
-    orientation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    orientation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_orientation", title="Extension field for ``orientation``."
     )
 
-    sequenceCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    sequenceCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="sequenceCodeableConcept",
         title="The reference sequence that represents the starting sequence",
@@ -527,7 +530,7 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
         },
     )
 
-    sequenceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    sequenceReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="sequenceReference",
         title="The reference sequence that represents the starting sequence",
@@ -543,7 +546,7 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
         },
     )
 
-    sequenceString: fhirtypes.StringType | None = Field(  # type: ignore
+    sequenceString: fhirtypes.StringType | None = Field(
         default=None,
         alias="sequenceString",
         title="The reference sequence that represents the starting sequence",
@@ -556,13 +559,13 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "one_of_many_required": False,
         },
     )
-    sequenceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sequenceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_sequenceString",
         title="Extension field for ``sequenceString``.",
     )
 
-    strand: fhirtypes.CodeType | None = Field(  # type: ignore
+    strand: fhirtypes.CodeType | None = Field(
         default=None,
         alias="strand",
         title="watson | crick",
@@ -579,11 +582,11 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "enum_values": ["watson", "crick"],
         },
     )
-    strand__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    strand__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_strand", title="Extension field for ``strand``."
     )
 
-    windowEnd: fhirtypes.IntegerType | None = Field(  # type: ignore
+    windowEnd: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="windowEnd",
         title="End position of the window on the starting sequence",
@@ -596,11 +599,11 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "summary_element_property": True,
         },
     )
-    windowEnd__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    windowEnd__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_windowEnd", title="Extension field for ``windowEnd``."
     )
 
-    windowStart: fhirtypes.IntegerType | None = Field(  # type: ignore
+    windowStart: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="windowStart",
         title="Start position of the window on the starting sequence",
@@ -613,12 +616,12 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "summary_element_property": True,
         },
     )
-    windowStart__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    windowStart__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_windowStart", title="Extension field for ``windowStart``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MolecularSequenceRelativeStartingSequence`` according to specification,
         with preserving the original sequence order.
@@ -639,7 +642,7 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MolecularSequenceRelativeStartingSequence`` according to specification,
         with preserving the original sequence order.
         """

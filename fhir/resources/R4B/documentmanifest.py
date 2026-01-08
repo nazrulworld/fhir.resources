@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DocumentManifest
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class DocumentManifest(domainresource.DomainResource):
 
     __resource_type__ = "DocumentManifest"
 
-    author: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    author: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="author",
         title="Who and/or what authored the DocumentManifest",
@@ -49,7 +50,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    content: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    content: typing.List[fhirtypes.ReferenceType] = Field(
         default=...,
         alias="content",
         title="Items in manifest",
@@ -62,7 +63,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    created: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    created: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="created",
         title="When this document manifest created",
@@ -75,11 +76,11 @@ class DocumentManifest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_created", title="Extension field for ``created``."
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Human-readable description (title)",
@@ -92,11 +93,11 @@ class DocumentManifest(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Other identifiers for the manifest",
@@ -110,7 +111,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    masterIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    masterIdentifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="masterIdentifier",
         title="Unique Identifier for the set of documents",
@@ -124,7 +125,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    recipient: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    recipient: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="recipient",
         title="Intended to get notified about this set of documents",
@@ -145,7 +146,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    related: typing.List[fhirtypes.DocumentManifestRelatedType] | None = Field(  # type: ignore
+    related: typing.List[fhirtypes.DocumentManifestRelatedType] | None = Field(
         default=None,
         alias="related",
         title="Related things",
@@ -155,7 +156,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    source: fhirtypes.UriType | None = Field(  # type: ignore
+    source: fhirtypes.UriType | None = Field(
         default=None,
         alias="source",
         title="The source system/application/software",
@@ -167,11 +168,11 @@ class DocumentManifest(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_source", title="Extension field for ``source``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="current | superseded | entered-in-error",
@@ -185,11 +186,11 @@ class DocumentManifest(domainresource.DomainResource):
             "enum_values": ["current", "superseded", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="The subject of the set of documents",
@@ -209,7 +210,7 @@ class DocumentManifest(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Kind of document set",
@@ -224,7 +225,7 @@ class DocumentManifest(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DocumentManifest`` according to specification,
         with preserving the original sequence order.
@@ -253,7 +254,7 @@ class DocumentManifest(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DocumentManifest`` according to specification,
         with preserving the original sequence order.
         """
@@ -294,7 +295,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
 
     __resource_type__ = "DocumentManifestRelated"
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Identifiers of things that are related",
@@ -307,7 +308,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
         },
     )
 
-    ref: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    ref: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="ref",
         title="Related Resource",
@@ -323,7 +324,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DocumentManifestRelated`` according to specification,
         with preserving the original sequence order.
@@ -331,7 +332,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "identifier", "ref"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DocumentManifestRelated`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Provenance
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -34,7 +35,7 @@ class Provenance(domainresource.DomainResource):
 
     __resource_type__ = "Provenance"
 
-    activity: fhirtypes.CodingType | None = Field(  # type: ignore
+    activity: fhirtypes.CodingType | None = Field(
         default=None,
         alias="activity",
         title="Activity that occurred",
@@ -48,7 +49,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(  # type: ignore
+    agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(
         default=...,
         alias="agent",
         title="Actor involved",
@@ -61,7 +62,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    entity: typing.List[fhirtypes.ProvenanceEntityType] | None = Field(  # type: ignore
+    entity: typing.List[fhirtypes.ProvenanceEntityType] | None = Field(
         default=None,
         alias="entity",
         title="An entity used in this activity",
@@ -71,7 +72,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="location",
         title="Where the activity occurred, if relevant",
@@ -83,7 +84,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="When the activity occurred",
@@ -93,7 +94,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    policy: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    policy: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="policy",
         title="Policy or plan the activity was defined by",
@@ -106,11 +107,13 @@ class Provenance(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    policy__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    policy__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_policy", title="Extension field for ``policy``."
     )
 
-    reason: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="reason",
         title="Reason the activity is occurring",
@@ -120,7 +123,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    recorded: fhirtypes.InstantType | None = Field(  # type: ignore
+    recorded: fhirtypes.InstantType | None = Field(
         default=None,
         alias="recorded",
         title="When the activity was recorded / updated",
@@ -131,11 +134,11 @@ class Provenance(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    signature: typing.List[fhirtypes.SignatureType] | None = Field(  # type: ignore
+    signature: typing.List[fhirtypes.SignatureType] | None = Field(
         default=None,
         alias="signature",
         title="Signature on target",
@@ -148,7 +151,7 @@ class Provenance(domainresource.DomainResource):
         },
     )
 
-    target: typing.List[fhirtypes.ReferenceType] = Field(  # type: ignore
+    target: typing.List[fhirtypes.ReferenceType] = Field(
         default=...,
         alias="target",
         title="Target Reference(s) (usually version specific)",
@@ -167,7 +170,7 @@ class Provenance(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Provenance`` according to specification,
         with preserving the original sequence order.
@@ -194,7 +197,7 @@ class Provenance(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Provenance`` according to specification,
         with preserving the original sequence order.
         """
@@ -224,7 +227,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
     __resource_type__ = "ProvenanceAgent"
 
-    onBehalfOfReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    onBehalfOfReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="onBehalfOfReference",
         title="Who the agent is representing",
@@ -245,7 +248,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    onBehalfOfUri: fhirtypes.UriType | None = Field(  # type: ignore
+    onBehalfOfUri: fhirtypes.UriType | None = Field(
         default=None,
         alias="onBehalfOfUri",
         title="Who the agent is representing",
@@ -257,13 +260,13 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_onBehalfOfUri",
         title="Extension field for ``onBehalfOfUri``.",
     )
 
-    relatedAgentType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    relatedAgentType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="relatedAgentType",
         title="Type of relationship between agents",
@@ -273,7 +276,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    role: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    role: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="role",
         title="What the agents role was",
@@ -287,7 +290,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    whoReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    whoReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="whoReference",
         title="Who participated",
@@ -309,7 +312,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         },
     )
 
-    whoUri: fhirtypes.UriType | None = Field(  # type: ignore
+    whoUri: fhirtypes.UriType | None = Field(
         default=None,
         alias="whoUri",
         title="Who participated",
@@ -322,12 +325,12 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_whoUri", title="Extension field for ``whoUri``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProvenanceAgent`` according to specification,
         with preserving the original sequence order.
@@ -353,7 +356,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProvenanceAgent`` according to specification,
         with preserving the original sequence order.
         """
@@ -398,7 +401,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
 
     __resource_type__ = "ProvenanceEntity"
 
-    agent: typing.List[fhirtypes.ProvenanceAgentType] | None = Field(  # type: ignore
+    agent: typing.List[fhirtypes.ProvenanceAgentType] | None = Field(
         default=None,
         alias="agent",
         title="Entity is attributed to this agent",
@@ -413,7 +416,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeType | None = Field(  # type: ignore
+    role: fhirtypes.CodeType | None = Field(
         default=None,
         alias="role",
         title="derivation | revision | quotation | source | removal",
@@ -427,11 +430,11 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             "enum_values": ["derivation", "revision", "quotation", "source", "removal"],
         },
     )
-    role__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    role__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_role", title="Extension field for ``role``."
     )
 
-    whatIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    whatIdentifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="whatIdentifier",
         title="Identity of entity",
@@ -448,7 +451,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         },
     )
 
-    whatReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    whatReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="whatReference",
         title="Identity of entity",
@@ -467,7 +470,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         },
     )
 
-    whatUri: fhirtypes.UriType | None = Field(  # type: ignore
+    whatUri: fhirtypes.UriType | None = Field(
         default=None,
         alias="whatUri",
         title="Identity of entity",
@@ -483,12 +486,12 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    whatUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    whatUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_whatUri", title="Extension field for ``whatUri``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProvenanceEntity`` according to specification,
         with preserving the original sequence order.
@@ -505,7 +508,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProvenanceEntity`` according to specification,
         with preserving the original sequence order.
         """

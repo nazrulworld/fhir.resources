@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/GraphDefinition
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class GraphDefinition(domainresource.DomainResource):
 
     __resource_type__ = "GraphDefinition"
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -41,7 +42,7 @@ class GraphDefinition(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -56,11 +57,11 @@ class GraphDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the graph definition",
@@ -72,11 +73,11 @@ class GraphDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -90,13 +91,13 @@ class GraphDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for graph definition (if applicable)",
@@ -110,7 +111,7 @@ class GraphDefinition(domainresource.DomainResource):
         },
     )
 
-    link: typing.List[fhirtypes.GraphDefinitionLinkType] | None = Field(  # type: ignore
+    link: typing.List[fhirtypes.GraphDefinitionLinkType] | None = Field(
         default=None,
         alias="link",
         title="Links this graph makes rules about",
@@ -120,7 +121,7 @@ class GraphDefinition(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this graph definition (computer friendly)",
@@ -135,11 +136,11 @@ class GraphDefinition(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    profile: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    profile: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="profile",
         title="Profile on base resource",
@@ -150,11 +151,11 @@ class GraphDefinition(domainresource.DomainResource):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -167,11 +168,11 @@ class GraphDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this graph definition is defined",
@@ -183,11 +184,11 @@ class GraphDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    start: fhirtypes.CodeType | None = Field(  # type: ignore
+    start: fhirtypes.CodeType | None = Field(
         default=None,
         alias="start",
         title="Type of resource at which the graph starts",
@@ -198,11 +199,11 @@ class GraphDefinition(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_start", title="Extension field for ``start``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -219,11 +220,11 @@ class GraphDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -244,11 +245,11 @@ class GraphDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -265,7 +266,7 @@ class GraphDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the graph definition",
@@ -283,12 +284,12 @@ class GraphDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``GraphDefinition`` according to specification,
         with preserving the original sequence order.
@@ -320,7 +321,7 @@ class GraphDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``GraphDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -367,7 +368,7 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
 
     __resource_type__ = "GraphDefinitionLink"
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Why this link is specified",
@@ -379,11 +380,11 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    max: fhirtypes.StringType | None = Field(  # type: ignore
+    max: fhirtypes.StringType | None = Field(
         default=None,
         alias="max",
         title="Maximum occurrences for this link",
@@ -392,11 +393,11 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.IntegerType | None = Field(  # type: ignore
+    min: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="min",
         title="Minimum occurrences for this link",
@@ -405,11 +406,11 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_min", title="Extension field for ``min``."
     )
 
-    path: fhirtypes.StringType | None = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(
         default=None,
         alias="path",
         title="Path in the resource that contains the link",
@@ -421,11 +422,11 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_path", title="Extension field for ``path``."
     )
 
-    sliceName: fhirtypes.StringType | None = Field(  # type: ignore
+    sliceName: fhirtypes.StringType | None = Field(
         default=None,
         alias="sliceName",
         title="Which slice (if profiled)",
@@ -434,11 +435,11 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sliceName", title="Extension field for ``sliceName``."
     )
 
-    target: typing.List[fhirtypes.GraphDefinitionLinkTargetType] | None = Field(  # type: ignore
+    target: typing.List[fhirtypes.GraphDefinitionLinkTargetType] | None = Field(
         default=None,
         alias="target",
         title="Potential target for the link",
@@ -449,7 +450,7 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``GraphDefinitionLink`` according to specification,
         with preserving the original sequence order.
@@ -467,7 +468,7 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``GraphDefinitionLink`` according to specification,
         with preserving the original sequence order.
         """
@@ -484,7 +485,9 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
 
     __resource_type__ = "GraphDefinitionLinkTarget"
 
-    compartment: typing.List[fhirtypes.GraphDefinitionLinkTargetCompartmentType] | None = Field(  # type: ignore
+    compartment: typing.List[
+        fhirtypes.GraphDefinitionLinkTargetCompartmentType
+    ] | None = Field(
         default=None,
         alias="compartment",
         title="Compartment Consistency Rules",
@@ -494,7 +497,7 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         },
     )
 
-    link: typing.List[fhirtypes.GraphDefinitionLinkType] | None = Field(  # type: ignore
+    link: typing.List[fhirtypes.GraphDefinitionLinkType] | None = Field(
         default=None,
         alias="link",
         title="Additional links from target resource",
@@ -504,7 +507,7 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         },
     )
 
-    params: fhirtypes.StringType | None = Field(  # type: ignore
+    params: fhirtypes.StringType | None = Field(
         default=None,
         alias="params",
         title="Criteria for reverse lookup",
@@ -513,11 +516,11 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    params__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    params__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_params", title="Extension field for ``params``."
     )
 
-    profile: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    profile: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="profile",
         title="Profile for the target resource",
@@ -528,11 +531,11 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
             "enum_reference_types": ["StructureDefinition"],
         },
     )
-    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    profile__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="Type of resource this link refers to",
@@ -542,12 +545,12 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``GraphDefinitionLinkTarget`` according to specification,
         with preserving the original sequence order.
@@ -564,7 +567,7 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``GraphDefinitionLinkTarget`` according to specification,
         with preserving the original sequence order.
         """
@@ -592,7 +595,7 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
 
     __resource_type__ = "GraphDefinitionLinkTargetCompartment"
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title="Patient | Encounter | RelatedPerson | Practitioner | Device",
@@ -611,11 +614,11 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
             ],
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Documentation for FHIRPath expression",
@@ -624,11 +627,11 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    expression: fhirtypes.StringType | None = Field(  # type: ignore
+    expression: fhirtypes.StringType | None = Field(
         default=None,
         alias="expression",
         title="Custom rule, as a FHIRPath expression",
@@ -637,11 +640,11 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    rule: fhirtypes.CodeType | None = Field(  # type: ignore
+    rule: fhirtypes.CodeType | None = Field(
         default=None,
         alias="rule",
         title="identical | matching | different | custom",
@@ -654,11 +657,11 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
             "enum_values": ["identical", "matching", "different", "custom"],
         },
     )
-    rule__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    rule__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_rule", title="Extension field for ``rule``."
     )
 
-    use: fhirtypes.CodeType | None = Field(  # type: ignore
+    use: fhirtypes.CodeType | None = Field(
         default=None,
         alias="use",
         title="condition | requirement",
@@ -675,12 +678,12 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
             "enum_values": ["condition", "requirement"],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_use", title="Extension field for ``use``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``GraphDefinitionLinkTargetCompartment`` according to specification,
         with preserving the original sequence order.
@@ -697,7 +700,7 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``GraphDefinitionLinkTargetCompartment`` according to specification,
         with preserving the original sequence order.
         """

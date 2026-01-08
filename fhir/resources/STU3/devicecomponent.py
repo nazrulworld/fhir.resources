@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DeviceComponent
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class DeviceComponent(domainresource.DomainResource):
 
     __resource_type__ = "DeviceComponent"
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType = Field(
         default=...,
         alias="identifier",
         title="Instance id assigned by the software stack",
@@ -40,7 +41,7 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
 
-    languageCode: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    languageCode: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="languageCode",
         title=(
@@ -58,7 +59,7 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
 
-    lastSystemChange: fhirtypes.InstantType | None = Field(  # type: ignore
+    lastSystemChange: fhirtypes.InstantType | None = Field(
         default=None,
         alias="lastSystemChange",
         title="Recent system change timestamp",
@@ -71,13 +72,13 @@ class DeviceComponent(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastSystemChange",
         title="Extension field for ``lastSystemChange``.",
     )
 
-    measurementPrinciple: fhirtypes.CodeType | None = Field(  # type: ignore
+    measurementPrinciple: fhirtypes.CodeType | None = Field(
         default=None,
         alias="measurementPrinciple",
         title=(
@@ -108,13 +109,13 @@ class DeviceComponent(domainresource.DomainResource):
             ],
         },
     )
-    measurementPrinciple__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    measurementPrinciple__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_measurementPrinciple",
         title="Extension field for ``measurementPrinciple``.",
     )
 
-    operationalStatus: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    operationalStatus: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="operationalStatus",
         title=(
@@ -131,7 +132,7 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
 
-    parameterGroup: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    parameterGroup: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="parameterGroup",
         title="Current supported parameter group",
@@ -145,7 +146,7 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
 
-    parent: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    parent: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="parent",
         title="Parent resource link",
@@ -161,7 +162,9 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
 
-    productionSpecification: typing.List[fhirtypes.DeviceComponentProductionSpecificationType] | None = Field(  # type: ignore
+    productionSpecification: typing.List[
+        fhirtypes.DeviceComponentProductionSpecificationType
+    ] | None = Field(
         default=None,
         alias="productionSpecification",
         title="Specification details such as Component Revisions, or Serial Numbers",
@@ -175,7 +178,7 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
 
-    source: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    source: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="source",
         title="Top-level device resource link",
@@ -191,7 +194,7 @@ class DeviceComponent(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title="What kind of component it is",
@@ -206,7 +209,7 @@ class DeviceComponent(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DeviceComponent`` according to specification,
         with preserving the original sequence order.
@@ -233,7 +236,7 @@ class DeviceComponent(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DeviceComponent`` according to specification,
         with preserving the original sequence order.
         """
@@ -266,7 +269,7 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
 
     __resource_type__ = "DeviceComponentProductionSpecification"
 
-    componentId: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    componentId: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="componentId",
         title="Internal component unique identification",
@@ -282,7 +285,7 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         },
     )
 
-    productionSpec: fhirtypes.StringType | None = Field(  # type: ignore
+    productionSpec: fhirtypes.StringType | None = Field(
         default=None,
         alias="productionSpec",
         title="A printable string defining the component",
@@ -292,13 +295,13 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_productionSpec",
         title="Extension field for ``productionSpec``.",
     )
 
-    specType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    specType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="specType",
         title=(
@@ -316,7 +319,7 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DeviceComponentProductionSpecification`` according to specification,
         with preserving the original sequence order.
@@ -331,7 +334,7 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DeviceComponentProductionSpecification`` according to specification,
         with preserving the original sequence order.
         """

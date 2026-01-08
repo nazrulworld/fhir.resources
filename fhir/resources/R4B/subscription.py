@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Subscription
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -29,7 +30,7 @@ class Subscription(domainresource.DomainResource):
 
     __resource_type__ = "Subscription"
 
-    channel: fhirtypes.SubscriptionChannelType = Field(  # type: ignore
+    channel: fhirtypes.SubscriptionChannelType = Field(
         default=...,
         alias="channel",
         title="The channel on which to report matches to the criteria",
@@ -43,7 +44,7 @@ class Subscription(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for source (e.g. troubleshooting)",
@@ -57,7 +58,7 @@ class Subscription(domainresource.DomainResource):
         },
     )
 
-    criteria: fhirtypes.StringType | None = Field(  # type: ignore
+    criteria: fhirtypes.StringType | None = Field(
         default=None,
         alias="criteria",
         title="Rule for server push",
@@ -71,11 +72,11 @@ class Subscription(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    criteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    criteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_criteria", title="Extension field for ``criteria``."
     )
 
-    end: fhirtypes.InstantType | None = Field(  # type: ignore
+    end: fhirtypes.InstantType | None = Field(
         default=None,
         alias="end",
         title="When to automatically delete the subscription",
@@ -85,11 +86,11 @@ class Subscription(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_end", title="Extension field for ``end``."
     )
 
-    error: fhirtypes.StringType | None = Field(  # type: ignore
+    error: fhirtypes.StringType | None = Field(
         default=None,
         alias="error",
         title="Latest error note",
@@ -102,11 +103,11 @@ class Subscription(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    error__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    error__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_error", title="Extension field for ``error``."
     )
 
-    reason: fhirtypes.StringType | None = Field(  # type: ignore
+    reason: fhirtypes.StringType | None = Field(
         default=None,
         alias="reason",
         title="Description of why this subscription was created",
@@ -117,11 +118,11 @@ class Subscription(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    reason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    reason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_reason", title="Extension field for ``reason``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="requested | active | error | off",
@@ -138,12 +139,12 @@ class Subscription(domainresource.DomainResource):
             "enum_values": ["requested", "active", "error", "off"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Subscription`` according to specification,
         with preserving the original sequence order.
@@ -167,7 +168,7 @@ class Subscription(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Subscription`` according to specification,
         with preserving the original sequence order.
         """
@@ -212,7 +213,7 @@ class SubscriptionChannel(backboneelement.BackboneElement):
 
     __resource_type__ = "SubscriptionChannel"
 
-    endpoint: fhirtypes.UrlType | None = Field(  # type: ignore
+    endpoint: fhirtypes.UrlType | None = Field(
         default=None,
         alias="endpoint",
         title="Where the channel points to",
@@ -222,11 +223,11 @@ class SubscriptionChannel(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_endpoint", title="Extension field for ``endpoint``."
     )
 
-    header: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    header: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="header",
         title="Usage depends on the channel type",
@@ -236,11 +237,13 @@ class SubscriptionChannel(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    header__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    header__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_header", title="Extension field for ``header``."
     )
 
-    payload: fhirtypes.CodeType | None = Field(  # type: ignore
+    payload: fhirtypes.CodeType | None = Field(
         default=None,
         alias="payload",
         title="MIME type to send, or omit for no payload",
@@ -255,11 +258,11 @@ class SubscriptionChannel(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    payload__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    payload__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_payload", title="Extension field for ``payload``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="rest-hook | websocket | email | sms | message",
@@ -273,12 +276,12 @@ class SubscriptionChannel(backboneelement.BackboneElement):
             "enum_values": ["rest-hook", "websocket", "email", "sms", "message"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubscriptionChannel`` according to specification,
         with preserving the original sequence order.
@@ -294,7 +297,7 @@ class SubscriptionChannel(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubscriptionChannel`` according to specification,
         with preserving the original sequence order.
         """

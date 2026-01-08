@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Dosage
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class Dosage(backbonetype.BackboneType):
 
     __resource_type__ = "Dosage"
 
-    additionalInstruction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    additionalInstruction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="additionalInstruction",
         title=(
@@ -46,7 +47,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    asNeeded: bool | None = Field(  # type: ignore
+    asNeeded: bool | None = Field(
         default=None,
         alias="asNeeded",
         title='Take "as needed"',
@@ -59,11 +60,11 @@ class Dosage(backbonetype.BackboneType):
             "summary_element_property": True,
         },
     )
-    asNeeded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    asNeeded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_asNeeded", title="Extension field for ``asNeeded``."
     )
 
-    asNeededFor: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    asNeededFor: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="asNeededFor",
         title='Take "as needed" (for x)',
@@ -77,7 +78,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    doseAndRate: typing.List[fhirtypes.DosageDoseAndRateType] | None = Field(  # type: ignore
+    doseAndRate: typing.List[fhirtypes.DosageDoseAndRateType] | None = Field(
         default=None,
         alias="doseAndRate",
         title=(
@@ -95,7 +96,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    maxDosePerAdministration: fhirtypes.QuantityType | None = Field(  # type: ignore
+    maxDosePerAdministration: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="maxDosePerAdministration",
         title="Upper limit on medication per administration",
@@ -106,7 +107,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    maxDosePerLifetime: fhirtypes.QuantityType | None = Field(  # type: ignore
+    maxDosePerLifetime: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="maxDosePerLifetime",
         title="Upper limit on medication per lifetime of the patient",
@@ -117,7 +118,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    maxDosePerPeriod: typing.List[fhirtypes.RatioType] | None = Field(  # type: ignore
+    maxDosePerPeriod: typing.List[fhirtypes.RatioType] | None = Field(
         default=None,
         alias="maxDosePerPeriod",
         title="Upper limit on medication per unit of time",
@@ -128,7 +129,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    method: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="method",
         title="Technique for administering medication",
@@ -139,7 +140,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    patientInstruction: fhirtypes.StringType | None = Field(  # type: ignore
+    patientInstruction: fhirtypes.StringType | None = Field(
         default=None,
         alias="patientInstruction",
         title="Patient or consumer oriented instructions",
@@ -149,13 +150,13 @@ class Dosage(backbonetype.BackboneType):
             "summary_element_property": True,
         },
     )
-    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_patientInstruction",
         title="Extension field for ``patientInstruction``.",
     )
 
-    route: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    route: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="route",
         title="How drug should enter body",
@@ -166,7 +167,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    sequence: fhirtypes.IntegerType | None = Field(  # type: ignore
+    sequence: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="sequence",
         title="The order of the dosage instructions",
@@ -179,11 +180,11 @@ class Dosage(backbonetype.BackboneType):
             "summary_element_property": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    site: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    site: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="site",
         title="Body site to administer to",
@@ -194,7 +195,7 @@ class Dosage(backbonetype.BackboneType):
         },
     )
 
-    text: fhirtypes.StringType | None = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(
         default=None,
         alias="text",
         title="Free text dosage instructions e.g. SIG",
@@ -204,11 +205,11 @@ class Dosage(backbonetype.BackboneType):
             "summary_element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_text", title="Extension field for ``text``."
     )
 
-    timing: fhirtypes.TimingType | None = Field(  # type: ignore
+    timing: fhirtypes.TimingType | None = Field(
         default=None,
         alias="timing",
         title="When medication should be administered",
@@ -220,7 +221,7 @@ class Dosage(backbonetype.BackboneType):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Dosage`` according to specification,
         with preserving the original sequence order.
@@ -246,7 +247,7 @@ class Dosage(backbonetype.BackboneType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Dosage`` according to specification,
         with preserving the original sequence order.
         """
@@ -282,7 +283,7 @@ class DosageDoseAndRate(element.Element):
 
     __resource_type__ = "DosageDoseAndRate"
 
-    doseQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    doseQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="doseQuantity",
         title="Amount of medication per dose",
@@ -296,7 +297,7 @@ class DosageDoseAndRate(element.Element):
         },
     )
 
-    doseRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    doseRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="doseRange",
         title="Amount of medication per dose",
@@ -310,7 +311,7 @@ class DosageDoseAndRate(element.Element):
         },
     )
 
-    rateQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    rateQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="rateQuantity",
         title="Amount of medication per unit of time",
@@ -324,7 +325,7 @@ class DosageDoseAndRate(element.Element):
         },
     )
 
-    rateRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    rateRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="rateRange",
         title="Amount of medication per unit of time",
@@ -338,7 +339,7 @@ class DosageDoseAndRate(element.Element):
         },
     )
 
-    rateRatio: fhirtypes.RatioType | None = Field(  # type: ignore
+    rateRatio: fhirtypes.RatioType | None = Field(
         default=None,
         alias="rateRatio",
         title="Amount of medication per unit of time",
@@ -352,7 +353,7 @@ class DosageDoseAndRate(element.Element):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="The kind of dose or rate specified",
@@ -366,7 +367,7 @@ class DosageDoseAndRate(element.Element):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DosageDoseAndRate`` according to specification,
         with preserving the original sequence order.
@@ -383,7 +384,7 @@ class DosageDoseAndRate(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DosageDoseAndRate`` according to specification,
         with preserving the original sequence order.
         """

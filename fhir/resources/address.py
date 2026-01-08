@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Address
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -32,7 +33,7 @@ class Address(datatype.DataType):
 
     __resource_type__ = "Address"
 
-    city: fhirtypes.StringType | None = Field(  # type: ignore
+    city: fhirtypes.StringType | None = Field(
         default=None,
         alias="city",
         title="Name of city, town etc.",
@@ -45,11 +46,11 @@ class Address(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    city__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    city__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_city", title="Extension field for ``city``."
     )
 
-    country: fhirtypes.StringType | None = Field(  # type: ignore
+    country: fhirtypes.StringType | None = Field(
         default=None,
         alias="country",
         title="Country (e.g. may be ISO 3166 2 or 3 letter code)",
@@ -59,11 +60,11 @@ class Address(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    country__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    country__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_country", title="Extension field for ``country``."
     )
 
-    district: fhirtypes.StringType | None = Field(  # type: ignore
+    district: fhirtypes.StringType | None = Field(
         default=None,
         alias="district",
         title="District name (aka county)",
@@ -73,11 +74,11 @@ class Address(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    district__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    district__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_district", title="Extension field for ``district``."
     )
 
-    line: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    line: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="line",
         title="Street name, number, direction & P.O. Box etc.",
@@ -91,11 +92,11 @@ class Address(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    line__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    line__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(
         default=None, alias="_line", title="Extension field for ``line``."
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Time period when address was/is in use",
@@ -106,7 +107,7 @@ class Address(datatype.DataType):
         },
     )
 
-    postalCode: fhirtypes.StringType | None = Field(  # type: ignore
+    postalCode: fhirtypes.StringType | None = Field(
         default=None,
         alias="postalCode",
         title="Postal code for area",
@@ -116,11 +117,11 @@ class Address(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    postalCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    postalCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_postalCode", title="Extension field for ``postalCode``."
     )
 
-    state: fhirtypes.StringType | None = Field(  # type: ignore
+    state: fhirtypes.StringType | None = Field(
         default=None,
         alias="state",
         title="Sub-unit of country (abbreviations ok)",
@@ -134,11 +135,11 @@ class Address(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    state__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    state__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_state", title="Extension field for ``state``."
     )
 
-    text: fhirtypes.StringType | None = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(
         default=None,
         alias="text",
         title="Text representation of the address",
@@ -152,11 +153,11 @@ class Address(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="postal | physical | both",
@@ -173,11 +174,11 @@ class Address(datatype.DataType):
             "enum_values": ["postal", "physical", "both"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    use: fhirtypes.CodeType | None = Field(  # type: ignore
+    use: fhirtypes.CodeType | None = Field(
         default=None,
         alias="use",
         title="home | work | temp | old | billing - purpose of this address",
@@ -190,12 +191,12 @@ class Address(datatype.DataType):
             "enum_values": ["home", "work", "temp", "old", "billing"],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_use", title="Extension field for ``use``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Address`` according to specification,
         with preserving the original sequence order.
@@ -216,7 +217,7 @@ class Address(datatype.DataType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Address`` according to specification,
         with preserving the original sequence order.
         """

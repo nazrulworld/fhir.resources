@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ExtendedContactDetail
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class ExtendedContactDetail(datatype.DataType):
 
     __resource_type__ = "ExtendedContactDetail"
 
-    address: fhirtypes.AddressType | None = Field(  # type: ignore
+    address: fhirtypes.AddressType | None = Field(
         default=None,
         alias="address",
         title="Address for the contact",
@@ -37,7 +38,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
+    name: typing.List[fhirtypes.HumanNameType] | None = Field(
         default=None,
         alias="name",
         title="Name of an individual to contact",
@@ -51,7 +52,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="organization",
         title="This contact detail is handled/monitored by a specific organization",
@@ -68,7 +69,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Period that this contact was valid for usage",
@@ -79,7 +80,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    purpose: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    purpose: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="purpose",
         title="The type of contact",
@@ -90,7 +91,7 @@ class ExtendedContactDetail(datatype.DataType):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="telecom",
         title="Contact details (e.g.phone/fax/url)",
@@ -102,7 +103,7 @@ class ExtendedContactDetail(datatype.DataType):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ExtendedContactDetail`` according to specification,
         with preserving the original sequence order.
@@ -119,7 +120,7 @@ class ExtendedContactDetail(datatype.DataType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ExtendedContactDetail`` according to specification,
         with preserving the original sequence order.
         """

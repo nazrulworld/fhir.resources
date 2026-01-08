@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RelatedArtifact
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class RelatedArtifact(datatype.DataType):
 
     __resource_type__ = "RelatedArtifact"
 
-    citation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    citation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="citation",
         title="Bibliographic citation for the artifact",
@@ -39,11 +40,11 @@ class RelatedArtifact(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_citation", title="Extension field for ``citation``."
     )
 
-    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="classifier",
         title="Additional classifiers",
@@ -54,7 +55,7 @@ class RelatedArtifact(datatype.DataType):
         },
     )
 
-    display: fhirtypes.StringType | None = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(
         default=None,
         alias="display",
         title="Brief description of the related artifact",
@@ -67,11 +68,11 @@ class RelatedArtifact(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_display", title="Extension field for ``display``."
     )
 
-    document: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    document: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="document",
         title="What document is being referenced",
@@ -85,7 +86,7 @@ class RelatedArtifact(datatype.DataType):
         },
     )
 
-    label: fhirtypes.StringType | None = Field(  # type: ignore
+    label: fhirtypes.StringType | None = Field(
         default=None,
         alias="label",
         title="Short label",
@@ -98,11 +99,11 @@ class RelatedArtifact(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_label", title="Extension field for ``label``."
     )
 
-    publicationDate: fhirtypes.DateType | None = Field(  # type: ignore
+    publicationDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="publicationDate",
         title="Date of publication of the artifact being referred to",
@@ -112,13 +113,13 @@ class RelatedArtifact(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    publicationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publicationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_publicationDate",
         title="Extension field for ``publicationDate``.",
     )
 
-    publicationStatus: fhirtypes.CodeType | None = Field(  # type: ignore
+    publicationStatus: fhirtypes.CodeType | None = Field(
         default=None,
         alias="publicationStatus",
         title="draft | active | retired | unknown",
@@ -131,13 +132,13 @@ class RelatedArtifact(datatype.DataType):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    publicationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publicationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_publicationStatus",
         title="Extension field for ``publicationStatus``.",
     )
 
-    resource: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    resource: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="resource",
         title="What artifact is being referenced",
@@ -152,11 +153,11 @@ class RelatedArtifact(datatype.DataType):
             "enum_reference_types": ["Resource"],
         },
     )
-    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
-    resourceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    resourceReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="resourceReference",
         title="What artifact, if not a conformance resource",
@@ -172,7 +173,7 @@ class RelatedArtifact(datatype.DataType):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -232,12 +233,12 @@ class RelatedArtifact(datatype.DataType):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RelatedArtifact`` according to specification,
         with preserving the original sequence order.
@@ -258,7 +259,7 @@ class RelatedArtifact(datatype.DataType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RelatedArtifact`` according to specification,
         with preserving the original sequence order.
         """

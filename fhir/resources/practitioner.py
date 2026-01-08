@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Practitioner
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class Practitioner(domainresource.DomainResource):
 
     __resource_type__ = "Practitioner"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this practitioner's record is in active use",
@@ -37,11 +38,11 @@ class Practitioner(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
+    address: typing.List[fhirtypes.AddressType] | None = Field(
         default=None,
         alias="address",
         title=(
@@ -59,7 +60,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType | None = Field(  # type: ignore
+    birthDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="birthDate",
         title="The date  on which the practitioner was born",
@@ -69,11 +70,11 @@ class Practitioner(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: typing.List[fhirtypes.PractitionerCommunicationType] | None = Field(  # type: ignore
+    communication: typing.List[fhirtypes.PractitionerCommunicationType] | None = Field(
         default=None,
         alias="communication",
         title="A language which may be used to communicate with the practitioner",
@@ -89,7 +90,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    deceasedBoolean: bool | None = Field(  # type: ignore
+    deceasedBoolean: bool | None = Field(
         default=None,
         alias="deceasedBoolean",
         title="Indicates if the practitioner is deceased or not",
@@ -102,13 +103,13 @@ class Practitioner(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_deceasedBoolean",
         title="Extension field for ``deceasedBoolean``.",
     )
 
-    deceasedDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    deceasedDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="deceasedDateTime",
         title="Indicates if the practitioner is deceased or not",
@@ -121,13 +122,13 @@ class Practitioner(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_deceasedDateTime",
         title="Extension field for ``deceasedDateTime``.",
     )
 
-    gender: fhirtypes.CodeType | None = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(
         default=None,
         alias="gender",
         title="male | female | other | unknown",
@@ -143,11 +144,11 @@ class Practitioner(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="An identifier for the person as this agent",
@@ -158,7 +159,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
+    name: typing.List[fhirtypes.HumanNameType] | None = Field(
         default=None,
         alias="name",
         title="The name(s) associated with the practitioner",
@@ -169,7 +170,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    photo: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="photo",
         title="Image of the person",
@@ -179,7 +180,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    qualification: typing.List[fhirtypes.PractitionerQualificationType] | None = Field(  # type: ignore
+    qualification: typing.List[fhirtypes.PractitionerQualificationType] | None = Field(
         default=None,
         alias="qualification",
         title=(
@@ -199,7 +200,7 @@ class Practitioner(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="telecom",
         title="A contact detail for the practitioner (that apply to all roles)",
@@ -214,7 +215,7 @@ class Practitioner(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Practitioner`` according to specification,
         with preserving the original sequence order.
@@ -243,7 +244,7 @@ class Practitioner(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Practitioner`` according to specification,
         with preserving the original sequence order.
         """
@@ -296,7 +297,7 @@ class PractitionerCommunication(backboneelement.BackboneElement):
 
     __resource_type__ = "PractitionerCommunication"
 
-    language: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    language: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="language",
         title="The language code used to communicate with the practitioner",
@@ -311,7 +312,7 @@ class PractitionerCommunication(backboneelement.BackboneElement):
         },
     )
 
-    preferred: bool | None = Field(  # type: ignore
+    preferred: bool | None = Field(
         default=None,
         alias="preferred",
         title="Language preference indicator",
@@ -323,12 +324,12 @@ class PractitionerCommunication(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PractitionerCommunication`` according to specification,
         with preserving the original sequence order.
@@ -336,7 +337,7 @@ class PractitionerCommunication(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "language", "preferred"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PractitionerCommunication`` according to specification,
         with preserving the original sequence order.
         """
@@ -361,7 +362,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
 
     __resource_type__ = "PractitionerQualification"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="Coded representation of the qualification",
@@ -371,7 +372,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="An identifier for this qualification for the practitioner",
@@ -381,7 +382,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         },
     )
 
-    issuer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    issuer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="issuer",
         title="Organization that regulates and issues the qualification",
@@ -393,7 +394,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Period during which the qualification is valid",
@@ -404,7 +405,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PractitionerQualification`` according to specification,
         with preserving the original sequence order.
@@ -420,7 +421,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PractitionerQualification`` according to specification,
         with preserving the original sequence order.
         """

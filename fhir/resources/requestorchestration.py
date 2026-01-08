@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RequestOrchestration
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class RequestOrchestration(domainresource.DomainResource):
 
     __resource_type__ = "RequestOrchestration"
 
-    action: typing.List[fhirtypes.RequestOrchestrationActionType] | None = Field(  # type: ignore
+    action: typing.List[fhirtypes.RequestOrchestrationActionType] | None = Field(
         default=None,
         alias="action",
         title="Proposed actions, if any",
@@ -36,7 +37,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    author: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    author: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="author",
         title="Device or practitioner that authored the request orchestration",
@@ -48,7 +49,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    authoredOn: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    authoredOn: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="authoredOn",
         title="When the request orchestration was authored",
@@ -57,11 +58,11 @@ class RequestOrchestration(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="basedOn",
         title="Fulfills plan, proposal, or order",
@@ -76,7 +77,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="What's being requested/ordered",
@@ -87,7 +88,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="encounter",
         title="Created as part of",
@@ -99,7 +100,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    goal: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    goal: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="goal",
         title="What goals",
@@ -114,7 +115,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    groupIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    groupIdentifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="groupIdentifier",
         title="Composite request this is part of",
@@ -133,7 +134,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier",
@@ -147,7 +148,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -161,13 +162,15 @@ class RequestOrchestration(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    instantiatesCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    instantiatesCanonical__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -181,13 +184,15 @@ class RequestOrchestration(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    instantiatesUri__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_instantiatesUri",
         title="Extension field for ``instantiatesUri``.",
     )
 
-    intent: fhirtypes.CodeType | None = Field(  # type: ignore
+    intent: fhirtypes.CodeType | None = Field(
         default=None,
         alias="intent",
         title=(
@@ -217,11 +222,11 @@ class RequestOrchestration(domainresource.DomainResource):
             ],
         },
     )
-    intent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_intent", title="Extension field for ``intent``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Additional notes about the response",
@@ -234,7 +239,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(
         default=None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -250,11 +255,11 @@ class RequestOrchestration(domainresource.DomainResource):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="reason",
         title="Why the request orchestration is needed",
@@ -274,7 +279,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="replaces",
         title="Request(s) replaced by this request",
@@ -289,7 +294,7 @@ class RequestOrchestration(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -317,11 +322,11 @@ class RequestOrchestration(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Who the request orchestration is about",
@@ -345,7 +350,7 @@ class RequestOrchestration(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RequestOrchestration`` according to specification,
         with preserving the original sequence order.
@@ -380,7 +385,7 @@ class RequestOrchestration(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RequestOrchestration`` according to specification,
         with preserving the original sequence order.
         """
@@ -422,7 +427,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
 
     __resource_type__ = "RequestOrchestrationAction"
 
-    action: typing.List[fhirtypes.RequestOrchestrationActionType] | None = Field(  # type: ignore
+    action: typing.List[fhirtypes.RequestOrchestrationActionType] | None = Field(
         default=None,
         alias="action",
         title="Sub action",
@@ -432,7 +437,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    cardinalityBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    cardinalityBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="cardinalityBehavior",
         title="single | multiple",
@@ -444,13 +449,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "enum_values": ["single", "multiple"],
         },
     )
-    cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_cardinalityBehavior",
         title="Extension field for ``cardinalityBehavior``.",
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="code",
         title="Code representing the meaning of the action or sub-actions",
@@ -464,7 +469,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    condition: typing.List[fhirtypes.RequestOrchestrationActionConditionType] | None = Field(  # type: ignore
+    condition: typing.List[
+        fhirtypes.RequestOrchestrationActionConditionType
+    ] | None = Field(
         default=None,
         alias="condition",
         title="Whether or not the action is applicable",
@@ -477,7 +484,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    definitionCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    definitionCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="definitionCanonical",
         title="Description of the activity to be performed",
@@ -504,13 +511,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             ],
         },
     )
-    definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_definitionCanonical",
         title="Extension field for ``definitionCanonical``.",
     )
 
-    definitionUri: fhirtypes.UriType | None = Field(  # type: ignore
+    definitionUri: fhirtypes.UriType | None = Field(
         default=None,
         alias="definitionUri",
         title="Description of the activity to be performed",
@@ -529,13 +536,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    definitionUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    definitionUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_definitionUri",
         title="Extension field for ``definitionUri``.",
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Short description of the action",
@@ -548,11 +555,11 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    documentation: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    documentation: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="documentation",
         title="Supporting documentation for the intended performer of the action",
@@ -566,7 +573,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    dynamicValue: typing.List[fhirtypes.RequestOrchestrationActionDynamicValueType] | None = Field(  # type: ignore
+    dynamicValue: typing.List[
+        fhirtypes.RequestOrchestrationActionDynamicValueType
+    ] | None = Field(
         default=None,
         alias="dynamicValue",
         title="Dynamic aspects of the definition",
@@ -582,7 +591,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    goal: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    goal: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="goal",
         title="What goals",
@@ -597,7 +606,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    groupingBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    groupingBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="groupingBehavior",
         title="visual-group | logical-group | sentence-group",
@@ -609,13 +618,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "enum_values": ["visual-group", "logical-group", "sentence-group"],
         },
     )
-    groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_groupingBehavior",
         title="Extension field for ``groupingBehavior``.",
     )
 
-    input: typing.List[fhirtypes.RequestOrchestrationActionInputType] | None = Field(  # type: ignore
+    input: typing.List[fhirtypes.RequestOrchestrationActionInputType] | None = Field(
         default=None,
         alias="input",
         title="Input data requirements",
@@ -625,7 +634,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    linkId: fhirtypes.StringType | None = Field(  # type: ignore
+    linkId: fhirtypes.StringType | None = Field(
         default=None,
         alias="linkId",
         title="Pointer to specific item from the PlanDefinition",
@@ -637,11 +646,11 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    location: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
+    location: fhirtypes.CodeableReferenceType | None = Field(
         default=None,
         alias="location",
         title="Where it should happen",
@@ -656,7 +665,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    output: typing.List[fhirtypes.RequestOrchestrationActionOutputType] | None = Field(  # type: ignore
+    output: typing.List[fhirtypes.RequestOrchestrationActionOutputType] | None = Field(
         default=None,
         alias="output",
         title="Output data definition",
@@ -666,7 +675,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    participant: typing.List[fhirtypes.RequestOrchestrationActionParticipantType] | None = Field(  # type: ignore
+    participant: typing.List[
+        fhirtypes.RequestOrchestrationActionParticipantType
+    ] | None = Field(
         default=None,
         alias="participant",
         title="Who should perform the action",
@@ -676,7 +687,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    precheckBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    precheckBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="precheckBehavior",
         title="yes | no",
@@ -688,13 +699,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "enum_values": ["yes", "no"],
         },
     )
-    precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_precheckBehavior",
         title="Extension field for ``precheckBehavior``.",
     )
 
-    prefix: fhirtypes.StringType | None = Field(  # type: ignore
+    prefix: fhirtypes.StringType | None = Field(
         default=None,
         alias="prefix",
         title="User-visible prefix for the action (e.g. 1. or A.)",
@@ -706,11 +717,11 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    prefix__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    prefix__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_prefix", title="Extension field for ``prefix``."
     )
 
-    priority: fhirtypes.CodeType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(
         default=None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -725,11 +736,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    relatedAction: typing.List[fhirtypes.RequestOrchestrationActionRelatedActionType] | None = Field(  # type: ignore
+    relatedAction: typing.List[
+        fhirtypes.RequestOrchestrationActionRelatedActionType
+    ] | None = Field(
         default=None,
         alias="relatedAction",
         title="Relationship to another action",
@@ -742,7 +755,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    requiredBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    requiredBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="requiredBehavior",
         title="must | could | must-unless-documented",
@@ -754,13 +767,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "enum_values": ["must", "could", "must-unless-documented"],
         },
     )
-    requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_requiredBehavior",
         title="Extension field for ``requiredBehavior``.",
     )
 
-    resource: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    resource: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="resource",
         title="The target of the action",
@@ -775,7 +788,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    selectionBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    selectionBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="selectionBehavior",
         title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
@@ -794,13 +807,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             ],
         },
     )
-    selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_selectionBehavior",
         title="Extension field for ``selectionBehavior``.",
     )
 
-    textEquivalent: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    textEquivalent: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="textEquivalent",
         title=(
@@ -818,13 +831,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_textEquivalent",
         title="Extension field for ``textEquivalent``.",
     )
 
-    timingAge: fhirtypes.AgeType | None = Field(  # type: ignore
+    timingAge: fhirtypes.AgeType | None = Field(
         default=None,
         alias="timingAge",
         title="When the action should take place",
@@ -837,7 +850,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    timingDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    timingDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="timingDateTime",
         title="When the action should take place",
@@ -849,13 +862,13 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_timingDateTime",
         title="Extension field for ``timingDateTime``.",
     )
 
-    timingDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    timingDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="timingDuration",
         title="When the action should take place",
@@ -868,7 +881,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    timingPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    timingPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="timingPeriod",
         title="When the action should take place",
@@ -881,7 +894,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    timingRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    timingRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="timingRange",
         title="When the action should take place",
@@ -894,7 +907,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    timingTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    timingTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="timingTiming",
         title="When the action should take place",
@@ -907,7 +920,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="User-visible title",
@@ -916,11 +929,11 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    transform: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    transform: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="transform",
         title="Transform to apply the template",
@@ -935,11 +948,11 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "enum_reference_types": ["StructureMap"],
         },
     )
-    transform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    transform__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_transform", title="Extension field for ``transform``."
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="create | update | remove | fire-event",
@@ -950,7 +963,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RequestOrchestrationAction`` according to specification,
         with preserving the original sequence order.
@@ -995,7 +1008,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationAction`` according to specification,
         with preserving the original sequence order.
         """
@@ -1040,7 +1053,7 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
 
     __resource_type__ = "RequestOrchestrationActionCondition"
 
-    expression: fhirtypes.ExpressionType | None = Field(  # type: ignore
+    expression: fhirtypes.ExpressionType | None = Field(
         default=None,
         alias="expression",
         title="Boolean-valued expression",
@@ -1053,7 +1066,7 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
         },
     )
 
-    kind: fhirtypes.CodeType | None = Field(  # type: ignore
+    kind: fhirtypes.CodeType | None = Field(
         default=None,
         alias="kind",
         title="applicability | start | stop",
@@ -1066,12 +1079,12 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
             "enum_values": ["applicability", "start", "stop"],
         },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RequestOrchestrationActionCondition`` according to specification,
         with preserving the original sequence order.
@@ -1079,7 +1092,7 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "kind", "expression"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionCondition`` according to specification,
         with preserving the original sequence order.
         """
@@ -1112,7 +1125,7 @@ class RequestOrchestrationActionDynamicValue(backboneelement.BackboneElement):
 
     __resource_type__ = "RequestOrchestrationActionDynamicValue"
 
-    expression: fhirtypes.ExpressionType | None = Field(  # type: ignore
+    expression: fhirtypes.ExpressionType | None = Field(
         default=None,
         alias="expression",
         title="An expression that provides the dynamic value for the customization",
@@ -1122,7 +1135,7 @@ class RequestOrchestrationActionDynamicValue(backboneelement.BackboneElement):
         },
     )
 
-    path: fhirtypes.StringType | None = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(
         default=None,
         alias="path",
         title="The path to the element to be set dynamically",
@@ -1141,12 +1154,12 @@ class RequestOrchestrationActionDynamicValue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_path", title="Extension field for ``path``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RequestOrchestrationActionDynamicValue`` according to specification,
         with preserving the original sequence order.
@@ -1154,7 +1167,7 @@ class RequestOrchestrationActionDynamicValue(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "path", "expression"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionDynamicValue`` according to specification,
         with preserving the original sequence order.
         """
@@ -1172,7 +1185,7 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
 
     __resource_type__ = "RequestOrchestrationActionInput"
 
-    relatedData: fhirtypes.IdType | None = Field(  # type: ignore
+    relatedData: fhirtypes.IdType | None = Field(
         default=None,
         alias="relatedData",
         title="What data is provided",
@@ -1184,11 +1197,11 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    relatedData__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    relatedData__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_relatedData", title="Extension field for ``relatedData``."
     )
 
-    requirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
+    requirement: fhirtypes.DataRequirementType | None = Field(
         default=None,
         alias="requirement",
         title="What data is provided",
@@ -1198,7 +1211,7 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="User-visible title",
@@ -1212,12 +1225,12 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RequestOrchestrationActionInput`` according to specification,
         with preserving the original sequence order.
@@ -1232,7 +1245,7 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionInput`` according to specification,
         with preserving the original sequence order.
         """
@@ -1250,7 +1263,7 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
 
     __resource_type__ = "RequestOrchestrationActionOutput"
 
-    relatedData: fhirtypes.StringType | None = Field(  # type: ignore
+    relatedData: fhirtypes.StringType | None = Field(
         default=None,
         alias="relatedData",
         title="What data is provided",
@@ -1262,11 +1275,11 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    relatedData__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    relatedData__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_relatedData", title="Extension field for ``relatedData``."
     )
 
-    requirement: fhirtypes.DataRequirementType | None = Field(  # type: ignore
+    requirement: fhirtypes.DataRequirementType | None = Field(
         default=None,
         alias="requirement",
         title="What data is provided",
@@ -1276,7 +1289,7 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="User-visible title",
@@ -1290,12 +1303,12 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RequestOrchestrationActionOutput`` according to specification,
         with preserving the original sequence order.
@@ -1310,7 +1323,7 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionOutput`` according to specification,
         with preserving the original sequence order.
         """
@@ -1328,7 +1341,7 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "RequestOrchestrationActionParticipant"
 
-    actorCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    actorCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="actorCanonical",
         title="Who/what is participating?",
@@ -1342,13 +1355,13 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
             "enum_reference_types": ["CapabilityStatement"],
         },
     )
-    actorCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    actorCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_actorCanonical",
         title="Extension field for ``actorCanonical``.",
     )
 
-    actorReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    actorReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="actorReference",
         title="Who/what is participating?",
@@ -1376,7 +1389,7 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    function: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="function",
         title="E.g. Author, Reviewer, Witness, etc",
@@ -1389,7 +1402,7 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="role",
         title="E.g. Nurse, Surgeon, Parent, etc",
@@ -1402,7 +1415,7 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -1429,11 +1442,11 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    typeCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    typeCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="typeCanonical",
         title="Who or what can participate",
@@ -1444,13 +1457,13 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
             "enum_reference_types": ["CapabilityStatement"],
         },
     )
-    typeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    typeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_typeCanonical",
         title="Extension field for ``typeCanonical``.",
     )
 
-    typeReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    typeReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="typeReference",
         title="Who or what can participate",
@@ -1476,7 +1489,7 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RequestOrchestrationActionParticipant`` according to specification,
         with preserving the original sequence order.
@@ -1495,7 +1508,7 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionParticipant`` according to specification,
         with preserving the original sequence order.
         """
@@ -1530,7 +1543,7 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
 
     __resource_type__ = "RequestOrchestrationActionRelatedAction"
 
-    endRelationship: fhirtypes.CodeType | None = Field(  # type: ignore
+    endRelationship: fhirtypes.CodeType | None = Field(
         default=None,
         alias="endRelationship",
         title=(
@@ -1555,13 +1568,13 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             ],
         },
     )
-    endRelationship__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    endRelationship__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_endRelationship",
         title="Extension field for ``endRelationship``.",
     )
 
-    offsetDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    offsetDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="offsetDuration",
         title="Time offset for the relationship",
@@ -1577,7 +1590,7 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
         },
     )
 
-    offsetRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    offsetRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="offsetRange",
         title="Time offset for the relationship",
@@ -1593,7 +1606,7 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
         },
     )
 
-    relationship: fhirtypes.CodeType | None = Field(  # type: ignore
+    relationship: fhirtypes.CodeType | None = Field(
         default=None,
         alias="relationship",
         title=(
@@ -1619,13 +1632,13 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             ],
         },
     )
-    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_relationship",
         title="Extension field for ``relationship``.",
     )
 
-    targetId: fhirtypes.IdType | None = Field(  # type: ignore
+    targetId: fhirtypes.IdType | None = Field(
         default=None,
         alias="targetId",
         title="What action this is related to",
@@ -1635,12 +1648,12 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    targetId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    targetId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_targetId", title="Extension field for ``targetId``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RequestOrchestrationActionRelatedAction`` according to specification,
         with preserving the original sequence order.
@@ -1657,7 +1670,7 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RequestOrchestrationActionRelatedAction`` according to specification,
         with preserving the original sequence order.
         """

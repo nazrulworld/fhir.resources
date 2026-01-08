@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/HumanName
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class HumanName(datatype.DataType):
 
     __resource_type__ = "HumanName"
 
-    family: fhirtypes.StringType | None = Field(  # type: ignore
+    family: fhirtypes.StringType | None = Field(
         default=None,
         alias="family",
         title="Family name (often called 'Surname')",
@@ -40,11 +41,11 @@ class HumanName(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    family__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    family__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_family", title="Extension field for ``family``."
     )
 
-    given: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    given: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="given",
         title="Given names (not always 'first'). Includes middle names",
@@ -54,11 +55,11 @@ class HumanName(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    given__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    given__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(
         default=None, alias="_given", title="Extension field for ``given``."
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Time period when name was/is in use",
@@ -72,7 +73,7 @@ class HumanName(datatype.DataType):
         },
     )
 
-    prefix: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    prefix: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="prefix",
         title="Parts that come before the name",
@@ -86,11 +87,13 @@ class HumanName(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    prefix__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    prefix__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_prefix", title="Extension field for ``prefix``."
     )
 
-    suffix: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    suffix: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="suffix",
         title="Parts that come after the name",
@@ -104,11 +107,13 @@ class HumanName(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    suffix__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    suffix__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_suffix", title="Extension field for ``suffix``."
     )
 
-    text: fhirtypes.StringType | None = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(
         default=None,
         alias="text",
         title="Text representation of the full name",
@@ -122,11 +127,11 @@ class HumanName(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_text", title="Extension field for ``text``."
     )
 
-    use: fhirtypes.CodeType | None = Field(  # type: ignore
+    use: fhirtypes.CodeType | None = Field(
         default=None,
         alias="use",
         title="usual | official | temp | nickname | anonymous | old | maiden",
@@ -147,12 +152,12 @@ class HumanName(datatype.DataType):
             ],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_use", title="Extension field for ``use``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``HumanName`` according to specification,
         with preserving the original sequence order.
@@ -170,7 +175,7 @@ class HumanName(datatype.DataType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``HumanName`` according to specification,
         with preserving the original sequence order.
         """

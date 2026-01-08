@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RelatedPerson
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class RelatedPerson(domainresource.DomainResource):
 
     __resource_type__ = "RelatedPerson"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this related person's record is in active use",
@@ -38,11 +39,11 @@ class RelatedPerson(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
+    address: typing.List[fhirtypes.AddressType] | None = Field(
         default=None,
         alias="address",
         title="Address where the related person can be contacted or visited",
@@ -53,7 +54,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType | None = Field(  # type: ignore
+    birthDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="birthDate",
         title="The date on which the related person was born",
@@ -63,11 +64,11 @@ class RelatedPerson(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    gender: fhirtypes.CodeType | None = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(
         default=None,
         alias="gender",
         title="male | female | other | unknown",
@@ -83,11 +84,11 @@ class RelatedPerson(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="A human identifier for this person",
@@ -98,7 +99,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
+    name: typing.List[fhirtypes.HumanNameType] | None = Field(
         default=None,
         alias="name",
         title="A name associated with the person",
@@ -109,7 +110,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType = Field(
         default=...,
         alias="patient",
         title="The patient this person is related to",
@@ -122,7 +123,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Period of time that this relationship is considered valid",
@@ -135,7 +136,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    photo: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    photo: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="photo",
         title="Image of the person",
@@ -145,7 +146,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    relationship: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    relationship: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="relationship",
         title="The nature of the relationship",
@@ -159,7 +160,7 @@ class RelatedPerson(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="telecom",
         title="A contact detail for the person",
@@ -174,7 +175,7 @@ class RelatedPerson(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RelatedPerson`` according to specification,
         with preserving the original sequence order.
@@ -202,7 +203,7 @@ class RelatedPerson(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RelatedPerson`` according to specification,
         with preserving the original sequence order.
         """

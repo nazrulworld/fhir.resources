@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RegulatedAuthorization
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -30,7 +31,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
 
     __resource_type__ = "RegulatedAuthorization"
 
-    basis: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    basis: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="basis",
         title=(
@@ -47,7 +48,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    case: fhirtypes.RegulatedAuthorizationCaseType | None = Field(  # type: ignore
+    case: fhirtypes.RegulatedAuthorizationCaseType | None = Field(
         default=None,
         alias="case",
         title=(
@@ -71,7 +72,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="General textual supporting information",
@@ -81,11 +82,11 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    holder: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    holder: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="holder",
         title=(
@@ -104,7 +105,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title=(
@@ -118,7 +119,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    indication: fhirtypes.CodeableReferenceType | None = Field(  # type: ignore
+    indication: fhirtypes.CodeableReferenceType | None = Field(
         default=None,
         alias="indication",
         title="Condition for which the use of the regulated product applies",
@@ -131,7 +132,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    intendedUse: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    intendedUse: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="intendedUse",
         title="The intended use of the product, e.g. prevention, treatment",
@@ -144,7 +145,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    region: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    region: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="region",
         title="The territory in which the authorization has been granted",
@@ -158,7 +159,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    regulator: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    regulator: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="regulator",
         title=(
@@ -177,7 +178,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -194,7 +195,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    statusDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    statusDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="statusDate",
         title="The date at which the current status was assigned",
@@ -204,11 +205,11 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
-    subject: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    subject: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="subject",
         title=(
@@ -238,7 +239,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -252,7 +253,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         },
     )
 
-    validityPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    validityPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="validityPeriod",
         title=(
@@ -272,7 +273,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RegulatedAuthorization`` according to specification,
         with preserving the original sequence order.
@@ -303,7 +304,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RegulatedAuthorization`` according to specification,
         with preserving the original sequence order.
         """
@@ -348,7 +349,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
 
     __resource_type__ = "RegulatedAuthorizationCase"
 
-    application: typing.List[fhirtypes.RegulatedAuthorizationCaseType] | None = Field(  # type: ignore
+    application: typing.List[fhirtypes.RegulatedAuthorizationCaseType] | None = Field(
         default=None,
         alias="application",
         title=(
@@ -368,7 +369,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         },
     )
 
-    dateDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    dateDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="dateDateTime",
         title="Relevant date for this case",
@@ -381,13 +382,13 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    dateDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    dateDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_dateDateTime",
         title="Extension field for ``dateDateTime``.",
     )
 
-    datePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    datePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="datePeriod",
         title="Relevant date for this case",
@@ -401,7 +402,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         },
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Identifier by which this case can be referenced",
@@ -412,7 +413,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         },
     )
 
-    status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="status",
         title="The status associated with the case",
@@ -423,7 +424,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="The defining type of case",
@@ -435,7 +436,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RegulatedAuthorizationCase`` according to specification,
         with preserving the original sequence order.
@@ -453,7 +454,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RegulatedAuthorizationCase`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/UsageContext
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class UsageContext(element.Element):
 
     __resource_type__ = "UsageContext"
 
-    code: fhirtypes.CodingType = Field(  # type: ignore
+    code: fhirtypes.CodingType = Field(
         default=...,
         alias="code",
         title="Type of context being specified",
@@ -42,7 +43,7 @@ class UsageContext(element.Element):
         },
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="valueCodeableConcept",
         title="Value that defines the context",
@@ -59,7 +60,7 @@ class UsageContext(element.Element):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="valueQuantity",
         title="Value that defines the context",
@@ -76,7 +77,7 @@ class UsageContext(element.Element):
         },
     )
 
-    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="valueRange",
         title="Value that defines the context",
@@ -93,7 +94,7 @@ class UsageContext(element.Element):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="valueReference",
         title="Value that defines the context",
@@ -121,7 +122,7 @@ class UsageContext(element.Element):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``UsageContext`` according to specification,
         with preserving the original sequence order.
@@ -137,7 +138,7 @@ class UsageContext(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``UsageContext`` according to specification,
         with preserving the original sequence order.
         """

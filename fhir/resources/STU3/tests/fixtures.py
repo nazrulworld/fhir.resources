@@ -10,7 +10,7 @@ import typing
 import zipfile
 from os.path import dirname
 
-import pytest  # type: ignore
+import pytest
 from fhir_core.types import (
     Base64BinaryType,
     DateTimeType,
@@ -27,8 +27,8 @@ EXAMPLE_RESOURCES_URL = (
     "0.4.0/FHIR/STU3/"
     "3.0.2-examples-json.zip"
 )
-ROOT_PATH = dirname(dirname(dirname(dirname(dirname(os.path.abspath(__file__))))))
-CACHE_PATH = os.path.join(ROOT_PATH, ".cache", "STU3")
+ROOT_PATH = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
+CACHE_PATH = os.path.join(ROOT_PATH, ".cache")
 
 
 def download_and_store(url, path):

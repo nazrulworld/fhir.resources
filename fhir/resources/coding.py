@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Coding
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import datatype, fhirtypes
@@ -22,7 +25,7 @@ class Coding(datatype.DataType):
 
     __resource_type__ = "Coding"
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title="Symbol in syntax defined by the system",
@@ -36,11 +39,11 @@ class Coding(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    display: fhirtypes.StringType | None = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(
         default=None,
         alias="display",
         title="Representation defined by the system",
@@ -53,11 +56,11 @@ class Coding(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_display", title="Extension field for ``display``."
     )
 
-    system: fhirtypes.UriType | None = Field(  # type: ignore
+    system: fhirtypes.UriType | None = Field(
         default=None,
         alias="system",
         title="Identity of the terminology system",
@@ -70,11 +73,11 @@ class Coding(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_system", title="Extension field for ``system``."
     )
 
-    userSelected: bool | None = Field(  # type: ignore
+    userSelected: bool | None = Field(
         default=None,
         alias="userSelected",
         title="If this coding was chosen directly by the user",
@@ -87,13 +90,13 @@ class Coding(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_userSelected",
         title="Extension field for ``userSelected``.",
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Version of the system - if relevant",
@@ -109,12 +112,12 @@ class Coding(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Coding`` according to specification,
         with preserving the original sequence order.
@@ -130,7 +133,7 @@ class Coding(datatype.DataType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Coding`` according to specification,
         with preserving the original sequence order.
         """

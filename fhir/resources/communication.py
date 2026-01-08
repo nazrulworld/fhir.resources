@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Communication
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -29,7 +30,7 @@ class Communication(domainresource.DomainResource):
 
     __resource_type__ = "Communication"
 
-    about: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    about: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="about",
         title="Resources that pertain to this communication",
@@ -44,7 +45,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="basedOn",
         title="Request fulfilled by this communication",
@@ -60,7 +61,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="Message category",
@@ -73,7 +74,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="encounter",
         title="The Encounter during which this Communication was created",
@@ -89,7 +90,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Unique identifier",
@@ -104,7 +105,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    inResponseTo: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    inResponseTo: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="inResponseTo",
         title="Reply to",
@@ -116,7 +117,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -138,13 +139,15 @@ class Communication(domainresource.DomainResource):
             ],
         },
     )
-    instantiatesCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    instantiatesCanonical__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -158,13 +161,15 @@ class Communication(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    instantiatesUri__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_instantiatesUri",
         title="Extension field for ``instantiatesUri``.",
     )
 
-    medium: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    medium: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="medium",
         title="A channel of communication",
@@ -174,7 +179,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Comments made about the communication",
@@ -187,7 +192,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="partOf",
         title="Part of referenced event (e.g. Communication, Procedure)",
@@ -203,7 +208,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    payload: typing.List[fhirtypes.CommunicationPayloadType] | None = Field(  # type: ignore
+    payload: typing.List[fhirtypes.CommunicationPayloadType] | None = Field(
         default=None,
         alias="payload",
         title="Message payload",
@@ -216,7 +221,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(
         default=None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -232,11 +237,11 @@ class Communication(domainresource.DomainResource):
             "enum_values": ["routine", "urgent", "asap", "stat"],
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="reason",
         title="Indication for message",
@@ -249,7 +254,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    received: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    received: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="received",
         title="When received",
@@ -258,11 +263,11 @@ class Communication(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    received__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    received__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_received", title="Extension field for ``received``."
     )
 
-    recipient: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    recipient: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="recipient",
         title="Who the information is shared with",
@@ -289,7 +294,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    sender: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    sender: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="sender",
         title="Who shares the information",
@@ -314,7 +319,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    sent: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    sent: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="sent",
         title="When sent",
@@ -323,11 +328,11 @@ class Communication(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    sent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sent", title="Extension field for ``sent``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -353,11 +358,11 @@ class Communication(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    statusReason: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="statusReason",
         title="Reason for current status",
@@ -368,7 +373,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Focus of message",
@@ -381,7 +386,7 @@ class Communication(domainresource.DomainResource):
         },
     )
 
-    topic: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    topic: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="topic",
         title="Description of the purpose/content",
@@ -395,7 +400,7 @@ class Communication(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Communication`` according to specification,
         with preserving the original sequence order.
@@ -434,7 +439,7 @@ class Communication(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Communication`` according to specification,
         with preserving the original sequence order.
         """
@@ -479,7 +484,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
 
     __resource_type__ = "CommunicationPayload"
 
-    contentAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    contentAttachment: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="contentAttachment",
         title="Message part content",
@@ -495,7 +500,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
         },
     )
 
-    contentCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    contentCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="contentCodeableConcept",
         title="Message part content",
@@ -511,7 +516,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
         },
     )
 
-    contentReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    contentReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="contentReference",
         title="Message part content",
@@ -530,7 +535,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CommunicationPayload`` according to specification,
         with preserving the original sequence order.
@@ -545,7 +550,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CommunicationPayload`` according to specification,
         with preserving the original sequence order.
         """

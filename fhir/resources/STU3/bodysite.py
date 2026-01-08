@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/BodySite
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class BodySite(domainresource.DomainResource):
 
     __resource_type__ = "BodySite"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this body site record is in active use",
@@ -37,11 +38,11 @@ class BodySite(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Named anatomical location",
@@ -52,7 +53,7 @@ class BodySite(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Anatomical location description",
@@ -62,11 +63,11 @@ class BodySite(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Bodysite identifier",
@@ -77,7 +78,7 @@ class BodySite(domainresource.DomainResource):
         },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    image: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="image",
         title="Attached images",
@@ -87,7 +88,7 @@ class BodySite(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType = Field(
         default=...,
         alias="patient",
         title="Who this is about",
@@ -100,7 +101,7 @@ class BodySite(domainresource.DomainResource):
         },
     )
 
-    qualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    qualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="qualifier",
         title="Modification to location code",
@@ -114,7 +115,7 @@ class BodySite(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``BodySite`` according to specification,
         with preserving the original sequence order.
@@ -138,7 +139,7 @@ class BodySite(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``BodySite`` according to specification,
         with preserving the original sequence order.
         """

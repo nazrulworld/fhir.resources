@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/BodyStructure
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class BodyStructure(domainresource.DomainResource):
 
     __resource_type__ = "BodyStructure"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this record is in active use",
@@ -37,11 +38,11 @@ class BodyStructure(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Text description",
@@ -51,11 +52,13 @@ class BodyStructure(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    excludedStructure: typing.List[fhirtypes.BodyStructureIncludedStructureType] | None = Field(  # type: ignore
+    excludedStructure: typing.List[
+        fhirtypes.BodyStructureIncludedStructureType
+    ] | None = Field(
         default=None,
         alias="excludedStructure",
         title="Excluded anatomic locations(s)",
@@ -68,7 +71,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Bodystructure identifier",
@@ -79,7 +82,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    image: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="image",
         title="Attached images",
@@ -89,7 +92,9 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    includedStructure: typing.List[fhirtypes.BodyStructureIncludedStructureType] = Field(  # type: ignore
+    includedStructure: typing.List[
+        fhirtypes.BodyStructureIncludedStructureType
+    ] = Field(
         default=...,
         alias="includedStructure",
         title="Included anatomic location(s)",
@@ -102,7 +107,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    morphology: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    morphology: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="morphology",
         title="Kind of Structure",
@@ -117,7 +122,7 @@ class BodyStructure(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType = Field(
         default=...,
         alias="patient",
         title="Who this is about",
@@ -131,7 +136,7 @@ class BodyStructure(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``BodyStructure`` according to specification,
         with preserving the original sequence order.
@@ -156,7 +161,7 @@ class BodyStructure(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``BodyStructure`` according to specification,
         with preserving the original sequence order.
         """
@@ -185,7 +190,9 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
 
     __resource_type__ = "BodyStructureIncludedStructure"
 
-    bodyLandmarkOrientation: typing.List[fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationType] | None = Field(  # type: ignore
+    bodyLandmarkOrientation: typing.List[
+        fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationType
+    ] | None = Field(
         default=None,
         alias="bodyLandmarkOrientation",
         title="Landmark relative location",
@@ -198,7 +205,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         },
     )
 
-    laterality: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    laterality: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="laterality",
         title="Code that represents the included structure laterality",
@@ -208,7 +215,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         },
     )
 
-    qualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    qualifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="qualifier",
         title="Code that represents the included structure qualifier",
@@ -218,7 +225,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         },
     )
 
-    spatialReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    spatialReference: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="spatialReference",
         title="Cartesian reference for structure",
@@ -230,7 +237,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         },
     )
 
-    structure: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    structure: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="structure",
         title="Code that represents the included structure",
@@ -242,7 +249,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``BodyStructureIncludedStructure`` according to specification,
         with preserving the original sequence order.
@@ -259,7 +266,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``BodyStructureIncludedStructure`` according to specification,
         with preserving the original sequence order.
         """
@@ -280,7 +287,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
 
     __resource_type__ = "BodyStructureIncludedStructureBodyLandmarkOrientation"
 
-    clockFacePosition: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    clockFacePosition: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="clockFacePosition",
         title="Clockface orientation",
@@ -293,7 +300,9 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
         },
     )
 
-    distanceFromLandmark: typing.List[fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmarkType] | None = Field(  # type: ignore
+    distanceFromLandmark: typing.List[
+        fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmarkType
+    ] | None = Field(
         default=None,
         alias="distanceFromLandmark",
         title="Landmark relative location",
@@ -306,7 +315,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
         },
     )
 
-    landmarkDescription: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    landmarkDescription: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="landmarkDescription",
         title="Body ]andmark description",
@@ -319,7 +328,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
         },
     )
 
-    surfaceOrientation: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    surfaceOrientation: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="surfaceOrientation",
         title="Relative landmark surface orientation",
@@ -330,7 +339,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``BodyStructureIncludedStructureBodyLandmarkOrientation`` according to specification,
         with preserving the original sequence order.
@@ -346,7 +355,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``BodyStructureIncludedStructureBodyLandmarkOrientation`` according to specification,
         with preserving the original sequence order.
         """
@@ -369,7 +378,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
         "BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark"
     )
 
-    device: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    device: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="device",
         title="Measurement device",
@@ -381,7 +390,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
         },
     )
 
-    value: typing.List[fhirtypes.QuantityType] | None = Field(  # type: ignore
+    value: typing.List[fhirtypes.QuantityType] | None = Field(
         default=None,
         alias="value",
         title="Measured distance from body landmark",
@@ -392,7 +401,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark`` according to specification,
         with preserving the original sequence order.
@@ -400,7 +409,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
         return ["id", "extension", "modifierExtension", "device", "value"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark`` according to specification,
         with preserving the original sequence order.
         """

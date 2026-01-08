@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ProductShelfLife
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class ProductShelfLife(backbonetype.BackboneType):
 
     __resource_type__ = "ProductShelfLife"
 
-    periodDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    periodDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="periodDuration",
         title=(
@@ -45,7 +46,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         },
     )
 
-    periodString: fhirtypes.StringType | None = Field(  # type: ignore
+    periodString: fhirtypes.StringType | None = Field(
         default=None,
         alias="periodString",
         title=(
@@ -64,13 +65,15 @@ class ProductShelfLife(backbonetype.BackboneType):
             "one_of_many_required": False,
         },
     )
-    periodString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    periodString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_periodString",
         title="Extension field for ``periodString``.",
     )
 
-    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    specialPrecautionsForStorage: typing.List[
+        fhirtypes.CodeableConceptType
+    ] | None = Field(
         default=None,
         alias="specialPrecautionsForStorage",
         title=(
@@ -85,7 +88,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -104,7 +107,7 @@ class ProductShelfLife(backbonetype.BackboneType):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProductShelfLife`` according to specification,
         with preserving the original sequence order.
@@ -120,7 +123,7 @@ class ProductShelfLife(backbonetype.BackboneType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProductShelfLife`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CodeableReference
 Release: R4B
@@ -7,6 +5,11 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import element, fhirtypes
@@ -24,7 +27,7 @@ class CodeableReference(element.Element):
 
     __resource_type__ = "CodeableReference"
 
-    concept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    concept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="concept",
         title="Reference to a concept (by class)",
@@ -38,7 +41,7 @@ class CodeableReference(element.Element):
         },
     )
 
-    reference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    reference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="reference",
         title="Reference to a resource (by instance)",
@@ -53,7 +56,7 @@ class CodeableReference(element.Element):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CodeableReference`` according to specification,
         with preserving the original sequence order.
@@ -61,7 +64,7 @@ class CodeableReference(element.Element):
         return ["id", "extension", "concept", "reference"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CodeableReference`` according to specification,
         with preserving the original sequence order.
         """

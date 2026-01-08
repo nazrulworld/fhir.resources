@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Goal
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class Goal(domainresource.DomainResource):
 
     __resource_type__ = "Goal"
 
-    addresses: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    addresses: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="addresses",
         title="Issues addressed by this goal",
@@ -50,7 +51,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="E.g. Treatment, dietary, behavioral, etc.",
@@ -61,7 +62,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    description: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="description",
         title="Code or text describing goal",
@@ -76,7 +77,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    expressedBy: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    expressedBy: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="expressedBy",
         title="Who's responsible for creating Goal?",
@@ -89,7 +90,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External Ids for this goal",
@@ -104,7 +105,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Comments about the goal",
@@ -114,7 +115,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    outcomeCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    outcomeCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="outcomeCode",
         title="What result was achieved regarding the goal?",
@@ -127,7 +128,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    outcomeReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    outcomeReference: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="outcomeReference",
         title="Observation that resulted from goal",
@@ -139,7 +140,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="priority",
         title="high-priority | medium-priority | low-priority",
@@ -153,7 +154,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    startCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    startCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="startCodeableConcept",
         title="When goal pursuit begins",
@@ -167,7 +168,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    startDate: fhirtypes.DateType | None = Field(  # type: ignore
+    startDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="startDate",
         title="When goal pursuit begins",
@@ -180,11 +181,11 @@ class Goal(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_startDate", title="Extension field for ``startDate``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -219,11 +220,11 @@ class Goal(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusDate: fhirtypes.DateType | None = Field(  # type: ignore
+    statusDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="statusDate",
         title="When goal status took effect",
@@ -236,11 +237,11 @@ class Goal(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
-    statusReason: fhirtypes.StringType | None = Field(  # type: ignore
+    statusReason: fhirtypes.StringType | None = Field(
         default=None,
         alias="statusReason",
         title="Reason for current status",
@@ -249,13 +250,13 @@ class Goal(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    statusReason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    statusReason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_statusReason",
         title="Extension field for ``statusReason``.",
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Who this goal is intended for",
@@ -271,7 +272,7 @@ class Goal(domainresource.DomainResource):
         },
     )
 
-    target: fhirtypes.GoalTargetType | None = Field(  # type: ignore
+    target: fhirtypes.GoalTargetType | None = Field(
         default=None,
         alias="target",
         title="Target outcome for the goal",
@@ -282,7 +283,7 @@ class Goal(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Goal`` according to specification,
         with preserving the original sequence order.
@@ -315,7 +316,7 @@ class Goal(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Goal`` according to specification,
         with preserving the original sequence order.
         """
@@ -373,7 +374,7 @@ class GoalTarget(backboneelement.BackboneElement):
 
     __resource_type__ = "GoalTarget"
 
-    detailCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    detailCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="detailCodeableConcept",
         title="The target value to be achieved",
@@ -395,7 +396,7 @@ class GoalTarget(backboneelement.BackboneElement):
         },
     )
 
-    detailQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    detailQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="detailQuantity",
         title="The target value to be achieved",
@@ -417,7 +418,7 @@ class GoalTarget(backboneelement.BackboneElement):
         },
     )
 
-    detailRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    detailRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="detailRange",
         title="The target value to be achieved",
@@ -439,7 +440,7 @@ class GoalTarget(backboneelement.BackboneElement):
         },
     )
 
-    dueDate: fhirtypes.DateType | None = Field(  # type: ignore
+    dueDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="dueDate",
         title="Reach goal on or before",
@@ -455,11 +456,11 @@ class GoalTarget(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    dueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    dueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_dueDate", title="Extension field for ``dueDate``."
     )
 
-    dueDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    dueDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="dueDuration",
         title="Reach goal on or before",
@@ -476,7 +477,7 @@ class GoalTarget(backboneelement.BackboneElement):
         },
     )
 
-    measure: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    measure: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="measure",
         title="The parameter whose value is being tracked",
@@ -491,7 +492,7 @@ class GoalTarget(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``GoalTarget`` according to specification,
         with preserving the original sequence order.
@@ -509,7 +510,7 @@ class GoalTarget(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``GoalTarget`` according to specification,
         with preserving the original sequence order.
         """

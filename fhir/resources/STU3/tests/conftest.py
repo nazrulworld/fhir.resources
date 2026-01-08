@@ -1,2 +1,1 @@
-# -*- coding: utf-8 _*_
-pytest_plugins = ["fhir.resources.STU3.tests.fixtures"]
+from .fixtures import *  # noqa: F401, F403

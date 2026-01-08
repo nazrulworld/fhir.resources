@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/AdministrableProductDefinition
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
 
     __resource_type__ = "AdministrableProductDefinition"
 
-    administrableDoseForm: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    administrableDoseForm: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="administrableDoseForm",
         title=(
@@ -49,7 +50,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title=(
@@ -67,11 +68,11 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    device: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    device: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="device",
         title=(
@@ -91,7 +92,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    formOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    formOf: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="formOf",
         title=(
@@ -117,7 +118,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="An identifier for the administrable product",
@@ -128,7 +129,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    ingredient: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    ingredient: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="ingredient",
         title=(
@@ -152,7 +153,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    producedFrom: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    producedFrom: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="producedFrom",
         title=(
@@ -179,7 +180,9 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    property: typing.List[fhirtypes.AdministrableProductDefinitionPropertyType] | None = Field(  # type: ignore
+    property: typing.List[
+        fhirtypes.AdministrableProductDefinitionPropertyType
+    ] | None = Field(
         default=None,
         alias="property",
         title="Characteristics e.g. a product's onset of action",
@@ -190,7 +193,9 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    routeOfAdministration: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationType] = Field(  # type: ignore
+    routeOfAdministration: typing.List[
+        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationType
+    ] = Field(
         default=...,
         alias="routeOfAdministration",
         title=(
@@ -209,7 +214,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -226,11 +231,11 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    unitOfPresentation: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    unitOfPresentation: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="unitOfPresentation",
         title=(
@@ -249,7 +254,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AdministrableProductDefinition`` according to specification,
         with preserving the original sequence order.
@@ -277,7 +282,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -320,7 +325,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
 
     __resource_type__ = "AdministrableProductDefinitionProperty"
 
-    status: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    status: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="status",
         title="The status of characteristic e.g. assigned or pending",
@@ -331,7 +336,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title="A code expressing the type of characteristic",
@@ -342,7 +347,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    valueAttachment: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="valueAttachment",
         title="A value for the characteristic",
@@ -356,7 +361,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueBoolean: bool | None = Field(  # type: ignore
+    valueBoolean: bool | None = Field(
         default=None,
         alias="valueBoolean",
         title="A value for the characteristic",
@@ -369,13 +374,13 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueBoolean",
         title="Extension field for ``valueBoolean``.",
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="valueCodeableConcept",
         title="A value for the characteristic",
@@ -389,7 +394,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueDate: fhirtypes.DateType | None = Field(  # type: ignore
+    valueDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="valueDate",
         title="A value for the characteristic",
@@ -402,11 +407,11 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
-    valueMarkdown: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    valueMarkdown: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="valueMarkdown",
         title="A value for the characteristic",
@@ -419,13 +424,13 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueMarkdown",
         title="Extension field for ``valueMarkdown``.",
     )
 
-    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="valueQuantity",
         title="A value for the characteristic",
@@ -439,7 +444,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         },
     )
 
-    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="valueReference",
         title="A value for the characteristic",
@@ -456,7 +461,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AdministrableProductDefinitionProperty`` according to specification,
         with preserving the original sequence order.
@@ -477,7 +482,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinitionProperty`` according to specification,
         with preserving the original sequence order.
         """
@@ -537,7 +542,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
 
     __resource_type__ = "AdministrableProductDefinitionRouteOfAdministration"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="Coded expression for the route",
@@ -548,7 +553,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    firstDose: fhirtypes.QuantityType | None = Field(  # type: ignore
+    firstDose: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="firstDose",
         title=(
@@ -565,7 +570,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    maxDosePerDay: fhirtypes.QuantityType | None = Field(  # type: ignore
+    maxDosePerDay: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="maxDosePerDay",
         title="The maximum dose quantity to be administered in any one 24-h period",
@@ -579,7 +584,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    maxDosePerTreatmentPeriod: fhirtypes.RatioType | None = Field(  # type: ignore
+    maxDosePerTreatmentPeriod: fhirtypes.RatioType | None = Field(
         default=None,
         alias="maxDosePerTreatmentPeriod",
         title="The maximum dose per treatment period that can be administered",
@@ -590,7 +595,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    maxSingleDose: fhirtypes.QuantityType | None = Field(  # type: ignore
+    maxSingleDose: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="maxSingleDose",
         title="The maximum single dose that can be administered",
@@ -604,7 +609,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    maxTreatmentPeriod: fhirtypes.DurationType | None = Field(  # type: ignore
+    maxTreatmentPeriod: fhirtypes.DurationType | None = Field(
         default=None,
         alias="maxTreatmentPeriod",
         title=(
@@ -618,7 +623,9 @@ class AdministrableProductDefinitionRouteOfAdministration(
         },
     )
 
-    targetSpecies: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType] | None = Field(  # type: ignore
+    targetSpecies: typing.List[
+        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType
+    ] | None = Field(
         default=None,
         alias="targetSpecies",
         title="A species for which this route applies",
@@ -630,7 +637,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AdministrableProductDefinitionRouteOfAdministration`` according to specification,
         with preserving the original sequence order.
@@ -649,7 +656,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinitionRouteOfAdministration`` according to specification,
         with preserving the original sequence order.
         """
@@ -679,7 +686,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
         "AdministrableProductDefinitionRouteOfAdministrationTargetSpecies"
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="Coded expression for the species",
@@ -690,7 +697,9 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
         },
     )
 
-    withdrawalPeriod: typing.List[fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType] | None = Field(  # type: ignore
+    withdrawalPeriod: typing.List[
+        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType
+    ] | None = Field(
         default=None,
         alias="withdrawalPeriod",
         title=(
@@ -705,7 +714,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AdministrableProductDefinitionRouteOfAdministrationTargetSpecies`` according to specification,
         with preserving the original sequence order.
@@ -713,7 +722,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
         return ["id", "extension", "modifierExtension", "code", "withdrawalPeriod"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinitionRouteOfAdministrationTargetSpecies`` according to specification,
         with preserving the original sequence order.
         """
@@ -733,7 +742,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
 
     __resource_type__ = "AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod"
 
-    supportingInformation: fhirtypes.StringType | None = Field(  # type: ignore
+    supportingInformation: fhirtypes.StringType | None = Field(
         default=None,
         alias="supportingInformation",
         title="Extra information about the withdrawal period",
@@ -743,13 +752,13 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
             "summary_element_property": True,
         },
     )
-    supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_supportingInformation",
         title="Extension field for ``supportingInformation``.",
     )
 
-    tissue: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    tissue: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="tissue",
         title=(
@@ -766,7 +775,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
         },
     )
 
-    value: fhirtypes.QuantityType = Field(  # type: ignore
+    value: fhirtypes.QuantityType = Field(
         default=...,
         alias="value",
         title="A value for the time",
@@ -778,7 +787,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod`` according to specification,
         with preserving the original sequence order.
@@ -793,7 +802,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod`` according to specification,
         with preserving the original sequence order.
         """

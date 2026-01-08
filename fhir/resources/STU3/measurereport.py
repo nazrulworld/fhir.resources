@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MeasureReport
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class MeasureReport(domainresource.DomainResource):
 
     __resource_type__ = "MeasureReport"
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="When the report was generated",
@@ -35,11 +36,11 @@ class MeasureReport(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    evaluatedResources: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    evaluatedResources: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="evaluatedResources",
         title="What data was evaluated to produce the measure score",
@@ -54,7 +55,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    group: typing.List[fhirtypes.MeasureReportGroupType] | None = Field(  # type: ignore
+    group: typing.List[fhirtypes.MeasureReportGroupType] | None = Field(
         default=None,
         alias="group",
         title="Measure results for each group",
@@ -67,7 +68,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Additional identifier for the Report",
@@ -82,7 +83,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    measure: fhirtypes.ReferenceType = Field(  # type: ignore
+    measure: fhirtypes.ReferenceType = Field(
         default=...,
         alias="measure",
         title="What measure was evaluated",
@@ -95,7 +96,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="patient",
         title="What patient the report is for",
@@ -108,7 +109,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType = Field(
         default=...,
         alias="period",
         title="What period the report covers",
@@ -119,7 +120,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    reportingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    reportingOrganization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="reportingOrganization",
         title="Who is reporting the data",
@@ -132,7 +133,7 @@ class MeasureReport(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="complete | pending | error",
@@ -149,11 +150,11 @@ class MeasureReport(domainresource.DomainResource):
             "enum_values": ["complete", "pending", "error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="individual | patient-list | summary",
@@ -173,12 +174,12 @@ class MeasureReport(domainresource.DomainResource):
             "enum_values": ["individual", "patient-list", "summary"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MeasureReport`` according to specification,
         with preserving the original sequence order.
@@ -205,7 +206,7 @@ class MeasureReport(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MeasureReport`` according to specification,
         with preserving the original sequence order.
         """
@@ -247,7 +248,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
 
     __resource_type__ = "MeasureReportGroup"
 
-    identifier: fhirtypes.IdentifierType = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType = Field(
         default=...,
         alias="identifier",
         title="What group of the measure",
@@ -260,7 +261,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    measureScore: fhirtypes.DecimalType | None = Field(  # type: ignore
+    measureScore: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="measureScore",
         title="What score this group achieved",
@@ -274,13 +275,13 @@ class MeasureReportGroup(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_measureScore",
         title="Extension field for ``measureScore``.",
     )
 
-    population: typing.List[fhirtypes.MeasureReportGroupPopulationType] | None = Field(  # type: ignore
+    population: typing.List[fhirtypes.MeasureReportGroupPopulationType] | None = Field(
         default=None,
         alias="population",
         title="The populations in the group",
@@ -293,7 +294,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         },
     )
 
-    stratifier: typing.List[fhirtypes.MeasureReportGroupStratifierType] | None = Field(  # type: ignore
+    stratifier: typing.List[fhirtypes.MeasureReportGroupStratifierType] | None = Field(
         default=None,
         alias="stratifier",
         title="Stratification results",
@@ -307,7 +308,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MeasureReportGroup`` according to specification,
         with preserving the original sequence order.
@@ -323,7 +324,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MeasureReportGroup`` according to specification,
         with preserving the original sequence order.
         """
@@ -342,7 +343,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
 
     __resource_type__ = "MeasureReportGroupPopulation"
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title=(
@@ -357,7 +358,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         },
     )
 
-    count: fhirtypes.IntegerType | None = Field(  # type: ignore
+    count: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="count",
         title="Size of the population",
@@ -366,11 +367,11 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    count__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_count", title="Extension field for ``count``."
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Population identifier as defined in the measure",
@@ -384,7 +385,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         },
     )
 
-    patients: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    patients: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="patients",
         title="For patient-list reports, the patients in this population",
@@ -400,7 +401,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MeasureReportGroupPopulation`` according to specification,
         with preserving the original sequence order.
@@ -416,7 +417,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupPopulation`` according to specification,
         with preserving the original sequence order.
         """
@@ -435,7 +436,7 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
 
     __resource_type__ = "MeasureReportGroupStratifier"
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="What stratifier of the group",
@@ -448,7 +449,9 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
         },
     )
 
-    stratum: typing.List[fhirtypes.MeasureReportGroupStratifierStratumType] | None = Field(  # type: ignore
+    stratum: typing.List[
+        fhirtypes.MeasureReportGroupStratifierStratumType
+    ] | None = Field(
         default=None,
         alias="stratum",
         title="Stratum results, one for each unique value in the stratifier",
@@ -463,7 +466,7 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MeasureReportGroupStratifier`` according to specification,
         with preserving the original sequence order.
@@ -471,7 +474,7 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "identifier", "stratum"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupStratifier`` according to specification,
         with preserving the original sequence order.
         """
@@ -491,7 +494,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
 
     __resource_type__ = "MeasureReportGroupStratifierStratum"
 
-    measureScore: fhirtypes.DecimalType | None = Field(  # type: ignore
+    measureScore: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="measureScore",
         title="What score this stratum achieved",
@@ -505,13 +508,15 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_measureScore",
         title="Extension field for ``measureScore``.",
     )
 
-    population: typing.List[fhirtypes.MeasureReportGroupStratifierStratumPopulationType] | None = Field(  # type: ignore
+    population: typing.List[
+        fhirtypes.MeasureReportGroupStratifierStratumPopulationType
+    ] | None = Field(
         default=None,
         alias="population",
         title="Population results in this stratum",
@@ -524,7 +529,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         },
     )
 
-    value: fhirtypes.StringType | None = Field(  # type: ignore
+    value: fhirtypes.StringType | None = Field(
         default=None,
         alias="value",
         title="The stratum value, e.g. male",
@@ -538,12 +543,12 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MeasureReportGroupStratifierStratum`` according to specification,
         with preserving the original sequence order.
@@ -558,7 +563,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupStratifierStratum`` according to specification,
         with preserving the original sequence order.
         """
@@ -588,7 +593,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
 
     __resource_type__ = "MeasureReportGroupStratifierStratumPopulation"
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title=(
@@ -603,7 +608,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         },
     )
 
-    count: fhirtypes.IntegerType | None = Field(  # type: ignore
+    count: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="count",
         title="Size of the population",
@@ -612,11 +617,11 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
             "element_property": True,
         },
     )
-    count__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_count", title="Extension field for ``count``."
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Population identifier as defined in the measure",
@@ -630,7 +635,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         },
     )
 
-    patients: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    patients: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="patients",
         title="For patient-list reports, the patients in this population",
@@ -646,7 +651,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MeasureReportGroupStratifierStratumPopulation`` according to specification,
         with preserving the original sequence order.
@@ -662,7 +667,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MeasureReportGroupStratifierStratumPopulation`` according to specification,
         with preserving the original sequence order.
         """

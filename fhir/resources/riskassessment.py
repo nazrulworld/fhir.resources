@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RiskAssessment
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class RiskAssessment(domainresource.DomainResource):
 
     __resource_type__ = "RiskAssessment"
 
-    basedOn: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    basedOn: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="basedOn",
         title="Request fulfilled by this assessment",
@@ -38,7 +39,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    basis: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    basis: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="basis",
         title="Information used in assessment",
@@ -53,7 +54,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Type of assessment",
@@ -64,7 +65,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    condition: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    condition: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="condition",
         title="Condition assessed",
@@ -80,7 +81,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="encounter",
         title="Where was assessment performed?",
@@ -93,7 +94,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Unique identifier for the assessment",
@@ -104,7 +105,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    method: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="method",
         title="Evaluation mechanism",
@@ -115,7 +116,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    mitigation: fhirtypes.StringType | None = Field(  # type: ignore
+    mitigation: fhirtypes.StringType | None = Field(
         default=None,
         alias="mitigation",
         title="How to reduce risk",
@@ -127,11 +128,11 @@ class RiskAssessment(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    mitigation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    mitigation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_mitigation", title="Extension field for ``mitigation``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Comments on the risk assessment",
@@ -141,7 +142,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="occurrenceDateTime",
         title="When was assessment made?",
@@ -154,13 +155,13 @@ class RiskAssessment(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="occurrencePeriod",
         title="When was assessment made?",
@@ -174,7 +175,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    parent: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    parent: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="parent",
         title="Part of this occurrence",
@@ -189,7 +190,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    performer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    performer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="performer",
         title="Who did assessment?",
@@ -211,7 +212,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    prediction: typing.List[fhirtypes.RiskAssessmentPredictionType] | None = Field(  # type: ignore
+    prediction: typing.List[fhirtypes.RiskAssessmentPredictionType] | None = Field(
         default=None,
         alias="prediction",
         title="Outcome predicted",
@@ -221,7 +222,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="reason",
         title="Why the assessment was necessary?",
@@ -238,7 +239,7 @@ class RiskAssessment(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="registered | preliminary | final | amended +",
@@ -255,11 +256,11 @@ class RiskAssessment(domainresource.DomainResource):
             "enum_values": ["registered", "preliminary", "final", "amended", "+"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType = Field(
         default=...,
         alias="subject",
         title="Who/what does assessment apply to?",
@@ -273,7 +274,7 @@ class RiskAssessment(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RiskAssessment`` according to specification,
         with preserving the original sequence order.
@@ -307,7 +308,7 @@ class RiskAssessment(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RiskAssessment`` according to specification,
         with preserving the original sequence order.
         """
@@ -367,7 +368,7 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
 
     __resource_type__ = "RiskAssessmentPrediction"
 
-    outcome: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    outcome: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="outcome",
         title="Possible outcome for the subject",
@@ -380,7 +381,7 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         },
     )
 
-    probabilityDecimal: fhirtypes.DecimalType | None = Field(  # type: ignore
+    probabilityDecimal: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="probabilityDecimal",
         title="Likelihood of specified outcome",
@@ -392,13 +393,13 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    probabilityDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    probabilityDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_probabilityDecimal",
         title="Extension field for ``probabilityDecimal``.",
     )
 
-    probabilityRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    probabilityRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="probabilityRange",
         title="Likelihood of specified outcome",
@@ -411,7 +412,7 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         },
     )
 
-    qualitativeRisk: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    qualitativeRisk: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="qualitativeRisk",
         title="Likelihood of specified outcome as a qualitative value",
@@ -424,7 +425,7 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         },
     )
 
-    rationale: fhirtypes.StringType | None = Field(  # type: ignore
+    rationale: fhirtypes.StringType | None = Field(
         default=None,
         alias="rationale",
         title="Explanation of prediction",
@@ -433,11 +434,11 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    rationale__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    rationale__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_rationale", title="Extension field for ``rationale``."
     )
 
-    relativeRisk: fhirtypes.DecimalType | None = Field(  # type: ignore
+    relativeRisk: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="relativeRisk",
         title="Relative likelihood",
@@ -451,13 +452,13 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    relativeRisk__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    relativeRisk__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_relativeRisk",
         title="Extension field for ``relativeRisk``.",
     )
 
-    whenPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    whenPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="whenPeriod",
         title="Timeframe or age range",
@@ -473,7 +474,7 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         },
     )
 
-    whenRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    whenRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="whenRange",
         title="Timeframe or age range",
@@ -490,7 +491,7 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RiskAssessmentPrediction`` according to specification,
         with preserving the original sequence order.
@@ -510,7 +511,7 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RiskAssessmentPrediction`` according to specification,
         with preserving the original sequence order.
         """

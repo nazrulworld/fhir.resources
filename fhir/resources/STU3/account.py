@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Account
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class Account(domainresource.DomainResource):
 
     __resource_type__ = "Account"
 
-    active: fhirtypes.PeriodType | None = Field(  # type: ignore
+    active: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="active",
         title="Time window that transactions may be posted to this account",
@@ -42,7 +43,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    balance: fhirtypes.MoneyType | None = Field(  # type: ignore
+    balance: fhirtypes.MoneyType | None = Field(
         default=None,
         alias="balance",
         title="How much is in account?",
@@ -55,7 +56,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    coverage: typing.List[fhirtypes.AccountCoverageType] | None = Field(  # type: ignore
+    coverage: typing.List[fhirtypes.AccountCoverageType] | None = Field(
         default=None,
         alias="coverage",
         title=(
@@ -69,7 +70,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Explanation of purpose/use",
@@ -82,11 +83,11 @@ class Account(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    guarantor: typing.List[fhirtypes.AccountGuarantorType] | None = Field(  # type: ignore
+    guarantor: typing.List[fhirtypes.AccountGuarantorType] | None = Field(
         default=None,
         alias="guarantor",
         title="Responsible for the account",
@@ -96,7 +97,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Account number",
@@ -110,7 +111,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Human-readable label",
@@ -122,11 +123,11 @@ class Account(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    owner: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    owner: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="owner",
         title="Who is responsible?",
@@ -142,7 +143,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Transaction window",
@@ -156,7 +157,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | inactive | entered-in-error",
@@ -169,11 +170,11 @@ class Account(domainresource.DomainResource):
             "enum_values": ["active", "inactive", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="What is account tied to?",
@@ -196,7 +197,7 @@ class Account(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="E.g. patient, expense, depreciation",
@@ -208,7 +209,7 @@ class Account(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Account`` according to specification,
         with preserving the original sequence order.
@@ -237,7 +238,7 @@ class Account(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Account`` according to specification,
         with preserving the original sequence order.
         """
@@ -269,7 +270,7 @@ class AccountCoverage(backboneelement.BackboneElement):
 
     __resource_type__ = "AccountCoverage"
 
-    coverage: fhirtypes.ReferenceType = Field(  # type: ignore
+    coverage: fhirtypes.ReferenceType = Field(
         default=...,
         alias="coverage",
         title=(
@@ -290,7 +291,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         },
     )
 
-    priority: fhirtypes.PositiveIntType | None = Field(  # type: ignore
+    priority: fhirtypes.PositiveIntType | None = Field(
         default=None,
         alias="priority",
         title="The priority of the coverage in the context of this account",
@@ -300,12 +301,12 @@ class AccountCoverage(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_priority", title="Extension field for ``priority``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AccountCoverage`` according to specification,
         with preserving the original sequence order.
@@ -313,7 +314,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "coverage", "priority"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AccountCoverage`` according to specification,
         with preserving the original sequence order.
         """
@@ -331,7 +332,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
 
     __resource_type__ = "AccountGuarantor"
 
-    onHold: bool | None = Field(  # type: ignore
+    onHold: bool | None = Field(
         default=None,
         alias="onHold",
         title="Credit or other hold applied",
@@ -343,11 +344,11 @@ class AccountGuarantor(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    onHold__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    onHold__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_onHold", title="Extension field for ``onHold``."
     )
 
-    party: fhirtypes.ReferenceType = Field(  # type: ignore
+    party: fhirtypes.ReferenceType = Field(
         default=...,
         alias="party",
         title="Responsible entity",
@@ -359,7 +360,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Guarrantee account during",
@@ -373,7 +374,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AccountGuarantor`` according to specification,
         with preserving the original sequence order.
@@ -381,7 +382,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "party", "onHold", "period"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AccountGuarantor`` according to specification,
         with preserving the original sequence order.
         """

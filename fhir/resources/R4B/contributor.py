@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Contributor
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class Contributor(element.Element):
 
     __resource_type__ = "Contributor"
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details of the contributor",
@@ -40,7 +41,7 @@ class Contributor(element.Element):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Who contributed the content",
@@ -54,11 +55,11 @@ class Contributor(element.Element):
             "element_required": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="author | editor | reviewer | endorser",
@@ -72,12 +73,12 @@ class Contributor(element.Element):
             "enum_values": ["author", "editor", "reviewer", "endorser"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Contributor`` according to specification,
         with preserving the original sequence order.
@@ -85,7 +86,7 @@ class Contributor(element.Element):
         return ["id", "extension", "type", "name", "contact"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Contributor`` according to specification,
         with preserving the original sequence order.
         """

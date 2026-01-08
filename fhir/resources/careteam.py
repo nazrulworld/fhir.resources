@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CareTeam
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class CareTeam(domainresource.DomainResource):
 
     __resource_type__ = "CareTeam"
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="Type of team",
@@ -41,7 +42,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External Ids for this team",
@@ -56,7 +57,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    managingOrganization: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="managingOrganization",
         title="Organization responsible for the care team",
@@ -69,7 +70,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name of the team, such as crisis assessment team",
@@ -82,11 +83,11 @@ class CareTeam(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Comments made about the CareTeam",
@@ -96,7 +97,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    participant: typing.List[fhirtypes.CareTeamParticipantType] | None = Field(  # type: ignore
+    participant: typing.List[fhirtypes.CareTeamParticipantType] | None = Field(
         default=None,
         alias="participant",
         title="Members of the team",
@@ -109,7 +110,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Time period team covers",
@@ -123,7 +124,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="reason",
         title="Why the care team exists",
@@ -135,7 +136,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="proposed | active | suspended | inactive | entered-in-error",
@@ -154,11 +155,11 @@ class CareTeam(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Who care team is for",
@@ -174,7 +175,7 @@ class CareTeam(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="telecom",
         title="A contact detail for the care team (that applies to all members)",
@@ -188,7 +189,7 @@ class CareTeam(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CareTeam`` according to specification,
         with preserving the original sequence order.
@@ -216,7 +217,7 @@ class CareTeam(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CareTeam`` according to specification,
         with preserving the original sequence order.
         """
@@ -247,7 +248,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "CareTeamParticipant"
 
-    coveragePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    coveragePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="coveragePeriod",
         title="When the member is generally available within this care team",
@@ -260,7 +261,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    coverageTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    coverageTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="coverageTiming",
         title="When the member is generally available within this care team",
@@ -273,7 +274,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    member: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    member: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="member",
         title="Who is involved",
@@ -296,7 +297,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="onBehalfOf",
         title="Organization of the practitioner",
@@ -309,7 +310,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="role",
         title="Type of involvement",
@@ -325,7 +326,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CareTeamParticipant`` according to specification,
         with preserving the original sequence order.
@@ -342,7 +343,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CareTeamParticipant`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Substance
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -24,7 +25,7 @@ class Substance(domainresource.DomainResource):
 
     __resource_type__ = "Substance"
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="What class/type of substance this is",
@@ -38,7 +39,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="What substance this is",
@@ -49,7 +50,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Textual description of the substance, comments",
@@ -62,11 +63,11 @@ class Substance(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Unique identifier",
@@ -77,7 +78,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    ingredient: typing.List[fhirtypes.SubstanceIngredientType] | None = Field(  # type: ignore
+    ingredient: typing.List[fhirtypes.SubstanceIngredientType] | None = Field(
         default=None,
         alias="ingredient",
         title="Composition information about the substance",
@@ -88,7 +89,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    instance: typing.List[fhirtypes.SubstanceInstanceType] | None = Field(  # type: ignore
+    instance: typing.List[fhirtypes.SubstanceInstanceType] | None = Field(
         default=None,
         alias="instance",
         title="If this describes a specific package/container of the substance",
@@ -102,7 +103,7 @@ class Substance(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | inactive | entered-in-error",
@@ -115,12 +116,12 @@ class Substance(domainresource.DomainResource):
             "enum_values": ["active", "inactive", "entered-in-error"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Substance`` according to specification,
         with preserving the original sequence order.
@@ -144,7 +145,7 @@ class Substance(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Substance`` according to specification,
         with preserving the original sequence order.
         """
@@ -173,7 +174,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceIngredient"
 
-    quantity: fhirtypes.RatioType | None = Field(  # type: ignore
+    quantity: fhirtypes.RatioType | None = Field(
         default=None,
         alias="quantity",
         title="Optional amount (concentration)",
@@ -184,7 +185,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         },
     )
 
-    substanceCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    substanceCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="substanceCodeableConcept",
         title="A component of the substance",
@@ -198,7 +199,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         },
     )
 
-    substanceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    substanceReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="substanceReference",
         title="A component of the substance",
@@ -215,7 +216,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceIngredient`` according to specification,
         with preserving the original sequence order.
@@ -230,7 +231,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceIngredient`` according to specification,
         with preserving the original sequence order.
         """
@@ -272,7 +273,7 @@ class SubstanceInstance(backboneelement.BackboneElement):
 
     __resource_type__ = "SubstanceInstance"
 
-    expiry: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    expiry: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="expiry",
         title="When no longer valid to use",
@@ -285,11 +286,11 @@ class SubstanceInstance(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    expiry__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    expiry__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_expiry", title="Extension field for ``expiry``."
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Identifier of the package/container",
@@ -303,7 +304,7 @@ class SubstanceInstance(backboneelement.BackboneElement):
         },
     )
 
-    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="quantity",
         title="Amount of substance in the package",
@@ -315,7 +316,7 @@ class SubstanceInstance(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``SubstanceInstance`` according to specification,
         with preserving the original sequence order.
@@ -330,7 +331,7 @@ class SubstanceInstance(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``SubstanceInstance`` according to specification,
         with preserving the original sequence order.
         """

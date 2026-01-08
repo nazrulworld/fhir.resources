@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ChargeItem
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -31,7 +32,7 @@ class ChargeItem(domainresource.DomainResource):
 
     __resource_type__ = "ChargeItem"
 
-    account: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    account: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="account",
         title="Account to place this charge",
@@ -44,7 +45,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    bodysite: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    bodysite: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="bodysite",
         title="Anatomical location, if relevant",
@@ -55,7 +56,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="A code that identifies the charge, like a billing code",
@@ -66,7 +67,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    context: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    context: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="context",
         title="Encounter / Episode associated with event",
@@ -82,7 +83,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    costCenter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    costCenter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="costCenter",
         title="Organization that has ownership of the (potential, future) revenue",
@@ -94,7 +95,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    definitionCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    definitionCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="definitionCanonical",
         title="Resource defining the code of this ChargeItem",
@@ -108,13 +109,15 @@ class ChargeItem(domainresource.DomainResource):
             "enum_reference_types": ["ChargeItemDefinition"],
         },
     )
-    definitionCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    definitionCanonical__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_definitionCanonical",
         title="Extension field for ``definitionCanonical``.",
     )
 
-    definitionUri: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    definitionUri: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="definitionUri",
         title="Defining information about the code of this charge item",
@@ -126,13 +129,15 @@ class ChargeItem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    definitionUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    definitionUri__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_definitionUri",
         title="Extension field for ``definitionUri``.",
     )
 
-    enteredDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    enteredDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="enteredDate",
         title="Date the charge item was entered",
@@ -142,11 +147,11 @@ class ChargeItem(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    enteredDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    enteredDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_enteredDate", title="Extension field for ``enteredDate``."
     )
 
-    enterer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    enterer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="enterer",
         title="Individual who was entering",
@@ -166,7 +171,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    factorOverride: fhirtypes.DecimalType | None = Field(  # type: ignore
+    factorOverride: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="factorOverride",
         title="Factor overriding the associated rules",
@@ -178,13 +183,13 @@ class ChargeItem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    factorOverride__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    factorOverride__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_factorOverride",
         title="Extension field for ``factorOverride``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business Identifier for item",
@@ -195,7 +200,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Comments made about the ChargeItem",
@@ -208,7 +213,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="occurrenceDateTime",
         title="When the charged service was applied",
@@ -221,13 +226,13 @@ class ChargeItem(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="occurrencePeriod",
         title="When the charged service was applied",
@@ -241,7 +246,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    occurrenceTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="occurrenceTiming",
         title="When the charged service was applied",
@@ -255,7 +260,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    overrideReason: fhirtypes.StringType | None = Field(  # type: ignore
+    overrideReason: fhirtypes.StringType | None = Field(
         default=None,
         alias="overrideReason",
         title="Reason for overriding the list price/factor",
@@ -268,13 +273,13 @@ class ChargeItem(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    overrideReason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    overrideReason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_overrideReason",
         title="Extension field for ``overrideReason``.",
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="partOf",
         title="Part of referenced ChargeItem",
@@ -289,7 +294,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    performer: typing.List[fhirtypes.ChargeItemPerformerType] | None = Field(  # type: ignore
+    performer: typing.List[fhirtypes.ChargeItemPerformerType] | None = Field(
         default=None,
         alias="performer",
         title="Who performed charged service",
@@ -301,7 +306,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    performingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    performingOrganization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="performingOrganization",
         title="Organization providing the charged service",
@@ -313,7 +318,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    priceOverride: fhirtypes.MoneyType | None = Field(  # type: ignore
+    priceOverride: fhirtypes.MoneyType | None = Field(
         default=None,
         alias="priceOverride",
         title="Price overriding the associated rules",
@@ -326,7 +331,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    productCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    productCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="productCodeableConcept",
         title="Product charged",
@@ -342,7 +347,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    productReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    productReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="productReference",
         title="Product charged",
@@ -360,7 +365,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="quantity",
         title="Quantity of which the charge item has been serviced",
@@ -371,7 +376,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="reason",
         title="Why was the charged  service rendered?",
@@ -381,7 +386,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    requestingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    requestingOrganization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="requestingOrganization",
         title="Organization requesting the charged service",
@@ -393,7 +398,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    service: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    service: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="service",
         title="Which rendered service is being charged?",
@@ -414,7 +419,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -439,11 +444,11 @@ class ChargeItem(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType = Field(
         default=...,
         alias="subject",
         title="Individual service was done for/to",
@@ -459,7 +464,7 @@ class ChargeItem(domainresource.DomainResource):
         },
     )
 
-    supportingInformation: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    supportingInformation: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="supportingInformation",
         title="Further information supporting this charge",
@@ -472,7 +477,7 @@ class ChargeItem(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ChargeItem`` according to specification,
         with preserving the original sequence order.
@@ -518,7 +523,7 @@ class ChargeItem(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ChargeItem`` according to specification,
         with preserving the original sequence order.
         """
@@ -587,7 +592,7 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
 
     __resource_type__ = "ChargeItemPerformer"
 
-    actor: fhirtypes.ReferenceType = Field(  # type: ignore
+    actor: fhirtypes.ReferenceType = Field(
         default=...,
         alias="actor",
         title="Individual who was performing",
@@ -610,7 +615,7 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    function: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="function",
         title="What type of performance was done",
@@ -624,7 +629,7 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ChargeItemPerformer`` according to specification,
         with preserving the original sequence order.
@@ -632,7 +637,7 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "function", "actor"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ChargeItemPerformer`` according to specification,
         with preserving the original sequence order.
         """

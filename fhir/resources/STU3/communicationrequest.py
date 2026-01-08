@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CommunicationRequest
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class CommunicationRequest(domainresource.DomainResource):
 
     __resource_type__ = "CommunicationRequest"
 
-    authoredOn: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    authoredOn: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="authoredOn",
         title="When request transitioned to being actionable",
@@ -40,11 +41,11 @@ class CommunicationRequest(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
-    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="basedOn",
         title="Fulfills plan or proposal",
@@ -60,7 +61,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="Message category",
@@ -73,7 +74,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    context: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    context: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="context",
         title="Encounter or episode leading to message",
@@ -89,7 +90,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    groupIdentifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    groupIdentifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="groupIdentifier",
         title="Composite request this is part of",
@@ -104,7 +105,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Unique identifier",
@@ -120,7 +121,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    medium: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    medium: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="medium",
         title="A channel of communication",
@@ -130,7 +131,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Comments made about communication request",
@@ -143,7 +144,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="occurrenceDateTime",
         title="When scheduled",
@@ -156,13 +157,13 @@ class CommunicationRequest(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="occurrencePeriod",
         title="When scheduled",
@@ -176,7 +177,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    payload: typing.List[fhirtypes.CommunicationRequestPayloadType] | None = Field(  # type: ignore
+    payload: typing.List[fhirtypes.CommunicationRequestPayloadType] | None = Field(
         default=None,
         alias="payload",
         title="Message payload",
@@ -189,7 +190,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    priority: fhirtypes.CodeType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeType | None = Field(
         default=None,
         alias="priority",
         title="Message urgency",
@@ -202,11 +203,11 @@ class CommunicationRequest(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="reasonCode",
         title="Why is communication needed?",
@@ -217,7 +218,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    reasonReference: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="reasonReference",
         title="Why is communication needed?",
@@ -230,7 +231,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    recipient: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    recipient: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="recipient",
         title="Message recipient",
@@ -254,7 +255,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    replaces: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="replaces",
         title="Request(s) replaced by this request",
@@ -270,7 +271,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    requester: fhirtypes.CommunicationRequestRequesterType | None = Field(  # type: ignore
+    requester: fhirtypes.CommunicationRequestRequesterType | None = Field(
         default=None,
         alias="requester",
         title="Who/what is requesting service",
@@ -284,7 +285,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    sender: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    sender: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="sender",
         title="Message sender",
@@ -305,7 +306,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -330,11 +331,11 @@ class CommunicationRequest(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="Focus of message",
@@ -346,7 +347,7 @@ class CommunicationRequest(domainresource.DomainResource):
         },
     )
 
-    topic: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    topic: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="topic",
         title="Focal resources",
@@ -362,7 +363,7 @@ class CommunicationRequest(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CommunicationRequest`` according to specification,
         with preserving the original sequence order.
@@ -400,7 +401,7 @@ class CommunicationRequest(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CommunicationRequest`` according to specification,
         with preserving the original sequence order.
         """
@@ -462,7 +463,7 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
 
     __resource_type__ = "CommunicationRequestPayload"
 
-    contentAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    contentAttachment: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="contentAttachment",
         title="Message part content",
@@ -478,7 +479,7 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
         },
     )
 
-    contentReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    contentReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="contentReference",
         title="Message part content",
@@ -496,7 +497,7 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
         },
     )
 
-    contentString: fhirtypes.StringType | None = Field(  # type: ignore
+    contentString: fhirtypes.StringType | None = Field(
         default=None,
         alias="contentString",
         title="Message part content",
@@ -511,14 +512,14 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
             "one_of_many_required": True,
         },
     )
-    contentString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    contentString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_contentString",
         title="Extension field for ``contentString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CommunicationRequestPayload`` according to specification,
         with preserving the original sequence order.
@@ -533,7 +534,7 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CommunicationRequestPayload`` according to specification,
         with preserving the original sequence order.
         """
@@ -570,7 +571,7 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
 
     __resource_type__ = "CommunicationRequestRequester"
 
-    agent: fhirtypes.ReferenceType = Field(  # type: ignore
+    agent: fhirtypes.ReferenceType = Field(
         default=...,
         alias="agent",
         title="Individual making the request",
@@ -589,7 +590,7 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
         },
     )
 
-    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="onBehalfOf",
         title="Organization agent is acting for",
@@ -603,7 +604,7 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CommunicationRequestRequester`` according to specification,
         with preserving the original sequence order.
@@ -611,7 +612,7 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CommunicationRequestRequester`` according to specification,
         with preserving the original sequence order.
         """

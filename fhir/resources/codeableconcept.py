@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/CodeableConcept
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class CodeableConcept(datatype.DataType):
 
     __resource_type__ = "CodeableConcept"
 
-    coding: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    coding: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="coding",
         title="Code defined by a terminology system",
@@ -37,7 +38,7 @@ class CodeableConcept(datatype.DataType):
         },
     )
 
-    text: fhirtypes.StringType | None = Field(  # type: ignore
+    text: fhirtypes.StringType | None = Field(
         default=None,
         alias="text",
         title="Plain text representation of the concept",
@@ -51,12 +52,12 @@ class CodeableConcept(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_text", title="Extension field for ``text``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CodeableConcept`` according to specification,
         with preserving the original sequence order.
@@ -64,7 +65,7 @@ class CodeableConcept(datatype.DataType):
         return ["id", "extension", "coding", "text"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CodeableConcept`` according to specification,
         with preserving the original sequence order.
         """

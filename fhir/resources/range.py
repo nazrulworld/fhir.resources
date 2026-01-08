@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Range
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import datatype, fhirtypes
@@ -23,7 +26,7 @@ class Range(datatype.DataType):
 
     __resource_type__ = "Range"
 
-    high: fhirtypes.QuantityType | None = Field(  # type: ignore
+    high: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="high",
         title="High limit",
@@ -34,7 +37,7 @@ class Range(datatype.DataType):
         },
     )
 
-    low: fhirtypes.QuantityType | None = Field(  # type: ignore
+    low: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="low",
         title="Low limit",
@@ -46,7 +49,7 @@ class Range(datatype.DataType):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Range`` according to specification,
         with preserving the original sequence order.
@@ -54,7 +57,7 @@ class Range(datatype.DataType):
         return ["id", "extension", "low", "high"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Range`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Procedure
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -30,7 +31,7 @@ class Procedure(domainresource.DomainResource):
 
     __resource_type__ = "Procedure"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="basedOn",
         title="A request for this procedure",
@@ -46,7 +47,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    bodySite: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    bodySite: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="bodySite",
         title="Target body sites",
@@ -60,7 +61,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="Classification of the procedure",
@@ -74,7 +75,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="code",
         title="Identification of the procedure",
@@ -88,7 +89,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    complication: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    complication: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="complication",
         title="Complication following the procedure",
@@ -105,7 +106,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="encounter",
         title="The Encounter during which this Procedure was created",
@@ -121,7 +122,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    focalDevice: typing.List[fhirtypes.ProcedureFocalDeviceType] | None = Field(  # type: ignore
+    focalDevice: typing.List[fhirtypes.ProcedureFocalDeviceType] | None = Field(
         default=None,
         alias="focalDevice",
         title="Manipulated, implanted, or removed device",
@@ -135,7 +136,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    focus: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    focus: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="focus",
         title=(
@@ -171,7 +172,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    followUp: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    followUp: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="followUp",
         title="Instructions for follow up",
@@ -186,7 +187,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External Identifiers for this procedure",
@@ -201,7 +202,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    instantiatesCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -223,13 +224,15 @@ class Procedure(domainresource.DomainResource):
             ],
         },
     )
-    instantiatesCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    instantiatesCanonical__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_instantiatesCanonical",
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    instantiatesUri: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -243,13 +246,15 @@ class Procedure(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    instantiatesUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    instantiatesUri__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_instantiatesUri",
         title="Extension field for ``instantiatesUri``.",
     )
 
-    location: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    location: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="location",
         title="Where the procedure happened",
@@ -265,7 +270,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Additional information about the procedure",
@@ -275,7 +280,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    occurrenceAge: fhirtypes.AgeType | None = Field(  # type: ignore
+    occurrenceAge: fhirtypes.AgeType | None = Field(
         default=None,
         alias="occurrenceAge",
         title="When the procedure occurred or is occurring",
@@ -294,7 +299,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    occurrenceDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="occurrenceDateTime",
         title="When the procedure occurred or is occurring",
@@ -312,13 +317,13 @@ class Procedure(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_occurrenceDateTime",
         title="Extension field for ``occurrenceDateTime``.",
     )
 
-    occurrencePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    occurrencePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="occurrencePeriod",
         title="When the procedure occurred or is occurring",
@@ -337,7 +342,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    occurrenceRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    occurrenceRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="occurrenceRange",
         title="When the procedure occurred or is occurring",
@@ -356,7 +361,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    occurrenceString: fhirtypes.StringType | None = Field(  # type: ignore
+    occurrenceString: fhirtypes.StringType | None = Field(
         default=None,
         alias="occurrenceString",
         title="When the procedure occurred or is occurring",
@@ -374,13 +379,13 @@ class Procedure(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    occurrenceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    occurrenceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_occurrenceString",
         title="Extension field for ``occurrenceString``.",
     )
 
-    occurrenceTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    occurrenceTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="occurrenceTiming",
         title="When the procedure occurred or is occurring",
@@ -399,7 +404,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    outcome: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    outcome: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="outcome",
         title="The result of procedure",
@@ -413,7 +418,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    partOf: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="partOf",
         title="Part of referenced event",
@@ -433,7 +438,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    performer: typing.List[fhirtypes.ProcedurePerformerType] | None = Field(  # type: ignore
+    performer: typing.List[fhirtypes.ProcedurePerformerType] | None = Field(
         default=None,
         alias="performer",
         title="Who performed the procedure and what they did",
@@ -447,7 +452,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="reason",
         title="The justification that the procedure was performed",
@@ -470,7 +475,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    recorded: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    recorded: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="recorded",
         title="When the procedure was first captured in the subject's record",
@@ -484,11 +489,11 @@ class Procedure(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
-    recorder: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    recorder: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="recorder",
         title="Who recorded the procedure",
@@ -509,7 +514,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    report: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    report: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="report",
         title="Any report resulting from the procedure",
@@ -528,7 +533,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    reportedBoolean: bool | None = Field(  # type: ignore
+    reportedBoolean: bool | None = Field(
         default=None,
         alias="reportedBoolean",
         title="Reported rather than primary record",
@@ -545,13 +550,13 @@ class Procedure(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    reportedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    reportedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_reportedBoolean",
         title="Extension field for ``reportedBoolean``.",
     )
 
-    reportedReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    reportedReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="reportedReference",
         title="Reported rather than primary record",
@@ -577,7 +582,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -606,11 +611,11 @@ class Procedure(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusReason: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    statusReason: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="statusReason",
         title="Reason for current status",
@@ -621,7 +626,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    subject: fhirtypes.ReferenceType = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType = Field(
         default=...,
         alias="subject",
         title="Individual or entity the procedure was performed on",
@@ -649,7 +654,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    supportingInfo: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    supportingInfo: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="supportingInfo",
         title="Extra information relevant to the procedure",
@@ -667,7 +672,7 @@ class Procedure(domainresource.DomainResource):
         },
     )
 
-    used: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    used: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="used",
         title="Items used during procedure",
@@ -688,7 +693,7 @@ class Procedure(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Procedure`` according to specification,
         with preserving the original sequence order.
@@ -739,7 +744,7 @@ class Procedure(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Procedure`` according to specification,
         with preserving the original sequence order.
         """
@@ -828,7 +833,7 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
 
     __resource_type__ = "ProcedureFocalDevice"
 
-    action: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    action: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="action",
         title="Kind of change to device",
@@ -838,7 +843,7 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
         },
     )
 
-    manipulated: fhirtypes.ReferenceType = Field(  # type: ignore
+    manipulated: fhirtypes.ReferenceType = Field(
         default=...,
         alias="manipulated",
         title="Device that was changed",
@@ -851,7 +856,7 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProcedureFocalDevice`` according to specification,
         with preserving the original sequence order.
@@ -859,7 +864,7 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "action", "manipulated"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProcedureFocalDevice`` according to specification,
         with preserving the original sequence order.
         """
@@ -877,7 +882,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
 
     __resource_type__ = "ProcedurePerformer"
 
-    actor: fhirtypes.ReferenceType = Field(  # type: ignore
+    actor: fhirtypes.ReferenceType = Field(
         default=...,
         alias="actor",
         title="Who performed the procedure",
@@ -899,7 +904,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         },
     )
 
-    function: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    function: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="function",
         title="Type of performance",
@@ -913,7 +918,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         },
     )
 
-    onBehalfOf: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    onBehalfOf: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="onBehalfOf",
         title="Organization the device or practitioner was acting for",
@@ -928,7 +933,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="When the performer performed the procedure",
@@ -939,7 +944,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProcedurePerformer`` according to specification,
         with preserving the original sequence order.
@@ -955,7 +960,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProcedurePerformer`` according to specification,
         with preserving the original sequence order.
         """

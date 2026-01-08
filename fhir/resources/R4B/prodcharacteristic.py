@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ProdCharacteristic
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
 
     __resource_type__ = "ProdCharacteristic"
 
-    color: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    color: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="color",
         title=(
@@ -40,11 +41,11 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    color__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    color__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(
         default=None, alias="_color", title="Extension field for ``color``."
     )
 
-    depth: fhirtypes.QuantityType | None = Field(  # type: ignore
+    depth: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="depth",
         title=(
@@ -60,7 +61,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    externalDiameter: fhirtypes.QuantityType | None = Field(  # type: ignore
+    externalDiameter: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="externalDiameter",
         title=(
@@ -76,7 +77,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    height: fhirtypes.QuantityType | None = Field(  # type: ignore
+    height: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="height",
         title=(
@@ -92,7 +93,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    image: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    image: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="image",
         title=(
@@ -106,7 +107,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    imprint: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    imprint: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="imprint",
         title="Where applicable, the imprint can be specified as text",
@@ -116,11 +117,13 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    imprint__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    imprint__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_imprint", title="Extension field for ``imprint``."
     )
 
-    nominalVolume: fhirtypes.QuantityType | None = Field(  # type: ignore
+    nominalVolume: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="nominalVolume",
         title=(
@@ -136,7 +139,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    scoring: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    scoring: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="scoring",
         title=(
@@ -151,7 +154,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    shape: fhirtypes.StringType | None = Field(  # type: ignore
+    shape: fhirtypes.StringType | None = Field(
         default=None,
         alias="shape",
         title=(
@@ -165,11 +168,11 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    shape__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    shape__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_shape", title="Extension field for ``shape``."
     )
 
-    weight: fhirtypes.QuantityType | None = Field(  # type: ignore
+    weight: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="weight",
         title=(
@@ -185,7 +188,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    width: fhirtypes.QuantityType | None = Field(  # type: ignore
+    width: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="width",
         title=(
@@ -202,7 +205,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProdCharacteristic`` according to specification,
         with preserving the original sequence order.
@@ -225,7 +228,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProdCharacteristic`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RelatedArtifact
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class RelatedArtifact(element.Element):
 
     __resource_type__ = "RelatedArtifact"
 
-    citation: fhirtypes.StringType | None = Field(  # type: ignore
+    citation: fhirtypes.StringType | None = Field(
         default=None,
         alias="citation",
         title="Bibliographic citation for the artifact",
@@ -39,11 +40,11 @@ class RelatedArtifact(element.Element):
             "summary_element_property": True,
         },
     )
-    citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_citation", title="Extension field for ``citation``."
     )
 
-    display: fhirtypes.StringType | None = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(
         default=None,
         alias="display",
         title="Brief description of the related artifact",
@@ -56,11 +57,11 @@ class RelatedArtifact(element.Element):
             "summary_element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_display", title="Extension field for ``display``."
     )
 
-    document: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    document: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="document",
         title="What document is being referenced",
@@ -74,7 +75,7 @@ class RelatedArtifact(element.Element):
         },
     )
 
-    resource: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    resource: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="resource",
         title="What resource is being referenced",
@@ -90,7 +91,7 @@ class RelatedArtifact(element.Element):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -116,11 +117,11 @@ class RelatedArtifact(element.Element):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title="Where the artifact can be accessed",
@@ -133,12 +134,12 @@ class RelatedArtifact(element.Element):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RelatedArtifact`` according to specification,
         with preserving the original sequence order.
@@ -155,7 +156,7 @@ class RelatedArtifact(element.Element):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RelatedArtifact`` according to specification,
         with preserving the original sequence order.
         """

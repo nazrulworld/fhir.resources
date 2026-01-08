@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Consent
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -28,7 +29,7 @@ class Consent(domainresource.DomainResource):
 
     __resource_type__ = "Consent"
 
-    category: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(
         default=...,
         alias="category",
         title="Classification of the consent statement - for indexing/retrieval",
@@ -42,7 +43,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    dateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    dateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="dateTime",
         title="When this Consent was created or indexed",
@@ -52,11 +53,11 @@ class Consent(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_dateTime", title="Extension field for ``dateTime``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Identifier for this record (external references)",
@@ -67,7 +68,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    organization: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    organization: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="organization",
         title="Custodian of the consent",
@@ -83,7 +84,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="patient",
         title="Who the consent applies to",
@@ -96,7 +97,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    performer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    performer: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="performer",
         title="Who is agreeing to the policy and rules",
@@ -121,7 +122,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    policy: typing.List[fhirtypes.ConsentPolicyType] | None = Field(  # type: ignore
+    policy: typing.List[fhirtypes.ConsentPolicyType] | None = Field(
         default=None,
         alias="policy",
         title="Policies covered by this consent",
@@ -135,7 +136,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    policyRule: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    policyRule: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="policyRule",
         title="Regulation that this consents to",
@@ -146,7 +147,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    provision: fhirtypes.ConsentProvisionType | None = Field(  # type: ignore
+    provision: fhirtypes.ConsentProvisionType | None = Field(
         default=None,
         alias="provision",
         title="Constraints to the base Consent.policyRule",
@@ -160,7 +161,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    scope: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    scope: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="scope",
         title="Which of the four areas this resource covers (extensible)",
@@ -174,7 +175,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    sourceAttachment: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    sourceAttachment: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="sourceAttachment",
         title="Source from which this consent is taken",
@@ -193,7 +194,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    sourceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    sourceReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="sourceReference",
         title="Source from which this consent is taken",
@@ -219,7 +220,7 @@ class Consent(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | proposed | active | rejected | inactive | entered-in-error",
@@ -240,11 +241,11 @@ class Consent(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    verification: typing.List[fhirtypes.ConsentVerificationType] | None = Field(  # type: ignore
+    verification: typing.List[fhirtypes.ConsentVerificationType] | None = Field(
         default=None,
         alias="verification",
         title="Consent Verified by patient or family",
@@ -260,7 +261,7 @@ class Consent(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Consent`` according to specification,
         with preserving the original sequence order.
@@ -291,7 +292,7 @@ class Consent(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Consent`` according to specification,
         with preserving the original sequence order.
         """
@@ -355,7 +356,7 @@ class ConsentPolicy(backboneelement.BackboneElement):
 
     __resource_type__ = "ConsentPolicy"
 
-    authority: fhirtypes.UriType | None = Field(  # type: ignore
+    authority: fhirtypes.UriType | None = Field(
         default=None,
         alias="authority",
         title="Enforcement source for policy",
@@ -368,11 +369,11 @@ class ConsentPolicy(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    authority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    authority__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_authority", title="Extension field for ``authority``."
     )
 
-    uri: fhirtypes.UriType | None = Field(  # type: ignore
+    uri: fhirtypes.UriType | None = Field(
         default=None,
         alias="uri",
         title="Specific policy covered by this consent",
@@ -385,12 +386,12 @@ class ConsentPolicy(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_uri", title="Extension field for ``uri``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ConsentPolicy`` according to specification,
         with preserving the original sequence order.
@@ -398,7 +399,7 @@ class ConsentPolicy(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "authority", "uri"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ConsentPolicy`` according to specification,
         with preserving the original sequence order.
         """
@@ -417,7 +418,7 @@ class ConsentProvision(backboneelement.BackboneElement):
 
     __resource_type__ = "ConsentProvision"
 
-    action: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    action: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="action",
         title="Actions controlled by this rule",
@@ -428,7 +429,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    actor: typing.List[fhirtypes.ConsentProvisionActorType] | None = Field(  # type: ignore
+    actor: typing.List[fhirtypes.ConsentProvisionActorType] | None = Field(
         default=None,
         alias="actor",
         title="Who|what controlled by this rule (or group, by role)",
@@ -441,7 +442,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    class_fhir: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    class_fhir: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="class",
         title="e.g. Resource Type, Profile, CDA, etc.",
@@ -456,7 +457,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="code",
         title="e.g. LOINC or SNOMED CT code, etc. in the content",
@@ -467,7 +468,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    data: typing.List[fhirtypes.ConsentProvisionDataType] | None = Field(  # type: ignore
+    data: typing.List[fhirtypes.ConsentProvisionDataType] | None = Field(
         default=None,
         alias="data",
         title="Data controlled by this rule",
@@ -481,7 +482,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    dataPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    dataPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="dataPeriod",
         title="Timeframe for data controlled by this rule",
@@ -495,7 +496,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Timeframe for this rule",
@@ -506,7 +507,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    provision: typing.List[fhirtypes.ConsentProvisionType] | None = Field(  # type: ignore
+    provision: typing.List[fhirtypes.ConsentProvisionType] | None = Field(
         default=None,
         alias="provision",
         title="Nested Exception Rules",
@@ -516,7 +517,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    purpose: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    purpose: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="purpose",
         title="Context of activities covered by this rule",
@@ -530,7 +531,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    securityLabel: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    securityLabel: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="securityLabel",
         title="Security Labels that define affected resources",
@@ -544,7 +545,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="deny | permit",
@@ -560,12 +561,12 @@ class ConsentProvision(backboneelement.BackboneElement):
             "enum_values": ["deny", "permit"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ConsentProvision`` according to specification,
         with preserving the original sequence order.
@@ -588,7 +589,7 @@ class ConsentProvision(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ConsentProvision`` according to specification,
         with preserving the original sequence order.
         """
@@ -618,7 +619,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
 
     __resource_type__ = "ConsentProvisionActor"
 
-    reference: fhirtypes.ReferenceType = Field(  # type: ignore
+    reference: fhirtypes.ReferenceType = Field(
         default=...,
         alias="reference",
         title="Resource for the actor (or group, by role)",
@@ -643,7 +644,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
         },
     )
 
-    role: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="role",
         title="How the actor is involved",
@@ -657,7 +658,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ConsentProvisionActor`` according to specification,
         with preserving the original sequence order.
@@ -665,7 +666,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "role", "reference"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ConsentProvisionActor`` according to specification,
         with preserving the original sequence order.
         """
@@ -683,7 +684,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
 
     __resource_type__ = "ConsentProvisionData"
 
-    meaning: fhirtypes.CodeType | None = Field(  # type: ignore
+    meaning: fhirtypes.CodeType | None = Field(
         default=None,
         alias="meaning",
         title="instance | related | dependents | authoredby",
@@ -700,11 +701,11 @@ class ConsentProvisionData(backboneelement.BackboneElement):
             "enum_values": ["instance", "related", "dependents", "authoredby"],
         },
     )
-    meaning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    meaning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_meaning", title="Extension field for ``meaning``."
     )
 
-    reference: fhirtypes.ReferenceType = Field(  # type: ignore
+    reference: fhirtypes.ReferenceType = Field(
         default=...,
         alias="reference",
         title="The actual data reference",
@@ -721,7 +722,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ConsentProvisionData`` according to specification,
         with preserving the original sequence order.
@@ -729,7 +730,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "meaning", "reference"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ConsentProvisionData`` according to specification,
         with preserving the original sequence order.
         """
@@ -759,7 +760,7 @@ class ConsentVerification(backboneelement.BackboneElement):
 
     __resource_type__ = "ConsentVerification"
 
-    verificationDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    verificationDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="verificationDate",
         title="When consent verified",
@@ -768,13 +769,13 @@ class ConsentVerification(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    verificationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    verificationDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_verificationDate",
         title="Extension field for ``verificationDate``.",
     )
 
-    verified: bool | None = Field(  # type: ignore
+    verified: bool | None = Field(
         default=None,
         alias="verified",
         title="Has been verified",
@@ -785,11 +786,11 @@ class ConsentVerification(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    verified__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    verified__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_verified", title="Extension field for ``verified``."
     )
 
-    verifiedWith: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    verifiedWith: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="verifiedWith",
         title="Person who verified",
@@ -805,7 +806,7 @@ class ConsentVerification(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ConsentVerification`` according to specification,
         with preserving the original sequence order.
@@ -820,7 +821,7 @@ class ConsentVerification(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ConsentVerification`` according to specification,
         with preserving the original sequence order.
         """

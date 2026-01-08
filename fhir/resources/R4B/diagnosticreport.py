@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DiagnosticReport
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -30,7 +31,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
     __resource_type__ = "DiagnosticReport"
 
-    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    basedOn: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="basedOn",
         title="What was requested",
@@ -48,7 +49,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="Service category",
@@ -64,7 +65,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="Name/Code for this diagnostic report",
@@ -75,7 +76,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    conclusion: fhirtypes.StringType | None = Field(  # type: ignore
+    conclusion: fhirtypes.StringType | None = Field(
         default=None,
         alias="conclusion",
         title="Clinical conclusion (interpretation) of test results",
@@ -87,11 +88,11 @@ class DiagnosticReport(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_conclusion", title="Extension field for ``conclusion``."
     )
 
-    conclusionCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    conclusionCode: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="conclusionCode",
         title="Codes for the clinical conclusion of test results",
@@ -104,7 +105,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    effectiveDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    effectiveDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="effectiveDateTime",
         title="Clinically relevant time/time-period for report",
@@ -122,13 +123,13 @@ class DiagnosticReport(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_effectiveDateTime",
         title="Extension field for ``effectiveDateTime``.",
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="Clinically relevant time/time-period for report",
@@ -147,7 +148,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="encounter",
         title="Health care event when test ordered",
@@ -163,7 +164,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier for report",
@@ -174,7 +175,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    imagingStudy: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    imagingStudy: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="imagingStudy",
         title=(
@@ -195,7 +196,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    issued: fhirtypes.InstantType | None = Field(  # type: ignore
+    issued: fhirtypes.InstantType | None = Field(
         default=None,
         alias="issued",
         title="DateTime this version was made",
@@ -208,11 +209,11 @@ class DiagnosticReport(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    media: typing.List[fhirtypes.DiagnosticReportMediaType] | None = Field(  # type: ignore
+    media: typing.List[fhirtypes.DiagnosticReportMediaType] | None = Field(
         default=None,
         alias="media",
         title="Key images associated with this report",
@@ -227,7 +228,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    performer: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    performer: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="performer",
         title="Responsible Diagnostic Service",
@@ -245,7 +246,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    presentedForm: typing.List[fhirtypes.AttachmentType] | None = Field(  # type: ignore
+    presentedForm: typing.List[fhirtypes.AttachmentType] | None = Field(
         default=None,
         alias="presentedForm",
         title="Entire report as issued",
@@ -259,7 +260,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    result: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    result: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="result",
         title="Observations",
@@ -274,7 +275,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    resultsInterpreter: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    resultsInterpreter: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="resultsInterpreter",
         title="Primary result interpreter",
@@ -295,7 +296,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    specimen: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    specimen: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="specimen",
         title="Specimens this report is based on",
@@ -307,7 +308,7 @@ class DiagnosticReport(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="registered | partial | preliminary | final +",
@@ -321,11 +322,11 @@ class DiagnosticReport(domainresource.DomainResource):
             "enum_values": ["registered", "partial", "preliminary", "final", "+"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    subject: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="subject",
         title="The subject of the report - usually, but not always, the patient",
@@ -353,7 +354,7 @@ class DiagnosticReport(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DiagnosticReport`` according to specification,
         with preserving the original sequence order.
@@ -389,7 +390,7 @@ class DiagnosticReport(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DiagnosticReport`` according to specification,
         with preserving the original sequence order.
         """
@@ -452,7 +453,7 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
 
     __resource_type__ = "DiagnosticReportMedia"
 
-    comment: fhirtypes.StringType | None = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(
         default=None,
         alias="comment",
         title="Comment about the image (e.g. explanation)",
@@ -465,11 +466,11 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    link: fhirtypes.ReferenceType = Field(  # type: ignore
+    link: fhirtypes.ReferenceType = Field(
         default=...,
         alias="link",
         title="Reference to the image source",
@@ -483,7 +484,7 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DiagnosticReportMedia`` according to specification,
         with preserving the original sequence order.
@@ -491,7 +492,7 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "comment", "link"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DiagnosticReportMedia`` according to specification,
         with preserving the original sequence order.
         """

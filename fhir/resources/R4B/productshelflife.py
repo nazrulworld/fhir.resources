@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ProductShelfLife
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
 
     __resource_type__ = "ProductShelfLife"
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Unique identifier for the packaged Medicinal Product",
@@ -36,7 +37,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
         },
     )
 
-    period: fhirtypes.QuantityType = Field(  # type: ignore
+    period: fhirtypes.QuantityType = Field(
         default=...,
         alias="period",
         title=(
@@ -53,7 +54,9 @@ class ProductShelfLife(backboneelement.BackboneElement):
         },
     )
 
-    specialPrecautionsForStorage: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    specialPrecautionsForStorage: typing.List[
+        fhirtypes.CodeableConceptType
+    ] | None = Field(
         default=None,
         alias="specialPrecautionsForStorage",
         title=(
@@ -68,7 +71,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title=(
@@ -87,7 +90,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ProductShelfLife`` according to specification,
         with preserving the original sequence order.
@@ -103,7 +106,7 @@ class ProductShelfLife(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ProductShelfLife`` according to specification,
         with preserving the original sequence order.
         """

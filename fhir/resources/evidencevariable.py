@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/EvidenceVariable
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class EvidenceVariable(domainresource.DomainResource):
 
     __resource_type__ = "EvidenceVariable"
 
-    actual: bool | None = Field(  # type: ignore
+    actual: bool | None = Field(
         default=None,
         alias="actual",
         title="Actual or conceptual",
@@ -38,11 +39,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    actual__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    actual__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_actual", title="Extension field for ``actual``."
     )
 
-    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="approvalDate",
         title="When the resource was approved by publisher",
@@ -56,13 +57,13 @@ class EvidenceVariable(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_approvalDate",
         title="Extension field for ``approvalDate``.",
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="author",
         title="Who authored the content",
@@ -75,7 +76,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.EvidenceVariableCategoryType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.EvidenceVariableCategoryType] | None = Field(
         default=None,
         alias="category",
         title="A grouping for ordinal or polychotomous variables",
@@ -85,7 +86,9 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    characteristic: typing.List[fhirtypes.EvidenceVariableCharacteristicType] | None = Field(  # type: ignore
+    characteristic: typing.List[
+        fhirtypes.EvidenceVariableCharacteristicType
+    ] | None = Field(
         default=None,
         alias="characteristic",
         title="A defining factor of the EvidenceVariable",
@@ -99,7 +102,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -113,7 +116,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -126,11 +129,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
+    copyrightLabel: fhirtypes.StringType | None = Field(
         default=None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -144,13 +147,13 @@ class EvidenceVariable(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_copyrightLabel",
         title="Extension field for ``copyrightLabel``.",
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -166,11 +169,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the evidence variable",
@@ -183,11 +186,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="editor",
         title="Who edited the content",
@@ -200,7 +203,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="When the resource is expected to be used",
@@ -213,7 +216,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="endorser",
         title="Who endorsed the content",
@@ -227,7 +230,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -240,13 +243,13 @@ class EvidenceVariable(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    handling: fhirtypes.CodeType | None = Field(  # type: ignore
+    handling: fhirtypes.CodeType | None = Field(
         default=None,
         alias="handling",
         title="continuous | dichotomous | ordinal | polychotomous",
@@ -258,11 +261,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "enum_values": ["continuous", "dichotomous", "ordinal", "polychotomous"],
         },
     )
-    handling__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    handling__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_handling", title="Extension field for ``handling``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Additional identifier for the evidence variable",
@@ -277,7 +280,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="lastReviewDate",
         title="When the resource was last reviewed by the publisher",
@@ -290,13 +293,13 @@ class EvidenceVariable(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastReviewDate",
         title="Extension field for ``lastReviewDate``.",
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this evidence variable (computer friendly)",
@@ -310,11 +313,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Used for footnotes or explanatory notes",
@@ -327,7 +330,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -340,11 +343,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this EvidenceVariable is defined",
@@ -356,11 +359,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc",
@@ -373,7 +376,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="reviewer",
         title="Who reviewed the content",
@@ -386,7 +389,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    shortTitle: fhirtypes.StringType | None = Field(  # type: ignore
+    shortTitle: fhirtypes.StringType | None = Field(
         default=None,
         alias="shortTitle",
         title="Title for use in informal contexts",
@@ -399,11 +402,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_shortTitle", title="Extension field for ``shortTitle``."
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -420,11 +423,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this evidence variable (human friendly)",
@@ -434,11 +437,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -459,11 +462,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -480,7 +483,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the evidence variable",
@@ -503,11 +506,11 @@ class EvidenceVariable(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
+    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(
         default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -524,7 +527,7 @@ class EvidenceVariable(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
+    versionAlgorithmString: fhirtypes.StringType | None = Field(
         default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -540,14 +543,14 @@ class EvidenceVariable(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EvidenceVariable`` according to specification,
         with preserving the original sequence order.
@@ -595,7 +598,7 @@ class EvidenceVariable(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EvidenceVariable`` according to specification,
         with preserving the original sequence order.
         """
@@ -661,7 +664,7 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
 
     __resource_type__ = "EvidenceVariableCategory"
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Description of the grouping",
@@ -670,11 +673,11 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="valueCodeableConcept",
         title="Definition of the grouping",
@@ -687,7 +690,7 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
         },
     )
 
-    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="valueQuantity",
         title="Definition of the grouping",
@@ -700,7 +703,7 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
         },
     )
 
-    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="valueRange",
         title="Definition of the grouping",
@@ -714,7 +717,7 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EvidenceVariableCategory`` according to specification,
         with preserving the original sequence order.
@@ -730,7 +733,7 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EvidenceVariableCategory`` according to specification,
         with preserving the original sequence order.
         """
@@ -767,7 +770,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
 
     __resource_type__ = "EvidenceVariableCharacteristic"
 
-    definitionByCombination: fhirtypes.EvidenceVariableCharacteristicDefinitionByCombinationType | None = Field(  # type: ignore
+    definitionByCombination: fhirtypes.EvidenceVariableCharacteristicDefinitionByCombinationType | None = Field(
         default=None,
         alias="definitionByCombination",
         title="Used to specify how two or more characteristics are combined",
@@ -780,7 +783,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    definitionByTypeAndValue: fhirtypes.EvidenceVariableCharacteristicDefinitionByTypeAndValueType | None = Field(  # type: ignore
+    definitionByTypeAndValue: fhirtypes.EvidenceVariableCharacteristicDefinitionByTypeAndValueType | None = Field(
         default=None,
         alias="definitionByTypeAndValue",
         title="Defines the characteristic using type and value",
@@ -791,7 +794,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    definitionCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    definitionCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="definitionCanonical",
         title=(
@@ -806,13 +809,13 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "enum_reference_types": ["EvidenceVariable", "Evidence"],
         },
     )
-    definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_definitionCanonical",
         title="Extension field for ``definitionCanonical``.",
     )
 
-    definitionCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    definitionCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="definitionCodeableConcept",
         title=(
@@ -826,7 +829,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    definitionExpression: fhirtypes.ExpressionType | None = Field(  # type: ignore
+    definitionExpression: fhirtypes.ExpressionType | None = Field(
         default=None,
         alias="definitionExpression",
         title=(
@@ -840,7 +843,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    definitionId: fhirtypes.IdType | None = Field(  # type: ignore
+    definitionId: fhirtypes.IdType | None = Field(
         default=None,
         alias="definitionId",
         title="Defines the characteristic (without using type and value) by an id",
@@ -850,13 +853,13 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    definitionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    definitionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_definitionId",
         title="Extension field for ``definitionId``.",
     )
 
-    definitionReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    definitionReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="definitionReference",
         title=(
@@ -872,7 +875,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the characteristic",
@@ -884,11 +887,11 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    durationQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    durationQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="durationQuantity",
         title="Length of time in which the characteristic is met",
@@ -901,7 +904,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    durationRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    durationRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="durationRange",
         title="Length of time in which the characteristic is met",
@@ -914,7 +917,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    exclude: bool | None = Field(  # type: ignore
+    exclude: bool | None = Field(
         default=None,
         alias="exclude",
         title=(
@@ -930,11 +933,11 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    exclude__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    exclude__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_exclude", title="Extension field for ``exclude``."
     )
 
-    instancesQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    instancesQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="instancesQuantity",
         title="Number of occurrences meeting the characteristic",
@@ -947,7 +950,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    instancesRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    instancesRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="instancesRange",
         title="Number of occurrences meeting the characteristic",
@@ -960,7 +963,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    linkId: fhirtypes.IdType | None = Field(  # type: ignore
+    linkId: fhirtypes.IdType | None = Field(
         default=None,
         alias="linkId",
         title="Label for internal linking",
@@ -969,11 +972,11 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Used for footnotes or explanatory notes",
@@ -986,7 +989,9 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         },
     )
 
-    timeFromEvent: typing.List[fhirtypes.EvidenceVariableCharacteristicTimeFromEventType] | None = Field(  # type: ignore
+    timeFromEvent: typing.List[
+        fhirtypes.EvidenceVariableCharacteristicTimeFromEventType
+    ] | None = Field(
         default=None,
         alias="timeFromEvent",
         title="Timing in which the characteristic is determined",
@@ -997,7 +1002,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EvidenceVariableCharacteristic`` according to specification,
         with preserving the original sequence order.
@@ -1025,7 +1030,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EvidenceVariableCharacteristic`` according to specification,
         with preserving the original sequence order.
         """
@@ -1072,7 +1077,7 @@ class EvidenceVariableCharacteristicDefinitionByCombination(
 
     __resource_type__ = "EvidenceVariableCharacteristicDefinitionByCombination"
 
-    characteristic: typing.List[fhirtypes.EvidenceVariableCharacteristicType] = Field(  # type: ignore
+    characteristic: typing.List[fhirtypes.EvidenceVariableCharacteristicType] = Field(
         default=...,
         alias="characteristic",
         title="A defining factor of the characteristic",
@@ -1082,7 +1087,7 @@ class EvidenceVariableCharacteristicDefinitionByCombination(
         },
     )
 
-    code: fhirtypes.CodeType | None = Field(  # type: ignore
+    code: fhirtypes.CodeType | None = Field(
         default=None,
         alias="code",
         title=(
@@ -1109,11 +1114,11 @@ class EvidenceVariableCharacteristicDefinitionByCombination(
             ],
         },
     )
-    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_code", title="Extension field for ``code``."
     )
 
-    threshold: fhirtypes.PositiveIntType | None = Field(  # type: ignore
+    threshold: fhirtypes.PositiveIntType | None = Field(
         default=None,
         alias="threshold",
         title='Provides the value of "n" when "at-least" or "at-most" codes are used',
@@ -1122,12 +1127,12 @@ class EvidenceVariableCharacteristicDefinitionByCombination(
             "element_property": True,
         },
     )
-    threshold__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    threshold__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_threshold", title="Extension field for ``threshold``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EvidenceVariableCharacteristicDefinitionByCombination`` according to specification,
         with preserving the original sequence order.
@@ -1142,7 +1147,7 @@ class EvidenceVariableCharacteristicDefinitionByCombination(
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EvidenceVariableCharacteristicDefinitionByCombination`` according to specification,
         with preserving the original sequence order.
         """
@@ -1173,7 +1178,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
 
     __resource_type__ = "EvidenceVariableCharacteristicDefinitionByTypeAndValue"
 
-    device: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    device: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="device",
         title="Device used for determining characteristic",
@@ -1185,7 +1190,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
         },
     )
 
-    method: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    method: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="method",
         title="Method for how the characteristic value was determined",
@@ -1195,7 +1200,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
         },
     )
 
-    offset: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    offset: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="offset",
         title="Reference point for valueQuantity or valueRange",
@@ -1208,7 +1213,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
         },
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title="Expresses the type of characteristic",
@@ -1219,7 +1224,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
         },
     )
 
-    valueBoolean: bool | None = Field(  # type: ignore
+    valueBoolean: bool | None = Field(
         default=None,
         alias="valueBoolean",
         title="Defines the characteristic when coupled with characteristic.type",
@@ -1232,13 +1237,13 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
             "one_of_many_required": True,
         },
     )
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_valueBoolean",
         title="Extension field for ``valueBoolean``.",
     )
 
-    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="valueCodeableConcept",
         title="Defines the characteristic when coupled with characteristic.type",
@@ -1252,7 +1257,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
         },
     )
 
-    valueId: fhirtypes.IdType | None = Field(  # type: ignore
+    valueId: fhirtypes.IdType | None = Field(
         default=None,
         alias="valueId",
         title="Defines the characteristic when coupled with characteristic.type",
@@ -1265,11 +1270,11 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
             "one_of_many_required": True,
         },
     )
-    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
-    valueQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    valueQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="valueQuantity",
         title="Defines the characteristic when coupled with characteristic.type",
@@ -1283,7 +1288,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
         },
     )
 
-    valueRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    valueRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="valueRange",
         title="Defines the characteristic when coupled with characteristic.type",
@@ -1297,7 +1302,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
         },
     )
 
-    valueReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    valueReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="valueReference",
         title="Defines the characteristic when coupled with characteristic.type",
@@ -1312,7 +1317,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EvidenceVariableCharacteristicDefinitionByTypeAndValue`` according to specification,
         with preserving the original sequence order.
@@ -1334,7 +1339,7 @@ class EvidenceVariableCharacteristicDefinitionByTypeAndValue(
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EvidenceVariableCharacteristicDefinitionByTypeAndValue`` according to specification,
         with preserving the original sequence order.
         """
@@ -1385,7 +1390,7 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
 
     __resource_type__ = "EvidenceVariableCharacteristicTimeFromEvent"
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Human readable description",
@@ -1394,11 +1399,11 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    eventCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    eventCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="eventCodeableConcept",
         title="The event used as a base point (reference point) in time",
@@ -1411,7 +1416,7 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
         },
     )
 
-    eventDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    eventDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="eventDateTime",
         title="The event used as a base point (reference point) in time",
@@ -1423,13 +1428,13 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
             "one_of_many_required": False,
         },
     )
-    eventDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    eventDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_eventDateTime",
         title="Extension field for ``eventDateTime``.",
     )
 
-    eventId: fhirtypes.IdType | None = Field(  # type: ignore
+    eventId: fhirtypes.IdType | None = Field(
         default=None,
         alias="eventId",
         title="The event used as a base point (reference point) in time",
@@ -1441,11 +1446,11 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
             "one_of_many_required": False,
         },
     )
-    eventId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    eventId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_eventId", title="Extension field for ``eventId``."
     )
 
-    eventReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    eventReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="eventReference",
         title="The event used as a base point (reference point) in time",
@@ -1458,7 +1463,7 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Used for footnotes or explanatory notes",
@@ -1471,7 +1476,7 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
         },
     )
 
-    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="quantity",
         title=(
@@ -1484,7 +1489,7 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
         },
     )
 
-    range: fhirtypes.RangeType | None = Field(  # type: ignore
+    range: fhirtypes.RangeType | None = Field(
         default=None,
         alias="range",
         title=(
@@ -1498,7 +1503,7 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EvidenceVariableCharacteristicTimeFromEvent`` according to specification,
         with preserving the original sequence order.
@@ -1518,7 +1523,7 @@ class EvidenceVariableCharacteristicTimeFromEvent(backboneelement.BackboneElemen
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EvidenceVariableCharacteristicTimeFromEvent`` according to specification,
         with preserving the original sequence order.
         """

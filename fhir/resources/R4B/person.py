@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Person
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class Person(domainresource.DomainResource):
 
     __resource_type__ = "Person"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="This person's record is in active use",
@@ -36,11 +37,11 @@ class Person(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: typing.List[fhirtypes.AddressType] | None = Field(  # type: ignore
+    address: typing.List[fhirtypes.AddressType] | None = Field(
         default=None,
         alias="address",
         title="One or more addresses for the person",
@@ -50,7 +51,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    birthDate: fhirtypes.DateType | None = Field(  # type: ignore
+    birthDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="birthDate",
         title="The date on which the person was born",
@@ -60,11 +61,11 @@ class Person(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    gender: fhirtypes.CodeType | None = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(
         default=None,
         alias="gender",
         title="male | female | other | unknown",
@@ -77,11 +78,11 @@ class Person(domainresource.DomainResource):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="A human identifier for this person",
@@ -91,7 +92,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    link: typing.List[fhirtypes.PersonLinkType] | None = Field(  # type: ignore
+    link: typing.List[fhirtypes.PersonLinkType] | None = Field(
         default=None,
         alias="link",
         title="Link to a resource that concerns the same actual person",
@@ -101,7 +102,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    managingOrganization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="managingOrganization",
         title="The organization that is the custodian of the person record",
@@ -114,7 +115,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    name: typing.List[fhirtypes.HumanNameType] | None = Field(  # type: ignore
+    name: typing.List[fhirtypes.HumanNameType] | None = Field(
         default=None,
         alias="name",
         title="A name associated with the person",
@@ -125,7 +126,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    photo: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    photo: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="photo",
         title="Image of the person",
@@ -138,7 +139,7 @@ class Person(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="telecom",
         title="A contact detail for the person",
@@ -153,7 +154,7 @@ class Person(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Person`` according to specification,
         with preserving the original sequence order.
@@ -180,7 +181,7 @@ class Person(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Person`` according to specification,
         with preserving the original sequence order.
         """
@@ -207,7 +208,7 @@ class PersonLink(backboneelement.BackboneElement):
 
     __resource_type__ = "PersonLink"
 
-    assurance: fhirtypes.CodeType | None = Field(  # type: ignore
+    assurance: fhirtypes.CodeType | None = Field(
         default=None,
         alias="assurance",
         title="level1 | level2 | level3 | level4",
@@ -222,11 +223,11 @@ class PersonLink(backboneelement.BackboneElement):
             "enum_values": ["level1", "level2", "level3", "level4"],
         },
     )
-    assurance__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    assurance__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_assurance", title="Extension field for ``assurance``."
     )
 
-    target: fhirtypes.ReferenceType = Field(  # type: ignore
+    target: fhirtypes.ReferenceType = Field(
         default=...,
         alias="target",
         title="The resource to which this actual person is associated",
@@ -244,7 +245,7 @@ class PersonLink(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PersonLink`` according to specification,
         with preserving the original sequence order.
@@ -252,7 +253,7 @@ class PersonLink(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "target", "assurance"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PersonLink`` according to specification,
         with preserving the original sequence order.
         """

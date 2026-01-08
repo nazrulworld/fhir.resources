@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Permission
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class Permission(domainresource.DomainResource):
 
     __resource_type__ = "Permission"
 
-    asserter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    asserter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="asserter",
         title="The person or entity that asserts the permission",
@@ -46,7 +47,7 @@ class Permission(domainresource.DomainResource):
         },
     )
 
-    combining: fhirtypes.CodeType | None = Field(  # type: ignore
+    combining: fhirtypes.CodeType | None = Field(
         default=None,
         alias="combining",
         title=(
@@ -73,11 +74,11 @@ class Permission(domainresource.DomainResource):
             ],
         },
     )
-    combining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    combining__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_combining", title="Extension field for ``combining``."
     )
 
-    date: typing.List[fhirtypes.DateTimeType | None] | None = Field(  # type: ignore
+    date: typing.List[fhirtypes.DateTimeType | None] | None = Field(
         default=None,
         alias="date",
         title="The date that permission was asserted",
@@ -87,11 +88,11 @@ class Permission(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    date__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    justification: fhirtypes.PermissionJustificationType | None = Field(  # type: ignore
+    justification: fhirtypes.PermissionJustificationType | None = Field(
         default=None,
         alias="justification",
         title="The asserted justification for using the data",
@@ -102,7 +103,7 @@ class Permission(domainresource.DomainResource):
         },
     )
 
-    rule: typing.List[fhirtypes.PermissionRuleType] | None = Field(  # type: ignore
+    rule: typing.List[fhirtypes.PermissionRuleType] | None = Field(
         default=None,
         alias="rule",
         title="Constraints to the Permission",
@@ -113,7 +114,7 @@ class Permission(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | entered-in-error | draft | rejected",
@@ -127,11 +128,11 @@ class Permission(domainresource.DomainResource):
             "enum_values": ["active", "entered-in-error", "draft", "rejected"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    validity: fhirtypes.PeriodType | None = Field(  # type: ignore
+    validity: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="validity",
         title="The period in which the permission is active",
@@ -143,7 +144,7 @@ class Permission(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Permission`` according to specification,
         with preserving the original sequence order.
@@ -167,7 +168,7 @@ class Permission(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Permission`` according to specification,
         with preserving the original sequence order.
         """
@@ -207,7 +208,7 @@ class PermissionJustification(backboneelement.BackboneElement):
 
     __resource_type__ = "PermissionJustification"
 
-    basis: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    basis: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="basis",
         title="The regulatory grounds upon which this Permission builds",
@@ -221,7 +222,7 @@ class PermissionJustification(backboneelement.BackboneElement):
         },
     )
 
-    evidence: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    evidence: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="evidence",
         title="Justifing rational",
@@ -235,7 +236,7 @@ class PermissionJustification(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PermissionJustification`` according to specification,
         with preserving the original sequence order.
@@ -243,7 +244,7 @@ class PermissionJustification(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "basis", "evidence"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PermissionJustification`` according to specification,
         with preserving the original sequence order.
         """
@@ -261,7 +262,7 @@ class PermissionRule(backboneelement.BackboneElement):
 
     __resource_type__ = "PermissionRule"
 
-    activity: typing.List[fhirtypes.PermissionRuleActivityType] | None = Field(  # type: ignore
+    activity: typing.List[fhirtypes.PermissionRuleActivityType] | None = Field(
         default=None,
         alias="activity",
         title=(
@@ -275,7 +276,7 @@ class PermissionRule(backboneelement.BackboneElement):
         },
     )
 
-    data: typing.List[fhirtypes.PermissionRuleDataType] | None = Field(  # type: ignore
+    data: typing.List[fhirtypes.PermissionRuleDataType] | None = Field(
         default=None,
         alias="data",
         title=(
@@ -292,7 +293,7 @@ class PermissionRule(backboneelement.BackboneElement):
         },
     )
 
-    limit: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    limit: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="limit",
         title="What limits apply to the use of the data",
@@ -303,7 +304,7 @@ class PermissionRule(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="deny | permit",
@@ -316,12 +317,12 @@ class PermissionRule(backboneelement.BackboneElement):
             "enum_values": ["deny", "permit"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PermissionRule`` according to specification,
         with preserving the original sequence order.
@@ -337,7 +338,7 @@ class PermissionRule(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PermissionRule`` according to specification,
         with preserving the original sequence order.
         """
@@ -355,7 +356,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
 
     __resource_type__ = "PermissionRuleActivity"
 
-    action: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    action: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="action",
         title="Actions controlled by this rule",
@@ -366,7 +367,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
         },
     )
 
-    actor: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    actor: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="actor",
         title="Authorized actor(s)",
@@ -388,7 +389,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
         },
     )
 
-    purpose: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    purpose: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="purpose",
         title="The purpose for which the permission is given",
@@ -400,7 +401,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PermissionRuleActivity`` according to specification,
         with preserving the original sequence order.
@@ -408,7 +409,7 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "actor", "action", "purpose"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PermissionRuleActivity`` according to specification,
         with preserving the original sequence order.
         """
@@ -428,7 +429,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
 
     __resource_type__ = "PermissionRuleData"
 
-    expression: fhirtypes.ExpressionType | None = Field(  # type: ignore
+    expression: fhirtypes.ExpressionType | None = Field(
         default=None,
         alias="expression",
         title="Expression identifying the data",
@@ -439,7 +440,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
         },
     )
 
-    period: typing.List[fhirtypes.PeriodType] | None = Field(  # type: ignore
+    period: typing.List[fhirtypes.PeriodType] | None = Field(
         default=None,
         alias="period",
         title="Timeframe encompasing data create/update",
@@ -453,7 +454,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
         },
     )
 
-    resource: typing.List[fhirtypes.PermissionRuleDataResourceType] | None = Field(  # type: ignore
+    resource: typing.List[fhirtypes.PermissionRuleDataResourceType] | None = Field(
         default=None,
         alias="resource",
         title="Explicit FHIR Resource references",
@@ -464,7 +465,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
         },
     )
 
-    security: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    security: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="security",
         title="Security tag code on .meta.security",
@@ -479,7 +480,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PermissionRuleData`` according to specification,
         with preserving the original sequence order.
@@ -495,7 +496,7 @@ class PermissionRuleData(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PermissionRuleData`` according to specification,
         with preserving the original sequence order.
         """
@@ -512,7 +513,7 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
 
     __resource_type__ = "PermissionRuleDataResource"
 
-    meaning: fhirtypes.CodeType | None = Field(  # type: ignore
+    meaning: fhirtypes.CodeType | None = Field(
         default=None,
         alias="meaning",
         title="instance | related | dependents | authoredby",
@@ -529,11 +530,11 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
             "enum_values": ["instance", "related", "dependents", "authoredby"],
         },
     )
-    meaning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    meaning__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_meaning", title="Extension field for ``meaning``."
     )
 
-    reference: fhirtypes.ReferenceType = Field(  # type: ignore
+    reference: fhirtypes.ReferenceType = Field(
         default=...,
         alias="reference",
         title="The actual data reference",
@@ -550,7 +551,7 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PermissionRuleDataResource`` according to specification,
         with preserving the original sequence order.
@@ -558,7 +559,7 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "meaning", "reference"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PermissionRuleDataResource`` according to specification,
         with preserving the original sequence order.
         """

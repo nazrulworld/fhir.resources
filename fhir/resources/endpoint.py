@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Endpoint
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -29,7 +30,7 @@ class Endpoint(domainresource.DomainResource):
 
     __resource_type__ = "Endpoint"
 
-    address: fhirtypes.UrlType | None = Field(  # type: ignore
+    address: fhirtypes.UrlType | None = Field(
         default=None,
         alias="address",
         title="The technical base address for connecting to this endpoint",
@@ -40,11 +41,11 @@ class Endpoint(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    address__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_address", title="Extension field for ``address``."
     )
 
-    connectionType: typing.List[fhirtypes.CodeableConceptType] = Field(  # type: ignore
+    connectionType: typing.List[fhirtypes.CodeableConceptType] = Field(
         default=...,
         alias="connectionType",
         title="Protocol/Profile/Standard to be used with this endpoint connection",
@@ -59,7 +60,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for source (e.g. troubleshooting)",
@@ -72,7 +73,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title=(
@@ -89,11 +90,11 @@ class Endpoint(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    environmentType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    environmentType: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="environmentType",
         title="The type of environment(s) exposed at this endpoint",
@@ -107,7 +108,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    header: typing.List[fhirtypes.StringType | None] | None = Field(  # type: ignore
+    header: typing.List[fhirtypes.StringType | None] | None = Field(
         default=None,
         alias="header",
         title="Usage depends on the channel type",
@@ -116,11 +117,13 @@ class Endpoint(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    header__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    header__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_header", title="Extension field for ``header``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Identifies this endpoint across multiple systems",
@@ -134,7 +137,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    managingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    managingOrganization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="managingOrganization",
         title=(
@@ -154,7 +157,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="A name that this endpoint can be identified by",
@@ -164,11 +167,11 @@ class Endpoint(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    payload: typing.List[fhirtypes.EndpointPayloadType] | None = Field(  # type: ignore
+    payload: typing.List[fhirtypes.EndpointPayloadType] | None = Field(
         default=None,
         alias="payload",
         title="Set of payloads that are provided by this endpoint",
@@ -178,7 +181,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Interval the endpoint is expected to be operational",
@@ -189,7 +192,7 @@ class Endpoint(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="active | suspended | error | off | entered-in-error | test",
@@ -213,12 +216,12 @@ class Endpoint(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Endpoint`` according to specification,
         with preserving the original sequence order.
@@ -247,7 +250,7 @@ class Endpoint(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Endpoint`` according to specification,
         with preserving the original sequence order.
         """
@@ -290,7 +293,7 @@ class EndpointPayload(backboneelement.BackboneElement):
 
     __resource_type__ = "EndpointPayload"
 
-    mimeType: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    mimeType: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="mimeType",
         title=(
@@ -308,11 +311,13 @@ class EndpointPayload(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    mimeType__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    mimeType__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_mimeType", title="Extension field for ``mimeType``."
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="type",
         title=(
@@ -330,7 +335,7 @@ class EndpointPayload(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``EndpointPayload`` according to specification,
         with preserving the original sequence order.
@@ -338,7 +343,7 @@ class EndpointPayload(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "mimeType"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``EndpointPayload`` according to specification,
         with preserving the original sequence order.
         """

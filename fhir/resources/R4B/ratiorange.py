@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RatioRange
 Release: R4B
@@ -7,6 +5,11 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import element, fhirtypes
@@ -23,7 +26,7 @@ class RatioRange(element.Element):
 
     __resource_type__ = "RatioRange"
 
-    denominator: fhirtypes.QuantityType | None = Field(  # type: ignore
+    denominator: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="denominator",
         title="Denominator value",
@@ -34,7 +37,7 @@ class RatioRange(element.Element):
         },
     )
 
-    highNumerator: fhirtypes.QuantityType | None = Field(  # type: ignore
+    highNumerator: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="highNumerator",
         title="High Numerator limit",
@@ -45,7 +48,7 @@ class RatioRange(element.Element):
         },
     )
 
-    lowNumerator: fhirtypes.QuantityType | None = Field(  # type: ignore
+    lowNumerator: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="lowNumerator",
         title="Low Numerator limit",
@@ -57,7 +60,7 @@ class RatioRange(element.Element):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``RatioRange`` according to specification,
         with preserving the original sequence order.
@@ -65,7 +68,7 @@ class RatioRange(element.Element):
         return ["id", "extension", "lowNumerator", "highNumerator", "denominator"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``RatioRange`` according to specification,
         with preserving the original sequence order.
         """

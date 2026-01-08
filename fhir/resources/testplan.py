@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/TestPlan
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class TestPlan(domainresource.DomainResource):
 
     __resource_type__ = "TestPlan"
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="The category of the Test Plan - can be acceptance, unit, performance",
@@ -38,7 +39,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -52,7 +53,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -67,11 +68,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
+    copyrightLabel: fhirtypes.StringType | None = Field(
         default=None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -85,13 +86,13 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_copyrightLabel",
         title="Extension field for ``copyrightLabel``.",
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -106,11 +107,11 @@ class TestPlan(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    dependency: typing.List[fhirtypes.TestPlanDependencyType] | None = Field(  # type: ignore
+    dependency: typing.List[fhirtypes.TestPlanDependencyType] | None = Field(
         default=None,
         alias="dependency",
         title=(
@@ -126,7 +127,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the test plan",
@@ -138,11 +139,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    exitCriteria: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    exitCriteria: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="exitCriteria",
         title=(
@@ -154,13 +155,13 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    exitCriteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    exitCriteria__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_exitCriteria",
         title="Extension field for ``exitCriteria``.",
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -174,13 +175,13 @@ class TestPlan(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier identifier for the test plan",
@@ -195,7 +196,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction where the test plan applies (if applicable)",
@@ -209,7 +210,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this test plan (computer friendly)",
@@ -223,11 +224,11 @@ class TestPlan(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -240,11 +241,11 @@ class TestPlan(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this test plan is defined",
@@ -256,11 +257,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    scope: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    scope: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="scope",
         title=(
@@ -276,7 +277,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -293,11 +294,11 @@ class TestPlan(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    testCase: typing.List[fhirtypes.TestPlanTestCaseType] | None = Field(  # type: ignore
+    testCase: typing.List[fhirtypes.TestPlanTestCaseType] | None = Field(
         default=None,
         alias="testCase",
         title="The test cases that constitute this plan",
@@ -310,7 +311,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    testTools: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    testTools: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="testTools",
         title=(
@@ -322,11 +323,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    testTools__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    testTools__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_testTools", title="Extension field for ``testTools``."
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this test plan (human friendly)",
@@ -335,11 +336,11 @@ class TestPlan(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -360,11 +361,11 @@ class TestPlan(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -381,7 +382,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the test plan",
@@ -399,11 +400,11 @@ class TestPlan(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
+    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(
         default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -420,7 +421,7 @@ class TestPlan(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
+    versionAlgorithmString: fhirtypes.StringType | None = Field(
         default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -436,14 +437,14 @@ class TestPlan(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestPlan`` according to specification,
         with preserving the original sequence order.
@@ -484,7 +485,7 @@ class TestPlan(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestPlan`` according to specification,
         with preserving the original sequence order.
         """
@@ -551,7 +552,7 @@ class TestPlanDependency(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanDependency"
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Description of the dependency criterium",
@@ -563,11 +564,11 @@ class TestPlanDependency(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    predecessor: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    predecessor: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="predecessor",
         title="Link to predecessor test plans",
@@ -581,7 +582,7 @@ class TestPlanDependency(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestPlanDependency`` according to specification,
         with preserving the original sequence order.
@@ -589,7 +590,7 @@ class TestPlanDependency(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "description", "predecessor"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestPlanDependency`` according to specification,
         with preserving the original sequence order.
         """
@@ -608,7 +609,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCase"
 
-    assertion: typing.List[fhirtypes.TestPlanTestCaseAssertionType] | None = Field(  # type: ignore
+    assertion: typing.List[fhirtypes.TestPlanTestCaseAssertionType] | None = Field(
         default=None,
         alias="assertion",
         title="Test assertions or expectations",
@@ -621,7 +622,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         },
     )
 
-    dependency: typing.List[fhirtypes.TestPlanTestCaseDependencyType] | None = Field(  # type: ignore
+    dependency: typing.List[fhirtypes.TestPlanTestCaseDependencyType] | None = Field(
         default=None,
         alias="dependency",
         title="Required criteria to execute the test case",
@@ -634,7 +635,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         },
     )
 
-    scope: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    scope: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="scope",
         title="The scope or artifact covered by the case",
@@ -647,7 +648,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         },
     )
 
-    sequence: fhirtypes.IntegerType | None = Field(  # type: ignore
+    sequence: fhirtypes.IntegerType | None = Field(
         default=None,
         alias="sequence",
         title="Sequence of test case in the test plan",
@@ -659,11 +660,11 @@ class TestPlanTestCase(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
-    testData: typing.List[fhirtypes.TestPlanTestCaseTestDataType] | None = Field(  # type: ignore
+    testData: typing.List[fhirtypes.TestPlanTestCaseTestDataType] | None = Field(
         default=None,
         alias="testData",
         title="The test data used in the test case",
@@ -673,7 +674,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         },
     )
 
-    testRun: typing.List[fhirtypes.TestPlanTestCaseTestRunType] | None = Field(  # type: ignore
+    testRun: typing.List[fhirtypes.TestPlanTestCaseTestRunType] | None = Field(
         default=None,
         alias="testRun",
         title="The actual test to be executed",
@@ -684,7 +685,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestPlanTestCase`` according to specification,
         with preserving the original sequence order.
@@ -702,7 +703,7 @@ class TestPlanTestCase(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestPlanTestCase`` according to specification,
         with preserving the original sequence order.
         """
@@ -721,7 +722,7 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseAssertion"
 
-    object: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    object: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="object",
         title="The focus or object of the assertion",
@@ -731,7 +732,7 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
         },
     )
 
-    result: typing.List[fhirtypes.CodeableReferenceType] | None = Field(  # type: ignore
+    result: typing.List[fhirtypes.CodeableReferenceType] | None = Field(
         default=None,
         alias="result",
         title="The actual result assertion",
@@ -743,7 +744,7 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="type",
         title="Assertion type - for example 'informative' or 'required' ",
@@ -758,7 +759,7 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestPlanTestCaseAssertion`` according to specification,
         with preserving the original sequence order.
@@ -766,7 +767,7 @@ class TestPlanTestCaseAssertion(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "object", "result"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseAssertion`` according to specification,
         with preserving the original sequence order.
         """
@@ -785,7 +786,7 @@ class TestPlanTestCaseDependency(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseDependency"
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Description of the criteria",
@@ -794,11 +795,11 @@ class TestPlanTestCaseDependency(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    predecessor: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    predecessor: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="predecessor",
         title="Link to predecessor test plans",
@@ -809,7 +810,7 @@ class TestPlanTestCaseDependency(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestPlanTestCaseDependency`` according to specification,
         with preserving the original sequence order.
@@ -817,7 +818,7 @@ class TestPlanTestCaseDependency(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "description", "predecessor"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseDependency`` according to specification,
         with preserving the original sequence order.
         """
@@ -834,7 +835,7 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseTestData"
 
-    content: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    content: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="content",
         title="The actual test resources when they exist",
@@ -844,7 +845,7 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
         },
     )
 
-    sourceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    sourceReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="sourceReference",
         title=(
@@ -860,7 +861,7 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
         },
     )
 
-    sourceString: fhirtypes.StringType | None = Field(  # type: ignore
+    sourceString: fhirtypes.StringType | None = Field(
         default=None,
         alias="sourceString",
         title=(
@@ -875,13 +876,13 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_sourceString",
         title="Extension field for ``sourceString``.",
     )
 
-    type: fhirtypes.CodingType = Field(  # type: ignore
+    type: fhirtypes.CodingType = Field(
         default=...,
         alias="type",
         title="The type of test data description, e.g. 'synthea'",
@@ -892,7 +893,7 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestPlanTestCaseTestData`` according to specification,
         with preserving the original sequence order.
@@ -908,7 +909,7 @@ class TestPlanTestCaseTestData(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseTestData`` according to specification,
         with preserving the original sequence order.
         """
@@ -941,7 +942,7 @@ class TestPlanTestCaseTestRun(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseTestRun"
 
-    narrative: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    narrative: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="narrative",
         title="The narrative description of the tests",
@@ -950,11 +951,11 @@ class TestPlanTestCaseTestRun(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    narrative__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    narrative__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_narrative", title="Extension field for ``narrative``."
     )
 
-    script: fhirtypes.TestPlanTestCaseTestRunScriptType | None = Field(  # type: ignore
+    script: fhirtypes.TestPlanTestCaseTestRunScriptType | None = Field(
         default=None,
         alias="script",
         title=(
@@ -968,7 +969,7 @@ class TestPlanTestCaseTestRun(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestPlanTestCaseTestRun`` according to specification,
         with preserving the original sequence order.
@@ -976,7 +977,7 @@ class TestPlanTestCaseTestRun(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "narrative", "script"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseTestRun`` according to specification,
         with preserving the original sequence order.
         """
@@ -994,7 +995,7 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
 
     __resource_type__ = "TestPlanTestCaseTestRunScript"
 
-    language: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    language: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="language",
         title="The language for the test cases e.g. 'gherkin', 'testscript'",
@@ -1004,7 +1005,7 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
         },
     )
 
-    sourceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    sourceReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="sourceReference",
         title=(
@@ -1020,7 +1021,7 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
         },
     )
 
-    sourceString: fhirtypes.StringType | None = Field(  # type: ignore
+    sourceString: fhirtypes.StringType | None = Field(
         default=None,
         alias="sourceString",
         title=(
@@ -1035,14 +1036,14 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_sourceString",
         title="Extension field for ``sourceString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestPlanTestCaseTestRunScript`` according to specification,
         with preserving the original sequence order.
@@ -1057,7 +1058,7 @@ class TestPlanTestCaseTestRunScript(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestPlanTestCaseTestRunScript`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/OrganizationAffiliation
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
 
     __resource_type__ = "OrganizationAffiliation"
 
-    active: bool | None = Field(  # type: ignore
+    active: bool | None = Field(
         default=None,
         alias="active",
         title="Whether this organization affiliation record is in active use",
@@ -35,11 +36,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_active", title="Extension field for ``active``."
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="code",
         title="Definition of the role the participatingOrganization plays",
@@ -53,7 +54,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    endpoint: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="endpoint",
         title=(
@@ -67,7 +68,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    healthcareService: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    healthcareService: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="healthcareService",
         title="Healthcare services provided through the role",
@@ -79,7 +80,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Business identifiers that are specific to this role",
@@ -90,7 +91,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    location: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    location: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="location",
         title="The location(s) at which the role occurs",
@@ -103,7 +104,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    network: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    network: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="network",
         title=(
@@ -120,7 +121,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    organization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    organization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="organization",
         title="Organization where the role is available",
@@ -136,7 +137,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    participatingOrganization: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    participatingOrganization: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="participatingOrganization",
         title=(
@@ -156,7 +157,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title=(
@@ -170,7 +171,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    specialty: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="specialty",
         title=(
@@ -184,7 +185,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         },
     )
 
-    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(  # type: ignore
+    telecom: typing.List[fhirtypes.ContactPointType] | None = Field(
         default=None,
         alias="telecom",
         title=(
@@ -199,7 +200,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``OrganizationAffiliation`` according to specification,
         with preserving the original sequence order.
@@ -228,7 +229,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``OrganizationAffiliation`` according to specification,
         with preserving the original sequence order.
         """

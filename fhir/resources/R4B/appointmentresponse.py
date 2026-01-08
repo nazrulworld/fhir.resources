@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/AppointmentResponse
 Release: R4B
@@ -7,6 +5,9 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class AppointmentResponse(domainresource.DomainResource):
 
     __resource_type__ = "AppointmentResponse"
 
-    actor: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    actor: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="actor",
         title="Person, Location, HealthcareService, or Device",
@@ -49,7 +50,7 @@ class AppointmentResponse(domainresource.DomainResource):
         },
     )
 
-    appointment: fhirtypes.ReferenceType = Field(  # type: ignore
+    appointment: fhirtypes.ReferenceType = Field(
         default=...,
         alias="appointment",
         title="Appointment this response relates to",
@@ -62,7 +63,7 @@ class AppointmentResponse(domainresource.DomainResource):
         },
     )
 
-    comment: fhirtypes.StringType | None = Field(  # type: ignore
+    comment: fhirtypes.StringType | None = Field(
         default=None,
         alias="comment",
         title="Additional comments",
@@ -71,11 +72,11 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    end: fhirtypes.InstantType | None = Field(  # type: ignore
+    end: fhirtypes.InstantType | None = Field(
         default=None,
         alias="end",
         title="Time from appointment, or requested new end time",
@@ -88,11 +89,11 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_end", title="Extension field for ``end``."
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="External Ids for this item",
@@ -108,7 +109,7 @@ class AppointmentResponse(domainresource.DomainResource):
         },
     )
 
-    participantStatus: fhirtypes.CodeType | None = Field(  # type: ignore
+    participantStatus: fhirtypes.CodeType | None = Field(
         default=None,
         alias="participantStatus",
         title="accepted | declined | tentative | needs-action",
@@ -128,13 +129,13 @@ class AppointmentResponse(domainresource.DomainResource):
             "enum_values": ["accepted", "declined", "tentative", "needs-action"],
         },
     )
-    participantStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    participantStatus__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_participantStatus",
         title="Extension field for ``participantStatus``.",
     )
 
-    participantType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    participantType: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="participantType",
         title="Role of participant in the appointment",
@@ -145,7 +146,7 @@ class AppointmentResponse(domainresource.DomainResource):
         },
     )
 
-    start: fhirtypes.InstantType | None = Field(  # type: ignore
+    start: fhirtypes.InstantType | None = Field(
         default=None,
         alias="start",
         title="Time from appointment, or requested new start time",
@@ -157,12 +158,12 @@ class AppointmentResponse(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_start", title="Extension field for ``start``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``AppointmentResponse`` according to specification,
         with preserving the original sequence order.
@@ -187,7 +188,7 @@ class AppointmentResponse(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``AppointmentResponse`` according to specification,
         with preserving the original sequence order.
         """

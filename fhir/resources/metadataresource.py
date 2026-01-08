@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/MetadataResource
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class MetadataResource(domainresource.DomainResource):
 
     __resource_type__ = "MetadataResource"
 
-    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="approvalDate",
         title="When the {{title}} was approved by publisher",
@@ -39,13 +40,13 @@ class MetadataResource(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_approvalDate",
         title="Extension field for ``approvalDate``.",
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="author",
         title="Who authored the {{title}}",
@@ -58,7 +59,7 @@ class MetadataResource(domainresource.DomainResource):
         },
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="editor",
         title="Who edited the {{title}}",
@@ -71,7 +72,7 @@ class MetadataResource(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="When the {{title}} is expected to be used",
@@ -85,7 +86,7 @@ class MetadataResource(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="endorser",
         title="Who endorsed the {{title}}",
@@ -99,7 +100,7 @@ class MetadataResource(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="lastReviewDate",
         title="When the {{title}} was last reviewed by the publisher",
@@ -112,13 +113,13 @@ class MetadataResource(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastReviewDate",
         title="Extension field for ``lastReviewDate``.",
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc",
@@ -132,7 +133,7 @@ class MetadataResource(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="reviewer",
         title="Who reviewed the {{title}}",
@@ -145,7 +146,7 @@ class MetadataResource(domainresource.DomainResource):
         },
     )
 
-    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
@@ -160,7 +161,7 @@ class MetadataResource(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``MetadataResource`` according to specification,
         with preserving the original sequence order.
@@ -186,7 +187,7 @@ class MetadataResource(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``MetadataResource`` according to specification,
         with preserving the original sequence order.
         """

@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DomainResource
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class DomainResource(resource.Resource):
 
     __resource_type__ = "DomainResource"
 
-    contained: typing.List[fhirtypes.ResourceType] | None = Field(  # type: ignore
+    contained: typing.List[fhirtypes.ResourceType] | None = Field(
         default=None,
         alias="contained",
         title="Contained, inline Resources",
@@ -39,7 +40,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    extension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
+    extension: typing.List[fhirtypes.ExtensionType] | None = Field(
         default=None,
         alias="extension",
         title="Additional Content defined by implementations",
@@ -57,7 +58,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    modifierExtension: typing.List[fhirtypes.ExtensionType] | None = Field(  # type: ignore
+    modifierExtension: typing.List[fhirtypes.ExtensionType] | None = Field(
         default=None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored",
@@ -78,7 +79,7 @@ class DomainResource(resource.Resource):
         },
     )
 
-    text: fhirtypes.NarrativeType | None = Field(  # type: ignore
+    text: fhirtypes.NarrativeType | None = Field(
         default=None,
         alias="text",
         title="Text summary of the resource, for human interpretation",
@@ -97,7 +98,7 @@ class DomainResource(resource.Resource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``DomainResource`` according to specification,
         with preserving the original sequence order.
@@ -114,7 +115,7 @@ class DomainResource(resource.Resource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``DomainResource`` according to specification,
         with preserving the original sequence order.
         """

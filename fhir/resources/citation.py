@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Citation
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -30,7 +31,7 @@ class Citation(domainresource.DomainResource):
 
     __resource_type__ = "Citation"
 
-    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="approvalDate",
         title="When the citation record was approved by publisher",
@@ -43,13 +44,13 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_approvalDate",
         title="Extension field for ``approvalDate``.",
     )
 
-    author: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    author: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="author",
         title="Who authored the citation record",
@@ -59,7 +60,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    citedArtifact: fhirtypes.CitationCitedArtifactType | None = Field(  # type: ignore
+    citedArtifact: fhirtypes.CitationCitedArtifactType | None = Field(
         default=None,
         alias="citedArtifact",
         title="The article or artifact being described",
@@ -69,7 +70,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    classification: typing.List[fhirtypes.CitationClassificationType] | None = Field(  # type: ignore
+    classification: typing.List[fhirtypes.CitationClassificationType] | None = Field(
         default=None,
         alias="classification",
         title="The assignment to an organizing scheme",
@@ -79,7 +80,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher of the citation record",
@@ -93,7 +94,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title=(
@@ -105,11 +106,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
+    copyrightLabel: fhirtypes.StringType | None = Field(
         default=None,
         alias="copyrightLabel",
         title=(
@@ -126,13 +127,13 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_copyrightLabel",
         title="Extension field for ``copyrightLabel``.",
     )
 
-    currentState: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    currentState: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="currentState",
         title="The status of the citation record",
@@ -142,7 +143,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -158,11 +159,11 @@ class Citation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the citation",
@@ -174,11 +175,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    editor: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="editor",
         title="Who edited the citation record",
@@ -188,7 +189,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="When the citation record is expected to be used",
@@ -202,7 +203,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    endorser: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="endorser",
         title="Who endorsed the citation record",
@@ -212,7 +213,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -226,13 +227,13 @@ class Citation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Identifier for the citation record itself",
@@ -247,7 +248,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for citation record (if applicable)",
@@ -261,7 +262,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="lastReviewDate",
         title="When the citation record was last reviewed by the publisher",
@@ -274,13 +275,13 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastReviewDate",
         title="Extension field for ``lastReviewDate``.",
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this citation record (computer friendly)",
@@ -294,11 +295,11 @@ class Citation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Used for general notes and annotations not coded elsewhere",
@@ -308,7 +309,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title=(
@@ -324,11 +325,11 @@ class Citation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this citation is defined",
@@ -340,11 +341,11 @@ class Citation(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="relatedArtifact",
         title="Artifact related to the citation record",
@@ -354,7 +355,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    reviewer: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="reviewer",
         title="Who reviewed the citation record",
@@ -364,7 +365,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -381,11 +382,11 @@ class Citation(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusDate: typing.List[fhirtypes.CitationStatusDateType] | None = Field(  # type: ignore
+    statusDate: typing.List[fhirtypes.CitationStatusDateType] | None = Field(
         default=None,
         alias="statusDate",
         title="An effective date or period for a status of the citation record",
@@ -398,7 +399,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    summary: typing.List[fhirtypes.CitationSummaryType] | None = Field(  # type: ignore
+    summary: typing.List[fhirtypes.CitationSummaryType] | None = Field(
         default=None,
         alias="summary",
         title="A human-readable display of key concepts to represent the citation",
@@ -408,7 +409,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this citation record (human friendly)",
@@ -418,11 +419,11 @@ class Citation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -443,11 +444,11 @@ class Citation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="The context that the citation record content is intended to support",
@@ -464,7 +465,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the citation record",
@@ -482,11 +483,11 @@ class Citation(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
+    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(
         default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -503,7 +504,7 @@ class Citation(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
+    versionAlgorithmString: fhirtypes.StringType | None = Field(
         default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -519,14 +520,14 @@ class Citation(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Citation`` according to specification,
         with preserving the original sequence order.
@@ -575,7 +576,7 @@ class Citation(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Citation`` according to specification,
         with preserving the original sequence order.
         """
@@ -641,7 +642,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifact"
 
-    abstract: typing.List[fhirtypes.CitationCitedArtifactAbstractType] | None = Field(  # type: ignore
+    abstract: typing.List[fhirtypes.CitationCitedArtifactAbstractType] | None = Field(
         default=None,
         alias="abstract",
         title="Summary of the article or artifact",
@@ -654,7 +655,9 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    classification: typing.List[fhirtypes.CitationCitedArtifactClassificationType] | None = Field(  # type: ignore
+    classification: typing.List[
+        fhirtypes.CitationCitedArtifactClassificationType
+    ] | None = Field(
         default=None,
         alias="classification",
         title="The assignment to an organizing scheme",
@@ -664,7 +667,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    contributorship: fhirtypes.CitationCitedArtifactContributorshipType | None = Field(  # type: ignore
+    contributorship: fhirtypes.CitationCitedArtifactContributorshipType | None = Field(
         default=None,
         alias="contributorship",
         title="Attribution of authors and other contributors",
@@ -677,7 +680,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    currentState: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    currentState: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="currentState",
         title="The status of the cited artifact",
@@ -687,7 +690,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    dateAccessed: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    dateAccessed: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="dateAccessed",
         title="When the cited artifact was accessed",
@@ -697,13 +700,13 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    dateAccessed__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    dateAccessed__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_dateAccessed",
         title="Extension field for ``dateAccessed``.",
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Unique identifier. May include DOI, PMID, PMCID, etc",
@@ -718,7 +721,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    note: typing.List[fhirtypes.AnnotationType] | None = Field(  # type: ignore
+    note: typing.List[fhirtypes.AnnotationType] | None = Field(
         default=None,
         alias="note",
         title="Any additional information or content for the article or artifact",
@@ -728,7 +731,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    part: fhirtypes.CitationCitedArtifactPartType | None = Field(  # type: ignore
+    part: fhirtypes.CitationCitedArtifactPartType | None = Field(
         default=None,
         alias="part",
         title="The component of the article or artifact",
@@ -738,7 +741,9 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    publicationForm: typing.List[fhirtypes.CitationCitedArtifactPublicationFormType] | None = Field(  # type: ignore
+    publicationForm: typing.List[
+        fhirtypes.CitationCitedArtifactPublicationFormType
+    ] | None = Field(
         default=None,
         alias="publicationForm",
         title=(
@@ -751,7 +756,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    relatedIdentifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    relatedIdentifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="relatedIdentifier",
         title=(
@@ -768,7 +773,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    relatesTo: typing.List[fhirtypes.CitationCitedArtifactRelatesToType] | None = Field(  # type: ignore
+    relatesTo: typing.List[fhirtypes.CitationCitedArtifactRelatesToType] | None = Field(
         default=None,
         alias="relatesTo",
         title="The artifact related to the cited artifact",
@@ -778,7 +783,9 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    statusDate: typing.List[fhirtypes.CitationCitedArtifactStatusDateType] | None = Field(  # type: ignore
+    statusDate: typing.List[
+        fhirtypes.CitationCitedArtifactStatusDateType
+    ] | None = Field(
         default=None,
         alias="statusDate",
         title="An effective date or period for a status of the cited artifact",
@@ -791,7 +798,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    title: typing.List[fhirtypes.CitationCitedArtifactTitleType] | None = Field(  # type: ignore
+    title: typing.List[fhirtypes.CitationCitedArtifactTitleType] | None = Field(
         default=None,
         alias="title",
         title="The title details of the article or artifact",
@@ -801,7 +808,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    version: fhirtypes.CitationCitedArtifactVersionType | None = Field(  # type: ignore
+    version: fhirtypes.CitationCitedArtifactVersionType | None = Field(
         default=None,
         alias="version",
         title="The defined version of the cited artifact",
@@ -811,7 +818,9 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         },
     )
 
-    webLocation: typing.List[fhirtypes.CitationCitedArtifactWebLocationType] | None = Field(  # type: ignore
+    webLocation: typing.List[
+        fhirtypes.CitationCitedArtifactWebLocationType
+    ] | None = Field(
         default=None,
         alias="webLocation",
         title="Used for any URL for the article or artifact cited",
@@ -822,7 +831,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifact`` according to specification,
         with preserving the original sequence order.
@@ -849,7 +858,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifact`` according to specification,
         with preserving the original sequence order.
         """
@@ -868,7 +877,7 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactAbstract"
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Copyright notice for the abstract",
@@ -877,11 +886,11 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    language: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    language: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="language",
         title="Used to express the specific language",
@@ -891,7 +900,7 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
         },
     )
 
-    text: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    text: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="text",
         title="Abstract content",
@@ -901,11 +910,11 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="The kind of abstract",
@@ -916,7 +925,7 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactAbstract`` according to specification,
         with preserving the original sequence order.
@@ -932,7 +941,7 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactAbstract`` according to specification,
         with preserving the original sequence order.
         """
@@ -960,7 +969,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactClassification"
 
-    artifactAssessment: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    artifactAssessment: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="artifactAssessment",
         title="Complex or externally created classification",
@@ -972,7 +981,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
         },
     )
 
-    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="classifier",
         title="The specific classification value",
@@ -982,7 +991,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="The kind of classifier (e.g. publication type, keyword)",
@@ -993,7 +1002,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactClassification`` according to specification,
         with preserving the original sequence order.
@@ -1008,7 +1017,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactClassification`` according to specification,
         with preserving the original sequence order.
         """
@@ -1027,7 +1036,7 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactContributorship"
 
-    complete: bool | None = Field(  # type: ignore
+    complete: bool | None = Field(
         default=None,
         alias="complete",
         title="Indicates if the list includes all authors and/or contributors",
@@ -1036,11 +1045,13 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    complete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    complete__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_complete", title="Extension field for ``complete``."
     )
 
-    entry: typing.List[fhirtypes.CitationCitedArtifactContributorshipEntryType] | None = Field(  # type: ignore
+    entry: typing.List[
+        fhirtypes.CitationCitedArtifactContributorshipEntryType
+    ] | None = Field(
         default=None,
         alias="entry",
         title="An individual entity named as a contributor",
@@ -1053,7 +1064,9 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
         },
     )
 
-    summary: typing.List[fhirtypes.CitationCitedArtifactContributorshipSummaryType] | None = Field(  # type: ignore
+    summary: typing.List[
+        fhirtypes.CitationCitedArtifactContributorshipSummaryType
+    ] | None = Field(
         default=None,
         alias="summary",
         title=(
@@ -1067,7 +1080,7 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactContributorship`` according to specification,
         with preserving the original sequence order.
@@ -1075,7 +1088,7 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "complete", "entry", "summary"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorship`` according to specification,
         with preserving the original sequence order.
         """
@@ -1094,7 +1107,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
 
     __resource_type__ = "CitationCitedArtifactContributorshipEntry"
 
-    affiliation: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    affiliation: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="affiliation",
         title="Organizational affiliation",
@@ -1106,7 +1119,9 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    contributionInstance: typing.List[fhirtypes.CitationCitedArtifactContributorshipEntryContributionInstanceType] | None = Field(  # type: ignore
+    contributionInstance: typing.List[
+        fhirtypes.CitationCitedArtifactContributorshipEntryContributionInstanceType
+    ] | None = Field(
         default=None,
         alias="contributionInstance",
         title="Contributions with accounting for time or number",
@@ -1116,7 +1131,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    contributionType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    contributionType: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="contributionType",
         title="The specific contribution",
@@ -1129,7 +1144,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    contributor: fhirtypes.ReferenceType = Field(  # type: ignore
+    contributor: fhirtypes.ReferenceType = Field(
         default=...,
         alias="contributor",
         title="The identity of the individual contributor",
@@ -1141,7 +1156,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         },
     )
 
-    correspondingContact: bool | None = Field(  # type: ignore
+    correspondingContact: bool | None = Field(
         default=None,
         alias="correspondingContact",
         title="Whether the contributor is the corresponding contributor for the role",
@@ -1150,13 +1165,13 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
             "element_property": True,
         },
     )
-    correspondingContact__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    correspondingContact__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_correspondingContact",
         title="Extension field for ``correspondingContact``.",
     )
 
-    forenameInitials: fhirtypes.StringType | None = Field(  # type: ignore
+    forenameInitials: fhirtypes.StringType | None = Field(
         default=None,
         alias="forenameInitials",
         title="For citation styles that use initials",
@@ -1165,13 +1180,13 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
             "element_property": True,
         },
     )
-    forenameInitials__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    forenameInitials__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_forenameInitials",
         title="Extension field for ``forenameInitials``.",
     )
 
-    rankingOrder: fhirtypes.PositiveIntType | None = Field(  # type: ignore
+    rankingOrder: fhirtypes.PositiveIntType | None = Field(
         default=None,
         alias="rankingOrder",
         title="Ranked order of contribution",
@@ -1184,13 +1199,13 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
             "element_property": True,
         },
     )
-    rankingOrder__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    rankingOrder__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_rankingOrder",
         title="Extension field for ``rankingOrder``.",
     )
 
-    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="role",
         title="The role of the contributor (e.g. author, editor, reviewer, funder)",
@@ -1201,7 +1216,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactContributorshipEntry`` according to specification,
         with preserving the original sequence order.
@@ -1221,7 +1236,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorshipEntry`` according to specification,
         with preserving the original sequence order.
         """
@@ -1240,7 +1255,7 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
 
     __resource_type__ = "CitationCitedArtifactContributorshipEntryContributionInstance"
 
-    time: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    time: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="time",
         title="The time that the contribution was made",
@@ -1249,11 +1264,11 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
             "element_property": True,
         },
     )
-    time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_time", title="Extension field for ``time``."
     )
 
-    type: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="type",
         title="The specific contribution",
@@ -1264,7 +1279,7 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactContributorshipEntryContributionInstance`` according to specification,
         with preserving the original sequence order.
@@ -1272,7 +1287,7 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
         return ["id", "extension", "modifierExtension", "type", "time"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorshipEntryContributionInstance`` according to specification,
         with preserving the original sequence order.
         """
@@ -1290,7 +1305,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
 
     __resource_type__ = "CitationCitedArtifactContributorshipSummary"
 
-    source: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    source: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="source",
         title="Used to code the producer or rule for creating the display string",
@@ -1300,7 +1315,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         },
     )
 
-    style: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    style: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="style",
         title="The format for the display string",
@@ -1313,7 +1328,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -1329,7 +1344,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         },
     )
 
-    value: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    value: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="value",
         title=(
@@ -1342,12 +1357,12 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactContributorshipSummary`` according to specification,
         with preserving the original sequence order.
@@ -1363,7 +1378,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactContributorshipSummary`` according to specification,
         with preserving the original sequence order.
         """
@@ -1391,7 +1406,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactPart"
 
-    baseCitation: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    baseCitation: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="baseCitation",
         title="The citation for the full article or artifact",
@@ -1403,7 +1418,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="The kind of component",
@@ -1413,7 +1428,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
         },
     )
 
-    value: fhirtypes.StringType | None = Field(  # type: ignore
+    value: fhirtypes.StringType | None = Field(
         default=None,
         alias="value",
         title="The specification of the component",
@@ -1422,12 +1437,12 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactPart`` according to specification,
         with preserving the original sequence order.
@@ -1435,7 +1450,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "value", "baseCitation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactPart`` according to specification,
         with preserving the original sequence order.
         """
@@ -1453,7 +1468,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactPublicationForm"
 
-    accessionNumber: fhirtypes.StringType | None = Field(  # type: ignore
+    accessionNumber: fhirtypes.StringType | None = Field(
         default=None,
         alias="accessionNumber",
         title="Entry number or identifier for inclusion in a database",
@@ -1462,13 +1477,13 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    accessionNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    accessionNumber__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_accessionNumber",
         title="Extension field for ``accessionNumber``.",
     )
 
-    articleDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    articleDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="articleDate",
         title=(
@@ -1480,11 +1495,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    articleDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    articleDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_articleDate", title="Extension field for ``articleDate``."
     )
 
-    citedMedium: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    citedMedium: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="citedMedium",
         title="Internet or Print",
@@ -1505,7 +1520,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Copyright notice for the full article or artifact",
@@ -1514,11 +1529,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    firstPage: fhirtypes.StringType | None = Field(  # type: ignore
+    firstPage: fhirtypes.StringType | None = Field(
         default=None,
         alias="firstPage",
         title="Used for isolated representation of first page",
@@ -1527,11 +1542,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    firstPage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    firstPage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_firstPage", title="Extension field for ``firstPage``."
     )
 
-    issue: fhirtypes.StringType | None = Field(  # type: ignore
+    issue: fhirtypes.StringType | None = Field(
         default=None,
         alias="issue",
         title=(
@@ -1543,11 +1558,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    issue__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    issue__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_issue", title="Extension field for ``issue``."
     )
 
-    language: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    language: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="language",
         title="Language(s) in which this form of the article is published",
@@ -1560,7 +1575,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
         },
     )
 
-    lastPage: fhirtypes.StringType | None = Field(  # type: ignore
+    lastPage: fhirtypes.StringType | None = Field(
         default=None,
         alias="lastPage",
         title="Used for isolated representation of last page",
@@ -1569,11 +1584,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    lastPage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastPage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_lastPage", title="Extension field for ``lastPage``."
     )
 
-    lastRevisionDate: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    lastRevisionDate: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="lastRevisionDate",
         title="The date the article was last revised or updated in the database",
@@ -1582,13 +1597,13 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    lastRevisionDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastRevisionDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastRevisionDate",
         title="Extension field for ``lastRevisionDate``.",
     )
 
-    pageCount: fhirtypes.StringType | None = Field(  # type: ignore
+    pageCount: fhirtypes.StringType | None = Field(
         default=None,
         alias="pageCount",
         title="Number of pages or screens",
@@ -1600,11 +1615,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    pageCount__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    pageCount__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_pageCount", title="Extension field for ``pageCount``."
     )
 
-    pageString: fhirtypes.StringType | None = Field(  # type: ignore
+    pageString: fhirtypes.StringType | None = Field(
         default=None,
         alias="pageString",
         title="Used for full display of pagination",
@@ -1613,11 +1628,11 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    pageString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    pageString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_pageString", title="Extension field for ``pageString``."
     )
 
-    publicationDateSeason: fhirtypes.StringType | None = Field(  # type: ignore
+    publicationDateSeason: fhirtypes.StringType | None = Field(
         default=None,
         alias="publicationDateSeason",
         title="Season in which the cited artifact was published",
@@ -1626,13 +1641,13 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    publicationDateSeason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publicationDateSeason__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_publicationDateSeason",
         title="Extension field for ``publicationDateSeason``.",
     )
 
-    publicationDateText: fhirtypes.StringType | None = Field(  # type: ignore
+    publicationDateText: fhirtypes.StringType | None = Field(
         default=None,
         alias="publicationDateText",
         title=(
@@ -1644,13 +1659,13 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    publicationDateText__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publicationDateText__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_publicationDateText",
         title="Extension field for ``publicationDateText``.",
     )
 
-    publishedIn: fhirtypes.CitationCitedArtifactPublicationFormPublishedInType | None = Field(  # type: ignore
+    publishedIn: fhirtypes.CitationCitedArtifactPublicationFormPublishedInType | None = Field(
         default=None,
         alias="publishedIn",
         title="The collection the cited article or artifact is published in",
@@ -1660,7 +1675,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
         },
     )
 
-    volume: fhirtypes.StringType | None = Field(  # type: ignore
+    volume: fhirtypes.StringType | None = Field(
         default=None,
         alias="volume",
         title=(
@@ -1672,12 +1687,12 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    volume__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    volume__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_volume", title="Extension field for ``volume``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactPublicationForm`` according to specification,
         with preserving the original sequence order.
@@ -1704,7 +1719,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactPublicationForm`` according to specification,
         with preserving the original sequence order.
         """
@@ -1721,7 +1736,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
 
     __resource_type__ = "CitationCitedArtifactPublicationFormPublishedIn"
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title=(
@@ -1734,7 +1749,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         },
     )
 
-    publisher: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    publisher: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="publisher",
         title="Name of or resource describing the publisher",
@@ -1746,7 +1761,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         },
     )
 
-    publisherLocation: fhirtypes.StringType | None = Field(  # type: ignore
+    publisherLocation: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisherLocation",
         title="Geographic location of the publisher",
@@ -1755,13 +1770,13 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
             "element_property": True,
         },
     )
-    publisherLocation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisherLocation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_publisherLocation",
         title="Extension field for ``publisherLocation``.",
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name of the database or title of the book or journal",
@@ -1770,11 +1785,11 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Kind of container (e.g. Periodical, database, or book)",
@@ -1785,7 +1800,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactPublicationFormPublishedIn`` according to specification,
         with preserving the original sequence order.
@@ -1802,7 +1817,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactPublicationFormPublishedIn`` according to specification,
         with preserving the original sequence order.
         """
@@ -1819,7 +1834,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactRelatesTo"
 
-    citation: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    citation: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="citation",
         title="Bibliographic citation for the artifact",
@@ -1831,11 +1846,11 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    citation__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_citation", title="Extension field for ``citation``."
     )
 
-    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="classifier",
         title="Additional classifiers",
@@ -1845,7 +1860,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    display: fhirtypes.StringType | None = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(
         default=None,
         alias="display",
         title="Brief description of the related artifact",
@@ -1857,11 +1872,11 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_display", title="Extension field for ``display``."
     )
 
-    document: fhirtypes.AttachmentType | None = Field(  # type: ignore
+    document: fhirtypes.AttachmentType | None = Field(
         default=None,
         alias="document",
         title="What document is being referenced",
@@ -1875,7 +1890,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    label: fhirtypes.StringType | None = Field(  # type: ignore
+    label: fhirtypes.StringType | None = Field(
         default=None,
         alias="label",
         title="Short label",
@@ -1887,11 +1902,11 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_label", title="Extension field for ``label``."
     )
 
-    resource: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    resource: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="resource",
         title="What artifact is being referenced",
@@ -1903,11 +1918,11 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    resource__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_resource", title="Extension field for ``resource``."
     )
 
-    resourceReference: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    resourceReference: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="resourceReference",
         title="What artifact, if not a conformance resource",
@@ -1920,7 +1935,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title=(
@@ -1981,12 +1996,12 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
             ],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactRelatesTo`` according to specification,
         with preserving the original sequence order.
@@ -2006,7 +2021,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactRelatesTo`` according to specification,
         with preserving the original sequence order.
         """
@@ -2036,7 +2051,7 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactStatusDate"
 
-    activity: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    activity: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="activity",
         title="Classification of the status",
@@ -2046,7 +2061,7 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
         },
     )
 
-    actual: bool | None = Field(  # type: ignore
+    actual: bool | None = Field(
         default=None,
         alias="actual",
         title="Either occurred or expected",
@@ -2055,11 +2070,11 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    actual__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    actual__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_actual", title="Extension field for ``actual``."
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType = Field(
         default=...,
         alias="period",
         title="When the status started and/or ended",
@@ -2070,7 +2085,7 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactStatusDate`` according to specification,
         with preserving the original sequence order.
@@ -2078,7 +2093,7 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "activity", "actual", "period"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactStatusDate`` according to specification,
         with preserving the original sequence order.
         """
@@ -2095,7 +2110,7 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactTitle"
 
-    language: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    language: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="language",
         title="Used to express the specific language",
@@ -2105,7 +2120,7 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
         },
     )
 
-    text: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    text: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="text",
         title="The title of the article or artifact",
@@ -2115,11 +2130,11 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="type",
         title="The kind of title",
@@ -2130,7 +2145,7 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactTitle`` according to specification,
         with preserving the original sequence order.
@@ -2138,7 +2153,7 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "language", "text"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactTitle`` according to specification,
         with preserving the original sequence order.
         """
@@ -2166,7 +2181,7 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactVersion"
 
-    baseCitation: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    baseCitation: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="baseCitation",
         title="Citation for the main version of the cited artifact",
@@ -2178,7 +2193,7 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
         },
     )
 
-    value: fhirtypes.StringType | None = Field(  # type: ignore
+    value: fhirtypes.StringType | None = Field(
         default=None,
         alias="value",
         title="The version number or other version identifier",
@@ -2188,12 +2203,12 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactVersion`` according to specification,
         with preserving the original sequence order.
@@ -2201,7 +2216,7 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "value", "baseCitation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactVersion`` according to specification,
         with preserving the original sequence order.
         """
@@ -2229,7 +2244,7 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationCitedArtifactWebLocation"
 
-    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="classifier",
         title="Code the reason for different URLs, e.g. abstract and full-text",
@@ -2239,7 +2254,7 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
         },
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title="The specific URL",
@@ -2248,12 +2263,12 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationCitedArtifactWebLocation`` according to specification,
         with preserving the original sequence order.
@@ -2261,7 +2276,7 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "classifier", "url"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationCitedArtifactWebLocation`` according to specification,
         with preserving the original sequence order.
         """
@@ -2278,7 +2293,7 @@ class CitationClassification(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationClassification"
 
-    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    classifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="classifier",
         title="The specific classification value",
@@ -2288,7 +2303,7 @@ class CitationClassification(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="The kind of classifier (e.g. publication type, keyword)",
@@ -2299,7 +2314,7 @@ class CitationClassification(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationClassification`` according to specification,
         with preserving the original sequence order.
@@ -2307,7 +2322,7 @@ class CitationClassification(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "classifier"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationClassification`` according to specification,
         with preserving the original sequence order.
         """
@@ -2326,7 +2341,7 @@ class CitationStatusDate(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationStatusDate"
 
-    activity: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    activity: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="activity",
         title="Classification of the status",
@@ -2339,7 +2354,7 @@ class CitationStatusDate(backboneelement.BackboneElement):
         },
     )
 
-    actual: bool | None = Field(  # type: ignore
+    actual: bool | None = Field(
         default=None,
         alias="actual",
         title="Either occurred or expected",
@@ -2351,11 +2366,11 @@ class CitationStatusDate(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    actual__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    actual__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_actual", title="Extension field for ``actual``."
     )
 
-    period: fhirtypes.PeriodType = Field(  # type: ignore
+    period: fhirtypes.PeriodType = Field(
         default=...,
         alias="period",
         title="When the status started and/or ended",
@@ -2366,7 +2381,7 @@ class CitationStatusDate(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationStatusDate`` according to specification,
         with preserving the original sequence order.
@@ -2374,7 +2389,7 @@ class CitationStatusDate(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "activity", "actual", "period"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationStatusDate`` according to specification,
         with preserving the original sequence order.
         """
@@ -2391,7 +2406,7 @@ class CitationSummary(backboneelement.BackboneElement):
 
     __resource_type__ = "CitationSummary"
 
-    style: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    style: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="style",
         title="Format for display of the citation summary",
@@ -2401,7 +2416,7 @@ class CitationSummary(backboneelement.BackboneElement):
         },
     )
 
-    text: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    text: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="text",
         title="The human-readable display of the citation summary",
@@ -2412,12 +2427,12 @@ class CitationSummary(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_text", title="Extension field for ``text``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``CitationSummary`` according to specification,
         with preserving the original sequence order.
@@ -2425,7 +2440,7 @@ class CitationSummary(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "style", "text"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``CitationSummary`` according to specification,
         with preserving the original sequence order.
         """

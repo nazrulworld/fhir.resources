@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Identifier
 Release: R5
@@ -7,6 +5,11 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
+import typing
+
 from pydantic import Field
 
 from . import datatype, fhirtypes
@@ -24,7 +27,7 @@ class Identifier(datatype.DataType):
 
     __resource_type__ = "Identifier"
 
-    assigner: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    assigner: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="assigner",
         title="Organization that issued id (may be just text)",
@@ -37,7 +40,7 @@ class Identifier(datatype.DataType):
         },
     )
 
-    period: fhirtypes.PeriodType | None = Field(  # type: ignore
+    period: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="period",
         title="Time period when id is/was valid for use",
@@ -48,7 +51,7 @@ class Identifier(datatype.DataType):
         },
     )
 
-    system: fhirtypes.UriType | None = Field(  # type: ignore
+    system: fhirtypes.UriType | None = Field(
         default=None,
         alias="system",
         title="The namespace for the identifier value",
@@ -61,11 +64,11 @@ class Identifier(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_system", title="Extension field for ``system``."
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Description of identifier",
@@ -79,7 +82,7 @@ class Identifier(datatype.DataType):
         },
     )
 
-    use: fhirtypes.CodeType | None = Field(  # type: ignore
+    use: fhirtypes.CodeType | None = Field(
         default=None,
         alias="use",
         title="usual | official | temp | secondary | old (If known)",
@@ -92,11 +95,11 @@ class Identifier(datatype.DataType):
             "enum_values": ["usual", "official", "temp", "secondary", "old"],
         },
     )
-    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_use", title="Extension field for ``use``."
     )
 
-    value: fhirtypes.StringType | None = Field(  # type: ignore
+    value: fhirtypes.StringType | None = Field(
         default=None,
         alias="value",
         title="The value that is unique",
@@ -109,12 +112,12 @@ class Identifier(datatype.DataType):
             "summary_element_property": True,
         },
     )
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_value", title="Extension field for ``value``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``Identifier`` according to specification,
         with preserving the original sequence order.
@@ -131,7 +134,7 @@ class Identifier(datatype.DataType):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``Identifier`` according to specification,
         with preserving the original sequence order.
         """

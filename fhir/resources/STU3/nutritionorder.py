@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/NutritionOrder
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class NutritionOrder(domainresource.DomainResource):
 
     __resource_type__ = "NutritionOrder"
 
-    allergyIntolerance: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    allergyIntolerance: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="allergyIntolerance",
         title=(
@@ -44,7 +45,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    dateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    dateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="dateTime",
         title="Date and time the nutrition order was requested",
@@ -55,11 +56,11 @@ class NutritionOrder(domainresource.DomainResource):
             "element_required": True,
         },
     )
-    dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_dateTime", title="Extension field for ``dateTime``."
     )
 
-    encounter: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    encounter: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="encounter",
         title="The encounter associated with this nutrition order",
@@ -74,7 +75,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType | None = Field(  # type: ignore
+    enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType | None = Field(
         default=None,
         alias="enteralFormula",
         title="Enteral formula components",
@@ -87,7 +88,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    excludeFoodModifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    excludeFoodModifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="excludeFoodModifier",
         title=(
@@ -111,7 +112,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    foodPreferenceModifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    foodPreferenceModifier: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="foodPreferenceModifier",
         title="Order-specific modifier about the type of food that should be given",
@@ -128,7 +129,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Identifiers assigned to this order",
@@ -141,7 +142,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    oralDiet: fhirtypes.NutritionOrderOralDietType | None = Field(  # type: ignore
+    oralDiet: fhirtypes.NutritionOrderOralDietType | None = Field(
         default=None,
         alias="oralDiet",
         title="Oral diet components",
@@ -151,7 +152,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    orderer: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    orderer: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="orderer",
         title="Who ordered the diet, formula or nutritional supplement",
@@ -167,7 +168,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    patient: fhirtypes.ReferenceType = Field(  # type: ignore
+    patient: fhirtypes.ReferenceType = Field(
         default=...,
         alias="patient",
         title="The person who requires the diet, formula or nutritional supplement",
@@ -183,7 +184,7 @@ class NutritionOrder(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title=(
@@ -209,11 +210,11 @@ class NutritionOrder(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    supplement: typing.List[fhirtypes.NutritionOrderSupplementType] | None = Field(  # type: ignore
+    supplement: typing.List[fhirtypes.NutritionOrderSupplementType] | None = Field(
         default=None,
         alias="supplement",
         title="Supplement components",
@@ -227,7 +228,7 @@ class NutritionOrder(domainresource.DomainResource):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``NutritionOrder`` according to specification,
         with preserving the original sequence order.
@@ -256,7 +257,7 @@ class NutritionOrder(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``NutritionOrder`` according to specification,
         with preserving the original sequence order.
         """
@@ -294,7 +295,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
 
     __resource_type__ = "NutritionOrderEnteralFormula"
 
-    additiveProductName: fhirtypes.StringType | None = Field(  # type: ignore
+    additiveProductName: fhirtypes.StringType | None = Field(
         default=None,
         alias="additiveProductName",
         title="Product or brand name of the modular additive",
@@ -306,13 +307,13 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    additiveProductName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    additiveProductName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_additiveProductName",
         title="Extension field for ``additiveProductName``.",
     )
 
-    additiveType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    additiveType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="additiveType",
         title="Type of modular component to add to the feeding",
@@ -326,7 +327,9 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         },
     )
 
-    administration: typing.List[fhirtypes.NutritionOrderEnteralFormulaAdministrationType] | None = Field(  # type: ignore
+    administration: typing.List[
+        fhirtypes.NutritionOrderEnteralFormulaAdministrationType
+    ] | None = Field(
         default=None,
         alias="administration",
         title="Formula feeding instruction as structured data",
@@ -342,7 +345,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         },
     )
 
-    administrationInstruction: fhirtypes.StringType | None = Field(  # type: ignore
+    administrationInstruction: fhirtypes.StringType | None = Field(
         default=None,
         alias="administrationInstruction",
         title="Formula feeding instructions expressed as text",
@@ -355,13 +358,13 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    administrationInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    administrationInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_administrationInstruction",
         title="Extension field for ``administrationInstruction``.",
     )
 
-    baseFormulaProductName: fhirtypes.StringType | None = Field(  # type: ignore
+    baseFormulaProductName: fhirtypes.StringType | None = Field(
         default=None,
         alias="baseFormulaProductName",
         title="Product or brand name of the enteral or infant formula",
@@ -373,13 +376,13 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    baseFormulaProductName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    baseFormulaProductName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_baseFormulaProductName",
         title="Extension field for ``baseFormulaProductName``.",
     )
 
-    baseFormulaType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    baseFormulaType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="baseFormulaType",
         title="Type of enteral or infant formula",
@@ -393,7 +396,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         },
     )
 
-    caloricDensity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    caloricDensity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="caloricDensity",
         title="Amount of energy per specified volume that is required",
@@ -409,7 +412,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         },
     )
 
-    maxVolumeToDeliver: fhirtypes.QuantityType | None = Field(  # type: ignore
+    maxVolumeToDeliver: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="maxVolumeToDeliver",
         title="Upper limit on formula volume per unit of time",
@@ -422,7 +425,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         },
     )
 
-    routeofAdministration: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    routeofAdministration: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="routeofAdministration",
         title="How the formula should enter the patient's gastrointestinal tract",
@@ -437,7 +440,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``NutritionOrderEnteralFormula`` according to specification,
         with preserving the original sequence order.
@@ -458,7 +461,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``NutritionOrderEnteralFormula`` according to specification,
         with preserving the original sequence order.
         """
@@ -479,7 +482,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
 
     __resource_type__ = "NutritionOrderEnteralFormulaAdministration"
 
-    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="quantity",
         title="The volume of formula to provide",
@@ -492,7 +495,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
         },
     )
 
-    rateQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    rateQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="rateQuantity",
         title="Speed with which the formula is provided per period of time",
@@ -508,7 +511,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
         },
     )
 
-    rateRatio: fhirtypes.RatioType | None = Field(  # type: ignore
+    rateRatio: fhirtypes.RatioType | None = Field(
         default=None,
         alias="rateRatio",
         title="Speed with which the formula is provided per period of time",
@@ -524,7 +527,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
         },
     )
 
-    schedule: fhirtypes.TimingType | None = Field(  # type: ignore
+    schedule: fhirtypes.TimingType | None = Field(
         default=None,
         alias="schedule",
         title="Scheduled frequency of enteral feeding",
@@ -538,7 +541,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``NutritionOrderEnteralFormulaAdministration`` according to specification,
         with preserving the original sequence order.
@@ -554,7 +557,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``NutritionOrderEnteralFormulaAdministration`` according to specification,
         with preserving the original sequence order.
         """
@@ -588,7 +591,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
 
     __resource_type__ = "NutritionOrderOralDiet"
 
-    fluidConsistencyType: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    fluidConsistencyType: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="fluidConsistencyType",
         title="The required consistency of fluids and liquids provided to the patient",
@@ -601,7 +604,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         },
     )
 
-    instruction: fhirtypes.StringType | None = Field(  # type: ignore
+    instruction: fhirtypes.StringType | None = Field(
         default=None,
         alias="instruction",
         title="Instructions or additional information about the oral diet",
@@ -614,11 +617,11 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_instruction", title="Extension field for ``instruction``."
     )
 
-    nutrient: typing.List[fhirtypes.NutritionOrderOralDietNutrientType] | None = Field(  # type: ignore
+    nutrient: typing.List[fhirtypes.NutritionOrderOralDietNutrientType] | None = Field(
         default=None,
         alias="nutrient",
         title="Required  nutrient modifications",
@@ -632,7 +635,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         },
     )
 
-    schedule: typing.List[fhirtypes.TimingType] | None = Field(  # type: ignore
+    schedule: typing.List[fhirtypes.TimingType] | None = Field(
         default=None,
         alias="schedule",
         title="Scheduled frequency of diet",
@@ -646,7 +649,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         },
     )
 
-    texture: typing.List[fhirtypes.NutritionOrderOralDietTextureType] | None = Field(  # type: ignore
+    texture: typing.List[fhirtypes.NutritionOrderOralDietTextureType] | None = Field(
         default=None,
         alias="texture",
         title="Required  texture modifications",
@@ -659,7 +662,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         },
     )
 
-    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    type: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="type",
         title=(
@@ -677,7 +680,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``NutritionOrderOralDiet`` according to specification,
         with preserving the original sequence order.
@@ -695,7 +698,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``NutritionOrderOralDiet`` according to specification,
         with preserving the original sequence order.
         """
@@ -714,7 +717,7 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
 
     __resource_type__ = "NutritionOrderOralDietNutrient"
 
-    amount: fhirtypes.QuantityType | None = Field(  # type: ignore
+    amount: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="amount",
         title="Quantity of the specified nutrient",
@@ -724,7 +727,7 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
         },
     )
 
-    modifier: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    modifier: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="modifier",
         title="Type of nutrient that is being modified",
@@ -735,7 +738,7 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``NutritionOrderOralDietNutrient`` according to specification,
         with preserving the original sequence order.
@@ -743,7 +746,7 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "modifier", "amount"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``NutritionOrderOralDietNutrient`` according to specification,
         with preserving the original sequence order.
         """
@@ -762,7 +765,7 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
 
     __resource_type__ = "NutritionOrderOralDietTexture"
 
-    foodType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    foodType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="foodType",
         title=(
@@ -778,7 +781,7 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
         },
     )
 
-    modifier: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    modifier: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="modifier",
         title="Code to indicate how to alter the texture of the foods, e.g. pureed",
@@ -792,7 +795,7 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``NutritionOrderOralDietTexture`` according to specification,
         with preserving the original sequence order.
@@ -800,7 +803,7 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "modifier", "foodType"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``NutritionOrderOralDietTexture`` according to specification,
         with preserving the original sequence order.
         """
@@ -819,7 +822,7 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
 
     __resource_type__ = "NutritionOrderSupplement"
 
-    instruction: fhirtypes.StringType | None = Field(  # type: ignore
+    instruction: fhirtypes.StringType | None = Field(
         default=None,
         alias="instruction",
         title="Instructions or additional information about the oral supplement",
@@ -832,11 +835,11 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_instruction", title="Extension field for ``instruction``."
     )
 
-    productName: fhirtypes.StringType | None = Field(  # type: ignore
+    productName: fhirtypes.StringType | None = Field(
         default=None,
         alias="productName",
         title="Product or brand name of the nutritional supplement",
@@ -848,11 +851,11 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    productName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    productName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_productName", title="Extension field for ``productName``."
     )
 
-    quantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    quantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="quantity",
         title="Amount of the nutritional supplement",
@@ -862,7 +865,7 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         },
     )
 
-    schedule: typing.List[fhirtypes.TimingType] | None = Field(  # type: ignore
+    schedule: typing.List[fhirtypes.TimingType] | None = Field(
         default=None,
         alias="schedule",
         title="Scheduled frequency of supplement",
@@ -876,7 +879,7 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="Type of supplement product requested",
@@ -891,7 +894,7 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``NutritionOrderSupplement`` according to specification,
         with preserving the original sequence order.
@@ -908,7 +911,7 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``NutritionOrderSupplement`` according to specification,
         with preserving the original sequence order.
         """

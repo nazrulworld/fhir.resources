@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ObservationDefinition
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -26,7 +27,7 @@ class ObservationDefinition(domainresource.DomainResource):
 
     __resource_type__ = "ObservationDefinition"
 
-    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="approvalDate",
         title="When ObservationDefinition was approved by publisher",
@@ -39,13 +40,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_approvalDate",
         title="Extension field for ``approvalDate``.",
     )
 
-    bodySite: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    bodySite: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="bodySite",
         title="Body part to be observed",
@@ -55,7 +56,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    category: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="category",
         title="General type of observation",
@@ -66,7 +67,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="Type of observation",
@@ -80,7 +81,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    component: typing.List[fhirtypes.ObservationDefinitionComponentType] | None = Field(  # type: ignore
+    component: typing.List[fhirtypes.ObservationDefinitionComponentType] | None = Field(
         default=None,
         alias="component",
         title="Component results",
@@ -93,7 +94,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -107,7 +108,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -120,11 +121,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.StringType | None = Field(  # type: ignore
+    copyrightLabel: fhirtypes.StringType | None = Field(
         default=None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -138,13 +139,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_copyrightLabel",
         title="Extension field for ``copyrightLabel``.",
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date last changed",
@@ -160,11 +161,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    derivedFromCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(  # type: ignore
+    derivedFromCanonical: typing.List[fhirtypes.CanonicalType | None] | None = Field(
         default=None,
         alias="derivedFromCanonical",
         title="Based on FHIR definition of another observation",
@@ -180,13 +181,15 @@ class ObservationDefinition(domainresource.DomainResource):
             "enum_reference_types": ["ObservationDefinition"],
         },
     )
-    derivedFromCanonical__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    derivedFromCanonical__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_derivedFromCanonical",
         title="Extension field for ``derivedFromCanonical``.",
     )
 
-    derivedFromUri: typing.List[fhirtypes.UriType | None] | None = Field(  # type: ignore
+    derivedFromUri: typing.List[fhirtypes.UriType | None] | None = Field(
         default=None,
         alias="derivedFromUri",
         title="Based on external definition",
@@ -200,13 +203,15 @@ class ObservationDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    derivedFromUri__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    derivedFromUri__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_derivedFromUri",
         title="Extension field for ``derivedFromUri``.",
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the ObservationDefinition",
@@ -218,11 +223,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    device: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    device: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="device",
         title="Measurement device or model of device",
@@ -237,7 +242,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="The effective date range for the ObservationDefinition",
@@ -251,7 +256,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="If for testing purposes, not real usage",
@@ -265,13 +270,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    hasMember: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    hasMember: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="hasMember",
         title=(
@@ -290,7 +295,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="Business identifier of the ObservationDefinition",
@@ -305,7 +310,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for this ObservationDefinition (if applicable)",
@@ -319,7 +324,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="lastReviewDate",
         title="Date on which the asset content was last reviewed by the publisher",
@@ -332,13 +337,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastReviewDate",
         title="Extension field for ``lastReviewDate``.",
     )
 
-    method: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    method: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="method",
         title="Method used to produce the observation",
@@ -348,7 +353,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    multipleResultsAllowed: bool | None = Field(  # type: ignore
+    multipleResultsAllowed: bool | None = Field(
         default=None,
         alias="multipleResultsAllowed",
         title="Multiple results allowed for conforming observations",
@@ -360,13 +365,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_multipleResultsAllowed",
         title="Extension field for ``multipleResultsAllowed``.",
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this ObservationDefinition (computer friendly)",
@@ -380,11 +385,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    performerType: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    performerType: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="performerType",
         title="Desired kind of performer for such kind of observation",
@@ -398,7 +403,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    permittedDataType: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    permittedDataType: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="permittedDataType",
         title=(
@@ -428,13 +433,15 @@ class ObservationDefinition(domainresource.DomainResource):
             ],
         },
     )
-    permittedDataType__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    permittedDataType__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_permittedDataType",
         title="Extension field for ``permittedDataType``.",
     )
 
-    permittedUnit: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    permittedUnit: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="permittedUnit",
         title="Unit for quantitative results",
@@ -447,7 +454,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    preferredReportName: fhirtypes.StringType | None = Field(  # type: ignore
+    preferredReportName: fhirtypes.StringType | None = Field(
         default=None,
         alias="preferredReportName",
         title="The preferred name to be used when reporting the observation results",
@@ -459,13 +466,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_preferredReportName",
         title="Extension field for ``preferredReportName``.",
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title=(
@@ -481,11 +488,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this ObservationDefinition is defined",
@@ -497,11 +504,13 @@ class ObservationDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    qualifiedValue: typing.List[fhirtypes.ObservationDefinitionQualifiedValueType] | None = Field(  # type: ignore
+    qualifiedValue: typing.List[
+        fhirtypes.ObservationDefinitionQualifiedValueType
+    ] | None = Field(
         default=None,
         alias="qualifiedValue",
         title="Set of qualified values for observation results",
@@ -516,7 +525,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    specimen: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    specimen: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="specimen",
         title="Kind of specimen used by this type of observation",
@@ -528,7 +537,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -542,11 +551,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    subject: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    subject: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="subject",
         title="Type of subject for the defined observation",
@@ -560,7 +569,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this ObservationDefinition (human friendly)",
@@ -573,11 +582,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title=(
@@ -598,11 +607,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="Content intends to support these contexts",
@@ -620,7 +629,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the ObservationDefinition",
@@ -638,11 +647,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
-    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(  # type: ignore
+    versionAlgorithmCoding: fhirtypes.CodingType | None = Field(
         default=None,
         alias="versionAlgorithmCoding",
         title="How to compare versions",
@@ -659,7 +668,7 @@ class ObservationDefinition(domainresource.DomainResource):
         },
     )
 
-    versionAlgorithmString: fhirtypes.StringType | None = Field(  # type: ignore
+    versionAlgorithmString: fhirtypes.StringType | None = Field(
         default=None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -675,14 +684,14 @@ class ObservationDefinition(domainresource.DomainResource):
             "one_of_many_required": False,
         },
     )
-    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_versionAlgorithmString",
         title="Extension field for ``versionAlgorithmString``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ObservationDefinition`` according to specification,
         with preserving the original sequence order.
@@ -737,7 +746,7 @@ class ObservationDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ObservationDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -811,7 +820,7 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
 
     __resource_type__ = "ObservationDefinitionComponent"
 
-    code: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    code: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="code",
         title="Type of observation",
@@ -821,7 +830,7 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
         },
     )
 
-    permittedDataType: typing.List[fhirtypes.CodeType | None] | None = Field(  # type: ignore
+    permittedDataType: typing.List[fhirtypes.CodeType | None] | None = Field(
         default=None,
         alias="permittedDataType",
         title=(
@@ -851,13 +860,15 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
             ],
         },
     )
-    permittedDataType__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    permittedDataType__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None,
         alias="_permittedDataType",
         title="Extension field for ``permittedDataType``.",
     )
 
-    permittedUnit: typing.List[fhirtypes.CodingType] | None = Field(  # type: ignore
+    permittedUnit: typing.List[fhirtypes.CodingType] | None = Field(
         default=None,
         alias="permittedUnit",
         title="Unit for quantitative results",
@@ -870,7 +881,9 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
         },
     )
 
-    qualifiedValue: typing.List[fhirtypes.ObservationDefinitionQualifiedValueType] | None = Field(  # type: ignore
+    qualifiedValue: typing.List[
+        fhirtypes.ObservationDefinitionQualifiedValueType
+    ] | None = Field(
         default=None,
         alias="qualifiedValue",
         title="Set of qualified values for observation results",
@@ -886,7 +899,7 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ObservationDefinitionComponent`` according to specification,
         with preserving the original sequence order.
@@ -902,7 +915,7 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ObservationDefinitionComponent`` according to specification,
         with preserving the original sequence order.
         """
@@ -922,7 +935,7 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
 
     __resource_type__ = "ObservationDefinitionQualifiedValue"
 
-    abnormalCodedValueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    abnormalCodedValueSet: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="abnormalCodedValueSet",
         title=(
@@ -939,13 +952,13 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    abnormalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    abnormalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_abnormalCodedValueSet",
         title="Extension field for ``abnormalCodedValueSet``.",
     )
 
-    age: fhirtypes.RangeType | None = Field(  # type: ignore
+    age: fhirtypes.RangeType | None = Field(
         default=None,
         alias="age",
         title="Applicable age range for the set of qualified values",
@@ -955,7 +968,7 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         },
     )
 
-    appliesTo: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    appliesTo: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="appliesTo",
         title="Targetted population for the set of qualified values",
@@ -965,7 +978,7 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         },
     )
 
-    condition: fhirtypes.StringType | None = Field(  # type: ignore
+    condition: fhirtypes.StringType | None = Field(
         default=None,
         alias="condition",
         title="Condition associated with the set of qualified values",
@@ -977,11 +990,11 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    condition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    condition__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_condition", title="Extension field for ``condition``."
     )
 
-    context: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    context: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="context",
         title="Context qualifier for the set of qualified values",
@@ -991,7 +1004,7 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         },
     )
 
-    criticalCodedValueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    criticalCodedValueSet: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="criticalCodedValueSet",
         title=(
@@ -1008,13 +1021,13 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    criticalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    criticalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_criticalCodedValueSet",
         title="Extension field for ``criticalCodedValueSet``.",
     )
 
-    gender: fhirtypes.CodeType | None = Field(  # type: ignore
+    gender: fhirtypes.CodeType | None = Field(
         default=None,
         alias="gender",
         title="male | female | other | unknown",
@@ -1026,11 +1039,11 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "enum_values": ["male", "female", "other", "unknown"],
         },
     )
-    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    gestationalAge: fhirtypes.RangeType | None = Field(  # type: ignore
+    gestationalAge: fhirtypes.RangeType | None = Field(
         default=None,
         alias="gestationalAge",
         title="Applicable gestational age range for the set of qualified values",
@@ -1040,7 +1053,7 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         },
     )
 
-    normalCodedValueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    normalCodedValueSet: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="normalCodedValueSet",
         title=(
@@ -1057,13 +1070,13 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    normalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    normalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_normalCodedValueSet",
         title="Extension field for ``normalCodedValueSet``.",
     )
 
-    range: fhirtypes.RangeType | None = Field(  # type: ignore
+    range: fhirtypes.RangeType | None = Field(
         default=None,
         alias="range",
         title="The range for continuous or ordinal observations",
@@ -1076,7 +1089,7 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         },
     )
 
-    rangeCategory: fhirtypes.CodeType | None = Field(  # type: ignore
+    rangeCategory: fhirtypes.CodeType | None = Field(
         default=None,
         alias="rangeCategory",
         title="reference | critical | absolute",
@@ -1091,13 +1104,13 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "enum_values": ["reference", "critical", "absolute"],
         },
     )
-    rangeCategory__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    rangeCategory__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_rangeCategory",
         title="Extension field for ``rangeCategory``.",
     )
 
-    validCodedValueSet: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    validCodedValueSet: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="validCodedValueSet",
         title=(
@@ -1113,14 +1126,14 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "enum_reference_types": ["ValueSet"],
         },
     )
-    validCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    validCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_validCodedValueSet",
         title="Extension field for ``validCodedValueSet``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``ObservationDefinitionQualifiedValue`` according to specification,
         with preserving the original sequence order.
@@ -1144,7 +1157,7 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``ObservationDefinitionQualifiedValue`` according to specification,
         with preserving the original sequence order.
         """

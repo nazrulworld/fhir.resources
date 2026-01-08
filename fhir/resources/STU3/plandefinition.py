@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/PlanDefinition
 Release: STU3
@@ -7,6 +5,9 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -29,7 +30,7 @@ class PlanDefinition(domainresource.DomainResource):
 
     __resource_type__ = "PlanDefinition"
 
-    action: typing.List[fhirtypes.PlanDefinitionActionType] | None = Field(  # type: ignore
+    action: typing.List[fhirtypes.PlanDefinitionActionType] | None = Field(
         default=None,
         alias="action",
         title="Action defined by the plan",
@@ -39,7 +40,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    approvalDate: fhirtypes.DateType | None = Field(  # type: ignore
+    approvalDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="approvalDate",
         title="When the plan definition was approved by publisher",
@@ -52,13 +53,13 @@ class PlanDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_approvalDate",
         title="Extension field for ``approvalDate``.",
     )
 
-    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(  # type: ignore
+    contact: typing.List[fhirtypes.ContactDetailType] | None = Field(
         default=None,
         alias="contact",
         title="Contact details for the publisher",
@@ -72,7 +73,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    contributor: typing.List[fhirtypes.ContributorType] | None = Field(  # type: ignore
+    contributor: typing.List[fhirtypes.ContributorType] | None = Field(
         default=None,
         alias="contributor",
         title="A content contributor",
@@ -85,7 +86,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    copyright: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    copyright: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -98,11 +99,11 @@ class PlanDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    date: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="date",
         title="Date this was last changed",
@@ -118,11 +119,11 @@ class PlanDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    description: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the plan definition",
@@ -135,11 +136,11 @@ class PlanDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    effectivePeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    effectivePeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="effectivePeriod",
         title="When the plan definition is expected to be used",
@@ -153,7 +154,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    experimental: bool | None = Field(  # type: ignore
+    experimental: bool | None = Field(
         default=None,
         alias="experimental",
         title="For testing purposes, not real usage",
@@ -167,13 +168,13 @@ class PlanDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_experimental",
         title="Extension field for ``experimental``.",
     )
 
-    goal: typing.List[fhirtypes.PlanDefinitionGoalType] | None = Field(  # type: ignore
+    goal: typing.List[fhirtypes.PlanDefinitionGoalType] | None = Field(
         default=None,
         alias="goal",
         title="What the plan is trying to accomplish",
@@ -188,7 +189,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(  # type: ignore
+    identifier: typing.List[fhirtypes.IdentifierType] | None = Field(
         default=None,
         alias="identifier",
         title="Additional identifier for the plan definition",
@@ -203,7 +204,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="jurisdiction",
         title="Intended jurisdiction for plan definition (if applicable)",
@@ -217,7 +218,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    lastReviewDate: fhirtypes.DateType | None = Field(  # type: ignore
+    lastReviewDate: fhirtypes.DateType | None = Field(
         default=None,
         alias="lastReviewDate",
         title="When the plan definition was last reviewed",
@@ -230,13 +231,13 @@ class PlanDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_lastReviewDate",
         title="Extension field for ``lastReviewDate``.",
     )
 
-    library: typing.List[fhirtypes.ReferenceType] | None = Field(  # type: ignore
+    library: typing.List[fhirtypes.ReferenceType] | None = Field(
         default=None,
         alias="library",
         title="Logic used by the plan definition",
@@ -251,7 +252,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Name for this plan definition (computer friendly)",
@@ -265,11 +266,11 @@ class PlanDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.StringType | None = Field(  # type: ignore
+    publisher: fhirtypes.StringType | None = Field(
         default=None,
         alias="publisher",
         title="Name of the publisher (organization or individual)",
@@ -282,11 +283,11 @@ class PlanDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    purpose: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="purpose",
         title="Why this plan definition is defined",
@@ -298,11 +299,11 @@ class PlanDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="relatedArtifact",
         title="Related artifacts for the asset",
@@ -315,7 +316,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -332,11 +333,11 @@ class PlanDefinition(domainresource.DomainResource):
             "enum_values": ["draft", "active", "retired", "unknown"],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="Name for this plan definition (human friendly)",
@@ -346,11 +347,11 @@ class PlanDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    topic: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment, etc",
@@ -364,7 +365,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    type: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    type: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="type",
         title="order-set | protocol | eca-rule",
@@ -378,7 +379,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    url: fhirtypes.UriType | None = Field(  # type: ignore
+    url: fhirtypes.UriType | None = Field(
         default=None,
         alias="url",
         title="Logical URI to reference this plan definition (globally unique)",
@@ -395,11 +396,11 @@ class PlanDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_url", title="Extension field for ``url``."
     )
 
-    usage: fhirtypes.StringType | None = Field(  # type: ignore
+    usage: fhirtypes.StringType | None = Field(
         default=None,
         alias="usage",
         title="Describes the clinical usage of the asset",
@@ -411,11 +412,11 @@ class PlanDefinition(domainresource.DomainResource):
             "element_property": True,
         },
     )
-    usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_usage", title="Extension field for ``usage``."
     )
 
-    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(  # type: ignore
+    useContext: typing.List[fhirtypes.UsageContextType] | None = Field(
         default=None,
         alias="useContext",
         title="Context the content is intended to support",
@@ -430,7 +431,7 @@ class PlanDefinition(domainresource.DomainResource):
         },
     )
 
-    version: fhirtypes.StringType | None = Field(  # type: ignore
+    version: fhirtypes.StringType | None = Field(
         default=None,
         alias="version",
         title="Business version of the plan definition",
@@ -453,12 +454,12 @@ class PlanDefinition(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_version", title="Extension field for ``version``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PlanDefinition`` according to specification,
         with preserving the original sequence order.
@@ -501,7 +502,7 @@ class PlanDefinition(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PlanDefinition`` according to specification,
         with preserving the original sequence order.
         """
@@ -549,7 +550,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
     __resource_type__ = "PlanDefinitionAction"
 
-    action: typing.List[fhirtypes.PlanDefinitionActionType] | None = Field(  # type: ignore
+    action: typing.List[fhirtypes.PlanDefinitionActionType] | None = Field(
         default=None,
         alias="action",
         title="A sub-action",
@@ -564,7 +565,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    cardinalityBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    cardinalityBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="cardinalityBehavior",
         title="single | multiple",
@@ -576,13 +577,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "enum_values": ["single", "multiple"],
         },
     )
-    cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_cardinalityBehavior",
         title="Extension field for ``cardinalityBehavior``.",
     )
 
-    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    code: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="code",
         title="Code representing the meaning of the action or sub-actions",
@@ -596,7 +597,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    condition: typing.List[fhirtypes.PlanDefinitionActionConditionType] | None = Field(  # type: ignore
+    condition: typing.List[fhirtypes.PlanDefinitionActionConditionType] | None = Field(
         default=None,
         alias="condition",
         title="Whether or not the action is applicable",
@@ -609,7 +610,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    definition: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    definition: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="definition",
         title="Description of the activity to be performed",
@@ -625,7 +626,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Short description of the action",
@@ -637,11 +638,11 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    documentation: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    documentation: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="documentation",
         title="Supporting documentation for the intended performer of the action",
@@ -655,7 +656,9 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    dynamicValue: typing.List[fhirtypes.PlanDefinitionActionDynamicValueType] | None = Field(  # type: ignore
+    dynamicValue: typing.List[
+        fhirtypes.PlanDefinitionActionDynamicValueType
+    ] | None = Field(
         default=None,
         alias="dynamicValue",
         title="Dynamic aspects of the definition",
@@ -671,7 +674,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    goalId: typing.List[fhirtypes.IdType | None] | None = Field(  # type: ignore
+    goalId: typing.List[fhirtypes.IdType | None] | None = Field(
         default=None,
         alias="goalId",
         title="What goals this action supports",
@@ -683,11 +686,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    goalId__ext: typing.List[fhirtypes.FHIRPrimitiveExtensionType | None] | None = Field(  # type: ignore
+    goalId__ext: typing.List[
+        fhirtypes.FHIRPrimitiveExtensionType | None
+    ] | None = Field(
         default=None, alias="_goalId", title="Extension field for ``goalId``."
     )
 
-    groupingBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    groupingBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="groupingBehavior",
         title="visual-group | logical-group | sentence-group",
@@ -699,13 +704,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "enum_values": ["visual-group", "logical-group", "sentence-group"],
         },
     )
-    groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_groupingBehavior",
         title="Extension field for ``groupingBehavior``.",
     )
 
-    input: typing.List[fhirtypes.DataRequirementType] | None = Field(  # type: ignore
+    input: typing.List[fhirtypes.DataRequirementType] | None = Field(
         default=None,
         alias="input",
         title="Input data requirements",
@@ -715,7 +720,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    label: fhirtypes.StringType | None = Field(  # type: ignore
+    label: fhirtypes.StringType | None = Field(
         default=None,
         alias="label",
         title="User-visible label for the action (e.g. 1. or A.)",
@@ -724,11 +729,11 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_label", title="Extension field for ``label``."
     )
 
-    output: typing.List[fhirtypes.DataRequirementType] | None = Field(  # type: ignore
+    output: typing.List[fhirtypes.DataRequirementType] | None = Field(
         default=None,
         alias="output",
         title="Output data definition",
@@ -738,7 +743,9 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    participant: typing.List[fhirtypes.PlanDefinitionActionParticipantType] | None = Field(  # type: ignore
+    participant: typing.List[
+        fhirtypes.PlanDefinitionActionParticipantType
+    ] | None = Field(
         default=None,
         alias="participant",
         title="Who should participate in the action",
@@ -748,7 +755,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    precheckBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    precheckBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="precheckBehavior",
         title="yes | no",
@@ -760,13 +767,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "enum_values": ["yes", "no"],
         },
     )
-    precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_precheckBehavior",
         title="Extension field for ``precheckBehavior``.",
     )
 
-    reason: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    reason: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="reason",
         title="Why the action should be performed",
@@ -776,7 +783,9 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    relatedAction: typing.List[fhirtypes.PlanDefinitionActionRelatedActionType] | None = Field(  # type: ignore
+    relatedAction: typing.List[
+        fhirtypes.PlanDefinitionActionRelatedActionType
+    ] | None = Field(
         default=None,
         alias="relatedAction",
         title="Relationship to another action",
@@ -789,7 +798,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    requiredBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    requiredBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="requiredBehavior",
         title="must | could | must-unless-documented",
@@ -801,13 +810,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "enum_values": ["must", "could", "must-unless-documented"],
         },
     )
-    requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_requiredBehavior",
         title="Extension field for ``requiredBehavior``.",
     )
 
-    selectionBehavior: fhirtypes.CodeType | None = Field(  # type: ignore
+    selectionBehavior: fhirtypes.CodeType | None = Field(
         default=None,
         alias="selectionBehavior",
         title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
@@ -826,13 +835,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             ],
         },
     )
-    selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_selectionBehavior",
         title="Extension field for ``selectionBehavior``.",
     )
 
-    textEquivalent: fhirtypes.StringType | None = Field(  # type: ignore
+    textEquivalent: fhirtypes.StringType | None = Field(
         default=None,
         alias="textEquivalent",
         title=(
@@ -849,13 +858,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_textEquivalent",
         title="Extension field for ``textEquivalent``.",
     )
 
-    timingDateTime: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    timingDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="timingDateTime",
         title="When the action should take place",
@@ -867,13 +876,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_timingDateTime",
         title="Extension field for ``timingDateTime``.",
     )
 
-    timingDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    timingDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="timingDuration",
         title="When the action should take place",
@@ -886,7 +895,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    timingPeriod: fhirtypes.PeriodType | None = Field(  # type: ignore
+    timingPeriod: fhirtypes.PeriodType | None = Field(
         default=None,
         alias="timingPeriod",
         title="When the action should take place",
@@ -899,7 +908,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    timingRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    timingRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="timingRange",
         title="When the action should take place",
@@ -912,7 +921,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    timingTiming: fhirtypes.TimingType | None = Field(  # type: ignore
+    timingTiming: fhirtypes.TimingType | None = Field(
         default=None,
         alias="timingTiming",
         title="When the action should take place",
@@ -925,7 +934,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    title: fhirtypes.StringType | None = Field(  # type: ignore
+    title: fhirtypes.StringType | None = Field(
         default=None,
         alias="title",
         title="User-visible title",
@@ -934,11 +943,11 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_title", title="Extension field for ``title``."
     )
 
-    transform: fhirtypes.ReferenceType | None = Field(  # type: ignore
+    transform: fhirtypes.ReferenceType | None = Field(
         default=None,
         alias="transform",
         title="Transform to apply the template",
@@ -954,7 +963,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    triggerDefinition: typing.List[fhirtypes.TriggerDefinitionType] | None = Field(  # type: ignore
+    triggerDefinition: typing.List[fhirtypes.TriggerDefinitionType] | None = Field(
         default=None,
         alias="triggerDefinition",
         title="When the action should be triggered",
@@ -964,7 +973,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodingType | None = Field(  # type: ignore
+    type: fhirtypes.CodingType | None = Field(
         default=None,
         alias="type",
         title="create | update | remove | fire-event",
@@ -975,7 +984,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PlanDefinitionAction`` according to specification,
         with preserving the original sequence order.
@@ -1016,7 +1025,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PlanDefinitionAction`` according to specification,
         with preserving the original sequence order.
         """
@@ -1059,7 +1068,7 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
 
     __resource_type__ = "PlanDefinitionActionCondition"
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the condition",
@@ -1071,11 +1080,11 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    expression: fhirtypes.StringType | None = Field(  # type: ignore
+    expression: fhirtypes.StringType | None = Field(
         default=None,
         alias="expression",
         title="Boolean-valued expression",
@@ -1087,11 +1096,11 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    kind: fhirtypes.CodeType | None = Field(  # type: ignore
+    kind: fhirtypes.CodeType | None = Field(
         default=None,
         alias="kind",
         title="applicability | start | stop",
@@ -1104,11 +1113,11 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "enum_values": ["applicability", "start", "stop"],
         },
     )
-    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    language: fhirtypes.StringType | None = Field(  # type: ignore
+    language: fhirtypes.StringType | None = Field(
         default=None,
         alias="language",
         title="Language of the expression",
@@ -1117,12 +1126,12 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_language", title="Extension field for ``language``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PlanDefinitionActionCondition`` according to specification,
         with preserving the original sequence order.
@@ -1138,7 +1147,7 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PlanDefinitionActionCondition`` according to specification,
         with preserving the original sequence order.
         """
@@ -1171,7 +1180,7 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
 
     __resource_type__ = "PlanDefinitionActionDynamicValue"
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Natural language description of the dynamic value",
@@ -1183,11 +1192,11 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    expression: fhirtypes.StringType | None = Field(  # type: ignore
+    expression: fhirtypes.StringType | None = Field(
         default=None,
         alias="expression",
         title="An expression that provides the dynamic value for the customization",
@@ -1196,11 +1205,11 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_expression", title="Extension field for ``expression``."
     )
 
-    language: fhirtypes.StringType | None = Field(  # type: ignore
+    language: fhirtypes.StringType | None = Field(
         default=None,
         alias="language",
         title="Language of the expression",
@@ -1209,11 +1218,11 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_language", title="Extension field for ``language``."
     )
 
-    path: fhirtypes.StringType | None = Field(  # type: ignore
+    path: fhirtypes.StringType | None = Field(
         default=None,
         alias="path",
         title="The path to the element to be set dynamically",
@@ -1226,12 +1235,12 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_path", title="Extension field for ``path``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PlanDefinitionActionDynamicValue`` according to specification,
         with preserving the original sequence order.
@@ -1247,7 +1256,7 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PlanDefinitionActionDynamicValue`` according to specification,
         with preserving the original sequence order.
         """
@@ -1265,7 +1274,7 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "PlanDefinitionActionParticipant"
 
-    role: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    role: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="role",
         title="E.g. Nurse, Surgeon, Parent, etc",
@@ -1278,7 +1287,7 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
         },
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="patient | practitioner | related-person",
@@ -1291,12 +1300,12 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
             "enum_values": ["patient", "practitioner", "related-person"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PlanDefinitionActionParticipant`` according to specification,
         with preserving the original sequence order.
@@ -1304,7 +1313,7 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "role"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PlanDefinitionActionParticipant`` according to specification,
         with preserving the original sequence order.
         """
@@ -1334,7 +1343,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
 
     __resource_type__ = "PlanDefinitionActionRelatedAction"
 
-    actionId: fhirtypes.IdType | None = Field(  # type: ignore
+    actionId: fhirtypes.IdType | None = Field(
         default=None,
         alias="actionId",
         title="What action is this related to",
@@ -1344,11 +1353,11 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    actionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    actionId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_actionId", title="Extension field for ``actionId``."
     )
 
-    offsetDuration: fhirtypes.DurationType | None = Field(  # type: ignore
+    offsetDuration: fhirtypes.DurationType | None = Field(
         default=None,
         alias="offsetDuration",
         title="Time offset for the relationship",
@@ -1364,7 +1373,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         },
     )
 
-    offsetRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    offsetRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="offsetRange",
         title="Time offset for the relationship",
@@ -1380,7 +1389,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         },
     )
 
-    relationship: fhirtypes.CodeType | None = Field(  # type: ignore
+    relationship: fhirtypes.CodeType | None = Field(
         default=None,
         alias="relationship",
         title=(
@@ -1406,14 +1415,14 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             ],
         },
     )
-    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_relationship",
         title="Extension field for ``relationship``.",
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PlanDefinitionActionRelatedAction`` according to specification,
         with preserving the original sequence order.
@@ -1429,7 +1438,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PlanDefinitionActionRelatedAction`` according to specification,
         with preserving the original sequence order.
         """
@@ -1480,7 +1489,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
 
     __resource_type__ = "PlanDefinitionGoal"
 
-    addresses: typing.List[fhirtypes.CodeableConceptType] | None = Field(  # type: ignore
+    addresses: typing.List[fhirtypes.CodeableConceptType] | None = Field(
         default=None,
         alias="addresses",
         title="What does the goal address",
@@ -1493,7 +1502,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         },
     )
 
-    category: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    category: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="category",
         title="E.g. Treatment, dietary, behavioral, etc",
@@ -1503,7 +1512,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.CodeableConceptType = Field(  # type: ignore
+    description: fhirtypes.CodeableConceptType = Field(
         default=...,
         alias="description",
         title="Code or text describing the goal",
@@ -1517,7 +1526,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         },
     )
 
-    documentation: typing.List[fhirtypes.RelatedArtifactType] | None = Field(  # type: ignore
+    documentation: typing.List[fhirtypes.RelatedArtifactType] | None = Field(
         default=None,
         alias="documentation",
         title="Supporting documentation for the goal",
@@ -1532,7 +1541,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         },
     )
 
-    priority: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    priority: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="priority",
         title="high-priority | medium-priority | low-priority",
@@ -1545,7 +1554,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         },
     )
 
-    start: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    start: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="start",
         title="When goal pursuit begins",
@@ -1555,7 +1564,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         },
     )
 
-    target: typing.List[fhirtypes.PlanDefinitionGoalTargetType] | None = Field(  # type: ignore
+    target: typing.List[fhirtypes.PlanDefinitionGoalTargetType] | None = Field(
         default=None,
         alias="target",
         title="Target outcome for the goal",
@@ -1566,7 +1575,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PlanDefinitionGoal`` according to specification,
         with preserving the original sequence order.
@@ -1585,7 +1594,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PlanDefinitionGoal`` according to specification,
         with preserving the original sequence order.
         """
@@ -1603,7 +1612,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
 
     __resource_type__ = "PlanDefinitionGoalTarget"
 
-    detailCodeableConcept: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    detailCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="detailCodeableConcept",
         title="The target value to be achieved",
@@ -1623,7 +1632,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         },
     )
 
-    detailQuantity: fhirtypes.QuantityType | None = Field(  # type: ignore
+    detailQuantity: fhirtypes.QuantityType | None = Field(
         default=None,
         alias="detailQuantity",
         title="The target value to be achieved",
@@ -1643,7 +1652,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         },
     )
 
-    detailRange: fhirtypes.RangeType | None = Field(  # type: ignore
+    detailRange: fhirtypes.RangeType | None = Field(
         default=None,
         alias="detailRange",
         title="The target value to be achieved",
@@ -1663,7 +1672,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         },
     )
 
-    due: fhirtypes.DurationType | None = Field(  # type: ignore
+    due: fhirtypes.DurationType | None = Field(
         default=None,
         alias="due",
         title="Reach goal within",
@@ -1676,7 +1685,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         },
     )
 
-    measure: fhirtypes.CodeableConceptType | None = Field(  # type: ignore
+    measure: fhirtypes.CodeableConceptType | None = Field(
         default=None,
         alias="measure",
         title="The parameter whose value is to be tracked",
@@ -1690,7 +1699,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``PlanDefinitionGoalTarget`` according to specification,
         with preserving the original sequence order.
@@ -1707,7 +1716,7 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``PlanDefinitionGoalTarget`` according to specification,
         with preserving the original sequence order.
         """

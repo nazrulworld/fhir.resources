@@ -1,5 +1,3 @@
-from __future__ import annotations as _annotations
-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/TestReport
 Release: R5
@@ -7,6 +5,9 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
+
+from __future__ import annotations as _annotations
+
 import typing
 
 from pydantic import Field
@@ -25,7 +26,7 @@ class TestReport(domainresource.DomainResource):
 
     __resource_type__ = "TestReport"
 
-    identifier: fhirtypes.IdentifierType | None = Field(  # type: ignore
+    identifier: fhirtypes.IdentifierType | None = Field(
         default=None,
         alias="identifier",
         title="External identifier",
@@ -39,7 +40,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    issued: fhirtypes.DateTimeType | None = Field(  # type: ignore
+    issued: fhirtypes.DateTimeType | None = Field(
         default=None,
         alias="issued",
         title="When the TestScript was executed and this TestReport was generated",
@@ -49,11 +50,11 @@ class TestReport(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Informal name of the executed TestReport",
@@ -63,11 +64,11 @@ class TestReport(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
-    participant: typing.List[fhirtypes.TestReportParticipantType] | None = Field(  # type: ignore
+    participant: typing.List[fhirtypes.TestReportParticipantType] | None = Field(
         default=None,
         alias="participant",
         title=(
@@ -80,7 +81,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    result: fhirtypes.CodeType | None = Field(  # type: ignore
+    result: fhirtypes.CodeType | None = Field(
         default=None,
         alias="result",
         title="pass | fail | pending",
@@ -94,11 +95,11 @@ class TestReport(domainresource.DomainResource):
             "enum_values": ["pass", "fail", "pending"],
         },
     )
-    result__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    result__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_result", title="Extension field for ``result``."
     )
 
-    score: fhirtypes.DecimalType | None = Field(  # type: ignore
+    score: fhirtypes.DecimalType | None = Field(
         default=None,
         alias="score",
         title=(
@@ -111,11 +112,11 @@ class TestReport(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    score__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    score__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_score", title="Extension field for ``score``."
     )
 
-    setup: fhirtypes.TestReportSetupType | None = Field(  # type: ignore
+    setup: fhirtypes.TestReportSetupType | None = Field(
         default=None,
         alias="setup",
         title=(
@@ -128,7 +129,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    status: fhirtypes.CodeType | None = Field(  # type: ignore
+    status: fhirtypes.CodeType | None = Field(
         default=None,
         alias="status",
         title="completed | in-progress | waiting | stopped | entered-in-error",
@@ -148,11 +149,11 @@ class TestReport(domainresource.DomainResource):
             ],
         },
     )
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_status", title="Extension field for ``status``."
     )
 
-    teardown: fhirtypes.TestReportTeardownType | None = Field(  # type: ignore
+    teardown: fhirtypes.TestReportTeardownType | None = Field(
         default=None,
         alias="teardown",
         title="The results of running the series of required clean up steps",
@@ -165,7 +166,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    test: typing.List[fhirtypes.TestReportTestType] | None = Field(  # type: ignore
+    test: typing.List[fhirtypes.TestReportTestType] | None = Field(
         default=None,
         alias="test",
         title="A test executed from the test script",
@@ -175,7 +176,7 @@ class TestReport(domainresource.DomainResource):
         },
     )
 
-    testScript: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    testScript: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="testScript",
         title=(
@@ -194,11 +195,11 @@ class TestReport(domainresource.DomainResource):
             "enum_reference_types": ["TestScript"],
         },
     )
-    testScript__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    testScript__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_testScript", title="Extension field for ``testScript``."
     )
 
-    tester: fhirtypes.StringType | None = Field(  # type: ignore
+    tester: fhirtypes.StringType | None = Field(
         default=None,
         alias="tester",
         title="Name of the tester producing this report (Organization or individual)",
@@ -208,12 +209,12 @@ class TestReport(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    tester__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    tester__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_tester", title="Extension field for ``tester``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReport`` according to specification,
         with preserving the original sequence order.
@@ -242,7 +243,7 @@ class TestReport(domainresource.DomainResource):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReport`` according to specification,
         with preserving the original sequence order.
         """
@@ -288,7 +289,7 @@ class TestReportParticipant(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportParticipant"
 
-    display: fhirtypes.StringType | None = Field(  # type: ignore
+    display: fhirtypes.StringType | None = Field(
         default=None,
         alias="display",
         title="The display name of the participant",
@@ -297,11 +298,11 @@ class TestReportParticipant(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_display", title="Extension field for ``display``."
     )
 
-    type: fhirtypes.CodeType | None = Field(  # type: ignore
+    type: fhirtypes.CodeType | None = Field(
         default=None,
         alias="type",
         title="test-engine | client | server",
@@ -314,11 +315,11 @@ class TestReportParticipant(backboneelement.BackboneElement):
             "enum_values": ["test-engine", "client", "server"],
         },
     )
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_type", title="Extension field for ``type``."
     )
 
-    uri: fhirtypes.UriType | None = Field(  # type: ignore
+    uri: fhirtypes.UriType | None = Field(
         default=None,
         alias="uri",
         title="The uri of the participant. An absolute URL is preferred",
@@ -328,12 +329,12 @@ class TestReportParticipant(backboneelement.BackboneElement):
             "element_required": True,
         },
     )
-    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_uri", title="Extension field for ``uri``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportParticipant`` according to specification,
         with preserving the original sequence order.
@@ -341,7 +342,7 @@ class TestReportParticipant(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "type", "uri", "display"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportParticipant`` according to specification,
         with preserving the original sequence order.
         """
@@ -370,7 +371,7 @@ class TestReportSetup(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetup"
 
-    action: typing.List[fhirtypes.TestReportSetupActionType] = Field(  # type: ignore
+    action: typing.List[fhirtypes.TestReportSetupActionType] = Field(
         default=...,
         alias="action",
         title="A setup operation or assert that was executed",
@@ -381,7 +382,7 @@ class TestReportSetup(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportSetup`` according to specification,
         with preserving the original sequence order.
@@ -389,7 +390,7 @@ class TestReportSetup(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "action"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportSetup`` according to specification,
         with preserving the original sequence order.
         """
@@ -407,7 +408,7 @@ class TestReportSetupAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetupAction"
 
-    assert_fhir: fhirtypes.TestReportSetupActionAssertType | None = Field(  # type: ignore
+    assert_fhir: fhirtypes.TestReportSetupActionAssertType | None = Field(
         default=None,
         alias="assert",
         title="The assertion to perform",
@@ -417,7 +418,7 @@ class TestReportSetupAction(backboneelement.BackboneElement):
         },
     )
 
-    operation: fhirtypes.TestReportSetupActionOperationType | None = Field(  # type: ignore
+    operation: fhirtypes.TestReportSetupActionOperationType | None = Field(
         default=None,
         alias="operation",
         title="The operation to perform",
@@ -428,7 +429,7 @@ class TestReportSetupAction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportSetupAction`` according to specification,
         with preserving the original sequence order.
@@ -436,7 +437,7 @@ class TestReportSetupAction(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "operation", "assert"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportSetupAction`` according to specification,
         with preserving the original sequence order.
         """
@@ -454,7 +455,7 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetupActionAssert"
 
-    detail: fhirtypes.StringType | None = Field(  # type: ignore
+    detail: fhirtypes.StringType | None = Field(
         default=None,
         alias="detail",
         title="A link to further details on the result",
@@ -463,11 +464,11 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    detail__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    detail__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_detail", title="Extension field for ``detail``."
     )
 
-    message: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    message: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="message",
         title="A message associated with the result",
@@ -476,11 +477,13 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    message__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    message__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_message", title="Extension field for ``message``."
     )
 
-    requirement: typing.List[fhirtypes.TestReportSetupActionAssertRequirementType] | None = Field(  # type: ignore
+    requirement: typing.List[
+        fhirtypes.TestReportSetupActionAssertRequirementType
+    ] | None = Field(
         default=None,
         alias="requirement",
         title="Links or references to the testing requirements",
@@ -493,7 +496,7 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
         },
     )
 
-    result: fhirtypes.CodeType | None = Field(  # type: ignore
+    result: fhirtypes.CodeType | None = Field(
         default=None,
         alias="result",
         title="pass | skip | fail | warning | error",
@@ -506,12 +509,12 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
             "enum_values": ["pass", "skip", "fail", "warning", "error"],
         },
     )
-    result__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    result__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_result", title="Extension field for ``result``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportSetupActionAssert`` according to specification,
         with preserving the original sequence order.
@@ -527,7 +530,7 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
         ]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportSetupActionAssert`` according to specification,
         with preserving the original sequence order.
         """
@@ -557,7 +560,7 @@ class TestReportSetupActionAssertRequirement(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetupActionAssertRequirement"
 
-    linkCanonical: fhirtypes.CanonicalType | None = Field(  # type: ignore
+    linkCanonical: fhirtypes.CanonicalType | None = Field(
         default=None,
         alias="linkCanonical",
         title="Link or reference to the testing requirement",
@@ -574,13 +577,13 @@ class TestReportSetupActionAssertRequirement(backboneelement.BackboneElement):
             "enum_reference_types": ["Requirements"],
         },
     )
-    linkCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    linkCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None,
         alias="_linkCanonical",
         title="Extension field for ``linkCanonical``.",
     )
 
-    linkUri: fhirtypes.UriType | None = Field(  # type: ignore
+    linkUri: fhirtypes.UriType | None = Field(
         default=None,
         alias="linkUri",
         title="Link or reference to the testing requirement",
@@ -595,12 +598,12 @@ class TestReportSetupActionAssertRequirement(backboneelement.BackboneElement):
             "one_of_many_required": False,
         },
     )
-    linkUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    linkUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_linkUri", title="Extension field for ``linkUri``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportSetupActionAssertRequirement`` according to specification,
         with preserving the original sequence order.
@@ -608,7 +611,7 @@ class TestReportSetupActionAssertRequirement(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "linkUri", "linkCanonical"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportSetupActionAssertRequirement`` according to specification,
         with preserving the original sequence order.
         """
@@ -642,7 +645,7 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportSetupActionOperation"
 
-    detail: fhirtypes.UriType | None = Field(  # type: ignore
+    detail: fhirtypes.UriType | None = Field(
         default=None,
         alias="detail",
         title="A link to further details on the result",
@@ -651,11 +654,11 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    detail__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    detail__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_detail", title="Extension field for ``detail``."
     )
 
-    message: fhirtypes.MarkdownType | None = Field(  # type: ignore
+    message: fhirtypes.MarkdownType | None = Field(
         default=None,
         alias="message",
         title="A message associated with the result",
@@ -664,11 +667,11 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    message__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    message__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_message", title="Extension field for ``message``."
     )
 
-    result: fhirtypes.CodeType | None = Field(  # type: ignore
+    result: fhirtypes.CodeType | None = Field(
         default=None,
         alias="result",
         title="pass | skip | fail | warning | error",
@@ -681,12 +684,12 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
             "enum_values": ["pass", "skip", "fail", "warning", "error"],
         },
     )
-    result__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    result__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_result", title="Extension field for ``result``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportSetupActionOperation`` according to specification,
         with preserving the original sequence order.
@@ -694,7 +697,7 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "result", "message", "detail"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportSetupActionOperation`` according to specification,
         with preserving the original sequence order.
         """
@@ -724,7 +727,7 @@ class TestReportTeardown(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportTeardown"
 
-    action: typing.List[fhirtypes.TestReportTeardownActionType] = Field(  # type: ignore
+    action: typing.List[fhirtypes.TestReportTeardownActionType] = Field(
         default=...,
         alias="action",
         title="One or more teardown operations performed",
@@ -735,7 +738,7 @@ class TestReportTeardown(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportTeardown`` according to specification,
         with preserving the original sequence order.
@@ -743,7 +746,7 @@ class TestReportTeardown(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "action"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportTeardown`` according to specification,
         with preserving the original sequence order.
         """
@@ -761,7 +764,7 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportTeardownAction"
 
-    operation: fhirtypes.TestReportSetupActionOperationType = Field(  # type: ignore
+    operation: fhirtypes.TestReportSetupActionOperationType = Field(
         default=...,
         alias="operation",
         title="The teardown operation performed",
@@ -772,7 +775,7 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportTeardownAction`` according to specification,
         with preserving the original sequence order.
@@ -780,7 +783,7 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "operation"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportTeardownAction`` according to specification,
         with preserving the original sequence order.
         """
@@ -797,7 +800,7 @@ class TestReportTest(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportTest"
 
-    action: typing.List[fhirtypes.TestReportTestActionType] = Field(  # type: ignore
+    action: typing.List[fhirtypes.TestReportTestActionType] = Field(
         default=...,
         alias="action",
         title="A test operation or assert that was performed",
@@ -807,7 +810,7 @@ class TestReportTest(backboneelement.BackboneElement):
         },
     )
 
-    description: fhirtypes.StringType | None = Field(  # type: ignore
+    description: fhirtypes.StringType | None = Field(
         default=None,
         alias="description",
         title="Tracking/reporting short description of the test",
@@ -819,11 +822,11 @@ class TestReportTest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_description", title="Extension field for ``description``."
     )
 
-    name: fhirtypes.StringType | None = Field(  # type: ignore
+    name: fhirtypes.StringType | None = Field(
         default=None,
         alias="name",
         title="Tracking/logging name of this test",
@@ -835,12 +838,12 @@ class TestReportTest(backboneelement.BackboneElement):
             "element_property": True,
         },
     )
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(  # type: ignore
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_name", title="Extension field for ``name``."
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportTest`` according to specification,
         with preserving the original sequence order.
@@ -848,7 +851,7 @@ class TestReportTest(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "name", "description", "action"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportTest`` according to specification,
         with preserving the original sequence order.
         """
@@ -866,7 +869,7 @@ class TestReportTestAction(backboneelement.BackboneElement):
 
     __resource_type__ = "TestReportTestAction"
 
-    assert_fhir: fhirtypes.TestReportSetupActionAssertType | None = Field(  # type: ignore
+    assert_fhir: fhirtypes.TestReportSetupActionAssertType | None = Field(
         default=None,
         alias="assert",
         title="The assertion performed",
@@ -876,7 +879,7 @@ class TestReportTestAction(backboneelement.BackboneElement):
         },
     )
 
-    operation: fhirtypes.TestReportSetupActionOperationType | None = Field(  # type: ignore
+    operation: fhirtypes.TestReportSetupActionOperationType | None = Field(
         default=None,
         alias="operation",
         title="The operation performed",
@@ -887,7 +890,7 @@ class TestReportTestAction(backboneelement.BackboneElement):
     )
 
     @classmethod
-    def elements_sequence(cls):
+    def elements_sequence(cls) -> typing.List[str]:
         """returning all element names from
         ``TestReportTestAction`` according to specification,
         with preserving the original sequence order.
@@ -895,7 +898,7 @@ class TestReportTestAction(backboneelement.BackboneElement):
         return ["id", "extension", "modifierExtension", "operation", "assert"]
 
     @classmethod
-    def summary_elements_sequence(cls):
+    def summary_elements_sequence(cls) -> typing.List[str]:
         """returning all element names (those have summary mode are enabled) from ``TestReportTestAction`` according to specification,
         with preserving the original sequence order.
         """

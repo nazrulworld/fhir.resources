@@ -12,11 +12,11 @@ class FHIRResourceModel(FHIRAbstractModel):
 
     id: Optional[Union[IdType, StringType]] = None
 
-    def relative_base(self):
+    def relative_base(self) -> str:
         """ """
         return self.__resource_type__
 
-    def relative_path(self):
+    def relative_path(self) -> str:
         if self.id is None:
             return self.relative_base()
         return "{0}/{1}".format(self.relative_base(), self.id)

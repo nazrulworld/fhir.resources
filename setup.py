@@ -32,7 +32,7 @@ test_requirements = [
     "coverage",
     "pytest>5.4.0;python_version>='3.6'",
     "pytest-cov>=2.10.0;python_version>='3.6'",
-    "flake8" + (PY_VERSION_10_OR_LATER and "==6.0" or "==5.0.4;python_version<'3.10'"),
+    "flake8" + (PY_VERSION_10_OR_LATER and "==7.3.0" or "==5.0.4;python_version<'3.10'"),
     "flake8-isort"
     + (PY_VERSION_10_OR_LATER and ">=6.0.0" or "==4.2.0;python_version<'3.10'"),
     "flake8-bugbear"

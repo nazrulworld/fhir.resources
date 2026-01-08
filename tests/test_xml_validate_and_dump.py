@@ -7,7 +7,7 @@ from fhir_core import xml_utils
 from fhir.resources.R4B.observation import Observation
 from fhir.resources.R4B.patient import Patient
 
-from .fixtures import FHIR_XSD_DIR, IS_TRAVIS, STATIC_PATH
+from .conftest import FHIR_XSD_DIR, IS_TRAVIS, STATIC_PATH
 from .utils import has_internet_connection, post_xml_resource
 
 __author__ = "Md Nazrul Islam"

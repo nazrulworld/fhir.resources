@@ -1,6 +1,6 @@
 from fhir.resources.R4B.patient import Patient
 
-from .fixtures import STATIC_PATH
+from .conftest import STATIC_PATH
 
 __author__ = "Md Nazrul Islam"
 __email__ = "email2nazrul@gmail.com"

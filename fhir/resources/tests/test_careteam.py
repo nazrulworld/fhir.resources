@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import careteam
-from .fixtures import ExternalValidatorModel
+from .conftest import ExternalValidatorModel
 
 
 def impl_careteam_1(inst):

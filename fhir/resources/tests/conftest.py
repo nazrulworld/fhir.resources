@@ -36,10 +36,10 @@ def download_and_store(url, path):
     try:
         sys.stdout.write("Attempting to download from {0}\n".format(url))
         ret = requests.get(url)
-    except requests.HTTPError as exc:
+    except requests.HTTPError as exc:  # pragma: no cover
         raise LookupError("Failed to download. Full error: {0!s}".format(exc))
     else:
-        if not ret.ok:
+        if not ret.ok:  # pragma: no cover
             raise Exception("Failed to download {0}".format(url))
         with io.open(path, "wb") as handle:
             for chunk in ret.iter_content():
@@ -49,7 +49,7 @@ def download_and_store(url, path):
             )
 
 
-def expand(self, local):
+def expand(self, local):  # pragma: no cover
     """Expand the ZIP file at the given path to the cache directory."""
     path = os.path.join(self.cache, local)
     assert os.path.exists(path)
@@ -61,7 +61,7 @@ def expand(self, local):
 
 @pytest.fixture(scope="session")
 def base_settings():
-    if not os.path.exists(CACHE_PATH):
+    if not os.path.exists(CACHE_PATH):  # pragma: no cover
         os.makedirs(CACHE_PATH)
 
     settings = {}

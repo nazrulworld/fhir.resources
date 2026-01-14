@@ -1,4 +1,3 @@
-import decimal
 import hashlib
 import io
 import os
@@ -6,7 +5,6 @@ import pathlib
 import shutil
 import sys
 import tempfile
-import typing
 import zipfile
 from os.path import dirname
 
@@ -100,19 +98,6 @@ def base_settings():
 
     os.environ.pop("FHIR_UNITTEST_DATADIR")
     shutil.rmtree(temp_data_dir)
-
-
-def bytes_validator(v: typing.Any) -> typing.Union[bytes]:
-    if isinstance(v, bytes):
-        return v
-    elif isinstance(v, bytearray):
-        return bytes(v)
-    elif isinstance(v, str):
-        return v.encode()
-    elif isinstance(v, (float, int, decimal.Decimal)):
-        return str(v).encode()
-    else:
-        raise ValueError
 
 
 class ExternalValidatorModel(BaseModel):

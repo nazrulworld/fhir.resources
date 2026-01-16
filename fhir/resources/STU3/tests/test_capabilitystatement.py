@@ -7,7 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from .. import capabilitystatement
-from .fixtures import ExternalValidatorModel
+from .conftest import ExternalValidatorModel
 
 
 def impl_capabilitystatement_1(inst):

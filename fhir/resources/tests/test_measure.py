@@ -7,7 +7,7 @@ Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
 from .. import measure
-from .fixtures import ExternalValidatorModel
+from .conftest import ExternalValidatorModel
 
 
 def impl_measure_1(inst):

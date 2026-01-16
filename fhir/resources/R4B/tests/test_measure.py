@@ -7,7 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from .. import measure
-from .fixtures import ExternalValidatorModel  # noqa: F401
+from .conftest import ExternalValidatorModel  # noqa: F401
 
 
 def impl_measure_1(inst):

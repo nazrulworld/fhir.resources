@@ -2,10 +2,11 @@
 History
 =======
 
-8.1.1 (unreleased)
+8.2.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Type aliases are added for all types during type checking. [mschoettle]
+- Minimum requirement for ``fhir-core`` version is now ``1.1.5`` which naturally comes with some bug fixes. See here https://github.com/nazrulworld/fhir-core/blob/main/HISTORY.rst#115-2026-01-29
 
 
 8.1.0 (2025-07-10)

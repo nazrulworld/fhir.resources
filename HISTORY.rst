@@ -2,7 +2,7 @@
 History
 =======
 
-8.2.0 (unreleased)
+8.2.0 (2026-02-02)
 ------------------
 
 - Type aliases are added for all types during type checking. [mschoettle]

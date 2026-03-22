@@ -96,7 +96,8 @@ def test_element_to_node():
         (STATIC_PATH / "R4B" / "Patient-with-ext.xml").read_bytes(),
         parser=xmlparser,
     )
-    patient_node = xml_utils.Node.from_element(element)
+    from fhir.resources.R4B.patient import Patient
+    patient_node = xml_utils.Node.from_element(element, fhir_class=Patient)
     try:
         patient_node.validate(patient_node.to_xml(), xmlparser=xmlparser)
     except ValueError:

@@ -44,7 +44,7 @@ test_requirements = [
     "types-PyYAML",
     "types-simplejson",
     "types-requests",
-    "setuptools==65.6.3;python_version>='3.7'",
+    "setuptools==70.0.0;python_version>='3.7'",
 ]
 if PY_VERSION_10_OR_LATER:
     test_requirements.append("importlib-metadata>=5.2.0")

@@ -761,3 +761,9 @@ class Extension(element.Element):
             ]
         }
         return one_of_many_fields
+
+    def get_required_fields(
+        self,
+    ) -> typing.List[typing.Tuple[str, typing.Optional[str]]]:
+        required_fields = [("url", None)]
+        return required_fields

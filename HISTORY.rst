@@ -2,11 +2,14 @@
 History
 =======
 
-8.2.1 (unreleased)
+8.3.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+Breaking
 
+- For the `Extension` class, the `url` field value is now required. Issue #205 (https://github.com/nazrulworld/fhir.resources/issues/205)
+
+- Minimum requirement for ``fhir-core`` version is now ``1.1.9``
 
 8.2.0 (2026-02-02)
 ------------------

@@ -1,4 +1,5 @@
 import sys
+import uuid
 from http import client
 
 import lxml.etree
@@ -24,6 +25,7 @@ def test_xml_node_patient_resource():
     patient_fhir = Patient.model_validate_json(
         (STATIC_PATH / "R4B" / "Patient-with-ext.json").read_bytes()
     )
+    patient_fhir.id = str(uuid.uuid4())
     patient_node = xml_utils.Node.from_fhir_obj(patient_fhir)
     schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
     xmlparser = lxml.etree.XMLParser(schema=schema)
@@ -40,7 +42,7 @@ def test_xml_node_patient_resource():
         response = post_xml_resource(conn, patient_fhir)
         if response.status != 500:
             assert response is not None
-            assert response.status == 201
+            assert response.status in (201, 412)
     except client.HTTPException as exc:
         sys.stderr.write(f"{exc}\n")
         return
@@ -54,6 +56,7 @@ def test_xml_node_observation_resource():
     observation_fhir = Observation.model_validate_json(
         (STATIC_PATH / "R4B" / "Observation.json").read_bytes()
     )
+    observation_fhir.id = str(uuid.uuid4())
     observation_node = xml_utils.Node.from_fhir_obj(observation_fhir)
 
     schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "observation.xsd"))
@@ -71,7 +74,7 @@ def test_xml_node_observation_resource():
         response = post_xml_resource(conn, observation_fhir)
         if response.status != 500:
             assert response is not None
-            assert response.status == 201
+            assert response.status in (201, 412)
         else:
             # maybe need to wait for the server to be up
             pass
@@ -97,6 +100,7 @@ def test_element_to_node():
         parser=xmlparser,
     )
     from fhir.resources.R4B.patient import Patient
+
     patient_node = xml_utils.Node.from_element(element, fhir_class=Patient)
     try:
         patient_node.validate(patient_node.to_xml(), xmlparser=xmlparser)

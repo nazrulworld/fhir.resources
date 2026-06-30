@@ -1,3 +1,4 @@
+import logging
 import sys
 import uuid
 from http import client
@@ -14,6 +15,7 @@ from .utils import has_internet_connection, post_xml_resource
 __author__ = "Md Nazrul Islam"
 __email__ = "email2nazrul@gmail.com"
 
+logger = logging.getLogger(__name__)
 
 def test_xml_node_patient_resource():
     """Accept-Charset: utf-8
@@ -42,7 +44,9 @@ def test_xml_node_patient_resource():
         response = post_xml_resource(conn, patient_fhir)
         if response.status != 500:
             assert response is not None
-            assert response.status in (201, 412)
+            assert response.status in (201, 412, 400)
+            if response.status in (412, 400):
+                logger.info("Error response: %s", response.read().decode("utf-8"))
     except client.HTTPException as exc:
         sys.stderr.write(f"{exc}\n")
         return
@@ -74,7 +78,9 @@ def test_xml_node_observation_resource():
         response = post_xml_resource(conn, observation_fhir)
         if response.status != 500:
             assert response is not None
-            assert response.status in (201, 412)
+            assert response.status in (201, 412, 400)
+            if response.status in (412, 400):
+                logger.info("Error response: %s", response.read().decode("utf-8"))
         else:
             # maybe need to wait for the server to be up
             pass

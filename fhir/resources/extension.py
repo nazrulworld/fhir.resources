@@ -10,7 +10,8 @@ from __future__ import annotations as _annotations
 
 import typing
 
-from pydantic import Field
+from pydantic import Field, model_validator
+from pydantic_core import PydanticCustomError
 
 from . import datatype, fhirtypes
 
@@ -25,6 +26,26 @@ class Extension(datatype.DataType):
     """
 
     __resource_type__ = "Extension"
+
+    @model_validator(mode="after")
+    def validate_url_required(self) -> "Extension":
+        """Extension.url is required per FHIR spec (cardinality 1..1)."""
+        if self.url is None:
+            has_value = any(
+                getattr(self, name, None) is not None
+                for name in self.__class__.model_fields
+                if name.startswith("value")
+            )
+            has_nested_extensions = (
+                self.extension is not None and len(self.extension) > 0
+            )
+            if has_value or has_nested_extensions:
+                raise PydanticCustomError(
+                    "fhir_validation_required",
+                    "Extension.url is required (FHIR cardinality 1..1).",
+                    {},
+                )
+        return self
 
     url: fhirtypes.UriType | None = Field(
         default=None,

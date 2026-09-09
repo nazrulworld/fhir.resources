@@ -713,8 +713,8 @@ You could find full discussion here https://github.com/nazrulworld/fhir.resource
 Migration (from ``7.X.X`` to ``8.X.X``)
 ---------------------------------------
 
-There is no breaking changes in terms of api/functions. But it is recommended that you should use new functions from Pydantic V2
-instead of using deprecated functions.
+Aside from the removals listed below, there are no breaking changes in terms of api/functions. But it is
+recommended that you should use new functions from Pydantic V2 instead of using deprecated functions.
 
 Replacements and/or new functions.
 
@@ -732,6 +732,21 @@ Replacements and/or new functions.
 Breaking: removed attributes and/or functions/methods.
 
 - The attribute ``resource_type`` has been removed from base FHIR class. For example no more ``Resource.resource_type`` attribute. Now you have to use Resource.get_resource_type() instead. Although "resource_type" key is available when you will serialize as json or python dict.
+
+- ``fhir.resources.construct_fhir_element`` has been removed. Use ``fhir.resources.get_fhir_model_class``
+  together with ``model_validate`` or ``model_validate_json``::
+
+    from fhir.resources import get_fhir_model_class
+
+    patient_klass = get_fhir_model_class("Patient")
+
+    # from a json string
+    patient = patient_klass.model_validate_json(json_string)
+
+    # from a python dict
+    patient = patient_klass.model_validate(data)
+
+    assert patient.get_resource_type() == "Patient"
 
 Migration (from ``6.X.X`` to ``7.0.X``)
 ---------------------------------------
@@ -755,7 +770,7 @@ This migration guide states some underlying changes of ``API`` and replacement, 
 ``fhir.resources.fhirelementfactory.FHIRElementFactory::instantiate``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Replacement:** ``fhir.resources.construct_fhir_element``
+**Replacement:** ``fhir.resources.construct_fhir_element`` (removed in ``8.0.0``, see the ``7.X.X`` to ``8.X.X`` section above)
 
 - First parameter value is same as previous, the Resource name.
 

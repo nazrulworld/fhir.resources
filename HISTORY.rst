@@ -5,7 +5,7 @@ History
 8.3.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Document the removal of ``construct_fhir_element`` in the migration guide #171
 
 
 8.3.0 (2026-07-03)

@@ -818,7 +818,6 @@ This package skeleton was created with Cookiecutter_ and the `audreyr/cookiecutt
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
 .. _`fhir-parser`: https://github.com/nazrulworld/fhir-parser
 .. _`pydantic`: https://pydantic-docs.helpmanual.io/
-.. _`orjson`: https://pypi.org/project/orjson/
 .. _`dealing-strategy-R4-R4B`: https://confluence.hl7.org/display/FHIR/Strategies+for+dealing+with+R4+and+R4B
 .. _`FHIR`: https://www.hl7.org/implement/standards/product_brief.cfm
 

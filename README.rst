@@ -383,92 +383,69 @@ Example (required ``intent`` element is missing but still valid because of exten
 
 Custom Validators
 ~~~~~~~~~~~~~~~~~
-**This feature is not available**
 
-``fhir.resources`` is providing the extensive API to create and attach custom validator into any model. See more `about root validator <https://pydantic-docs.helpmanual.io/usage/validators/#root-validators>`_
-Some convention you have to follow though, while creating a root validator.
+For application-specific validation, subclass a generated FHIR model and use
+Pydantic's `field and model validators <https://docs.pydantic.dev/latest/concepts/validators/>`_.
+Use the subclass when calling ``model_validate`` or ``model_validate_json``.
+The ``add_root_validator`` method was removed in ``fhir.resources`` 7.1.0.
 
-1. Number of arguments are fixed, as well as names are also. i.e ``(cls, values)``.
-2. Should return ``values``, unless any exception need to be raised.
-3. Validator should be attached only one time for individual Model. Update [from now, it's not possible to attach multiple time same name validator on same class]
+For example, an application can require a patient ID with an after model
+validator. The validator sees the parsed model, including the default
+``None`` when the optional ``id`` field is omitted.
 
-Example 1: Validator for Patient::
+.. code-block:: python
 
-    from typing import Dict
     from fhir.resources.patient import Patient
+    from pydantic import model_validator
 
-    import datetime
+    class PatientWithId(Patient):
+        @model_validator(mode="after")
+        def require_id(self):
+            if self.id is None:
+                raise ValueError("Patient ID is required by this application")
+            return self
 
-    def validate_birthdate(cls, values: Dict):
-        if not values:
-            return values
-        if "birthDate" not in values:
-            raise ValueError("Patient's ``birthDate`` is required.")
+    patient = PatientWithId.model_validate({"id": "example"})
+    patient = PatientWithId.model_validate_json(patient.model_dump_json())
 
-        minimum_date = datetime.date(2002, 1, 1)
-        if values["birthDate"] > minimum_date:
-            raise ValueError("Minimum 18 years patient is allowed to use this system.")
-        return values
-    # we want this validator to execute after data evaluating by individual field validators.
-    Patient.add_root_validator(validate_gender, pre=False)
-
-
-Example 2: Validator for Patient from Validator Class::
-
-    from typing import Dict
-    from fhir.resources.patient import Patient
-
-    import datetime
-
-    class MyValidator:
-        @classmethod
-        def validate_birthdate(cls, values: Dict):
-            if not values:
-                return values
-            if "birthDate" not in values:
-                raise ValueError("Patient's ``birthDate`` is required.")
-
-            minimum_date = datetime.date(2002, 1, 1)
-            if values["birthDate"] > minimum_date:
-                raise ValueError("Minimum 18 years patient is allowed to use this system.")
-            return values
-    # we want this validator to execute after data evaluating by individual field validators.
-    Patient.add_root_validator(MyValidator.validate_gender, pre=False)
-
-
-**important notes** It is possible add root validator into any base class like ``DomainResource``.
-In this case you have to make sure root validator is attached before any import of derived class, other
-than validator will not trigger for successor class (if imported before) by nature.
-
-ENUM Validator
+Enum Validator
 ~~~~~~~~~~~~~~
 
-``fhir.resources`` is providing API for enum constraint for each field (where applicable), but it-self doesn't
-enforce enum based validation! see `discussion here <https://github.com/nazrulworld/fhir.resources/issues/23>`_.
-If you want to enforce enum constraint, you have to create a validator for that.
+Generated models expose allowed codes in ``enum_values`` field metadata.
+The models do not use that metadata to reject unknown codes by default.
+An application that needs this constraint can add a field validator to its
+subclass.
 
-Example: Gender Enum::
+.. code-block:: python
 
-    from typing import Dict
+    from fhir.resources.patient import Patient
+    from pydantic import field_validator
+
+    class PatientWithGenderEnum(Patient):
+        @field_validator("gender")
+        @classmethod
+        def validate_gender(cls, value):
+            allowed_codes = cls.model_fields["gender"].json_schema_extra["enum_values"]
+            if value is not None and value not in allowed_codes:
+                raise ValueError("Invalid administrative gender code")
+            return value
+
+    patient = PatientWithGenderEnum.model_validate({"gender": "unknown"})
+
+Reference Type Metadata
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Where available, ``enum_reference_types`` field metadata lists the target
+resource types declared for a reference. A custom field validator can use
+this metadata to enforce reference types. For example, the metadata for
+``Patient.managingOrganization`` lists ``Organization``.
+
+.. code-block:: python
+
     from fhir.resources.patient import Patient
 
-    def validate_gender(cls, values: Dict):
-        if not values:
-            return values
-        enums = cls.model_fields["gender"].json_schema_extra["enum_values"]
-        if "gender" in values and values["gender"] not in enums:
-            raise ValueError("write your message")
-        return values
-
-    Patient.add_root_validator(validate_gender, pre=True)
-
-
-Reference Validator
-~~~~~~~~~~~~~~~~~~~
-
-``fhir.resources`` is also providing enum like list of permitted resource types through json_schema_extra ``enum_reference_types``.
-You can get that list by following above (Enum) approaches  ``resource_types = cls.model_fields["managingOrganization"].json_schema_extra["enum_reference_types"]``
-
+    field = Patient.model_fields["managingOrganization"]
+    resource_types = field.json_schema_extra["enum_reference_types"]
 
 
 pydantic_ Field Type Support

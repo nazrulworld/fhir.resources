@@ -377,7 +377,7 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "summary_element_property": True,
         },
     )
-    class__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+    class_fhir__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
         default=None, alias="_class", title="Extension field for ``class_fhir``."
     )
 

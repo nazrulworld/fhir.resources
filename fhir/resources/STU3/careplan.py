@@ -899,7 +899,6 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "performer",
             "productCodeableConcept",
             "productReference",
-            "productReference",
             "dailyAmount",
             "quantity",
             "description",

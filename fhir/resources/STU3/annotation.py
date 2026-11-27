@@ -100,8 +100,6 @@ class Annotation(element.Element):
             "id",
             "extension",
             "authorReference",
-            "authorReference",
-            "authorReference",
             "authorString",
             "time",
             "text",
@@ -113,8 +111,6 @@ class Annotation(element.Element):
         with preserving the original sequence order.
         """
         return [
-            "authorReference",
-            "authorReference",
             "authorReference",
             "authorString",
             "time",

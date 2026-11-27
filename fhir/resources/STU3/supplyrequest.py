@@ -390,8 +390,6 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
             "quantity",
             "itemCodeableConcept",
             "itemReference",
-            "itemReference",
-            "itemReference",
         ]
 
     @classmethod
@@ -403,8 +401,6 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
             "modifierExtension",
             "quantity",
             "itemCodeableConcept",
-            "itemReference",
-            "itemReference",
             "itemReference",
         ]
 

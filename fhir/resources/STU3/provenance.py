@@ -342,15 +342,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "role",
             "whoUri",
             "whoReference",
-            "whoReference",
-            "whoReference",
-            "whoReference",
-            "whoReference",
             "onBehalfOfUri",
-            "onBehalfOfReference",
-            "onBehalfOfReference",
-            "onBehalfOfReference",
-            "onBehalfOfReference",
             "onBehalfOfReference",
             "relatedAgentType",
         ]
@@ -364,10 +356,6 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "modifierExtension",
             "role",
             "whoUri",
-            "whoReference",
-            "whoReference",
-            "whoReference",
-            "whoReference",
             "whoReference",
         ]
 

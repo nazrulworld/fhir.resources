@@ -699,7 +699,6 @@ class ActivityDefinition(domainresource.DomainResource):
             "location",
             "participant",
             "productReference",
-            "productReference",
             "productCodeableConcept",
             "quantity",
             "dosage",

@@ -487,7 +487,6 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
             "modifierExtension",
             "itemCodeableConcept",
             "itemReference",
-            "itemReference",
             "basis",
         ]
 

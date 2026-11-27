@@ -135,6 +135,11 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueBase64Binary",
+        title="Extension field for ``valueBase64Binary``.",
+    )
 
     valueBoolean: bool | None = Field(
         default=None,
@@ -150,6 +155,11 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueBoolean",
+        title="Extension field for ``valueBoolean``.",
     )
 
     valueCanonical: fhirtypes.CanonicalType | None = Field(
@@ -167,6 +177,11 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueCanonical",
+        title="Extension field for ``valueCanonical``.",
+    )
 
     valueCode: fhirtypes.CodeType | None = Field(
         default=None,
@@ -182,6 +197,9 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType | None = Field(
@@ -311,6 +329,9 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueDate", title="Extension field for ``valueDate``."
+    )
 
     valueDateTime: fhirtypes.DateTimeType | None = Field(
         default=None,
@@ -327,6 +348,11 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueDateTime",
+        title="Extension field for ``valueDateTime``.",
+    )
 
     valueDecimal: fhirtypes.DecimalType | None = Field(
         default=None,
@@ -342,6 +368,11 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueDecimal",
+        title="Extension field for ``valueDecimal``.",
     )
 
     valueDistance: fhirtypes.DistanceType | None = Field(
@@ -455,6 +486,9 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueId", title="Extension field for ``valueId``."
+    )
 
     valueIdentifier: fhirtypes.IdentifierType | None = Field(
         default=None,
@@ -487,6 +521,11 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueInstant",
+        title="Extension field for ``valueInstant``.",
+    )
 
     valueInteger: fhirtypes.IntegerType | None = Field(
         default=None,
@@ -502,6 +541,11 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueInteger",
+        title="Extension field for ``valueInteger``.",
     )
 
     valueInteger64: fhirtypes.Integer64Type | None = Field(
@@ -519,6 +563,11 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueInteger64__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueInteger64",
+        title="Extension field for ``valueInteger64``.",
+    )
 
     valueMarkdown: fhirtypes.MarkdownType | None = Field(
         default=None,
@@ -534,6 +583,11 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueMarkdown",
+        title="Extension field for ``valueMarkdown``.",
     )
 
     valueMeta: fhirtypes.MetaType | None = Field(
@@ -583,6 +637,9 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueOid", title="Extension field for ``valueOid``."
+    )
 
     valueParameterDefinition: fhirtypes.ParameterDefinitionType | None = Field(
         default=None,
@@ -630,6 +687,11 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valuePositiveInt",
+        title="Extension field for ``valuePositiveInt``.",
     )
 
     valueQuantity: fhirtypes.QuantityType | None = Field(
@@ -775,6 +837,9 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueString", title="Extension field for ``valueString``."
+    )
 
     valueTime: fhirtypes.TimeType | None = Field(
         default=None,
@@ -790,6 +855,9 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     valueTiming: fhirtypes.TimingType | None = Field(
@@ -839,6 +907,11 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None,
+        alias="_valueUnsignedInt",
+        title="Extension field for ``valueUnsignedInt``.",
+    )
 
     valueUri: fhirtypes.UriType | None = Field(
         default=None,
@@ -855,6 +928,9 @@ class Extension(datatype.DataType):
             "one_of_many_required": False,
         },
     )
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueUri", title="Extension field for ``valueUri``."
+    )
 
     valueUrl: fhirtypes.UrlType | None = Field(
         default=None,
@@ -870,6 +946,9 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueUrl", title="Extension field for ``valueUrl``."
     )
 
     valueUsageContext: fhirtypes.UsageContextType | None = Field(
@@ -902,6 +981,9 @@ class Extension(datatype.DataType):
             "one_of_many": "value",
             "one_of_many_required": False,
         },
+    )
+    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType | None = Field(
+        default=None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 
     @classmethod

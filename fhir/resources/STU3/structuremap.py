@@ -151,7 +151,7 @@ class StructureMap(domainresource.DomainResource):
             "summary_element_property": True,
         },
     )
-    import__ext: typing.List[
+    import_fhir__ext: typing.List[
         fhirtypes.FHIRPrimitiveExtensionType | None
     ] | None = Field(
         default=None, alias="_import", title="Extension field for ``import_fhir``."

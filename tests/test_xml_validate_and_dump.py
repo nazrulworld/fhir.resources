@@ -1,5 +1,6 @@
 import logging
 import sys
+import ssl
 import uuid
 from http import client
 
@@ -40,7 +41,7 @@ def test_xml_node_patient_resource():
         return
     conn = None
     try:
-        conn = client.HTTPConnection("hapi.fhir.org", 80)
+        conn = conn = client.HTTPSConnection("hapi.fhir.org", 443, context=ssl.create_default_context(), timeout=30)
         response = post_xml_resource(conn, patient_fhir)
         if response.status != 500:
             assert response is not None
@@ -74,7 +75,7 @@ def test_xml_node_observation_resource():
         return
     conn = None
     try:
-        conn = client.HTTPConnection("hapi.fhir.org", 80)
+        conn = client.HTTPSConnection("hapi.fhir.org", 443, context=ssl.create_default_context(), timeout=30)
         response = post_xml_resource(conn, observation_fhir)
         if response.status != 500:
             assert response is not None

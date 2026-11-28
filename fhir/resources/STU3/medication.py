@@ -281,7 +281,6 @@ class MedicationIngredient(backboneelement.BackboneElement):
             "modifierExtension",
             "itemCodeableConcept",
             "itemReference",
-            "itemReference",
             "isActive",
             "amount",
         ]

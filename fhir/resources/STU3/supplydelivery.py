@@ -356,8 +356,6 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
             "quantity",
             "itemCodeableConcept",
             "itemReference",
-            "itemReference",
-            "itemReference",
         ]
 
     @classmethod

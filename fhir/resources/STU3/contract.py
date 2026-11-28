@@ -424,8 +424,6 @@ class Contract(domainresource.DomainResource):
             "term",
             "bindingAttachment",
             "bindingReference",
-            "bindingReference",
-            "bindingReference",
             "friendly",
             "legal",
             "rule",
@@ -597,8 +595,6 @@ class ContractFriendly(backboneelement.BackboneElement):
             "modifierExtension",
             "contentAttachment",
             "contentReference",
-            "contentReference",
-            "contentReference",
         ]
 
     @classmethod
@@ -679,8 +675,6 @@ class ContractLegal(backboneelement.BackboneElement):
             "extension",
             "modifierExtension",
             "contentAttachment",
-            "contentReference",
-            "contentReference",
             "contentReference",
         ]
 
